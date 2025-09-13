@@ -745,6 +745,105 @@
         .section-summary .user-link {
             font-weight: 600;
             font-style: italic;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+        
+        /* Interactive hover effect for user links */
+        .user-link:hover {
+            opacity: 1;
+            background: rgba(100, 149, 237, 0.1);
+            padding: 1px 4px;
+            border-radius: 3px;
+            margin: -1px -4px;
+        }
+        
+        /* Enhanced user tooltip container */
+        .user-tooltip {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 10px;
+            margin-bottom: 8px;
+            z-index: 1000;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            min-width: 200px;
+            max-width: 280px;
+        }
+        
+        /* Show tooltip on parent span hover */
+        .user-link-wrapper:hover .user-tooltip {
+            opacity: 1;
+        }
+        
+        .user-tooltip-content {
+            display: block;
+            position: relative;
+        }
+        
+        .user-tooltip-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            float: left;
+            margin-right: 10px;
+            margin-bottom: 4px;
+            background: var(--bg-tertiary);
+        }
+        
+        .user-tooltip-name {
+            font-weight: 600;
+            font-size: 13px;
+            color: var(--text-primary);
+            margin-bottom: 2px;
+            line-height: 1.3;
+        }
+        
+        .user-tooltip-username {
+            font-size: 11px;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+        
+        .user-tooltip-details {
+            font-size: 11px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-top: 4px;
+        }
+        
+        /* Arrow for enhanced tooltip */
+        .user-tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 6px solid var(--border-color);
+        }
+        
+        .user-tooltip::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-1px);
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid var(--bg-secondary);
         }
         
         
@@ -764,7 +863,7 @@
             position: relative;
             padding-left: 12px;
             line-height: 1.2;
-            padding-bottom: 4px;
+            padding-bottom: 0.8em;
         }
         
         .markdown-list li::before {
@@ -796,6 +895,17 @@
         :root.light-mode .achievement {
             color: #cc6600;
             font-weight: 600;
+        }
+        
+        /* Linked achievements */
+        a.achievement-link {
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        a.achievement-link:hover .achievement {
+            text-decoration: underline;
+            opacity: 0.9;
         }
         
         /* Special styling for issue/PR links */
@@ -1144,18 +1254,49 @@
             .header {
                 position: sticky;
                 height: auto;
-                padding: 10px;
-                flex-wrap: wrap;
+                padding: 10px 5px;
+                flex-wrap: nowrap;
+                overflow-x: auto;
             }
             
             .header-title {
                 font-size: 12px;
                 margin-left: 10px;
+                flex-shrink: 0;
+            }
+            
+            .header-separator {
+                flex-shrink: 0;
+            }
+            
+            .header-groups {
+                display: flex;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                flex-shrink: 1;
+                min-width: 0;
+            }
+            
+            .group-tab {
+                flex-shrink: 0;
+                font-size: 10px;
+                padding: 4px 8px;
+            }
+            
+            .repo-dropdown-container {
+                flex-shrink: 0;
+                margin-left: 10px;
+            }
+            
+            .repo-dropdown-toggle {
+                font-size: 10px;
+                padding: 4px 6px;
             }
             
             .mode-toggle {
                 margin-right: 10px;
                 font-size: 18px;
+                flex-shrink: 0;
             }
             
             /* Hide sidebar on mobile */
@@ -1201,23 +1342,23 @@
             
             .week-content {
                 padding: 15px 0;
-                font-size: 10px;
+                font-size: 12px;
                 gap: 15px;
             }
             
             .content-label {
-                font-size: 9px;
+                font-size: 11px;
             }
             
             .repo-label {
-                font-size: 11px;
+                font-size: 13px;
                 margin-top: 10px;
             }
             
             .content-text,
             .priority-text,
             .contributor-text {
-                font-size: 10px;
+                font-size: 12px;
             }
             
             /* Hide status bar on mobile */
@@ -1297,6 +1438,7 @@
         let indexData = null;
         let groupsData = null;
         let allWeekData = {};
+        let usersData = {};
         let currentEcosystem = 'all';
         let currentWeekKey = null;
         let currentYear = new Date().getFullYear();
@@ -1394,15 +1536,93 @@
                 '<a href="$2" target="_blank" class="issue-link issue-simple" title="$3/$4#$1">#$1</a>');
             
             // Detect user mentions in regular links
-            text = text.replace(/\[(@[^\]]+)\]\(([^)]+)\)/g, 
-                '<a href="$2" target="_blank" class="user-link">$1</a>');
+            text = text.replace(/\[(@[^\]]+)\]\(([^)]+)\)/g, function(match, userText, url) {
+                // Extract username from URL if it's a GitHub URL
+                let username = userText.replace('@', '');
+                const githubMatch = url.match(/github\.com\/([^\/]+)/);
+                if (githubMatch) {
+                    username = githubMatch[1];
+                }
+                
+                // Get user data if available
+                const userData = usersData[username] || {};
+                
+                // Build the enhanced tooltip HTML
+                let tooltipHtml = '<div class="user-tooltip"><div class="user-tooltip-content">';
+                
+                // Add avatar if available
+                if (userData.avatar_url) {
+                    tooltipHtml += `<img src="${userData.avatar_url}" alt="${username}" class="user-tooltip-avatar">`;
+                } else {
+                    tooltipHtml += `<div class="user-tooltip-avatar"></div>`;
+                }
+                
+                // Name and username
+                if (userData.name) {
+                    tooltipHtml += `<div class="user-tooltip-name">${userData.name}</div>`;
+                    tooltipHtml += `<div class="user-tooltip-username">@${username}</div>`;
+                } else {
+                    tooltipHtml += `<div class="user-tooltip-name">@${username}</div>`;
+                }
+                
+                // Additional details
+                let details = [];
+                if (userData.company) {
+                    details.push(userData.company);
+                }
+                if (userData.location) {
+                    details.push(userData.location);
+                }
+                if (details.length > 0) {
+                    tooltipHtml += `<div class="user-tooltip-details">${details.join(' • ')}</div>`;
+                }
+                
+                tooltipHtml += '</div></div>';
+                
+                return `<span class="user-link-wrapper" style="position: relative; display: inline-block;"><a href="${url}" target="_blank" class="user-link">${userText}</a>${tooltipHtml}</span>`;
+            });
             
             // Convert regular markdown links
             text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, function(match, linkText, url) {
                 // Check if it's a user profile link
                 if (url.includes('github.com/') && url.split('/').length === 4) {
                     const username = url.split('/').pop();
-                    return `<a href="${url}" target="_blank" class="user-link">${linkText}</a>`;
+                    // Get user data if available
+                    const userData = usersData[username] || {};
+                    
+                    // Build the enhanced tooltip HTML
+                    let tooltipHtml = '<div class="user-tooltip"><div class="user-tooltip-content">';
+                    
+                    // Add avatar if available
+                    if (userData.avatar_url) {
+                        tooltipHtml += `<img src="${userData.avatar_url}" alt="${username}" class="user-tooltip-avatar">`;
+                    } else {
+                        tooltipHtml += `<div class="user-tooltip-avatar"></div>`;
+                    }
+                    
+                    // Name and username
+                    if (userData.name) {
+                        tooltipHtml += `<div class="user-tooltip-name">${userData.name}</div>`;
+                        tooltipHtml += `<div class="user-tooltip-username">@${username}</div>`;
+                    } else {
+                        tooltipHtml += `<div class="user-tooltip-name">@${username}</div>`;
+                    }
+                    
+                    // Additional details
+                    let details = [];
+                    if (userData.company) {
+                        details.push(userData.company);
+                    }
+                    if (userData.location) {
+                        details.push(userData.location);
+                    }
+                    if (details.length > 0) {
+                        tooltipHtml += `<div class="user-tooltip-details">${details.join(' • ')}</div>`;
+                    }
+                    
+                    tooltipHtml += '</div></div>';
+                    
+                    return `<span class="user-link-wrapper" style="position: relative; display: inline-block;"><a href="${url}" target="_blank" class="user-link">${linkText}</a>${tooltipHtml}</span>`;
                 }
                 return `<a href="${url}" target="_blank">${linkText}</a>`;
             });
@@ -1436,7 +1656,39 @@
                 processedLines.push('</ul>');
             }
             
-            return processedLines.join('');
+            // Link achievements to their related issues
+            const html = processedLines.join('');
+            return linkAchievements(html);
+        }
+        
+        function linkAchievements(html) {
+            // Process achievements in list items to link them with the first issue link in the same item
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = html;
+            
+            // Find all list items
+            tempDiv.querySelectorAll('li').forEach(li => {
+                // Check if this list item has an achievement span
+                const achievement = li.querySelector('.achievement');
+                if (achievement && !achievement.parentElement.matches('a')) {
+                    // Find the first issue link in the same list item
+                    const issueLink = li.querySelector('a.issue-link, a[href*="/issues/"], a[href*="/pull/"]');
+                    if (issueLink) {
+                        // Wrap the achievement in a link to the same URL
+                        const link = document.createElement('a');
+                        link.href = issueLink.href;
+                        link.target = '_blank';
+                        link.className = 'achievement-link';
+                        link.title = issueLink.title || issueLink.textContent;
+                        
+                        // Replace the achievement span with the linked version
+                        achievement.parentNode.insertBefore(link, achievement);
+                        link.appendChild(achievement);
+                    }
+                }
+            });
+            
+            return tempDiv.innerHTML;
         }
         
         function switchToGroup(groupName) {
@@ -1532,15 +1784,23 @@
         async function initSystem() {
             updateStatus('LOADING INDEX...');
             try {
-                const [indexResp, groupsResp] = await Promise.all([
+                const [indexResp, groupsResp, usersResp] = await Promise.all([
                     fetch('index.json'),
-                    fetch('groups.json')
+                    fetch('groups.json'),
+                    fetch('users.json')
                 ]);
                 
                 if (!indexResp.ok || !groupsResp.ok) throw new Error('FEED CORRUPTED');
                 
                 indexData = await indexResp.json();
                 groupsData = await groupsResp.json();
+                
+                // Load users data - fallback to empty object if not available
+                if (usersResp.ok) {
+                    usersData = await usersResp.json();
+                } else {
+                    usersData = {};
+                }
                 
                 await loadAllWeekData();
                 initInterface();
