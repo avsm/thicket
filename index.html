@@ -63,6 +63,17 @@
             z-index: 1000;
         }
         
+        /* Desktop: hide row wrappers */
+        .header-row-1,
+        .header-row-2 {
+            display: contents;
+        }
+        
+        /* Hide mobile-only elements on desktop */
+        .repo-dropdown-header {
+            display: none;
+        }
+        
         .header-title {
             color: var(--text-primary);
             font-size: 13px;
@@ -1250,47 +1261,120 @@
                 height: auto;
             }
             
-            /* Make header mobile-friendly */
+            /* Make header mobile-friendly with two rows */
             .header {
                 position: sticky;
                 height: auto;
-                padding: 10px 5px;
-                flex-wrap: nowrap;
-                overflow-x: auto;
+                padding: 8px 5px;
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            /* First row: title and mode toggle */
+            .header-row-1 {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 8px;
+            }
+            
+            /* Second row: groups and repo button */
+            .header-row-2 {
+                display: flex;
+                align-items: center;
+                gap: 8px;
             }
             
             .header-title {
-                font-size: 12px;
+                font-size: 14px;
                 margin-left: 10px;
                 flex-shrink: 0;
             }
             
             .header-separator {
-                flex-shrink: 0;
+                display: none;
             }
             
             .header-groups {
                 display: flex;
                 flex-wrap: nowrap;
                 overflow-x: auto;
-                flex-shrink: 1;
-                min-width: 0;
+                flex: 1;
+                gap: 4px;
+                -webkit-overflow-scrolling: touch;
             }
             
             .group-tab {
                 flex-shrink: 0;
-                font-size: 10px;
-                padding: 4px 8px;
+                font-size: 11px;
+                padding: 6px 10px;
+                white-space: nowrap;
             }
             
             .repo-dropdown-container {
                 flex-shrink: 0;
-                margin-left: 10px;
             }
             
             .repo-dropdown-toggle {
-                font-size: 10px;
-                padding: 4px 6px;
+                font-size: 11px;
+                padding: 6px 10px;
+                background: var(--bg-tertiary);
+                border-radius: 3px;
+            }
+            
+            /* Mobile modal for repo dropdown */
+            .repo-dropdown {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: var(--bg-primary);
+                border: none;
+                border-radius: 0;
+                box-shadow: none;
+                max-width: none;
+                max-height: none;
+                overflow-y: auto;
+                z-index: 9999;
+                display: none;
+                flex-direction: column;
+            }
+            
+            .repo-dropdown.show {
+                display: flex;
+            }
+            
+            .repo-dropdown-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 15px;
+                border-bottom: 1px solid var(--border-color);
+                background: var(--bg-secondary);
+                position: sticky;
+                top: 0;
+                z-index: 10;
+            }
+            
+            .repo-dropdown-title {
+                font-size: 16px;
+                font-weight: 600;
+                color: var(--text-primary);
+            }
+            
+            .repo-dropdown-close {
+                font-size: 24px;
+                color: var(--text-muted);
+                cursor: pointer;
+                padding: 0 5px;
+                line-height: 1;
+            }
+            
+            .repo-dropdown-content {
+                flex: 1;
+                overflow-y: auto;
+                padding: 15px;
             }
             
             .mode-toggle {
@@ -1385,28 +1469,36 @@
 </head>
 <body>
     <div class="header">
-        <div class="header-title">OCAML.SYS</div>
-        <div class="header-separator">::</div>
-        <div class="header-groups">
-            <div class="group-tab active" data-group="all">[ALL]</div>
-            <div class="group-tab" data-group="core">[CORE]</div>
-            <div class="group-tab" data-group="ecosystem">[ECOSYSTEM]</div>
-            <div class="group-tab" data-group="tools">[TOOLS]</div>
-            <div class="group-tab" data-group="oxcaml">[OXCAML]</div>
-        </div>
-        <div class="repo-dropdown-container">
-            <div class="repo-dropdown-toggle" onclick="toggleRepoDropdown()">
-                <span>REPOS</span>
-                <span class="dropdown-arrow">▼</span>
+        <div class="header-row-1">
+            <div class="header-title">OCAML.SYS</div>
+            <div class="mode-toggle" onclick="toggleTheme()">
+                <span id="mode-icon">◐</span>
             </div>
-            <div class="repo-dropdown" id="repo-dropdown">
-                <div class="repo-dropdown-content" id="repo-dropdown-content">
-                    <!-- Repository list will be populated by JavaScript -->
+        </div>
+        <div class="header-row-2">
+            <div class="header-groups">
+                <div class="group-tab active" data-group="all">[ALL]</div>
+                <div class="group-tab" data-group="core">[CORE]</div>
+                <div class="group-tab" data-group="ecosystem">[ECOSYSTEM]</div>
+                <div class="group-tab" data-group="tools">[TOOLS]</div>
+                <div class="group-tab" data-group="oxcaml">[OXCAML]</div>
+            </div>
+            <div class="header-separator">::</div>
+            <div class="repo-dropdown-container">
+                <div class="repo-dropdown-toggle" onclick="toggleRepoDropdown()">
+                    <span>REPOS</span>
+                    <span class="dropdown-arrow">▼</span>
+                </div>
+                <div class="repo-dropdown" id="repo-dropdown">
+                    <div class="repo-dropdown-header">
+                        <div class="repo-dropdown-title">Select Repository</div>
+                        <div class="repo-dropdown-close" onclick="closeRepoDropdown()">×</div>
+                    </div>
+                    <div class="repo-dropdown-content" id="repo-dropdown-content">
+                        <!-- Repository list will be populated by JavaScript -->
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="mode-toggle" onclick="toggleTheme()">
-            <span id="mode-icon">◐</span>
         </div>
     </div>
 
@@ -2209,11 +2301,31 @@
                 dropdown.classList.remove('show');
                 toggle.classList.remove('active');
                 repoDropdownOpen = false;
+                // Re-enable body scroll on mobile
+                if (window.innerWidth <= 768) {
+                    document.body.style.overflow = '';
+                }
             } else {
                 populateRepoDropdown();
                 dropdown.classList.add('show');
                 toggle.classList.add('active');
                 repoDropdownOpen = true;
+                // Disable body scroll on mobile when modal is open
+                if (window.innerWidth <= 768) {
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+        }
+        
+        function closeRepoDropdown() {
+            const dropdown = document.getElementById('repo-dropdown');
+            const toggle = document.querySelector('.repo-dropdown-toggle');
+            dropdown.classList.remove('show');
+            toggle.classList.remove('active');
+            repoDropdownOpen = false;
+            // Re-enable body scroll on mobile
+            if (window.innerWidth <= 768) {
+                document.body.style.overflow = '';
             }
         }
         
@@ -2264,9 +2376,9 @@
             content.innerHTML = html || '<div style="padding: 8px; color: var(--text-muted);">No repositories found</div>';
         }
         
-        // Close dropdown when clicking outside
+        // Close dropdown when clicking outside (desktop only)
         document.addEventListener('click', function(event) {
-            if (repoDropdownOpen && !event.target.closest('.repo-dropdown-container')) {
+            if (repoDropdownOpen && window.innerWidth > 768 && !event.target.closest('.repo-dropdown-container')) {
                 toggleRepoDropdown();
             }
         });
