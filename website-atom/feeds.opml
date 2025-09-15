@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="2.0">
+  <head>
+    <title>OCaml Community Activity Feeds</title>
+    <dateCreated>2025-09-13T20:32:52.921755+00:00</dateCreated>
+  </head>
+  <body>
+    <outline text="Weekly" title="Weekly" type="rss" xmlUrl="https://thi.org/ruminant/feeds/weekly.atom" htmlUrl="https://thi.org/ruminant/groups/weekly"/>
+  </body>
+</opml>

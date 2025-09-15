@@ -1,0 +1,906 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev//feeds/oxcaml.xml</id><title>OxCaml - Weekly Activity</title><updated>2025-09-07T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev//feeds/oxcaml.xml" rel="self"/><link href="https://thicket.dev//groups/oxcaml" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Oxidised OCaml</subtitle><entry><id>https://thicket.dev//groups/oxcaml/2025/week-13</id><title>Week 13, 2025: Major OCaml 5.2.0minus-9 version update merged in Merlin with extensive codebase changes</title><updated>2025-03-30T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Single active repository&lt;/strong&gt;: Only &lt;a href="https://github.com/oxcaml/merlin"&gt;oxcaml/merlin&lt;/a&gt; showed activity during week 13 of 2025&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Major version update&lt;/strong&gt;: OCaml 5.2.0minus-9 integration completed with 106 files modified&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Substantial code changes&lt;/strong&gt;: Over 46,000 additions and 43,000 deletions processed in version rollout&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Key Projects and Initiatives&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/137" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;OCaml 5.2.0minus-9 integration&lt;/strong&gt;&lt;/a&gt; led by &lt;a href="https://github.com/goldfirere"&gt;Richard Eisenberg&lt;/a&gt; across the Merlin codebase (&lt;a href="https://github.com/oxcaml/merlin/issues/137"&gt;oxcaml/merlin#137&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Test framework modernization&lt;/strong&gt; with behavior modifications requiring community review before finalization&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Optimistic merge strategy&lt;/strong&gt; adopted to maintain development velocity while requesting post-merge community feedback&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Distributed review approach&lt;/strong&gt; with specific reviewer assignments (@lukemaurer and @riaqn) for different components&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev//groups/oxcaml/2025/week-13"/><summary>Major OCaml 5.2.0minus-9 version update merged in Merlin with extensive codebase changes</summary><published>2025-03-30T00:00:00+00:00</published></entry><entry><id>https://thicket.dev//groups/oxcaml/2025/week-14</id><title>Week 14, 2025: Resolved Flambda2 compiler optimization issue with x86-64 floating-point performance improvements</title><updated>2025-04-06T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;Primary activity concentrated in &lt;a href="https://github.com/oxcaml/oxcaml/issues/3293"&gt;oxcaml/oxcaml#3293&lt;/a&gt; addressing Flambda2 compiler optimization issues&lt;/li&gt;
+&lt;li&gt;Technical focus on x86-64 processor false dependencies affecting floating-point loop performance&lt;/li&gt;
+&lt;li&gt;Four repositories (oxcaml/opam-repository, oxcaml/merlin, oxcaml/js&lt;em&gt;of&lt;/em&gt;ocaml, janestreet/opam-repository) showed no activity during this period&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Key Projects and Initiatives&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Flambda2 compiler optimization&lt;/strong&gt; improvements targeting imperative loops and local allocation performance&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;x86-64 processor optimization&lt;/strong&gt; work focusing on false dependency elimination in floating-point instructions&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Performance analysis&lt;/strong&gt; of cvtsi2sdq instruction behavior and pipeline optimization strategies&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;In-depth technical analysis of &lt;a href="https://github.com/oxcaml/oxcaml/issues/3293" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;x86-64 processor false dependencies&lt;/strong&gt;&lt;/a&gt; in floating-point conversion instructions by &lt;a href="https://github.com/stedolan"&gt;Stephen Dolan&lt;/a&gt;, &lt;a href="https://github.com/chambart"&gt;Pierre Chambart&lt;/a&gt;, and &lt;a href="https://github.com/lthls"&gt;Vincent Laviron&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/3293"&gt;oxcaml/oxcaml#3293&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Performance investigation revealing processor pipeline issues where cvtsi2sdq instruction creates unnecessary dependencies&lt;/li&gt;
+&lt;li&gt;Proposed solution using &lt;strong style="color: #cc6600;"&gt;pxor instruction&lt;/strong&gt; to break false dependencies, improving performance from 0.5 to 3.5 instructions per cycle&lt;/li&gt;
+&lt;li&gt;Discussion of micro-benchmark reliability and CPU heuristics affecting performance measurements in OCaml code&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;Increased attention to &lt;strong style="color: #cc6600;"&gt;processor-specific optimizations&lt;/strong&gt; in OCaml compiler backends, particularly for x86-64 floating-point operations&lt;/li&gt;
+&lt;li&gt;Growing emphasis on &lt;strong style="color: #cc6600;"&gt;micro-benchmark analysis&lt;/strong&gt; and understanding of CPU pipeline behavior in compiler optimization decisions&lt;/li&gt;
+&lt;li&gt;Development of systematic approaches to address false dependency issues in generated assembly code&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev//groups/oxcaml/2025/week-14"/><summary>Resolved Flambda2 compiler optimization issue with x86-64 floating-point performance improvements</summary><published>2025-04-06T00:00:00+00:00</published></entry><entry><id>https://thicket.dev//groups/oxcaml/2025/week-15</id><title>Week 15, 2025: Compiler compatibility fixes and advanced IDE features with OCaml toolchain improvements</title><updated>2025-04-13T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;Compiler compatibility work addressing clang 18 build issues in &lt;a href="https://github.com/oxcaml/oxcaml/issues/3841"&gt;oxcaml/oxcaml#3841&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;OCaml compiler updates for 5.2.0minus-9 compatibility in oxcaml/merlin (&lt;a href="https://github.com/oxcaml/merlin/issues/137"&gt;#137&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/merlin/issues/141"&gt;#141&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Advanced IDE functionality development with project-wide renaming features in oxcaml/merlin (&lt;a href="https://github.com/oxcaml/merlin/issues/139"&gt;#139&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/merlin/issues/140"&gt;#140&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Toolchain maintenance with Menhir version fixes and CI improvements in &lt;a href="https://github.com/oxcaml/merlin/issues/138"&gt;oxcaml/merlin#138&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Key Projects and Initiatives&lt;/h2&gt;
+
+&lt;li&gt;Project-wide renaming implementation by &lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt; involving ocaml-flambda updates and UID disambiguation between interfaces and implementations (&lt;a href="https://github.com/oxcaml/merlin/issues/139"&gt;oxcaml/merlin#139&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/merlin/issues/140"&gt;oxcaml/merlin#140&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Granular Marshal integration in Merlin's indexer as part of renaming feature enhancement (&lt;a href="https://github.com/oxcaml/merlin/issues/140"&gt;oxcaml/merlin#140&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Priority Items&lt;/h2&gt;
+
+&lt;li&gt;Build system compatibility with clang 18 requires fixing unused variable warnings in runtime/unix.c and adding clang 18 to GitHub CI pipeline (&lt;a href="https://github.com/oxcaml/oxcaml/issues/3841"&gt;oxcaml/oxcaml#3841&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;Compiler version synchronization efforts with automated CI validation to prevent version mismatches (&lt;a href="https://github.com/oxcaml/merlin/issues/138"&gt;oxcaml/merlin#138&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Advanced IDE functionality development focusing on project-wide operations like renaming across multiple files (&lt;a href="https://github.com/oxcaml/merlin/issues/139"&gt;oxcaml/merlin#139&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/merlin/issues/140"&gt;oxcaml/merlin#140&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Integration of modern OCaml toolchain features including flambda compiler updates and improved indexing mechanisms (&lt;a href="https://github.com/oxcaml/merlin/issues/140"&gt;oxcaml/merlin#140&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev//groups/oxcaml/2025/week-15"/><summary>Compiler compatibility fixes and advanced IDE features with OCaml toolchain improvements</summary><published>2025-04-13T00:00:00+00:00</published></entry><entry><id>https://thicket.dev//groups/oxcaml/2025/week-16</id><title>Week 16, 2025: Compiler optimization bug fixes and build compatibility improvements across core toolchain components</title><updated>2025-04-20T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;Build compatibility improvements with Clang 18 addressing unused variable warnings in &lt;a href="https://github.com/oxcaml/oxcaml/issues/3841"&gt;oxcaml/oxcaml#3841&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Memory safety bug identified with unboxed nativeint operations in &lt;a href="https://github.com/oxcaml/oxcaml/issues/3889"&gt;oxcaml/oxcaml#3889&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Performance regression reported for int64 to int conversions in &lt;a href="https://github.com/oxcaml/oxcaml/issues/3888"&gt;oxcaml/oxcaml#3888&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Jump to definition reliability improved in Merlin for compilation unit name conflicts in &lt;a href="https://github.com/oxcaml/merlin/issues/142"&gt;oxcaml/merlin#142&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Key Projects and Initiatives&lt;/h2&gt;
+
+&lt;li&gt;Match-in-match compilation optimization project with continuation specialization roadmap by &lt;a href="https://github.com/mshinwell"&gt;Mark Shinwell&lt;/a&gt; in &lt;a href="https://github.com/oxcaml/oxcaml/issues/926"&gt;oxcaml/oxcaml#926&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;CMM code generation audit to improve peephole optimizations by &lt;a href="https://github.com/Gbury"&gt;Guillaume Bury&lt;/a&gt; in &lt;a href="https://github.com/oxcaml/oxcaml/issues/3718"&gt;oxcaml/oxcaml#3718&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Priority Items&lt;/h2&gt;
+
+&lt;li&gt;Memory safety issue requiring fix for unsafe indexing with unboxed nativeint that truncates indices instead of segfaulting in &lt;a href="https://github.com/oxcaml/oxcaml/issues/3889"&gt;oxcaml/oxcaml#3889&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;Compiler performance optimization focus on unboxed numeric type handling and code generation efficiency&lt;/li&gt;
+&lt;li&gt;Build system robustness improvements to support newer toolchain versions&lt;/li&gt;
+&lt;li&gt;Memory safety auditing of unsafe operations to maintain behavior guarantees&lt;/li&gt;
+&lt;li&gt;Development tooling reliability improvements for editor integration features&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev//groups/oxcaml/2025/week-16"/><summary>Compiler optimization bug fixes and build compatibility improvements across core toolchain components</summary><published>2025-04-20T00:00:00+00:00</published></entry><entry><id>https://thicket.dev//groups/oxcaml/2025/week-17</id><title>Week 17, 2025: Focus on compiler optimization with pattern-matching performance improvements and downstream integration work</title><updated>2025-04-27T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;Primary activity centered around &lt;a href="https://github.com/oxcaml/oxcaml/issues/3914" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;compiler optimization&lt;/strong&gt;&lt;/a&gt; work in &lt;a href="https://github.com/oxcaml/oxcaml/issues/3914"&gt;oxcaml/oxcaml#3914&lt;/a&gt; with active technical discussion on pattern-matching performance&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/143" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Downstream integration&lt;/strong&gt;&lt;/a&gt; efforts in &lt;a href="https://github.com/oxcaml/merlin/issues/143"&gt;oxcaml/merlin#143&lt;/a&gt; for granular marshal functionality&lt;/li&gt;
+&lt;li&gt;Three repositories (oxcaml/opam-repository, oxcaml/js&lt;em&gt;of&lt;/em&gt;ocaml, janestreet/opam-repository) showed no activity during this period&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Key Projects and Initiatives&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Flambda2 optimization improvements&lt;/strong&gt; with upcoming work on typing environment and match-in-match heuristics by &lt;a href="https://github.com/bclement-ocp"&gt;Basile Clément&lt;/a&gt; expected in May&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Switch compilation optimization&lt;/strong&gt; building on previous efforts to improve affine function detection and code generation efficiency&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Priority Items&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/3914" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Pattern-matching performance regression&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/oxcaml/oxcaml/issues/3914"&gt;oxcaml/oxcaml#3914&lt;/a&gt; needs investigation for equality functions generating inefficient jump tables&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/143" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Untested cherry-pick&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/oxcaml/merlin/issues/143"&gt;oxcaml/merlin#143&lt;/a&gt; requiring review and conflict resolution before potential merge&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/3914" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Compiler optimization strategies&lt;/strong&gt;&lt;/a&gt; with &lt;a href="https://github.com/Gbury"&gt;Guillaume Bury&lt;/a&gt; providing workarounds using discriminant functions for better code generation in &lt;a href="https://github.com/oxcaml/oxcaml/issues/3914"&gt;oxcaml/oxcaml#3914&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Switch optimization roadmap&lt;/strong&gt; outlined by &lt;a href="https://github.com/bclement-ocp"&gt;Basile Clément&lt;/a&gt; connecting current issues to planned improvements in match-in-match heuristics&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Performance analysis focus&lt;/strong&gt; with detailed assembly-level investigation of compiler-generated code efficiency&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Community collaboration&lt;/strong&gt; on optimization strategies with technical guidance from OCamlPro team members&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev//groups/oxcaml/2025/week-17"/><summary>Focus on compiler optimization with pattern-matching performance improvements and downstream integration work</summary><published>2025-04-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev//groups/oxcaml/2025/week-18</id><title>Week 18, 2025: Compiler optimization focus across js_of_ocaml and oxcaml, with package compatibility issues in Jane Street branch</title><updated>2025-05-04T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/3956" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Runtime system development&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/oxcaml/oxcaml/issues/3956"&gt;oxcaml/oxcaml#3956&lt;/a&gt; addressing multi-domain compatibility issues reported by &lt;a href="https://github.com/NickBarnes"&gt;Nick Barnes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Compiler optimization work&lt;/strong&gt; in &lt;a href="https://github.com/oxcaml/js_of_ocaml"&gt;oxcaml/js&lt;em&gt;of&lt;/em&gt;ocaml&lt;/a&gt; by &lt;a href="https://github.com/hhugo"&gt;@hhugo&lt;/a&gt; and &lt;a href="https://github.com/vouillon"&gt;Jérôme Vouillon&lt;/a&gt; focusing on performance improvements&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Package maintenance&lt;/strong&gt; in &lt;a href="https://github.com/oxcaml/opam-repository"&gt;oxcaml/opam-repository&lt;/a&gt; with direct commits by &lt;a href="https://github.com/d-kalinichenko"&gt;@d-kalinichenko&lt;/a&gt; fixing version constraints&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Build compatibility issues&lt;/strong&gt; in &lt;a href="https://github.com/janestreet/opam-repository"&gt;janestreet/opam-repository&lt;/a&gt; affecting flambda2 and ARM64 platforms&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;No activity&lt;/strong&gt; recorded in &lt;a href="https://github.com/oxcaml/merlin"&gt;oxcaml/merlin&lt;/a&gt; during this period&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Package compatibility coordination&lt;/strong&gt; between oxcaml/opam-repository fixes by &lt;a href="https://github.com/d-kalinichenko"&gt;@d-kalinichenko&lt;/a&gt; and related issues in janestreet/opam-repository&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/janestreet/opam-repository/issues/40" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;OCaml intrinsics compatibility&lt;/strong&gt;&lt;/a&gt; issues affecting both repositories, with ARM64 problems in &lt;a href="https://github.com/janestreet/opam-repository/issues/40"&gt;janestreet/opam-repository#40&lt;/a&gt; and fixes in oxcaml/opam-repository&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Flambda2 compatibility&lt;/strong&gt; challenges spanning compiler development in oxcaml/oxcaml and package builds in janestreet/opam-repository&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Key Projects and Initiatives&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/pull/4395" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Runtime quotations implementation&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/Dreian"&gt;Andrej Ivašković&lt;/a&gt; in &lt;a href="https://github.com/oxcaml/oxcaml/pull/4395"&gt;oxcaml/oxcaml#4395&lt;/a&gt; with standard library integration&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/pull/3937" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Phantom bindings support&lt;/strong&gt;&lt;/a&gt; restoration by &lt;a href="https://github.com/lthls"&gt;Vincent Laviron&lt;/a&gt; in &lt;a href="https://github.com/oxcaml/oxcaml/pull/3937"&gt;oxcaml/oxcaml#3937&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;js&lt;em&gt;of&lt;/em&gt;ocaml compiler optimization&lt;/strong&gt; project with specialization speed improvements and dead code elimination enhancements&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/3914" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Pattern-matching optimization&lt;/strong&gt;&lt;/a&gt; discussions for Flambda2 by &lt;a href="https://github.com/jvanburen"&gt;Jacob Van Buren&lt;/a&gt; in &lt;a href="https://github.com/oxcaml/oxcaml/issues/3914"&gt;oxcaml/oxcaml#3914&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Priority Items&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/3956" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Multi-domain thread safety&lt;/strong&gt;&lt;/a&gt; in runtime timing hooks requiring immediate attention in &lt;a href="https://github.com/oxcaml/oxcaml/issues/3956"&gt;oxcaml/oxcaml#3956&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/janestreet/opam-repository/issues/41" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Flambda2 package compatibility&lt;/strong&gt;&lt;/a&gt; issues blocking alcotest builds in &lt;a href="https://github.com/janestreet/opam-repository/issues/41"&gt;janestreet/opam-repository#41&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/janestreet/opam-repository/issues/40" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;ARM64 build failures&lt;/strong&gt;&lt;/a&gt; for ocaml-intrinsics-kernel in &lt;a href="https://github.com/janestreet/opam-repository/issues/40"&gt;janestreet/opam-repository#40&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/janestreet/opam-repository/issues/42" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Dune project interference&lt;/strong&gt;&lt;/a&gt; preventing local switch creation in &lt;a href="https://github.com/janestreet/opam-repository/issues/42"&gt;janestreet/opam-repository#42&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/3956" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Runtime events vs timing hooks&lt;/strong&gt;&lt;/a&gt; discussion by &lt;a href="https://github.com/NickBarnes"&gt;Nick Barnes&lt;/a&gt; exploring modern alternatives to legacy hook mechanisms in &lt;a href="https://github.com/oxcaml/oxcaml/issues/3956"&gt;oxcaml/oxcaml#3956&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/janestreet/opam-repository/issues/42" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Dune sandboxing behavior&lt;/strong&gt;&lt;/a&gt; discussion by &lt;a href="https://github.com/smuenzel"&gt;Stefan Muenzel&lt;/a&gt; and &lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt; about directory tree searches in &lt;a href="https://github.com/janestreet/opam-repository/issues/42"&gt;janestreet/opam-repository#42&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/3914" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Pattern-matching optimization strategies&lt;/strong&gt;&lt;/a&gt; for Flambda2 with performance analysis in &lt;a href="https://github.com/oxcaml/oxcaml/issues/3914"&gt;oxcaml/oxcaml#3914&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Runtime system modernization&lt;/strong&gt; addressing multi-domain compatibility across legacy mechanisms&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Compiler optimization focus&lt;/strong&gt; with concentrated efforts on performance improvements in js&lt;em&gt;of&lt;/em&gt;ocaml specialization and dead code elimination&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Build toolchain compatibility challenges&lt;/strong&gt; with newer OCaml variants requiring fixes across multiple package repositories&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Direct maintenance workflows&lt;/strong&gt; with immediate fixes bypassing pull request processes for routine package updates&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev//groups/oxcaml/2025/week-18"/><summary>Compiler optimization focus across js_of_ocaml and oxcaml, with package compatibility issues in Jane Street branch</summary><published>2025-05-04T00:00:00+00:00</published></entry><entry><id>https://thicket.dev//groups/oxcaml/2025/week-19</id><title>Week 19, 2025: ARM64 compiler fixes and OCaml 5.2.0 compatibility updates across the group with active uniqueness mode testing</title><updated>2025-05-11T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;Resolution of long-standing &lt;a href="https://github.com/oxcaml/oxcaml/issues/3574" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;arm64 compiler miscompilation bug&lt;/strong&gt;&lt;/a&gt; affecting greedy configuration tracked since February in &lt;a href="https://github.com/oxcaml/oxcaml/issues/3574"&gt;oxcaml/oxcaml#3574&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/144" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;OCaml 5.2.0minus-10 compatibility&lt;/strong&gt;&lt;/a&gt; update for Merlin with ongoing codebase synchronization discussions in &lt;a href="https://github.com/oxcaml/merlin/issues/144"&gt;oxcaml/merlin#144&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Repository maintenance&lt;/strong&gt; activities with automated version releases and direct commit workflows in oxcaml/opam-repository&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Community testing&lt;/strong&gt; of uniqueness modes and ARM64 runtime fixes across janestreet/opam-repository with developer tooling improvements&lt;/li&gt;
+&lt;li&gt;No activity recorded for oxcaml/js&lt;em&gt;of&lt;/em&gt;ocaml during this period&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;OCaml version synchronization&lt;/strong&gt; efforts between oxcaml/oxcaml (arm64 fixes) and oxcaml/merlin (5.2.0minus-10 compatibility) ensuring consistent compiler behavior&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;ARM64 platform stability&lt;/strong&gt; work spanning both oxcaml/oxcaml (miscompilation fixes) and janestreet/opam-repository (runtime effects corruption fixes)&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Package management&lt;/strong&gt; coordination between oxcaml/opam-repository (maintenance commits) and janestreet/opam-repository (local switch tooling issues)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Key Projects and Initiatives&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/3574" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;ARM64 compiler stability&lt;/strong&gt;&lt;/a&gt;: Critical miscompilation bug resolved by &lt;a href="https://github.com/xclerc"&gt;Xavier Clerc&lt;/a&gt; with support from &lt;a href="https://github.com/bclement-ocp"&gt;Basile Clément&lt;/a&gt; in &lt;a href="https://github.com/oxcaml/oxcaml/issues/3574"&gt;oxcaml/oxcaml#3574&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/janestreet/opam-repository/issues/44" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Uniqueness mode development&lt;/strong&gt;&lt;/a&gt;: Active community testing by &lt;a href="https://github.com/onsah"&gt;Onur Şahin&lt;/a&gt; revealing compiler behavior inconsistencies in &lt;a href="https://github.com/janestreet/opam-repository/issues/44"&gt;janestreet/opam-repository#44&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/144" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Merlin synchronization&lt;/strong&gt;&lt;/a&gt;: OCaml 5.2.0minus-10 compatibility work by &lt;a href="https://github.com/ccasin"&gt;Chris Casinghino&lt;/a&gt; with codebase alignment review by &lt;a href="https://github.com/liam923"&gt;Liam Stevenson&lt;/a&gt; in &lt;a href="https://github.com/oxcaml/merlin/issues/144"&gt;oxcaml/merlin#144&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Priority Items&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/janestreet/opam-repository/issues/42" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Local switch creation failures&lt;/strong&gt;&lt;/a&gt; with dune-project files affecting developer workflow in &lt;a href="https://github.com/janestreet/opam-repository/issues/42"&gt;janestreet/opam-repository#42&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/janestreet/opam-repository/issues/44" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Uniqueness mode compiler inconsistency&lt;/strong&gt;&lt;/a&gt; between LSP and dune build outputs requiring debugging in &lt;a href="https://github.com/janestreet/opam-repository/issues/44"&gt;janestreet/opam-repository#44&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/janestreet/opam-repository/pull/45" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;ARM64 effects corruption&lt;/strong&gt;&lt;/a&gt; in non-trivial code with locals requiring stable runtime patches in &lt;a href="https://github.com/janestreet/opam-repository/pull/45"&gt;janestreet/opam-repository#45&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/144" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Commit revision discussion&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/oxcaml/merlin/issues/144"&gt;oxcaml/merlin#144&lt;/a&gt; involving &lt;a href="https://github.com/dkalinichenko-js"&gt;@dkalinichenko-js&lt;/a&gt;, &lt;a href="https://github.com/ccasin"&gt;Chris Casinghino&lt;/a&gt;, and &lt;a href="https://github.com/liam923"&gt;Liam Stevenson&lt;/a&gt; regarding OxCaml-specific commits and their necessity for external repository alignment&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Platform-specific stability focus&lt;/strong&gt; with increased attention to ARM64 runtime issues across multiple repositories&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Developer tooling friction&lt;/strong&gt; highlighted by local switch setup problems affecting opam integration workflows&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Compiler consistency challenges&lt;/strong&gt; between different build tools impacting advanced feature adoption like uniqueness modes&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Direct commit workflows&lt;/strong&gt; for maintenance tasks bypassing standard PR review processes in repository management&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev//groups/oxcaml/2025/week-19"/><summary>ARM64 compiler fixes and OCaml 5.2.0 compatibility updates across the group with active uniqueness mode testing</summary><published>2025-05-11T00:00:00+00:00</published></entry><entry><id>https://thicket.dev//groups/oxcaml/2025/week-20</id><title>Week 20, 2025: Documentation quality improvements and WebAssembly development dominated group activity with JavaScript integration work</title><updated>2025-05-18T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Documentation quality initiative&lt;/strong&gt; launched across oxcaml ecosystem with focus on fixing syntactically incorrect code examples in jane/doc/extensions&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;WebAssembly compiler development&lt;/strong&gt; accelerated with 48 commits in &lt;a href="https://github.com/oxcaml/js_of_ocaml"&gt;oxcaml/js&lt;em&gt;of&lt;/em&gt;ocaml&lt;/a&gt; implementing binary output and performance optimizations&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Package ecosystem stability&lt;/strong&gt; work in &lt;a href="https://github.com/janestreet/opam-repository"&gt;janestreet/opam-repository&lt;/a&gt; with dune integration and OCaml library compatibility fixes&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Compiler compatibility maintenance&lt;/strong&gt; in &lt;a href="https://github.com/oxcaml/merlin"&gt;oxcaml/merlin&lt;/a&gt; with float32 support adjustments for 5.2.0minus series&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Repository maintenance&lt;/strong&gt; activities in &lt;a href="https://github.com/oxcaml/opam-repository"&gt;oxcaml/opam-repository&lt;/a&gt; through direct commits for compiler upgrades&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4016" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Shared contributor activity&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/cuihtlauac"&gt;Cuihtlauac Alvarado&lt;/a&gt; addressing documentation quality in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4016"&gt;oxcaml/oxcaml#4016&lt;/a&gt; and improving installation documentation in &lt;a href="https://github.com/janestreet/opam-repository/issues/52"&gt;janestreet/opam-repository#52&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/145" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;WebAssembly and JavaScript integration&lt;/strong&gt;&lt;/a&gt; coordination between &lt;a href="https://github.com/patricoferris"&gt;Patrick Ferris&lt;/a&gt; working on Merlin compiler compatibility in &lt;a href="https://github.com/oxcaml/merlin/issues/145"&gt;oxcaml/merlin#145&lt;/a&gt; and JavaScript toplevel integration in &lt;a href="https://github.com/janestreet/opam-repository/issues/55"&gt;janestreet/opam-repository#55&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;OCaml ecosystem alignment&lt;/strong&gt; with compiler version compatibility work spanning multiple repositories, particularly 5.2.0minus series support&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Key Projects and Initiatives&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;WebAssembly binary output implementation&lt;/strong&gt; in &lt;a href="https://github.com/oxcaml/js_of_ocaml"&gt;oxcaml/js&lt;em&gt;of&lt;/em&gt;ocaml&lt;/a&gt; transitioning from text-based to binary module generation with source map support&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4016" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Documentation improvement project&lt;/strong&gt;&lt;/a&gt; initiated in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4016"&gt;oxcaml/oxcaml#4016&lt;/a&gt; requiring systematic audit of code examples across jane/doc/extensions&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/janestreet/opam-repository/issues/54" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Dune package management integration&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/janestreet/opam-repository/issues/54"&gt;janestreet/opam-repository#54&lt;/a&gt; enabling dependency management without opam switches&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/janestreet/opam-repository/issues/55" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;JavaScript toplevel integration&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/janestreet/opam-repository/issues/55"&gt;janestreet/opam-repository#55&lt;/a&gt; with comprehensive js&lt;em&gt;of&lt;/em&gt;ocaml compatibility patches&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Priority Items&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/janestreet/opam-repository/issues/55" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Merge conflicts resolution&lt;/strong&gt;&lt;/a&gt; required in JavaScript toplevel integration &lt;a href="https://github.com/janestreet/opam-repository/issues/55"&gt;janestreet/opam-repository#55&lt;/a&gt; before merge can proceed&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4016" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Code example corrections&lt;/strong&gt;&lt;/a&gt; needed across jane/doc/extensions documentation with focus on stack allocation examples lacking proper type definitions &lt;a href="https://github.com/oxcaml/oxcaml/issues/4016"&gt;oxcaml/oxcaml#4016&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/janestreet/opam-repository/issues/49" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Version compatibility fixes&lt;/strong&gt;&lt;/a&gt; required in ppx_deriving backport to versions 6.0.2/6.0.3 for ppxlib 0.33.0 compatibility &lt;a href="https://github.com/janestreet/opam-repository/issues/49"&gt;janestreet/opam-repository#49&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/janestreet/opam-repository/issues/44" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Uniqueness mode compilation troubleshooting&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/janestreet/opam-repository/issues/44"&gt;janestreet/opam-repository#44&lt;/a&gt; addressing compiler behavior and LSP expectations with cross-platform compatibility issues&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4016" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Documentation quality standards&lt;/strong&gt;&lt;/a&gt; discussion in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4016"&gt;oxcaml/oxcaml#4016&lt;/a&gt; with &lt;a href="https://github.com/goldfirere"&gt;Richard Eisenberg&lt;/a&gt; supporting copy-paste ready code examples requirement&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;WebAssembly-first development approach&lt;/strong&gt; with substantial compiler infrastructure investment and binary format prioritization&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Cross-platform compatibility focus&lt;/strong&gt; addressing ArchLinux and macOS specific issues in package management&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Developer experience enhancement&lt;/strong&gt; through better documentation, installation procedures, and modern OCaml tooling integration&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Performance-oriented optimization&lt;/strong&gt; patterns across compiler components with systematic approach to code quality improvements&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev//groups/oxcaml/2025/week-20"/><summary>Documentation quality improvements and WebAssembly development dominated group activity with JavaScript integration work</summary><published>2025-05-18T00:00:00+00:00</published></entry><entry><id>https://thicket.dev//groups/oxcaml/2025/week-21</id><title>Week 21, 2025: Module system enhancements and ecosystem compatibility improvements with runtime compilation fixes</title><updated>2025-05-25T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;Major module system enhancement in &lt;a href="https://github.com/oxcaml/oxcaml/pull/4020"&gt;oxcaml/oxcaml#4020&lt;/a&gt; implementing mixed module support by &lt;a href="https://github.com/jra4"&gt;James Rayman&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Runtime compilation compatibility issues identified with GCC 15 in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4033"&gt;oxcaml/oxcaml#4033&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Ecosystem development in janestreet/opam-repository focused on dune pkg compatibility and ppx_deriving fixes&lt;/li&gt;
+&lt;li&gt;Documentation improvements across both repositories addressing terminology and version references&lt;/li&gt;
+&lt;li&gt;Multiple compilation issues resolved in janestreet/opam-repository improving tool compatibility&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/cuihtlauac"&gt;Cuihtlauac Alvarado&lt;/a&gt; contributed documentation improvements to both &lt;a href="https://github.com/oxcaml/oxcaml/issues/4026"&gt;oxcaml/oxcaml#4026&lt;/a&gt; and &lt;a href="https://github.com/janestreet/opam-repository/issues/52"&gt;janestreet/opam-repository#52&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Runtime compatibility work in oxcaml/oxcaml may impact package compilation in janestreet/opam-repository ecosystem&lt;/li&gt;
+&lt;li&gt;ppx_deriving compatibility efforts in &lt;a href="https://github.com/janestreet/opam-repository/issues/49"&gt;janestreet/opam-repository#49&lt;/a&gt; may benefit from oxcaml module system enhancements&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Key Projects and Initiatives&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/pull/4020" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Mixed module implementation&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/oxcaml/oxcaml/pull/4020"&gt;oxcaml/oxcaml#4020&lt;/a&gt; enabling automatic field reordering and lifting value-only restrictions&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/janestreet/opam-repository/issues/54" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Dune pkg compatibility&lt;/strong&gt;&lt;/a&gt; implementation in &lt;a href="https://github.com/janestreet/opam-repository/issues/54"&gt;janestreet/opam-repository#54&lt;/a&gt; for direct dependency management&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/janestreet/opam-repository/issues/49" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;ppx_deriving compatibility&lt;/strong&gt;&lt;/a&gt; work in &lt;a href="https://github.com/janestreet/opam-repository/issues/49"&gt;janestreet/opam-repository#49&lt;/a&gt; for OxCaml ecosystem support&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Priority Items&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4033" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Runtime compilation failure&lt;/strong&gt;&lt;/a&gt; with GCC 15 in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4033"&gt;oxcaml/oxcaml#4033&lt;/a&gt; affecting &lt;code&gt;caml_get_public_method&lt;/code&gt; and &lt;code&gt;caml_set_oo_id&lt;/code&gt; function signatures&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/janestreet/opam-repository/issues/49" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;ppx_deriving backporting&lt;/strong&gt;&lt;/a&gt; needed for ppxlib.0.33.0 compatibility in &lt;a href="https://github.com/janestreet/opam-repository/issues/49"&gt;janestreet/opam-repository#49&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4031" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Domain terminology clarification&lt;/strong&gt;&lt;/a&gt; between &lt;a href="https://github.com/cuihtlauac"&gt;Cuihtlauac Alvarado&lt;/a&gt; and &lt;a href="https://github.com/goldfirere"&gt;Richard Eisenberg&lt;/a&gt; about OCaml domain concepts in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4031"&gt;oxcaml/oxcaml#4031&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/janestreet/opam-repository/issues/44" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Uniqueness mode behavior&lt;/strong&gt;&lt;/a&gt; investigation by &lt;a href="https://github.com/onsah"&gt;Onur Şahin&lt;/a&gt; exploring compiler differences in &lt;a href="https://github.com/janestreet/opam-repository/issues/44"&gt;janestreet/opam-repository#44&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Enhanced tooling integration&lt;/strong&gt; with dune pkg compatibility reducing dependency on opam switches&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Compilation compatibility focus&lt;/strong&gt; addressing issues with newer GCC versions and flambda2 variants&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Documentation standardization&lt;/strong&gt; efforts removing hardcoded versions and clarifying terminology&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Ecosystem stability improvements&lt;/strong&gt; with multiple tool compatibility fixes resolved&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev//groups/oxcaml/2025/week-21"/><summary>Module system enhancements and ecosystem compatibility improvements with runtime compilation fixes</summary><published>2025-05-25T00:00:00+00:00</published></entry><entry><id>https://thicket.dev//groups/oxcaml/2025/week-22</id><title>Week 22, 2025: utop fixes coordinated across repositories with OxCaml compiler compatibility improvements and runtime compilation issues</title><updated>2025-06-01T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Coordinated utop fixes&lt;/strong&gt; deployed across both &lt;a href="https://github.com/oxcaml/opam-repository"&gt;oxcaml/opam-repository&lt;/a&gt; and &lt;a href="https://github.com/janestreet/opam-repository"&gt;janestreet/opam-repository&lt;/a&gt; by &lt;a href="https://github.com/art-w"&gt;@art-w&lt;/a&gt; addressing module definition crashes&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;OxCaml compiler compatibility&lt;/strong&gt; expansion with &lt;a href="https://github.com/maiste"&gt;Etienne&lt;/a&gt; adding mdx 2.5.0 support and &lt;a href="https://github.com/patricoferris"&gt;Patrick Ferris&lt;/a&gt; managing version-specific patches&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Documentation quality initiative&lt;/strong&gt; launched by &lt;a href="https://github.com/cuihtlauac"&gt;Cuihtlauac Alvarado&lt;/a&gt; targeting copy-paste ready code examples across OxCaml documentation&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Runtime compilation issues&lt;/strong&gt; with GCC 15 compatibility reported by &lt;a href="https://github.com/Gbury"&gt;Guillaume Bury&lt;/a&gt; requiring upstream patch integration&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Repository maintenance&lt;/strong&gt; activity in oxcaml/opam-repository with direct commits for tooling updates and platform compatibility improvements&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/janestreet/opam-repository/issues/59" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;utop crash fixes&lt;/strong&gt;&lt;/a&gt; synchronized between &lt;a href="https://github.com/oxcaml/opam-repository"&gt;oxcaml/opam-repository&lt;/a&gt; and &lt;a href="https://github.com/janestreet/opam-repository/issues/59"&gt;janestreet/opam-repository#59&lt;/a&gt; with identical module definition issue resolution by &lt;a href="https://github.com/art-w"&gt;@art-w&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/janestreet/opam-repository/issues/56" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;OxCaml compiler support&lt;/strong&gt;&lt;/a&gt; coordination with &lt;a href="https://github.com/janestreet/opam-repository/issues/56"&gt;janestreet/opam-repository#56&lt;/a&gt; adding mdx compatibility and &lt;a href="https://github.com/oxcaml/merlin/issues/145"&gt;oxcaml/merlin#145&lt;/a&gt; managing version-specific parsing patches&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4033" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Cross-reference to upstream fixes&lt;/strong&gt;&lt;/a&gt; linking &lt;a href="https://github.com/oxcaml/oxcaml/issues/4033"&gt;oxcaml/oxcaml#4033&lt;/a&gt; runtime issues to &lt;a href="https://github.com/ocaml/ocaml/issues/12700"&gt;ocaml/ocaml#12700&lt;/a&gt; patch availability&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4016" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Shared contributor engagement&lt;/strong&gt;&lt;/a&gt; with &lt;a href="https://github.com/cuihtlauac"&gt;Cuihtlauac Alvarado&lt;/a&gt; active in both &lt;a href="https://github.com/oxcaml/oxcaml/issues/4016"&gt;oxcaml/oxcaml#4016&lt;/a&gt; documentation and &lt;a href="https://github.com/janestreet/opam-repository/issues/58"&gt;janestreet/opam-repository#58&lt;/a&gt; utop testing&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Key Projects and Initiatives&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4016" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Documentation standardization project&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4016"&gt;oxcaml/oxcaml#4016&lt;/a&gt; targeting syntactically correct, copy-paste ready code examples across jane/doc/extensions&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;OxCaml compiler compatibility expansion&lt;/strong&gt; spanning multiple repositories with mdx 2.5.0 integration, ppx_deriving compatibility work, and version-specific patch management&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4033" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Runtime system modernization&lt;/strong&gt;&lt;/a&gt; addressing GCC 15 compilation failures in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4033"&gt;oxcaml/oxcaml#4033&lt;/a&gt; with focus on runtime4 build compatibility&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Development tooling stability&lt;/strong&gt; improvements including utop crash fixes, merlin version compatibility patches, and ocaml-lsp-server installation issues&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Priority Items&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4033" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Runtime compilation fix&lt;/strong&gt;&lt;/a&gt; required for &lt;a href="https://github.com/oxcaml/oxcaml/issues/4033"&gt;oxcaml/oxcaml#4033&lt;/a&gt; GCC 15 compatibility affecting runtime4 builds, with upstream patch available from &lt;a href="https://github.com/ocaml/ocaml/issues/12700"&gt;ocaml/ocaml#12700&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/janestreet/opam-repository/issues/60" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;base v0.17.2 syntax error&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/janestreet/opam-repository/issues/60"&gt;janestreet/opam-repository#60&lt;/a&gt; blocking ocaml-lsp-server installation, workaround available using preview version base.v0.18~preview.130.33+516&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/145" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;5.2.0minus-10 version preparation&lt;/strong&gt;&lt;/a&gt; needed for &lt;a href="https://github.com/oxcaml/merlin/issues/145"&gt;oxcaml/merlin#145&lt;/a&gt; requiring similar msupport_parsing patch application&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4016" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Code example quality debate&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4016"&gt;oxcaml/oxcaml#4016&lt;/a&gt; balancing complete working examples versus simplified illustrations, with focus on LLM compatibility and developer onboarding experience&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4033" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Build system compatibility strategy&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4033"&gt;oxcaml/oxcaml#4033&lt;/a&gt; regarding GCC version support policies and upstream patch integration timing&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Cross-repository coordination&lt;/strong&gt; pattern with synchronized fixes like utop crashes addressed simultaneously in multiple opam-repository forks&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;OxCaml compiler ecosystem expansion&lt;/strong&gt; with increasing tool support including mdx, ppx_deriving, and development environment compatibility&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Documentation quality focus&lt;/strong&gt; emphasizing copy-paste functionality and LLM training data quality for modern development workflows&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Direct commit workflow adoption&lt;/strong&gt; in oxcaml/opam-repository for routine maintenance rather than pull request processes&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Compiler version compatibility maintenance&lt;/strong&gt; with systematic cherry-picking of essential patches across OCaml version branches&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev//groups/oxcaml/2025/week-22"/><summary>utop fixes coordinated across repositories with OxCaml compiler compatibility improvements and runtime compilation issues</summary><published>2025-06-01T00:00:00+00:00</published></entry><entry><id>https://thicket.dev//groups/oxcaml/2025/week-23</id><title>Week 23, 2025: Flambda2 optimization completed, OCaml 5.2.0 compatibility updates merged, compilation issues reported in opam packages</title><updated>2025-06-08T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/3210" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Core compiler work&lt;/strong&gt;&lt;/a&gt; completed with &lt;a href="https://github.com/Gbury"&gt;Guillaume Bury&lt;/a&gt; closing Flambda2 continuation optimization in &lt;a href="https://github.com/oxcaml/oxcaml/issues/3210"&gt;oxcaml/oxcaml#3210&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/144" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;OCaml 5.2.0 compatibility&lt;/strong&gt;&lt;/a&gt; updates merged by &lt;a href="https://github.com/ccasin"&gt;Chris Casinghino&lt;/a&gt; for oxcaml/merlin with magic number adjustments (&lt;a href="https://github.com/oxcaml/merlin/issues/144"&gt;oxcaml/merlin#144&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Package installation issues&lt;/strong&gt; identified by &lt;a href="https://github.com/nathanfarlow"&gt;Nathan Farlow&lt;/a&gt; affecting OCaml development workflows in janestreet/opam-repository&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Documentation improvements&lt;/strong&gt; initiated by &lt;a href="https://github.com/cuihtlauac"&gt;Cuihtlauac Alvarado&lt;/a&gt; focusing on syntactically correct code examples&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Runtime quotations&lt;/strong&gt; system under active development by &lt;a href="https://github.com/Dreian"&gt;Andrej Ivašković&lt;/a&gt; introducing new bracket syntax&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;OCaml 5.2.0 compatibility&lt;/strong&gt; work spans both oxcaml/merlin compatibility updates and janestreet/opam-repository compilation issues&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Jane Street coordination&lt;/strong&gt; evident through multiple contributors (&lt;a href="https://github.com/Dreian"&gt;Andrej Ivašković&lt;/a&gt;, &lt;a href="https://github.com/goldfirere"&gt;Richard Eisenberg&lt;/a&gt;) working on compiler enhancements&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Build system concerns&lt;/strong&gt; affecting both core compiler development (runtime quotations parser conflicts) and package distribution (opam installation failures)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Key Projects and Initiatives&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/pull/4395" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Runtime quotations system&lt;/strong&gt;&lt;/a&gt; implementation by &lt;a href="https://github.com/Dreian"&gt;Andrej Ivašković&lt;/a&gt; introducing &lt;code&gt;&lt;[, ]&gt;&lt;/code&gt; bracket syntax with stage-based type system (&lt;a href="https://github.com/oxcaml/oxcaml/pull/4395"&gt;oxcaml/oxcaml#4395&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4016" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Documentation enhancement initiative&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/cuihtlauac"&gt;Cuihtlauac Alvarado&lt;/a&gt; targeting copy-paste readiness of code examples (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4016"&gt;oxcaml/oxcaml#4016&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Priority Items&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/pull/4395" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Parser conflicts&lt;/strong&gt;&lt;/a&gt; in runtime quotations PR require resolution before merge (&lt;a href="https://github.com/oxcaml/oxcaml/pull/4395"&gt;oxcaml/oxcaml#4395&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/janestreet/opam-repository/issues/60" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Base package compilation failure&lt;/strong&gt;&lt;/a&gt; blocking ocaml-lsp-server installation due to OCaml 5.2 syntax error (&lt;a href="https://github.com/janestreet/opam-repository/issues/60"&gt;janestreet/opam-repository#60&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/janestreet/opam-repository/issues/61" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Missing dependency specification&lt;/strong&gt;&lt;/a&gt; in ocaml-index.1.1+jst causing build failures under limited parallelism (&lt;a href="https://github.com/janestreet/opam-repository/issues/61"&gt;janestreet/opam-repository#61&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4016" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Documentation syntax errors&lt;/strong&gt;&lt;/a&gt; requiring immediate correction to improve developer experience (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4016"&gt;oxcaml/oxcaml#4016&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/144" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Team coordination&lt;/strong&gt;&lt;/a&gt; discussion between &lt;a href="https://github.com/ccasin"&gt;Chris Casinghino&lt;/a&gt;, &lt;a href="https://github.com/d-kalinichenko"&gt;@d-kalinichenko&lt;/a&gt;, and &lt;a href="https://github.com/liam923"&gt;Liam Stevenson&lt;/a&gt; regarding commit management and internal codebase alignment (&lt;a href="https://github.com/oxcaml/merlin/issues/144"&gt;oxcaml/merlin#144&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4016" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Documentation improvement strategies&lt;/strong&gt;&lt;/a&gt; discussed between &lt;a href="https://github.com/cuihtlauac"&gt;Cuihtlauac Alvarado&lt;/a&gt; and &lt;a href="https://github.com/goldfirere"&gt;Richard Eisenberg&lt;/a&gt; with focus on specific example identification (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4016"&gt;oxcaml/oxcaml#4016&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;OCaml 5.2 compatibility challenges&lt;/strong&gt; surfacing across multiple repositories requiring coordinated updates&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Build dependency specification&lt;/strong&gt; gaps becoming apparent under different opam build configurations&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Developer experience focus&lt;/strong&gt; with emphasis on copy-paste ready documentation and improved error reporting&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Community-driven issue identification&lt;/strong&gt; with external contributors reporting critical compilation problems&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev//groups/oxcaml/2025/week-23"/><summary>Flambda2 optimization completed, OCaml 5.2.0 compatibility updates merged, compilation issues reported in opam packages</summary><published>2025-06-08T00:00:00+00:00</published></entry><entry><id>https://thicket.dev//groups/oxcaml/2025/week-24</id><title>Week 24, 2025: Major CI infrastructure improvements and runtime quotations development across oxcaml repositories</title><updated>2025-06-15T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/2858" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Build system stabilization&lt;/strong&gt;&lt;/a&gt; with comprehensive fixes for ppxlib_ast compilation issues across &lt;a href="https://github.com/oxcaml/oxcaml/issues/2858"&gt;oxcaml/oxcaml#2858&lt;/a&gt; and both opam repositories&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;CI infrastructure expansion&lt;/strong&gt; with new GitHub Actions testing across Ubuntu and macOS platforms, including ARM64 architecture support&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/pull/4395" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Runtime quotations feature&lt;/strong&gt;&lt;/a&gt; under active development by &lt;a href="https://github.com/Dreian"&gt;Andrej Ivašković&lt;/a&gt; with comprehensive parser and type system changes &lt;a href="https://github.com/oxcaml/oxcaml/pull/4395"&gt;oxcaml/oxcaml#4395&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Editor tooling enhancements&lt;/strong&gt; in oxcaml/merlin with VSCode integration improvements and pattern matching fixes&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Version synchronization&lt;/strong&gt; completed across repositories with OxCaml 5.2.0-minus11 compatibility updates&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Package compatibility coordination&lt;/strong&gt; between oxcaml/oxcaml and both opam repositories addressing ppxlib and merlin-lib compilation failures&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;CI infrastructure sharing&lt;/strong&gt; with &lt;a href="https://github.com/punchagan"&gt;Puneeth Chaganti&lt;/a&gt; implementing similar GitHub Actions workflows across oxcaml/opam-repository and janestreet/opam-repository&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Build script fixes&lt;/strong&gt; applied consistently across repositories, with shell execution method improvements for macOS compatibility&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Version constraint alignment&lt;/strong&gt; for Jane Street packages across both opam repository forks to maintain ecosystem compatibility&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Upstream collaboration pattern&lt;/strong&gt; emerging between oxcaml/merlin and ocaml/merlin repositories for feature coordination&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Key Projects and Initiatives&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/pull/4395" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Runtime quotations implementation&lt;/strong&gt;&lt;/a&gt; introducing new &lt;code&gt;&lt;[&lt;/code&gt;, &lt;code&gt;]&gt;&lt;/code&gt; bracket syntax with &lt;code&gt;$&lt;/code&gt; splicing operator and stage-based typing system &lt;a href="https://github.com/oxcaml/oxcaml/pull/4395"&gt;oxcaml/oxcaml#4395&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Multi-platform CI testing&lt;/strong&gt; infrastructure enabling automated validation across Ubuntu, macOS, x64, and ARM64 architectures&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Editor integration improvements&lt;/strong&gt; with new VSCode commands for enhanced type definition navigation and pattern matching fixes&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Package ecosystem maintenance&lt;/strong&gt; covering OCaml compiler updates, dependency constraints, and Jane Street library compatibility&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Priority Items&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/pull/4395" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Runtime quotations merge conflicts&lt;/strong&gt;&lt;/a&gt; require resolution affecting 82 files with 9,132 additions before the feature can be integrated &lt;a href="https://github.com/oxcaml/oxcaml/pull/4395"&gt;oxcaml/oxcaml#4395&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/147" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Merlin pattern matching fix&lt;/strong&gt;&lt;/a&gt; needs merge conflict resolution to complete locate functionality improvements &lt;a href="https://github.com/oxcaml/merlin/issues/147"&gt;oxcaml/merlin#147&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/janestreet/opam-repository/issues/70" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;macOS executable permissions&lt;/strong&gt;&lt;/a&gt; issue affecting ppxlib_ast cleanup script requires investigation &lt;a href="https://github.com/janestreet/opam-repository/issues/70"&gt;janestreet/opam-repository#70&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/2858" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Package compatibility concerns&lt;/strong&gt;&lt;/a&gt; raised by &lt;a href="https://github.com/patrick-nicodemus"&gt;Patrick Nicodemus&lt;/a&gt; regarding external ecosystem integration challenges &lt;a href="https://github.com/oxcaml/oxcaml/issues/2858"&gt;oxcaml/oxcaml#2858&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Compiler stability discussion&lt;/strong&gt; with &lt;a href="https://github.com/goldfirere"&gt;Richard Eisenberg&lt;/a&gt; acknowledging community needs for clearer stable release versioning&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Community workarounds&lt;/strong&gt; shared for ppxlib_ast compatibility using janestreet/opam-repo#with-extensions branch&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Cross-platform compatibility focus&lt;/strong&gt; with systematic addressing of macOS build issues and ARM64 architecture support&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Automated testing adoption&lt;/strong&gt; across multiple repositories with comprehensive CI pipeline implementations&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Advanced metaprogramming capabilities&lt;/strong&gt; development with runtime quotations representing significant compiler extension&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;External ecosystem integration&lt;/strong&gt; efforts to resolve compatibility challenges with popular OCaml packages like ppxlib and merlin-lib&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Repository consolidation&lt;/strong&gt; around oxcaml branding with coordinated infrastructure and documentation updates&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev//groups/oxcaml/2025/week-24"/><summary>Major CI infrastructure improvements and runtime quotations development across oxcaml repositories</summary><published>2025-06-15T00:00:00+00:00</published></entry><entry><id>https://thicket.dev//groups/oxcaml/2025/week-25</id><title>Week 25, 2025: Major compatibility updates with oxcaml 5.2.0+ox installations facing ecosystem integration challenges</title><updated>2025-06-22T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4162" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Installation and compatibility issues&lt;/strong&gt;&lt;/a&gt; dominating activity with multiple reports of compilation failures affecting &lt;a href="https://github.com/oxcaml/oxcaml/issues/4162"&gt;oxcaml/oxcaml#4162&lt;/a&gt; and package ecosystem incompatibilities&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/146" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Major version compatibility update&lt;/strong&gt;&lt;/a&gt; completed for Merlin with &lt;a href="https://github.com/oxcaml/merlin/issues/146"&gt;oxcaml/merlin#146&lt;/a&gt; supporting oxcaml 5.2.0minus-11&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;CI infrastructure improvements&lt;/strong&gt; implemented in opam-repository with automated testing across multiple platforms&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Community engagement&lt;/strong&gt; from academic and industry contributors identifying documentation gaps and technical barriers&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/146" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Version synchronization&lt;/strong&gt;&lt;/a&gt; between oxcaml core and Merlin with &lt;a href="https://github.com/liam923"&gt;Liam Stevenson&lt;/a&gt; updating Merlin compatibility for oxcaml 5.2.0minus-11 in &lt;a href="https://github.com/oxcaml/merlin/issues/146"&gt;oxcaml/merlin#146&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4141" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Package ecosystem coordination&lt;/strong&gt;&lt;/a&gt; needed between oxcaml core and opam-repository to address ppx library compatibility issues reported in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4141"&gt;oxcaml/oxcaml#4141&lt;/a&gt; and &lt;a href="https://github.com/oxcaml/oxcaml/issues/4146"&gt;oxcaml/oxcaml#4146&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;CI infrastructure alignment&lt;/strong&gt; with &lt;a href="https://github.com/punchagan"&gt;Puneeth Chaganti&lt;/a&gt; implementing automated testing in oxcaml/opam-repository to support the broader ecosystem&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Key Projects and Initiatives&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;OCaml 5.2+ox ecosystem compatibility&lt;/strong&gt; addressing ppx library integration challenges including ppx&lt;em&gt;import and ppxlib&lt;/em&gt;jane compatibility&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Merlin tooling synchronization&lt;/strong&gt; with extensive codebase updates (206 files, 37K+ additions) to maintain compatibility with latest oxcaml version&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Build system infrastructure&lt;/strong&gt; improvements including cross-platform CI automation and dependency management enhancements&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Priority Items&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4162" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Critical compilation failure&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4162"&gt;oxcaml/oxcaml#4162&lt;/a&gt; causing SEGV during fresh installations requires immediate investigation&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Package ecosystem gaps&lt;/strong&gt; preventing successful installation of common libraries needs coordination between repositories&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/146" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Unresolved technical discussion&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/oxcaml/merlin/issues/146"&gt;oxcaml/merlin#146&lt;/a&gt; regarding Unit&lt;em&gt;info.make&lt;/em&gt;with&lt;em&gt;known&lt;/em&gt;compilation_unit implementation deferred but requiring follow-up&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/146" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Technical implementation discussion&lt;/strong&gt;&lt;/a&gt; between &lt;a href="https://github.com/goldfirere"&gt;Richard Eisenberg&lt;/a&gt; and &lt;a href="https://github.com/lukemaurer"&gt;Luke Maurer&lt;/a&gt; in &lt;a href="https://github.com/oxcaml/merlin/issues/146"&gt;oxcaml/merlin#146&lt;/a&gt; about Unit&lt;em&gt;info.make&lt;/em&gt;with&lt;em&gt;known&lt;/em&gt;compilation_unit usage&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Community feedback&lt;/strong&gt; from &lt;a href="https://github.com/shwestrick"&gt;Sam Westrick&lt;/a&gt; requesting practical examples and documentation improvements for parallelism setup&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Installation complexity barriers&lt;/strong&gt; becoming primary adoption challenge with multiple compilation failure reports across the ecosystem&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Documentation quality gaps&lt;/strong&gt; identified in tutorial materials requiring practical examples and clearer setup instructions&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Multi-platform testing emphasis&lt;/strong&gt; with automated CI implementation supporting Ubuntu, macOS on x64 and ARM64 architectures&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Academic-industry collaboration&lt;/strong&gt; evident from contributor mix including researchers from NYU, INRIA, IIT Madras, and industry practitioners&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev//groups/oxcaml/2025/week-25"/><summary>Major compatibility updates with oxcaml 5.2.0+ox installations facing ecosystem integration challenges</summary><published>2025-06-22T00:00:00+00:00</published></entry><entry><id>https://thicket.dev//groups/oxcaml/2025/week-26</id><title>Week 26, 2025: Compiler optimization research, CI infrastructure improvements, and Merlin tooling updates across repositories</title><updated>2025-06-29T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4177" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Compiler optimization&lt;/strong&gt;&lt;/a&gt; research by &lt;a href="https://github.com/xclerc"&gt;Xavier Clerc&lt;/a&gt; investigating IEEE-compliant float expression handling in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4177"&gt;oxcaml/oxcaml#4177&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/issues/5" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Build infrastructure&lt;/strong&gt;&lt;/a&gt; enhancements with multi-platform CI testing by &lt;a href="https://github.com/punchagan"&gt;Puneeth Chaganti&lt;/a&gt; across Archlinux, Debian, and Ubuntu with ARM64 support in &lt;a href="https://github.com/oxcaml/opam-repository/issues/5"&gt;oxcaml/opam-repository#5&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Merlin tooling&lt;/strong&gt; improvements led by &lt;a href="https://github.com/liam923"&gt;Liam Stevenson&lt;/a&gt; including compiler merges, upstream backports, and automated development workflows across multiple PRs&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4186" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Development workflow&lt;/strong&gt;&lt;/a&gt; discussions addressing VSCode configuration management and compiler integration approaches in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4186"&gt;oxcaml/oxcaml#4186&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Package migration&lt;/strong&gt; activity with &lt;a href="https://github.com/TheNumbat"&gt;Max Slater&lt;/a&gt;'s ocaml_simd compatibility work moving from janestreet/opam-repository to oxcaml/opam-repository&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/janestreet/opam-repository/issues/72" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Package repository coordination&lt;/strong&gt;&lt;/a&gt; between janestreet/opam-repository and oxcaml/opam-repository with &lt;a href="https://github.com/TheNumbat"&gt;Max Slater&lt;/a&gt;'s ocaml_simd compiler compatibility work being migrated to the oxcaml ecosystem (&lt;a href="https://github.com/janestreet/opam-repository/issues/72"&gt;janestreet/opam-repository#72&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Shared contributor expertise&lt;/strong&gt; with &lt;a href="https://github.com/liam923"&gt;Liam Stevenson&lt;/a&gt; contributing to both oxcaml/oxcaml development workflow discussions and extensive Merlin maintenance work&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Infrastructure consistency&lt;/strong&gt; improvements with &lt;a href="https://github.com/punchagan"&gt;Puneeth Chaganti&lt;/a&gt; focusing on cross-platform build reliability that benefits the entire ecosystem&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Key Projects and Initiatives&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4177" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;IEEE floating-point compliance&lt;/strong&gt;&lt;/a&gt; investigation examining NaN value handling and bit pattern equality in compiler optimizations, requiring specification review (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4177"&gt;oxcaml/oxcaml#4177&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/issues/4" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Multi-platform CI infrastructure&lt;/strong&gt;&lt;/a&gt; expansion with containerized testing across multiple Linux distributions and ARM64 architecture support (&lt;a href="https://github.com/oxcaml/opam-repository/issues/4"&gt;oxcaml/opam-repository#4&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/opam-repository/issues/5"&gt;oxcaml/opam-repository#5&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/131" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Merlin compiler integration&lt;/strong&gt;&lt;/a&gt; maintenance including systematic upstream backporting and automated merge workflows (&lt;a href="https://github.com/oxcaml/merlin/issues/131"&gt;oxcaml/merlin#131&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/merlin/issues/122"&gt;oxcaml/merlin#122&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4186" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Development environment standardization&lt;/strong&gt;&lt;/a&gt; addressing VSCode configuration conflicts and build system integration trade-offs (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4186"&gt;oxcaml/oxcaml#4186&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Priority Items&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4177" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Compiler optimization correctness&lt;/strong&gt;&lt;/a&gt; verification needed for float expressions involving NaN values in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4177"&gt;oxcaml/oxcaml#4177&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/147" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Record pattern locate fix&lt;/strong&gt;&lt;/a&gt; awaiting review after extensive mbrowse refactoring in &lt;a href="https://github.com/oxcaml/merlin/issues/147"&gt;oxcaml/merlin#147&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/155" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Compiler renaming consolidation&lt;/strong&gt;&lt;/a&gt; required as multiple draft approaches need unified solution in &lt;a href="https://github.com/oxcaml/merlin/issues/155"&gt;oxcaml/merlin#155&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4186" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;VSCode workflow management&lt;/strong&gt;&lt;/a&gt; debate between shared repository settings versus individual developer configurations, examining consistency versus flexibility trade-offs in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4186"&gt;oxcaml/oxcaml#4186&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4177" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;IEEE specification compliance&lt;/strong&gt;&lt;/a&gt; discussion on appropriate handling of NaN value transformations in compiler optimizations with input from &lt;a href="https://github.com/mshinwell"&gt;Mark Shinwell&lt;/a&gt; in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4177"&gt;oxcaml/oxcaml#4177&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Upstream backporting strategy&lt;/strong&gt; with systematic integration of improvements from ocaml/merlin to oxcaml fork by &lt;a href="https://github.com/liam923"&gt;Liam Stevenson&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Cross-platform compatibility focus&lt;/strong&gt; with infrastructure improvements targeting multiple Linux distributions and ARM architecture support&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;CI automation modernization&lt;/strong&gt; including containerized testing environments, reusable workflow components, and automated compiler merge processes&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Repository ecosystem consolidation&lt;/strong&gt; with package migration from janestreet/opam-repository to oxcaml/opam-repository indicating centralization of oxcaml-related packages&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev//groups/oxcaml/2025/week-26"/><summary>Compiler optimization research, CI infrastructure improvements, and Merlin tooling updates across repositories</summary><published>2025-06-29T00:00:00+00:00</published></entry><entry><id>https://thicket.dev//groups/oxcaml/2025/week-27</id><title>Week 27, 2025: Compiler stability issues and SIMD package fixes dominated the week with cross-repository coordination efforts</title><updated>2025-07-06T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4267" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Installation blocker&lt;/strong&gt;&lt;/a&gt; affecting OxCaml switch creation due to segmentation fault in simdgen.exe on Intel Xeon processors reported in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4267"&gt;oxcaml/oxcaml#4267&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/issues/6" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Package maintenance&lt;/strong&gt;&lt;/a&gt; activities focused on ocaml_simd compatibility across multiple repositories with fixes merged in &lt;a href="https://github.com/oxcaml/opam-repository/issues/6"&gt;oxcaml/opam-repository#6&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Editor tooling improvements&lt;/strong&gt; in oxcaml/merlin with compiler version updates and renaming functionality development&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Cross-platform compatibility&lt;/strong&gt; focus on WSL and Ubuntu build environments with build system refinements&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/2123" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Flambda2 optimization&lt;/strong&gt;&lt;/a&gt; progress with closure of mutable unboxing issue in &lt;a href="https://github.com/oxcaml/oxcaml/issues/2123"&gt;oxcaml/oxcaml#2123&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;SIMD package coordination&lt;/strong&gt; with &lt;a href="https://github.com/TheNumbat"&gt;Max Slater&lt;/a&gt; working on ocaml_simd fixes that moved from janestreet/opam-repository to oxcaml/opam-repository&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Compiler synchronization&lt;/strong&gt; between oxcaml/oxcaml and oxcaml/merlin with version updates to 5.2.0minus-14&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Build system improvements&lt;/strong&gt; addressing common WSL/Ubuntu environment issues affecting both package repositories&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Key Projects and Initiatives&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/155" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Renaming functionality&lt;/strong&gt;&lt;/a&gt; implementation in oxcaml/merlin by &lt;a href="https://github.com/liam923"&gt;Liam Stevenson&lt;/a&gt; with extensive changes across 55 files in &lt;a href="https://github.com/oxcaml/merlin/issues/155"&gt;oxcaml/merlin#155&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/147" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Locate functionality improvements&lt;/strong&gt;&lt;/a&gt; for punned record patterns in oxcaml/merlin requiring mbrowse refactoring in &lt;a href="https://github.com/oxcaml/merlin/issues/147"&gt;oxcaml/merlin#147&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Hardware compatibility&lt;/strong&gt; fixes for BMI instruction detection affecting Intel Xeon processor installations&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Priority Items&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4267" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Critical installation issue&lt;/strong&gt;&lt;/a&gt; requiring immediate fix for BMI instruction detection preventing OxCaml switch creation in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4267"&gt;oxcaml/oxcaml#4267&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/147" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Merge conflict resolution&lt;/strong&gt;&lt;/a&gt; needed for punned record pattern locate fix affecting 21 files in &lt;a href="https://github.com/oxcaml/merlin/issues/147"&gt;oxcaml/merlin#147&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4267" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Hardware compatibility&lt;/strong&gt;&lt;/a&gt; technical discussion by &lt;a href="https://github.com/tmcgilchrist"&gt;Tim McGilchrist&lt;/a&gt; regarding segmentation fault on Intel Xeon E5-1680 v2 processors with guidance from &lt;a href="https://github.com/xclerc"&gt;Xavier Clerc&lt;/a&gt; in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4267"&gt;oxcaml/oxcaml#4267&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/2123" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Compiler optimization&lt;/strong&gt;&lt;/a&gt; progress discussion involving remaining work for proper mutable unboxing in presence of closures and loops in &lt;a href="https://github.com/oxcaml/oxcaml/issues/2123"&gt;oxcaml/oxcaml#2123&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Cross-platform compatibility&lt;/strong&gt; improvements targeting WSL and Ubuntu build environments across multiple repositories&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Editor experience enhancements&lt;/strong&gt; through improved locate functionality and comprehensive renaming support in Merlin&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Package ecosystem coordination&lt;/strong&gt; with centralized maintenance efforts moving from janestreet/opam-repository to oxcaml/opam-repository&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Upstream synchronization&lt;/strong&gt; focus with regular compiler version updates and consideration of upstreaming oxcaml-specific changes&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev//groups/oxcaml/2025/week-27"/><summary>Compiler stability issues and SIMD package fixes dominated the week with cross-repository coordination efforts</summary><published>2025-07-06T00:00:00+00:00</published></entry><entry><id>https://thicket.dev//groups/oxcaml/2025/week-28</id><title>Week 28, 2025: Primary activity in oxcaml/oxcaml with type system enhancements and oxcaml/merlin autocompletion improvements</title><updated>2025-07-13T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Core compiler development&lt;/strong&gt; focused on &lt;a href="https://github.com/oxcaml/oxcaml"&gt;oxcaml/oxcaml&lt;/a&gt; with segmentation fault resolution, jkind mode system improvements, and build system fixes&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Editor tooling enhancements&lt;/strong&gt; in &lt;a href="https://github.com/oxcaml/merlin"&gt;oxcaml/merlin&lt;/a&gt; with autocompletion system improvements and downstream integration updates&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Limited activity&lt;/strong&gt; in opam repositories and js&lt;em&gt;of&lt;/em&gt;ocaml during this period&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Cross-organization collaboration&lt;/strong&gt; between Jane Street, OCamlPro, and Tarides developers&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;JavaScript compilation infrastructure&lt;/strong&gt; work in &lt;a href="https://github.com/oxcaml/oxcaml"&gt;oxcaml/oxcaml&lt;/a&gt; with JSIR multi-file support that may benefit from coordination with &lt;a href="https://github.com/oxcaml/js_of_ocaml"&gt;oxcaml/js&lt;em&gt;of&lt;/em&gt;ocaml&lt;/a&gt; future development&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Merlin downstream integration&lt;/strong&gt; bringing &lt;a href="https://github.com/oxcaml/merlin"&gt;oxcaml/merlin&lt;/a&gt; in line with upstream changes to support oxcaml-specific features&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Type system improvements&lt;/strong&gt; in &lt;a href="https://github.com/oxcaml/oxcaml"&gt;oxcaml/oxcaml&lt;/a&gt; that will enhance editor support through &lt;a href="https://github.com/oxcaml/merlin"&gt;oxcaml/merlin&lt;/a&gt; integration&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Key Projects and Initiatives&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/pull/4273" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Jkind mode system development&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/riaqn"&gt;Zesen Qian&lt;/a&gt; enriching &lt;code&gt;Mode.Crossing&lt;/code&gt; for advanced type system features (&lt;a href="https://github.com/oxcaml/oxcaml/pull/4273"&gt;oxcaml/oxcaml#4273&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/pull/4285" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Implicit kinds feature&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/dkalinichenko-js"&gt;@dkalinichenko-js&lt;/a&gt; introducing Rocq-style implicit type variable declarations (&lt;a href="https://github.com/oxcaml/oxcaml/pull/4285"&gt;oxcaml/oxcaml#4285&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/pull/4525" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;JavaScript IR infrastructure&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/smjleo"&gt;Leo Lee&lt;/a&gt; enhancing multi-file compilation support (&lt;a href="https://github.com/oxcaml/oxcaml/pull/4525"&gt;oxcaml/oxcaml#4525&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/pull/4536"&gt;oxcaml/oxcaml#4536&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/157" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Autocompletion system improvements&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/liam923"&gt;Liam Stevenson&lt;/a&gt; prioritizing modules over types in expression contexts (&lt;a href="https://github.com/oxcaml/merlin/issues/157"&gt;oxcaml/merlin#157&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/3181" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;CSE optimization strategy&lt;/strong&gt;&lt;/a&gt; discussion by &lt;a href="https://github.com/bclement-ocp"&gt;Basile Clément&lt;/a&gt; proposing middle-ground solutions for canonicalization issues during CSE joins (&lt;a href="https://github.com/oxcaml/oxcaml/issues/3181"&gt;oxcaml/oxcaml#3181&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/pull/4285" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Implicit kinds design debate&lt;/strong&gt;&lt;/a&gt; between &lt;a href="https://github.com/dkalinichenko-js"&gt;@dkalinichenko-js&lt;/a&gt; and &lt;a href="https://github.com/lpw25"&gt;Leo White&lt;/a&gt; regarding type annotation behavior and explicit quantification handling (&lt;a href="https://github.com/oxcaml/oxcaml/pull/4285"&gt;oxcaml/oxcaml#4285&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/157" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Completion prioritization strategy&lt;/strong&gt;&lt;/a&gt; discussion exploring whether to remove types entirely from expression context completions versus current module-over-type prioritization (&lt;a href="https://github.com/oxcaml/merlin/issues/157"&gt;oxcaml/merlin#157&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Type system modernization&lt;/strong&gt; with advanced features like implicit kinds and improved mode crossing semantics across oxcaml compiler infrastructure&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Hardware compatibility focus&lt;/strong&gt; addressing CPU instruction availability issues on older systems to broaden oxcaml deployment compatibility&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Editor tooling refinement&lt;/strong&gt; balancing user experience improvements with language-specific considerations in autocompletion behavior&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Cross-organization development&lt;/strong&gt; with active contributions from Jane Street, OCamlPro, and Tarides teams&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev//groups/oxcaml/2025/week-28"/><summary>Primary activity in oxcaml/oxcaml with type system enhancements and oxcaml/merlin autocompletion improvements</summary><published>2025-07-13T00:00:00+00:00</published></entry><entry><id>https://thicket.dev//groups/oxcaml/2025/week-29</id><title>Week 29, 2025: Core compiler performance regression and developer tooling improvements across main repositories</title><updated>2025-07-20T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Core compiler work&lt;/strong&gt; in &lt;a href="https://github.com/oxcaml/oxcaml"&gt;oxcaml/oxcaml&lt;/a&gt; focused on typer performance regression investigation and Mode.Crossing.Atom implementation&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Developer tooling&lt;/strong&gt; enhancements in &lt;a href="https://github.com/oxcaml/merlin"&gt;oxcaml/merlin&lt;/a&gt; with PPX support development, completion improvements, and CI infrastructure fixes&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Repository activity&lt;/strong&gt; concentrated in two repositories with no recorded activity in oxcaml/opam-repository, oxcaml/js&lt;em&gt;of&lt;/em&gt;ocaml, or janestreet/opam-repository&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Key Projects and Initiatives&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/pull/4314" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Mode system development&lt;/strong&gt;&lt;/a&gt; with draft implementation of Mode.Crossing.Atom per-axis functionality in &lt;a href="https://github.com/oxcaml/oxcaml/pull/4314"&gt;oxcaml/oxcaml#4314&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/167" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;PPX ecosystem enhancement&lt;/strong&gt;&lt;/a&gt; with systematic addition of document and locate support in &lt;a href="https://github.com/oxcaml/merlin/issues/167"&gt;oxcaml/merlin#167&lt;/a&gt; and &lt;a href="https://github.com/oxcaml/merlin/issues/170"&gt;oxcaml/merlin#170&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Developer experience improvements&lt;/strong&gt; through completion ordering optimization and CI infrastructure modernization in oxcaml/merlin&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Priority Items&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4323" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Typer performance regression&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4323"&gt;oxcaml/oxcaml#4323&lt;/a&gt; showing non-linear performance degradation compared to stock OCaml and previous OxCaml versions, requiring investigation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/157" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Completion behavior optimization&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/oxcaml/merlin/issues/157"&gt;oxcaml/merlin#157&lt;/a&gt; with debate between &lt;a href="https://github.com/JimmyZJX"&gt;@JimmyZJX&lt;/a&gt;, &lt;a href="https://github.com/liam923"&gt;Liam Stevenson&lt;/a&gt;, and &lt;a href="https://github.com/goldfirere"&gt;Richard Eisenberg&lt;/a&gt; about balancing modules versus types in expression contexts&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Performance monitoring&lt;/strong&gt; focus with detailed benchmarking and regression analysis in the core compiler&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Developer experience&lt;/strong&gt; prioritization through systematic PPX support and better autocompletion&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;CI infrastructure&lt;/strong&gt; modernization with improved fork support and manual trigger capabilities&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev//groups/oxcaml/2025/week-29"/><summary>Core compiler performance regression and developer tooling improvements across main repositories</summary><published>2025-07-20T00:00:00+00:00</published></entry><entry><id>https://thicket.dev//groups/oxcaml/2025/week-30</id><title>Week 30, 2025: Core oxcaml compiler optimization and tooling enhancements with js_of_ocaml integration work</title><updated>2025-07-27T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Core compiler development&lt;/strong&gt; in &lt;a href="https://github.com/oxcaml/oxcaml"&gt;oxcaml/oxcaml&lt;/a&gt; with Flambda2 optimization work and JSIR backend stabilization&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Developer tooling improvements&lt;/strong&gt; in &lt;a href="https://github.com/oxcaml/merlin"&gt;oxcaml/merlin&lt;/a&gt; focusing on PPX support and oxcaml syntax features&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Package management integration&lt;/strong&gt; in &lt;a href="https://github.com/oxcaml/opam-repository"&gt;oxcaml/opam-repository&lt;/a&gt; with js&lt;em&gt;of&lt;/em&gt;ocaml toplevel enablement&lt;/li&gt;
+&lt;li&gt;No activity recorded for &lt;a href="https://github.com/oxcaml/js_of_ocaml"&gt;oxcaml/js&lt;em&gt;of&lt;/em&gt;ocaml&lt;/a&gt; and &lt;a href="https://github.com/janestreet/opam-repository"&gt;janestreet/opam-repository&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;js&lt;em&gt;of&lt;/em&gt;ocaml integration&lt;/strong&gt; coordinated between &lt;a href="https://github.com/oxcaml/opam-repository/pull/7"&gt;oxcaml/opam-repository#7&lt;/a&gt; and the JSIR compiler development in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4620"&gt;oxcaml/oxcaml#4620&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Development tooling alignment&lt;/strong&gt; between compiler features in oxcaml/oxcaml and enhanced IDE support in oxcaml/merlin for oxcaml syntax elements&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Package ecosystem coordination&lt;/strong&gt; through opam-repository changes supporting the broader oxcaml compiler toolchain&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Key Projects and Initiatives&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4369" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Flambda2 n-way join rewrite&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4369"&gt;oxcaml/oxcaml#4369&lt;/a&gt; improving maintainability and performance&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4620" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;JSIR compiler backend development&lt;/strong&gt;&lt;/a&gt; with multiple improvements across &lt;a href="https://github.com/oxcaml/oxcaml/issues/4620"&gt;oxcaml/oxcaml#4620&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4598"&gt;oxcaml/oxcaml#4598&lt;/a&gt;, and &lt;a href="https://github.com/oxcaml/oxcaml/issues/4573"&gt;oxcaml/oxcaml#4573&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/167" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;PPX toolchain enhancement&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/oxcaml/merlin/issues/167"&gt;oxcaml/merlin#167&lt;/a&gt; and &lt;a href="https://github.com/oxcaml/merlin/issues/171"&gt;oxcaml/merlin#171&lt;/a&gt; for better development experience&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/168" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Oxcaml syntax documentation&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/oxcaml/merlin/issues/168"&gt;oxcaml/merlin#168&lt;/a&gt; adding hover support for syntax elements&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Priority Items&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4323" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Typer performance regression&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4323"&gt;oxcaml/oxcaml#4323&lt;/a&gt; showing quadratic behavior requiring urgent investigation&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4314" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Mode crossing implementation&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4314"&gt;oxcaml/oxcaml#4314&lt;/a&gt; needs coordination as work was superseded by other efforts&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Performance-first optimization approach&lt;/strong&gt; with focus on compilation speed improvements and algorithmic efficiency in the core compiler&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Developer experience enhancement&lt;/strong&gt; through integrated tooling improvements across merlin and compiler features&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Backend diversification&lt;/strong&gt; with mature JSIR compiler development alongside traditional OCaml compilation paths&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Ecosystem integration focus&lt;/strong&gt; coordinating package management, compiler features, and development tooling for cohesive oxcaml experience&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev//groups/oxcaml/2025/week-30"/><summary>Core oxcaml compiler optimization and tooling enhancements with js_of_ocaml integration work</summary><published>2025-07-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev//groups/oxcaml/2025/week-31</id><title>Week 31, 2025: Focus on flambda2 optimization work and merlin compiler synchronization with PPX enhancements</title><updated>2025-08-03T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/pull/4397" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Compiler optimization&lt;/strong&gt;&lt;/a&gt; development led by &lt;a href="https://github.com/bclement-ocp"&gt;Basile Clément&lt;/a&gt; implementing flambda2 match-in-match heuristics across three interconnected PRs (&lt;a href="https://github.com/oxcaml/oxcaml/pull/4397"&gt;oxcaml/oxcaml#4397&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/pull/4394"&gt;oxcaml/oxcaml#4394&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/pull/4390"&gt;oxcaml/oxcaml#4390&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/pull/4395" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Language feature expansion&lt;/strong&gt;&lt;/a&gt; with runtime quotations by &lt;a href="https://github.com/Dreian"&gt;Andrej Ivašković&lt;/a&gt; introducing &lt;code&gt;&lt;[, ]&gt;&lt;/code&gt; bracket syntax and stage-based type system (&lt;a href="https://github.com/oxcaml/oxcaml/pull/4395"&gt;oxcaml/oxcaml#4395&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/pull/4400" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Type system enhancements&lt;/strong&gt;&lt;/a&gt; including contractive parameter annotations and implicit kinds (&lt;a href="https://github.com/oxcaml/oxcaml/pull/4400"&gt;oxcaml/oxcaml#4400&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/pull/4285"&gt;oxcaml/oxcaml#4285&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/171" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Tooling improvements&lt;/strong&gt;&lt;/a&gt; with PPX overrides framework development in merlin for enhanced preprocessor support (&lt;a href="https://github.com/oxcaml/merlin/issues/171"&gt;oxcaml/merlin#171&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/172" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Compiler-tooling synchronization&lt;/strong&gt;&lt;/a&gt; with &lt;a href="https://github.com/liam923"&gt;Liam Stevenson&lt;/a&gt; merging oxcaml/oxcaml version 5.2.0minus-16 changes into oxcaml/merlin for compatibility (&lt;a href="https://github.com/oxcaml/merlin/issues/172"&gt;oxcaml/merlin#172&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/171" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;PPX integration alignment&lt;/strong&gt;&lt;/a&gt; between compiler developments and merlin's override system for preprocessor-generated code support (&lt;a href="https://github.com/oxcaml/merlin/issues/171"&gt;oxcaml/merlin#171&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Key Projects and Initiatives&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/pull/4397" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Flambda2 match-in-match optimization&lt;/strong&gt;&lt;/a&gt; with recursive meet prevention, naked immediate processing, and relation tracking improvements (&lt;a href="https://github.com/oxcaml/oxcaml/pull/4397"&gt;oxcaml/oxcaml#4397&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/pull/4394"&gt;oxcaml/oxcaml#4394&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/pull/4390"&gt;oxcaml/oxcaml#4390&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/pull/4395" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Runtime quotations implementation&lt;/strong&gt;&lt;/a&gt; with new bracket syntax, AST-like structure, and stage-based typing system (&lt;a href="https://github.com/oxcaml/oxcaml/pull/4395"&gt;oxcaml/oxcaml#4395&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/171" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;PPX overrides architecture&lt;/strong&gt;&lt;/a&gt; enabling flexible command output customization through [@@@merlin.X] attributes with interval tree caching (&lt;a href="https://github.com/oxcaml/merlin/issues/171"&gt;oxcaml/merlin#171&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Priority Items&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/pull/4395" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Merge conflict resolution&lt;/strong&gt;&lt;/a&gt; required for runtime quotations implementation to proceed with integration (&lt;a href="https://github.com/oxcaml/oxcaml/pull/4395"&gt;oxcaml/oxcaml#4395&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/pull/4395" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Parser test updates&lt;/strong&gt;&lt;/a&gt; needed for runtime quotations as flagged by automated checks (&lt;a href="https://github.com/oxcaml/oxcaml/pull/4395"&gt;oxcaml/oxcaml#4395&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/pull/4400" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Contractive parameter design&lt;/strong&gt;&lt;/a&gt; discussion between &lt;a href="https://github.com/lpw25"&gt;Leo White&lt;/a&gt; and reviewers about intersection vs. error behavior for type annotations (&lt;a href="https://github.com/oxcaml/oxcaml/pull/4400"&gt;oxcaml/oxcaml#4400&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/pull/4285" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Implicit kinds scoping&lt;/strong&gt;&lt;/a&gt; discussion about error handling for jkind constraints and explicit quantification overrides (&lt;a href="https://github.com/oxcaml/oxcaml/pull/4285"&gt;oxcaml/oxcaml#4285&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/pull/4397" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Advanced compiler optimization&lt;/strong&gt;&lt;/a&gt; focus with sophisticated flambda2 type system improvements for match expression performance (&lt;a href="https://github.com/oxcaml/oxcaml/pull/4397"&gt;oxcaml/oxcaml#4397&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/pull/4394"&gt;oxcaml/oxcaml#4394&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/pull/4390"&gt;oxcaml/oxcaml#4390&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/pull/4395" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Metaprogramming capabilities&lt;/strong&gt;&lt;/a&gt; development with runtime quotations introducing new syntax and stage-based typing (&lt;a href="https://github.com/oxcaml/oxcaml/pull/4395"&gt;oxcaml/oxcaml#4395&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/171" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Enhanced PPX tooling&lt;/strong&gt;&lt;/a&gt; integration with development of flexible override mechanisms for preprocessor support (&lt;a href="https://github.com/oxcaml/merlin/issues/171"&gt;oxcaml/merlin#171&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/172" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Regular compiler synchronization&lt;/strong&gt;&lt;/a&gt; patterns between oxcaml/oxcaml and oxcaml/merlin for maintaining tooling compatibility (&lt;a href="https://github.com/oxcaml/merlin/issues/172"&gt;oxcaml/merlin#172&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev//groups/oxcaml/2025/week-31"/><summary>Focus on flambda2 optimization work and merlin compiler synchronization with PPX enhancements</summary><published>2025-08-03T00:00:00+00:00</published></entry><entry><id>https://thicket.dev//groups/oxcaml/2025/week-32</id><title>Week 32, 2025: Major activity in core oxcaml compiler with backend development and enhanced Merlin PPX integration</title><updated>2025-08-10T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4471" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Core compiler development&lt;/strong&gt;&lt;/a&gt; led activity across the group with &lt;a href="https://github.com/oxcaml/oxcaml/issues/4471"&gt;oxcaml/oxcaml#4471&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4442"&gt;oxcaml/oxcaml#4442&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4476"&gt;oxcaml/oxcaml#4476&lt;/a&gt; advancing mode system, JSIR translation, and LLVM backend infrastructure&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/177" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Developer tooling enhancement&lt;/strong&gt;&lt;/a&gt; with &lt;a href="https://github.com/oxcaml/merlin/issues/177"&gt;oxcaml/merlin#177&lt;/a&gt; introducing PPX overrides system for better preprocessor integration&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4458" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Performance optimization focus&lt;/strong&gt;&lt;/a&gt; through SIMD intrinsics cleanup in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4458"&gt;oxcaml/oxcaml#4458&lt;/a&gt; and interval tree optimization in &lt;a href="https://github.com/oxcaml/merlin/issues/173"&gt;oxcaml/merlin#173&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Repository activity concentrated&lt;/strong&gt; in two main repositories while oxcaml/opam-repository, oxcaml/js&lt;em&gt;of&lt;/em&gt;ocaml, and janestreet/opam-repository showed no activity&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/172" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Compiler-editor synchronization&lt;/strong&gt;&lt;/a&gt; with &lt;a href="https://github.com/oxcaml/merlin/issues/172"&gt;oxcaml/merlin#172&lt;/a&gt; integrating OxCaml 5.2.0minus-16 compiler changes into Merlin&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4440" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Shapes infrastructure coordination&lt;/strong&gt;&lt;/a&gt; between &lt;a href="https://github.com/oxcaml/oxcaml/issues/4440"&gt;oxcaml/oxcaml#4440&lt;/a&gt; compiler shapes support and Merlin debugging capabilities&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;PPX tooling alignment&lt;/strong&gt; where oxcaml compiler mode system improvements support enhanced PPX override functionality in Merlin&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Key Projects and Initiatives&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4442" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;JSIR translation pipeline&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/smjleo"&gt;Leo Lee&lt;/a&gt; expanding JavaScript backend with flambda2 primitive support (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4442"&gt;oxcaml/oxcaml#4442&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4456"&gt;oxcaml/oxcaml#4456&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4434"&gt;oxcaml/oxcaml#4434&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4476" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;LLVM backend infrastructure&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/usuyus"&gt;Yusuf Onur Üşümez&lt;/a&gt; adding exception handling and CI support (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4476"&gt;oxcaml/oxcaml#4476&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4463"&gt;oxcaml/oxcaml#4463&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4471" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Mode system enhancement&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/riaqn"&gt;Zesen Qian&lt;/a&gt; and &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; improving error messages and annotations (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4471"&gt;oxcaml/oxcaml#4471&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4470"&gt;oxcaml/oxcaml#4470&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/177" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;PPX overrides architecture&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/maxmwang"&gt;Max Wang&lt;/a&gt; and &lt;a href="https://github.com/liam923"&gt;Liam Stevenson&lt;/a&gt; enabling flexible command output overriding (&lt;a href="https://github.com/oxcaml/merlin/issues/177"&gt;oxcaml/merlin#177&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/merlin/issues/176"&gt;oxcaml/merlin#176&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Priority Items&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4476" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;LLVM exception handling completion&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4476"&gt;oxcaml/oxcaml#4476&lt;/a&gt; to enable proper error handling in the LLVM backend&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4437" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Installation documentation updates&lt;/strong&gt;&lt;/a&gt; needed for &lt;a href="https://github.com/oxcaml/oxcaml/issues/4437"&gt;oxcaml/oxcaml#4437&lt;/a&gt; utop compilation issues and &lt;a href="https://github.com/oxcaml/oxcaml/issues/4447"&gt;oxcaml/oxcaml#4447&lt;/a&gt; LSP configuration problems&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4400" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Contractive type parameters design&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4400"&gt;oxcaml/oxcaml#4400&lt;/a&gt; requires reviewer feedback to proceed&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4466" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;SIMD vector extensions implementation&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4466"&gt;oxcaml/oxcaml#4466&lt;/a&gt; to complete SIMD functionality&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Backend infrastructure diversification&lt;/strong&gt; with parallel development of JSIR JavaScript backend and LLVM backend alongside traditional native compilation&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Developer experience optimization&lt;/strong&gt; through PPX overrides system, improved error messages, and performance-focused caching strategies&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Data structure modernization&lt;/strong&gt; replacing linear searches with interval trees and adopting Phase_cache patterns for computation reuse&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Type system evolution&lt;/strong&gt; adding contractive annotations, enhanced shapes for debugging, and mode system refinements for better memory management&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev//groups/oxcaml/2025/week-32"/><summary>Major activity in core oxcaml compiler with backend development and enhanced Merlin PPX integration</summary><published>2025-08-10T00:00:00+00:00</published></entry><entry><id>https://thicket.dev//groups/oxcaml/2025/week-33</id><title>Week 33, 2025: Intensive backend development in oxcaml/oxcaml with JSIR and LLVM advances, plus major compiler integration work in oxcaml/merlin</title><updated>2025-08-17T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Backend development acceleration&lt;/strong&gt; in &lt;a href="https://github.com/oxcaml/oxcaml"&gt;oxcaml/oxcaml&lt;/a&gt; with &lt;a href="https://github.com/smjleo"&gt;Leo Lee&lt;/a&gt; leading JSIR multi-file compilation support and &lt;a href="https://github.com/usuyus"&gt;Yusuf Onur Üşümez&lt;/a&gt; expanding LLVM backend capabilities&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Compiler integration progress&lt;/strong&gt; in &lt;a href="https://github.com/oxcaml/merlin"&gt;oxcaml/merlin&lt;/a&gt; with &lt;a href="https://github.com/liam923"&gt;Liam Stevenson&lt;/a&gt; managing multiple Flambda merges affecting 161 files&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;PPX tooling enhancement&lt;/strong&gt; through new override functionality implementation by &lt;a href="https://github.com/maxmwang"&gt;Max Wang&lt;/a&gt; for improved developer experience&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Debugging infrastructure advancement&lt;/strong&gt; with DWARF support improvements and recursive type handling in shapes system&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Flambda compiler integration&lt;/strong&gt; between oxcaml/oxcaml backend development and oxcaml/merlin editor support requiring coordinated magic number updates and flag management&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Shared development patterns&lt;/strong&gt; with automated checklist reminders in oxcaml/merlin mirroring CI improvements seen in oxcaml/oxcaml&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Backend compatibility focus&lt;/strong&gt; ensuring that new JSIR and LLVM backends in oxcaml/oxcaml work seamlessly with enhanced editor tooling from oxcaml/merlin&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Key Projects and Initiatives&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4525" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;JSIR backend production readiness&lt;/strong&gt;&lt;/a&gt; with multi-file compilation enabling standard library usage through global symbol table implementation (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4525"&gt;oxcaml/oxcaml#4525&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4476" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;LLVM backend foundation&lt;/strong&gt;&lt;/a&gt; expanding with exception handling, tailcalls, heap allocation, and complete operation support (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4476"&gt;oxcaml/oxcaml#4476&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4507"&gt;oxcaml/oxcaml#4507&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4508"&gt;oxcaml/oxcaml#4508&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/174" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Flambda compiler integration&lt;/strong&gt;&lt;/a&gt; with automated merge verification and comprehensive testing across oxcaml/merlin (&lt;a href="https://github.com/oxcaml/merlin/issues/174"&gt;oxcaml/merlin#174&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/merlin/issues/175"&gt;oxcaml/merlin#175&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/176" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;PPX override system&lt;/strong&gt;&lt;/a&gt; providing extensible command output overrides for document and locate commands (&lt;a href="https://github.com/oxcaml/merlin/issues/176"&gt;oxcaml/merlin#176&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/merlin/issues/177"&gt;oxcaml/merlin#177&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Priority Items&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4511" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;ARM64 assembler failures&lt;/strong&gt;&lt;/a&gt; in oxcaml/oxcaml affecting large generated tests with stack offset range violations requiring immediate resolution (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4511"&gt;oxcaml/oxcaml#4511&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4504" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Baremetal framework guidance&lt;/strong&gt;&lt;/a&gt; needed for microkernel architecture inquiry with recommendation to focus on userspace familiarization first (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4504"&gt;oxcaml/oxcaml#4504&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4504" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Baremetal OCaml runtime&lt;/strong&gt;&lt;/a&gt; discussion between &lt;a href="https://github.com/nickbetteridge"&gt;@nickbetteridge&lt;/a&gt;, &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt;, and &lt;a href="https://github.com/tmcgilchrist"&gt;Tim McGilchrist&lt;/a&gt; about microkernel support potential, with guidance to explore MirageOS and Unikraft solutions first (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4504"&gt;oxcaml/oxcaml#4504&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/3133" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Type printing assertion failure&lt;/strong&gt;&lt;/a&gt; resolution demonstrating effective debugging workflow from issue identification by &lt;a href="https://github.com/samsa1"&gt;Samuel Vivien&lt;/a&gt; to printtyp improvements for recursive types (&lt;a href="https://github.com/oxcaml/oxcaml/issues/3133"&gt;oxcaml/oxcaml#3133&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4524"&gt;oxcaml/oxcaml#4524&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Backend diversification strategy&lt;/strong&gt; with parallel JSIR and LLVM backend development showing commitment to multiple compilation targets beyond traditional native code&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Developer experience investment&lt;/strong&gt; through enhanced DWARF debugging support, improved mode system error messages, and comprehensive PPX tooling in both repositories&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Infrastructure modernization&lt;/strong&gt; with automated merge verification, GitHub Actions integration, and performance-focused caching implementations using interval trees&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Collaborative development patterns&lt;/strong&gt; with contributors posting PRs on behalf of others while maintaining proper attribution and comprehensive testing&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev//groups/oxcaml/2025/week-33"/><summary>Intensive backend development in oxcaml/oxcaml with JSIR and LLVM advances, plus major compiler integration work in oxcaml/merlin</summary><published>2025-08-17T00:00:00+00:00</published></entry><entry><id>https://thicket.dev//groups/oxcaml/2025/week-34</id><title>Week 34, 2025: JSIR backend development and DWARF improvements in oxcaml/oxcaml with Merlin OCaml 5.2.0minus-18 integration and utop fixes</title><updated>2025-08-24T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;oxcaml/oxcaml&lt;/strong&gt; dominated activity with extensive JSIR backend development by &lt;a href="https://github.com/smjleo"&gt;Leo Lee&lt;/a&gt; and DWARF debugging improvements by &lt;a href="https://github.com/spiessimon"&gt;Simon Spies&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;oxcaml/merlin&lt;/strong&gt; received compiler merge for OCaml 5.2.0minus-18 and binary discovery improvements by &lt;a href="https://github.com/liam923"&gt;Liam Stevenson&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;janestreet/opam-repository&lt;/strong&gt; had a single PR by &lt;a href="https://github.com/lthls"&gt;Vincent Laviron&lt;/a&gt; fixing utop conflict clause capitalization&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;oxcaml/opam-repository&lt;/strong&gt; and &lt;strong style="color: #cc6600;"&gt;oxcaml/js&lt;em&gt;of&lt;/em&gt;ocaml&lt;/strong&gt; showed no activity during this period&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4437" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;utop compatibility issues&lt;/strong&gt;&lt;/a&gt; span multiple repositories: compilation errors reported in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4437"&gt;oxcaml/oxcaml#4437&lt;/a&gt; with related conflict detection fix in &lt;a href="https://github.com/janestreet/opam-repository/pull/73"&gt;janestreet/opam-repository#73&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;OCaml compiler synchronization&lt;/strong&gt; between oxcaml/oxcaml and oxcaml/merlin with Merlin tracking OCaml 5.2.0minus-18 changes including Flambda modifications&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Build and installation workflow&lt;/strong&gt; coordination needed across repositories to resolve package compatibility issues&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Key Projects and Initiatives&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;JSIR backend stabilization&lt;/strong&gt; in oxcaml/oxcaml with comprehensive JavaScript compilation improvements and debugging event support&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;DWARF debugging enhancements&lt;/strong&gt; featuring performance dials, metrics collection, and functor shape merging capabilities&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;LLVM backend development&lt;/strong&gt; with ongoing exception handling, allocation support, and switch implementation&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Flambda2 optimization improvements&lt;/strong&gt; including maintainable n-way join algorithms and match-in-match enhancements&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Runtime system improvements&lt;/strong&gt; focusing on GC behavior, domain management, and array allocation optimization&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Priority Items&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4562" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;macOS test suite failures&lt;/strong&gt;&lt;/a&gt; in oxcaml/oxcaml with SIGBUS errors in SIMD tests requiring platform-specific investigation (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4562"&gt;oxcaml/oxcaml#4562&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4437" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;utop compilation compatibility&lt;/strong&gt;&lt;/a&gt; affecting installation workflows across the ecosystem needs coordinated resolution (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4437"&gt;oxcaml/oxcaml#4437&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Backend architecture diversification&lt;/strong&gt; with parallel JSIR and LLVM backend development alongside traditional native compilation&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Developer tooling maturation&lt;/strong&gt; through enhanced DWARF debugging capabilities and performance monitoring integration&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Compilation pipeline modernization&lt;/strong&gt; including legacy code removal and unified approach adoption&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Cross-repository dependency management&lt;/strong&gt; challenges requiring better coordination for package compatibility and installation workflows&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev//groups/oxcaml/2025/week-34"/><summary>JSIR backend development and DWARF improvements in oxcaml/oxcaml with Merlin OCaml 5.2.0minus-18 integration and utop fixes</summary><published>2025-08-24T00:00:00+00:00</published></entry><entry><id>https://thicket.dev//groups/oxcaml/2025/week-35</id><title>Week 35, 2025: Major backend optimization improvements merged in oxcaml/oxcaml with complementary package ecosystem updates for compatibility</title><updated>2025-08-31T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Backend optimization focus&lt;/strong&gt; with substantial improvements merged in &lt;a href="https://github.com/oxcaml/oxcaml"&gt;oxcaml/oxcaml&lt;/a&gt; including shrink-wrapping, register allocation enhancements, and JSIR compiler stabilization&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Package ecosystem maintenance&lt;/strong&gt; in &lt;a href="https://github.com/oxcaml/opam-repository"&gt;oxcaml/opam-repository&lt;/a&gt; with comprehensive odoc toolchain updates and mdx integration improvements for Oxcaml compatibility&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;IDE integration refinements&lt;/strong&gt; in &lt;a href="https://github.com/oxcaml/merlin"&gt;oxcaml/merlin&lt;/a&gt; with bug fixes and ongoing VSCode enhancement development&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Minimal activity&lt;/strong&gt; in &lt;a href="https://github.com/oxcaml/js_of_ocaml"&gt;oxcaml/js&lt;em&gt;of&lt;/em&gt;ocaml&lt;/a&gt; and &lt;a href="https://github.com/janestreet/opam-repository"&gt;janestreet/opam-repository&lt;/a&gt; with no recorded changes during this period&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Documentation ecosystem coordination&lt;/strong&gt; between &lt;a href="https://github.com/oxcaml/oxcaml"&gt;oxcaml/oxcaml&lt;/a&gt; core development and &lt;a href="https://github.com/oxcaml/opam-repository"&gt;oxcaml/opam-repository&lt;/a&gt; odoc package updates to ensure compatibility&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;IDE tooling alignment&lt;/strong&gt; with &lt;a href="https://github.com/oxcaml/merlin"&gt;oxcaml/merlin&lt;/a&gt; development supporting Oxcaml syntax features being developed in the main repository&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Package management modernization&lt;/strong&gt; transitioning from patch-based to git-reference-based approach across the organization's repositories&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Key Projects and Initiatives&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4579" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Shrink-wrapping optimization&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/cfalas"&gt;Christos Falas&lt;/a&gt; with prologue duplication and intelligent path analysis (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4579"&gt;oxcaml/oxcaml#4579&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4616"&gt;oxcaml/oxcaml#4616&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4583" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Register allocation architecture&lt;/strong&gt;&lt;/a&gt; improvements by &lt;a href="https://github.com/xclerc"&gt;Xavier Clerc&lt;/a&gt; with per-function allocator selection (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4583"&gt;oxcaml/oxcaml#4583&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4618"&gt;oxcaml/oxcaml#4618&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4620" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;JSIR compiler stabilization&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/smjleo"&gt;Leo Lee&lt;/a&gt; addressing multiple bugs and build system improvements (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4620"&gt;oxcaml/oxcaml#4620&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4598"&gt;oxcaml/oxcaml#4598&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4595" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Phantom variable debugging&lt;/strong&gt;&lt;/a&gt; infrastructure by &lt;a href="https://github.com/mshinwell"&gt;Mark Shinwell&lt;/a&gt; enabling DWARF emission for optimized-away variables (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4595"&gt;oxcaml/oxcaml#4595&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/148" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;VSCode type navigation&lt;/strong&gt;&lt;/a&gt; enhancement by &lt;a href="https://github.com/liam923"&gt;Liam Stevenson&lt;/a&gt; with new locate-type-multi command (&lt;a href="https://github.com/oxcaml/merlin/issues/148"&gt;oxcaml/merlin#148&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Priority Items&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4577" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;SIMD hardware compatibility issue&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/oxcaml/oxcaml"&gt;oxcaml/oxcaml&lt;/a&gt; where AVX2 instructions cause illegal instruction errors on AVX-only systems, reported by &lt;a href="https://github.com/tmcgilchrist"&gt;Tim McGilchrist&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4577"&gt;oxcaml/oxcaml#4577&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/issues/8" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Package source management strategy&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/oxcaml/opam-repository"&gt;oxcaml/opam-repository&lt;/a&gt; with &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; recommending direct git repository references over patch files for easier maintenance (&lt;a href="https://github.com/oxcaml/opam-repository/issues/8"&gt;oxcaml/opam-repository#8&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/149" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Upstream coordination&lt;/strong&gt;&lt;/a&gt; efforts in &lt;a href="https://github.com/oxcaml/merlin"&gt;oxcaml/merlin&lt;/a&gt; to avoid duplicated development work across related repositories (&lt;a href="https://github.com/oxcaml/merlin/issues/149"&gt;oxcaml/merlin#149&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;AI-assisted development integration&lt;/strong&gt; visible across multiple repositories with Claude Code attribution in commit messages and systematic architectural improvements&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Package management modernization&lt;/strong&gt; transitioning from patch-based to git-reference-based approach for easier updates and maintenance&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Backend performance optimization&lt;/strong&gt; with coordinated improvements to prologue handling, register allocation, and code generation efficiency&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Developer tooling enhancement&lt;/strong&gt; focus on IDE integration, debugging infrastructure, and syntax-specific features for improved developer experience&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev//groups/oxcaml/2025/week-35"/><summary>Major backend optimization improvements merged in oxcaml/oxcaml with complementary package ecosystem updates for compatibility</summary><published>2025-08-31T00:00:00+00:00</published></entry><entry><id>https://thicket.dev//groups/oxcaml/2025/week-36</id><title>Week 36, 2025: OxCaml compiler development focused on SIMD intrinsics and optimization work with supporting toolchain updates</title><updated>2025-09-07T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4648" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Compiler optimization initiatives&lt;/strong&gt;&lt;/a&gt; across &lt;a href="https://github.com/oxcaml/oxcaml/issues/4648"&gt;oxcaml/oxcaml#4648&lt;/a&gt; with SIMD intrinsics by &lt;a href="https://github.com/TheNumbat"&gt;Max Slater&lt;/a&gt; and shrink-wrapping optimizations by &lt;a href="https://github.com/xclerc"&gt;Xavier Clerc&lt;/a&gt; and team&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/issues/8" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Package management improvements&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/oxcaml/opam-repository/issues/8"&gt;oxcaml/opam-repository#8&lt;/a&gt; through &lt;a href="https://github.com/oxcaml/opam-repository/issues/11"&gt;oxcaml/opam-repository#11&lt;/a&gt; by &lt;a href="https://github.com/jonludlam"&gt;Jon Ludlam&lt;/a&gt; and &lt;a href="https://github.com/matthewelse"&gt;Matthew Else&lt;/a&gt; addressing js&lt;em&gt;of&lt;/em&gt;ocaml issues and documentation toolchain updates&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/183" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Editor integration enhancements&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/oxcaml/merlin/issues/183"&gt;oxcaml/merlin#183&lt;/a&gt; with LSP outline improvements merged and performance optimizations under review in &lt;a href="https://github.com/oxcaml/merlin/issues/182"&gt;oxcaml/merlin#182&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;js&lt;em&gt;of&lt;/em&gt;ocaml cross-repository coordination&lt;/strong&gt; between oxcaml/opam-repository package patches and potential upstream oxcaml/js&lt;em&gt;of&lt;/em&gt;ocaml integration&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Toolchain dependency alignment&lt;/strong&gt; with opam-repository updates supporting newer OxCaml compiler features from the main repository&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;LSP ecosystem integration&lt;/strong&gt; connecting Merlin improvements with broader OCaml development toolchain used across oxcaml projects&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Key Projects and Initiatives&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4648" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;SIMD infrastructure development&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4648"&gt;oxcaml/oxcaml#4648&lt;/a&gt; implementing raw vector load/store operations with plans for additional AVX support&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4614" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Shrink-wrapping optimization suite&lt;/strong&gt;&lt;/a&gt; spanning multiple PRs (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4614"&gt;oxcaml/oxcaml#4614&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4613"&gt;oxcaml/oxcaml#4613&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4612"&gt;oxcaml/oxcaml#4612&lt;/a&gt;) with systematic benchmarking approach&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4658" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Untagged data types expansion&lt;/strong&gt;&lt;/a&gt; through &lt;a href="https://github.com/oxcaml/oxcaml/issues/4658"&gt;oxcaml/oxcaml#4658&lt;/a&gt; and &lt;a href="https://github.com/oxcaml/oxcaml/issues/4659"&gt;oxcaml/oxcaml#4659&lt;/a&gt; supporting character literals and small integers&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;DWARF debugging infrastructure&lt;/strong&gt; enhancement across multiple PRs improving type information encoding and phantom variable support&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Priority Items&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/182" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Merlin performance bottleneck&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/oxcaml/merlin/issues/182"&gt;oxcaml/merlin#182&lt;/a&gt; requires algorithm refinement based on &lt;a href="https://github.com/lpw25"&gt;Leo White&lt;/a&gt; feedback affecting Jane Street codebase performance&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4628" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Flambda 2 symbol ordering&lt;/strong&gt;&lt;/a&gt; resolved in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4628"&gt;oxcaml/oxcaml#4628&lt;/a&gt; but OCamlJ integration merge in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4638"&gt;oxcaml/oxcaml#4638&lt;/a&gt; needs attention&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Cross-platform js&lt;em&gt;of&lt;/em&gt;ocaml installation&lt;/strong&gt; issues addressed in &lt;a href="https://github.com/oxcaml/opam-repository/issues/11"&gt;oxcaml/opam-repository#11&lt;/a&gt; but ongoing monitoring required for macOS compatibility&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Performance-oriented compiler development&lt;/strong&gt; with systematic benchmarking approaches for optimization strategies like shrink-wrapping and SIMD operations&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Enhanced debugging infrastructure&lt;/strong&gt; focus across DWARF support and LSP integration improving developer experience&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Package management modernization&lt;/strong&gt; shifting from patch files to git+https URLs for easier maintenance and cross-platform compatibility&lt;/li&gt;
+&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Collaborative code review culture&lt;/strong&gt; with detailed algorithmic feedback and alternative implementation suggestions particularly evident in Merlin development&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev//groups/oxcaml/2025/week-36"/><summary>OxCaml compiler development focused on SIMD intrinsics and optimization work with supporting toolchain updates</summary><published>2025-09-07T00:00:00+00:00</published></entry></feed>

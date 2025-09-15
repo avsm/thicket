@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OCaml Thicket</title>
+    
+    <!-- Atom/RSS Feeds -->
+    <link rel="alternate" type="application/atom+xml" title="OCaml Ecosystem - Weekly Summaries" href="feeds/weekly.xml">
+    <!-- Group-specific feeds will be dynamically added -->
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
@@ -49,52 +53,205 @@
             width: 100vw;
         }
         
-        /* Top header */
+        /* ===== NEW RESPONSIVE HEADER DESIGN ===== */
+        
+        /* Main header container */
         .header {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            height: 40px;
             background: var(--bg-secondary);
             border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 0;
+        }
+        
+        /* Header inner wrapper for proper layout */
+        .header-inner {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+        
+        /* Primary header row */
+        .header-primary {
             display: flex;
             align-items: center;
-            z-index: 1000;
+            height: 40px;
+            padding: 0 15px;
+            gap: 15px;
         }
         
-        /* Desktop: hide row wrappers */
-        .header-row-1,
-        .header-row-2 {
-            display: contents;
-        }
-        
-        /* Hide mobile-only elements on desktop */
-        .repo-dropdown-header {
+        /* Secondary header row (for tablet) */
+        .header-secondary {
             display: none;
+            align-items: center;
+            height: 30px;
+            padding: 0 15px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        /* Mobile menu toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 5px;
+            transition: color 0.2s;
+        }
+        
+        .mobile-menu-toggle:hover {
+            color: var(--text-primary);
+        }
+        
+        /* Mobile slide-out menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -280px;
+            width: 280px;
+            height: 100vh;
+            background: var(--bg-secondary);
+            border-left: 1px solid var(--border-color);
+            z-index: 10001;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+            display: none;
+        }
+        
+        .mobile-menu.active {
+            right: 0;
+        }
+        
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .mobile-menu-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+        
+        .mobile-menu-content {
+            padding: 15px;
+        }
+        
+        .mobile-menu-section {
+            margin-bottom: 20px;
+        }
+        
+        .mobile-menu-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+        
+        /* Mobile overlay */
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 10000;
+        }
+        
+        .mobile-menu-overlay.active {
+            display: block;
+        }
+        
+        /* Legacy status bar - hide on all sizes */
+        .status-bar {
+            display: none;
+        }
+        
+        /* Header elements */
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
         .header-title {
             color: var(--text-primary);
             font-size: 13px;
             font-weight: bold;
-            margin-left: 15px;
             text-transform: uppercase;
             letter-spacing: 2px;
-        }
-        
-        .header-separator {
-            color: var(--text-muted);
-            font-size: 13px;
-            margin: 0 10px;
-            opacity: 0.3;
+            white-space: nowrap;
         }
         
         .header-groups {
             display: flex;
             align-items: center;
             gap: 0;
-            margin-left: 5px;
+            flex: 1;
+        }
+        
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-left: auto;
+        }
+        
+        .header-icons {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .repo-view-indicator {
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+            padding: 3px 8px;
+            background: var(--bg-tertiary);
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+            font-size: 11px;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .repo-view-indicator:hover {
+            background: var(--bg-secondary);
+            border-color: var(--text-muted);
+        }
+        
+        .repo-icon {
+            width: 12px;
+            height: 12px;
+            margin-right: 6px;
+            fill: var(--text-muted);
+        }
+        
+        .repo-close {
+            margin-left: 6px;
+            width: 10px;
+            height: 10px;
+            fill: var(--text-muted);
+            opacity: 0.7;
+        }
+        
+        .repo-view-indicator:hover .repo-icon,
+        .repo-view-indicator:hover .repo-close {
+            fill: var(--text-primary);
         }
         
         .group-tab {
@@ -142,31 +299,140 @@
         .group-tab.active::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 10%;
-            right: 10%;
-            height: 2px;
+            bottom: 2px;
+            left: 15%;
+            right: 15%;
+            height: 1px;
             background: var(--text-primary);
             opacity: 0.8;
         }
         
-        .mode-toggle {
-            margin-right: 15px;
-            cursor: pointer;
-            font-size: 20px;
-            color: var(--text-muted);
-            user-select: none;
-            transition: color 0.3s;
+        
+        /* Header Controls Container */
+        .header-controls {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+            gap: 0;
         }
         
-        .mode-toggle:hover {
+        /* Filter Dropdown */
+        .filter-dropdown-container {
+            position: relative;
+            margin-right: 10px;
+        }
+        
+        .filter-dropdown-toggle {
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            padding: 6px 8px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: all 0.15s;
+            user-select: none;
+        }
+        
+        .filter-dropdown-toggle:hover {
             color: var(--text-primary);
         }
         
+        .filter-dropdown-toggle.active .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+        
+        .filter-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            min-width: 250px;
+            max-width: 300px;
+            max-height: 400px;
+            overflow-y: auto;
+            z-index: 2000;
+            display: none;
+        }
+        
+        .filter-dropdown.show {
+            display: block;
+        }
+        
+        .filter-dropdown-content {
+            padding: 8px;
+        }
+        
+        .filter-dropdown-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid var(--border-color);
+            background: var(--bg-tertiary);
+        }
+        
+        .filter-dropdown-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .filter-dropdown-close {
+            font-size: 16px;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 0 2px;
+            line-height: 1;
+        }
+        
+        .filter-dropdown-close:hover {
+            color: var(--text-primary);
+        }
+        
+        .filter-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 8px;
+            font-size: 11px;
+            color: var(--text-primary);
+            cursor: pointer;
+            border-radius: 3px;
+            transition: background-color 0.15s;
+        }
+        
+        .filter-item:hover {
+            background-color: var(--bg-tertiary);
+        }
+        
+        .filter-checkbox {
+            width: 12px;
+            height: 12px;
+            border: 2px solid var(--border-color);
+            border-radius: 2px;
+            background: var(--bg-primary);
+            transition: all 0.15s ease;
+        }
+        
+        .filter-checkbox.checked {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+        
+        .filter-label {
+            flex: 1;
+            text-transform: capitalize;
+        }
+
         /* Repository Dropdown */
         .repo-dropdown-container {
             position: relative;
-            margin-left: auto;
             margin-right: 10px;
         }
         
@@ -337,14 +603,30 @@
             position: relative;
         }
         
-        .week-tick.has-data {
-            background: var(--text-muted);
-            opacity: 0.4;
+        /* Activity-based coloring for timeline bars */
+        .week-tick.activity-very-low {
+            background: #2c5f2d;
+            opacity: 0.5;
         }
         
-        .week-tick.has-activity {
-            background: var(--text-muted);
+        .week-tick.activity-low {
+            background: #4a7c4e;
             opacity: 0.6;
+        }
+        
+        .week-tick.activity-medium {
+            background: #6fa34d;
+            opacity: 0.7;
+        }
+        
+        .week-tick.activity-high {
+            background: #97bc62;
+            opacity: 0.8;
+        }
+        
+        .week-tick.activity-very-high {
+            background: #c6e377;
+            opacity: 0.9;
         }
         
         .week-tick:hover {
@@ -379,7 +661,7 @@
             opacity: 0;
             transition: opacity 0.2s;
             margin-bottom: 4px;
-            z-index: 1000;
+            z-index: 10000;
         }
         
         .week-tick:hover .week-tick-tooltip {
@@ -511,15 +793,108 @@
             scroll-margin-top: 40px;
         }
         
+        .week-section.inactive-week {
+            margin-bottom: 8px;
+        }
+        
+        .week-section.inactive-week .week-header-main {
+            margin-bottom: 0;
+            padding: 4px 0 4px 20px;
+        }
+        
         .week-header-main {
             padding: 8px 0 12px 20px;
             margin-bottom: 16px;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             gap: 12px;
             font-family: monospace;
             background: none;
             position: relative;
+        }
+        
+        .week-header-top {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .week-activity-visual {
+            display: flex;
+            align-items: flex-end;
+            gap: 2px;
+            height: 40px;
+            padding: 8px 0;
+            position: relative;
+            cursor: help;
+        }
+        
+        .week-activity-bar {
+            flex: 1;
+            min-width: 3px;
+            max-width: 8px;
+            background: var(--text-primary);
+            border-radius: 1px;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        
+        .week-activity-bar.commit-bar {
+            background: linear-gradient(180deg, #97bc62, #4a7c4e);
+            opacity: 0.9;
+        }
+        
+        .week-activity-bar.repo-bar {
+            background: linear-gradient(180deg, #6fa34d, #2c5f2d);
+            opacity: 0.7;
+        }
+        
+        .week-activity-bar.activity-bar {
+            background: linear-gradient(180deg, #c6e377, #97bc62);
+            opacity: 0.8;
+        }
+        
+        .week-activity-bar:hover {
+            transform: scaleY(1.1);
+            opacity: 1;
+        }
+        
+        .week-activity-tooltip {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 8px 12px;
+            font-size: 11px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+            z-index: 1000;
+            margin-bottom: 8px;
+        }
+        
+        .week-activity-visual:hover .week-activity-tooltip {
+            opacity: 1;
+        }
+        
+        .tooltip-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            margin: 2px 0;
+        }
+        
+        .tooltip-label {
+            color: var(--text-muted);
+        }
+        
+        .tooltip-value {
+            color: var(--text-primary);
+            font-weight: 600;
         }
         
         .week-header-main::after {
@@ -541,6 +916,11 @@
             display: flex;
             align-items: center;
             gap: 8px;
+        }
+        
+        .week-title-main.inactive-week {
+            opacity: 0.4;
+            color: var(--text-muted);
         }
         
         .week-icon {
@@ -674,7 +1054,150 @@
             display: flex;
             position: relative;
             align-items: center;
+            justify-content: space-between;
             gap: 6px;
+        }
+
+        .content-label-text {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Activity Sparkline Styles */
+        .activity-sparkline {
+            display: flex;
+            align-items: end;
+            gap: 1px;
+            height: 12px;
+            margin-left: auto;
+            opacity: 0.6;
+            transition: opacity 0.2s ease;
+            position: relative;
+            cursor: help;
+        }
+
+        .activity-sparkline:hover {
+            opacity: 1;
+        }
+
+        /* Sparkline tooltip */
+        .sparkline-tooltip {
+            position: absolute;
+            bottom: 20px;
+            right: 0;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 10px;
+            white-space: nowrap;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(5px);
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            min-width: 200px;
+        }
+
+        .activity-sparkline:hover .sparkline-tooltip {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .sparkline-tooltip-title {
+            font-weight: bold;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            font-size: 9px;
+            letter-spacing: 1px;
+        }
+
+        .sparkline-tooltip-legend {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            margin-top: 6px;
+            padding-top: 6px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .sparkline-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .sparkline-legend-color {
+            width: 8px;
+            height: 8px;
+            border-radius: 1px;
+        }
+
+        .sparkline-legend-color.high {
+            background: #00ff88;
+        }
+
+        .sparkline-legend-color.medium {
+            background: #ffaa00;
+        }
+
+        .sparkline-legend-color.low {
+            background: #666;
+        }
+
+        .sparkline-legend-color.feature {
+            background: #ff6b6b;
+        }
+
+        .sparkline-legend-text {
+            font-size: 9px;
+            color: var(--text-muted);
+        }
+
+        .activity-bar {
+            width: 2px;
+            background: var(--text-muted);
+            transition: all 0.2s ease;
+            border-radius: 1px 1px 0 0;
+            min-height: 1px;
+        }
+
+        .activity-bar.high {
+            background: #00ff88;
+            box-shadow: 0 0 2px rgba(0, 255, 136, 0.3);
+        }
+
+        .activity-bar.medium {
+            background: #ffaa00;
+        }
+
+        .activity-bar.low {
+            background: #666;
+        }
+
+        .activity-bar.feature {
+            background: #ff6b6b;
+            position: relative;
+        }
+
+        .activity-bar.feature::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 0;
+            width: 2px;
+            height: 1px;
+            background: #ff6b6b;
+            border-radius: 50%;
+        }
+
+        /* Sparkline tooltip */
+        .activity-sparkline .activity-bar[title]:hover {
+            transform: scaleY(1.3);
+            filter: brightness(1.4);
         }
         
         .content-label::after {
@@ -708,15 +1231,45 @@
             text-decoration: underline;
         }
         
+        .commit-range,
+        .commit-link {
+            color: var(--text-muted);
+            font-size: 10px;
+            text-decoration: none;
+            opacity: 0.7;
+            margin-left: 4px;
+            display: inline-flex;
+            align-items: center;
+            vertical-align: middle;
+            transition: all 0.2s;
+        }
+        
+        .commit-range:hover,
+        .commit-link:hover {
+            opacity: 1;
+            color: var(--text-primary);
+        }
+        
+        .diff-icon {
+            width: 12px;
+            height: 12px;
+            fill: currentColor;
+        }
+        
+        code {
+            font-family: 'JetBrains Mono', 'SF Mono', 'Roboto Mono', 'Fira Code', 'Consolas', monospace;
+            font-size: inherit;
+        }
+        
         /* Special styling for internal group navigation links */
         .group-link {
             color: var(--text-primary);
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 400;
             border: 1px solid var(--border-color);
-            padding: 1px 4px;
-            border-radius: 3px;
-            font-size: 0.9em;
+            padding: 0px 2px;
+            border-radius: 1px;
+            font-size: 0.80em;
             background: var(--bg-tertiary);
         }
         
@@ -780,7 +1333,7 @@
             border-radius: 6px;
             padding: 10px;
             margin-bottom: 8px;
-            z-index: 1000;
+            z-index: 10000;
             pointer-events: none;
             opacity: 0;
             transition: opacity 0.2s ease;
@@ -807,6 +1360,35 @@
             margin-right: 10px;
             margin-bottom: 4px;
             background: var(--bg-tertiary);
+        }
+        
+        .user-tooltip-avatar[data-lazy="true"] {
+            background: linear-gradient(90deg, var(--bg-secondary) 0%, var(--bg-tertiary) 50%, var(--bg-secondary) 100%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        
+        /* Back button for repo view */
+        .back-button {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 8px 16px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 12px;
+            margin-bottom: 15px;
+            transition: all 0.2s;
+        }
+        
+        .back-button:hover {
+            background: var(--bg-tertiary);
+            border-color: var(--text-primary);
         }
         
         .user-tooltip-name {
@@ -1212,6 +1794,19 @@
             font-size: 12px;
         }
         
+        .loading-indicator {
+            text-align: center;
+            padding: 1rem;
+            color: var(--text-muted);
+            font-size: 0.8em;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        
         .error {
             color: var(--priority-color);
             background: var(--bg-tertiary);
@@ -1224,18 +1819,160 @@
             bottom: 0;
             left: 0;
             right: 0;
-            height: 20px;
+            height: 24px;
             background: var(--bg-tertiary);
             border-top: 1px solid var(--border-color);
             display: flex;
             align-items: center;
-            font-size: 10px;
+            justify-content: space-between;
+            font-size: 11px;
             color: var(--text-muted);
             padding: 0 15px;
         }
         
-        .status-info {
-            margin-left: auto;
+        .status-left {
+            display: flex;
+            align-items: center;
+        }
+        
+        .status-left a {
+            color: var(--link-color);
+            text-decoration: none;
+            margin: 0 2px;
+        }
+        
+        .status-left a:hover {
+            text-decoration: underline;
+        }
+        
+        .status-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .status-action {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            color: var(--text-muted);
+            transition: color 0.3s;
+        }
+        
+        .status-action:hover {
+            color: var(--text-primary);
+        }
+        
+        .mode-action {
+            font-size: 16px;
+            padding-right: 8px;
+        }
+        
+        /* Feeds Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        
+        .modal-content {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            padding: 0;
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--border-color);
+            background: var(--bg-tertiary);
+        }
+        
+        .modal-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .modal-close {
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 24px;
+            line-height: 1;
+        }
+        
+        .modal-close:hover {
+            color: var(--text-primary);
+        }
+        
+        .modal-body {
+            padding: 20px;
+        }
+        
+        .feed-item-link {
+            display: block;
+            text-decoration: none;
+            margin-bottom: 10px;
+        }
+        
+        .feed-item-link:last-child {
+            margin-bottom: 0;
+        }
+        
+        .feed-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            transition: background 0.2s;
+        }
+        
+        .feed-item-link:hover .feed-item {
+            background: var(--bg-primary);
+            border-color: var(--text-primary);
+        }
+        
+        .feed-info {
+            flex: 1;
+        }
+        
+        .feed-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+        
+        .feed-desc {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+        
+        .feed-icon {
+            padding: 8px;
+            color: var(--text-muted);
+            transition: color 0.2s;
+        }
+        
+        .feed-item-link:hover .feed-icon {
+            color: var(--text-primary);
         }
         
         /* Tablet breakpoint - single column layout */
@@ -1250,7 +1987,29 @@
             }
         }
         
-        /* Mobile breakpoint */
+        /* ===== RESPONSIVE BREAKPOINTS ===== */
+        
+        /* Tablet (768px - 1024px): Two-row layout */
+        @media screen and (max-width: 1024px) and (min-width: 769px) {
+            .header-secondary {
+                display: flex;
+            }
+            
+            .header-primary .header-groups {
+                display: none;
+            }
+            
+            .sidebar {
+                width: 140px;
+            }
+            
+            .week-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+        
+        /* Mobile (<768px): Hamburger menu */
         @media screen and (max-width: 768px) {
             body {
                 overflow: auto;
@@ -1261,54 +2020,108 @@
                 height: auto;
             }
             
-            /* Make header mobile-friendly with two rows */
             .header {
                 position: sticky;
-                height: auto;
-                padding: 8px 5px;
-                flex-direction: column;
-                align-items: stretch;
             }
             
-            /* First row: title and mode toggle */
-            .header-row-1 {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                margin-bottom: 8px;
+            /* Show mobile menu elements */
+            .mobile-menu-toggle {
+                display: block;
             }
             
-            /* Second row: groups and repo button */
-            .header-row-2 {
-                display: flex;
-                align-items: center;
-                gap: 8px;
+            .mobile-menu {
+                display: block;
             }
             
-            .header-title {
-                font-size: 14px;
-                margin-left: 10px;
-                flex-shrink: 0;
-            }
-            
-            .header-separator {
+            /* Hide desktop elements */
+            .header-groups,
+            .header-controls,
+            .header-icons {
                 display: none;
             }
             
-            .header-groups {
-                display: flex;
-                flex-wrap: nowrap;
-                overflow-x: auto;
-                flex: 1;
-                gap: 4px;
-                -webkit-overflow-scrolling: touch;
+            /* Mobile-specific group tab styling */
+            .mobile-menu .group-tab {
+                display: block;
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 5px;
+                text-align: left;
+                background: var(--bg-tertiary);
+                border-radius: 4px;
             }
             
-            .group-tab {
-                flex-shrink: 0;
-                font-size: 11px;
-                padding: 6px 10px;
-                white-space: nowrap;
+            .mobile-menu .group-tab.active {
+                background: var(--eco-active-bg);
+            }
+            
+            /* Mobile filter and repo buttons */
+            .mobile-filter-btn,
+            .mobile-repo-btn {
+                width: 100%;
+                padding: 10px;
+                background: var(--bg-tertiary);
+                border: 1px solid var(--border-color);
+                border-radius: 4px;
+                color: var(--text-primary);
+                cursor: pointer;
+                margin-bottom: 10px;
+                text-align: left;
+            }
+            
+            /* Mobile modal for filter dropdown */
+            .filter-dropdown {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: var(--bg-primary);
+                border: none;
+                border-radius: 0;
+                box-shadow: none;
+                max-width: none;
+                max-height: none;
+                overflow-y: auto;
+                z-index: 9999;
+                display: none;
+                flex-direction: column;
+            }
+            
+            .filter-dropdown.show {
+                display: flex;
+            }
+            
+            .filter-dropdown-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 15px;
+                border-bottom: 1px solid var(--border-color);
+                background: var(--bg-secondary);
+                position: sticky;
+                top: 0;
+                z-index: 10;
+            }
+            
+            .filter-dropdown-title {
+                font-size: 16px;
+                font-weight: 600;
+                color: var(--text-primary);
+            }
+            
+            .filter-dropdown-close {
+                font-size: 24px;
+                color: var(--text-muted);
+                cursor: pointer;
+                padding: 0 5px;
+                line-height: 1;
+            }
+            
+            .filter-dropdown-content {
+                flex: 1;
+                overflow-y: auto;
+                padding: 15px;
             }
             
             .repo-dropdown-container {
@@ -1377,11 +2190,6 @@
                 padding: 15px;
             }
             
-            .mode-toggle {
-                margin-right: 10px;
-                font-size: 18px;
-                flex-shrink: 0;
-            }
             
             /* Hide sidebar on mobile */
             .sidebar {
@@ -1445,8 +2253,12 @@
                 font-size: 12px;
             }
             
-            /* Hide status bar on mobile */
+            /* Show status bar on mobile (override desktop hiding) but hide the controls since they're now in header */
             .status-bar {
+                display: flex;
+            }
+            
+            .status-right {
                 display: none;
             }
         }
@@ -1468,34 +2280,126 @@
     </style>
 </head>
 <body>
+    <!-- Redesigned Responsive Header -->
     <div class="header">
-        <div class="header-row-1">
-            <div class="header-title">OCAML.SYS</div>
-            <div class="mode-toggle" onclick="toggleTheme()">
-                <span id="mode-icon">◐</span>
+        <div class="header-inner">
+            <!-- Primary header row (always visible) -->
+            <div class="header-primary">
+                <div class="header-brand">
+                    <div class="header-title">OCAML.SYS</div>
+                    <div id="repo-view-indicator" class="repo-view-indicator" style="display: none;"></div>
+                </div>
+                
+                <!-- Desktop/Tablet: Group tabs -->
+                <div class="header-groups" id="header-groups">
+                    <div class="group-tab active" data-group="all">[ALL]</div>
+                    <!-- Groups will be dynamically added here -->
+                </div>
+                
+                <!-- Desktop/Tablet: Controls -->
+                <div class="header-controls">
+                    <div class="filter-dropdown-container">
+                        <div class="filter-dropdown-toggle" onclick="toggleFilterDropdown()">
+                            <span>FILTER</span>
+                            <span class="dropdown-arrow">▼</span>
+                        </div>
+                        <div class="filter-dropdown" id="filter-dropdown">
+                            <div class="filter-dropdown-header">
+                                <div class="filter-dropdown-title">Show/Hide Sections</div>
+                                <div class="filter-dropdown-close" onclick="closeFilterDropdown()">×</div>
+                            </div>
+                            <div class="filter-dropdown-content" id="filter-dropdown-content">
+                                <!-- Filter checkboxes will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="repo-dropdown-container">
+                        <div class="repo-dropdown-toggle" onclick="toggleRepoDropdown()">
+                            <span>REPOS</span>
+                            <span class="dropdown-arrow">▼</span>
+                        </div>
+                        <div class="repo-dropdown" id="repo-dropdown">
+                            <div class="repo-dropdown-header">
+                                <div class="repo-dropdown-title">Select Repository</div>
+                                <div class="repo-dropdown-close" onclick="closeRepoDropdown()">×</div>
+                            </div>
+                            <div class="repo-dropdown-content" id="repo-dropdown-content">
+                                <!-- Repository list will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Icons (RSS & Theme) -->
+                <div class="header-icons">
+                    <div class="status-action feed-action" onclick="showFeeds()" title="RSS/Atom Feeds">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 11a9 9 0 0 1 9 9"/>
+                            <path d="M4 4a16 16 0 0 1 16 16"/>
+                            <circle cx="5" cy="19" r="1"/>
+                        </svg>
+                    </div>
+                    <div class="status-action mode-action" onclick="toggleTheme()" title="Toggle Theme">
+                        <span id="mode-icon-top">◐</span>
+                    </div>
+                </div>
+                
+                <!-- Mobile: Menu toggle -->
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <line x1="3" y1="12" x2="21" y2="12"/>
+                        <line x1="3" y1="18" x2="21" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Secondary header row (tablet only) -->
+            <div class="header-secondary" id="header-secondary">
+                <div class="header-groups" id="header-groups-secondary">
+                    <!-- Groups will be cloned here for tablet view -->
+                </div>
             </div>
         </div>
-        <div class="header-row-2">
-            <div class="header-groups">
-                <div class="group-tab active" data-group="all">[ALL]</div>
-                <div class="group-tab" data-group="core">[CORE]</div>
-                <div class="group-tab" data-group="ecosystem">[ECOSYSTEM]</div>
-                <div class="group-tab" data-group="tools">[TOOLS]</div>
-                <div class="group-tab" data-group="oxcaml">[OXCAML]</div>
-            </div>
-            <div class="header-separator">::</div>
-            <div class="repo-dropdown-container">
-                <div class="repo-dropdown-toggle" onclick="toggleRepoDropdown()">
-                    <span>REPOS</span>
-                    <span class="dropdown-arrow">▼</span>
+    </div>
+    
+    <!-- Mobile slide-out menu -->
+    <div class="mobile-menu-overlay" onclick="closeMobileMenu()"></div>
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <div class="header-title">MENU</div>
+            <button class="mobile-menu-close" onclick="closeMobileMenu()">×</button>
+        </div>
+        <div class="mobile-menu-content">
+            <div class="mobile-menu-section">
+                <div class="mobile-menu-label">Groups</div>
+                <div id="mobile-groups">
+                    <!-- Groups will be cloned here -->
                 </div>
-                <div class="repo-dropdown" id="repo-dropdown">
-                    <div class="repo-dropdown-header">
-                        <div class="repo-dropdown-title">Select Repository</div>
-                        <div class="repo-dropdown-close" onclick="closeRepoDropdown()">×</div>
+            </div>
+            <div class="mobile-menu-section">
+                <button class="mobile-filter-btn" onclick="toggleFilterDropdown(); closeMobileMenu();">
+                    FILTER SECTIONS
+                </button>
+                <button class="mobile-repo-btn" onclick="toggleRepoDropdown(); closeMobileMenu();">
+                    SELECT REPOSITORY
+                </button>
+            </div>
+            <div class="mobile-menu-section">
+                <div class="mobile-menu-label">Options</div>
+                <div style="display: flex; gap: 15px; padding: 10px 0;">
+                    <div class="status-action feed-action" onclick="showFeeds()" title="RSS/Atom Feeds">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 11a9 9 0 0 1 9 9"/>
+                            <path d="M4 4a16 16 0 0 1 16 16"/>
+                            <circle cx="5" cy="19" r="1"/>
+                        </svg>
+                        <span style="margin-left: 8px;">RSS Feeds</span>
                     </div>
-                    <div class="repo-dropdown-content" id="repo-dropdown-content">
-                        <!-- Repository list will be populated by JavaScript -->
+                    <div class="status-action mode-action" onclick="toggleTheme()" title="Toggle Theme">
+                        <span id="mode-icon-mobile">◐</span>
+                        <span style="margin-left: 8px;">Theme</span>
                     </div>
                 </div>
             </div>
@@ -1520,17 +2424,30 @@
     </div>
     
     <div class="status-bar">
-        <span>STATUS: ONLINE</span>
-        <div class="status-info">
-            <span id="status-text">Ready</span>
+        <div class="status-left">
+            Generated by <a href="https://github.com/avsm/thicket" target="_blank">Thicket</a> and Claude, by <a href="https://anil.recoil.org" target="_blank">Anil Madhavapeddy</a>
+        </div>
+        <div class="status-right">
+            <div class="status-action feed-action" onclick="showFeeds()" title="RSS/Atom Feeds">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 11a9 9 0 0 1 9 9"/>
+                    <path d="M4 4a16 16 0 0 1 16 16"/>
+                    <circle cx="5" cy="19" r="1"/>
+                </svg>
+            </div>
+            <div class="status-action mode-action" onclick="toggleTheme()" title="Toggle Theme">
+                <span id="mode-icon-bottom">◐</span>
+            </div>
         </div>
     </div>
 
     <script>
         let indexData = null;
         let groupsData = null;
-        let allWeekData = {};
+        let allWeekData = {}; // Cache for loaded week data
+        let loadingWeeks = {}; // Track which weeks are currently being loaded
         let usersData = {};
+        let activityData = null;
         let currentEcosystem = 'all';
         let currentWeekKey = null;
         let currentYear = new Date().getFullYear();
@@ -1545,15 +2462,18 @@
         
         function setTheme(theme) {
             const root = document.documentElement;
-            const icon = document.getElementById('mode-icon');
+            const iconBottom = document.getElementById('mode-icon-bottom');
+            const iconTop = document.getElementById('mode-icon-top');
             
             if (theme === 'light') {
                 root.classList.add('light-mode');
-                icon.textContent = '☀';
+                if (iconBottom) iconBottom.textContent = '☀';
+                if (iconTop) iconTop.textContent = '☀';
                 localStorage.setItem('theme', 'light');
             } else {
                 root.classList.remove('light-mode');
-                icon.textContent = '☾';
+                if (iconBottom) iconBottom.textContent = '☾';
+                if (iconTop) iconTop.textContent = '☾';
                 localStorage.setItem('theme', 'dark');
             }
         }
@@ -1561,6 +2481,23 @@
         function toggleTheme() {
             const isLight = document.documentElement.classList.contains('light-mode');
             setTheme(isLight ? 'dark' : 'light');
+        }
+        
+        // Mobile menu functions
+        function toggleMobileMenu() {
+            const menu = document.querySelector('.mobile-menu');
+            const overlay = document.querySelector('.mobile-menu-overlay');
+            menu.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+        }
+        
+        function closeMobileMenu() {
+            const menu = document.querySelector('.mobile-menu');
+            const overlay = document.querySelector('.mobile-menu-overlay');
+            menu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
         }
         
         // Initialize theme on page load
@@ -1579,12 +2516,37 @@
             }
         }
         
+        function getCommitRangeLink(repo) {
+            if (!repo.start_commit || !repo.end_commit) {
+                return '';
+            }
+            
+            // Get short hashes (first 7 characters)
+            const startHash = repo.start_commit.substring(0, 7);
+            const endHash = repo.end_commit.substring(0, 7);
+            
+            // Check if start and end are the same (single commit)
+            if (repo.start_commit === repo.end_commit) {
+                const commitUrl = `https://github.com/${repo.repo_full}/commit/${repo.start_commit}`;
+                return ` <a href="${commitUrl}" target="_blank" class="commit-link" title="View commit ${startHash}">${getDiffIcon()}</a>`;
+            } else {
+                // Multiple commits - use compare URL
+                const compareUrl = `https://github.com/${repo.repo_full}/compare/${startHash}..${endHash}`;
+                return ` <a href="${compareUrl}" target="_blank" class="commit-range" title="View commits ${startHash}..${endHash}">${getDiffIcon()}</a>`;
+            }
+        }
+        
+        function getDiffIcon() {
+            return `<svg class="diff-icon" viewBox="0 0 16 16">
+                <path d="M1.5 1.75V13.5h13V1.75H1.5zM.75 1.5c0-.966.784-1.75 1.75-1.75h11c.966 0 1.75.784 1.75 1.75v12c0 .966-.784 1.75-1.75 1.75h-11A1.75 1.75 0 0 1 .75 13.5V1.5zM8 4a.75.75 0 0 1 .75.75v6.5a.75.75 0 0 1-1.5 0V4.75A.75.75 0 0 1 8 4zm-3 1.5c.414 0 .75.336.75.75v3.5c0 .414-.336.75-.75.75s-.75-.336-.75-.75v-3.5c0-.414.336-.75.75-.75zm6 0c.414 0 .75.336.75.75v3.5c0 .414-.336.75-.75.75s-.75-.336-.75-.75v-3.5c0-.414.336-.75.75-.75z" fill="currentColor"/>
+            </svg>`;
+        }
+        
         function getSectionIcon(label) {
             const icons = {
-                'overview': '',
+                'new features': '<svg viewBox="0 0 24 24"><path d="M12 2 L15.5 8.5 L22 9 L17 14 L18.5 20.5 L12 17 L5.5 20.5 L7 14 L2 9 L8.5 8.5 Z" stroke-width="1.5" fill="none"/><circle cx="12" cy="12" r="3"/></svg>',
                 'cross-repo work': '<svg viewBox="0 0 24 24"><path d="M4 6 L4 18 L10 18 M14 6 L20 6 L20 18 L14 18"/><path d="M10 12 L14 12 M11 9 L13 12 L11 15"/></svg>',
                 'key projects': '<svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="5"/><rect x="5" y="11" width="14" height="5"/><rect x="5" y="18" width="14" height="2"/></svg>',
-                'priorities': '<svg viewBox="0 0 24 24"><path d="M12 2 L12 22 M7 6 L12 2 L17 6"/></svg>',
                 'discussions': '<svg viewBox="0 0 24 24"><path d="M21 11 C21 7 17 4 12 4 C7 4 3 7 3 11 C3 14 5 16 8 17 L8 20 L12 17 C17 17 21 14 21 11 Z"/></svg>',
                 'emerging trends': '<svg viewBox="0 0 24 24"><path d="M4 20 L8 16 L12 18 L16 10 L20 14"/><path d="M16 10 L20 10 L20 14"/></svg>',
                 'good first issues': '<svg viewBox="0 0 24 24"><path d="M12 2 L15 9 L22 9 L17 14 L19 21 L12 17 L5 21 L7 14 L2 9 L9 9 Z"/></svg>',
@@ -1598,6 +2560,9 @@
         function renderMarkdown(text) {
             if (!text) return '';
             
+            // Handle inline code blocks with backticks
+            text = text.replace(/`([^`]+)`/g, '<code>$1</code>');
+            
             // Substitute __RUMINANT:groupname__ tokens with clickable links
             text = text.replace(/__RUMINANT:([^_]+)__/g, function(match, groupName) {
                 const groupDisplayName = {
@@ -1607,7 +2572,7 @@
                     'oxcaml': 'oxcaml'
                 }[groupName] || groupName;
                 
-                return `<a href="javascript:void(0)" onclick="switchToGroup('${groupName}')" class="group-link" data-group="${groupName}" title="View detailed ${groupDisplayName} group activity">${groupDisplayName}</a>`;
+                return `<a href="javascript:void(0)" onclick="handleGroupClick('${groupName}')" class="group-link" data-group="${groupName}" title="View detailed ${groupDisplayName} group activity">${groupDisplayName}</a>`;
             });
             
             // Convert GitHub issue/PR links with special styling
@@ -1623,8 +2588,8 @@
                 return `<a href="${url}" target="_blank" class="issue-link issue-full">${linkText}</a>`;
             });
             
-            // Handle simple issue number format [#123](url)
-            text = text.replace(/\[#(\d+)\]\((https:\/\/github\.com\/([^\/]+)\/([^\/]+)\/issues\/\d+[^)]*)\)/g, 
+            // Handle simple issue/PR number format [#123](url) for both /issues/ and /pull/ URLs
+            text = text.replace(/\[#(\d+)\]\((https:\/\/github\.com\/([^\/]+)\/([^\/]+)\/(issues|pull)\/\d+[^)]*)\)/g, 
                 '<a href="$2" target="_blank" class="issue-link issue-simple" title="$3/$4#$1">#$1</a>');
             
             // Detect user mentions in regular links
@@ -1642,9 +2607,9 @@
                 // Build the enhanced tooltip HTML
                 let tooltipHtml = '<div class="user-tooltip"><div class="user-tooltip-content">';
                 
-                // Add avatar if available
+                // Add avatar placeholder - will load on hover
                 if (userData.avatar_url) {
-                    tooltipHtml += `<img src="${userData.avatar_url}" alt="${username}" class="user-tooltip-avatar">`;
+                    tooltipHtml += `<img data-src="${userData.avatar_url}" alt="${username}" class="user-tooltip-avatar" data-lazy="true">`;
                 } else {
                     tooltipHtml += `<div class="user-tooltip-avatar"></div>`;
                 }
@@ -1685,9 +2650,9 @@
                     // Build the enhanced tooltip HTML
                     let tooltipHtml = '<div class="user-tooltip"><div class="user-tooltip-content">';
                     
-                    // Add avatar if available
+                    // Add avatar placeholder - will load on hover
                     if (userData.avatar_url) {
-                        tooltipHtml += `<img src="${userData.avatar_url}" alt="${username}" class="user-tooltip-avatar">`;
+                        tooltipHtml += `<img data-src="${userData.avatar_url}" alt="${username}" class="user-tooltip-avatar" data-lazy="true">`;
                     } else {
                         tooltipHtml += `<div class="user-tooltip-avatar"></div>`;
                     }
@@ -1714,9 +2679,63 @@
                     
                     tooltipHtml += '</div></div>';
                     
-                    return `<span class="user-link-wrapper" style="position: relative; display: inline-block;"><a href="${url}" target="_blank" class="user-link">${linkText}</a>${tooltipHtml}</span>`;
+                    // If linkText is just @username and we have full name data, use the full name
+                    let displayText = linkText;
+                    if (linkText === `@${username}` && userData.name) {
+                        displayText = userData.name;
+                    }
+                    
+                    return `<span class="user-link-wrapper" style="position: relative; display: inline-block;"><a href="${url}" target="_blank" class="user-link">${displayText}</a>${tooltipHtml}</span>`;
                 }
                 return `<a href="${url}" target="_blank">${linkText}</a>`;
+            });
+            
+            // Resolve unresolved GitHub user links (already in HTML format)
+            // Handle cases like <a href="https://github.com/username">@username</a>
+            text = text.replace(/<a href="https:\/\/github\.com\/([^"]+)"[^>]*>@([^<]+)<\/a>/g, function(match, urlUsername, linkUsername) {
+                // Use the username from URL as it's more reliable
+                const username = urlUsername;
+                const userData = usersData[username] || {};
+                
+                // If we have full name data, use it instead of @username
+                let displayText = `@${linkUsername}`;
+                if (userData.name) {
+                    displayText = userData.name;
+                }
+                
+                // Build the enhanced tooltip HTML
+                let tooltipHtml = '<div class="user-tooltip"><div class="user-tooltip-content">';
+                
+                // Add avatar placeholder - will load on hover
+                if (userData.avatar_url) {
+                    tooltipHtml += `<img data-src="${userData.avatar_url}" alt="${username}" class="user-tooltip-avatar" data-lazy="true">`;
+                } else {
+                    tooltipHtml += `<div class="user-tooltip-avatar"></div>`;
+                }
+                
+                // Name and username
+                if (userData.name) {
+                    tooltipHtml += `<div class="user-tooltip-name">${userData.name}</div>`;
+                    tooltipHtml += `<div class="user-tooltip-username">@${username}</div>`;
+                } else {
+                    tooltipHtml += `<div class="user-tooltip-name">@${username}</div>`;
+                }
+                
+                // Additional details
+                let details = [];
+                if (userData.company) {
+                    details.push(userData.company);
+                }
+                if (userData.location) {
+                    details.push(userData.location);
+                }
+                if (details.length > 0) {
+                    tooltipHtml += `<div class="user-tooltip-details">${details.join(' • ')}</div>`;
+                }
+                
+                tooltipHtml += '</div></div>';
+                
+                return `<span class="user-link-wrapper" style="position: relative; display: inline-block;"><a href="https://github.com/${username}" target="_blank" class="user-link">${displayText}</a>${tooltipHtml}</span>`;
             });
             
             text = text.replace(/\*\*([^*]+)\*\*/g, '<span class="achievement">$1</span>');
@@ -1783,42 +2802,55 @@
             return tempDiv.innerHTML;
         }
         
-        function switchToGroup(groupName) {
-            // Update active tab
-            document.querySelectorAll('.group-tab').forEach(t => {
-                t.classList.remove('active');
-            });
-            const activeTab = document.querySelector(`.group-tab[data-group="${groupName}"]`);
-            if (activeTab) {
-                activeTab.classList.add('active');
-                
-                // Switch ecosystem and refresh content
-                currentEcosystem = groupName;
-                populateTimeline();
-                displayAllWeeks();
-                
-                // Update URL
-                updateURL();
-            }
+        // Wrapper function for onclick handlers that need async calls
+        function handleGroupClick(groupName) {
+            switchToGroup(groupName).catch(console.error);
+        }
+        
+        // Alias for backward compatibility
+        async function switchToGroup(groupName) {
+            return switchGroup(groupName);
         }
         
         // URL management functions
         function updateURL(replaceOnly = false) {
             const params = new URLSearchParams();
-            if (currentEcosystem && currentEcosystem !== 'all') {
-                params.set('group', currentEcosystem);
+            
+            // Handle repository view
+            if (currentRepoView) {
+                params.set('repo', currentRepoView);
+                if (currentWeekKey) {
+                    params.set('week', currentWeekKey);
+                }
+            } else {
+                // Handle regular timeline view
+                if (currentEcosystem && currentEcosystem !== 'all') {
+                    params.set('group', currentEcosystem);
+                }
+                if (currentWeekKey) {
+                    params.set('week', currentWeekKey);
+                }
             }
-            if (currentWeekKey) {
-                params.set('week', currentWeekKey);
+            
+            // Preserve filter state
+            const hiddenFilters = Object.keys(sectionFilters).filter(key => !sectionFilters[key]);
+            if (hiddenFilters.length > 0) {
+                params.set('hide', hiddenFilters.join(','));
             }
             
             const newURL = params.toString() ? `?${params.toString()}` : window.location.pathname;
             
             // Use replaceState for scroll updates to avoid flooding history
             if (replaceOnly) {
-                window.history.replaceState({ ecosystem: currentEcosystem, week: currentWeekKey }, '', newURL);
+                const state = currentRepoView ? 
+                    { repo: currentRepoView, week: currentWeekKey } : 
+                    { ecosystem: currentEcosystem, week: currentWeekKey };
+                window.history.replaceState(state, '', newURL);
             } else {
-                window.history.pushState({ ecosystem: currentEcosystem, week: currentWeekKey }, '', newURL);
+                const state = currentRepoView ? 
+                    { repo: currentRepoView, week: currentWeekKey } : 
+                    { ecosystem: currentEcosystem, week: currentWeekKey };
+                window.history.pushState(state, '', newURL);
             }
         }
         
@@ -1830,7 +2862,7 @@
             return { ecosystem, week };
         }
         
-        function restoreStateFromURL() {
+        async function restoreStateFromURL() {
             const { ecosystem, week } = parseURL();
             
             // Set the ecosystem
@@ -1861,7 +2893,7 @@
             
             // Refresh the display
             populateTimeline();
-            displayAllWeeks();
+            await displayAllWeeks();
         }
         
         // Handle browser back/forward buttons
@@ -1869,7 +2901,7 @@
             if (event.state) {
                 currentEcosystem = event.state.ecosystem || 'all';
                 currentWeekKey = event.state.week || null;
-                restoreStateFromURL();
+                restoreStateFromURL().catch(console.error);
             }
         });
         
@@ -1894,31 +2926,199 @@
                     usersData = {};
                 }
                 
-                await loadAllWeekData();
-                initInterface();
+                // Dynamically generate group tabs and feed links
+                generateDynamicGroups();
+                generateDynamicFeeds();
+                
+                // Remove loadAllWeekData() - we'll lazy load instead
+                await initInterface();
                 updateStatus('FEED ACTIVE');
             } catch (error) {
                 showError('SYSTEM ERROR: ' + error.message);
             }
         }
         
-        async function loadAllWeekData() {
-            updateStatus('LOADING WEEK DATA...');
-            const weekPromises = indexData.weeks.map(async week => {
-                try {
-                    const response = await fetch(`weeks/${week.week_key}.json`);
-                    if (response.ok) {
-                        allWeekData[week.week_key] = await response.json();
-                    }
-                } catch (error) {
-                    console.warn(`Failed to load week ${week.week_key}:`, error);
-                }
-            });
+        async function loadWeekData(weekKey) {
+            // Return cached data if already loaded
+            if (allWeekData[weekKey]) {
+                return allWeekData[weekKey];
+            }
             
-            await Promise.all(weekPromises);
+            // Return existing promise if already loading
+            if (loadingWeeks[weekKey]) {
+                return await loadingWeeks[weekKey];
+            }
+            
+            // Start loading and cache the promise
+            loadingWeeks[weekKey] = (async () => {
+                try {
+                    const response = await fetch(`weeks/${weekKey}.json`);
+                    if (response.ok) {
+                        const weekData = await response.json();
+                        allWeekData[weekKey] = weekData;
+                        return weekData;
+                    }
+                    return null;
+                } catch (error) {
+                    console.warn(`Failed to load week ${weekKey}:`, error);
+                    return null;
+                } finally {
+                    // Clean up loading promise
+                    delete loadingWeeks[weekKey];
+                }
+            })();
+            
+            return await loadingWeeks[weekKey];
         }
         
-        function initInterface() {
+        async function loadActivityData() {
+            if (activityData) return activityData;
+            
+            try {
+                const response = await fetch('activity_stats.json');
+                if (!response.ok) {
+                    console.warn('Activity stats not available');
+                    return null;
+                }
+                activityData = await response.json();
+                return activityData;
+            } catch (error) {
+                console.warn('Failed to load activity stats:', error);
+                return null;
+            }
+        }
+        
+        function generateActivitySparkline(sectionType = 'all', context = {}) {
+            if (!activityData || !activityData.sparkline_data) {
+                return '';
+            }
+            
+            const data = activityData.sparkline_data;
+            const maxActivity = activityData.max_activity;
+            const avgActivity = activityData.avg_activity;
+            
+            // Determine which data to show based on context
+            let recentData;
+            let tooltipTitle = 'Activity Trend';
+            
+            if (context.weekKey) {
+                // Show data centered around the specific week
+                const weekIndex = data.findIndex(w => w.week_key === context.weekKey);
+                if (weekIndex >= 0) {
+                    const startIdx = Math.max(0, weekIndex - 10);
+                    const endIdx = Math.min(data.length, weekIndex + 10);
+                    recentData = data.slice(startIdx, endIdx);
+                    tooltipTitle = `Activity around week ${context.weekKey}`;
+                } else {
+                    recentData = data.slice(-20);
+                }
+            } else if (context.repo) {
+                // For repo view, still show overall activity but highlight weeks where repo was active
+                // This would require repo-specific data which we'd need to load
+                recentData = data.slice(-20);
+                tooltipTitle = `Overall ecosystem activity (repo: ${context.repo})`;
+            } else {
+                // Default: show most recent 20 weeks
+                recentData = data.slice(-20);
+            }
+            
+            let bars = '';
+            let highCount = 0;
+            let mediumCount = 0;
+            let lowCount = 0;
+            let featureCount = 0;
+            
+            recentData.forEach((week, index) => {
+                const height = Math.max(1, Math.round((week.activity_level / maxActivity) * 12));
+                let className = 'activity-bar';
+                
+                // Classify activity level
+                if (week.activity_level > avgActivity * 1.5) {
+                    className += ' high';
+                    highCount++;
+                } else if (week.activity_level > avgActivity * 0.5) {
+                    className += ' medium';
+                    mediumCount++;
+                } else {
+                    className += ' low';
+                    lowCount++;
+                }
+                
+                // Mark weeks with features
+                if (week.has_features) {
+                    className += ' feature';
+                    featureCount++;
+                }
+                
+                const tooltip = `${week.week_key}: ${week.activity_level} activity points`;
+                
+                bars += `<div class="${className}" style="height: ${height}px;" title="${tooltip}"></div>`;
+            });
+            
+            // Create the tooltip with legend
+            const tooltip = `
+                <div class="sparkline-tooltip">
+                    <div class="sparkline-tooltip-title">${tooltipTitle} (${recentData.length} weeks)</div>
+                    <div style="font-size: 9px; color: var(--text-muted); margin-bottom: 4px;">
+                        Each bar = 1 week of activity<br>
+                        Height = activity level (${activityData.min_activity}-${maxActivity} points)<br>
+                        Average: ${Math.round(avgActivity)} points/week
+                    </div>
+                    <div class="sparkline-tooltip-legend">
+                        <div class="sparkline-legend-item">
+                            <div class="sparkline-legend-color high"></div>
+                            <div class="sparkline-legend-text">High activity (>${Math.round(avgActivity * 1.5)} pts) - ${highCount} weeks</div>
+                        </div>
+                        <div class="sparkline-legend-item">
+                            <div class="sparkline-legend-color medium"></div>
+                            <div class="sparkline-legend-text">Medium activity (${Math.round(avgActivity * 0.5)}-${Math.round(avgActivity * 1.5)} pts) - ${mediumCount} weeks</div>
+                        </div>
+                        <div class="sparkline-legend-item">
+                            <div class="sparkline-legend-color low"></div>
+                            <div class="sparkline-legend-text">Low activity (<${Math.round(avgActivity * 0.5)} pts) - ${lowCount} weeks</div>
+                        </div>
+                        ${featureCount > 0 ? `
+                        <div class="sparkline-legend-item">
+                            <div class="sparkline-legend-color feature"></div>
+                            <div class="sparkline-legend-text">Has new features - ${featureCount} weeks</div>
+                        </div>` : ''}
+                    </div>
+                </div>
+            `;
+            
+            return `<div class="activity-sparkline">${bars}${tooltip}</div>`;
+        }
+
+        function generateContentLabel(iconType, labelText, sectionType = 'all', context = {}) {
+            // Removed sparkline from section headers
+            return `
+                <div class="content-label">
+                    <div class="content-label-text">
+                        ${getSectionIcon(iconType)}${labelText}
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Helper to get current context
+        function getCurrentContext() {
+            const context = {};
+            
+            // Check if we're in a specific week view
+            const weekElement = document.querySelector('.week-section.active');
+            if (weekElement) {
+                context.weekKey = weekElement.dataset.weekKey;
+            }
+            
+            // Check if we're in repo view
+            if (currentView === 'repo' && currentRepo) {
+                context.repo = currentRepo;
+            }
+            
+            return context;
+        }
+        
+        async function initInterface() {
             // Restore state from URL first
             const { ecosystem, week } = parseURL();
             if (ecosystem) {
@@ -1936,13 +3136,22 @@
                 currentWeekKey = week;
             }
             
+            // Load filter state from URL
+            loadFiltersFromURL();
+            
+            // Load activity data
+            await loadActivityData();
+            
             populateTimeline();
             setupGroupTabs();
             setupScrollHandler();
             
             document.getElementById('loading').style.display = 'none';
             
-            displayAllWeeks();
+            await displayAllWeeks();
+            
+            // Handle URL parameters (including repo parameter)
+            handleUrlParameters();
             
             // Scroll to week if specified in URL
             if (currentWeekKey) {
@@ -2005,12 +3214,12 @@
             const prevBtn = document.createElement('button');
             prevBtn.className = 'year-nav-btn';
             prevBtn.innerHTML = '‹';
-            prevBtn.onclick = () => {
+            prevBtn.onclick = async () => {
                 const currentIndex = yearsArray.indexOf(currentYear);
                 if (currentIndex > 0) {
                     currentYear = yearsArray[currentIndex - 1];
                     populateTimeline();
-                    displayAllWeeks();
+                    await displayAllWeeks();
                 }
             };
             // Disable if at first year
@@ -2029,12 +3238,12 @@
             const nextBtn = document.createElement('button');
             nextBtn.className = 'year-nav-btn';
             nextBtn.innerHTML = '›';
-            nextBtn.onclick = () => {
+            nextBtn.onclick = async () => {
                 const currentIndex = yearsArray.indexOf(currentYear);
                 if (currentIndex < yearsArray.length - 1) {
                     currentYear = yearsArray[currentIndex + 1];
                     populateTimeline();
-                    displayAllWeeks();
+                    await displayAllWeeks();
                 }
             };
             // Disable if at last year
@@ -2074,30 +3283,55 @@
                 });
             }
             
-            // Create tick for each week
+            // Create tick for each week with activity coloring
             allWeeksInYear.forEach(weekNum => {
                 const tick = document.createElement('div');
                 tick.className = 'week-tick';
                 tick.dataset.week = weekNum;
                 
-                if (weeksWithData.has(weekNum)) {
-                    tick.classList.add('has-data');
-                    if (weeksWithActivity.has(weekNum)) {
-                        tick.classList.add('has-activity');
+                // Find week data for activity level
+                const weekKey = `${currentYear}-${weekNum}`;
+                const weekInfo = indexData.weeks.find(w => w.week_key === weekKey);
+                
+                if (weekInfo && (weekInfo.has_weekly_summary || weekInfo.groups.length > 0)) {
+                    // Apply activity-based coloring
+                    const activityLevel = weekInfo.activity_level || 0;
+                    if (activityLevel >= 180) {
+                        tick.classList.add('activity-very-high');
+                    } else if (activityLevel >= 150) {
+                        tick.classList.add('activity-high');
+                    } else if (activityLevel >= 80) {
+                        tick.classList.add('activity-medium');
+                    } else if (activityLevel >= 40) {
+                        tick.classList.add('activity-low');
+                    } else {
+                        tick.classList.add('activity-very-low');
                     }
                     
                     // Make clickable
                     tick.onclick = () => {
-                        const weekKey = `${currentYear}-${weekNum}`;
                         scrollToWeek(weekKey);
                     };
+                    
+                    // Enhanced tooltip with activity info
+                    const tooltip = document.createElement('div');
+                    tooltip.className = 'week-tick-tooltip';
+                    const commitCount = weekInfo.stats?.total_commits || 0;
+                    const repoCount = weekInfo.repos_with_commits || 0;
+                    tooltip.innerHTML = `
+                        <div>Week ${weekNum}</div>
+                        <div style="font-size: 10px; opacity: 0.8;">
+                            ${commitCount} commits, ${repoCount} repos
+                        </div>
+                    `;
+                    tick.appendChild(tooltip);
+                } else {
+                    // No data for this week
+                    const tooltip = document.createElement('div');
+                    tooltip.className = 'week-tick-tooltip';
+                    tooltip.textContent = `Week ${weekNum} (no data)`;
+                    tick.appendChild(tooltip);
                 }
-                
-                // Add tooltip
-                const tooltip = document.createElement('div');
-                tooltip.className = 'week-tick-tooltip';
-                tooltip.textContent = `Week ${weekNum}`;
-                tick.appendChild(tooltip);
                 
                 weeksBar.appendChild(tick);
             });
@@ -2172,7 +3406,13 @@
         
         function setupGroupTabs() {
             document.querySelectorAll('.group-tab').forEach(tab => {
-                tab.onclick = () => {
+                tab.onclick = async () => {
+                    // Exit repository view if currently viewing one
+                    if (currentRepoView) {
+                        await exitRepoView();
+                        return; // exitRepoView will handle the group switching
+                    }
+                    
                     // Remove active class from all tabs
                     document.querySelectorAll('.group-tab').forEach(t => {
                         t.classList.remove('active');
@@ -2185,7 +3425,7 @@
                     currentEcosystem = tab.dataset.group;
                     currentWeekKey = null; // Reset week when changing groups
                     populateTimeline();
-                    displayAllWeeks();
+                    await displayAllWeeks();
                     
                     // Update repository dropdown if it's open
                     if (repoDropdownOpen) {
@@ -2207,10 +3447,14 @@
         
         function scrollToWeek(weekKey) {
             const weekElement = document.getElementById(`week-${weekKey}`);
+            console.log('scrollToWeek called with:', weekKey, 'Element found:', !!weekElement);
             if (weekElement) {
                 weekElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 currentWeekKey = weekKey;
                 updateURL();
+                console.log('Scrolled to week:', weekKey);
+            } else {
+                console.error('Week element not found for ID:', `week-${weekKey}`);
             }
         }
         
@@ -2329,21 +3573,193 @@
             }
         }
         
+        // Filter dropdown functionality
+        let filterDropdownOpen = false;
+        let sectionFilters = {
+            'new features': true,
+            'activity': true,
+            'ongoing': true,
+            'contributors': true,
+            'discussions': true,
+            'good first issues': true,
+            'cross-repo work': true,
+            'key projects': true,
+            'emerging trends': true
+        };
+        
+        function toggleFilterDropdown() {
+            const dropdown = document.getElementById('filter-dropdown');
+            const toggle = document.querySelector('.filter-dropdown-toggle');
+            
+            if (filterDropdownOpen) {
+                dropdown.classList.remove('show');
+                toggle.classList.remove('active');
+                filterDropdownOpen = false;
+                // Re-enable body scroll on mobile
+                if (window.innerWidth <= 768) {
+                    document.body.style.overflow = '';
+                }
+            } else {
+                populateFilterDropdown();
+                dropdown.classList.add('show');
+                toggle.classList.add('active');
+                filterDropdownOpen = true;
+                // Disable body scroll on mobile when modal is open
+                if (window.innerWidth <= 768) {
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+        }
+        
+        function closeFilterDropdown() {
+            const dropdown = document.getElementById('filter-dropdown');
+            const toggle = document.querySelector('.filter-dropdown-toggle');
+            dropdown.classList.remove('show');
+            toggle.classList.remove('active');
+            filterDropdownOpen = false;
+            // Re-enable body scroll on mobile
+            if (window.innerWidth <= 768) {
+                document.body.style.overflow = '';
+            }
+        }
+        
+        function populateFilterDropdown() {
+            const content = document.getElementById('filter-dropdown-content');
+            
+            const filterKeys = Object.keys(sectionFilters);
+            let html = '';
+            
+            filterKeys.forEach(filterKey => {
+                const isChecked = sectionFilters[filterKey];
+                html += `
+                    <div class="filter-item" onclick="event.stopPropagation(); toggleSectionFilter('${filterKey}')">
+                        <div class="filter-checkbox ${isChecked ? 'checked' : ''}"></div>
+                        <div class="filter-label">${filterKey}</div>
+                    </div>
+                `;
+            });
+            
+            content.innerHTML = html;
+        }
+        
+        function toggleSectionFilter(filterKey) {
+            sectionFilters[filterKey] = !sectionFilters[filterKey];
+            populateFilterDropdown(); // Refresh the dropdown UI
+            applyFilters(); // Apply the filters to the page
+            updateFilterURL(); // Update URL with current filter state
+        }
+        
+        function updateFilterURL() {
+            const url = new URL(window.location);
+            
+            // Get list of hidden filters (ones set to false)
+            const hiddenFilters = Object.keys(sectionFilters).filter(key => !sectionFilters[key]);
+            
+            if (hiddenFilters.length > 0) {
+                // Store as comma-separated list of hidden sections
+                url.searchParams.set('hide', hiddenFilters.join(','));
+            } else {
+                // Remove parameter if all sections are visible
+                url.searchParams.delete('hide');
+            }
+            
+            // Update URL without triggering navigation
+            window.history.replaceState(null, '', url);
+        }
+        
+        function loadFiltersFromURL() {
+            const url = new URL(window.location);
+            const hideParam = url.searchParams.get('hide');
+            
+            if (hideParam) {
+                // Parse comma-separated list of hidden sections
+                const hiddenSections = hideParam.split(',').map(s => s.trim());
+                
+                // Reset all filters to true first
+                Object.keys(sectionFilters).forEach(key => {
+                    sectionFilters[key] = true;
+                });
+                
+                // Set specified sections to false (hidden)
+                hiddenSections.forEach(section => {
+                    if (sectionFilters.hasOwnProperty(section)) {
+                        sectionFilters[section] = false;
+                    }
+                });
+            }
+            // If no hide parameter, all sections remain visible (default state)
+        }
+        
+        function applyFilters() {
+            // Apply filters to all content blocks
+            document.querySelectorAll('.content-block').forEach(block => {
+                const labels = block.querySelectorAll('.content-label');
+                labels.forEach(label => {
+                    // Get the actual text content, excluding any SVG icons
+                    const labelText = label.textContent.toLowerCase().trim();
+                    
+                    // Find matching filter
+                    let shouldHide = false;
+                    for (const [filterKey, isVisible] of Object.entries(sectionFilters)) {
+                        const filterKeyLower = filterKey.toLowerCase();
+                        
+                        // Check for exact match or common variations
+                        if (filterKeyLower === labelText || 
+                            (filterKey === 'ongoing' && (labelText === 'ongoing projects' || labelText === 'ongoing')) ||
+                            (filterKey === 'good first issues' && (labelText.includes('issues') || labelText.includes('entry points'))) ||
+                            (filterKey === 'new features' && labelText === 'new features') ||
+                            (filterKey === 'cross-repo work' && labelText === 'cross-repo work') ||
+                            (filterKey === 'key projects' && labelText === 'key projects') ||
+                            (filterKey === 'emerging trends' && labelText === 'emerging trends') ||
+                            (filterKey === 'activity' && (labelText === 'activity' || labelText === 'group activity')) ||
+                            (filterKey === 'contributors' && labelText === 'contributors') ||
+                            (filterKey === 'discussions' && labelText === 'discussions') ||
+                            false) {
+                            shouldHide = !isVisible;
+                            break;
+                        }
+                    }
+                    
+                    // Hide/show the label and all its associated content
+                    if (shouldHide) {
+                        label.style.display = 'none';
+                        
+                        // Hide all following content elements until we hit another label
+                        let nextElement = label.nextElementSibling;
+                        while (nextElement && !nextElement.classList.contains('content-label')) {
+                            nextElement.style.display = 'none';
+                            nextElement = nextElement.nextElementSibling;
+                        }
+                    } else {
+                        label.style.display = '';
+                        
+                        // Show all following content elements until we hit another label
+                        let nextElement = label.nextElementSibling;
+                        while (nextElement && !nextElement.classList.contains('content-label')) {
+                            nextElement.style.display = '';
+                            nextElement = nextElement.nextElementSibling;
+                        }
+                    }
+                });
+            });
+        }
+        
+        // Cache for loaded repository data
+        let repoDataCache = {};
+        let currentRepoView = null;
+        
         function populateRepoDropdown() {
             const content = document.getElementById('repo-dropdown-content');
             const allRepos = new Set();
             
-            // Collect all repositories from current ecosystem
+            // Collect all repositories from all ecosystems
             if (allWeekData) {
                 Object.values(allWeekData).forEach(weekData => {
                     if (weekData.repositories) {
                         weekData.repositories.forEach(repo => {
                             if (hasRepoActivity(repo)) {
-                                if (currentEcosystem === 'all' || 
-                                    (groupsData[currentEcosystem] && 
-                                     groupsData[currentEcosystem].repositories.includes(repo.repo_full))) {
-                                    allRepos.add(repo.repo_full);
-                                }
+                                // Show all repositories, regardless of current ecosystem
+                                allRepos.add(repo.repo_full);
                             }
                         });
                     }
@@ -2360,14 +3776,14 @@
                 reposByOrg[org].push(name);
             });
             
-            // Generate HTML
+            // Generate HTML with clickable items that show repo summaries
             let html = '';
             Object.entries(reposByOrg).sort().forEach(([org, repos]) => {
                 html += `
                     <div class="repo-org-group">
                         <div class="repo-org-name">${org}</div>
                         ${repos.sort().map(name => 
-                            `<a href="https://github.com/${org}/${name}" target="_blank" class="repo-item">${name}</a>`
+                            `<a href="javascript:void(0)" onclick="showRepoSummary('${org}/${name}')" class="repo-item">${name}</a>`
                         ).join('')}
                     </div>
                 `;
@@ -2376,19 +3792,498 @@
             content.innerHTML = html || '<div style="padding: 8px; color: var(--text-muted);">No repositories found</div>';
         }
         
-        // Close dropdown when clicking outside (desktop only)
+        async function showRepoSummary(repoFullName) {
+            // Close the dropdown
+            closeRepoDropdown();
+            
+            // Update URL while preserving filter state
+            const newUrl = new URL(window.location);
+            newUrl.searchParams.set('repo', repoFullName);
+            // Preserve filter state
+            const hiddenFilters = Object.keys(sectionFilters).filter(key => !sectionFilters[key]);
+            if (hiddenFilters.length > 0) {
+                newUrl.searchParams.set('hide', hiddenFilters.join(','));
+            } else {
+                newUrl.searchParams.delete('hide');
+            }
+            window.history.pushState({ repo: repoFullName }, '', newUrl);
+            
+            // Show loading state
+            const display = document.getElementById('main-display');
+            const originalContent = display.innerHTML;
+            currentRepoView = repoFullName;
+            
+            // Update header to show repository view indicator
+            updateRepositoryViewIndicator(repoFullName);
+            
+            display.innerHTML = `
+                <div class="repo-summary-view">
+                    <div class="loading-indicator">Loading repository data...</div>
+                </div>
+            `;
+            
+            try {
+                // Load repository data (check cache first)
+                let repoData;
+                if (repoDataCache[repoFullName]) {
+                    repoData = repoDataCache[repoFullName];
+                } else {
+                    const safeFilename = repoFullName.replace('/', '_');
+                    const response = await fetch(`repositories/${safeFilename}.json`);
+                    if (response.ok) {
+                        repoData = await response.json();
+                        repoDataCache[repoFullName] = repoData;
+                    } else {
+                        throw new Error('Repository data not found');
+                    }
+                }
+                
+                // Render repository summary
+                renderRepoSummary(repoData);
+                
+            } catch (error) {
+                console.error('Failed to load repository data:', error);
+                display.innerHTML = `
+                    <div class="repo-summary-view">
+                        <div class="error">Failed to load repository data</div>
+                    </div>
+                `;
+            }
+        }
+        
+        function renderRepoSummary(repoData) {
+            const display = document.getElementById('main-display');
+            
+            // Sort summaries by week (newest first) 
+            const sortedSummaries = repoData.summaries.sort((a, b) => {
+                const keyA = `${a.year}-${String(a.week).padStart(2, '0')}`;
+                const keyB = `${b.year}-${String(b.week).padStart(2, '0')}`;
+                return keyB.localeCompare(keyA);
+            });
+            
+            // Start without header - repository info is now in the top bar indicator
+            let html = '';
+            
+            // Use same structure as main timeline
+            html += '<div class="weeks-grid">';
+            
+            // Render each week's summary using the same structure as weekly view
+            sortedSummaries.forEach(summary => {
+                // Create weekKey for this week
+                const weekKey = `${summary.year}-${String(summary.week).padStart(2, '0')}`;
+                
+                // Format the date range
+                const formatWeekDate = (dateStr) => {
+                    if (!dateStr) return '';
+                    const date = new Date(dateStr);
+                    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                    const day = date.getDate();
+                    const suffix = day === 1 || day === 21 || day === 31 ? 'st' : 
+                                  day === 2 || day === 22 ? 'nd' : 
+                                  day === 3 || day === 23 ? 'rd' : 'th';
+                    return `${day}${suffix} ${months[date.getMonth()]} ${date.getFullYear()}`;
+                };
+                
+                let formattedRange = '';
+                if (summary.week_range) {
+                    const [startDate, endDate] = summary.week_range.split(' to ');
+                    if (startDate && endDate) {
+                        const startFormatted = formatWeekDate(startDate);
+                        const endFormatted = formatWeekDate(endDate);
+                        
+                        const startParts = startFormatted.split(' ');
+                        const endParts = endFormatted.split(' ');
+                        formattedRange = startParts[1] === endParts[1] && startParts[2] === endParts[2] ? 
+                            `${startParts[0]} - ${endParts[0]} ${endParts[1]} ${endParts[2]}` : 
+                            `${startFormatted} - ${endFormatted}`;
+                    }
+                }
+                
+                // Check if there's any content for this week
+                const hasContent = summary.activity || summary.ongoing_projects || 
+                                 summary.new_features || summary.notable_discussions || 
+                                 summary.contributors || summary.good_first_issues;
+                
+                if (!hasContent) {
+                    // Compact inactive week - no week-content div at all
+                    html += `
+                        <div class="week-section inactive-week" id="week-${weekKey}" data-week-key="${weekKey}">
+                            <div class="week-header-main">
+                                <div class="week-header-top">
+                                    <div class="week-title-main inactive-week">
+                                        <div class="week-icon">
+                                            <svg viewBox="0 0 24 24" style="opacity: 1;">
+                                                <!-- Circle with X - clear inactive indicator -->
+                                                <circle cx="12" cy="12" r="10" fill="none" stroke="var(--text-muted)" stroke-width="2"/>
+                                                <path d="M8 8l8 8M16 8l-8 8" stroke="var(--text-muted)" stroke-width="2" stroke-linecap="round"/>
+                                            </svg>
+                                        </div>
+                                        W${summary.week}.${summary.year}
+                                    </div>
+                                    <div class="week-date-range">${formattedRange}</div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    return; // Skip to next week
+                }
+                
+                // Active week with content
+                // Get week stats from indexData
+                const weekInfo = indexData.weeks.find(w => w.week_key === weekKey);
+                const commitCount = weekInfo?.stats?.total_commits || 0;
+                const repoCount = weekInfo?.repos_with_commits || 0;
+                const activityLevel = weekInfo?.activity_level || 0;
+                const maxCommits = 130; // Max commits from the data
+                const maxRepos = 13; // Max repos from the data
+                const maxActivity = 209; // Max activity from the data
+                
+                // Generate sparkgraph bars
+                const generateSparkgraph = () => {
+                    if (commitCount === 0 && repoCount === 0) return '';
+                    
+                    const bars = [];
+                    const numBars = 20;
+                    
+                    // Create varied height bars for visual interest
+                    for (let i = 0; i < numBars; i++) {
+                        let height = 0;
+                        let barClass = 'commit-bar';
+                        
+                        if (i < numBars / 3) {
+                            // Commit bars
+                            height = (commitCount / maxCommits) * (80 + Math.random() * 20);
+                            barClass = 'commit-bar';
+                        } else if (i < (numBars * 2) / 3) {
+                            // Repo activity bars
+                            height = (repoCount / maxRepos) * (70 + Math.random() * 30);
+                            barClass = 'repo-bar';
+                        } else {
+                            // Activity level bars
+                            height = (activityLevel / maxActivity) * (60 + Math.random() * 40);
+                            barClass = 'activity-bar';
+                        }
+                        
+                        height = Math.max(10, Math.min(100, height)); // Clamp between 10% and 100%
+                        bars.push(`<div class="week-activity-bar ${barClass}" style="height: ${height}%"></div>`);
+                    }
+                    
+                    return `
+                        <div class="week-activity-visual">
+                            ${bars.join('')}
+                            <div class="week-activity-tooltip">
+                                <div class="tooltip-row">
+                                    <span class="tooltip-label">Commits:</span>
+                                    <span class="tooltip-value">${commitCount}</span>
+                                </div>
+                                <div class="tooltip-row">
+                                    <span class="tooltip-label">Active repos:</span>
+                                    <span class="tooltip-value">${repoCount}</span>
+                                </div>
+                                <div class="tooltip-row">
+                                    <span class="tooltip-label">Activity level:</span>
+                                    <span class="tooltip-value">${activityLevel}</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                };
+                
+                html += `
+                    <div class="week-section" id="week-${weekKey}" data-week-key="${weekKey}">
+                        <div class="week-header-main">
+                            <div class="week-header-top">
+                                <div class="week-title-main">
+                                    <div class="week-icon">
+                                        <svg viewBox="0 0 24 24">
+                                            <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.89-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.11-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                                        </svg>
+                                    </div>
+                                    W${summary.week}.${summary.year}
+                                </div>
+                                <div class="week-date-range">${formattedRange}</div>
+                            </div>
+                            ${generateSparkgraph()}
+                        </div>
+                        <div class="week-content">
+                `;
+                
+                // Collect all content sections for dynamic balancing
+                const contentSections = [];
+                
+                // New Features section (highest priority for left column)
+                if (summary.new_features || summary.new_features_summary) {
+                    let sectionContent = `<div class="content-block">
+                        ${generateContentLabel('new features', 'new features', 'new features', {weekKey: weekKey})}`;
+                    
+                    let totalText = '';
+                    if (summary.new_features_summary) {
+                        sectionContent += `<div class="section-summary">${summary.new_features_summary}</div>`;
+                        totalText += summary.new_features_summary;
+                    }
+                    if (summary.new_features) {
+                        sectionContent += `<div class="content-text">${renderMarkdown(summary.new_features)}</div>`;
+                        totalText += summary.new_features;
+                    }
+                    
+                    sectionContent += `</div>`;
+                    contentSections.push({
+                        content: sectionContent,
+                        estimatedHeight: estimateContentHeight(totalText),
+                        priority: 2
+                    });
+                }
+                
+                // Overall activity section
+                if (summary.activity || summary.activity_summary) {
+                    let sectionContent = `<div class="content-block">
+                        ${generateContentLabel('activity', 'activity', 'activity', {weekKey: weekKey})}`;
+                    
+                    let totalText = '';
+                    if (summary.activity_summary) {
+                        sectionContent += `<div class="section-summary">${summary.activity_summary}</div>`;
+                        totalText += summary.activity_summary;
+                    }
+                    if (summary.activity) {
+                        sectionContent += `<div class="content-text">${renderMarkdown(summary.activity)}</div>`;
+                        totalText += summary.activity;
+                    }
+                    
+                    sectionContent += `</div>`;
+                    contentSections.push({
+                        content: sectionContent,
+                        estimatedHeight: estimateContentHeight(totalText),
+                        priority: 1
+                    });
+                }
+                
+                // Ongoing projects section
+                if (summary.ongoing_projects || summary.ongoing_summary) {
+                    let sectionContent = `<div class="content-block">
+                        ${generateContentLabel('ongoing', 'ongoing projects', 'ongoing', {weekKey: weekKey})}`;
+                    
+                    let totalText = '';
+                    if (summary.ongoing_summary) {
+                        sectionContent += `<div class="section-summary">${summary.ongoing_summary}</div>`;
+                        totalText += summary.ongoing_summary;
+                    }
+                    if (summary.ongoing_projects) {
+                        sectionContent += `<div class="content-text">${renderMarkdown(summary.ongoing_projects)}</div>`;
+                        totalText += summary.ongoing_projects;
+                    }
+                    
+                    sectionContent += `</div>`;
+                    contentSections.push({
+                        content: sectionContent,
+                        estimatedHeight: estimateContentHeight(totalText),
+                        priority: 1
+                    });
+                }
+                
+                // Contributors section
+                if (summary.contributors || summary.contributors_summary) {
+                    let sectionContent = `<div class="content-block">
+                        ${generateContentLabel('contributors', 'contributors', 'contributors', {weekKey: weekKey})}`;
+                    
+                    let totalText = '';
+                    if (summary.contributors_summary) {
+                        sectionContent += `<div class="section-summary">${summary.contributors_summary}</div>`;
+                        totalText += summary.contributors_summary;
+                    }
+                    if (summary.contributors) {
+                        sectionContent += `<div class="contributor-text">${renderMarkdown(summary.contributors)}</div>`;
+                        totalText += summary.contributors;
+                    }
+                    
+                    sectionContent += `</div>`;
+                    contentSections.push({
+                        content: sectionContent,
+                        estimatedHeight: estimateContentHeight(totalText),
+                        priority: 0
+                    });
+                }
+                
+                // Discussions section
+                if (summary.notable_discussions || summary.discussions_summary) {
+                    let sectionContent = `<div class="content-block">
+                        ${generateContentLabel('discussions', 'discussions', 'discussions', {weekKey: weekKey})}`;
+                    
+                    let totalText = '';
+                    if (summary.discussions_summary) {
+                        sectionContent += `<div class="section-summary">${summary.discussions_summary}</div>`;
+                        totalText += summary.discussions_summary;
+                    }
+                    if (summary.notable_discussions) {
+                        sectionContent += `<div class="content-text">${renderMarkdown(summary.notable_discussions)}</div>`;
+                        totalText += summary.notable_discussions;
+                    }
+                    
+                    sectionContent += `</div>`;
+                    contentSections.push({
+                        content: sectionContent,
+                        estimatedHeight: estimateContentHeight(totalText),
+                        priority: 0
+                    });
+                }
+                
+                // Good first issues section
+                if (summary.good_first_issues || summary.issues_summary) {
+                    let sectionContent = `<div class="content-block">
+                        ${generateContentLabel('good first issues', 'good first issues', 'issues', {weekKey: weekKey})}`;
+                    
+                    let totalText = '';
+                    if (summary.issues_summary) {
+                        sectionContent += `<div class="section-summary">${summary.issues_summary}</div>`;
+                        totalText += summary.issues_summary;
+                    }
+                    if (summary.good_first_issues) {
+                        sectionContent += `<div class="content-text">${renderMarkdown(summary.good_first_issues)}</div>`;
+                        totalText += summary.good_first_issues;
+                    }
+                    
+                    sectionContent += `</div>`;
+                    contentSections.push({
+                        content: sectionContent,
+                        estimatedHeight: estimateContentHeight(totalText),
+                        priority: 0
+                    });
+                }
+                
+                // Emerging trends section
+                if (summary.emerging_trends || summary.trends_summary) {
+                    let sectionContent = `<div class="content-block">
+                        ${generateContentLabel('emerging trends', 'emerging trends', 'trends', {weekKey: weekKey})}`;
+                    
+                    let totalText = '';
+                    if (summary.trends_summary) {
+                        sectionContent += `<div class="section-summary">${summary.trends_summary}</div>`;
+                        totalText += summary.trends_summary;
+                    }
+                    if (summary.emerging_trends) {
+                        sectionContent += `<div class="content-text">${renderMarkdown(summary.emerging_trends)}</div>`;
+                        totalText += summary.emerging_trends;
+                    }
+                    
+                    sectionContent += `</div>`;
+                    contentSections.push({
+                        content: sectionContent,
+                        estimatedHeight: estimateContentHeight(totalText),
+                        priority: 0
+                    });
+                }
+                
+                // Dynamic column balancing
+                const balancedColumns = balanceColumns(contentSections);
+                let leftColumn = balancedColumns.left;
+                let rightColumn = balancedColumns.right;
+                
+                // Ensure columns have wrapper divs if they have content
+                if (leftColumn && !leftColumn.includes('class="content-block"')) {
+                    leftColumn = `<div class="content-block">${leftColumn}</div>`;
+                }
+                if (rightColumn && !rightColumn.includes('class="content-block"')) {
+                    rightColumn = `<div class="content-block">${rightColumn}</div>`;
+                }
+                
+                // Handle empty columns
+                if (!leftColumn) leftColumn = '<div class="content-block"></div>';
+                if (!rightColumn) rightColumn = '<div class="content-block"></div>';
+                
+                html += leftColumn + rightColumn;
+                html += `
+                        </div>
+                    </div>
+                `;
+            });
+            
+            html += '</div>'; // Close weeks-grid
+            display.innerHTML = html;
+            
+            // Setup timeline for repo view
+            console.log('Setting up repo timeline and scroll handler');
+            populateRepoTimeline(repoData);
+            
+            // Setup scroll handler after content is rendered
+            setTimeout(() => {
+                console.log('Setting up repo scroll handler (delayed)');
+                
+                // Verify week sections exist with data attributes
+                const weekSections = document.querySelectorAll('.week-section[data-week-key]');
+                console.log('Found week sections with data-week-key:', weekSections.length);
+                weekSections.forEach((section, i) => {
+                    console.log(`  Week ${i}: ${section.dataset.weekKey}`);
+                });
+                
+                setupRepoScrollHandler();
+                
+                // Trigger initial detection
+                const mainContent = document.querySelector('.main-content');
+                if (mainContent && mainContent._repoScrollHandler) {
+                    console.log('Triggering initial scroll detection');
+                    mainContent._repoScrollHandler();
+                }
+                
+                // Scroll to week if specified in URL
+                if (currentWeekKey) {
+                    console.log('Scrolling to week:', currentWeekKey);
+                    const weekElement = document.getElementById(`week-${currentWeekKey}`);
+                    if (weekElement) {
+                        weekElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    } else {
+                        console.log('Week element not found:', `week-${currentWeekKey}`);
+                    }
+                }
+                
+                // Apply filters after all content is rendered
+                applyFilters();
+            }, 100);
+        }
+        
+        async function exitRepoView() {
+            currentRepoView = null;
+            
+            // Clear URL parameter while preserving filters
+            const newUrl = new URL(window.location);
+            newUrl.searchParams.delete('repo');
+            newUrl.searchParams.delete('week'); // Also clear week when exiting repo view
+            // Preserve filter state
+            const hiddenFilters = Object.keys(sectionFilters).filter(key => !sectionFilters[key]);
+            if (hiddenFilters.length > 0) {
+                newUrl.searchParams.set('hide', hiddenFilters.join(','));
+            } else {
+                newUrl.searchParams.delete('hide');
+            }
+            window.history.pushState({}, '', newUrl);
+            
+            // Remove repository view indicator
+            updateRepositoryViewIndicator(null);
+            
+            // Clean up repo scroll handler
+            cleanupRepoScrollHandler();
+            
+            // Return to the timeline view
+            await displayAllWeeks();
+        }
+        
+        // Close dropdowns when clicking outside (desktop only)
         document.addEventListener('click', function(event) {
             if (repoDropdownOpen && window.innerWidth > 768 && !event.target.closest('.repo-dropdown-container')) {
                 toggleRepoDropdown();
+            }
+            if (filterDropdownOpen && window.innerWidth > 768) {
+                // Only close if clicking outside both the toggle button and the dropdown itself
+                if (!event.target.closest('.filter-dropdown-container') && !event.target.closest('.filter-dropdown')) {
+                    toggleFilterDropdown();
+                }
             }
         });
         
         function hasRepoActivity(repo) {
             // Check if repo has any meaningful content
             const contentFields = [
-                'overall_activity', 'brief_summary',
+                'activity', 'activity_summary',
                 'ongoing_projects', 'ongoing_summary',
-                'priority_items', 'priority_summary',
+                'new_features', 'new_features_summary',
                 'notable_discussions', 'discussions_summary',
                 'emerging_trends', 'trends_summary',
                 'good_first_issues', 'issues_summary',
@@ -2414,7 +4309,7 @@
         }
         
         
-        function displayAllWeeks() {
+        async function displayAllWeeks() {
             const display = document.getElementById('main-display');
             
             let weeks;
@@ -2430,144 +4325,155 @@
                 });
             }
             
+            // First render week placeholders
             let html = '';
-            
             weeks.forEach(week => {
-                const weekData = allWeekData[week.week_key];
-                if (!weekData) return;
-                
                 const weekInfo = indexData.weeks.find(w => w.week_key === week.week_key);
-                
-                // Get repos for this week
-                let ecosystemRepos;
-                if (currentEcosystem === 'all') {
-                    // For "all" ecosystem, show all active repositories or none if we have a weekly summary
-                    if (weekData.weekly_summary) {
-                        ecosystemRepos = []; // Weekly summaries don't show individual repos
-                    } else {
-                        ecosystemRepos = weekData.repositories.filter(repo => {
-                            if (!repo || !repo.repo_full) return false;
-                            return hasRepoActivity(repo);
-                        });
+                html += renderWeekPlaceholder(week, weekInfo);
+            });
+            display.innerHTML = html;
+            
+            // Then load and render week content lazily with delays
+            // Load weeks progressively to avoid blocking the UI
+            weeks.forEach((week, index) => {
+                setTimeout(async () => {
+                    try {
+                        const weekData = await loadWeekData(week.week_key);
+                        if (weekData) {
+                            await renderWeekContent(week.week_key, weekData);
+                        }
+                    } catch (error) {
+                        console.error(`Failed to render week ${week.week_key}:`, error);
                     }
-                } else {
-                    // Filter repos to only those in current ecosystem AND have actual content
-                    ecosystemRepos = weekData.repositories.filter(repo => {
-                        if (!repo || !repo.repo_full) return false; // Skip empty or invalid entries
-                        if (!groupsData[currentEcosystem]) return false;
-                        if (!groupsData[currentEcosystem].repositories.includes(repo.repo_full)) return false;
-                        return hasRepoActivity(repo);
-                    });
-                }
-                
-                // Create comprehensive repository summary
-                let allRepos = [];
-                let reposSummary = '';
-                
-                if (currentEcosystem === 'all' && weekData.weekly_summary) {
-                    // For ecosystem view, aggregate ALL repositories from all week data
-                    const allGroupRepos = new Set();
-                    
-                    // Collect repos from all repositories in this week's data
-                    if (weekData.repositories) {
-                        weekData.repositories.forEach(repo => {
-                            if (hasRepoActivity(repo)) {
-                                allGroupRepos.add(repo.repo_full);
-                            }
-                        });
-                    }
-                    
-                    allRepos = Array.from(allGroupRepos);
-                    
-                    if (allRepos.length > 0) {
-                        reposSummary = `Ecosystem activity across ${allRepos.length} repositories`;
-                    } else {
-                        reposSummary = 'Ecosystem summary with no repository activity';
-                    }
-                } else if (ecosystemRepos.length > 0) {
-                    allRepos = ecosystemRepos.map(repo => repo.repo_full);
-                    reposSummary = `${allRepos.length} active repositories`;
-                } else {
-                    reposSummary = 'No active repositories this week';
-                }
-                
-                // Format the date range in words with year
-                const formatWeekDate = (dateStr) => {
-                    const date = new Date(dateStr);
-                    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-                    const day = date.getDate();
-                    const suffix = day === 1 || day === 21 || day === 31 ? 'st' : 
-                                  day === 2 || day === 22 ? 'nd' : 
-                                  day === 3 || day === 23 ? 'rd' : 'th';
-                    return `${day}${suffix} ${months[date.getMonth()]} ${date.getFullYear()}`;
-                };
-                
-                const [startDate, endDate] = week.week_range.split(' to ');
+                }, index * 100); // Stagger loads by 100ms
+            });
+        }
+        
+        function renderWeekPlaceholder(week, weekInfo) {
+            // Format the date range in words with year
+            const formatWeekDate = (dateStr) => {
+                const date = new Date(dateStr);
+                const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                const day = date.getDate();
+                const suffix = day === 1 || day === 21 || day === 31 ? 'st' : 
+                              day === 2 || day === 22 ? 'nd' : 
+                              day === 3 || day === 23 ? 'rd' : 'th';
+                return `${day}${suffix} ${months[date.getMonth()]} ${date.getFullYear()}`;
+            };
+            
+            const [startDate, endDate] = (week.week_range || weekInfo?.week_range || '').split(' to ');
+            let formattedRange = '';
+            if (startDate && endDate) {
                 const startFormatted = formatWeekDate(startDate);
                 const endFormatted = formatWeekDate(endDate);
                 
                 // If same month/year, don't repeat them
                 const startParts = startFormatted.split(' ');
                 const endParts = endFormatted.split(' ');
-                const formattedRange = startParts[1] === endParts[1] && startParts[2] === endParts[2] ? 
+                formattedRange = startParts[1] === endParts[1] && startParts[2] === endParts[2] ? 
                     `${startParts[0]} - ${endParts[0]} ${endParts[1]} ${endParts[2]}` : 
                     `${startFormatted} - ${endFormatted}`;
-                
-                // Generate repository list with truncation logic
-                const maxReposBeforeTruncate = 8;
-                const shouldTruncate = allRepos.length > maxReposBeforeTruncate;
-                const truncatedId = `repos-${week.week_key}`;
-                
-                let repoListHtml = '';
-                if (allRepos.length > 0) {
-                    // Group repos by organization
-                    const reposByOrg = {};
-                    allRepos.forEach(repoFull => {
-                        const [org, name] = repoFull.split('/');
-                        if (!reposByOrg[org]) {
-                            reposByOrg[org] = [];
-                        }
-                        reposByOrg[org].push(name);
-                    });
-                    
-                    // Create grouped repo links
-                    const orgGroups = Object.entries(reposByOrg).map(([org, repos]) => {
-                        const repoLinks = repos.map(name => 
-                            `<a href="https://github.com/${org}/${name}" target="_blank" class="repo-link">${name}</a>`
-                        ).join(' | ');
-                        return `<a href="https://github.com/${org}" target="_blank" class="org-name">${org}</a> / { ${repoLinks} }`;
-                    });
-                    
-                    repoListHtml = orgGroups.join(' • ');
-                }
-                
-                html += `
-                    <div class="week-section" id="week-${week.week_key}" data-week-key="${week.week_key}">
-                        <div class="week-header-main">
-                            <div class="week-title-main">
-                                <div class="week-icon">
-                                    <svg viewBox="0 0 24 24">
-                                        <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.89-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.11-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
-                                    </svg>
-                                </div>
-                                W${week.week}.${week.year}
-                            </div>
-                            <div class="week-date-range">${formattedRange}</div>
-                        </div>
-                        
-                        
-                        <div class="week-content">
-                            ${generateWeekContent(weekData, currentEcosystem)}
-                        </div>
-                    </div>
-                `;
-            });
-            
-            if (!html) {
-                html = '<div class="loading">NO DATA AVAILABLE FOR CURRENT ECOSYSTEM</div>';
             }
             
-            display.innerHTML = html;
+            return `
+                <div class="week-section" id="week-${week.week_key}" data-week-key="${week.week_key}">
+                    <div class="week-header-main">
+                        <div class="week-title-main">
+                            <div class="week-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.89-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.11-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                                </svg>
+                            </div>
+                            W${week.week}.${week.year}
+                        </div>
+                        <div class="week-date-range">${formattedRange}</div>
+                    </div>
+                    <div class="week-content">
+                        <div class="loading-indicator">Loading week data...</div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        async function renderWeekContent(weekKey, weekData) {
+            const weekElement = document.getElementById(`week-${weekKey}`);
+            if (!weekElement) return;
+            
+            const contentDiv = weekElement.querySelector('.week-content');
+            if (!contentDiv) return;
+                
+            // Simply render the week content as it was originally - no extra repo summaries or lists
+            contentDiv.innerHTML = generateWeekContent(weekData, currentEcosystem);
+            
+            // Apply filters after rendering content
+            setTimeout(() => applyFilters(), 50);
+        }
+        
+        
+        // Helper function to estimate content height based on text length
+        function estimateContentHeight(text) {
+            if (!text) return 0;
+            
+            // Basic estimation: characters per line ~80, lines ~25px each
+            // Add extra height for labels, summaries, and spacing
+            const baseHeight = 60; // Label + padding
+            const textLines = Math.ceil(text.length / 80);
+            const textHeight = textLines * 25;
+            
+            return baseHeight + textHeight;
+        }
+        
+        // Dynamic column balancing algorithm
+        function balanceColumns(contentSections) {
+            if (contentSections.length === 0) {
+                return { left: '', right: '' };
+            }
+            
+            // Sort sections by priority (higher priority = prefer left column)
+            // Then by size (larger sections first for better packing)
+            const sortedSections = [...contentSections].sort((a, b) => {
+                if (a.priority !== b.priority) {
+                    return b.priority - a.priority; // Higher priority first
+                }
+                return b.estimatedHeight - a.estimatedHeight; // Larger sections first
+            });
+            
+            let leftColumn = '';
+            let rightColumn = '';
+            let leftHeight = 0;
+            let rightHeight = 0;
+            
+            // Greedy assignment algorithm
+            sortedSections.forEach(section => {
+                // Decide which column to place this section in
+                // Prefer left column if priority > 1 (overview, new features, activity, ongoing)
+                // Otherwise choose the shorter column for better balance
+                if (section.priority > 1) {
+                    // High priority sections prefer left column
+                    leftColumn += section.content;
+                    leftHeight += section.estimatedHeight;
+                } else if (section.priority === 1) {
+                    // Medium priority sections prefer left but can go right if needed
+                    if (leftHeight <= rightHeight) {
+                        leftColumn += section.content;
+                        leftHeight += section.estimatedHeight;
+                    } else {
+                        rightColumn += section.content;
+                        rightHeight += section.estimatedHeight;
+                    }
+                } else {
+                    // Low priority sections (contributors, discussions, issues) go to shorter column
+                    if (leftHeight <= rightHeight) {
+                        leftColumn += section.content;
+                        leftHeight += section.estimatedHeight;
+                    } else {
+                        rightColumn += section.content;
+                        rightHeight += section.estimatedHeight;
+                    }
+                }
+            });
+            
+            return { left: leftColumn, right: rightColumn };
         }
         
         function generateWeekContent(weekData, ecosystem) {
@@ -2585,183 +4491,218 @@
                 return hasRepoActivity(repo);
             });
             
-            let leftColumn = '';
-            let rightColumn = '';
-            
-            // Left column - Activity, Ongoing
-            
-            // Show group overview only for multi-repo ecosystems
-            if (filteredRepos.length > 1) {
-                filteredGroups.forEach(group => {
-                    if (group.group_overview) {
-                        leftColumn += `<div class="content-block">`;
-                        leftColumn += `<div class="content-label">${getSectionIcon('overview')}overview</div>`;
-                        leftColumn += `<div class="content-text">${renderMarkdown(group.group_overview)}</div>`;
-                        leftColumn += `</div>`;
-                    }
-                });
-            }
-            
-            // Repository activity summaries (FIRST)
+            // Collect all content sections for dynamic balancing
+            const contentSections = [];
             const singleRepo = filteredRepos.length === 1;
-            const activityRepos = filteredRepos.filter(repo => repo.brief_summary || repo.overall_activity);
             
-            if (activityRepos.length > 0) {
-                leftColumn += `<div class="content-block">`;
-                leftColumn += `<div class="content-label">${getSectionIcon('activity')}activity</div>`;
+            // New Features section
+            const newFeaturesRepos = filteredRepos.filter(repo => repo.new_features || repo.new_features_summary);
+            if (newFeaturesRepos.length > 0) {
+                let sectionContent = `<div class="content-block">
+                    ${generateContentLabel('new features', 'new features', 'new features', {weekKey: weekData.week_key})}`;
                 
-                // Use brief_summary as section summary for single repo
-                if (singleRepo && activityRepos[0].brief_summary) {
-                    leftColumn += `<div class="section-summary">${activityRepos[0].brief_summary}</div>`;
+                if (singleRepo && newFeaturesRepos[0].new_features_summary) {
+                    sectionContent += `<div class="section-summary">${newFeaturesRepos[0].new_features_summary}</div>`;
                 }
                 
-                activityRepos.forEach(repo => {
-                    if (!singleRepo && repo.brief_summary) {
+                let totalText = '';
+                newFeaturesRepos.forEach(repo => {
+                    if (!singleRepo && repo.new_features_summary) {
                         const [org, name] = repo.repo_full.split('/');
-                        // Integrate repo name into the summary text
-                        const summaryWithRepo = `In <a href="https://github.com/${repo.repo_full}" target="_blank" class="repo-inline">${org}/${name}</a>: ${renderMarkdown(repo.brief_summary)}`;
-                        leftColumn += `<div class="section-summary">${summaryWithRepo}</div>`;
+                        const commitLink = getCommitRangeLink(repo);
+                        const summaryWithRepo = `In <a href="https://github.com/${repo.repo_full}" target="_blank" class="repo-inline">${org}/${name}</a>${commitLink}: ${renderMarkdown(repo.new_features_summary)}`;
+                        sectionContent += `<div class="section-summary">${summaryWithRepo}</div>`;
+                        totalText += repo.new_features_summary || '';
                     }
                     
-                    if (repo.overall_activity) {
-                        leftColumn += `<div class="content-text">${renderMarkdown(repo.overall_activity)}</div>`;
+                    if (repo.new_features) {
+                        sectionContent += `<div class="content-text">${renderMarkdown(repo.new_features)}</div>`;
+                        totalText += repo.new_features || '';
                     }
                 });
                 
-                leftColumn += `</div>`;
+                sectionContent += `</div>`;
+                contentSections.push({
+                    content: sectionContent,
+                    estimatedHeight: estimateContentHeight(totalText),
+                    priority: 2
+                });
             }
             
-            // Ongoing projects (SECOND)
-            const ongoingRepos = filteredRepos.filter(repo => repo.ongoing_projects || repo.ongoing_summary);
-            
-            if (ongoingRepos.length > 0) {
-                leftColumn += `<div class="content-block">`;
-                leftColumn += `<div class="content-label">${getSectionIcon('ongoing')}ongoing</div>`;
+            // Activity section
+            const activityRepos = filteredRepos.filter(repo => repo.activity_summary || repo.activity);
+            if (activityRepos.length > 0) {
+                let sectionContent = `<div class="content-block">
+                    ${generateContentLabel('activity', 'activity', 'activity', {weekKey: weekData.week_key})}`;
                 
-                if (singleRepo && ongoingRepos[0].ongoing_summary) {
-                    leftColumn += `<div class="section-summary">${ongoingRepos[0].ongoing_summary}</div>`;
+                if (singleRepo && activityRepos[0].activity_summary) {
+                    sectionContent += `<div class="section-summary">${activityRepos[0].activity_summary}</div>`;
                 }
                 
+                let totalText = '';
+                activityRepos.forEach(repo => {
+                    if (!singleRepo && repo.activity_summary) {
+                        const [org, name] = repo.repo_full.split('/');
+                        const commitLink = getCommitRangeLink(repo);
+                        const summaryWithRepo = `In <a href="https://github.com/${repo.repo_full}" target="_blank" class="repo-inline">${org}/${name}</a>${commitLink}: ${renderMarkdown(repo.activity_summary)}`;
+                        sectionContent += `<div class="section-summary">${summaryWithRepo}</div>`;
+                        totalText += repo.activity_summary || '';
+                    }
+                    
+                    if (repo.activity) {
+                        sectionContent += `<div class="content-text">${renderMarkdown(repo.activity)}</div>`;
+                        totalText += repo.activity || '';
+                    }
+                });
+                
+                sectionContent += `</div>`;
+                contentSections.push({
+                    content: sectionContent,
+                    estimatedHeight: estimateContentHeight(totalText),
+                    priority: 1
+                });
+            }
+            
+            // Ongoing projects section
+            const ongoingRepos = filteredRepos.filter(repo => repo.ongoing_projects || repo.ongoing_summary);
+            if (ongoingRepos.length > 0) {
+                let sectionContent = `<div class="content-block">
+                    ${generateContentLabel('ongoing', 'ongoing', 'ongoing', {weekKey: weekData.week_key})}`;
+                
+                if (singleRepo && ongoingRepos[0].ongoing_summary) {
+                    sectionContent += `<div class="section-summary">${ongoingRepos[0].ongoing_summary}</div>`;
+                }
+                
+                let totalText = '';
                 ongoingRepos.forEach(repo => {
                     if (!singleRepo && repo.ongoing_summary) {
                         const [org, name] = repo.repo_full.split('/');
-                        const summaryWithRepo = `In <a href="https://github.com/${repo.repo_full}" target="_blank" class="repo-inline">${org}/${name}</a>: ${renderMarkdown(repo.ongoing_summary)}`;
-                        leftColumn += `<div class="section-summary">${summaryWithRepo}</div>`;
+                        const commitLink = getCommitRangeLink(repo);
+                        const summaryWithRepo = `In <a href="https://github.com/${repo.repo_full}" target="_blank" class="repo-inline">${org}/${name}</a>${commitLink}: ${renderMarkdown(repo.ongoing_summary)}`;
+                        sectionContent += `<div class="section-summary">${summaryWithRepo}</div>`;
+                        totalText += repo.ongoing_summary || '';
                     }
                     
                     if (repo.ongoing_projects) {
-                        leftColumn += `<div class="content-text">${renderMarkdown(repo.ongoing_projects)}</div>`;
+                        sectionContent += `<div class="content-text">${renderMarkdown(repo.ongoing_projects)}</div>`;
+                        totalText += repo.ongoing_projects || '';
                     }
                 });
                 
-                leftColumn += `</div>`;
-            }
-            
-            // Right column - Priorities, Contributors, Discussions
-            
-            // Repository priority items (THIRD)
-            const priorityRepos = filteredRepos.filter(repo => repo.priority_items || repo.priority_summary);
-            
-            if (priorityRepos.length > 0) {
-                rightColumn += `<div class="content-block">`;
-                rightColumn += `<div class="content-label">${getSectionIcon('priorities')}priorities</div>`;
-                
-                if (singleRepo && priorityRepos[0].priority_summary) {
-                    rightColumn += `<div class="section-summary">${priorityRepos[0].priority_summary}</div>`;
-                }
-                
-                priorityRepos.forEach(repo => {
-                    if (!singleRepo && repo.priority_summary) {
-                        const [org, name] = repo.repo_full.split('/');
-                        const summaryWithRepo = `In <a href="https://github.com/${repo.repo_full}" target="_blank" class="repo-inline">${org}/${name}</a>: ${renderMarkdown(repo.priority_summary)}`;
-                        rightColumn += `<div class="section-summary">${summaryWithRepo}</div>`;
-                    }
-                    
-                    if (repo.priority_items) {
-                        rightColumn += `<div class="priority-text">${renderMarkdown(repo.priority_items)}</div>`;
-                    }
+                sectionContent += `</div>`;
+                contentSections.push({
+                    content: sectionContent,
+                    estimatedHeight: estimateContentHeight(totalText),
+                    priority: 1
                 });
-                
-                rightColumn += `</div>`;
             }
             
-            // Contributors (FOURTH)
+            // Contributors section
             const contributorRepos = filteredRepos.filter(repo => repo.contributors || repo.contributors_summary);
-            
             if (contributorRepos.length > 0) {
-                rightColumn += `<div class="content-block">`;
-                rightColumn += `<div class="content-label">${getSectionIcon('contributors')}contributors</div>`;
+                let sectionContent = `<div class="content-block">
+                    ${generateContentLabel('contributors', 'contributors', 'contributors', {weekKey: weekData.week_key})}`;
                 
                 if (singleRepo && contributorRepos[0].contributors_summary) {
-                    rightColumn += `<div class="section-summary">${contributorRepos[0].contributors_summary}</div>`;
+                    sectionContent += `<div class="section-summary">${contributorRepos[0].contributors_summary}</div>`;
                 }
                 
+                let totalText = '';
                 contributorRepos.forEach(repo => {
                     if (!singleRepo && repo.contributors_summary) {
                         const [org, name] = repo.repo_full.split('/');
-                        const summaryWithRepo = `In <a href="https://github.com/${repo.repo_full}" target="_blank" class="repo-inline">${org}/${name}</a>: ${renderMarkdown(repo.contributors_summary)}`;
-                        rightColumn += `<div class="section-summary">${summaryWithRepo}</div>`;
+                        const commitLink = getCommitRangeLink(repo);
+                        const summaryWithRepo = `In <a href="https://github.com/${repo.repo_full}" target="_blank" class="repo-inline">${org}/${name}</a>${commitLink}: ${renderMarkdown(repo.contributors_summary)}`;
+                        sectionContent += `<div class="section-summary">${summaryWithRepo}</div>`;
+                        totalText += repo.contributors_summary || '';
                     }
                     
                     if (repo.contributors) {
-                        rightColumn += `<div class="contributor-text">${renderMarkdown(repo.contributors)}</div>`;
+                        sectionContent += `<div class="contributor-text">${renderMarkdown(repo.contributors)}</div>`;
+                        totalText += repo.contributors || '';
                     }
                 });
                 
-                rightColumn += `</div>`;
+                sectionContent += `</div>`;
+                contentSections.push({
+                    content: sectionContent,
+                    estimatedHeight: estimateContentHeight(totalText),
+                    priority: 0
+                });
             }
             
-            // Notable discussions
+            // Discussions section
             const discussionRepos = filteredRepos.filter(repo => repo.notable_discussions || repo.discussions_summary);
-            
             if (discussionRepos.length > 0) {
-                rightColumn += `<div class="content-block">`;
-                rightColumn += `<div class="content-label">${getSectionIcon('discussions')}discussions</div>`;
+                let sectionContent = `<div class="content-block">
+                    ${generateContentLabel('discussions', 'discussions', 'discussions', {weekKey: weekData.week_key})}`;
                 
                 if (singleRepo && discussionRepos[0].discussions_summary) {
-                    rightColumn += `<div class="section-summary">${discussionRepos[0].discussions_summary}</div>`;
+                    sectionContent += `<div class="section-summary">${discussionRepos[0].discussions_summary}</div>`;
                 }
                 
+                let totalText = '';
                 discussionRepos.forEach(repo => {
                     if (!singleRepo && repo.discussions_summary) {
                         const [org, name] = repo.repo_full.split('/');
-                        const summaryWithRepo = `In <a href="https://github.com/${repo.repo_full}" target="_blank" class="repo-inline">${org}/${name}</a>: ${renderMarkdown(repo.discussions_summary)}`;
-                        rightColumn += `<div class="section-summary">${summaryWithRepo}</div>`;
+                        const commitLink = getCommitRangeLink(repo);
+                        const summaryWithRepo = `In <a href="https://github.com/${repo.repo_full}" target="_blank" class="repo-inline">${org}/${name}</a>${commitLink}: ${renderMarkdown(repo.discussions_summary)}`;
+                        sectionContent += `<div class="section-summary">${summaryWithRepo}</div>`;
+                        totalText += repo.discussions_summary || '';
                     }
                     
                     if (repo.notable_discussions) {
-                        rightColumn += `<div class="content-text">${renderMarkdown(repo.notable_discussions)}</div>`;
+                        sectionContent += `<div class="content-text">${renderMarkdown(repo.notable_discussions)}</div>`;
+                        totalText += repo.notable_discussions || '';
                     }
                 });
                 
-                rightColumn += `</div>`;
+                sectionContent += `</div>`;
+                contentSections.push({
+                    content: sectionContent,
+                    estimatedHeight: estimateContentHeight(totalText),
+                    priority: 0
+                });
             }
             
-            // Good first issues
+            // Good first issues section
             const issueRepos = filteredRepos.filter(repo => repo.good_first_issues || repo.issues_summary);
-            
             if (issueRepos.length > 0) {
-                rightColumn += `<div class="content-block">`;
-                rightColumn += `<div class="content-label">entry points</div>`;
+                let sectionContent = `<div class="content-block">
+                    <div class="content-label">entry points</div>`;
                 
                 if (singleRepo && issueRepos[0].issues_summary) {
-                    rightColumn += `<div class="section-summary">${issueRepos[0].issues_summary}</div>`;
+                    sectionContent += `<div class="section-summary">${issueRepos[0].issues_summary}</div>`;
                 }
                 
+                let totalText = '';
                 issueRepos.forEach(repo => {
                     if (!singleRepo && repo.issues_summary) {
                         const [org, name] = repo.repo_full.split('/');
-                        const summaryWithRepo = `In <a href="https://github.com/${repo.repo_full}" target="_blank" class="repo-inline">${org}/${name}</a>: ${renderMarkdown(repo.issues_summary)}`;
-                        rightColumn += `<div class="section-summary">${summaryWithRepo}</div>`;
+                        const commitLink = getCommitRangeLink(repo);
+                        const summaryWithRepo = `In <a href="https://github.com/${repo.repo_full}" target="_blank" class="repo-inline">${org}/${name}</a>${commitLink}: ${renderMarkdown(repo.issues_summary)}`;
+                        sectionContent += `<div class="section-summary">${summaryWithRepo}</div>`;
+                        totalText += repo.issues_summary || '';
                     }
                     
                     if (repo.good_first_issues) {
-                        rightColumn += `<div class="content-text">${renderMarkdown(repo.good_first_issues)}</div>`;
+                        sectionContent += `<div class="content-text">${renderMarkdown(repo.good_first_issues)}</div>`;
+                        totalText += repo.good_first_issues || '';
                     }
                 });
                 
-                rightColumn += `</div>`;
+                sectionContent += `</div>`;
+                contentSections.push({
+                    content: sectionContent,
+                    estimatedHeight: estimateContentHeight(totalText),
+                    priority: 0
+                });
             }
+            
+            // Dynamic column balancing
+            const balancedColumns = balanceColumns(contentSections);
+            let leftColumn = balancedColumns.left;
+            let rightColumn = balancedColumns.right;
             
             // If no content at all, return empty or minimal display
             if (!leftColumn && !rightColumn) {
@@ -2789,11 +4730,11 @@
                 const allGroups = weekData.group_summaries || [];
                 if (allGroups.length > 0) {
                     leftColumn += `<div class="content-block">`;
-                    leftColumn += `<div class="content-label">${getSectionIcon('activity')}group activity</div>;`
+                    leftColumn += generateContentLabel('activity', 'group activity', 'activity', {weekKey: weekData.week_key});
                     
                     allGroups.forEach(group => {
-                        if (group.brief_summary) {
-                            leftColumn += `<div class="section-summary"><strong>${group.group}:</strong> ${renderMarkdown(group.brief_summary)}</div>`;
+                        if (group.activity_summary) {
+                            leftColumn += `<div class="section-summary"><strong>${group.group}:</strong> ${renderMarkdown(group.activity_summary)}</div>`;
                         }
                     });
                     
@@ -2806,52 +4747,78 @@
                 `;
             }
             
-            let leftColumn = '';
-            let rightColumn = '';
+            // Collect all content sections for dynamic balancing
+            const contentSections = [];
             
-            // Left column - Overview and Cross-Repository Work
-            if (weeklySummary.group_overview) {
-                leftColumn += `<div class="content-block">`;
-                leftColumn += `<div class="content-label">${getSectionIcon('overview')}overview</div>`;
-                leftColumn += `<div class="content-text">${renderMarkdown(weeklySummary.group_overview)}</div>`;
-                leftColumn += `</div>`;
+            // New Features section - prominently placed after overview
+            if (weeklySummary.new_features) {
+                const content = `<div class="content-block">
+                    ${generateContentLabel('new features', 'new features', 'new features', {weekKey: weekData.week_key})}
+                    <div class="content-text">${renderMarkdown(weeklySummary.new_features)}</div>
+                </div>`;
+                contentSections.push({
+                    content: content,
+                    estimatedHeight: estimateContentHeight(weeklySummary.new_features),
+                    priority: 2
+                });
             }
             
+            // Cross-repository work section
             if (weeklySummary.cross_repository_work) {
-                leftColumn += `<div class="content-block">`;
-                leftColumn += `<div class="content-label">${getSectionIcon('cross-repo work')}cross-repo work</div>`;
-                leftColumn += `<div class="content-text">${renderMarkdown(weeklySummary.cross_repository_work)}</div>`;
-                leftColumn += `</div>`;
+                const content = `<div class="content-block">
+                    ${generateContentLabel('cross-repo work', 'cross-repo work', 'cross-repo', {weekKey: weekData.week_key})}
+                    <div class="content-text">${renderMarkdown(weeklySummary.cross_repository_work)}</div>
+                </div>`;
+                contentSections.push({
+                    content: content,
+                    estimatedHeight: estimateContentHeight(weeklySummary.cross_repository_work),
+                    priority: 1
+                });
             }
             
+            // Key projects section
             if (weeklySummary.key_projects) {
-                leftColumn += `<div class="content-block">`;
-                leftColumn += `<div class="content-label">${getSectionIcon('key projects')}key projects</div>`;
-                leftColumn += `<div class="content-text">${renderMarkdown(weeklySummary.key_projects)}</div>`;
-                leftColumn += `</div>`;
+                const content = `<div class="content-block">
+                    ${generateContentLabel('key projects', 'key projects', 'key projects', {weekKey: weekData.week_key})}
+                    <div class="content-text">${renderMarkdown(weeklySummary.key_projects)}</div>
+                </div>`;
+                contentSections.push({
+                    content: content,
+                    estimatedHeight: estimateContentHeight(weeklySummary.key_projects),
+                    priority: 1
+                });
             }
             
-            // Right column - Priorities, Discussions, Trends
-            if (weeklySummary.priority_items) {
-                rightColumn += `<div class="content-block">`;
-                rightColumn += `<div class="content-label">${getSectionIcon('priorities')}priorities</div>`;
-                rightColumn += `<div class="priority-text">${renderMarkdown(weeklySummary.priority_items)}</div>`;
-                rightColumn += `</div>`;
-            }
-            
+            // Discussions section
             if (weeklySummary.notable_discussions) {
-                rightColumn += `<div class="content-block">`;
-                rightColumn += `<div class="content-label">${getSectionIcon('discussions')}discussions</div>`;
-                rightColumn += `<div class="content-text">${renderMarkdown(weeklySummary.notable_discussions)}</div>`;
-                rightColumn += `</div>`;
+                const content = `<div class="content-block">
+                    ${generateContentLabel('discussions', 'discussions', 'discussions', {weekKey: weekData.week_key})}
+                    <div class="content-text">${renderMarkdown(weeklySummary.notable_discussions)}</div>
+                </div>`;
+                contentSections.push({
+                    content: content,
+                    estimatedHeight: estimateContentHeight(weeklySummary.notable_discussions),
+                    priority: 0
+                });
             }
             
+            // Emerging trends section
             if (weeklySummary.emerging_trends) {
-                rightColumn += `<div class="content-block">`;
-                rightColumn += `<div class="content-label">${getSectionIcon('emerging trends')}emerging trends</div>`;
-                rightColumn += `<div class="content-text">${renderMarkdown(weeklySummary.emerging_trends)}</div>`;
-                rightColumn += `</div>`;
+                const content = `<div class="content-block">
+                    ${generateContentLabel('emerging trends', 'emerging trends', 'trends', {weekKey: weekData.week_key})}
+                    <div class="content-text">${renderMarkdown(weeklySummary.emerging_trends)}</div>
+                </div>`;
+                contentSections.push({
+                    content: content,
+                    estimatedHeight: estimateContentHeight(weeklySummary.emerging_trends),
+                    priority: 0
+                });
             }
+            
+            // Dynamic column balancing
+            const balancedColumns = balanceColumns(contentSections);
+            const leftColumn = balancedColumns.left;
+            const rightColumn = balancedColumns.right;
             
             // If no content at all, return empty
             if (!leftColumn && !rightColumn) {
@@ -2878,7 +4845,8 @@
         }
         
         function updateStatus(message) {
-            document.getElementById('status-text').textContent = message;
+            // Status updates are no longer displayed - function kept for compatibility
+            console.log('Status:', message);
         }
         
         function showError(message) {
@@ -2888,8 +4856,484 @@
             updateStatus('ERROR STATE');
         }
         
+        // Update repository view indicator
+        function updateRepositoryViewIndicator(repoFullName) {
+            const indicator = document.getElementById('repo-view-indicator');
+            if (!indicator) return;
+            
+            if (repoFullName) {
+                indicator.style.display = 'flex';
+                indicator.innerHTML = `
+                    <svg class="repo-icon" viewBox="0 0 16 16">
+                        <path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 0 1 1-1h8zM5 12.25v3.25a.25.25 0 0 0 .4.2l1.45-1.087a.25.25 0 0 1 .3 0L8.6 15.7a.25.25 0 0 0 .4-.2v-3.25a.25.25 0 0 0-.25-.25h-3.5a.25.25 0 0 0-.25.25z"/>
+                    </svg>
+                    <span>${repoFullName}</span>
+                    <svg class="repo-close" viewBox="0 0 16 16">
+                        <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.75.75 0 1 1 1.06 1.06L9.06 8l3.22 3.22a.75.75 0 1 1-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 0 1-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06z"/>
+                    </svg>
+                `;
+                indicator.onclick = () => exitRepoView().catch(console.error);
+            } else {
+                indicator.style.display = 'none';
+                indicator.innerHTML = '';
+                indicator.onclick = null;
+            }
+        }
+        
+        // Populate timeline for repository view
+        function populateRepoTimeline(repoData) {
+            const timeline = document.querySelector('.timeline');
+            console.log('Timeline element found:', !!timeline);
+            if (!timeline) {
+                console.error('Timeline element not found!');
+                return;
+            }
+            
+            let html = '';
+            
+            // Sort summaries by week (newest first) to match display order
+            const sortedSummaries = repoData.summaries.sort((a, b) => {
+                const keyA = `${a.year}-${String(a.week).padStart(2, '0')}`;
+                const keyB = `${b.year}-${String(b.week).padStart(2, '0')}`;
+                return keyB.localeCompare(keyA);
+            });
+            
+            console.log('Populating timeline with', sortedSummaries.length, 'weeks');
+            
+            sortedSummaries.forEach(summary => {
+                const weekKey = `${summary.year}-${String(summary.week).padStart(2, '0')}`;
+                html += `
+                    <div class="timeline-week" data-week-key="${weekKey}" onclick="scrollToWeek('${weekKey}')">
+                        <div class="timeline-week-num">W${summary.week}</div>
+                        <div class="timeline-week-year">${summary.year}</div>
+                    </div>
+                `;
+            });
+            
+            timeline.innerHTML = html;
+            console.log('Timeline populated with HTML length:', html.length);
+        }
+        
+        // Setup scroll handler for repository view (same approach as main timeline)
+        function setupRepoScrollHandler() {
+            const mainContent = document.querySelector('.main-content');
+            console.log('Setting up repo scroll handler, mainContent found:', !!mainContent);
+            
+            if (!mainContent) {
+                console.error('Main content not found for repo scroll handler');
+                return;
+            }
+            
+            // Remove any existing scroll listeners
+            mainContent.removeEventListener('scroll', updateTimelineHighlight);
+            
+            // Add repo-specific scroll listener
+            const repoScrollHandler = () => {
+                console.log('Repo scroll handler called, currentRepoView:', currentRepoView);
+                if (!currentRepoView) {
+                    console.log('Not in repo view, skipping');
+                    return;
+                }
+                
+                const weekSections = document.querySelectorAll('.week-section[data-week-key]');
+                console.log('Week sections found in scroll handler:', weekSections.length);
+                
+                let visibleWeekKey = null;
+                const mainRect = mainContent.getBoundingClientRect();
+                console.log('Main content rect:', mainRect);
+                
+                weekSections.forEach((section, index) => {
+                    const rect = section.getBoundingClientRect();
+                    const weekKey = section.dataset.weekKey;
+                    const isVisible = rect.top <= mainRect.top + 100 && rect.bottom > mainRect.top + 100;
+                    
+                    if (index < 3) { // Log first few for debugging
+                        console.log(`Week ${weekKey}: top=${rect.top}, bottom=${rect.bottom}, mainTop=${mainRect.top}, visible=${isVisible}`);
+                    }
+                    
+                    // Same logic as main timeline
+                    if (isVisible) {
+                        visibleWeekKey = weekKey;
+                        console.log('Found visible week:', visibleWeekKey);
+                    }
+                });
+                
+                // Update if changed
+                if (visibleWeekKey && currentWeekKey !== visibleWeekKey) {
+                    console.log('Repo view - updating week from', currentWeekKey, 'to:', visibleWeekKey);
+                    currentWeekKey = visibleWeekKey;
+                    updateURL(true); // Use replaceState for scroll updates
+                    
+                    // Update timeline highlighting
+                    document.querySelectorAll('.timeline-week').forEach(week => {
+                        week.classList.remove('active');
+                    });
+                    
+                    const activeWeek = document.querySelector(`.timeline-week[data-week-key="${visibleWeekKey}"]`);
+                    if (activeWeek) {
+                        activeWeek.classList.add('active');
+                        console.log('Timeline week highlighted:', visibleWeekKey);
+                    } else {
+                        console.log('Could not find timeline week for:', visibleWeekKey);
+                    }
+                }
+            };
+            
+            mainContent.addEventListener('scroll', repoScrollHandler);
+            console.log('Repo scroll handler attached');
+            
+            // Store reference for cleanup
+            mainContent._repoScrollHandler = repoScrollHandler;
+        }
+        
+        // Clean up repo scroll handler when exiting repo view
+        function cleanupRepoScrollHandler() {
+            const mainContent = document.querySelector('.main-content');
+            if (mainContent && mainContent._repoScrollHandler) {
+                mainContent.removeEventListener('scroll', mainContent._repoScrollHandler);
+                delete mainContent._repoScrollHandler;
+                console.log('Repo scroll handler cleaned up');
+                
+                // Restore main timeline scroll handler
+                mainContent.addEventListener('scroll', () => {
+                    updateTimelineHighlight();
+                });
+                console.log('Main timeline scroll handler restored');
+            }
+        }
+        
+        // Handle browser back/forward navigation
+        window.addEventListener('popstate', function(event) {
+            if (event.state && event.state.repo) {
+                showRepoSummary(event.state.repo).catch(console.error);
+            } else {
+                if (currentRepoView) {
+                    exitRepoView().catch(console.error);
+                }
+            }
+        });
+        
+        // Check URL parameters on page load
+        function handleUrlParameters() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const repoParam = urlParams.get('repo');
+            const weekParam = urlParams.get('week');
+            
+            // Set current week if provided
+            if (weekParam) {
+                currentWeekKey = weekParam;
+            }
+            
+            if (repoParam) {
+                // Wait for data to load, then show repository
+                setTimeout(() => {
+                    showRepoSummary(repoParam).catch(console.error);
+                }, 500); // Give more time for initialization
+            }
+        }
+        
+        // Feeds modal functions
+        function generateDynamicGroups() {
+            const headerGroups = document.getElementById('header-groups');
+            if (!headerGroups || !groupsData) return;
+            
+            // Check if groups have already been added (to prevent duplicates)
+            if (headerGroups.dataset.generated === 'true') return;
+            headerGroups.dataset.generated = 'true';
+            
+            // Get existing ALL tab
+            const allTab = headerGroups.querySelector('[data-group="all"]');
+            
+            // Create mobile abbreviations CSS dynamically
+            const mobileAbbreviations = {
+                'ecosystem': 'ECO',
+                'oxcaml': 'OX'
+            };
+            
+            // Add dynamic CSS for mobile abbreviations
+            const style = document.createElement('style');
+            let mobileCSS = '';
+            
+            // Add group tabs dynamically (excluding 'all' which is already there)
+            Object.keys(groupsData).forEach(groupKey => {
+                if (groupKey !== 'all') {
+                    // Check if this group tab already exists
+                    if (headerGroups.querySelector(`[data-group="${groupKey}"]`)) return;
+                    
+                    const tab = document.createElement('div');
+                    tab.className = 'group-tab';
+                    tab.dataset.group = groupKey;
+                    tab.textContent = `[${groupKey.toUpperCase()}]`;
+                    tab.onclick = () => {
+                        if (currentRepoView) {
+                            exitRepoView().then(() => switchGroup(groupKey)).catch(console.error);
+                        } else {
+                            switchGroup(groupKey).catch(console.error);
+                        }
+                    };
+                    headerGroups.appendChild(tab);
+                    
+                    // Add mobile abbreviation CSS if group name is long
+                    if (groupKey.length > 5 || mobileAbbreviations[groupKey]) {
+                        const abbrev = mobileAbbreviations[groupKey] || 
+                                      groupKey.substring(0, 3).toUpperCase();
+                        mobileCSS += `
+                            @media screen and (max-width: 768px) {
+                                .group-tab[data-group="${groupKey}"] {
+                                    font-size: 0;
+                                }
+                                .group-tab[data-group="${groupKey}"]::after {
+                                    content: "[${abbrev}]";
+                                    font-size: 10px;
+                                }
+                            }
+                        `;
+                    }
+                }
+            });
+            
+            // Clone groups to tablet secondary header
+            const secondaryGroups = document.getElementById('header-groups-secondary');
+            if (secondaryGroups) {
+                secondaryGroups.innerHTML = '';
+                headerGroups.querySelectorAll('.group-tab').forEach(tab => {
+                    const clonedTab = tab.cloneNode(true);
+                    const groupKey = clonedTab.dataset.group;
+                    clonedTab.onclick = () => {
+                        if (currentRepoView) {
+                            exitRepoView().then(() => switchGroup(groupKey)).catch(console.error);
+                        } else {
+                            switchGroup(groupKey).catch(console.error);
+                        }
+                    };
+                    secondaryGroups.appendChild(clonedTab);
+                });
+            }
+            
+            // Clone groups to mobile menu
+            const mobileGroups = document.getElementById('mobile-groups');
+            if (mobileGroups) {
+                mobileGroups.innerHTML = '';
+                headerGroups.querySelectorAll('.group-tab').forEach(tab => {
+                    const mobileTab = tab.cloneNode(true);
+                    const groupKey = mobileTab.dataset.group;
+                    mobileTab.onclick = () => {
+                        closeMobileMenu();
+                        if (currentRepoView) {
+                            exitRepoView().then(() => switchGroup(groupKey)).catch(console.error);
+                        } else {
+                            switchGroup(groupKey).catch(console.error);
+                        }
+                    };
+                    mobileGroups.appendChild(mobileTab);
+                });
+            }
+            
+            if (mobileCSS) {
+                style.textContent = mobileCSS;
+                document.head.appendChild(style);
+            }
+            
+            // Re-add click handler for ALL tab
+            if (allTab) {
+                allTab.onclick = () => switchGroup('all').catch(console.error);
+            }
+            
+            // Copy groups to mid-size container
+            const headerGroupsMid = document.getElementById('header-groups-mid');
+            if (headerGroupsMid) {
+                headerGroupsMid.innerHTML = headerGroups.innerHTML;
+                // Re-add click handlers to mid-size group tabs
+                headerGroupsMid.querySelectorAll('.group-tab').forEach(tab => {
+                    const groupKey = tab.dataset.group;
+                    tab.onclick = () => {
+                        if (currentRepoView) {
+                            exitRepoView().then(() => switchGroup(groupKey)).catch(console.error);
+                        } else {
+                            switchGroup(groupKey).catch(console.error);
+                        }
+                    };
+                });
+            }
+            
+            // Add dynamic feed links to head
+            const head = document.head;
+            Object.keys(groupsData).forEach(groupKey => {
+                if (groupKey !== 'all') {
+                    const link = document.createElement('link');
+                    link.rel = 'alternate';
+                    link.type = 'application/atom+xml';
+                    link.title = `OCaml ${groupKey.charAt(0).toUpperCase() + groupKey.slice(1)}`;
+                    link.href = `feeds/${groupKey}.xml`;
+                    head.appendChild(link);
+                }
+            });
+        }
+        
+        function generateDynamicFeeds() {
+            const modalBody = document.getElementById('feeds-modal-body');
+            if (!modalBody || !groupsData) return;
+            
+            // Keep the weekly feed (first item)
+            const weeklyFeed = modalBody.querySelector('.feed-item-link');
+            modalBody.innerHTML = '';
+            if (weeklyFeed) {
+                modalBody.appendChild(weeklyFeed);
+            }
+            
+            // Add group feeds dynamically
+            Object.keys(groupsData).forEach(groupKey => {
+                if (groupKey !== 'all') {
+                    const groupName = groupKey.charAt(0).toUpperCase() + groupKey.slice(1);
+                    const groupDesc = getGroupDescription(groupKey);
+                    
+                    const feedLink = document.createElement('a');
+                    feedLink.href = `feeds/${groupKey}.xml`;
+                    feedLink.className = 'feed-item-link';
+                    feedLink.target = '_blank';
+                    feedLink.title = `Subscribe to ${groupName} Feed`;
+                    
+                    feedLink.innerHTML = `
+                        <div class="feed-item">
+                            <div class="feed-info">
+                                <div class="feed-title">${groupName}</div>
+                                <div class="feed-desc">${groupDesc}</div>
+                            </div>
+                            <div class="feed-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 11a9 9 0 0 1 9 9"/>
+                                    <path d="M4 4a16 16 0 0 1 16 16"/>
+                                    <circle cx="5" cy="19" r="1"/>
+                                </svg>
+                            </div>
+                        </div>
+                    `;
+                    
+                    modalBody.appendChild(feedLink);
+                }
+            });
+        }
+        
+        function getGroupDescription(groupKey) {
+            const descriptions = {
+                'core': 'OCaml compiler and runtime updates',
+                'tools': 'Build systems, package managers, and developer tools',
+                'ecosystem': 'Libraries, frameworks, and community projects',
+                'oxcaml': 'Jane Street and extended ecosystem'
+            };
+            return descriptions[groupKey] || `${groupKey.charAt(0).toUpperCase() + groupKey.slice(1)} repositories`;
+        }
+        
+        async function switchGroup(groupName) {
+            // Update active tab styling across all instances (primary, secondary, mobile)
+            document.querySelectorAll('.group-tab').forEach(t => {
+                t.classList.remove('active');
+                if (t.dataset.group === groupName) {
+                    t.classList.add('active');
+                }
+            });
+            
+            // Update title in header
+            const headerTitle = document.querySelector('.header-title');
+            if (headerTitle && groupName !== 'all') {
+                headerTitle.textContent = groupName.toUpperCase();
+            } else if (headerTitle) {
+                headerTitle.textContent = 'OCAML.SYS';
+            }
+            
+            // Switch ecosystem and refresh content
+            currentEcosystem = groupName;
+            populateTimeline();
+            await displayAllWeeks();
+            updateURL();
+        }
+        
+        function showFeeds() {
+            const modal = document.getElementById('feeds-modal');
+            if (modal) {
+                modal.style.display = 'flex';
+            }
+        }
+        
+        function closeFeeds() {
+            const modal = document.getElementById('feeds-modal');
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        }
+        
+        // Initialize on load
         initTheme();
         initSystem();
+        
+        // Set up modal event listener after DOM loads
+        window.addEventListener('load', function() {
+            const feedsModal = document.getElementById('feeds-modal');
+            if (feedsModal) {
+                feedsModal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        closeFeeds();
+                    }
+                });
+            }
+        });
+        
+        // Lazy load user avatars on hover
+        function initLazyAvatars() {
+            document.addEventListener('mouseover', function(event) {
+                // Check if hovering over a user link
+                const userLink = event.target.closest('.user-link');
+                if (!userLink) return;
+                
+                // Find the tooltip avatar within the parent wrapper
+                const wrapper = userLink.closest('.user-link-wrapper');
+                if (!wrapper) return;
+                
+                const lazyImg = wrapper.querySelector('img[data-lazy="true"]');
+                if (!lazyImg) return;
+                
+                // Load the avatar if not already loaded
+                if (lazyImg.dataset.src && !lazyImg.src) {
+                    lazyImg.src = lazyImg.dataset.src;
+                    lazyImg.removeAttribute('data-lazy');
+                    lazyImg.removeAttribute('data-src');
+                }
+            });
+        }
+        
+        // Initialize lazy avatars and system on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            initSystem();
+            initLazyAvatars();
+        });
     </script>
+    
+    <!-- Feeds Modal -->
+    <div id="feeds-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-title">RSS/Atom Feeds</span>
+                <span class="modal-close" onclick="closeFeeds()">&times;</span>
+            </div>
+            <div class="modal-body" id="feeds-modal-body">
+                <!-- Feed items will be dynamically added here -->
+                <a href="feeds/weekly.xml" class="feed-item-link" target="_blank" title="Subscribe to Weekly Feed">
+                    <div class="feed-item">
+                        <div class="feed-info">
+                            <div class="feed-title">Weekly Summaries</div>
+                            <div class="feed-desc">All ecosystem activity aggregated weekly</div>
+                        </div>
+                        <div class="feed-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 11a9 9 0 0 1 9 9"/>
+                                <path d="M4 4a16 16 0 0 1 16 16"/>
+                                <circle cx="5" cy="19" r="1"/>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
