@@ -1494,7 +1494,102 @@
             font-size: 10px;
         }
         
-        .content-text a {
+        /* Grouped content tree structure styling */
+        .grouped-content {
+            margin: 0;
+        }
+        
+        .group-tree {
+            margin-bottom: 8px;
+        }
+        
+        .group-label {
+            margin-bottom: 2px;
+            padding-left: 0;
+        }
+        
+        .group-label .group-link {
+            color: var(--text-muted);
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+        }
+        
+        .group-label .group-link:hover {
+            color: var(--text-primary);
+            text-decoration: underline;
+        }
+        
+        .group-items {
+            margin: 0 0 0 12px;
+            padding: 0;
+            list-style: none;
+        }
+        
+        .group-items li {
+            position: relative;
+            padding-left: 10px;
+            line-height: 1.3;
+            margin-bottom: 4px;
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+        
+        .group-items li::before {
+            content: '›';
+            position: absolute;
+            left: 0;
+            color: var(--text-dim);
+            font-size: 10px;
+        }
+        
+        /* Links within grouped content */
+        .group-items a {
+            color: var(--link-color);
+            text-decoration: none;
+        }
+        
+        .group-items a:visited {
+            color: var(--link-color);
+        }
+        
+        .group-items a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Ensure achievements work in grouped content */
+        .group-items .achievement {
+            color: #00ffff;
+        }
+        
+        :root.light-mode .group-items .achievement {
+            color: #cc6600;
+            font-weight: 600;
+        }
+        
+        /* Ensure user links work in grouped content */
+        .group-items .user-link {
+            color: var(--link-color);
+            opacity: 0.85;
+        }
+        
+        .group-items .user-link:hover {
+            opacity: 1;
+            background: rgba(100, 149, 237, 0.1);
+        }
+        
+        /* Ensure repo links work in grouped content */
+        .group-items .repo-inline {
+            color: var(--link-color);
+        }
+        
+        .group-items .repo-inline:hover {
+            text-decoration: underline;
+        }
+        
+        .content-text a,
+        .grouped-content a {
             color: var(--link-color);
             text-decoration: none;
         }
@@ -1530,7 +1625,8 @@
         
         /* Special styling for issue/PR links */
         .content-text a.issue-link,
-        .section-summary a.issue-link {
+        .section-summary a.issue-link,
+        .group-items a.issue-link {
             font-weight: normal;
             font-style: italic;
             position: relative;
@@ -1540,7 +1636,8 @@
         }
         
         .content-text a.issue-link::after,
-        .section-summary a.issue-link::after {
+        .section-summary a.issue-link::after,
+        .group-items a.issue-link::after {
             content: '';
             position: absolute;
             right: 0;
@@ -2800,6 +2897,49 @@
             // Link achievements to their related issues
             const html = processedLines.join('');
             return linkAchievements(html);
+        }
+        
+        function renderGroupedContent(groupedData) {
+            if (!groupedData || typeof groupedData !== 'object') {
+                return '';
+            }
+            
+            let html = '<div class="grouped-content">';
+            
+            // Iterate through groups in the order they appear
+            Object.keys(groupedData).forEach(groupName => {
+                const bullets = groupedData[groupName];
+                if (!bullets || bullets.length === 0) return;
+                
+                // Group header with icon
+                const groupDisplayName = {
+                    'core': 'core',
+                    'tools': 'tools', 
+                    'ecosystem': 'ecosystem',
+                    'oxcaml': 'oxcaml',
+                    'multicore': 'multicore',
+                    'other': 'other'
+                }[groupName] || groupName;
+                
+                html += `<div class="group-tree">
+                    <div class="group-label">
+                        <a href="javascript:void(0)" onclick="handleGroupClick('${groupName}')" class="group-link" data-group="${groupName}" title="View detailed ${groupDisplayName} group activity">${groupDisplayName}</a>
+                    </div>
+                    <ul class="group-items">`;
+                
+                // Render bullets for this group
+                bullets.forEach(bullet => {
+                    // Remove leading "- " from the bullet text since we're in a list
+                    const cleanBullet = bullet.replace(/^-\s*/, '');
+                    html += `<li>${renderMarkdown(cleanBullet)}</li>`;
+                });
+                
+                html += `</ul>
+                </div>`;
+            });
+            
+            html += '</div>';
+            return html;
         }
         
         function linkAchievements(html) {
@@ -4819,26 +4959,50 @@
             
             // New Features section - prominently placed after overview
             if (weeklySummary.new_features) {
+                let contentHtml;
+                let textForEstimate;
+                
+                // Check if we have grouped content
+                if (weeklySummary.new_features_grouped && Object.keys(weeklySummary.new_features_grouped).length > 0) {
+                    contentHtml = renderGroupedContent(weeklySummary.new_features_grouped);
+                    textForEstimate = JSON.stringify(weeklySummary.new_features_grouped);
+                } else {
+                    contentHtml = `<div class="content-text">${renderMarkdown(weeklySummary.new_features)}</div>`;
+                    textForEstimate = weeklySummary.new_features;
+                }
+                
                 const content = `<div class="content-block">
                     ${generateContentLabel('new features', 'new features', 'new features', {weekKey: weekData.week_key})}
-                    <div class="content-text">${renderMarkdown(weeklySummary.new_features)}</div>
+                    ${contentHtml}
                 </div>`;
                 contentSections.push({
                     content: content,
-                    estimatedHeight: estimateContentHeight(weeklySummary.new_features),
+                    estimatedHeight: estimateContentHeight(textForEstimate),
                     priority: 2
                 });
             }
             
             // Cross-repository work section
             if (weeklySummary.cross_repository_work) {
+                let contentHtml;
+                let textForEstimate;
+                
+                // Check if we have grouped content
+                if (weeklySummary.cross_repository_work_grouped && Object.keys(weeklySummary.cross_repository_work_grouped).length > 0) {
+                    contentHtml = renderGroupedContent(weeklySummary.cross_repository_work_grouped);
+                    textForEstimate = JSON.stringify(weeklySummary.cross_repository_work_grouped);
+                } else {
+                    contentHtml = `<div class="content-text">${renderMarkdown(weeklySummary.cross_repository_work)}</div>`;
+                    textForEstimate = weeklySummary.cross_repository_work;
+                }
+                
                 const content = `<div class="content-block">
                     ${generateContentLabel('cross-repo work', 'cross-repo work', 'cross-repo', {weekKey: weekData.week_key})}
-                    <div class="content-text">${renderMarkdown(weeklySummary.cross_repository_work)}</div>
+                    ${contentHtml}
                 </div>`;
                 contentSections.push({
                     content: content,
-                    estimatedHeight: estimateContentHeight(weeklySummary.cross_repository_work),
+                    estimatedHeight: estimateContentHeight(textForEstimate),
                     priority: 1
                 });
             }
@@ -4858,26 +5022,50 @@
             
             // Discussions section
             if (weeklySummary.notable_discussions) {
+                let contentHtml;
+                let textForEstimate;
+                
+                // Check if we have grouped content
+                if (weeklySummary.notable_discussions_grouped && Object.keys(weeklySummary.notable_discussions_grouped).length > 0) {
+                    contentHtml = renderGroupedContent(weeklySummary.notable_discussions_grouped);
+                    textForEstimate = JSON.stringify(weeklySummary.notable_discussions_grouped);
+                } else {
+                    contentHtml = `<div class="content-text">${renderMarkdown(weeklySummary.notable_discussions)}</div>`;
+                    textForEstimate = weeklySummary.notable_discussions;
+                }
+                
                 const content = `<div class="content-block">
                     ${generateContentLabel('discussions', 'discussions', 'discussions', {weekKey: weekData.week_key})}
-                    <div class="content-text">${renderMarkdown(weeklySummary.notable_discussions)}</div>
+                    ${contentHtml}
                 </div>`;
                 contentSections.push({
                     content: content,
-                    estimatedHeight: estimateContentHeight(weeklySummary.notable_discussions),
+                    estimatedHeight: estimateContentHeight(textForEstimate),
                     priority: 0
                 });
             }
             
             // Emerging trends section
             if (weeklySummary.emerging_trends) {
+                let contentHtml;
+                let textForEstimate;
+                
+                // Check if we have grouped content
+                if (weeklySummary.emerging_trends_grouped && Object.keys(weeklySummary.emerging_trends_grouped).length > 0) {
+                    contentHtml = renderGroupedContent(weeklySummary.emerging_trends_grouped);
+                    textForEstimate = JSON.stringify(weeklySummary.emerging_trends_grouped);
+                } else {
+                    contentHtml = `<div class="content-text">${renderMarkdown(weeklySummary.emerging_trends)}</div>`;
+                    textForEstimate = weeklySummary.emerging_trends;
+                }
+                
                 const content = `<div class="content-block">
                     ${generateContentLabel('emerging trends', 'emerging trends', 'trends', {weekKey: weekData.week_key})}
-                    <div class="content-text">${renderMarkdown(weeklySummary.emerging_trends)}</div>
+                    ${contentHtml}
                 </div>`;
                 contentSections.push({
                     content: content,
-                    estimatedHeight: estimateContentHeight(weeklySummary.emerging_trends),
+                    estimatedHeight: estimateContentHeight(textForEstimate),
                     priority: 0
                 });
             }
