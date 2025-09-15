@@ -487,6 +487,35 @@
             padding: 8px;
         }
         
+        .repo-dropdown-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 6px 8px;
+            border-bottom: 1px solid var(--border-color);
+            background: var(--bg-secondary);
+        }
+        
+        .repo-dropdown-title {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-primary);
+            white-space: nowrap;
+        }
+        
+        .repo-dropdown-close {
+            font-size: 14px;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 0 4px;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+        
+        .repo-dropdown-close:hover {
+            color: var(--text-primary);
+        }
+        
         .repo-org-group {
             margin-bottom: 12px;
         }
@@ -822,19 +851,20 @@
         .week-activity-visual {
             display: flex;
             align-items: flex-end;
-            gap: 2px;
-            height: 40px;
-            padding: 8px 0;
+            gap: 1px;
+            height: 16px;
+            padding: 0;
             position: relative;
             cursor: help;
+            margin-left: auto;
+            flex-shrink: 0;
+            width: 30px;
         }
         
         .week-activity-bar {
-            flex: 1;
-            min-width: 3px;
-            max-width: 8px;
+            width: 2px;
             background: var(--text-primary);
-            border-radius: 1px;
+            border-radius: 0.5px;
             transition: all 0.2s ease;
             position: relative;
         }
@@ -860,21 +890,18 @@
         }
         
         .week-activity-tooltip {
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
+            position: fixed;
             background: var(--bg-secondary);
             border: 1px solid var(--border-color);
             border-radius: 4px;
-            padding: 8px 12px;
-            font-size: 11px;
+            padding: 6px 8px;
+            font-size: 10px;
             white-space: nowrap;
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.2s ease;
-            z-index: 1000;
-            margin-bottom: 8px;
+            z-index: 10000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
         
         .week-activity-visual:hover .week-activity-tooltip {
@@ -2162,7 +2189,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                padding: 15px;
+                padding: 8px 12px;
                 border-bottom: 1px solid var(--border-color);
                 background: var(--bg-secondary);
                 position: sticky;
@@ -2171,17 +2198,19 @@
             }
             
             .repo-dropdown-title {
-                font-size: 16px;
+                font-size: 12px;
                 font-weight: 600;
                 color: var(--text-primary);
+                white-space: nowrap;
             }
             
             .repo-dropdown-close {
-                font-size: 24px;
+                font-size: 16px;
                 color: var(--text-muted);
                 cursor: pointer;
-                padding: 0 5px;
+                padding: 0 4px;
                 line-height: 1;
+                flex-shrink: 0;
             }
             
             .repo-dropdown-content {
@@ -2287,7 +2316,6 @@
             <div class="header-primary">
                 <div class="header-brand">
                     <div class="header-title">OCAML.SYS</div>
-                    <div id="repo-view-indicator" class="repo-view-indicator" style="display: none;"></div>
                 </div>
                 
                 <!-- Desktop/Tablet: Group tabs -->
@@ -2329,6 +2357,8 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <div id="repo-view-indicator" class="repo-view-indicator" style="display: none;"></div>
                 </div>
                 
                 <!-- Icons (RSS & Theme) -->
@@ -3943,7 +3973,7 @@
                     if (commitCount === 0 && repoCount === 0) return '';
                     
                     const bars = [];
-                    const numBars = 20;
+                    const numBars = 10;
                     
                     // Create varied height bars for visual interest
                     for (let i = 0; i < numBars; i++) {
@@ -3969,22 +3999,8 @@
                     }
                     
                     return `
-                        <div class="week-activity-visual">
+                        <div class="week-activity-visual" onmouseenter="showTooltip(event, ${commitCount}, ${repoCount}, ${activityLevel})" onmouseleave="hideTooltip()">
                             ${bars.join('')}
-                            <div class="week-activity-tooltip">
-                                <div class="tooltip-row">
-                                    <span class="tooltip-label">Commits:</span>
-                                    <span class="tooltip-value">${commitCount}</span>
-                                </div>
-                                <div class="tooltip-row">
-                                    <span class="tooltip-label">Active repos:</span>
-                                    <span class="tooltip-value">${repoCount}</span>
-                                </div>
-                                <div class="tooltip-row">
-                                    <span class="tooltip-label">Activity level:</span>
-                                    <span class="tooltip-value">${activityLevel}</span>
-                                </div>
-                            </div>
                         </div>
                     `;
                 };
@@ -4000,10 +4016,10 @@
                                         </svg>
                                     </div>
                                     W${summary.week}.${summary.year}
+                                    ${generateSparkgraph()}
                                 </div>
                                 <div class="week-date-range">${formattedRange}</div>
                             </div>
-                            ${generateSparkgraph()}
                         </div>
                         <div class="week-content">
                 `;
@@ -4350,6 +4366,54 @@
         }
         
         function renderWeekPlaceholder(week, weekInfo) {
+            // Get week stats for sparkgraph
+            const commitCount = week?.stats?.total_commits || weekInfo?.stats?.total_commits || 0;
+            const repoCount = week?.repos_with_commits || weekInfo?.repos_with_commits || 0;
+            const activityLevel = week?.activity_level || weekInfo?.activity_level || 0;
+            
+            // Debug: log the data to see what we're getting
+            console.log(`Week ${week.week_key}: commits=${commitCount}, repos=${repoCount}, activity=${activityLevel}`);
+            
+            // Generate sparkgraph bars
+            const generateSparkgraph = () => {
+                if (commitCount === 0 && repoCount === 0 && activityLevel === 0) return '';
+                
+                const bars = [];
+                const numBars = 10;
+                const maxCommits = 130;
+                const maxRepos = 13;
+                const maxActivity = 222;
+                
+                // Create varied height bars for visual interest
+                for (let i = 0; i < numBars; i++) {
+                    let height = 0;
+                    let barClass = 'commit-bar';
+                    
+                    if (i < 4) {
+                        // First few bars represent commits
+                        height = Math.floor((commitCount / maxCommits) * 80) + 20;
+                        barClass = 'commit-bar';
+                    } else if (i < 7) {
+                        // Middle bars represent active repos
+                        height = Math.floor((repoCount / maxRepos) * 70) + 25;
+                        barClass = 'repo-bar';
+                    } else {
+                        // Last bars represent general activity
+                        height = Math.floor((activityLevel / maxActivity) * 90) + 15;
+                        barClass = 'activity-bar';
+                    }
+                    
+                    height = Math.max(10, Math.min(100, height));
+                    bars.push(`<div class="week-activity-bar ${barClass}" style="height: ${height}%"></div>`);
+                }
+                
+                return `
+                    <div class="week-activity-visual" onmouseenter="showTooltip(event, ${commitCount}, ${repoCount}, ${activityLevel})" onmouseleave="hideTooltip()">
+                        ${bars.join('')}
+                    </div>
+                `;
+            };
+
             // Format the date range in words with year
             const formatWeekDate = (dateStr) => {
                 const date = new Date(dateStr);
@@ -4378,15 +4442,18 @@
             return `
                 <div class="week-section" id="week-${week.week_key}" data-week-key="${week.week_key}">
                     <div class="week-header-main">
-                        <div class="week-title-main">
-                            <div class="week-icon">
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.89-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.11-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
-                                </svg>
+                        <div class="week-header-top">
+                            <div class="week-title-main">
+                                <div class="week-icon">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.89-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.11-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                                    </svg>
+                                </div>
+                                W${week.week}.${week.year}
+                                ${generateSparkgraph()}
                             </div>
-                            W${week.week}.${week.year}
+                            <div class="week-date-range">${formattedRange}</div>
                         </div>
-                        <div class="week-date-range">${formattedRange}</div>
                     </div>
                     <div class="week-content">
                         <div class="loading-indicator">Loading week data...</div>
@@ -5301,6 +5368,50 @@
             });
         }
         
+        // Tooltip functions for sparkgraphs
+        let tooltipElement = null;
+        
+        function showTooltip(event, commitCount, repoCount, activityLevel) {
+            hideTooltip(); // Hide any existing tooltip
+            
+            tooltipElement = document.createElement('div');
+            tooltipElement.className = 'week-activity-tooltip';
+            tooltipElement.style.opacity = '1';
+            tooltipElement.innerHTML = `
+                <div>Commits: ${commitCount} | Repos: ${repoCount} | Activity: ${activityLevel}</div>
+                <div style="font-size: 9px; color: var(--text-muted); margin-top: 2px;">
+                    Activity = Features(4) + Activity(3) + Trends(2) + Community(1)
+                </div>
+            `;
+            
+            document.body.appendChild(tooltipElement);
+            
+            // Position tooltip near cursor but avoid screen edges
+            const rect = event.target.getBoundingClientRect();
+            const tooltipRect = tooltipElement.getBoundingClientRect();
+            
+            let left = rect.right + 10;
+            let top = rect.top - tooltipRect.height - 5;
+            
+            // Adjust if tooltip would go off screen
+            if (left + tooltipRect.width > window.innerWidth) {
+                left = rect.left - tooltipRect.width - 10;
+            }
+            if (top < 0) {
+                top = rect.bottom + 5;
+            }
+            
+            tooltipElement.style.left = left + 'px';
+            tooltipElement.style.top = top + 'px';
+        }
+        
+        function hideTooltip() {
+            if (tooltipElement) {
+                tooltipElement.remove();
+                tooltipElement = null;
+            }
+        }
+
         // Initialize lazy avatars and system on page load
         window.addEventListener('DOMContentLoaded', () => {
             initSystem();
