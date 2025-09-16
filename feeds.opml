@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <opml version="2.0">
   <head>
-    <title>OCaml Community Activity Feeds</title>
-    <dateCreated>2025-09-13T20:43:02.106352+00:00</dateCreated>
+    <title>OCaml Thicket Feeds</title>
+    <dateCreated>2025-09-16T21:48:47.281219+00:00</dateCreated>
   </head>
   <body>
     <outline text="OCaml Core" title="OCaml Core" type="rss" xmlUrl="https://thicket.dev//feeds/core.xml" htmlUrl="https://thicket.dev//groups/core" description="Core OCaml language, compiler, and essential tooling"/>
     <outline text="OCaml Ecosystem" title="OCaml Ecosystem" type="rss" xmlUrl="https://thicket.dev//feeds/ecosystem.xml" htmlUrl="https://thicket.dev//groups/ecosystem" description="Package repositories and community infrastructure"/>
+    <outline text="Multicore" title="Multicore" type="rss" xmlUrl="https://thicket.dev//feeds/multicore.xml" htmlUrl="https://thicket.dev//groups/multicore" description="Multicore OCaml"/>
     <outline text="OxCaml" title="OxCaml" type="rss" xmlUrl="https://thicket.dev//feeds/oxcaml.xml" htmlUrl="https://thicket.dev//groups/oxcaml" description="Oxidised OCaml"/>
     <outline text="OCaml Tools" title="OCaml Tools" type="rss" xmlUrl="https://thicket.dev//feeds/tools.xml" htmlUrl="https://thicket.dev//groups/tools" description="Development tools and build systems"/>
     <outline text="Weekly" title="Weekly" type="rss" xmlUrl="https://thicket.dev//feeds/weekly.xml" htmlUrl="https://thicket.dev//groups/weekly"/>

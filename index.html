@@ -2607,6 +2607,26 @@
         let currentEcosystem = 'all';
         let currentWeekKey = null;
         let currentYear = new Date().getFullYear();
+        let currentRepoView = null;  // Track current repository view
+        
+        // Update document title based on current view
+        function updateDocumentTitle() {
+            let title = 'OCaml Thicket';
+            
+            if (currentRepoView) {
+                // Repository view
+                title = `${currentRepoView} - OCaml Thicket`;
+            } else if (currentWeekKey) {
+                // Week view
+                const weekMatch = currentWeekKey.match(/(\d{4})-week-(\d+)/);
+                if (weekMatch) {
+                    const [, year, weekNum] = weekMatch;
+                    title = `Week ${weekNum}, ${year} - OCaml Thicket`;
+                }
+            }
+            
+            document.title = title;
+        }
         
         // Theme management
         function detectSystemTheme() {
@@ -3156,6 +3176,7 @@
             // Set the week
             if (week) {
                 currentWeekKey = week;
+                updateDocumentTitle();
                 // Scroll to the week after content is loaded
                 setTimeout(() => {
                     const weekElement = document.getElementById(`week-${week}`);
@@ -3175,6 +3196,7 @@
             if (event.state) {
                 currentEcosystem = event.state.ecosystem || 'all';
                 currentWeekKey = event.state.week || null;
+                updateDocumentTitle();
                 restoreStateFromURL().catch(console.error);
             }
         });
@@ -3698,6 +3720,7 @@
                     // Update current ecosystem
                     currentEcosystem = tab.dataset.group;
                     currentWeekKey = null; // Reset week when changing groups
+                    updateDocumentTitle();
                     populateTimeline();
                     await displayAllWeeks();
                     
@@ -3725,6 +3748,7 @@
             if (weekElement) {
                 weekElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 currentWeekKey = weekKey;
+                updateDocumentTitle();
                 updateURL();
                 console.log('Scrolled to week:', weekKey);
             } else {
@@ -3757,6 +3781,7 @@
                     // Update global currentWeekKey if it changed
                     if (currentWeekKey !== visibleWeekKey) {
                         currentWeekKey = visibleWeekKey;
+                        updateDocumentTitle();
                         updateURL(true); // Use replaceState for scroll updates
                     }
                 }
@@ -4020,7 +4045,6 @@
         
         // Cache for loaded repository data
         let repoDataCache = {};
-        let currentRepoView = null;
         
         function populateRepoDropdown() {
             const content = document.getElementById('repo-dropdown-content');
@@ -4086,6 +4110,7 @@
             const display = document.getElementById('main-display');
             const originalContent = display.innerHTML;
             currentRepoView = repoFullName;
+            updateDocumentTitle();
             
             // Update header to show repository view indicator
             updateRepositoryViewIndicator(repoFullName);
@@ -4501,6 +4526,7 @@
         
         async function exitRepoView() {
             currentRepoView = null;
+            updateDocumentTitle();
             
             // Clear URL parameter while preserving filters
             const newUrl = new URL(window.location);
@@ -5321,6 +5347,7 @@
                 if (visibleWeekKey && currentWeekKey !== visibleWeekKey) {
                     console.log('Repo view - updating week from', currentWeekKey, 'to:', visibleWeekKey);
                     currentWeekKey = visibleWeekKey;
+                    updateDocumentTitle();
                     updateURL(true); // Use replaceState for scroll updates
                     
                     // Update timeline highlighting
@@ -5381,6 +5408,7 @@
             // Set current week if provided
             if (weekParam) {
                 currentWeekKey = weekParam;
+                updateDocumentTitle();
             }
             
             if (repoParam) {
