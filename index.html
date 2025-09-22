@@ -532,7 +532,9 @@
         }
         
         .repo-item {
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             color: var(--text-muted);
             text-decoration: none;
             font-size: 11px;
@@ -541,10 +543,40 @@
             border-radius: 2px;
             transition: all 0.15s;
         }
-        
+
         .repo-item:hover {
             background: var(--bg-primary);
             color: var(--text-primary);
+        }
+
+        .repo-item-content {
+            display: inline-block;
+            flex: 1;
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .repo-item-content:hover {
+            color: var(--text-primary);
+        }
+
+        .repo-feed-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 2px;
+            color: var(--text-muted);
+            opacity: 0.5;
+            transition: all 0.15s;
+        }
+
+        .repo-feed-link:hover {
+            color: var(--accent);
+            opacity: 1;
+        }
+
+        .repo-feed-link svg {
+            width: 11px;
+            height: 11px;
         }
         
         
@@ -2603,6 +2635,7 @@
         let allWeekData = {}; // Cache for loaded week data
         let loadingWeeks = {}; // Track which weeks are currently being loaded
         let usersData = {};
+        let avatarsIndex = {};  // Local avatar paths
         let activityData = null;
         let currentEcosystem = 'all';
         let currentWeekKey = null;
@@ -2859,8 +2892,10 @@
                 let tooltipHtml = '<div class="user-tooltip"><div class="user-tooltip-content">';
                 
                 // Add avatar placeholder - will load on hover
-                if (userData.avatar_url) {
-                    tooltipHtml += `<img data-src="${userData.avatar_url}" alt="${username}" class="user-tooltip-avatar" data-lazy="true">`;
+                // Use local avatar if available, otherwise fallback to GitHub URL
+                const avatarUrl = avatarsIndex[username] || userData.avatar_url;
+                if (avatarUrl) {
+                    tooltipHtml += `<img data-src="${avatarUrl}" alt="${username}" class="user-tooltip-avatar" data-lazy="true">`;
                 } else {
                     tooltipHtml += `<div class="user-tooltip-avatar"></div>`;
                 }
@@ -2902,8 +2937,10 @@
                     let tooltipHtml = '<div class="user-tooltip"><div class="user-tooltip-content">';
                     
                     // Add avatar placeholder - will load on hover
-                    if (userData.avatar_url) {
-                        tooltipHtml += `<img data-src="${userData.avatar_url}" alt="${username}" class="user-tooltip-avatar" data-lazy="true">`;
+                    // Use local avatar if available, otherwise fallback to GitHub URL
+                    const avatarUrl = avatarsIndex[username] || userData.avatar_url;
+                    if (avatarUrl) {
+                        tooltipHtml += `<img data-src="${avatarUrl}" alt="${username}" class="user-tooltip-avatar" data-lazy="true">`;
                     } else {
                         tooltipHtml += `<div class="user-tooltip-avatar"></div>`;
                     }
@@ -2958,8 +2995,10 @@
                 let tooltipHtml = '<div class="user-tooltip"><div class="user-tooltip-content">';
                 
                 // Add avatar placeholder - will load on hover
-                if (userData.avatar_url) {
-                    tooltipHtml += `<img data-src="${userData.avatar_url}" alt="${username}" class="user-tooltip-avatar" data-lazy="true">`;
+                // Use local avatar if available, otherwise fallback to GitHub URL
+                const avatarUrl = avatarsIndex[username] || userData.avatar_url;
+                if (avatarUrl) {
+                    tooltipHtml += `<img data-src="${avatarUrl}" alt="${username}" class="user-tooltip-avatar" data-lazy="true">`;
                 } else {
                     tooltipHtml += `<div class="user-tooltip-avatar"></div>`;
                 }
@@ -3204,22 +3243,28 @@
         async function initSystem() {
             updateStatus('LOADING INDEX...');
             try {
-                const [indexResp, groupsResp, usersResp] = await Promise.all([
+                const [indexResp, groupsResp, usersResp, avatarsResp] = await Promise.all([
                     fetch('index.json'),
                     fetch('groups.json'),
-                    fetch('users.json')
+                    fetch('users.json'),
+                    fetch('avatars.json')
                 ]);
-                
+
                 if (!indexResp.ok || !groupsResp.ok) throw new Error('FEED CORRUPTED');
-                
+
                 indexData = await indexResp.json();
                 groupsData = await groupsResp.json();
-                
+
                 // Load users data - fallback to empty object if not available
                 if (usersResp.ok) {
                     usersData = await usersResp.json();
                 } else {
                     usersData = {};
+                }
+
+                // Load avatars index - fallback to empty object if not available
+                if (avatarsResp.ok) {
+                    avatarsIndex = await avatarsResp.json();
                 }
                 
                 // Dynamically generate group tabs and feed links
@@ -4080,9 +4125,27 @@
                 html += `
                     <div class="repo-org-group">
                         <div class="repo-org-name">${org}</div>
-                        ${repos.sort().map(name => 
-                            `<a href="javascript:void(0)" onclick="showRepoSummary('${org}/${name}')" class="repo-item">${name}</a>`
-                        ).join('')}
+                        ${repos.sort().map(name => {
+                            const repoSlug = `${org}-${name}`;
+                            return `
+                                <div class="repo-item">
+                                    <a href="javascript:void(0)" onclick="showRepoSummary('${org}/${name}')" class="repo-item-content">
+                                        ${name}
+                                    </a>
+                                    <a href="feeds/repos/${repoSlug}.xml"
+                                       class="repo-feed-link"
+                                       title="Atom feed for ${org}/${name}"
+                                       target="_blank"
+                                       onclick="event.stopPropagation()">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M4 11a9 9 0 0 1 9 9"/>
+                                            <path d="M4 4a16 16 0 0 1 16 16"/>
+                                            <circle cx="5" cy="19" r="1"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            `;
+                        }).join('')}
                     </div>
                 `;
             });

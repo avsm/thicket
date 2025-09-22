@@ -1,189 +1,1385 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocamlfind.xml</id><title>ocaml/ocamlfind (Weekly)</title><updated>2025-09-14T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocamlfind.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocamlfind</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-37</id><title>Week 37, 2025: None</title><updated>2025-09-14T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 37, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 37, 2025</summary><published>2025-09-14T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-36</id><title>Week 36, 2025: None</title><updated>2025-09-07T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 36, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 36, 2025</summary><published>2025-09-07T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-35</id><title>Week 35, 2025: None</title><updated>2025-08-31T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 35, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 35, 2025</summary><published>2025-08-31T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-34</id><title>Week 34, 2025: One issue opened requesting improvement to duplicate interface warnings for dune virtual libraries</title><updated>2025-08-24T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocamlfind.xml</id><title>ocaml/ocamlfind (Weekly)</title><updated>2025-09-14T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocamlfind.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocamlfind</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-37</id><title>Week 37, 2025: None</title><updated>2025-09-14T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 37, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 37, 2025</summary><published>2025-09-14T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-36</id><title>Week 36, 2025: None</title><updated>2025-09-07T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 36, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 36, 2025</summary><published>2025-09-07T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-35</id><title>Week 35, 2025: None</title><updated>2025-08-31T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 35, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 35, 2025</summary><published>2025-08-31T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-34</id><title>Week 34, 2025: One issue opened requesting improvement to duplicate interface warnings for dune virtual libraries</title><updated>2025-08-24T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 Single issue opened about reducing false positive warnings for duplicate interface files&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;Issue requesting &lt;a href="https://github.com/ocaml/ocamlfind/issues/111" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;warning suppression improvement&lt;/strong&gt;&lt;/a&gt; for duplicate interface files opened by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocamlfind/issues/111"&gt;#111&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Issue requesting &lt;a href="https://github.com/ocaml/ocamlfind/issues/111" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;warning suppression improvement&lt;/strong&gt;&lt;/a&gt; for duplicate interface files opened by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocamlfind/issues/111"&gt;#111&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>One issue opened requesting improvement to duplicate interface warnings for dune virtual libraries</summary><published>2025-08-24T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-33</id><title>Week 33, 2025: Single Windows path separator issue reported requiring semicolon instead of colon in findlib.conf</title><updated>2025-08-17T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>One issue opened requesting improvement to duplicate interface warnings for dune virtual libraries</summary><published>2025-08-24T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-33</id><title>Week 33, 2025: Single Windows path separator issue reported requiring semicolon instead of colon in findlib.conf</title><updated>2025-08-17T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 One Windows-specific configuration issue opened regarding path separator compatibility&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/110" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Windows compatibility issue&lt;/strong&gt;&lt;/a&gt; reported by &lt;a href="https://github.com/jesse-greathouse"&gt;Jesse Greathouse&lt;/a&gt; highlighting findlib.conf path separator problems on Windows 11 with PowerShell (&lt;a href="https://github.com/ocaml/ocamlfind/issues/110"&gt;#110&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/110" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Windows compatibility issue&lt;/strong&gt;&lt;/a&gt; reported by &lt;a href="https://github.com/jesse-greathouse"&gt;Jesse Greathouse&lt;/a&gt; highlighting findlib.conf path separator problems on Windows 11 with PowerShell (&lt;a href="https://github.com/ocaml/ocamlfind/issues/110"&gt;#110&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Single Windows path separator issue reported requiring semicolon instead of colon in findlib.conf</summary><published>2025-08-17T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-32</id><title>Week 32, 2025: Discussion continued on configure script hardening PR with no new commits</title><updated>2025-08-10T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>Single Windows path separator issue reported requiring semicolon instead of colon in findlib.conf</summary><published>2025-08-17T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-32</id><title>Week 32, 2025: Discussion continued on configure script hardening PR with no new commits</title><updated>2025-08-10T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 Ongoing discussion about configure script reliability improvements&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/101" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Configure script hardening&lt;/strong&gt;&lt;/a&gt; continues with &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; maintaining &lt;a href="https://github.com/ocaml/ocamlfind/issues/101"&gt;#101&lt;/a&gt; to make the configure script fail on command failures, addressing user reports of installation issues&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/101" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Configure script hardening&lt;/strong&gt;&lt;/a&gt; continues with &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; maintaining &lt;a href="https://github.com/ocaml/ocamlfind/issues/101"&gt;#101&lt;/a&gt; to make the configure script fail on command failures, addressing user reports of installation issues&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Discussion continued on configure script hardening PR with no new commits</summary><published>2025-08-10T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-31</id><title>Week 31, 2025: None</title><updated>2025-08-03T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 31, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 31, 2025</summary><published>2025-08-03T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-30</id><title>Week 30, 2025: None</title><updated>2025-07-27T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 30, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 30, 2025</summary><published>2025-07-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-29</id><title>Week 29, 2025: None</title><updated>2025-07-20T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 29, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 29, 2025</summary><published>2025-07-20T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-28</id><title>Week 28, 2025: None</title><updated>2025-07-13T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 28, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 28, 2025</summary><published>2025-07-13T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-27</id><title>Week 27, 2025: None</title><updated>2025-07-06T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 27, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 27, 2025</summary><published>2025-07-06T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-26</id><title>Week 26, 2025: None</title><updated>2025-06-29T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 26, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 26, 2025</summary><published>2025-06-29T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-25</id><title>Week 25, 2025: None</title><updated>2025-06-22T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 25, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 25, 2025</summary><published>2025-06-22T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-24</id><title>Week 24, 2025: None</title><updated>2025-06-15T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 24, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 24, 2025</summary><published>2025-06-15T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-23</id><title>Week 23, 2025: Performance issue reported for package loading in large OPAM switches</title><updated>2025-06-08T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>Discussion continued on configure script hardening PR with no new commits</summary><published>2025-08-10T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-31</id><title>Week 31, 2025: None</title><updated>2025-08-03T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 31, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 31, 2025</summary><published>2025-08-03T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-30</id><title>Week 30, 2025: None</title><updated>2025-07-27T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 30, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 30, 2025</summary><published>2025-07-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-29</id><title>Week 29, 2025: None</title><updated>2025-07-20T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 29, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 29, 2025</summary><published>2025-07-20T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-28</id><title>Week 28, 2025: None</title><updated>2025-07-13T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 28, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 28, 2025</summary><published>2025-07-13T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-27</id><title>Week 27, 2025: None</title><updated>2025-07-06T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 27, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 27, 2025</summary><published>2025-07-06T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-26</id><title>Week 26, 2025: None</title><updated>2025-06-29T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 26, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 26, 2025</summary><published>2025-06-29T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-25</id><title>Week 25, 2025: None</title><updated>2025-06-22T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 25, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 25, 2025</summary><published>2025-06-22T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-24</id><title>Week 24, 2025: None</title><updated>2025-06-15T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 24, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 24, 2025</summary><published>2025-06-15T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-23</id><title>Week 23, 2025: Performance issue reported for package loading in large OPAM switches</title><updated>2025-06-08T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 Performance degradation issue reported for dynamic package loading&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/109" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Performance issue&lt;/strong&gt;&lt;/a&gt; reported by &lt;a href="https://github.com/ejgallego"&gt;Emilio Jesús Gallego Arias&lt;/a&gt; affecting &lt;code&gt;Fl_dynload.load_packages&lt;/code&gt; function with super-linear degradation in large OPAM switches (&lt;a href="https://github.com/ocaml/ocamlfind/issues/109"&gt;#109&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/109" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Performance issue&lt;/strong&gt;&lt;/a&gt; reported by &lt;a href="https://github.com/ejgallego"&gt;Emilio Jesús Gallego Arias&lt;/a&gt; affecting &lt;code&gt;Fl_dynload.load_packages&lt;/code&gt; function with super-linear degradation in large OPAM switches (&lt;a href="https://github.com/ocaml/ocamlfind/issues/109"&gt;#109&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Performance issue reported for package loading in large OPAM switches</summary><published>2025-06-08T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-22</id><title>Week 22, 2025: Distribution infrastructure issues reported affecting automated builds and installations</title><updated>2025-06-01T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>Performance issue reported for package loading in large OPAM switches</summary><published>2025-06-08T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-22</id><title>Week 22, 2025: Distribution infrastructure issues reported affecting automated builds and installations</title><updated>2025-06-01T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 Download server outages reported affecting camlcity.org with workarounds provided&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/108" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Distribution server issues&lt;/strong&gt;&lt;/a&gt; reported by &lt;a href="https://github.com/Justme0606"&gt;Sylvain Borgogno&lt;/a&gt; affecting ocamlfind 1.9.5 downloads from camlcity.org, impacting Coq Platform CI builds (&lt;a href="https://github.com/ocaml/ocamlfind/issues/108"&gt;#108&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/98" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Related download problems&lt;/strong&gt;&lt;/a&gt; with ocamlfind 1.9.6 affecting opam installations reported by &lt;a href="https://github.com/Lola969"&gt;Bessalah Fettoum&lt;/a&gt; with 504 curl errors (&lt;a href="https://github.com/ocaml/ocamlfind/issues/98"&gt;#98&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/108" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Alternative download mirror&lt;/strong&gt;&lt;/a&gt; identified by &lt;a href="https://github.com/michael-schwarz"&gt;Michael Schwarz&lt;/a&gt; at download2.camlcity.org as temporary workaround for version 1.9.5 (&lt;a href="https://github.com/ocaml/ocamlfind/issues/108"&gt;#108&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/108" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Community coordination&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/shonfeder"&gt;Shon Feder&lt;/a&gt; connecting with &lt;a href="https://github.com/gerdstolpmann"&gt;@gerdstolpmann&lt;/a&gt; for camlcity.org access and identifying issue duplication (&lt;a href="https://github.com/ocaml/ocamlfind/issues/108"&gt;#108&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocamlfind/issues/98"&gt;#98&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/108" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Distribution server issues&lt;/strong&gt;&lt;/a&gt; reported by &lt;a href="https://github.com/Justme0606"&gt;Sylvain Borgogno&lt;/a&gt; affecting ocamlfind 1.9.5 downloads from camlcity.org, impacting Coq Platform CI builds (&lt;a href="https://github.com/ocaml/ocamlfind/issues/108"&gt;#108&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/98" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Related download problems&lt;/strong&gt;&lt;/a&gt; with ocamlfind 1.9.6 affecting opam installations reported by &lt;a href="https://github.com/Lola969"&gt;Bessalah Fettoum&lt;/a&gt; with 504 curl errors (&lt;a href="https://github.com/ocaml/ocamlfind/issues/98"&gt;#98&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/108" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Alternative download mirror&lt;/strong&gt;&lt;/a&gt; identified by &lt;a href="https://github.com/michael-schwarz"&gt;Michael Schwarz&lt;/a&gt; at download2.camlcity.org as temporary workaround for version 1.9.5 (&lt;a href="https://github.com/ocaml/ocamlfind/issues/108"&gt;#108&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/108" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Community coordination&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/shonfeder"&gt;Shon Feder&lt;/a&gt; connecting with &lt;a href="https://github.com/gerdstolpmann"&gt;@gerdstolpmann&lt;/a&gt; for camlcity.org access and identifying issue duplication (&lt;a href="https://github.com/ocaml/ocamlfind/issues/108"&gt;#108&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocamlfind/issues/98"&gt;#98&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Distribution infrastructure issues reported affecting automated builds and installations</summary><published>2025-06-01T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-21</id><title>Week 21, 2025: None</title><updated>2025-05-25T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 21, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 21, 2025</summary><published>2025-05-25T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-20</id><title>Week 20, 2025: None</title><updated>2025-05-18T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 20, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 20, 2025</summary><published>2025-05-18T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-19</id><title>Week 19, 2025: None</title><updated>2025-05-11T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 19, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 19, 2025</summary><published>2025-05-11T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-18</id><title>Week 18, 2025: None</title><updated>2025-05-04T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 18, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 18, 2025</summary><published>2025-05-04T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-17</id><title>Week 17, 2025: One issue opened about opam-installed ocamlfind incorrectly finding system installed ocamlfind affecting OCaml 5+ compatibility</title><updated>2025-04-27T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>Distribution infrastructure issues reported affecting automated builds and installations</summary><published>2025-06-01T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-21</id><title>Week 21, 2025: None</title><updated>2025-05-25T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 21, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 21, 2025</summary><published>2025-05-25T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-20</id><title>Week 20, 2025: None</title><updated>2025-05-18T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 20, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 20, 2025</summary><published>2025-05-18T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-19</id><title>Week 19, 2025: None</title><updated>2025-05-11T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 19, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 19, 2025</summary><published>2025-05-11T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-18</id><title>Week 18, 2025: None</title><updated>2025-05-04T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 18, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 18, 2025</summary><published>2025-05-04T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-17</id><title>Week 17, 2025: One issue opened about opam-installed ocamlfind incorrectly finding system installed ocamlfind affecting OCaml 5+ compatibility</title><updated>2025-04-27T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 Issue reported about path priority bug in ocamlfind configuration affecting opam package discovery&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/SkySkimmer"&gt;Gaëtan Gilbert&lt;/a&gt; reported &lt;a href="https://github.com/ocaml/ocamlfind/issues/107" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;path priority bug&lt;/strong&gt;&lt;/a&gt; where opam-installed ocamlfind incorrectly finds system-installed findlib instead of opam packages, affecting OCaml 5+ users (&lt;a href="https://github.com/ocaml/ocamlfind/issues/107"&gt;#107&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/SkySkimmer"&gt;Gaëtan Gilbert&lt;/a&gt; reported &lt;a href="https://github.com/ocaml/ocamlfind/issues/107" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;path priority bug&lt;/strong&gt;&lt;/a&gt; where opam-installed ocamlfind incorrectly finds system-installed findlib instead of opam packages, affecting OCaml 5+ users (&lt;a href="https://github.com/ocaml/ocamlfind/issues/107"&gt;#107&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>One issue opened about opam-installed ocamlfind incorrectly finding system installed ocamlfind affecting OCaml 5+ compatibility</summary><published>2025-04-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-16</id><title>Week 16, 2025: None</title><updated>2025-04-20T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 16, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 16, 2025</summary><published>2025-04-20T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-15</id><title>Week 15, 2025: Discussion of Cygwin installation issues with potential fix referenced for upcoming opam release</title><updated>2025-04-13T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>One issue opened about opam-installed ocamlfind incorrectly finding system installed ocamlfind affecting OCaml 5+ compatibility</summary><published>2025-04-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-16</id><title>Week 16, 2025: None</title><updated>2025-04-20T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 16, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 16, 2025</summary><published>2025-04-20T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-15</id><title>Week 15, 2025: Discussion of Cygwin installation issues with potential fix referenced for upcoming opam release</title><updated>2025-04-13T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 Ongoing discussion about Windows/Cygwin installation problems&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/84" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Cygwin installation issue&lt;/strong&gt;&lt;/a&gt; discussion continues with &lt;a href="https://github.com/maroneze"&gt;Andre&lt;/a&gt; reporting ocamlfind 1.9.5 installation failures under Cygwin + opam 2.3.0~beta1 + OCaml 5.2.0 (&lt;a href="https://github.com/ocaml/ocamlfind/issues/84"&gt;#84&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6198" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Solution pathway identified&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; referencing upcoming fix in opam 2.4.0~alpha1 via &lt;a href="https://github.com/ocaml/opam/issues/6198"&gt;ocaml/opam#6198&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/84" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Cygwin installation issue&lt;/strong&gt;&lt;/a&gt; discussion continues with &lt;a href="https://github.com/maroneze"&gt;Andre&lt;/a&gt; reporting ocamlfind 1.9.5 installation failures under Cygwin + opam 2.3.0~beta1 + OCaml 5.2.0 (&lt;a href="https://github.com/ocaml/ocamlfind/issues/84"&gt;#84&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6198" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Solution pathway identified&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; referencing upcoming fix in opam 2.4.0~alpha1 via &lt;a href="https://github.com/ocaml/opam/issues/6198"&gt;ocaml/opam#6198&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Discussion of Cygwin installation issues with potential fix referenced for upcoming opam release</summary><published>2025-04-13T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-14</id><title>Week 14, 2025: One new PR opened for site-lib directory priority and active discussion on configure script improvements</title><updated>2025-04-06T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>Discussion of Cygwin installation issues with potential fix referenced for upcoming opam release</summary><published>2025-04-13T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-14</id><title>Week 14, 2025: One new PR opened for site-lib directory priority and active discussion on configure script improvements</title><updated>2025-04-06T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 Two PRs focused on build system improvements with detailed debugging discussions&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/106" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;New PR opened&lt;/strong&gt;&lt;/a&gt; for site-lib directory priority by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; to make site-lib take precedence over OCaml stdlib directory in default OCAMLPATH (&lt;a href="https://github.com/ocaml/ocamlfind/issues/106"&gt;#106&lt;/a&gt;), proposed by &lt;a href="https://github.com/a2line"&gt;A2&lt;/a&gt; in &lt;a href="https://github.com/ocaml/opam-repository/issues/27712"&gt;ocaml/opam-repository#27712&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/101" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Ongoing configure script hardening&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; to make configure fail on command failures with extensive debugging discussion involving &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt; about MSYS2 PATH issues and dash shell segfault problems (&lt;a href="https://github.com/ocaml/ocamlfind/issues/101"&gt;#101&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/106" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;New PR opened&lt;/strong&gt;&lt;/a&gt; for site-lib directory priority by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; to make site-lib take precedence over OCaml stdlib directory in default OCAMLPATH (&lt;a href="https://github.com/ocaml/ocamlfind/issues/106"&gt;#106&lt;/a&gt;), proposed by &lt;a href="https://github.com/a2line"&gt;A2&lt;/a&gt; in &lt;a href="https://github.com/ocaml/opam-repository/issues/27712"&gt;ocaml/opam-repository#27712&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/101" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Ongoing configure script hardening&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; to make configure fail on command failures with extensive debugging discussion involving &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt; about MSYS2 PATH issues and dash shell segfault problems (&lt;a href="https://github.com/ocaml/ocamlfind/issues/101"&gt;#101&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>One new PR opened for site-lib directory priority and active discussion on configure script improvements</summary><published>2025-04-06T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-13</id><title>Week 13, 2025: Windows platform improvements discussed with three new issues and one PR addressing .exe handling, Cygwin paths, and FreeBSD build concerns</title><updated>2025-03-30T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>One new PR opened for site-lib directory priority and active discussion on configure script improvements</summary><published>2025-04-06T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-13</id><title>Week 13, 2025: Windows platform improvements discussed with three new issues and one PR addressing .exe handling, Cygwin paths, and FreeBSD build concerns</title><updated>2025-03-30T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 Windows platform improvements focus with executable handling PR and platform-specific build issues&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/102" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Windows executable handling&lt;/strong&gt;&lt;/a&gt; improvements proposed by &lt;a href="https://github.com/chetmurthy"&gt;@chetmurthy&lt;/a&gt; with automatic &lt;code&gt;.exe&lt;/code&gt; appending for command invocation (&lt;a href="https://github.com/ocaml/ocamlfind/issues/102"&gt;#102&lt;/a&gt;) and initial implementation through PR (&lt;a href="https://github.com/ocaml/ocamlfind/pull/103"&gt;#103&lt;/a&gt;) that was later closed for refinement&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/105" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Cygwin path validation&lt;/strong&gt;&lt;/a&gt; proposal to reject problematic path formats that cause silent OCaml build failures on Windows systems (&lt;a href="https://github.com/ocaml/ocamlfind/issues/105"&gt;#105&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/104" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;FreeBSD build compatibility&lt;/strong&gt;&lt;/a&gt; investigation regarding Makefile target issues in topfind.compat.in generation (&lt;a href="https://github.com/ocaml/ocamlfind/issues/104"&gt;#104&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/102" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Windows executable handling&lt;/strong&gt;&lt;/a&gt; improvements proposed by &lt;a href="https://github.com/chetmurthy"&gt;@chetmurthy&lt;/a&gt; with automatic &lt;code&gt;.exe&lt;/code&gt; appending for command invocation (&lt;a href="https://github.com/ocaml/ocamlfind/issues/102"&gt;#102&lt;/a&gt;) and initial implementation through PR (&lt;a href="https://github.com/ocaml/ocamlfind/pull/103"&gt;#103&lt;/a&gt;) that was later closed for refinement&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/105" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Cygwin path validation&lt;/strong&gt;&lt;/a&gt; proposal to reject problematic path formats that cause silent OCaml build failures on Windows systems (&lt;a href="https://github.com/ocaml/ocamlfind/issues/105"&gt;#105&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/104" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;FreeBSD build compatibility&lt;/strong&gt;&lt;/a&gt; investigation regarding Makefile target issues in topfind.compat.in generation (&lt;a href="https://github.com/ocaml/ocamlfind/issues/104"&gt;#104&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Windows platform improvements discussed with three new issues and one PR addressing .exe handling, Cygwin paths, and FreeBSD build concerns</summary><published>2025-03-30T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-12</id><title>Week 12, 2025: Windows executable handling improvement proposed and implemented but not merged</title><updated>2025-03-23T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>Windows platform improvements discussed with three new issues and one PR addressing .exe handling, Cygwin paths, and FreeBSD build concerns</summary><published>2025-03-30T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-12</id><title>Week 12, 2025: Windows executable handling improvement proposed and implemented but not merged</title><updated>2025-03-23T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 Windows executable handling improvement proposed and implemented in PR&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/102" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Windows executable handling&lt;/strong&gt;&lt;/a&gt; improvement proposal opened by &lt;a href="https://github.com/chetmurthy"&gt;@chetmurthy&lt;/a&gt; requesting automatic &lt;code&gt;.EXE&lt;/code&gt; appending when running programs on Windows (&lt;a href="https://github.com/ocaml/ocamlfind/issues/102"&gt;#102&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/pull/103" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Implementation PR&lt;/strong&gt;&lt;/a&gt; created by &lt;a href="https://github.com/chetmurthy"&gt;@chetmurthy&lt;/a&gt; addressing the Windows executable handling issue with fixes to frontend.ml and addition of GitHub Actions CI for Windows testing (&lt;a href="https://github.com/ocaml/ocamlfind/pull/103"&gt;#103&lt;/a&gt;), but closed without merging&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/102" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Windows executable handling&lt;/strong&gt;&lt;/a&gt; improvement proposal opened by &lt;a href="https://github.com/chetmurthy"&gt;@chetmurthy&lt;/a&gt; requesting automatic &lt;code&gt;.EXE&lt;/code&gt; appending when running programs on Windows (&lt;a href="https://github.com/ocaml/ocamlfind/issues/102"&gt;#102&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/pull/103" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Implementation PR&lt;/strong&gt;&lt;/a&gt; created by &lt;a href="https://github.com/chetmurthy"&gt;@chetmurthy&lt;/a&gt; addressing the Windows executable handling issue with fixes to frontend.ml and addition of GitHub Actions CI for Windows testing (&lt;a href="https://github.com/ocaml/ocamlfind/pull/103"&gt;#103&lt;/a&gt;), but closed without merging&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Windows executable handling improvement proposed and implemented but not merged</summary><published>2025-03-23T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-11</id><title>Week 11, 2025: Kate opened PR to harden configure script with failure detection improvements</title><updated>2025-03-16T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>Windows executable handling improvement proposed and implemented but not merged</summary><published>2025-03-23T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-11</id><title>Week 11, 2025: Kate opened PR to harden configure script with failure detection improvements</title><updated>2025-03-16T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 New PR opened for configure script hardening with technical discussion about POSIX compliance&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/101" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Configure script hardening&lt;/strong&gt;&lt;/a&gt; PR opened by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; to add &lt;code&gt;set -e&lt;/code&gt; for early failure detection, preventing silent failures during build process (&lt;a href="https://github.com/ocaml/ocamlfind/issues/101"&gt;#101&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Technical discussion&lt;/strong&gt; between &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; and &lt;a href="https://github.com/gerdstolpmann"&gt;@gerdstolpmann&lt;/a&gt; regarding POSIX compliance and Windows build compatibility, addressing issues with PATH configuration on MSYS2 systems&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/101" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Configure script hardening&lt;/strong&gt;&lt;/a&gt; PR opened by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; to add &lt;code&gt;set -e&lt;/code&gt; for early failure detection, preventing silent failures during build process (&lt;a href="https://github.com/ocaml/ocamlfind/issues/101"&gt;#101&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Technical discussion&lt;/strong&gt; between &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; and &lt;a href="https://github.com/gerdstolpmann"&gt;@gerdstolpmann&lt;/a&gt; regarding POSIX compliance and Windows build compatibility, addressing issues with PATH configuration on MSYS2 systems&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Kate opened PR to harden configure script with failure detection improvements</summary><published>2025-03-16T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-10</id><title>Week 10, 2025: New PR opened to fix FINDLIB_PATH configuration with relative paths</title><updated>2025-03-09T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>Kate opened PR to harden configure script with failure detection improvements</summary><published>2025-03-16T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-10</id><title>Week 10, 2025: New PR opened to fix FINDLIB_PATH configuration with relative paths</title><updated>2025-03-09T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 One new PR opened addressing FINDLIB_PATH configuration issue&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/100" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;FINDLIB_PATH configuration fix&lt;/strong&gt;&lt;/a&gt; opened by &lt;a href="https://github.com/shym"&gt;@shym&lt;/a&gt; to resolve broken path generation when using relative paths during configure process (&lt;a href="https://github.com/ocaml/ocamlfind/issues/100"&gt;#100&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/100" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;FINDLIB_PATH configuration fix&lt;/strong&gt;&lt;/a&gt; opened by &lt;a href="https://github.com/shym"&gt;@shym&lt;/a&gt; to resolve broken path generation when using relative paths during configure process (&lt;a href="https://github.com/ocaml/ocamlfind/issues/100"&gt;#100&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>New PR opened to fix FINDLIB_PATH configuration with relative paths</summary><published>2025-03-09T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-9</id><title>Week 9, 2025: Download server issue resolved and PR opened for exception handling fix</title><updated>2025-03-02T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>New PR opened to fix FINDLIB_PATH configuration with relative paths</summary><published>2025-03-09T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-9</id><title>Week 9, 2025: Download server issue resolved and PR opened for exception handling fix</title><updated>2025-03-02T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 New PR opened to fix exception handling when threads package is unavailable&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/99" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Exception handling fix&lt;/strong&gt;&lt;/a&gt; opened by &lt;a href="https://github.com/shym"&gt;@shym&lt;/a&gt; to catch proper exception when &lt;code&gt;threads&lt;/code&gt; package is not available, addressing crashes in &lt;code&gt;ocamlfind ocamlopt -config&lt;/code&gt; command (&lt;a href="https://github.com/ocaml/ocamlfind/issues/99"&gt;#99&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/99" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Exception handling fix&lt;/strong&gt;&lt;/a&gt; opened by &lt;a href="https://github.com/shym"&gt;@shym&lt;/a&gt; to catch proper exception when &lt;code&gt;threads&lt;/code&gt; package is not available, addressing crashes in &lt;code&gt;ocamlfind ocamlopt -config&lt;/code&gt; command (&lt;a href="https://github.com/ocaml/ocamlfind/issues/99"&gt;#99&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Download server issue resolved and PR opened for exception handling fix</summary><published>2025-03-02T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-8</id><title>Week 8, 2025: User reported package download issues with HTTP 504 error from camlcity.org</title><updated>2025-02-23T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>Download server issue resolved and PR opened for exception handling fix</summary><published>2025-03-02T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-8</id><title>Week 8, 2025: User reported package download issues with HTTP 504 error from camlcity.org</title><updated>2025-02-23T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 Single issue opened regarding download problems with findlib-1.9.6&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;Package &lt;a href="https://github.com/ocaml/ocamlfind/issues/98" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;download issue&lt;/strong&gt;&lt;/a&gt; reported by &lt;a href="https://github.com/Lola969"&gt;Bessalah Fettoum&lt;/a&gt; experiencing HTTP 504 errors when trying to download findlib-1.9.6 from camlcity.org (&lt;a href="https://github.com/ocaml/ocamlfind/issues/98"&gt;#98&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Package &lt;a href="https://github.com/ocaml/ocamlfind/issues/98" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;download issue&lt;/strong&gt;&lt;/a&gt; reported by &lt;a href="https://github.com/Lola969"&gt;Bessalah Fettoum&lt;/a&gt; experiencing HTTP 504 errors when trying to download findlib-1.9.6 from camlcity.org (&lt;a href="https://github.com/ocaml/ocamlfind/issues/98"&gt;#98&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>User reported package download issues with HTTP 504 error from camlcity.org</summary><published>2025-02-23T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-7</id><title>Week 7, 2025: Development tooling discussion around building man pages from git repository sources</title><updated>2025-02-16T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>User reported package download issues with HTTP 504 error from camlcity.org</summary><published>2025-02-23T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-7</id><title>Week 7, 2025: Development tooling discussion around building man pages from git repository sources</title><updated>2025-02-16T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 Single issue opened regarding documentation build process complexity&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/RiderALT"&gt;Anton Farygin&lt;/a&gt; opened issue about &lt;a href="https://github.com/ocaml/ocamlfind/issues/97" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;man page build requirements&lt;/strong&gt;&lt;/a&gt; from git repository sources, highlighting missing &lt;code&gt;db2man&lt;/code&gt; utility dependency and requesting inclusion of generated man pages in the repository (&lt;a href="https://github.com/ocaml/ocamlfind/issues/97"&gt;#97&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/gerdstolpmann"&gt;@gerdstolpmann&lt;/a&gt; provided clarification on &lt;a href="https://github.com/ocaml/ocamlfind/issues/97" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;db2man utility status&lt;/strong&gt;&lt;/a&gt; and directed to current GitLab repository for the tool (&lt;a href="https://github.com/ocaml/ocamlfind/issues/97"&gt;#97&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/RiderALT"&gt;Anton Farygin&lt;/a&gt; opened issue about &lt;a href="https://github.com/ocaml/ocamlfind/issues/97" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;man page build requirements&lt;/strong&gt;&lt;/a&gt; from git repository sources, highlighting missing &lt;code&gt;db2man&lt;/code&gt; utility dependency and requesting inclusion of generated man pages in the repository (&lt;a href="https://github.com/ocaml/ocamlfind/issues/97"&gt;#97&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/gerdstolpmann"&gt;@gerdstolpmann&lt;/a&gt; provided clarification on &lt;a href="https://github.com/ocaml/ocamlfind/issues/97" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;db2man utility status&lt;/strong&gt;&lt;/a&gt; and directed to current GitLab repository for the tool (&lt;a href="https://github.com/ocaml/ocamlfind/issues/97"&gt;#97&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Development tooling discussion around building man pages from git repository sources</summary><published>2025-02-16T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-6</id><title>Week 6, 2025: One new issue reported about Coq platform installation problems on macOS with patch file missing</title><updated>2025-02-09T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>Development tooling discussion around building man pages from git repository sources</summary><published>2025-02-16T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-6</id><title>Week 6, 2025: One new issue reported about Coq platform installation problems on macOS with patch file missing</title><updated>2025-02-09T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 Installation issue discussion with Coq platform integration and release status inquiry&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/96" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Installation problems&lt;/strong&gt;&lt;/a&gt; with Coq platform reported by &lt;a href="https://github.com/edusporto"&gt;Eduardo Sandalo Porto&lt;/a&gt; affecting macOS users due to missing patch file (&lt;a href="https://github.com/ocaml/ocamlfind/issues/96"&gt;#96&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/janahofmann"&gt;Jana Hofmann&lt;/a&gt; provided &lt;a href="https://github.com/ocaml/ocamlfind/issues/96" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;workaround solution&lt;/strong&gt;&lt;/a&gt; by using main branch instead of 2023 version of coq-platform repository (&lt;a href="https://github.com/ocaml/ocamlfind/issues/96"&gt;#96&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/79" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Release status&lt;/strong&gt;&lt;/a&gt; discussion continued on previously closed issue with &lt;a href="https://github.com/JasonGross"&gt;Jason Gross&lt;/a&gt; noting 1.9.6 still listed as latest version and &lt;a href="https://github.com/Leonidas-from-XIV"&gt;Marek Kubica&lt;/a&gt; referencing opam-repository PR for 1.9.8 release (&lt;a href="https://github.com/ocaml/ocamlfind/issues/79"&gt;#79&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/96" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Installation problems&lt;/strong&gt;&lt;/a&gt; with Coq platform reported by &lt;a href="https://github.com/edusporto"&gt;Eduardo Sandalo Porto&lt;/a&gt; affecting macOS users due to missing patch file (&lt;a href="https://github.com/ocaml/ocamlfind/issues/96"&gt;#96&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/janahofmann"&gt;Jana Hofmann&lt;/a&gt; provided &lt;a href="https://github.com/ocaml/ocamlfind/issues/96" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;workaround solution&lt;/strong&gt;&lt;/a&gt; by using main branch instead of 2023 version of coq-platform repository (&lt;a href="https://github.com/ocaml/ocamlfind/issues/96"&gt;#96&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/79" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Release status&lt;/strong&gt;&lt;/a&gt; discussion continued on previously closed issue with &lt;a href="https://github.com/JasonGross"&gt;Jason Gross&lt;/a&gt; noting 1.9.6 still listed as latest version and &lt;a href="https://github.com/Leonidas-from-XIV"&gt;Marek Kubica&lt;/a&gt; referencing opam-repository PR for 1.9.8 release (&lt;a href="https://github.com/ocaml/ocamlfind/issues/79"&gt;#79&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>One new issue reported about Coq platform installation problems on macOS with patch file missing</summary><published>2025-02-09T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-5</id><title>Week 5, 2025: None</title><updated>2025-02-02T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 5, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 5, 2025</summary><published>2025-02-02T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-4</id><title>Week 4, 2025: None</title><updated>2025-01-26T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 4, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 4, 2025</summary><published>2025-01-26T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-3</id><title>Week 3, 2025: None</title><updated>2025-01-19T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 3, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 3, 2025</summary><published>2025-01-19T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-2</id><title>Week 2, 2025: None</title><updated>2025-01-12T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 2, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 2, 2025</summary><published>2025-01-12T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-1</id><title>Week 1, 2025: Issue #95 reported `-package` argument recognition problem on loong64 platform affecting OCaml package builds</title><updated>2025-01-05T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>One new issue reported about Coq platform installation problems on macOS with patch file missing</summary><published>2025-02-09T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-5</id><title>Week 5, 2025: None</title><updated>2025-02-02T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 5, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 5, 2025</summary><published>2025-02-02T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-4</id><title>Week 4, 2025: None</title><updated>2025-01-26T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 4, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 4, 2025</summary><published>2025-01-26T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-3</id><title>Week 3, 2025: None</title><updated>2025-01-19T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 3, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 3, 2025</summary><published>2025-01-19T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-2</id><title>Week 2, 2025: None</title><updated>2025-01-12T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 2, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 2, 2025</summary><published>2025-01-12T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2025/week-1</id><title>Week 1, 2025: Issue #95 reported `-package` argument recognition problem on loong64 platform affecting OCaml package builds</title><updated>2025-01-05T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 Single issue opened regarding bytecode platform compatibility on loong64 architecture&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/95" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Platform compatibility issue&lt;/strong&gt;&lt;/a&gt; reported by &lt;a href="https://github.com/wszqkzqk"&gt;wszqkzqk&lt;/a&gt; affecting loong64 architecture where &lt;code&gt;-package&lt;/code&gt; argument is not recognized by ocamlc, ocamldoc, and ocamldep tools (&lt;a href="https://github.com/ocaml/ocamlfind/issues/95"&gt;#95&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/95" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Platform compatibility issue&lt;/strong&gt;&lt;/a&gt; reported by &lt;a href="https://github.com/wszqkzqk"&gt;wszqkzqk&lt;/a&gt; affecting loong64 architecture where &lt;code&gt;-package&lt;/code&gt; argument is not recognized by ocamlc, ocamldoc, and ocamldep tools (&lt;a href="https://github.com/ocaml/ocamlfind/issues/95"&gt;#95&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Issue #95 reported `-package` argument recognition problem on loong64 platform affecting OCaml package builds</summary><published>2025-01-05T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2024/week-52</id><title>Week 52, 2024: None</title><updated>2024-12-29T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 52, 2024&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 52, 2024</summary><published>2024-12-29T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2024/week-51</id><title>Week 51, 2024: None</title><updated>2024-12-22T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 51, 2024&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 51, 2024</summary><published>2024-12-22T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2024/week-50</id><title>Week 50, 2024: None</title><updated>2024-12-15T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 50, 2024&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 50, 2024</summary><published>2024-12-15T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2024/week-49</id><title>Week 49, 2024: None</title><updated>2024-12-08T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>Issue #95 reported `-package` argument recognition problem on loong64 platform affecting OCaml package builds</summary><published>2025-01-05T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2024/week-52</id><title>Week 52, 2024: None</title><updated>2024-12-29T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 52, 2024&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 52, 2024</summary><published>2024-12-29T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2024/week-51</id><title>Week 51, 2024: None</title><updated>2024-12-22T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 51, 2024&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 51, 2024</summary><published>2024-12-22T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2024/week-50</id><title>Week 50, 2024: None</title><updated>2024-12-15T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 50, 2024&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 50, 2024</summary><published>2024-12-15T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2024/week-49</id><title>Week 49, 2024: None</title><updated>2024-12-08T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 Ongoing discussion about Cygwin installation issues&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/84" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Windows installation troubleshooting&lt;/strong&gt;&lt;/a&gt; continued with &lt;a href="https://github.com/maroneze"&gt;Andre&lt;/a&gt; reporting Cygwin + opam 2.3.0~beta1 installation failures and &lt;a href="https://github.com/tahina-pro"&gt;Tahina Ramananandro (professional account)&lt;/a&gt; linking to related mingw-w64-shims issues (&lt;a href="https://github.com/ocaml/ocamlfind/issues/84"&gt;#84&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/84" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Windows installation troubleshooting&lt;/strong&gt;&lt;/a&gt; continued with &lt;a href="https://github.com/maroneze"&gt;Andre&lt;/a&gt; reporting Cygwin + opam 2.3.0~beta1 installation failures and &lt;a href="https://github.com/tahina-pro"&gt;Tahina Ramananandro (professional account)&lt;/a&gt; linking to related mingw-w64-shims issues (&lt;a href="https://github.com/ocaml/ocamlfind/issues/84"&gt;#84&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 49, 2024</summary><published>2024-12-08T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2024/week-48</id><title>Week 48, 2024: None</title><updated>2024-12-01T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 48, 2024&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 48, 2024</summary><published>2024-12-01T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2024/week-47</id><title>Week 47, 2024: None</title><updated>2024-11-24T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 47, 2024&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 47, 2024</summary><published>2024-11-24T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2024/week-46</id><title>Week 46, 2024: Release 1.9.8 with build system fixes and opam configuration changes</title><updated>2024-11-17T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 49, 2024</summary><published>2024-12-08T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2024/week-48</id><title>Week 48, 2024: None</title><updated>2024-12-01T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 48, 2024&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 48, 2024</summary><published>2024-12-01T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2024/week-47</id><title>Week 47, 2024: None</title><updated>2024-11-24T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 47, 2024&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 47, 2024</summary><published>2024-11-24T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2024/week-46</id><title>Week 46, 2024: Release 1.9.8 with build system fixes and opam configuration changes</title><updated>2024-11-17T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 Build system maintenance and release preparation with multiple bug fixes merged&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/92" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Build configuration fixes&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/gerdstolpmann"&gt;@gerdstolpmann&lt;/a&gt; addressing configure script issues and Makefile variables (&lt;a href="https://github.com/ocaml/ocamlfind/issues/92"&gt;#92&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocamlfind/issues/93"&gt;#93&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/91" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Opam configuration cleanup&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt; removing experimental relative paths feature to reduce complexity for opam-repository users (&lt;a href="https://github.com/ocaml/ocamlfind/issues/91"&gt;#91&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/94" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Release 1.9.8 preparation&lt;/strong&gt;&lt;/a&gt; with version bump and documentation updates (&lt;a href="https://github.com/ocaml/ocamlfind/issues/94"&gt;#94&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/88" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Issue resolution&lt;/strong&gt;&lt;/a&gt; for dynlink_subdir parameter problems reported by &lt;a href="https://github.com/daeho-ro"&gt;Daeho Ro&lt;/a&gt; affecting Homebrew builds (&lt;a href="https://github.com/ocaml/ocamlfind/issues/88"&gt;#88&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocamlfind/issues/90"&gt;#90&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/92" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Build configuration fixes&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/gerdstolpmann"&gt;@gerdstolpmann&lt;/a&gt; addressing configure script issues and Makefile variables (&lt;a href="https://github.com/ocaml/ocamlfind/issues/92"&gt;#92&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocamlfind/issues/93"&gt;#93&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/91" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Opam configuration cleanup&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt; removing experimental relative paths feature to reduce complexity for opam-repository users (&lt;a href="https://github.com/ocaml/ocamlfind/issues/91"&gt;#91&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/94" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Release 1.9.8 preparation&lt;/strong&gt;&lt;/a&gt; with version bump and documentation updates (&lt;a href="https://github.com/ocaml/ocamlfind/issues/94"&gt;#94&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/88" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Issue resolution&lt;/strong&gt;&lt;/a&gt; for dynlink_subdir parameter problems reported by &lt;a href="https://github.com/daeho-ro"&gt;Daeho Ro&lt;/a&gt; affecting Homebrew builds (&lt;a href="https://github.com/ocaml/ocamlfind/issues/88"&gt;#88&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocamlfind/issues/90"&gt;#90&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Release 1.9.8 with build system fixes and opam configuration changes</summary><published>2024-11-17T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2024/week-45</id><title>Week 45, 2024: Ocamlfind 1.9.7 released with major relocatable installation support, dynamic loading enhancements, and build system improvements.</title><updated>2024-11-10T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>Release 1.9.8 with build system fixes and opam configuration changes</summary><published>2024-11-17T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2024/week-45</id><title>Week 45, 2024: Ocamlfind 1.9.7 released with major relocatable installation support, dynamic loading enhancements, and build system improvements.</title><updated>2024-11-10T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 One open PR for HTTPS link updates, plus active issue discussions on Windows installation problems and OCaml 5.2 configuration issues.&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/83" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Open PR&lt;/strong&gt;&lt;/a&gt; for updating project links to HTTPS by &lt;a href="https://github.com/Leonidas-from-XIV"&gt;Marek Kubica&lt;/a&gt; awaiting completion of server transition (&lt;a href="https://github.com/ocaml/ocamlfind/issues/83"&gt;#83&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/87" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Merged release preparation&lt;/strong&gt;&lt;/a&gt; with &lt;a href="https://github.com/gerdstolpmann"&gt;@gerdstolpmann&lt;/a&gt; completing 1.9.7 release through version updates and file distribution fixes (&lt;a href="https://github.com/ocaml/ocamlfind/issues/87"&gt;#87&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/86" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Installation fixes&lt;/strong&gt;&lt;/a&gt; delivered by &lt;a href="https://github.com/gerdstolpmann"&gt;@gerdstolpmann&lt;/a&gt; addressing file permission issues from install command usage (&lt;a href="https://github.com/ocaml/ocamlfind/issues/86"&gt;#86&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/73" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Configure improvements&lt;/strong&gt;&lt;/a&gt; merged by &lt;a href="https://github.com/gerdstolpmann"&gt;@gerdstolpmann&lt;/a&gt; incorporating &lt;a href="https://github.com/Leonidas-from-XIV"&gt;Marek Kubica&lt;/a&gt;'s shellcheck suggestions (&lt;a href="https://github.com/ocaml/ocamlfind/issues/73"&gt;#73&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/61" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Compatibility fixes&lt;/strong&gt;&lt;/a&gt; completed with &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt;'s OCaml 5.x upgrade detection fix (&lt;a href="https://github.com/ocaml/ocamlfind/issues/61"&gt;#61&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/81" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Dynamic loading enhancement&lt;/strong&gt;&lt;/a&gt; merged from &lt;a href="https://github.com/ejgallego"&gt;Emilio Jesús Gallego Arias&lt;/a&gt; enabling custom loadfile functions (&lt;a href="https://github.com/ocaml/ocamlfind/issues/81"&gt;#81&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/72" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Relocatable installation&lt;/strong&gt;&lt;/a&gt; implementation by &lt;a href="https://github.com/Leonidas-from-XIV"&gt;Marek Kubica&lt;/a&gt; using environment variable prefix resolution (&lt;a href="https://github.com/ocaml/ocamlfind/issues/72"&gt;#72&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/83" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Open PR&lt;/strong&gt;&lt;/a&gt; for updating project links to HTTPS by &lt;a href="https://github.com/Leonidas-from-XIV"&gt;Marek Kubica&lt;/a&gt; awaiting completion of server transition (&lt;a href="https://github.com/ocaml/ocamlfind/issues/83"&gt;#83&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/87" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Merged release preparation&lt;/strong&gt;&lt;/a&gt; with &lt;a href="https://github.com/gerdstolpmann"&gt;@gerdstolpmann&lt;/a&gt; completing 1.9.7 release through version updates and file distribution fixes (&lt;a href="https://github.com/ocaml/ocamlfind/issues/87"&gt;#87&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/86" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Installation fixes&lt;/strong&gt;&lt;/a&gt; delivered by &lt;a href="https://github.com/gerdstolpmann"&gt;@gerdstolpmann&lt;/a&gt; addressing file permission issues from install command usage (&lt;a href="https://github.com/ocaml/ocamlfind/issues/86"&gt;#86&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/73" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Configure improvements&lt;/strong&gt;&lt;/a&gt; merged by &lt;a href="https://github.com/gerdstolpmann"&gt;@gerdstolpmann&lt;/a&gt; incorporating &lt;a href="https://github.com/Leonidas-from-XIV"&gt;Marek Kubica&lt;/a&gt;'s shellcheck suggestions (&lt;a href="https://github.com/ocaml/ocamlfind/issues/73"&gt;#73&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/61" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Compatibility fixes&lt;/strong&gt;&lt;/a&gt; completed with &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt;'s OCaml 5.x upgrade detection fix (&lt;a href="https://github.com/ocaml/ocamlfind/issues/61"&gt;#61&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/81" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Dynamic loading enhancement&lt;/strong&gt;&lt;/a&gt; merged from &lt;a href="https://github.com/ejgallego"&gt;Emilio Jesús Gallego Arias&lt;/a&gt; enabling custom loadfile functions (&lt;a href="https://github.com/ocaml/ocamlfind/issues/81"&gt;#81&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/72" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Relocatable installation&lt;/strong&gt;&lt;/a&gt; implementation by &lt;a href="https://github.com/Leonidas-from-XIV"&gt;Marek Kubica&lt;/a&gt; using environment variable prefix resolution (&lt;a href="https://github.com/ocaml/ocamlfind/issues/72"&gt;#72&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Ocamlfind 1.9.7 released with major relocatable installation support, dynamic loading enhancements, and build system improvements.</summary><published>2024-11-10T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2024/week-44</id><title>Week 44, 2024: Relocatable ocamlfind feature merged with new configure option for installation path flexibility</title><updated>2024-11-03T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>Ocamlfind 1.9.7 released with major relocatable installation support, dynamic loading enhancements, and build system improvements.</summary><published>2024-11-10T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2024/week-44</id><title>Week 44, 2024: Relocatable ocamlfind feature merged with new configure option for installation path flexibility</title><updated>2024-11-03T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 Major relocatable feature implementation merged after extensive discussion and development since February 2024&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/72" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Long-running relocatable feature&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/Leonidas-from-XIV"&gt;Marek Kubica&lt;/a&gt; finally &lt;strong style="color: #cc6600;"&gt;merged&lt;/strong&gt; after development since February 2024, implementing comprehensive installation path flexibility (&lt;a href="https://github.com/ocaml/ocamlfind/issues/72"&gt;#72&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Extensive technical discussion&lt;/strong&gt; with &lt;a href="https://github.com/jonahbeckford"&gt;@jonahbeckford&lt;/a&gt; about configuration file portability, Windows compatibility, and alternative approaches using dune-like path variables versus environment variable detection&lt;/li&gt;
-&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Major code changes&lt;/strong&gt; affecting 12 files with 406 additions and 127 deletions, primarily in configure script, findlib core modules, and configuration templates&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/72" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Long-running relocatable feature&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/Leonidas-from-XIV"&gt;Marek Kubica&lt;/a&gt; finally &lt;strong class="achievement"&gt;merged&lt;/strong&gt; after development since February 2024, implementing comprehensive installation path flexibility (&lt;a href="https://github.com/ocaml/ocamlfind/issues/72"&gt;#72&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Extensive technical discussion&lt;/strong&gt; with &lt;a href="https://github.com/jonahbeckford"&gt;@jonahbeckford&lt;/a&gt; about configuration file portability, Windows compatibility, and alternative approaches using dune-like path variables versus environment variable detection&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Major code changes&lt;/strong&gt; affecting 12 files with 406 additions and 127 deletions, primarily in configure script, findlib core modules, and configuration templates&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Relocatable ocamlfind feature merged with new configure option for installation path flexibility</summary><published>2024-11-03T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2024/week-43</id><title>Week 43, 2024: Shell script improvements and Cygwin installation issue reported</title><updated>2024-10-27T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>Relocatable ocamlfind feature merged with new configure option for installation path flexibility</summary><published>2024-11-03T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2024/week-43</id><title>Week 43, 2024: Shell script improvements and Cygwin installation issue reported</title><updated>2024-10-27T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 One new PR opened for HTTPS link updates and one Cygwin installation issue reported&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/83" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Link modernization&lt;/strong&gt;&lt;/a&gt; PR opened by &lt;a href="https://github.com/Leonidas-from-XIV"&gt;Marek Kubica&lt;/a&gt; to update HTTP links to HTTPS for better security (&lt;a href="https://github.com/ocaml/ocamlfind/issues/83"&gt;#83&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/84" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Cygwin compatibility&lt;/strong&gt;&lt;/a&gt; issue reported by &lt;a href="https://github.com/maroneze"&gt;Andre&lt;/a&gt; regarding installation failures on Windows with Cygwin and opam 2.3.0~beta1 (&lt;a href="https://github.com/ocaml/ocamlfind/issues/84"&gt;#84&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/83" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Link modernization&lt;/strong&gt;&lt;/a&gt; PR opened by &lt;a href="https://github.com/Leonidas-from-XIV"&gt;Marek Kubica&lt;/a&gt; to update HTTP links to HTTPS for better security (&lt;a href="https://github.com/ocaml/ocamlfind/issues/83"&gt;#83&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/84" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Cygwin compatibility&lt;/strong&gt;&lt;/a&gt; issue reported by &lt;a href="https://github.com/maroneze"&gt;Andre&lt;/a&gt; regarding installation failures on Windows with Cygwin and opam 2.3.0~beta1 (&lt;a href="https://github.com/ocaml/ocamlfind/issues/84"&gt;#84&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Shell script improvements and Cygwin installation issue reported</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2024/week-42</id><title>Week 42, 2024: Multiple PRs merged fixing OCaml 5.x compatibility and autodetection issues</title><updated>2024-10-20T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>Shell script improvements and Cygwin installation issue reported</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2024/week-42</id><title>Week 42, 2024: Multiple PRs merged fixing OCaml 5.x compatibility and autodetection issues</title><updated>2024-10-20T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 Four PRs merged addressing OCaml 5.x compatibility and build improvements&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/76" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;OCaml 5.x compatibility work&lt;/strong&gt;&lt;/a&gt; delivered through multiple merged PRs addressing thread handling changes and compiler flag detection issues for modern OCaml versions (&lt;a href="https://github.com/ocaml/ocamlfind/issues/76"&gt;#76&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocamlfind/issues/80"&gt;#80&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/75" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Build system and documentation maintenance&lt;/strong&gt;&lt;/a&gt; completed with removal of legacy &lt;code&gt;.mml&lt;/code&gt; references (&lt;a href="https://github.com/ocaml/ocamlfind/issues/75"&gt;#75&lt;/a&gt;) and comprehensive typo fixes across the codebase (&lt;a href="https://github.com/ocaml/ocamlfind/issues/62"&gt;#62&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/78" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Issue tracking and resolution&lt;/strong&gt;&lt;/a&gt; for autodetection problems reported by &lt;a href="https://github.com/emillon"&gt;Etienne Millon&lt;/a&gt; in &lt;a href="https://github.com/ocaml/ocamlfind/issues/78"&gt;#78&lt;/a&gt; which was closed after the fix was implemented&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/76" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml 5.x compatibility work&lt;/strong&gt;&lt;/a&gt; delivered through multiple merged PRs addressing thread handling changes and compiler flag detection issues for modern OCaml versions (&lt;a href="https://github.com/ocaml/ocamlfind/issues/76"&gt;#76&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocamlfind/issues/80"&gt;#80&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/75" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Build system and documentation maintenance&lt;/strong&gt;&lt;/a&gt; completed with removal of legacy &lt;code&gt;.mml&lt;/code&gt; references (&lt;a href="https://github.com/ocaml/ocamlfind/issues/75"&gt;#75&lt;/a&gt;) and comprehensive typo fixes across the codebase (&lt;a href="https://github.com/ocaml/ocamlfind/issues/62"&gt;#62&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/78" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Issue tracking and resolution&lt;/strong&gt;&lt;/a&gt; for autodetection problems reported by &lt;a href="https://github.com/emillon"&gt;Etienne Millon&lt;/a&gt; in &lt;a href="https://github.com/ocaml/ocamlfind/issues/78"&gt;#78&lt;/a&gt; which was closed after the fix was implemented&lt;/li&gt;
 &lt;/ul&gt;
 </content><link href="https://thicket.dev/"/><summary>Multiple PRs merged fixing OCaml 5.x compatibility and autodetection issues</summary><published>2024-10-20T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2024/week-41</id><title>Week 41, 2024: None</title><updated>2024-10-13T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 41, 2024&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 41, 2024</summary><published>2024-10-13T00:00:00+00:00</published></entry></feed>

@@ -1,72 +1,488 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-opam-repository.xml</id><title>oxcaml/opam-repository (Weekly)</title><updated>2025-09-14T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-opam-repository.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/opam-repository</subtitle><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-37</id><title>Week 37, 2025: Fixed js_of_ocaml patch compatibility issue across multiple packages</title><updated>2025-09-14T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-opam-repository.xml</id><title>oxcaml/opam-repository (Weekly)</title><updated>2025-09-14T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-opam-repository.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/opam-repository</subtitle><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-37</id><title>Week 37, 2025: Fixed js_of_ocaml patch compatibility issue across multiple packages</title><updated>2025-09-14T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 Single bug fix merged addressing patch application failures in jsof&lt;/em&gt;ocaml ecosystem&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;js&lt;em&gt;of&lt;/em&gt;ocaml patch fixes&lt;/strong&gt; merged by &lt;a href="https://github.com/matthewelse"&gt;Matthew Else&lt;/a&gt; resolving installation failures on macOS with opam 2.4.1 (&lt;a href="https://github.com/oxcaml/opam-repository/issues/11"&gt;#11&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/issues/11" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Patch compatibility discussion&lt;/strong&gt;&lt;/a&gt; emerged regarding differences between GNU Patch and hannesm/patch behavior, with investigation needed for proper upstream fix (&lt;a href="https://github.com/oxcaml/opam-repository/issues/11"&gt;#11&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;js&lt;em&gt;of&lt;/em&gt;ocaml patch fixes&lt;/strong&gt; merged by &lt;a href="https://github.com/matthewelse"&gt;Matthew Else&lt;/a&gt; resolving installation failures on macOS with opam 2.4.1 (&lt;a href="https://github.com/oxcaml/opam-repository/issues/11"&gt;#11&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/issues/11" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Patch compatibility discussion&lt;/strong&gt;&lt;/a&gt; emerged regarding differences between GNU Patch and hannesm/patch behavior, with investigation needed for proper upstream fix (&lt;a href="https://github.com/oxcaml/opam-repository/issues/11"&gt;#11&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Fixed js_of_ocaml patch compatibility issue across multiple packages</summary><published>2025-09-14T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-36</id><title>Week 36, 2025: Major package updates delivered including js_of_ocaml toplevel support, eio integration, and documentation tools</title><updated>2025-09-07T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>Fixed js_of_ocaml patch compatibility issue across multiple packages</summary><published>2025-09-14T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-36</id><title>Week 36, 2025: Major package updates delivered including js_of_ocaml toplevel support, eio integration, and documentation tools</title><updated>2025-09-07T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 One new PR opened for jsof&lt;/em&gt;ocaml patches alongside completion of major package integration work&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/issues/11" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;New PR opened&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/matthewelse"&gt;Matthew Else&lt;/a&gt; fixing js&lt;em&gt;of&lt;/em&gt;ocaml patch issues that were preventing successful installation (&lt;a href="https://github.com/oxcaml/opam-repository/issues/11"&gt;#11&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/issues/8" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Documentation infrastructure&lt;/strong&gt;&lt;/a&gt; completed by &lt;a href="https://github.com/jonludlam"&gt;Jon Ludlam&lt;/a&gt; with comprehensive odoc toolchain integration including all related packages and eio support for odoc driver functionality (&lt;a href="https://github.com/oxcaml/opam-repository/issues/8"&gt;#8&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/issues/10" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Development tools&lt;/strong&gt;&lt;/a&gt; enhanced through utop 2.16.0 upgrade (&lt;a href="https://github.com/oxcaml/opam-repository/issues/10"&gt;#10&lt;/a&gt;) and mdx literate programming updates (&lt;a href="https://github.com/oxcaml/opam-repository/issues/9"&gt;#9&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/issues/7" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;JavaScript compilation&lt;/strong&gt;&lt;/a&gt; improvements delivered with toplevel support and unified patches across js&lt;em&gt;of&lt;/em&gt;ocaml package family (&lt;a href="https://github.com/oxcaml/opam-repository/issues/7"&gt;#7&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/issues/11" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;New PR opened&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/matthewelse"&gt;Matthew Else&lt;/a&gt; fixing js&lt;em&gt;of&lt;/em&gt;ocaml patch issues that were preventing successful installation (&lt;a href="https://github.com/oxcaml/opam-repository/issues/11"&gt;#11&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/issues/8" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Documentation infrastructure&lt;/strong&gt;&lt;/a&gt; completed by &lt;a href="https://github.com/jonludlam"&gt;Jon Ludlam&lt;/a&gt; with comprehensive odoc toolchain integration including all related packages and eio support for odoc driver functionality (&lt;a href="https://github.com/oxcaml/opam-repository/issues/8"&gt;#8&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/issues/10" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Development tools&lt;/strong&gt;&lt;/a&gt; enhanced through utop 2.16.0 upgrade (&lt;a href="https://github.com/oxcaml/opam-repository/issues/10"&gt;#10&lt;/a&gt;) and mdx literate programming updates (&lt;a href="https://github.com/oxcaml/opam-repository/issues/9"&gt;#9&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/issues/7" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;JavaScript compilation&lt;/strong&gt;&lt;/a&gt; improvements delivered with toplevel support and unified patches across js&lt;em&gt;of&lt;/em&gt;ocaml package family (&lt;a href="https://github.com/oxcaml/opam-repository/issues/7"&gt;#7&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Major package updates delivered including js_of_ocaml toplevel support, eio integration, and documentation tools</summary><published>2025-09-07T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-35</id><title>Week 35, 2025: Added patched eio and odoc ecosystem packages for Oxcaml compatibility</title><updated>2025-08-31T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>Major package updates delivered including js_of_ocaml toplevel support, eio integration, and documentation tools</summary><published>2025-09-07T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-35</id><title>Week 35, 2025: Added patched eio and odoc ecosystem packages for Oxcaml compatibility</title><updated>2025-08-31T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 Two new PRs opened for package ecosystem integration with extensive collaboration on source URL management&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/issues/8" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Two new PRs opened&lt;/strong&gt;&lt;/a&gt; during the week by &lt;a href="https://github.com/jonludlam"&gt;Jon Ludlam&lt;/a&gt;: odoc and eio integration (&lt;a href="https://github.com/oxcaml/opam-repository/issues/8"&gt;#8&lt;/a&gt;) and mdx patch updates (&lt;a href="https://github.com/oxcaml/opam-repository/issues/9"&gt;#9&lt;/a&gt;), both merged in early September&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/issues/8" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Package source strategy discussion&lt;/strong&gt;&lt;/a&gt; between &lt;a href="https://github.com/jonludlam"&gt;Jon Ludlam&lt;/a&gt; and &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; regarding git+https URLs versus patch files for easier maintenance (&lt;a href="https://github.com/oxcaml/opam-repository/issues/8"&gt;#8&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Comprehensive package integration&lt;/strong&gt; work involving 15+ opam files added for the complete odoc documentation toolchain and eio async I/O library ecosystem&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/issues/8" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Two new PRs opened&lt;/strong&gt;&lt;/a&gt; during the week by &lt;a href="https://github.com/jonludlam"&gt;Jon Ludlam&lt;/a&gt;: odoc and eio integration (&lt;a href="https://github.com/oxcaml/opam-repository/issues/8"&gt;#8&lt;/a&gt;) and mdx patch updates (&lt;a href="https://github.com/oxcaml/opam-repository/issues/9"&gt;#9&lt;/a&gt;), both merged in early September&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/issues/8" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Package source strategy discussion&lt;/strong&gt;&lt;/a&gt; between &lt;a href="https://github.com/jonludlam"&gt;Jon Ludlam&lt;/a&gt; and &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; regarding git+https URLs versus patch files for easier maintenance (&lt;a href="https://github.com/oxcaml/opam-repository/issues/8"&gt;#8&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Comprehensive package integration&lt;/strong&gt; work involving 15+ opam files added for the complete odoc documentation toolchain and eio async I/O library ecosystem&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Added patched eio and odoc ecosystem packages for Oxcaml compatibility</summary><published>2025-08-31T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-34</id><title>Week 34, 2025: None</title><updated>2025-08-24T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 34, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 34, 2025</summary><published>2025-08-24T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-33</id><title>Week 33, 2025: None</title><updated>2025-08-17T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 33, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 33, 2025</summary><published>2025-08-17T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-32</id><title>Week 32, 2025: None</title><updated>2025-08-10T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 32, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 32, 2025</summary><published>2025-08-10T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-31</id><title>Week 31, 2025: None</title><updated>2025-08-03T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 31, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 31, 2025</summary><published>2025-08-03T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-30</id><title>Week 30, 2025: js_of_ocaml toplevel support added with unified patches and new PR opened for future integration</title><updated>2025-07-27T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>Added patched eio and odoc ecosystem packages for Oxcaml compatibility</summary><published>2025-08-31T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-34</id><title>Week 34, 2025: None</title><updated>2025-08-24T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 34, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 34, 2025</summary><published>2025-08-24T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-33</id><title>Week 33, 2025: None</title><updated>2025-08-17T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 33, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 33, 2025</summary><published>2025-08-17T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-32</id><title>Week 32, 2025: None</title><updated>2025-08-10T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 32, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 32, 2025</summary><published>2025-08-10T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-31</id><title>Week 31, 2025: None</title><updated>2025-08-03T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 31, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 31, 2025</summary><published>2025-08-03T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-30</id><title>Week 30, 2025: js_of_ocaml toplevel support added with unified patches and new PR opened for future integration</title><updated>2025-07-27T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 Single PR opened for jsof&lt;/em&gt;ocaml toplevel integration with significant implementation work completed&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/issues/7" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;New PR opened&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/jonludlam"&gt;Jon Ludlam&lt;/a&gt; to enable js&lt;em&gt;of&lt;/em&gt;ocaml toplevel functionality, incorporating patches from &lt;a href="https://github.com/patricoferris"&gt;Patrick Ferris&lt;/a&gt; with unified approach across all js&lt;em&gt;of&lt;/em&gt;ocaml packages (&lt;a href="https://github.com/oxcaml/opam-repository/issues/7"&gt;#7&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/issues/7" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Implementation completed&lt;/strong&gt;&lt;/a&gt; during the week with 1,165 lines added and 116 lines deleted across 23 files, covering js&lt;em&gt;of&lt;/em&gt;ocaml-compiler, js&lt;em&gt;of&lt;/em&gt;ocaml-ppx, js&lt;em&gt;of&lt;/em&gt;ocaml-toplevel, and js&lt;em&gt;of&lt;/em&gt;ocaml packages (&lt;a href="https://github.com/oxcaml/opam-repository/issues/7"&gt;#7&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/issues/7" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;New PR opened&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/jonludlam"&gt;Jon Ludlam&lt;/a&gt; to enable js&lt;em&gt;of&lt;/em&gt;ocaml toplevel functionality, incorporating patches from &lt;a href="https://github.com/patricoferris"&gt;Patrick Ferris&lt;/a&gt; with unified approach across all js&lt;em&gt;of&lt;/em&gt;ocaml packages (&lt;a href="https://github.com/oxcaml/opam-repository/issues/7"&gt;#7&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/issues/7" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Implementation completed&lt;/strong&gt;&lt;/a&gt; during the week with 1,165 lines added and 116 lines deleted across 23 files, covering js&lt;em&gt;of&lt;/em&gt;ocaml-compiler, js&lt;em&gt;of&lt;/em&gt;ocaml-ppx, js&lt;em&gt;of&lt;/em&gt;ocaml-toplevel, and js&lt;em&gt;of&lt;/em&gt;ocaml packages (&lt;a href="https://github.com/oxcaml/opam-repository/issues/7"&gt;#7&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>js_of_ocaml toplevel support added with unified patches and new PR opened for future integration</summary><published>2025-07-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-29</id><title>Week 29, 2025: None</title><updated>2025-07-20T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 29, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 29, 2025</summary><published>2025-07-20T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-28</id><title>Week 28, 2025: None</title><updated>2025-07-13T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 28, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 28, 2025</summary><published>2025-07-13T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-27</id><title>Week 27, 2025: Package maintenance week with ocaml_simd fixes and compiler tag updates by Max Slater</title><updated>2025-07-06T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>js_of_ocaml toplevel support added with unified patches and new PR opened for future integration</summary><published>2025-07-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-29</id><title>Week 29, 2025: None</title><updated>2025-07-20T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 29, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 29, 2025</summary><published>2025-07-20T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-28</id><title>Week 28, 2025: None</title><updated>2025-07-13T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 28, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 28, 2025</summary><published>2025-07-13T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-27</id><title>Week 27, 2025: Package maintenance week with ocaml_simd fixes and compiler tag updates by Max Slater</title><updated>2025-07-06T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 Single maintenance PR merged fixing package installation and build issues&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/issues/6" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Package maintenance&lt;/strong&gt;&lt;/a&gt; completed by &lt;a href="https://github.com/TheNumbat"&gt;Max Slater&lt;/a&gt; addressing ocaml_simd installation problems and build script compatibility issues (&lt;a href="https://github.com/oxcaml/opam-repository/issues/6"&gt;#6&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/issues/6" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Package maintenance&lt;/strong&gt;&lt;/a&gt; completed by &lt;a href="https://github.com/TheNumbat"&gt;Max Slater&lt;/a&gt; addressing ocaml_simd installation problems and build script compatibility issues (&lt;a href="https://github.com/oxcaml/opam-repository/issues/6"&gt;#6&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Package maintenance week with ocaml_simd fixes and compiler tag updates by Max Slater</summary><published>2025-07-06T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-26</id><title>Week 26, 2025: Extended testing infrastructure to support more Linux distributions and arm64 architecture with dependency fixes</title><updated>2025-06-29T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>Package maintenance week with ocaml_simd fixes and compiler tag updates by Max Slater</summary><published>2025-07-06T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-26</id><title>Week 26, 2025: Extended testing infrastructure to support more Linux distributions and arm64 architecture with dependency fixes</title><updated>2025-06-29T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 Two PRs merged focusing on CI infrastructure improvements and build dependency management&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/issues/5" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;CI infrastructure improvements&lt;/strong&gt;&lt;/a&gt; completed by &lt;a href="https://github.com/punchagan"&gt;Puneeth Chaganti&lt;/a&gt; with testing expansion to multiple Linux distributions and arm64 support (&lt;a href="https://github.com/oxcaml/opam-repository/issues/5"&gt;#5&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/issues/4" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Build dependency fixes&lt;/strong&gt;&lt;/a&gt; merged to ensure compatibility with Archlinux by adding conf-which and marking conf-autoconf as build dependencies (&lt;a href="https://github.com/oxcaml/opam-repository/issues/4"&gt;#4&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;GitHub Actions workflow refactoring&lt;/strong&gt; with extraction of reusable action and separation of Linux container testing from macOS testing for better organization&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/issues/5" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;CI infrastructure improvements&lt;/strong&gt;&lt;/a&gt; completed by &lt;a href="https://github.com/punchagan"&gt;Puneeth Chaganti&lt;/a&gt; with testing expansion to multiple Linux distributions and arm64 support (&lt;a href="https://github.com/oxcaml/opam-repository/issues/5"&gt;#5&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/issues/4" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Build dependency fixes&lt;/strong&gt;&lt;/a&gt; merged to ensure compatibility with Archlinux by adding conf-which and marking conf-autoconf as build dependencies (&lt;a href="https://github.com/oxcaml/opam-repository/issues/4"&gt;#4&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;GitHub Actions workflow refactoring&lt;/strong&gt; with extraction of reusable action and separation of Linux container testing from macOS testing for better organization&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Extended testing infrastructure to support more Linux distributions and arm64 architecture with dependency fixes</summary><published>2025-06-29T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-25</id><title>Week 25, 2025: Package dependency improvements and CI infrastructure establishment for oxcaml variant distribution</title><updated>2025-06-22T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>Extended testing infrastructure to support more Linux distributions and arm64 architecture with dependency fixes</summary><published>2025-06-29T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-25</id><title>Week 25, 2025: Package dependency improvements and CI infrastructure establishment for oxcaml variant distribution</title><updated>2025-06-22T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 Established comprehensive CI infrastructure and resolved build compatibility issues across multiple platforms&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/pull/3" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Continuous integration&lt;/strong&gt;&lt;/a&gt; setup by &lt;a href="https://github.com/punchagan"&gt;Puneeth Chaganti&lt;/a&gt; with GitHub Actions testing OCaml variant 5.2.0+ox across Ubuntu x64/arm64 and macOS Intel/arm64 platforms (&lt;a href="https://github.com/oxcaml/opam-repository/pull/3"&gt;#3&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/pull/1" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Build script compatibility&lt;/strong&gt;&lt;/a&gt; fix for ppxlib_ast cleanup script to use bash explicitly, resolving build failures (&lt;a href="https://github.com/oxcaml/opam-repository/pull/1"&gt;#1&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/pull/3" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Package testing&lt;/strong&gt;&lt;/a&gt; expanded with additional packages verified through CI infrastructure as confirmed by &lt;a href="https://github.com/dkalinichenko-js"&gt;@dkalinichenko-js&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/opam-repository/pull/3"&gt;#3&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/pull/3" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Continuous integration&lt;/strong&gt;&lt;/a&gt; setup by &lt;a href="https://github.com/punchagan"&gt;Puneeth Chaganti&lt;/a&gt; with GitHub Actions testing OCaml variant 5.2.0+ox across Ubuntu x64/arm64 and macOS Intel/arm64 platforms (&lt;a href="https://github.com/oxcaml/opam-repository/pull/3"&gt;#3&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/pull/1" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Build script compatibility&lt;/strong&gt;&lt;/a&gt; fix for ppxlib_ast cleanup script to use bash explicitly, resolving build failures (&lt;a href="https://github.com/oxcaml/opam-repository/pull/1"&gt;#1&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/pull/3" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Package testing&lt;/strong&gt;&lt;/a&gt; expanded with additional packages verified through CI infrastructure as confirmed by &lt;a href="https://github.com/dkalinichenko-js"&gt;@dkalinichenko-js&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/opam-repository/pull/3"&gt;#3&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Package dependency improvements and CI infrastructure establishment for oxcaml variant distribution</summary><published>2025-06-22T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-24</id><title>Week 24, 2025: Added CI workflow, fixed build issues, and completed package rebranding from Jane Street to OxCaml</title><updated>2025-06-15T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>Package dependency improvements and CI infrastructure establishment for oxcaml variant distribution</summary><published>2025-06-22T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-24</id><title>Week 24, 2025: Added CI workflow, fixed build issues, and completed package rebranding from Jane Street to OxCaml</title><updated>2025-06-15T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 Three PRs merged focusing on CI infrastructure and build fixes by Puneeth Chaganti&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/issues/3" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;CI infrastructure&lt;/strong&gt;&lt;/a&gt; established with &lt;a href="https://github.com/punchagan"&gt;Puneeth Chaganti&lt;/a&gt; adding GitHub Actions workflow for automated testing across Ubuntu and macOS platforms (&lt;a href="https://github.com/oxcaml/opam-repository/issues/3"&gt;#3&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/issues/1" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Build system fixes&lt;/strong&gt;&lt;/a&gt; delivered through two consecutive PRs fixing ppxlib_ast cleanup script execution by &lt;a href="https://github.com/punchagan"&gt;Puneeth Chaganti&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/opam-repository/issues/1"&gt;#1&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/opam-repository/issues/2"&gt;#2&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Package ecosystem update&lt;/strong&gt; involving hundreds of package variants renamed from &lt;code&gt;+jst&lt;/code&gt; to &lt;code&gt;+ox&lt;/code&gt; suffix, completing the transition from Jane Street to OxCaml branding across the entire repository&lt;/li&gt;
-&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Documentation overhaul&lt;/strong&gt; transforming README from Jane Street to OxCaml branding with enhanced installation instructions and platform compatibility details&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/issues/3" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;CI infrastructure&lt;/strong&gt;&lt;/a&gt; established with &lt;a href="https://github.com/punchagan"&gt;Puneeth Chaganti&lt;/a&gt; adding GitHub Actions workflow for automated testing across Ubuntu and macOS platforms (&lt;a href="https://github.com/oxcaml/opam-repository/issues/3"&gt;#3&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/issues/1" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Build system fixes&lt;/strong&gt;&lt;/a&gt; delivered through two consecutive PRs fixing ppxlib_ast cleanup script execution by &lt;a href="https://github.com/punchagan"&gt;Puneeth Chaganti&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/opam-repository/issues/1"&gt;#1&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/opam-repository/issues/2"&gt;#2&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Package ecosystem update&lt;/strong&gt; involving hundreds of package variants renamed from &lt;code&gt;+jst&lt;/code&gt; to &lt;code&gt;+ox&lt;/code&gt; suffix, completing the transition from Jane Street to OxCaml branding across the entire repository&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Documentation overhaul&lt;/strong&gt; transforming README from Jane Street to OxCaml branding with enhanced installation instructions and platform compatibility details&lt;/li&gt;
 &lt;/ul&gt;
 </content><link href="https://thicket.dev/"/><summary>Added CI workflow, fixed build issues, and completed package rebranding from Jane Street to OxCaml</summary><published>2025-06-15T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-23</id><title>Week 23, 2025: None</title><updated>2025-06-08T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 23, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 23, 2025</summary><published>2025-06-08T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-22</id><title>Week 22, 2025: None</title><updated>2025-06-01T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 22, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 22, 2025</summary><published>2025-06-01T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-21</id><title>Week 21, 2025: None</title><updated>2025-05-25T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 21, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 21, 2025</summary><published>2025-05-25T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-20</id><title>Week 20, 2025: None</title><updated>2025-05-18T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 20, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 20, 2025</summary><published>2025-05-18T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-19</id><title>Week 19, 2025: None</title><updated>2025-05-11T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 19, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 19, 2025</summary><published>2025-05-11T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-18</id><title>Week 18, 2025: None</title><updated>2025-05-04T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 18, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 18, 2025</summary><published>2025-05-04T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-17</id><title>Week 17, 2025: None</title><updated>2025-04-27T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 17, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 17, 2025</summary><published>2025-04-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-16</id><title>Week 16, 2025: None</title><updated>2025-04-20T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 16, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 16, 2025</summary><published>2025-04-20T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-15</id><title>Week 15, 2025: None</title><updated>2025-04-13T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 15, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 15, 2025</summary><published>2025-04-13T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-14</id><title>Week 14, 2025: None</title><updated>2025-04-06T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 14, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 14, 2025</summary><published>2025-04-06T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-13</id><title>Week 13, 2025: None</title><updated>2025-03-30T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 13, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 13, 2025</summary><published>2025-03-30T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-12</id><title>Week 12, 2025: None</title><updated>2025-03-23T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 12, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 12, 2025</summary><published>2025-03-23T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-11</id><title>Week 11, 2025: None</title><updated>2025-03-16T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 11, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 11, 2025</summary><published>2025-03-16T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-10</id><title>Week 10, 2025: None</title><updated>2025-03-09T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 10, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 10, 2025</summary><published>2025-03-09T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-9</id><title>Week 9, 2025: None</title><updated>2025-03-02T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 9, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 9, 2025</summary><published>2025-03-02T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-8</id><title>Week 8, 2025: None</title><updated>2025-02-23T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 8, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 8, 2025</summary><published>2025-02-23T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-7</id><title>Week 7, 2025: None</title><updated>2025-02-16T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 7, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 7, 2025</summary><published>2025-02-16T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-6</id><title>Week 6, 2025: None</title><updated>2025-02-09T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 6, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 6, 2025</summary><published>2025-02-09T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-5</id><title>Week 5, 2025: None</title><updated>2025-02-02T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 5, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 5, 2025</summary><published>2025-02-02T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-4</id><title>Week 4, 2025: None</title><updated>2025-01-26T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 4, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 4, 2025</summary><published>2025-01-26T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-3</id><title>Week 3, 2025: None</title><updated>2025-01-19T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 3, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 3, 2025</summary><published>2025-01-19T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-2</id><title>Week 2, 2025: None</title><updated>2025-01-12T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 2, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 2, 2025</summary><published>2025-01-12T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-1</id><title>Week 1, 2025: None</title><updated>2025-01-05T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 1, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 1, 2025</summary><published>2025-01-05T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2024/week-52</id><title>Week 52, 2024: None</title><updated>2024-12-29T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 52, 2024&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 52, 2024</summary><published>2024-12-29T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2024/week-51</id><title>Week 51, 2024: None</title><updated>2024-12-22T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 51, 2024&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 51, 2024</summary><published>2024-12-22T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2024/week-50</id><title>Week 50, 2024: None</title><updated>2024-12-15T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 50, 2024&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 50, 2024</summary><published>2024-12-15T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2024/week-49</id><title>Week 49, 2024: None</title><updated>2024-12-08T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 49, 2024&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 49, 2024</summary><published>2024-12-08T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2024/week-48</id><title>Week 48, 2024: None</title><updated>2024-12-01T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 48, 2024&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 48, 2024</summary><published>2024-12-01T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2024/week-47</id><title>Week 47, 2024: None</title><updated>2024-11-24T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 47, 2024&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 47, 2024</summary><published>2024-11-24T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2024/week-46</id><title>Week 46, 2024: None</title><updated>2024-11-17T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 46, 2024&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 46, 2024</summary><published>2024-11-17T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2024/week-45</id><title>Week 45, 2024: None</title><updated>2024-11-10T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 45, 2024&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 45, 2024</summary><published>2024-11-10T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2024/week-44</id><title>Week 44, 2024: None</title><updated>2024-11-03T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 44, 2024&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 44, 2024</summary><published>2024-11-03T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2024/week-43</id><title>Week 43, 2024: None</title><updated>2024-10-27T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 43, 2024&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 43, 2024</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2024/week-42</id><title>Week 42, 2024: None</title><updated>2024-10-20T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 42, 2024&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 42, 2024</summary><published>2024-10-20T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2024/week-41</id><title>Week 41, 2024: None</title><updated>2024-10-13T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 41, 2024&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 41, 2024</summary><published>2024-10-13T00:00:00+00:00</published></entry></feed>

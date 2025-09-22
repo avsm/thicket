@@ -1,190 +1,1334 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-multicore-picos.xml</id><title>ocaml-multicore/picos (Weekly)</title><updated>2025-09-14T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-multicore-picos.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml-multicore/picos</subtitle><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-37</id><title>Week 37, 2025: None</title><updated>2025-09-14T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 37, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 37, 2025</summary><published>2025-09-14T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-36</id><title>Week 36, 2025: None</title><updated>2025-09-07T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 36, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 36, 2025</summary><published>2025-09-07T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-35</id><title>Week 35, 2025: None</title><updated>2025-08-31T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 35, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 35, 2025</summary><published>2025-08-31T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-34</id><title>Week 34, 2025: None</title><updated>2025-08-24T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 34, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 34, 2025</summary><published>2025-08-24T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-33</id><title>Week 33, 2025: None</title><updated>2025-08-17T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 33, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 33, 2025</summary><published>2025-08-17T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-32</id><title>Week 32, 2025: None</title><updated>2025-08-10T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 32, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 32, 2025</summary><published>2025-08-10T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-31</id><title>Week 31, 2025: None</title><updated>2025-08-03T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 31, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 31, 2025</summary><published>2025-08-03T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-30</id><title>Week 30, 2025: Performance issue reported for random scheduler in parallel tree operations</title><updated>2025-07-27T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-multicore-picos.xml</id><title>ocaml-multicore/picos (Weekly)</title><updated>2025-09-14T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-multicore-picos.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml-multicore/picos</subtitle><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-37</id><title>Week 37, 2025: None</title><updated>2025-09-14T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 37, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 37, 2025</summary><published>2025-09-14T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-36</id><title>Week 36, 2025: None</title><updated>2025-09-07T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 36, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 36, 2025</summary><published>2025-09-07T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-35</id><title>Week 35, 2025: None</title><updated>2025-08-31T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 35, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 35, 2025</summary><published>2025-08-31T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-34</id><title>Week 34, 2025: None</title><updated>2025-08-24T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 34, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 34, 2025</summary><published>2025-08-24T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-33</id><title>Week 33, 2025: None</title><updated>2025-08-17T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 33, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 33, 2025</summary><published>2025-08-17T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-32</id><title>Week 32, 2025: None</title><updated>2025-08-10T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 32, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 32, 2025</summary><published>2025-08-10T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-31</id><title>Week 31, 2025: None</title><updated>2025-08-03T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 31, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 31, 2025</summary><published>2025-08-03T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-30</id><title>Week 30, 2025: Performance issue reported for random scheduler in parallel tree operations</title><updated>2025-07-27T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 One issue opened reporting poor scaling performance in random scheduler&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/Drup"&gt;Gabriel Radanne&lt;/a&gt; opened &lt;a href="https://github.com/ocaml-multicore/picos/issues/374" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;scheduler performance issue&lt;/strong&gt;&lt;/a&gt; reporting poor scaling behavior with the random scheduler on embarrassingly parallel workloads, specifically parallel tree map operations (&lt;a href="https://github.com/ocaml-multicore/picos/issues/374"&gt;#374&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Drup"&gt;Gabriel Radanne&lt;/a&gt; opened &lt;a href="https://github.com/ocaml-multicore/picos/issues/374" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;scheduler performance issue&lt;/strong&gt;&lt;/a&gt; reporting poor scaling behavior with the random scheduler on embarrassingly parallel workloads, specifically parallel tree map operations (&lt;a href="https://github.com/ocaml-multicore/picos/issues/374"&gt;#374&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Performance issue reported for random scheduler in parallel tree operations</summary><published>2025-07-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-29</id><title>Week 29, 2025: One community discussion about fiber cancellation patterns in libcurl wrapper development</title><updated>2025-07-20T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 29, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>One community discussion about fiber cancellation patterns in libcurl wrapper development</summary><published>2025-07-20T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-28</id><title>Week 28, 2025: None</title><updated>2025-07-13T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 28, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 28, 2025</summary><published>2025-07-13T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-27</id><title>Week 27, 2025: None</title><updated>2025-07-06T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 27, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 27, 2025</summary><published>2025-07-06T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-26</id><title>Week 26, 2025: None</title><updated>2025-06-29T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 26, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 26, 2025</summary><published>2025-06-29T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-25</id><title>Week 25, 2025: None</title><updated>2025-06-22T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 25, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 25, 2025</summary><published>2025-06-22T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-24</id><title>Week 24, 2025: Benchmark optimization and condition variable implementation improvements by Vesa Karvonen</title><updated>2025-06-15T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>Performance issue reported for random scheduler in parallel tree operations</summary><published>2025-07-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-29</id><title>Week 29, 2025: One community discussion about fiber cancellation patterns in libcurl wrapper development</title><updated>2025-07-20T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 29, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>One community discussion about fiber cancellation patterns in libcurl wrapper development</summary><published>2025-07-20T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-28</id><title>Week 28, 2025: None</title><updated>2025-07-13T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 28, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 28, 2025</summary><published>2025-07-13T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-27</id><title>Week 27, 2025: None</title><updated>2025-07-06T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 27, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 27, 2025</summary><published>2025-07-06T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-26</id><title>Week 26, 2025: None</title><updated>2025-06-29T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 26, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 26, 2025</summary><published>2025-06-29T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-25</id><title>Week 25, 2025: None</title><updated>2025-06-22T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 25, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 25, 2025</summary><published>2025-06-22T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-24</id><title>Week 24, 2025: Benchmark optimization and condition variable implementation improvements by Vesa Karvonen</title><updated>2025-06-15T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 One new draft PR opened for condition variable improvements, with one benchmark optimization PR merged&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/371" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;New condition variable implementation&lt;/strong&gt;&lt;/a&gt; opened as draft PR by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; using counter-based approach instead of Awaitable enqueue for signal detection (&lt;a href="https://github.com/ocaml-multicore/picos/issues/371"&gt;#371&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/372" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Benchmark improvements&lt;/strong&gt;&lt;/a&gt; merged with comprehensive refactoring of reference lock benchmarks, expanding from simple operations to include multiple operation types with inlined performance optimizations (&lt;a href="https://github.com/ocaml-multicore/picos/issues/372"&gt;#372&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/371" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;New condition variable implementation&lt;/strong&gt;&lt;/a&gt; opened as draft PR by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; using counter-based approach instead of Awaitable enqueue for signal detection (&lt;a href="https://github.com/ocaml-multicore/picos/issues/371"&gt;#371&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/372" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Benchmark improvements&lt;/strong&gt;&lt;/a&gt; merged with comprehensive refactoring of reference lock benchmarks, expanding from simple operations to include multiple operation types with inlined performance optimizations (&lt;a href="https://github.com/ocaml-multicore/picos/issues/372"&gt;#372&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Benchmark optimization and condition variable implementation improvements by Vesa Karvonen</summary><published>2025-06-15T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-23</id><title>Week 23, 2025: Single architectural discussion about core building blocks</title><updated>2025-06-08T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 23, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Single architectural discussion about core building blocks</summary><published>2025-06-08T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-22</id><title>Week 22, 2025: None</title><updated>2025-06-01T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 22, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 22, 2025</summary><published>2025-06-01T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-21</id><title>Week 21, 2025: None</title><updated>2025-05-25T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 21, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 21, 2025</summary><published>2025-05-25T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-20</id><title>Week 20, 2025: Performance optimizations in bounded queue benchmarks and select wakeup logic by Vesa Karvonen</title><updated>2025-05-18T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>Benchmark optimization and condition variable implementation improvements by Vesa Karvonen</summary><published>2025-06-15T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-23</id><title>Week 23, 2025: Single architectural discussion about core building blocks</title><updated>2025-06-08T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 23, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Single architectural discussion about core building blocks</summary><published>2025-06-08T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-22</id><title>Week 22, 2025: None</title><updated>2025-06-01T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 22, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 22, 2025</summary><published>2025-06-01T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-21</id><title>Week 21, 2025: None</title><updated>2025-05-25T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 21, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 21, 2025</summary><published>2025-05-25T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-20</id><title>Week 20, 2025: Performance optimizations in bounded queue benchmarks and select wakeup logic by Vesa Karvonen</title><updated>2025-05-18T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 Major cleanup week with 4 experimental PRs closed and 4 performance-focused PRs merged&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/368" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Performance-focused merges&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; including bounded queue benchmark optimization (&lt;a href="https://github.com/ocaml-multicore/picos/issues/368"&gt;#368&lt;/a&gt;), select wakeup logic improvements (&lt;a href="https://github.com/ocaml-multicore/picos/issues/367"&gt;#367&lt;/a&gt;), semaphore-based bounded queue example (&lt;a href="https://github.com/ocaml-multicore/picos/issues/369"&gt;#369&lt;/a&gt;), and multififo scheduler benchmarking (&lt;a href="https://github.com/ocaml-multicore/picos/issues/364"&gt;#364&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/350" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Experimental work cleanup&lt;/strong&gt;&lt;/a&gt; with closure of MPMC queue using cooperative pointer reversal (&lt;a href="https://github.com/ocaml-multicore/picos/issues/350"&gt;#350&lt;/a&gt;) due to high write barrier costs, shallow effects experiment (&lt;a href="https://github.com/ocaml-multicore/picos/issues/208"&gt;#208&lt;/a&gt;) due to performance regression, space usage tweaks (&lt;a href="https://github.com/ocaml-multicore/picos/issues/300"&gt;#300&lt;/a&gt;) to concentrate on structured Run operations, and bounded queue rewrite (&lt;a href="https://github.com/ocaml-multicore/picos/issues/346"&gt;#346&lt;/a&gt;) in favor of semaphore example&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/321" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Ongoing development&lt;/strong&gt;&lt;/a&gt; continues with bounded blocking Stack (&lt;a href="https://github.com/ocaml-multicore/picos/issues/321"&gt;#321&lt;/a&gt;) and structured Run operations (&lt;a href="https://github.com/ocaml-multicore/picos/issues/334"&gt;#334&lt;/a&gt;) remaining as draft PRs&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/368" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Performance-focused merges&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; including bounded queue benchmark optimization (&lt;a href="https://github.com/ocaml-multicore/picos/issues/368"&gt;#368&lt;/a&gt;), select wakeup logic improvements (&lt;a href="https://github.com/ocaml-multicore/picos/issues/367"&gt;#367&lt;/a&gt;), semaphore-based bounded queue example (&lt;a href="https://github.com/ocaml-multicore/picos/issues/369"&gt;#369&lt;/a&gt;), and multififo scheduler benchmarking (&lt;a href="https://github.com/ocaml-multicore/picos/issues/364"&gt;#364&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/350" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Experimental work cleanup&lt;/strong&gt;&lt;/a&gt; with closure of MPMC queue using cooperative pointer reversal (&lt;a href="https://github.com/ocaml-multicore/picos/issues/350"&gt;#350&lt;/a&gt;) due to high write barrier costs, shallow effects experiment (&lt;a href="https://github.com/ocaml-multicore/picos/issues/208"&gt;#208&lt;/a&gt;) due to performance regression, space usage tweaks (&lt;a href="https://github.com/ocaml-multicore/picos/issues/300"&gt;#300&lt;/a&gt;) to concentrate on structured Run operations, and bounded queue rewrite (&lt;a href="https://github.com/ocaml-multicore/picos/issues/346"&gt;#346&lt;/a&gt;) in favor of semaphore example&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/321" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Ongoing development&lt;/strong&gt;&lt;/a&gt; continues with bounded blocking Stack (&lt;a href="https://github.com/ocaml-multicore/picos/issues/321"&gt;#321&lt;/a&gt;) and structured Run operations (&lt;a href="https://github.com/ocaml-multicore/picos/issues/334"&gt;#334&lt;/a&gt;) remaining as draft PRs&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Performance optimizations in bounded queue benchmarks and select wakeup logic by Vesa Karvonen</summary><published>2025-05-18T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-19</id><title>Week 19, 2025: Benchmarking improvement to test queues with heap-allocated blocks instead of immediate values</title><updated>2025-05-11T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>Performance optimizations in bounded queue benchmarks and select wakeup logic by Vesa Karvonen</summary><published>2025-05-18T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-19</id><title>Week 19, 2025: Benchmarking improvement to test queues with heap-allocated blocks instead of immediate values</title><updated>2025-05-11T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 Single PR merged improving benchmarking methodology for queue data structures&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/366" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Benchmarking methodology improvement&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; changing queue benchmarks from immediate values to heap-allocated blocks, better exposing write barrier overhead (&lt;a href="https://github.com/ocaml-multicore/picos/issues/366"&gt;#366&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/366" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Benchmarking methodology improvement&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; changing queue benchmarks from immediate values to heap-allocated blocks, better exposing write barrier overhead (&lt;a href="https://github.com/ocaml-multicore/picos/issues/366"&gt;#366&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Benchmarking improvement to test queues with heap-allocated blocks instead of immediate values</summary><published>2025-05-11T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-18</id><title>Week 18, 2025: Major improvements to multififo scheduler with heartbeat-based worker wakeup and parameterized load balancing</title><updated>2025-05-04T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>Benchmarking improvement to test queues with heap-allocated blocks instead of immediate values</summary><published>2025-05-11T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-18</id><title>Week 18, 2025: Major improvements to multififo scheduler with heartbeat-based worker wakeup and parameterized load balancing</title><updated>2025-05-04T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 Focus on multififo scheduler improvements with six merged PRs enhancing performance and fairness characteristics&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/362" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Multififo scheduler enhancements&lt;/strong&gt;&lt;/a&gt; dominated the week with &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; implementing heartbeat-based worker management (&lt;a href="https://github.com/ocaml-multicore/picos/issues/362"&gt;#362&lt;/a&gt;), parameterized heartbeat configuration (&lt;a href="https://github.com/ocaml-multicore/picos/issues/363"&gt;#363&lt;/a&gt;), and load balancing improvements (&lt;a href="https://github.com/ocaml-multicore/picos/issues/358"&gt;#358&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/360" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Memory optimization work&lt;/strong&gt;&lt;/a&gt; delivered through lazy bundle trigger allocation (&lt;a href="https://github.com/ocaml-multicore/picos/issues/360"&gt;#360&lt;/a&gt;) and improved bundle representation by inlining atomic fields (&lt;a href="https://github.com/ocaml-multicore/picos/issues/337"&gt;#337&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/361" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Code cleanup and documentation&lt;/strong&gt;&lt;/a&gt; updates including alert attribute positioning (&lt;a href="https://github.com/ocaml-multicore/picos/issues/361"&gt;#361&lt;/a&gt;) and benchmark prioritization of multififo scheduler (&lt;a href="https://github.com/ocaml-multicore/picos/issues/364"&gt;#364&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/338" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Work-in-progress PR&lt;/strong&gt;&lt;/a&gt; for adding &lt;code&gt;bind_on&lt;/code&gt; and &lt;code&gt;await_on&lt;/code&gt; to &lt;code&gt;Picos_lwt&lt;/code&gt; remains open for future development (&lt;a href="https://github.com/ocaml-multicore/picos/issues/338"&gt;#338&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/362" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Multififo scheduler enhancements&lt;/strong&gt;&lt;/a&gt; dominated the week with &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; implementing heartbeat-based worker management (&lt;a href="https://github.com/ocaml-multicore/picos/issues/362"&gt;#362&lt;/a&gt;), parameterized heartbeat configuration (&lt;a href="https://github.com/ocaml-multicore/picos/issues/363"&gt;#363&lt;/a&gt;), and load balancing improvements (&lt;a href="https://github.com/ocaml-multicore/picos/issues/358"&gt;#358&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/360" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Memory optimization work&lt;/strong&gt;&lt;/a&gt; delivered through lazy bundle trigger allocation (&lt;a href="https://github.com/ocaml-multicore/picos/issues/360"&gt;#360&lt;/a&gt;) and improved bundle representation by inlining atomic fields (&lt;a href="https://github.com/ocaml-multicore/picos/issues/337"&gt;#337&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/361" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Code cleanup and documentation&lt;/strong&gt;&lt;/a&gt; updates including alert attribute positioning (&lt;a href="https://github.com/ocaml-multicore/picos/issues/361"&gt;#361&lt;/a&gt;) and benchmark prioritization of multififo scheduler (&lt;a href="https://github.com/ocaml-multicore/picos/issues/364"&gt;#364&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/338" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Work-in-progress PR&lt;/strong&gt;&lt;/a&gt; for adding &lt;code&gt;bind_on&lt;/code&gt; and &lt;code&gt;await_on&lt;/code&gt; to &lt;code&gt;Picos_lwt&lt;/code&gt; remains open for future development (&lt;a href="https://github.com/ocaml-multicore/picos/issues/338"&gt;#338&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Major improvements to multififo scheduler with heartbeat-based worker wakeup and parameterized load balancing</summary><published>2025-05-04T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-17</id><title>Week 17, 2025: Major scheduler improvements and new guarded case statements implementation with comprehensive fairness testing</title><updated>2025-04-27T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>Major improvements to multififo scheduler with heartbeat-based worker wakeup and parameterized load balancing</summary><published>2025-05-04T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-17</id><title>Week 17, 2025: Major scheduler improvements and new guarded case statements implementation with comprehensive fairness testing</title><updated>2025-04-27T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 Comprehensive scheduler improvements focusing on fairness and testing infrastructure&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/358" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Load balancing work&lt;/strong&gt;&lt;/a&gt; completed with &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; implementing periodic stealing strategy for multififo scheduler to improve fairness across worker threads (&lt;a href="https://github.com/ocaml-multicore/picos/issues/358"&gt;#358&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/359" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Test infrastructure enhancements&lt;/strong&gt;&lt;/a&gt; including verbose output capabilities and statistical fairness measurement framework for validating scheduler behavior (&lt;a href="https://github.com/ocaml-multicore/picos/issues/359"&gt;#359&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/355" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Example implementations&lt;/strong&gt;&lt;/a&gt; demonstrating practical use of structured concurrency with guarded case statements inspired by cooperative threading research (&lt;a href="https://github.com/ocaml-multicore/picos/issues/355"&gt;#355&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/354" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Bug fixes&lt;/strong&gt;&lt;/a&gt; addressing semaphore stress test failures on OCaml 5 by avoiding thread creation resource exhaustion (&lt;a href="https://github.com/ocaml-multicore/picos/issues/354"&gt;#354&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/358" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Load balancing work&lt;/strong&gt;&lt;/a&gt; completed with &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; implementing periodic stealing strategy for multififo scheduler to improve fairness across worker threads (&lt;a href="https://github.com/ocaml-multicore/picos/issues/358"&gt;#358&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/359" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Test infrastructure enhancements&lt;/strong&gt;&lt;/a&gt; including verbose output capabilities and statistical fairness measurement framework for validating scheduler behavior (&lt;a href="https://github.com/ocaml-multicore/picos/issues/359"&gt;#359&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/355" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Example implementations&lt;/strong&gt;&lt;/a&gt; demonstrating practical use of structured concurrency with guarded case statements inspired by cooperative threading research (&lt;a href="https://github.com/ocaml-multicore/picos/issues/355"&gt;#355&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/354" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Bug fixes&lt;/strong&gt;&lt;/a&gt; addressing semaphore stress test failures on OCaml 5 by avoiding thread creation resource exhaustion (&lt;a href="https://github.com/ocaml-multicore/picos/issues/354"&gt;#354&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Major scheduler improvements and new guarded case statements implementation with comprehensive fairness testing</summary><published>2025-04-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-16</id><title>Week 16, 2025: None</title><updated>2025-04-20T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 16, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 16, 2025</summary><published>2025-04-20T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-15</id><title>Week 15, 2025: Reported threading issue in semaphore stress test with thread-based scheduler on OCaml 5</title><updated>2025-04-13T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>Major scheduler improvements and new guarded case statements implementation with comprehensive fairness testing</summary><published>2025-04-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-16</id><title>Week 16, 2025: None</title><updated>2025-04-20T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 16, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 16, 2025</summary><published>2025-04-20T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-15</id><title>Week 15, 2025: Reported threading issue in semaphore stress test with thread-based scheduler on OCaml 5</title><updated>2025-04-13T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 Testing issue reported regarding thread creation resource limits in stress tests&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/353" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Thread creation issue&lt;/strong&gt;&lt;/a&gt; reported by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; in semaphore stress test where the test spawns too many threads causing "Resource temporarily unavailable" errors with the thread-based scheduler on OCaml 5 (&lt;a href="https://github.com/ocaml-multicore/picos/issues/353"&gt;#353&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/353" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Thread creation issue&lt;/strong&gt;&lt;/a&gt; reported by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; in semaphore stress test where the test spawns too many threads causing "Resource temporarily unavailable" errors with the thread-based scheduler on OCaml 5 (&lt;a href="https://github.com/ocaml-multicore/picos/issues/353"&gt;#353&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Reported threading issue in semaphore stress test with thread-based scheduler on OCaml 5</summary><published>2025-04-13T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-14</id><title>Week 14, 2025: Added systhread-based scheduler testing on OCaml 5 to improve test coverage across different scheduler implementations</title><updated>2025-04-06T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>Reported threading issue in semaphore stress test with thread-based scheduler on OCaml 5</summary><published>2025-04-13T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-14</id><title>Week 14, 2025: Added systhread-based scheduler testing on OCaml 5 to improve test coverage across different scheduler implementations</title><updated>2025-04-06T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 Single focused PR merged to expand scheduler testing capabilities for better OCaml 5 compatibility verification&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/352" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Test infrastructure improvements&lt;/strong&gt;&lt;/a&gt; completed with &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; merging changes to add systhread-based scheduler testing on OCaml 5 (&lt;a href="https://github.com/ocaml-multicore/picos/issues/352"&gt;#352&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Scheduler coverage expansion&lt;/strong&gt; implemented by modifying the test scheduler to randomly select from 5 different scheduler types instead of 4, ensuring the new &lt;code&gt;picos_mux.thread&lt;/code&gt; scheduler gets tested alongside existing options&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/352" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Test infrastructure improvements&lt;/strong&gt;&lt;/a&gt; completed with &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; merging changes to add systhread-based scheduler testing on OCaml 5 (&lt;a href="https://github.com/ocaml-multicore/picos/issues/352"&gt;#352&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Scheduler coverage expansion&lt;/strong&gt; implemented by modifying the test scheduler to randomly select from 5 different scheduler types instead of 4, ensuring the new &lt;code&gt;picos_mux.thread&lt;/code&gt; scheduler gets tested alongside existing options&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Added systhread-based scheduler testing on OCaml 5 to improve test coverage across different scheduler implementations</summary><published>2025-04-06T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-13</id><title>Week 13, 2025: None</title><updated>2025-03-30T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 13, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 13, 2025</summary><published>2025-03-30T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-12</id><title>Week 12, 2025: None</title><updated>2025-03-23T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 12, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 12, 2025</summary><published>2025-03-23T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-11</id><title>Week 11, 2025: None</title><updated>2025-03-16T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 11, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 11, 2025</summary><published>2025-03-16T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-10</id><title>Week 10, 2025: None</title><updated>2025-03-09T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 10, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 10, 2025</summary><published>2025-03-09T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-9</id><title>Week 9, 2025: None</title><updated>2025-03-02T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 9, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 9, 2025</summary><published>2025-03-02T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-8</id><title>Week 8, 2025: None</title><updated>2025-02-23T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 8, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 8, 2025</summary><published>2025-02-23T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-7</id><title>Week 7, 2025: New poisonable Barrier synchronization primitive added to picos_std.sync with slim implementation</title><updated>2025-02-16T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>Added systhread-based scheduler testing on OCaml 5 to improve test coverage across different scheduler implementations</summary><published>2025-04-06T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-13</id><title>Week 13, 2025: None</title><updated>2025-03-30T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 13, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 13, 2025</summary><published>2025-03-30T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-12</id><title>Week 12, 2025: None</title><updated>2025-03-23T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 12, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 12, 2025</summary><published>2025-03-23T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-11</id><title>Week 11, 2025: None</title><updated>2025-03-16T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 11, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 11, 2025</summary><published>2025-03-16T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-10</id><title>Week 10, 2025: None</title><updated>2025-03-09T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 10, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 10, 2025</summary><published>2025-03-09T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-9</id><title>Week 9, 2025: None</title><updated>2025-03-02T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 9, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 9, 2025</summary><published>2025-03-02T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-8</id><title>Week 8, 2025: None</title><updated>2025-02-23T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 8, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 8, 2025</summary><published>2025-02-23T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-7</id><title>Week 7, 2025: New poisonable Barrier synchronization primitive added to picos_std.sync with slim implementation</title><updated>2025-02-16T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 Single PR merged implementing new Barrier primitive with comprehensive tests and documentation updates&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/351" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Barrier implementation&lt;/strong&gt;&lt;/a&gt; completed by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; with full feature set including poisoning mechanism, party configuration, and test suite (&lt;a href="https://github.com/ocaml-multicore/picos/issues/351"&gt;#351&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/351" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Documentation improvements&lt;/strong&gt;&lt;/a&gt; including API documentation for new Barrier module and typo fix in existing doc comments (&lt;a href="https://github.com/ocaml-multicore/picos/issues/351"&gt;#351&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/351" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Barrier implementation&lt;/strong&gt;&lt;/a&gt; completed by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; with full feature set including poisoning mechanism, party configuration, and test suite (&lt;a href="https://github.com/ocaml-multicore/picos/issues/351"&gt;#351&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/351" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Documentation improvements&lt;/strong&gt;&lt;/a&gt; including API documentation for new Barrier module and typo fix in existing doc comments (&lt;a href="https://github.com/ocaml-multicore/picos/issues/351"&gt;#351&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>New poisonable Barrier synchronization primitive added to picos_std.sync with slim implementation</summary><published>2025-02-16T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-6</id><title>Week 6, 2025: Test code improvements and new MPMC queue draft PR activity</title><updated>2025-02-09T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>New poisonable Barrier synchronization primitive added to picos_std.sync with slim implementation</summary><published>2025-02-16T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-6</id><title>Week 6, 2025: Test code improvements and new MPMC queue draft PR activity</title><updated>2025-02-09T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 New draft PR for MPMC queue implementation using cooperative pointer reversal&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/350" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;New draft PR opened&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; for MPMC queue implementation using cooperative pointer reversal technique (&lt;a href="https://github.com/ocaml-multicore/picos/issues/350"&gt;#350&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/350" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;New draft PR opened&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; for MPMC queue implementation using cooperative pointer reversal technique (&lt;a href="https://github.com/ocaml-multicore/picos/issues/350"&gt;#350&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Test code improvements and new MPMC queue draft PR activity</summary><published>2025-02-09T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-5</id><title>Week 5, 2025: Hash table functionality enhancements and internal optimizations by Vesa Karvonen</title><updated>2025-02-02T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>Test code improvements and new MPMC queue draft PR activity</summary><published>2025-02-09T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-5</id><title>Week 5, 2025: Hash table functionality enhancements and internal optimizations by Vesa Karvonen</title><updated>2025-02-02T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 Hash table module improvements with three merged PRs focusing on performance and functionality&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/349" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Hash table enhancements&lt;/strong&gt;&lt;/a&gt; completed with three focused PRs by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; including copy functionality (&lt;a href="https://github.com/ocaml-multicore/picos/issues/349"&gt;#349&lt;/a&gt;), relaxed size reading (&lt;a href="https://github.com/ocaml-multicore/picos/issues/348"&gt;#348&lt;/a&gt;), and allocation guarantees (&lt;a href="https://github.com/ocaml-multicore/picos/issues/347"&gt;#347&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Internal optimizations&lt;/strong&gt; delivered through mutable field usage ensuring unique block allocation and improved contention handling&lt;/li&gt;
-&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;API expansion&lt;/strong&gt; with new &lt;code&gt;copy&lt;/code&gt; function adding 62 lines of implementation and comprehensive test coverage&lt;/li&gt;
-&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Documentation improvements&lt;/strong&gt; clarifying termination semantics in structured concurrency constructs&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/349" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Hash table enhancements&lt;/strong&gt;&lt;/a&gt; completed with three focused PRs by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; including copy functionality (&lt;a href="https://github.com/ocaml-multicore/picos/issues/349"&gt;#349&lt;/a&gt;), relaxed size reading (&lt;a href="https://github.com/ocaml-multicore/picos/issues/348"&gt;#348&lt;/a&gt;), and allocation guarantees (&lt;a href="https://github.com/ocaml-multicore/picos/issues/347"&gt;#347&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Internal optimizations&lt;/strong&gt; delivered through mutable field usage ensuring unique block allocation and improved contention handling&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;API expansion&lt;/strong&gt; with new &lt;code&gt;copy&lt;/code&gt; function adding 62 lines of implementation and comprehensive test coverage&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Documentation improvements&lt;/strong&gt; clarifying termination semantics in structured concurrency constructs&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Hash table functionality enhancements and internal optimizations by Vesa Karvonen</summary><published>2025-02-02T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-4</id><title>Week 4, 2025: Major synchronization primitives expansion with new Lock, Rwlock, and Sem implementations by [Vesa Karvonen](https://github.com/polytypic)</title><updated>2025-01-26T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>Hash table functionality enhancements and internal optimizations by Vesa Karvonen</summary><published>2025-02-02T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-4</id><title>Week 4, 2025: Major synchronization primitives expansion with new Lock, Rwlock, and Sem implementations by [Vesa Karvonen](https://github.com/polytypic)</title><updated>2025-01-26T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 Single contributor focused week with one draft PR opened and five major synchronization primitive PRs merged&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/346" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Draft PR opened&lt;/strong&gt;&lt;/a&gt;: Rewrite of &lt;code&gt;Bounded_q&lt;/code&gt; bench using &lt;code&gt;Sem&lt;/code&gt; by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; to demonstrate the new semaphore implementation (&lt;a href="https://github.com/ocaml-multicore/picos/issues/346"&gt;#346&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/341" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Major synchronization primitives delivery&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; completed implementation of three new core synchronization types with comprehensive APIs, condition variable support, and expert-level interfaces (&lt;a href="https://github.com/ocaml-multicore/picos/issues/341"&gt;#341&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/picos/issues/344"&gt;#344&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/picos/issues/345"&gt;#345&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/342" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Testing infrastructure enhancement&lt;/strong&gt;&lt;/a&gt;: QCheck STM upgrade enables better testing patterns for blocking data structures with &lt;code&gt;wrap_cmd_seq&lt;/code&gt; support (&lt;a href="https://github.com/ocaml-multicore/picos/issues/342"&gt;#342&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/343" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Performance optimization work&lt;/strong&gt;&lt;/a&gt;: Awaitable API extension with fenceless_get function for specialized use cases (&lt;a href="https://github.com/ocaml-multicore/picos/issues/343"&gt;#343&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Benchmarking improvements&lt;/strong&gt;: Comprehensive benchmark suite restructuring with new lock and reference operation benchmarks while removing outdated mutex and semaphore tests&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/346" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Draft PR opened&lt;/strong&gt;&lt;/a&gt;: Rewrite of &lt;code&gt;Bounded_q&lt;/code&gt; bench using &lt;code&gt;Sem&lt;/code&gt; by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; to demonstrate the new semaphore implementation (&lt;a href="https://github.com/ocaml-multicore/picos/issues/346"&gt;#346&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/341" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Major synchronization primitives delivery&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; completed implementation of three new core synchronization types with comprehensive APIs, condition variable support, and expert-level interfaces (&lt;a href="https://github.com/ocaml-multicore/picos/issues/341"&gt;#341&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/picos/issues/344"&gt;#344&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/picos/issues/345"&gt;#345&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/342" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Testing infrastructure enhancement&lt;/strong&gt;&lt;/a&gt;: QCheck STM upgrade enables better testing patterns for blocking data structures with &lt;code&gt;wrap_cmd_seq&lt;/code&gt; support (&lt;a href="https://github.com/ocaml-multicore/picos/issues/342"&gt;#342&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/343" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Performance optimization work&lt;/strong&gt;&lt;/a&gt;: Awaitable API extension with fenceless_get function for specialized use cases (&lt;a href="https://github.com/ocaml-multicore/picos/issues/343"&gt;#343&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Benchmarking improvements&lt;/strong&gt;: Comprehensive benchmark suite restructuring with new lock and reference operation benchmarks while removing outdated mutex and semaphore tests&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Major synchronization primitives expansion with new Lock, Rwlock, and Sem implementations by [Vesa Karvonen](https://github.com/polytypic)</summary><published>2025-01-26T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-3</id><title>Week 3, 2025: New QCheck STM PR opened by Vesa Karvonen for better blocking data structure testing, with ongoing Rwlock development discussions</title><updated>2025-01-19T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>Major synchronization primitives expansion with new Lock, Rwlock, and Sem implementations by [Vesa Karvonen](https://github.com/polytypic)</summary><published>2025-01-26T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-3</id><title>Week 3, 2025: New QCheck STM PR opened by Vesa Karvonen for better blocking data structure testing, with ongoing Rwlock development discussions</title><updated>2025-01-19T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 QCheck STM upgrade PR opened and Rwlock development discussions continued&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/342" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;QCheck STM upgrade&lt;/strong&gt;&lt;/a&gt; opened by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; to support &lt;code&gt;wrap_cmd_seq&lt;/code&gt; for better testing of blocking data structures (&lt;a href="https://github.com/ocaml-multicore/picos/issues/342"&gt;#342&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/341" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Rwlock implementation&lt;/strong&gt;&lt;/a&gt; continued development with &lt;a href="https://github.com/jmid"&gt;Jan Midtgaard&lt;/a&gt; providing feedback on the ongoing work (&lt;a href="https://github.com/ocaml-multicore/picos/issues/341"&gt;#341&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/342" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;QCheck STM upgrade&lt;/strong&gt;&lt;/a&gt; opened by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; to support &lt;code&gt;wrap_cmd_seq&lt;/code&gt; for better testing of blocking data structures (&lt;a href="https://github.com/ocaml-multicore/picos/issues/342"&gt;#342&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/341" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Rwlock implementation&lt;/strong&gt;&lt;/a&gt; continued development with &lt;a href="https://github.com/jmid"&gt;Jan Midtgaard&lt;/a&gt; providing feedback on the ongoing work (&lt;a href="https://github.com/ocaml-multicore/picos/issues/341"&gt;#341&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>New QCheck STM PR opened by Vesa Karvonen for better blocking data structure testing, with ongoing Rwlock development discussions</summary><published>2025-01-19T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-2</id><title>Week 2, 2025: Infrastructure improvements with OCaml 5.3 support and new Rwlock feature opening</title><updated>2025-01-12T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>New QCheck STM PR opened by Vesa Karvonen for better blocking data structure testing, with ongoing Rwlock development discussions</summary><published>2025-01-19T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-2</id><title>Week 2, 2025: Infrastructure improvements with OCaml 5.3 support and new Rwlock feature opening</title><updated>2025-01-12T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 New Rwlock implementation opened for future development with significant code additions&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/341" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;New Rwlock feature&lt;/strong&gt;&lt;/a&gt; opened by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; introducing low overhead read-write locks with associated condition variables using the Awaitable abstraction (&lt;a href="https://github.com/ocaml-multicore/picos/issues/341"&gt;#341&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/340" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;OCaml 5.3 integration&lt;/strong&gt;&lt;/a&gt; completed by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; with immediate merge after testing (&lt;a href="https://github.com/ocaml-multicore/picos/issues/340"&gt;#340&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/341" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;New Rwlock feature&lt;/strong&gt;&lt;/a&gt; opened by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; introducing low overhead read-write locks with associated condition variables using the Awaitable abstraction (&lt;a href="https://github.com/ocaml-multicore/picos/issues/341"&gt;#341&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/340" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml 5.3 integration&lt;/strong&gt;&lt;/a&gt; completed by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; with immediate merge after testing (&lt;a href="https://github.com/ocaml-multicore/picos/issues/340"&gt;#340&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Infrastructure improvements with OCaml 5.3 support and new Rwlock feature opening</summary><published>2025-01-12T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-1</id><title>Week 1, 2025: None</title><updated>2025-01-05T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 1, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 1, 2025</summary><published>2025-01-05T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2024/week-52</id><title>Week 52, 2024: None</title><updated>2024-12-29T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 52, 2024&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 52, 2024</summary><published>2024-12-29T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2024/week-51</id><title>Week 51, 2024: None</title><updated>2024-12-22T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 51, 2024&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 51, 2024</summary><published>2024-12-22T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2024/week-50</id><title>Week 50, 2024: OCamlformat upgrade to 0.27.0 reformatted entire codebase and new Lwt integration PR opened</title><updated>2024-12-15T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>Infrastructure improvements with OCaml 5.3 support and new Rwlock feature opening</summary><published>2025-01-12T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2025/week-1</id><title>Week 1, 2025: None</title><updated>2025-01-05T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 1, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 1, 2025</summary><published>2025-01-05T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2024/week-52</id><title>Week 52, 2024: None</title><updated>2024-12-29T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 52, 2024&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 52, 2024</summary><published>2024-12-29T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2024/week-51</id><title>Week 51, 2024: None</title><updated>2024-12-22T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 51, 2024&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 51, 2024</summary><published>2024-12-22T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2024/week-50</id><title>Week 50, 2024: OCamlformat upgrade to 0.27.0 reformatted entire codebase and new Lwt integration PR opened</title><updated>2024-12-15T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 One new PR opened for Lwt integration while several draft PRs remain in development&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;New &lt;a href="https://github.com/ocaml-multicore/picos/issues/338" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Lwt integration PR&lt;/strong&gt;&lt;/a&gt; opened by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; adding bind&lt;em&gt;on and await&lt;/em&gt;on functions to Picos_lwt (&lt;a href="https://github.com/ocaml-multicore/picos/issues/338"&gt;#338&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/339" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Development tooling&lt;/strong&gt;&lt;/a&gt; improved with OCamlformat upgrade merged by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; affecting 32 files across the entire codebase (&lt;a href="https://github.com/ocaml-multicore/picos/issues/339"&gt;#339&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/164" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Ongoing draft work&lt;/strong&gt;&lt;/a&gt; continues across multiple areas including CML-style channels (&lt;a href="https://github.com/ocaml-multicore/picos/issues/164"&gt;#164&lt;/a&gt;), Per_thread caching (&lt;a href="https://github.com/ocaml-multicore/picos/issues/214"&gt;#214&lt;/a&gt;), and performance improvements (&lt;a href="https://github.com/ocaml-multicore/picos/issues/307"&gt;#307&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;New &lt;a href="https://github.com/ocaml-multicore/picos/issues/338" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Lwt integration PR&lt;/strong&gt;&lt;/a&gt; opened by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; adding bind&lt;em&gt;on and await&lt;/em&gt;on functions to Picos_lwt (&lt;a href="https://github.com/ocaml-multicore/picos/issues/338"&gt;#338&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/339" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Development tooling&lt;/strong&gt;&lt;/a&gt; improved with OCamlformat upgrade merged by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; affecting 32 files across the entire codebase (&lt;a href="https://github.com/ocaml-multicore/picos/issues/339"&gt;#339&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/164" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Ongoing draft work&lt;/strong&gt;&lt;/a&gt; continues across multiple areas including CML-style channels (&lt;a href="https://github.com/ocaml-multicore/picos/issues/164"&gt;#164&lt;/a&gt;), Per_thread caching (&lt;a href="https://github.com/ocaml-multicore/picos/issues/214"&gt;#214&lt;/a&gt;), and performance improvements (&lt;a href="https://github.com/ocaml-multicore/picos/issues/307"&gt;#307&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>OCamlformat upgrade to 0.27.0 reformatted entire codebase and new Lwt integration PR opened</summary><published>2024-12-15T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2024/week-49</id><title>Week 49, 2024: None</title><updated>2024-12-08T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 49, 2024&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 49, 2024</summary><published>2024-12-08T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2024/week-48</id><title>Week 48, 2024: Maintenance week focused on fixing js_of_ocaml compatibility and upgrading cohttp dependency to stable release</title><updated>2024-12-01T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>OCamlformat upgrade to 0.27.0 reformatted entire codebase and new Lwt integration PR opened</summary><published>2024-12-15T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2024/week-49</id><title>Week 49, 2024: None</title><updated>2024-12-08T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/picos - Week 49, 2024&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/picos - Week 49, 2024</summary><published>2024-12-08T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2024/week-48</id><title>Week 48, 2024: Maintenance week focused on fixing js_of_ocaml compatibility and upgrading cohttp dependency to stable release</title><updated>2024-12-01T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 Three PRs merged addressing compatibility issues plus one draft PR for structured Run operations&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/334" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Draft PR opened&lt;/strong&gt;&lt;/a&gt; for structured Run operations by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; with significant API additions (&lt;a href="https://github.com/ocaml-multicore/picos/issues/334"&gt;#334&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;js&lt;em&gt;of&lt;/em&gt;ocaml compatibility&lt;/strong&gt; restored through fix for &lt;code&gt;caml_ml_domain_id&lt;/code&gt; reference issue reported by &lt;a href="https://github.com/hhugo"&gt;@hhugo&lt;/a&gt; and resolved by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/picos/issues/332"&gt;#332&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/picos/issues/333"&gt;#333&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/335" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Cohttp dependency upgrade&lt;/strong&gt;&lt;/a&gt; completed from beta to stable 6.0.0 release with corresponding API adjustments (&lt;a href="https://github.com/ocaml-multicore/picos/issues/335"&gt;#335&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/331" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;OpenBSD compatibility&lt;/strong&gt;&lt;/a&gt; PR closed as no longer needed due to OCaml-CI infrastructure improvements (&lt;a href="https://github.com/ocaml-multicore/picos/issues/331"&gt;#331&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/334" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Draft PR opened&lt;/strong&gt;&lt;/a&gt; for structured Run operations by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; with significant API additions (&lt;a href="https://github.com/ocaml-multicore/picos/issues/334"&gt;#334&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;js&lt;em&gt;of&lt;/em&gt;ocaml compatibility&lt;/strong&gt; restored through fix for &lt;code&gt;caml_ml_domain_id&lt;/code&gt; reference issue reported by &lt;a href="https://github.com/hhugo"&gt;@hhugo&lt;/a&gt; and resolved by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/picos/issues/332"&gt;#332&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/picos/issues/333"&gt;#333&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/335" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Cohttp dependency upgrade&lt;/strong&gt;&lt;/a&gt; completed from beta to stable 6.0.0 release with corresponding API adjustments (&lt;a href="https://github.com/ocaml-multicore/picos/issues/335"&gt;#335&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/331" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OpenBSD compatibility&lt;/strong&gt;&lt;/a&gt; PR closed as no longer needed due to OCaml-CI infrastructure improvements (&lt;a href="https://github.com/ocaml-multicore/picos/issues/331"&gt;#331&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Maintenance week focused on fixing js_of_ocaml compatibility and upgrading cohttp dependency to stable release</summary><published>2024-12-01T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2024/week-47</id><title>Week 47, 2024: Fix for js_of_ocaml compatibility issue affecting OCaml 4 and typo correction in documentation</title><updated>2024-11-24T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>Maintenance week focused on fixing js_of_ocaml compatibility and upgrading cohttp dependency to stable release</summary><published>2024-12-01T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2024/week-47</id><title>Week 47, 2024: Fix for js_of_ocaml compatibility issue affecting OCaml 4 and typo correction in documentation</title><updated>2024-11-24T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 Two PRs opened addressing jsof&lt;/em&gt;ocaml compatibility and OpenBSD dependency issues&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;New &lt;a href="https://github.com/ocaml-multicore/picos/issues/331" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;draft PR opened&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; addressing OpenBSD compatibility issues with cohttp dependencies (&lt;a href="https://github.com/ocaml-multicore/picos/issues/331"&gt;#331&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/333" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Compatibility fix implemented&lt;/strong&gt;&lt;/a&gt; for js&lt;em&gt;of&lt;/em&gt;ocaml breaking changes affecting picos.thread on OCaml 4, with PR merged after community discussion (&lt;a href="https://github.com/ocaml-multicore/picos/issues/333"&gt;#333&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;New &lt;a href="https://github.com/ocaml-multicore/picos/issues/331" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;draft PR opened&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; addressing OpenBSD compatibility issues with cohttp dependencies (&lt;a href="https://github.com/ocaml-multicore/picos/issues/331"&gt;#331&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/333" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Compatibility fix implemented&lt;/strong&gt;&lt;/a&gt; for js&lt;em&gt;of&lt;/em&gt;ocaml breaking changes affecting picos.thread on OCaml 4, with PR merged after community discussion (&lt;a href="https://github.com/ocaml-multicore/picos/issues/333"&gt;#333&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Fix for js_of_ocaml compatibility issue affecting OCaml 4 and typo correction in documentation</summary><published>2024-11-24T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2024/week-46</id><title>Week 46, 2024: Enhanced Spawn effect specification for fiber cancelation handling and minor documentation improvements</title><updated>2024-11-17T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>Fix for js_of_ocaml compatibility issue affecting OCaml 4 and typo correction in documentation</summary><published>2024-11-24T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2024/week-46</id><title>Week 46, 2024: Enhanced Spawn effect specification for fiber cancelation handling and minor documentation improvements</title><updated>2024-11-17T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 Single PR merged enhancing Spawn effect specification with detailed review discussion on cancelation semantics&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/330" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Spawn effect specification enhancement&lt;/strong&gt;&lt;/a&gt; merged by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; with comprehensive clarification of fiber cancelation behavior during spawn operations (&lt;a href="https://github.com/ocaml-multicore/picos/issues/330"&gt;#330&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Multiple documentation fixes&lt;/strong&gt; committed throughout the week including grammar corrections and typo fixes across interface files (&lt;a href="https://github.com/ocaml-multicore/picos/commit/f8ab869e454c96c9830104c2ac0405c26f57ec17"&gt;f8ab869&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/picos/commit/05fc7f72d42cbb0f3ee52b7b45fbfae50465d12b"&gt;05fc7f7&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/picos/commit/9f446e72ad0b15826597bfc03930b72e1a89e0f1"&gt;9f446e7&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/330" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Spawn effect specification enhancement&lt;/strong&gt;&lt;/a&gt; merged by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; with comprehensive clarification of fiber cancelation behavior during spawn operations (&lt;a href="https://github.com/ocaml-multicore/picos/issues/330"&gt;#330&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Multiple documentation fixes&lt;/strong&gt; committed throughout the week including grammar corrections and typo fixes across interface files (&lt;a href="https://github.com/ocaml-multicore/picos/commit/f8ab869e454c96c9830104c2ac0405c26f57ec17"&gt;f8ab869&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/picos/commit/05fc7f72d42cbb0f3ee52b7b45fbfae50465d12b"&gt;05fc7f7&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/picos/commit/9f446e72ad0b15826597bfc03930b72e1a89e0f1"&gt;9f446e7&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Enhanced Spawn effect specification for fiber cancelation handling and minor documentation improvements</summary><published>2024-11-17T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2024/week-45</id><title>Week 45, 2024: Three merged PRs by Vesa Karvonen adding lock-free data structure examples and optimizing reference counting memory usage</title><updated>2024-11-10T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>Enhanced Spawn effect specification for fiber cancelation handling and minor documentation improvements</summary><published>2024-11-17T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2024/week-45</id><title>Week 45, 2024: Three merged PRs by Vesa Karvonen adding lock-free data structure examples and optimizing reference counting memory usage</title><updated>2024-11-10T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 Focused development week with three sequential merges implementing lock-free data structure examples and memory optimizations&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/327" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Lock-free data structure examples&lt;/strong&gt;&lt;/a&gt; completed through sequential implementation by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; starting with randomized bag (&lt;a href="https://github.com/ocaml-multicore/picos/issues/327"&gt;#327&lt;/a&gt;), followed by reference counting optimization (&lt;a href="https://github.com/ocaml-multicore/picos/issues/328"&gt;#328&lt;/a&gt;), and comprehensive documentation (&lt;a href="https://github.com/ocaml-multicore/picos/issues/329"&gt;#329&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/328" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Memory efficiency improvements&lt;/strong&gt;&lt;/a&gt; delivered through simplified external reference counting logic removing atomic indirection and leveraging new hash table operations (&lt;a href="https://github.com/ocaml-multicore/picos/issues/328"&gt;#328&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/327" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Lock-free data structure examples&lt;/strong&gt;&lt;/a&gt; completed through sequential implementation by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; starting with randomized bag (&lt;a href="https://github.com/ocaml-multicore/picos/issues/327"&gt;#327&lt;/a&gt;), followed by reference counting optimization (&lt;a href="https://github.com/ocaml-multicore/picos/issues/328"&gt;#328&lt;/a&gt;), and comprehensive documentation (&lt;a href="https://github.com/ocaml-multicore/picos/issues/329"&gt;#329&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/328" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Memory efficiency improvements&lt;/strong&gt;&lt;/a&gt; delivered through simplified external reference counting logic removing atomic indirection and leveraging new hash table operations (&lt;a href="https://github.com/ocaml-multicore/picos/issues/328"&gt;#328&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Three merged PRs by Vesa Karvonen adding lock-free data structure examples and optimizing reference counting memory usage</summary><published>2024-11-10T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2024/week-44</id><title>Week 44, 2024: Major 0.6.0 release with refined Awaitable abstraction, optimizations, and branding updates</title><updated>2024-11-03T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>Three merged PRs by Vesa Karvonen adding lock-free data structure examples and optimizing reference counting memory usage</summary><published>2024-11-10T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2024/week-44</id><title>Week 44, 2024: Major 0.6.0 release with refined Awaitable abstraction, optimizations, and branding updates</title><updated>2024-11-03T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 Single open PR for bounded blocking Stack and preparation for 0.6.0 release with comprehensive branding updates&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/321" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;New bounded blocking Stack&lt;/strong&gt;&lt;/a&gt; implementation opened by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; as draft PR with 167 additions across 6 files (&lt;a href="https://github.com/ocaml-multicore/picos/issues/321"&gt;#321&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/322" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Version 0.6.0 release&lt;/strong&gt;&lt;/a&gt; preparation and execution by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; including release notes compilation (&lt;a href="https://github.com/ocaml-multicore/picos/issues/322"&gt;#322&lt;/a&gt;), version number updates, and final Awaitable abstraction refinements (&lt;a href="https://github.com/ocaml-multicore/picos/issues/320"&gt;#320&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/325" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Project branding&lt;/strong&gt;&lt;/a&gt; completed with addition of PICOS logo design (&lt;a href="https://github.com/ocaml-multicore/picos/issues/325"&gt;#325&lt;/a&gt;) and subsequent color adjustments (&lt;a href="https://github.com/ocaml-multicore/picos/issues/326"&gt;#326&lt;/a&gt;), plus documentation integration&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/321" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;New bounded blocking Stack&lt;/strong&gt;&lt;/a&gt; implementation opened by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; as draft PR with 167 additions across 6 files (&lt;a href="https://github.com/ocaml-multicore/picos/issues/321"&gt;#321&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/322" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Version 0.6.0 release&lt;/strong&gt;&lt;/a&gt; preparation and execution by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; including release notes compilation (&lt;a href="https://github.com/ocaml-multicore/picos/issues/322"&gt;#322&lt;/a&gt;), version number updates, and final Awaitable abstraction refinements (&lt;a href="https://github.com/ocaml-multicore/picos/issues/320"&gt;#320&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/325" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Project branding&lt;/strong&gt;&lt;/a&gt; completed with addition of PICOS logo design (&lt;a href="https://github.com/ocaml-multicore/picos/issues/325"&gt;#325&lt;/a&gt;) and subsequent color adjustments (&lt;a href="https://github.com/ocaml-multicore/picos/issues/326"&gt;#326&lt;/a&gt;), plus documentation integration&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Major 0.6.0 release with refined Awaitable abstraction, optimizations, and branding updates</summary><published>2024-11-03T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2024/week-43</id><title>Week 43, 2024: Documentation improvements and awaitable abstraction refinements</title><updated>2024-10-27T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>Major 0.6.0 release with refined Awaitable abstraction, optimizations, and branding updates</summary><published>2024-11-03T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2024/week-43</id><title>Week 43, 2024: Documentation improvements and awaitable abstraction refinements</title><updated>2024-10-27T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 Two PRs merged by Vesa Karvonen focusing on documentation fixes and awaitable improvements&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/320" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Documentation refinements&lt;/strong&gt;&lt;/a&gt; completed with &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; merging two PRs: refined Awaitable abstraction (&lt;a href="https://github.com/ocaml-multicore/picos/issues/320"&gt;#320&lt;/a&gt;) and fixed Fiber.FLS.create documentation (&lt;a href="https://github.com/ocaml-multicore/picos/issues/319"&gt;#319&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/314" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Awaitable atomic locations&lt;/strong&gt;&lt;/a&gt; feature merged from previous week (&lt;a href="https://github.com/ocaml-multicore/picos/issues/314"&gt;#314&lt;/a&gt;) introducing futex-like abstraction for implementing synchronization primitives with performance improvements&lt;/li&gt;
-&lt;li&gt;&lt;strong style="color: #cc6600;"&gt;Five commits&lt;/strong&gt; delivered during the week focusing entirely on documentation clarity, grammar fixes, and example code simplification&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/320" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Documentation refinements&lt;/strong&gt;&lt;/a&gt; completed with &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; merging two PRs: refined Awaitable abstraction (&lt;a href="https://github.com/ocaml-multicore/picos/issues/320"&gt;#320&lt;/a&gt;) and fixed Fiber.FLS.create documentation (&lt;a href="https://github.com/ocaml-multicore/picos/issues/319"&gt;#319&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/314" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Awaitable atomic locations&lt;/strong&gt;&lt;/a&gt; feature merged from previous week (&lt;a href="https://github.com/ocaml-multicore/picos/issues/314"&gt;#314&lt;/a&gt;) introducing futex-like abstraction for implementing synchronization primitives with performance improvements&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Five commits&lt;/strong&gt; delivered during the week focusing entirely on documentation clarity, grammar fixes, and example code simplification&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Documentation improvements and awaitable abstraction refinements</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2024/week-42</id><title>Week 42, 2024: Ten PRs merged focusing on performance optimizations and hash table enhancements</title><updated>2024-10-20T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>Documentation improvements and awaitable abstraction refinements</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-picos/2024/week-42</id><title>Week 42, 2024: Ten PRs merged focusing on performance optimizations and hash table enhancements</title><updated>2024-10-20T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 Single contributor focused on performance optimizations and platform consistency improvements&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/310" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Performance optimization series&lt;/strong&gt;&lt;/a&gt; delivered through multiple PRs by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; including fast path tweaks for computation waiting/peeking (&lt;a href="https://github.com/ocaml-multicore/picos/issues/310"&gt;#310&lt;/a&gt;), stack usage reduction (&lt;a href="https://github.com/ocaml-multicore/picos/issues/311"&gt;#311&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/picos/issues/312"&gt;#312&lt;/a&gt;), and inlining improvements (&lt;a href="https://github.com/ocaml-multicore/picos/issues/309"&gt;#309&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/316" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;External dependency integration&lt;/strong&gt;&lt;/a&gt; with removal of internal &lt;code&gt;Countdown&lt;/code&gt; implementation in favor of using version from &lt;code&gt;multicore-bench&lt;/code&gt; library (&lt;a href="https://github.com/ocaml-multicore/picos/issues/316"&gt;#316&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/303" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Experimental performance work&lt;/strong&gt;&lt;/a&gt; exploring CPU relaxation during yielding to reduce contention, though this approach was closed without merging after showing no measurable effect (&lt;a href="https://github.com/ocaml-multicore/picos/issues/303"&gt;#303&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/310" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Performance optimization series&lt;/strong&gt;&lt;/a&gt; delivered through multiple PRs by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; including fast path tweaks for computation waiting/peeking (&lt;a href="https://github.com/ocaml-multicore/picos/issues/310"&gt;#310&lt;/a&gt;), stack usage reduction (&lt;a href="https://github.com/ocaml-multicore/picos/issues/311"&gt;#311&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/picos/issues/312"&gt;#312&lt;/a&gt;), and inlining improvements (&lt;a href="https://github.com/ocaml-multicore/picos/issues/309"&gt;#309&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/316" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;External dependency integration&lt;/strong&gt;&lt;/a&gt; with removal of internal &lt;code&gt;Countdown&lt;/code&gt; implementation in favor of using version from &lt;code&gt;multicore-bench&lt;/code&gt; library (&lt;a href="https://github.com/ocaml-multicore/picos/issues/316"&gt;#316&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/303" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Experimental performance work&lt;/strong&gt;&lt;/a&gt; exploring CPU relaxation during yielding to reduce contention, though this approach was closed without merging after showing no measurable effect (&lt;a href="https://github.com/ocaml-multicore/picos/issues/303"&gt;#303&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
 </content><link href="https://thicket.dev/"/><summary>Ten PRs merged focusing on performance optimizations and hash table enhancements</summary><published>2024-10-20T00:00:00+00:00</published></entry></feed>

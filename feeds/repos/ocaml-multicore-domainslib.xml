@@ -1,33 +1,241 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-multicore-domainslib.xml</id><title>ocaml-multicore/domainslib (Weekly)</title><updated>2025-09-14T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-multicore-domainslib.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml-multicore/domainslib</subtitle><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-37</id><title>Week 37, 2025: ThreadSanitizer violation reported in fib_par.ml example affecting all domainslib programs under TSAN</title><updated>2025-09-14T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-multicore-domainslib.xml</id><title>ocaml-multicore/domainslib (Weekly)</title><updated>2025-09-14T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-multicore-domainslib.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml-multicore/domainslib</subtitle><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-37</id><title>Week 37, 2025: ThreadSanitizer violation reported in fib_par.ml example affecting all domainslib programs under TSAN</title><updated>2025-09-14T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 One new issue opened regarding TSAN data race detection in Saturn work-stealing deque&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/domainslib/issues/132" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;TSAN violation investigation&lt;/strong&gt;&lt;/a&gt; opened by &lt;a href="https://github.com/dijkstracula"&gt;Nathan Taylor&lt;/a&gt; reporting ThreadSanitizer data race warnings in the &lt;code&gt;fib_par.ml&lt;/code&gt; example from the README (&lt;a href="https://github.com/ocaml-multicore/domainslib/issues/132"&gt;#132&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/domainslib/issues/132" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;TSAN violation investigation&lt;/strong&gt;&lt;/a&gt; opened by &lt;a href="https://github.com/dijkstracula"&gt;Nathan Taylor&lt;/a&gt; reporting ThreadSanitizer data race warnings in the &lt;code&gt;fib_par.ml&lt;/code&gt; example from the README (&lt;a href="https://github.com/ocaml-multicore/domainslib/issues/132"&gt;#132&lt;/a&gt;)&lt;/li&gt;
 &lt;li&gt;Issue demonstrates that even minimal domainslib programs trigger TSAN warnings due to Saturn work-stealing deque implementation, affecting developer experience when using ThreadSanitizer for debugging&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>ThreadSanitizer violation reported in fib_par.ml example affecting all domainslib programs under TSAN</summary><published>2025-09-14T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-36</id><title>Week 36, 2025: None</title><updated>2025-09-07T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 36, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 36, 2025</summary><published>2025-09-07T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-35</id><title>Week 35, 2025: None</title><updated>2025-08-31T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 35, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 35, 2025</summary><published>2025-08-31T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-34</id><title>Week 34, 2025: None</title><updated>2025-08-24T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 34, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 34, 2025</summary><published>2025-08-24T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-33</id><title>Week 33, 2025: None</title><updated>2025-08-17T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 33, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 33, 2025</summary><published>2025-08-17T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-32</id><title>Week 32, 2025: None</title><updated>2025-08-10T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 32, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 32, 2025</summary><published>2025-08-10T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-31</id><title>Week 31, 2025: None</title><updated>2025-08-03T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 31, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 31, 2025</summary><published>2025-08-03T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-30</id><title>Week 30, 2025: None</title><updated>2025-07-27T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 30, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 30, 2025</summary><published>2025-07-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-29</id><title>Week 29, 2025: None</title><updated>2025-07-20T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 29, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 29, 2025</summary><published>2025-07-20T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-28</id><title>Week 28, 2025: None</title><updated>2025-07-13T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 28, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 28, 2025</summary><published>2025-07-13T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-27</id><title>Week 27, 2025: None</title><updated>2025-07-06T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 27, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 27, 2025</summary><published>2025-07-06T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-26</id><title>Week 26, 2025: None</title><updated>2025-06-29T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 26, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 26, 2025</summary><published>2025-06-29T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-25</id><title>Week 25, 2025: None</title><updated>2025-06-22T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 25, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 25, 2025</summary><published>2025-06-22T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-24</id><title>Week 24, 2025: None</title><updated>2025-06-15T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 24, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 24, 2025</summary><published>2025-06-15T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-23</id><title>Week 23, 2025: None</title><updated>2025-06-08T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 23, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 23, 2025</summary><published>2025-06-08T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-22</id><title>Week 22, 2025: None</title><updated>2025-06-01T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 22, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 22, 2025</summary><published>2025-06-01T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-21</id><title>Week 21, 2025: None</title><updated>2025-05-25T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 21, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 21, 2025</summary><published>2025-05-25T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-20</id><title>Week 20, 2025: None</title><updated>2025-05-18T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 20, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 20, 2025</summary><published>2025-05-18T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-19</id><title>Week 19, 2025: Discussion on task scheduling strategy in ongoing Task.yield PR</title><updated>2025-05-11T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 19, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Discussion on task scheduling strategy in ongoing Task.yield PR</summary><published>2025-05-11T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-18</id><title>Week 18, 2025: None</title><updated>2025-05-04T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 18, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 18, 2025</summary><published>2025-05-04T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-17</id><title>Week 17, 2025: New issue reported about teardown_pool hanging during cleanup operations</title><updated>2025-04-27T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>ThreadSanitizer violation reported in fib_par.ml example affecting all domainslib programs under TSAN</summary><published>2025-09-14T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-36</id><title>Week 36, 2025: None</title><updated>2025-09-07T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 36, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 36, 2025</summary><published>2025-09-07T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-35</id><title>Week 35, 2025: None</title><updated>2025-08-31T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 35, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 35, 2025</summary><published>2025-08-31T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-34</id><title>Week 34, 2025: None</title><updated>2025-08-24T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 34, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 34, 2025</summary><published>2025-08-24T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-33</id><title>Week 33, 2025: None</title><updated>2025-08-17T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 33, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 33, 2025</summary><published>2025-08-17T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-32</id><title>Week 32, 2025: None</title><updated>2025-08-10T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 32, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 32, 2025</summary><published>2025-08-10T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-31</id><title>Week 31, 2025: None</title><updated>2025-08-03T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 31, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 31, 2025</summary><published>2025-08-03T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-30</id><title>Week 30, 2025: None</title><updated>2025-07-27T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 30, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 30, 2025</summary><published>2025-07-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-29</id><title>Week 29, 2025: None</title><updated>2025-07-20T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 29, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 29, 2025</summary><published>2025-07-20T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-28</id><title>Week 28, 2025: None</title><updated>2025-07-13T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 28, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 28, 2025</summary><published>2025-07-13T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-27</id><title>Week 27, 2025: None</title><updated>2025-07-06T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 27, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 27, 2025</summary><published>2025-07-06T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-26</id><title>Week 26, 2025: None</title><updated>2025-06-29T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 26, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 26, 2025</summary><published>2025-06-29T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-25</id><title>Week 25, 2025: None</title><updated>2025-06-22T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 25, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 25, 2025</summary><published>2025-06-22T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-24</id><title>Week 24, 2025: None</title><updated>2025-06-15T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 24, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 24, 2025</summary><published>2025-06-15T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-23</id><title>Week 23, 2025: None</title><updated>2025-06-08T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 23, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 23, 2025</summary><published>2025-06-08T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-22</id><title>Week 22, 2025: None</title><updated>2025-06-01T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 22, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 22, 2025</summary><published>2025-06-01T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-21</id><title>Week 21, 2025: None</title><updated>2025-05-25T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 21, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 21, 2025</summary><published>2025-05-25T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-20</id><title>Week 20, 2025: None</title><updated>2025-05-18T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 20, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 20, 2025</summary><published>2025-05-18T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-19</id><title>Week 19, 2025: Discussion on task scheduling strategy in ongoing Task.yield PR</title><updated>2025-05-11T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 19, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Discussion on task scheduling strategy in ongoing Task.yield PR</summary><published>2025-05-11T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-18</id><title>Week 18, 2025: None</title><updated>2025-05-04T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 18, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 18, 2025</summary><published>2025-05-04T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-17</id><title>Week 17, 2025: New issue reported about teardown_pool hanging during cleanup operations</title><updated>2025-04-27T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 Issue opened investigating teardown_pool hanging behavior during cleanup&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/mbarbin"&gt;Mathieu Barbin&lt;/a&gt; reported &lt;a href="https://github.com/ocaml-multicore/domainslib/issues/131" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;teardown_pool hanging&lt;/strong&gt;&lt;/a&gt; issue when attempting to clean up domain pools, describing symptoms where cleanup operations freeze the program and become uninterruptible except via kill -9 (&lt;a href="https://github.com/ocaml-multicore/domainslib/issues/131"&gt;#131&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/mbarbin"&gt;Mathieu Barbin&lt;/a&gt; reported &lt;a href="https://github.com/ocaml-multicore/domainslib/issues/131" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;teardown_pool hanging&lt;/strong&gt;&lt;/a&gt; issue when attempting to clean up domain pools, describing symptoms where cleanup operations freeze the program and become uninterruptible except via kill -9 (&lt;a href="https://github.com/ocaml-multicore/domainslib/issues/131"&gt;#131&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>New issue reported about teardown_pool hanging during cleanup operations</summary><published>2025-04-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-16</id><title>Week 16, 2025: None</title><updated>2025-04-20T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 16, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 16, 2025</summary><published>2025-04-20T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-15</id><title>Week 15, 2025: Saturn 1.0 upgrade and version 0.5.2 release resolving dependency conflicts</title><updated>2025-04-13T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>New issue reported about teardown_pool hanging during cleanup operations</summary><published>2025-04-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-16</id><title>Week 16, 2025: None</title><updated>2025-04-20T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 16, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 16, 2025</summary><published>2025-04-20T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-15</id><title>Week 15, 2025: Saturn 1.0 upgrade and version 0.5.2 release resolving dependency conflicts</title><updated>2025-04-13T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 Release preparation and Saturn dependency upgrade merged within single day&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/domainslib/issues/129" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Saturn 1.0 upgrade&lt;/strong&gt;&lt;/a&gt; implemented by &lt;a href="https://github.com/Sudha247"&gt;Sudha Parimala&lt;/a&gt; fixing dependency constraint issues reported by &lt;a href="https://github.com/Simn"&gt;Simon Krajewski&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/domainslib/issues/129"&gt;#129&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/domainslib/issues/128"&gt;#128&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/domainslib/issues/130" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Version 0.5.2 release preparation&lt;/strong&gt;&lt;/a&gt; completed with changelog updates and version bumping by &lt;a href="https://github.com/Sudha247"&gt;Sudha Parimala&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/domainslib/issues/130"&gt;#130&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/domainslib/issues/128" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Opam package downgrade issue&lt;/strong&gt;&lt;/a&gt; resolved where saturn 1.0.0 installation caused domainslib to downgrade from 0.5.1 to 0.5.0 due to restrictive dependency constraints (&lt;a href="https://github.com/ocaml-multicore/domainslib/issues/128"&gt;#128&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/domainslib/issues/129" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Saturn 1.0 upgrade&lt;/strong&gt;&lt;/a&gt; implemented by &lt;a href="https://github.com/Sudha247"&gt;Sudha Parimala&lt;/a&gt; fixing dependency constraint issues reported by &lt;a href="https://github.com/Simn"&gt;Simon Krajewski&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/domainslib/issues/129"&gt;#129&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/domainslib/issues/128"&gt;#128&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/domainslib/issues/130" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Version 0.5.2 release preparation&lt;/strong&gt;&lt;/a&gt; completed with changelog updates and version bumping by &lt;a href="https://github.com/Sudha247"&gt;Sudha Parimala&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/domainslib/issues/130"&gt;#130&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/domainslib/issues/128" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Opam package downgrade issue&lt;/strong&gt;&lt;/a&gt; resolved where saturn 1.0.0 installation caused domainslib to downgrade from 0.5.1 to 0.5.0 due to restrictive dependency constraints (&lt;a href="https://github.com/ocaml-multicore/domainslib/issues/128"&gt;#128&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Saturn 1.0 upgrade and version 0.5.2 release resolving dependency conflicts</summary><published>2025-04-13T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-14</id><title>Week 14, 2025: Saturn dependency constraint issue reported by community member</title><updated>2025-04-06T00:00:00+00:00</updated><content type="html">&lt;h2&gt;Summary&lt;/h2&gt;
+</content><link href="https://thicket.dev/"/><summary>Saturn 1.0 upgrade and version 0.5.2 release resolving dependency conflicts</summary><published>2025-04-13T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-14</id><title>Week 14, 2025: Saturn dependency constraint issue reported by community member</title><updated>2025-04-06T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
 Saturn dependency constraint issue opened regarding opam upgrade behavior&lt;/p&gt;
 
 &lt;h2&gt;Activity&lt;/h2&gt;
 
-&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/domainslib/issues/128" style="text-decoration: none;"&gt;&lt;strong style="color: #cc6600;"&gt;Saturn dependency constraints&lt;/strong&gt;&lt;/a&gt; issue reported by &lt;a href="https://github.com/Simn"&gt;Simon Krajewski&lt;/a&gt; regarding opam upgrade attempting to downgrade domainslib from 0.5.1 to 0.5.0 due to saturn version lock (&lt;a href="https://github.com/ocaml-multicore/domainslib/issues/128"&gt;#128&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/domainslib/issues/128" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Saturn dependency constraints&lt;/strong&gt;&lt;/a&gt; issue reported by &lt;a href="https://github.com/Simn"&gt;Simon Krajewski&lt;/a&gt; regarding opam upgrade attempting to downgrade domainslib from 0.5.1 to 0.5.0 due to saturn version lock (&lt;a href="https://github.com/ocaml-multicore/domainslib/issues/128"&gt;#128&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
 </content><link href="https://thicket.dev/"/><summary>Saturn dependency constraint issue reported by community member</summary><published>2025-04-06T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-13</id><title>Week 13, 2025: None</title><updated>2025-03-30T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 13, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 13, 2025</summary><published>2025-03-30T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-12</id><title>Week 12, 2025: None</title><updated>2025-03-23T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 12, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 12, 2025</summary><published>2025-03-23T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-11</id><title>Week 11, 2025: None</title><updated>2025-03-16T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 11, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 11, 2025</summary><published>2025-03-16T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-10</id><title>Week 10, 2025: None</title><updated>2025-03-09T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 10, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 10, 2025</summary><published>2025-03-09T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-9</id><title>Week 9, 2025: None</title><updated>2025-03-02T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 9, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 9, 2025</summary><published>2025-03-02T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-8</id><title>Week 8, 2025: None</title><updated>2025-02-23T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 8, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 8, 2025</summary><published>2025-02-23T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-7</id><title>Week 7, 2025: None</title><updated>2025-02-16T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 7, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 7, 2025</summary><published>2025-02-16T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-6</id><title>Week 6, 2025: None</title><updated>2025-02-09T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 6, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 6, 2025</summary><published>2025-02-09T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-5</id><title>Week 5, 2025: None</title><updated>2025-02-02T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 5, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 5, 2025</summary><published>2025-02-02T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-4</id><title>Week 4, 2025: None</title><updated>2025-01-26T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 4, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 4, 2025</summary><published>2025-01-26T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-3</id><title>Week 3, 2025: None</title><updated>2025-01-19T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 3, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 3, 2025</summary><published>2025-01-19T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-2</id><title>Week 2, 2025: None</title><updated>2025-01-12T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 2, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 2, 2025</summary><published>2025-01-12T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2025/week-1</id><title>Week 1, 2025: None</title><updated>2025-01-05T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 1, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 1, 2025</summary><published>2025-01-05T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2024/week-52</id><title>Week 52, 2024: None</title><updated>2024-12-29T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 52, 2024&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 52, 2024</summary><published>2024-12-29T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2024/week-51</id><title>Week 51, 2024: None</title><updated>2024-12-22T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 51, 2024&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 51, 2024</summary><published>2024-12-22T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2024/week-50</id><title>Week 50, 2024: None</title><updated>2024-12-15T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 50, 2024&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 50, 2024</summary><published>2024-12-15T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2024/week-49</id><title>Week 49, 2024: None</title><updated>2024-12-08T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 49, 2024&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 49, 2024</summary><published>2024-12-08T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2024/week-48</id><title>Week 48, 2024: None</title><updated>2024-12-01T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 48, 2024&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 48, 2024</summary><published>2024-12-01T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2024/week-47</id><title>Week 47, 2024: None</title><updated>2024-11-24T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 47, 2024&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 47, 2024</summary><published>2024-11-24T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2024/week-46</id><title>Week 46, 2024: None</title><updated>2024-11-17T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 46, 2024&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 46, 2024</summary><published>2024-11-17T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2024/week-45</id><title>Week 45, 2024: None</title><updated>2024-11-10T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 45, 2024&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 45, 2024</summary><published>2024-11-10T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2024/week-44</id><title>Week 44, 2024: None</title><updated>2024-11-03T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 44, 2024&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 44, 2024</summary><published>2024-11-03T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2024/week-43</id><title>Week 43, 2024: None</title><updated>2024-10-27T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 43, 2024&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 43, 2024</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-domainslib/2024/week-42</id><title>Week 42, 2024: None</title><updated>2024-10-20T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/domainslib - Week 42, 2024&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/domainslib - Week 42, 2024</summary><published>2024-10-20T00:00:00+00:00</published></entry></feed>
