@@ -1,5 +1,96 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/ecosystem.xml</id><title>OCaml Ecosystem (Weekly)</title><updated>2025-09-14T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/ecosystem.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Package repositories and community infrastructure</subtitle><entry><id>https://thicket.dev/groups/ecosystem/2025/week-37</id><title>Week 37, 2025: Major cross-platform development improvements and security infrastructure establishment across OCaml ecosystem repositories</title><updated>2025-09-14T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/ecosystem.xml</id><title>OCaml Ecosystem (Weekly)</title><updated>2025-09-21T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/ecosystem.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Package repositories and community infrastructure</subtitle><entry><id>https://thicket.dev/groups/ecosystem/2025/week-38</id><title>Week 38, 2025: Package ecosystem expansion with new tools and CI infrastructure stability improvements plus enhanced developer onboarding</title><updated>2025-09-21T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/28522" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Code review management tool&lt;/strong&gt;&lt;/a&gt; &lt;a href="https://github.com/mbarbin/crs"&gt;crs&lt;/a&gt; version 0.0.20250914 by &lt;a href="https://github.com/mbarbin"&gt;Mathieu Barbin&lt;/a&gt; for managing embedded review comments with CI integration (&lt;a href="https://github.com/ocaml/opam-repository/issues/28522"&gt;ocaml/opam-repository#28522&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/28518" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;High-performance database driver&lt;/strong&gt;&lt;/a&gt; &lt;a href="https://github.com/mfreeman451/proton-ocaml-driver"&gt;proton&lt;/a&gt; version 1.0.15 by &lt;a href="https://github.com/mfreeman451"&gt;Michael Freeman&lt;/a&gt; for Timeplus Proton with streaming queries, compression, and TLS support (&lt;a href="https://github.com/ocaml/opam-repository/issues/28518"&gt;ocaml/opam-repository#28518&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/28482" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;lwt6 compatibility&lt;/strong&gt;&lt;/a&gt; updates across 65+ packages by &lt;a href="https://github.com/raphael-proust"&gt;Raphaël Proust&lt;/a&gt; including dream, caqti-lwt, lambda-term, and lwt_domain (&lt;a href="https://github.com/ocaml/opam-repository/issues/28482"&gt;ocaml/opam-repository#28482&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Community content expansion&lt;/strong&gt; with new blog post about database migration runner implementation for Chaufr using OCaml, Caqti, and Lwt (&lt;a href="https://github.com/ocaml/ocaml.org/commit/6442c6841cce5737db65ac0cc19e4e4912fb4944"&gt;ocaml/ocaml.org commit 6442c684&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/28540" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Package repository activity&lt;/strong&gt;&lt;/a&gt;: Major CI infrastructure stability work with critical conf-gmp.1 compatibility fixes and extensive lwt6 ecosystem updates across 65+ packages (&lt;a href="https://github.com/ocaml/opam-repository/issues/28540"&gt;ocaml/opam-repository#28540&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/28482"&gt;ocaml/opam-repository#28482&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/28522" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;New tool releases&lt;/strong&gt;&lt;/a&gt;: Infrastructure expansion with crs code review management tool and proton high-performance database driver for modern development workflows (&lt;a href="https://github.com/ocaml/opam-repository/issues/28522"&gt;ocaml/opam-repository#28522&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/28518"&gt;ocaml/opam-repository#28518&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3322" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Developer experience improvements&lt;/strong&gt;&lt;/a&gt;: Enhanced editor support through Neovim setup documentation and shell environment improvements for cross-platform development (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3322"&gt;ocaml/ocaml.org#3322&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/issues/3307"&gt;ocaml/ocaml.org#3307&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Community content growth&lt;/strong&gt;: Regular automated content updates and community-contributed blog posts expanding the knowledge base&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong class="achievement"&gt;Package-to-documentation pipeline&lt;/strong&gt;: New packages in opam-repository generate corresponding documentation needs, with crs and proton tools potentially requiring integration guides on ocaml.org&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Community content coordination&lt;/strong&gt;: Blog posts about OCaml development tools and techniques published on ocaml.org complement new package releases in opam-repository&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Developer onboarding alignment&lt;/strong&gt;: Editor setup improvements on ocaml.org support users installing and configuring tools from opam-repository, creating a unified development experience&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;CI/build system consistency&lt;/strong&gt;: Infrastructure improvements in opam-repository benefit documentation build processes on ocaml.org through shared tooling dependencies&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/28540" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;CI infrastructure resilience&lt;/strong&gt;&lt;/a&gt; discussion around conf-gmp.1 compatibility issues with GCC 14 and distribution upgrades, highlighting need for proactive system dependency management (&lt;a href="https://github.com/ocaml/opam-repository/issues/28540"&gt;ocaml/opam-repository#28540&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3319" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Editor documentation gaps&lt;/strong&gt;&lt;/a&gt; identified by &lt;a href="https://github.com/sabine"&gt;@sabine&lt;/a&gt; requesting Neovim setup instructions to complement existing editor support (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3319"&gt;ocaml/ocaml.org#3319&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3307" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Shell environment improvements&lt;/strong&gt;&lt;/a&gt; ongoing review by &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt; for nushell integration on Windows by &lt;a href="https://github.com/Timmmm"&gt;Tim Hutt&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3307"&gt;ocaml/ocaml.org#3307&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong class="achievement"&gt;System dependency management&lt;/strong&gt; becoming critical as distribution upgrades affect package compatibility, requiring proactive avoid constraints and improved testing strategies across the ecosystem&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;OCaml 5.3 ecosystem adoption&lt;/strong&gt; accelerating with multiple packages adding explicit support and compatibility updates across tooling and libraries&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Developer experience focus&lt;/strong&gt; expanding through improved editor support, shell integration, and documentation addressing real user configuration challenges&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Infrastructure tooling specialization&lt;/strong&gt; growing with domain-specific tools like code review management (crs) and high-performance database drivers (proton) for modern development workflows&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Automated content workflows&lt;/strong&gt; maintaining regular community engagement through systematic blog post collection and dependency maintenance processes&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Package ecosystem expansion with new tools and CI infrastructure stability improvements plus enhanced developer onboarding</summary><published>2025-09-21T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/ecosystem/2025/week-37</id><title>Week 37, 2025: Major cross-platform development improvements and security infrastructure establishment across OCaml ecosystem repositories</title><updated>2025-09-14T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

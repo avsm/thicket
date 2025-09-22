@@ -1,5 +1,83 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/core.xml</id><title>OCaml Core (Weekly)</title><updated>2025-09-14T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/core.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Core OCaml language, compiler, and essential tooling</subtitle><entry><id>https://thicket.dev/groups/core/2025/week-37</id><title>Week 37, 2025: Native debugging documentation and compiler improvements in ocaml/ocaml, new for...in syntax RFC and governance discussions in ocaml/RFCs</title><updated>2025-09-14T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/core.xml</id><title>OCaml Core (Weekly)</title><updated>2025-09-21T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/core.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Core OCaml language, compiler, and essential tooling</subtitle><entry><id>https://thicket.dev/groups/core/2025/week-38</id><title>Week 38, 2025: Active development in core OCaml with TSan fixes, stdlib enhancements, and ongoing RFC discussions for language syntax improvements</title><updated>2025-09-21T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;Fixed &lt;strong class="achievement"&gt;variadic macro warnings&lt;/strong&gt; in C runtime headers (&lt;code&gt;misc.h&lt;/code&gt;) by correcting parameter handling in &lt;code&gt;CAMLrealloc&lt;/code&gt;, &lt;code&gt;CAMLalloc&lt;/code&gt;, &lt;code&gt;CAMLmalloc&lt;/code&gt;, &lt;code&gt;CAMLcalloc&lt;/code&gt;, and &lt;code&gt;CAMLaligned_alloc&lt;/code&gt; macros to prevent C warnings under certain conditions (&lt;a href="https://github.com/ocaml/ocaml/commit/27ccbcc05e22a257a61a875d09ca704dd5ad510a"&gt;ocaml/ocaml@27ccbcc&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14255" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Main repository development&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt; focused on threading robustness with seven new PRs opened including TSan bug fixes, typing recovery implementation, and build system improvements (&lt;a href="https://github.com/ocaml/ocaml/issues/14255"&gt;#14255&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14241"&gt;#14241&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14243"&gt;#14243&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/RFCs/issues/56" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Language design discussions&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/ocaml/RFCs"&gt;ocaml/RFCs&lt;/a&gt; centered on for...in loop proposal with detailed technical feedback from seven community members regarding syntax, performance, and modular implicits compatibility (&lt;a href="https://github.com/ocaml/RFCs/issues/56"&gt;#56&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14237" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Merged improvements&lt;/strong&gt;&lt;/a&gt; include AST location functions refactoring, domain systhreads documentation, and new stdlib &lt;code&gt;filter_mapi&lt;/code&gt; function (&lt;a href="https://github.com/ocaml/ocaml/issues/14237"&gt;#14237&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14248"&gt;#14248&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14227"&gt;#14227&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/RFCs/issues/56" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;For...in syntax debate&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/ocaml/RFCs/issues/56"&gt;ocaml/RFCs#56&lt;/a&gt; featuring technical analysis by &lt;a href="https://github.com/lthls"&gt;Vincent Laviron&lt;/a&gt; on performance implications, alternative syntax proposals by &lt;a href="https://github.com/yawaramin"&gt;Yawar Amin&lt;/a&gt; using &lt;code&gt;&lt;-&lt;/code&gt; instead of &lt;code&gt;in&lt;/code&gt;, and philosophical critique by &lt;a href="https://github.com/dbuenzli"&gt;Daniel Bünzli&lt;/a&gt; on code readability versus syntactic sugar&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/RFCs/issues/56" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Modular implicits compatibility&lt;/strong&gt;&lt;/a&gt; analyzed by &lt;a href="https://github.com/samsa1"&gt;Samuel Vivien&lt;/a&gt; exploring IntoIter signature design challenges and polymorphic iterator support for the for...in RFC (&lt;a href="https://github.com/ocaml/RFCs/issues/56"&gt;#56&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14254" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Type system edge cases&lt;/strong&gt;&lt;/a&gt; addressed by &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; providing extensive review feedback on GADT patterns, existentials in as-patterns, and rigid type annotations (&lt;a href="https://github.com/ocaml/ocaml/issues/14254"&gt;#14254&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14229"&gt;#14229&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14253"&gt;#14253&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14213" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Threading robustness priority&lt;/strong&gt;&lt;/a&gt; with multiple TSan-related fixes targeting production multicore stability, including shadow stack bug fixes and Domain error handling improvements (&lt;a href="https://github.com/ocaml/ocaml/issues/14213"&gt;#14213&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14255"&gt;#14255&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/12410"&gt;#12410&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/RFCs/issues/56" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Language accessibility versus performance&lt;/strong&gt;&lt;/a&gt; tensions in RFC discussions as community weighs newcomer-friendly syntax against potential runtime costs and functional programming principles (&lt;a href="https://github.com/ocaml/RFCs/issues/56"&gt;#56&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14241" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Developer tooling integration&lt;/strong&gt;&lt;/a&gt; through upstreaming of Merlin improvements and enhanced error messages for complex type system features (&lt;a href="https://github.com/ocaml/ocaml/issues/14241"&gt;#14241&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14224"&gt;#14224&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14243" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Build system portability&lt;/strong&gt;&lt;/a&gt; improvements with relocatable OCaml implementation and Windows compatibility fixes addressing deployment and distribution challenges (&lt;a href="https://github.com/ocaml/ocaml/issues/14243"&gt;#14243&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/13704"&gt;#13704&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Active development in core OCaml with TSan fixes, stdlib enhancements, and ongoing RFC discussions for language syntax improvements</summary><published>2025-09-21T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2025/week-37</id><title>Week 37, 2025: Native debugging documentation and compiler improvements in ocaml/ocaml, new for...in syntax RFC and governance discussions in ocaml/RFCs</title><updated>2025-09-14T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
@@ -3959,7 +4037,7 @@
 &lt;li&gt;&lt;strong class="achievement"&gt;Cross-platform compatibility&lt;/strong&gt; receiving increased attention with Windows API modernization and Unix platform improvements&lt;/li&gt;
 &lt;li&gt;&lt;strong class="achievement"&gt;Language design refinement&lt;/strong&gt; through community feedback on practical applications of new syntax features like raw identifiers&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Runtime improvements and bytecode optimization merged alongside language syntax discussions for raw identifiers</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2024/week-42</id><title>Week 42, 2024: Five PRs merged in ocaml/ocaml including new Thread.set_current_thread_name API and compiler improvements</title><updated>2025-09-18T18:05:09.188742+00:00</updated><content type="html">
+</content><link href="https://thicket.dev/"/><summary>Runtime improvements and bytecode optimization merged alongside language syntax discussions for raw identifiers</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2024/week-42</id><title>Week 42, 2024: Five PRs merged in ocaml/ocaml including new Thread.set_current_thread_name API and compiler improvements</title><updated>2025-09-22T07:02:23.672970+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

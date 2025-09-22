@@ -1,5 +1,67 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam-repository.xml</id><title>ocaml/opam-repository (Weekly)</title><updated>2025-09-14T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam-repository.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam-repository</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2025/week-37</id><title>Week 37, 2025: Heavy Windows/MinGW cross-platform support improvements by Jan Midtgaard with 36 package merges and 63 new PRs</title><updated>2025-09-14T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam-repository.xml</id><title>ocaml/opam-repository (Weekly)</title><updated>2025-09-21T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam-repository.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam-repository</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2025/week-38</id><title>Week 38, 2025: New package releases with CI infrastructure fixes and extensive lwt6 compatibility updates across the ecosystem</title><updated>2025-09-21T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+CI infrastructure crisis resolved, multiple new packages opened, and extensive package maintenance work completed&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/28540" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Critical CI infrastructure issue&lt;/strong&gt;&lt;/a&gt; resolved with conf-gmp.1 marked as avoid version by &lt;a href="https://github.com/raphael-proust"&gt;Raphaël Proust&lt;/a&gt; to address GCC 14 compatibility problems (&lt;a href="https://github.com/ocaml/opam-repository/issues/28540"&gt;#28540&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/28541"&gt;#28541&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/28537" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;New packages opened&lt;/strong&gt;&lt;/a&gt; this week including zanuda linter 2.0.0 with OCaml 5.3 support by &lt;a href="https://github.com/Kakadu"&gt;Dmitrii Kosarev&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/28537"&gt;#28537&lt;/a&gt;), portmidi 0.4 MIDI bindings by &lt;a href="https://github.com/mbacarella"&gt;Michael Bacarella&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/28531"&gt;#28531&lt;/a&gt;), and dune upper bound constraints for tezt by &lt;a href="https://github.com/jmid"&gt;Jan Midtgaard&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/28550"&gt;#28550&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/28532" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Multiple package releases&lt;/strong&gt;&lt;/a&gt; merged including coq-lsp versions for OCaml 8.20, 9.0, and 9.1 (&lt;a href="https://github.com/ocaml/opam-repository/issues/28532"&gt;#28532&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/28533"&gt;#28533&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/28534"&gt;#28534&lt;/a&gt;), iomux 0.4 with macOS fixes by &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/28535"&gt;#28535&lt;/a&gt;), and elpi 3.4.0 lambda prolog interpreter (&lt;a href="https://github.com/ocaml/opam-repository/issues/28536"&gt;#28536&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/28546" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Package maintenance&lt;/strong&gt;&lt;/a&gt; work including typo fixes in archiving documentation by &lt;a href="https://github.com/eponier"&gt;Jean-Christophe Léchenet&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/28546"&gt;#28546&lt;/a&gt;) and ongoing smtml package testing by &lt;a href="https://github.com/filipeom"&gt;@filipeom&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/28526"&gt;#28526&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>New package releases with CI infrastructure fixes and extensive lwt6 compatibility updates across the ecosystem</summary><published>2025-09-21T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2025/week-37</id><title>Week 37, 2025: Heavy Windows/MinGW cross-platform support improvements by Jan Midtgaard with 36 package merges and 63 new PRs</title><updated>2025-09-14T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

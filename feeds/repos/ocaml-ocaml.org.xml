@@ -1,5 +1,67 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.org.xml</id><title>ocaml/ocaml.org (Weekly)</title><updated>2025-09-14T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.org.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml.org</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml.org/2025/week-37</id><title>Week 37, 2025: Major security infrastructure improvements with new security pages, Zulip chat integration, and web documentation updates</title><updated>2025-09-14T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.org.xml</id><title>ocaml/ocaml.org (Weekly)</title><updated>2025-09-21T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.org.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml.org</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml.org/2025/week-38</id><title>Week 38, 2025: Editor setup improvements for Neovim users and automated content updates through community contributions</title><updated>2025-09-21T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+New documentation for Neovim setup opened and automated content scraping delivered multiple blog posts and dependency updates&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3322" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;New PR opened&lt;/strong&gt;&lt;/a&gt; for Neovim editor setup documentation by &lt;a href="https://github.com/jpoly1219"&gt;Jacob Kim&lt;/a&gt; adding LSP configuration for both nvim-lspconfig and vim.lsp methods (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3322"&gt;#3322&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3314" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Automated content updates&lt;/strong&gt;&lt;/a&gt; merged through scraping workflows including blog posts and videos (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3314"&gt;#3314&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/issues/3316"&gt;#3316&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/issues/3317"&gt;#3317&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/issues/3318"&gt;#3318&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/issues/3320"&gt;#3320&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3315" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Dependency maintenance&lt;/strong&gt;&lt;/a&gt; with GitHub Actions workflow updated by &lt;a href="https://github.com/dependabot"&gt;Dependabot&lt;/a&gt; bumping tj-actions/changed-files from v46 to v47 (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3315"&gt;#3315&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3307" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Shell environment documentation&lt;/strong&gt;&lt;/a&gt; improvements ongoing with &lt;a href="https://github.com/Timmmm"&gt;Tim Hutt&lt;/a&gt; adding opam env instructions for nushell shell on Windows (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3307"&gt;#3307&lt;/a&gt;) with review feedback from &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Editor setup improvements for Neovim users and automated content updates through community contributions</summary><published>2025-09-21T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml.org/2025/week-37</id><title>Week 37, 2025: Major security infrastructure improvements with new security pages, Zulip chat integration, and web documentation updates</title><updated>2025-09-14T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

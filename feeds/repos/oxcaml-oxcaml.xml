@@ -1,5 +1,68 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml</id><title>oxcaml/oxcaml (Weekly)</title><updated>2025-09-14T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/oxcaml</subtitle><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2025/week-37</id><title>Week 37, 2025: Major infrastructure development with JSIR backend, TLS implementation, small integers expansion, and comprehensive DWARF debugging improvements</title><updated>2025-09-14T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml</id><title>oxcaml/oxcaml (Weekly)</title><updated>2025-09-21T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/oxcaml</subtitle><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2025/week-38</id><title>Week 38, 2025: Major LLVM backend refactor merged alongside 17 other PRs, with new JavaScript backend improvements and domain memory management fixes</title><updated>2025-09-21T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+21 new PRs opened including JSOO integration, with ongoing JSIR optimizations and three new match-in-match compilation issues reported&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4730" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Nine new PRs opened&lt;/strong&gt;&lt;/a&gt; that remain unmerged including JSOO integration by &lt;a href="https://github.com/jvanburen"&gt;Jacob Van Buren&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4730"&gt;#4730&lt;/a&gt;), TLS implementation take 2 by &lt;a href="https://github.com/TheNumbat"&gt;Max Slater&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4738"&gt;#4738&lt;/a&gt;), and JSIR optimizations by &lt;a href="https://github.com/smjleo"&gt;Leo Lee&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4741"&gt;#4741&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4737"&gt;#4737&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4739"&gt;#4739&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4724"&gt;#4724&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4727" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;JavaScript backend development&lt;/strong&gt;&lt;/a&gt; accelerated with &lt;a href="https://github.com/smjleo"&gt;Leo Lee&lt;/a&gt; contributing multiple fixes for JSIR including unbound variable resolution (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4727"&gt;#4727&lt;/a&gt;) and proper match exhaustion improvements by &lt;a href="https://github.com/jra4"&gt;James Rayman&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4729"&gt;#4729&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4273" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Mode system enhancements&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/riaqn"&gt;Zesen Qian&lt;/a&gt; including &lt;code&gt;Mode.Crossing&lt;/code&gt; usage in jkinds (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4273"&gt;#4273&lt;/a&gt;) and improved error message formatting (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4719"&gt;#4719&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4735" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Core runtime improvements&lt;/strong&gt;&lt;/a&gt; merged including poll insertion test fixes (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4735"&gt;#4735&lt;/a&gt;), TLS revert (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4734"&gt;#4734&lt;/a&gt;), and prologue optimization deletion (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4720"&gt;#4720&lt;/a&gt;) by &lt;a href="https://github.com/mshinwell"&gt;Mark Shinwell&lt;/a&gt; and &lt;a href="https://github.com/gretay-js"&gt;Greta Yorsh&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4616" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Compiler backend fixes&lt;/strong&gt;&lt;/a&gt; including shrink-wrapping improvements by &lt;a href="https://github.com/cfalas"&gt;Christos Falas&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4616"&gt;#4616&lt;/a&gt;) and Fexpr fixes by &lt;a href="https://github.com/bclement-ocp"&gt;Basile Clément&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4725"&gt;#4725&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Major LLVM backend refactor merged alongside 17 other PRs, with new JavaScript backend improvements and domain memory management fixes</summary><published>2025-09-21T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2025/week-37</id><title>Week 37, 2025: Major infrastructure development with JSIR backend, TLS implementation, small integers expansion, and comprehensive DWARF debugging improvements</title><updated>2025-09-14T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
