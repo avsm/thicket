@@ -1,5 +1,68 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-dune.xml</id><title>ocaml/dune (Weekly)</title><updated>2025-09-21T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-dune.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/dune</subtitle><entry><id>https://thicket.dev/repos/ocaml-dune/2025/week-38</id><title>Week 38, 2025: Active development across Melange, OxCaml parameterized libraries, package management, and testing infrastructure</title><updated>2025-09-21T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-dune.xml</id><title>ocaml/dune (Weekly)</title><updated>2025-09-28T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-dune.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/dune</subtitle><entry><id>https://thicket.dev/repos/ocaml-dune/2025/week-39</id><title>Week 39, 2025: Melange improvements, CLI refactoring, package management optimization, and build system fixes across 19 merged PRs</title><updated>2025-09-28T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Core CLI refactoring, test suite enhancements, and package management improvements across infrastructure and user experience&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/12511" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;New PRs opened&lt;/strong&gt;&lt;/a&gt; include &lt;code&gt;-H&lt;/code&gt; flag support for private modules by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/12511"&gt;#12511&lt;/a&gt;), changelog restructuring by &lt;a href="https://github.com/maiste"&gt;Etienne&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/12472"&gt;#12472&lt;/a&gt;), Docker workflow fixes by &lt;a href="https://github.com/Sudha247"&gt;Sudha Parimala&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/12506"&gt;#12506&lt;/a&gt;), and BSD sed compatibility improvements by &lt;a href="https://github.com/Leonidas-from-XIV"&gt;Marek Kubica&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/12496"&gt;#12496&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/12394" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Infrastructure development&lt;/strong&gt;&lt;/a&gt; advanced through lock directory copy rules preparation by &lt;a href="https://github.com/Leonidas-from-XIV"&gt;Marek Kubica&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/12394"&gt;#12394&lt;/a&gt;), test environment improvements for package management (&lt;a href="https://github.com/ocaml/dune/issues/12488"&gt;#12488&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/12489"&gt;#12489&lt;/a&gt;), and CI workflow optimization preventing build cancellation on main branch (&lt;a href="https://github.com/ocaml/dune/issues/12492"&gt;#12492&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/12490" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Package management enhancements&lt;/strong&gt;&lt;/a&gt; included fetch error message improvements (&lt;a href="https://github.com/ocaml/dune/issues/12490"&gt;#12490&lt;/a&gt;), toolchain hash function fixes for better caching (&lt;a href="https://github.com/ocaml/dune/issues/12495"&gt;#12495&lt;/a&gt;), and marshal failure error reporting improvements (&lt;a href="https://github.com/ocaml/dune/issues/12494"&gt;#12494&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/12505" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Code quality improvements&lt;/strong&gt;&lt;/a&gt; through CLI path handling refactoring (&lt;a href="https://github.com/ocaml/dune/issues/12505"&gt;#12505&lt;/a&gt;), test suite cleanup removing internal package structure exposure (&lt;a href="https://github.com/ocaml/dune/issues/12497"&gt;#12497&lt;/a&gt;), and Slang expression test reduction (&lt;a href="https://github.com/ocaml/dune/issues/12498"&gt;#12498&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/12440" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Documentation update&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/shonfeder"&gt;Shon Feder&lt;/a&gt; modernizing CONTRIBUTING.md with improved developer process guidance and contribution pathways (&lt;a href="https://github.com/ocaml/dune/issues/12440"&gt;#12440&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Melange improvements, CLI refactoring, package management optimization, and build system fixes across 19 merged PRs</summary><published>2025-09-28T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-dune/2025/week-38</id><title>Week 38, 2025: Active development across Melange, OxCaml parameterized libraries, package management, and testing infrastructure</title><updated>2025-09-21T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

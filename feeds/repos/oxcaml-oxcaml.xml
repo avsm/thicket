@@ -1,5 +1,73 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml</id><title>oxcaml/oxcaml (Weekly)</title><updated>2025-09-21T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/oxcaml</subtitle><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2025/week-38</id><title>Week 38, 2025: Major LLVM backend refactor merged alongside 17 other PRs, with new JavaScript backend improvements and domain memory management fixes</title><updated>2025-09-21T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml</id><title>oxcaml/oxcaml (Weekly)</title><updated>2025-09-28T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/oxcaml</subtitle><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2025/week-39</id><title>Week 39, 2025: Major TLS implementation, new forkable mode axis, LLVM backend improvements, and CI metrics collection infrastructure</title><updated>2025-09-28T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Large jsof&lt;/em&gt;ocaml import, jkind normalization fix, slambda IR prototype, mixed block shape improvements, and CI automation enhancements&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4753" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Large-scale import&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/jvanburen"&gt;Jacob Van Buren&lt;/a&gt; bringing js&lt;em&gt;of&lt;/em&gt;ocaml into OxCaml with 348k+ additions affecting build system and middle end (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4753"&gt;#4753&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4785" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Type system improvements&lt;/strong&gt;&lt;/a&gt; including sort variable levels by &lt;a href="https://github.com/Dreian"&gt;Andrej Ivašković&lt;/a&gt; for layout polymorphism (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4785"&gt;#4785&lt;/a&gt;) and jkind normalization fix for modalities by &lt;a href="https://github.com/liam923"&gt;Liam Stevenson&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4777"&gt;#4777&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4675" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Prototype ikind system&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/julesjacobs"&gt;@julesjacobs&lt;/a&gt; introducing new algorithms for subsumption and mode crossing behind &lt;code&gt;-extension ikinds&lt;/code&gt; flag (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4675"&gt;#4675&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4776" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Static lambda IR&lt;/strong&gt;&lt;/a&gt; development by &lt;a href="https://github.com/lukemaurer"&gt;Luke Maurer&lt;/a&gt; introducing slambda with trivial translation and evaluation, adding new &lt;code&gt;-dslambda&lt;/code&gt; flag (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4776"&gt;#4776&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4765" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;LLVM backend enhancements&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/usuyus"&gt;Yusuf Onur Üşümez&lt;/a&gt; including pseudoreg rewriting disabling (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4765"&gt;#4765&lt;/a&gt;), exception handling improvements (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4757"&gt;#4757&lt;/a&gt;), and frametable fixes (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4760"&gt;#4760&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4782" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Bytecode compilation&lt;/strong&gt;&lt;/a&gt; improvements by &lt;a href="https://github.com/vouillon"&gt;Jérôme Vouillon&lt;/a&gt; differentiating Bytes.get from String.get for js&lt;em&gt;of&lt;/em&gt;ocaml compatibility (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4782"&gt;#4782&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4766" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Mode system refinements&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/riaqn"&gt;Zesen Qian&lt;/a&gt; removing hints from mode variables after type checking to reduce file sizes (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4766"&gt;#4766&lt;/a&gt;) and improving error reporting (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4719"&gt;#4719&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4762" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;CI infrastructure&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/xclerc"&gt;Xavier Clerc&lt;/a&gt; adding automated metrics collection (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4762"&gt;#4762&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4768"&gt;#4768&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4770"&gt;#4770&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4771"&gt;#4771&lt;/a&gt;) and CFG terminator simplification for better loop compilation (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4772"&gt;#4772&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4774" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Documentation fixes&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/ccasin"&gt;Chris Casinghino&lt;/a&gt; addressing dead oxcaml.org links (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4774"&gt;#4774&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4764" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Domain improvements&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/stedolan"&gt;Stephen Dolan&lt;/a&gt; disentangling Domain.spawn from interrupt logic (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4764"&gt;#4764&lt;/a&gt;) and enabling parallel tests (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4763"&gt;#4763&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Major TLS implementation, new forkable mode axis, LLVM backend improvements, and CI metrics collection infrastructure</summary><published>2025-09-28T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2025/week-38</id><title>Week 38, 2025: Major LLVM backend refactor merged alongside 17 other PRs, with new JavaScript backend improvements and domain memory management fixes</title><updated>2025-09-21T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

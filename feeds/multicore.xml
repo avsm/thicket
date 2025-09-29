@@ -1,5 +1,99 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/multicore.xml</id><title>Multicore (Weekly)</title><updated>2025-09-21T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/multicore.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Multicore OCaml</subtitle><entry><id>https://thicket.dev/groups/multicore/2025/week-38</id><title>Week 38, 2025: Light activity with macOS compatibility fixes in ocaml-iomux v0.4 and process path corrections in eio</title><updated>2025-09-21T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/multicore.xml</id><title>Multicore (Weekly)</title><updated>2025-09-28T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/multicore.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Multicore OCaml</subtitle><entry><id>https://thicket.dev/groups/multicore/2025/week-39</id><title>Week 39, 2025: Major ocaml-uring v2.7.0 release with socket operations and security fixes; ongoing Eio socket API development</title><updated>2025-09-28T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/118" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Socket bind and listen operations&lt;/strong&gt;&lt;/a&gt; added to &lt;a href="https://github.com/ocaml-multicore/ocaml-uring"&gt;ocaml-multicore/ocaml-uring&lt;/a&gt; with comprehensive OCaml bindings for asynchronous socket binding and listening (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/118"&gt;ocaml-multicore/ocaml-uring#118&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/124" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Use-after-free data race&lt;/strong&gt;&lt;/a&gt; fixed in &lt;a href="https://github.com/ocaml-multicore/ocaml-uring"&gt;ocaml-multicore/ocaml-uring&lt;/a&gt; completion queue entry handlers preventing potential memory corruption (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/124"&gt;ocaml-multicore/ocaml-uring#124&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/118" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Liburing upgrade to version 2.7&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/ocaml-multicore/ocaml-uring"&gt;ocaml-multicore/ocaml-uring&lt;/a&gt; bringing new io_uring operations and setup flags with extensive vendor updates (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/118"&gt;ocaml-multicore/ocaml-uring#118&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/126" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Enhanced API documentation&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/ocaml-multicore/ocaml-uring"&gt;ocaml-multicore/ocaml-uring&lt;/a&gt; with detailed parameter descriptions, return value explanations, and usage examples across all interface functions (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/126"&gt;ocaml-multicore/ocaml-uring#126&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/127" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Fixed mkdir test&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/ocaml-multicore/ocaml-uring"&gt;ocaml-multicore/ocaml-uring&lt;/a&gt; to properly mask file permission bits for cross-platform compatibility (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/127"&gt;ocaml-multicore/ocaml-uring#127&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong class="achievement"&gt;Major release activity&lt;/strong&gt; in &lt;a href="https://github.com/ocaml-multicore/ocaml-uring"&gt;ocaml-multicore/ocaml-uring&lt;/a&gt; with v2.7.0 featuring socket operations, security fixes, and liburing upgrade&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Active API development&lt;/strong&gt; in &lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt; with ongoing socket options API design discussions and refinements&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Minimal activity&lt;/strong&gt; across seven repositories (domainslib, meio, saturn, eio-trace, picos, kcas, ocaml-iomux) with no commits or discussions during the week&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Security focus&lt;/strong&gt; with critical use-after-free vulnerability identified and fixed in ocaml-uring's completion queue handling&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Cross-platform improvements&lt;/strong&gt; through enhanced testing infrastructure and packaging compatibility for different Linux distributions&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/118" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Socket operations development&lt;/strong&gt;&lt;/a&gt; spans both &lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt; and &lt;a href="https://github.com/ocaml-multicore/ocaml-uring"&gt;ocaml-multicore/ocaml-uring&lt;/a&gt; with socket bind/listen operations added to ocaml-uring (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/118"&gt;ocaml-multicore/ocaml-uring#118&lt;/a&gt;) while socket options API continues development in Eio (&lt;a href="https://github.com/ocaml-multicore/eio/issues/575"&gt;ocaml-multicore/eio#575&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/118" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Coordinated testing&lt;/strong&gt;&lt;/a&gt; with &lt;a href="https://github.com/ocaml-multicore/ocaml-uring"&gt;ocaml-multicore/ocaml-uring&lt;/a&gt; socket operations being extensively tested against the Eio test suite to ensure compatibility (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/118"&gt;ocaml-multicore/ocaml-uring#118&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Shared maintainer effort&lt;/strong&gt; by &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; contributing to both &lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt; socket API design and &lt;a href="https://github.com/ocaml-multicore/ocaml-uring"&gt;ocaml-multicore/ocaml-uring&lt;/a&gt; socket operations implementation&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Common architecture considerations&lt;/strong&gt; with socket functionality being developed in layers across the multicore stack, from low-level io_uring bindings to high-level Eio APIs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/eio/issues/575" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;API design discussion&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt; between &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; and &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; regarding socket options module naming, with consensus on simplifying from &lt;code&gt;Sockopt&lt;/code&gt; to &lt;code&gt;Socket&lt;/code&gt; and organizing options into sub-modules (&lt;a href="https://github.com/ocaml-multicore/eio/issues/575"&gt;ocaml-multicore/eio#575&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/111" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;RPM packaging conflict&lt;/strong&gt;&lt;/a&gt; resolved in &lt;a href="https://github.com/ocaml-multicore/ocaml-uring"&gt;ocaml-multicore/ocaml-uring&lt;/a&gt; by &lt;a href="https://github.com/olafhering"&gt;Olaf Hering&lt;/a&gt; working with &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; to address dlluring.so file conflicts in system package management (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/111"&gt;ocaml-multicore/ocaml-uring#111&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/113" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;ZFS compatibility documentation&lt;/strong&gt;&lt;/a&gt; improvements suggested in &lt;a href="https://github.com/ocaml-multicore/ocaml-uring"&gt;ocaml-multicore/ocaml-uring&lt;/a&gt; by &lt;a href="https://github.com/toastal"&gt;@toastal&lt;/a&gt; to help users discover known ZFS kernel version issues with fixed buffers (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/113"&gt;ocaml-multicore/ocaml-uring#113&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/125" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Concurrent safety analysis&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/ocaml-multicore/ocaml-uring"&gt;ocaml-multicore/ocaml-uring&lt;/a&gt; by &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; examining potential race conditions in exit implementation, ultimately determined to be handled safely by OCaml wrapper (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/125"&gt;ocaml-multicore/ocaml-uring#125&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/124" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Enhanced production readiness&lt;/strong&gt;&lt;/a&gt; across the multicore ecosystem with focus on race condition elimination and memory safety improvements, particularly in &lt;a href="https://github.com/ocaml-multicore/ocaml-uring"&gt;ocaml-multicore/ocaml-uring&lt;/a&gt; completion queue handling (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/124"&gt;ocaml-multicore/ocaml-uring#124&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/126" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Comprehensive API documentation&lt;/strong&gt;&lt;/a&gt; trend showing commitment to developer experience with detailed parameter explanations and usage examples in &lt;a href="https://github.com/ocaml-multicore/ocaml-uring"&gt;ocaml-multicore/ocaml-uring&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/126"&gt;ocaml-multicore/ocaml-uring#126&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/127" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Cross-platform compatibility&lt;/strong&gt;&lt;/a&gt; emphasis through improved test infrastructure and packaging considerations for different Linux distributions in &lt;a href="https://github.com/ocaml-multicore/ocaml-uring"&gt;ocaml-multicore/ocaml-uring&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/127"&gt;ocaml-multicore/ocaml-uring#127&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/111"&gt;ocaml-multicore/ocaml-uring#111&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/118" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Socket operations expansion&lt;/strong&gt;&lt;/a&gt; indicating broader networking functionality development for io_uring integration, with coordinated development between &lt;a href="https://github.com/ocaml-multicore/ocaml-uring"&gt;ocaml-multicore/ocaml-uring&lt;/a&gt; and &lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/118"&gt;ocaml-multicore/ocaml-uring#118&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/eio/issues/575"&gt;ocaml-multicore/eio#575&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/123" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Security vulnerability response&lt;/strong&gt;&lt;/a&gt; demonstrating active security monitoring and rapid response to identified issues, with community reporting and prompt fixes (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/123"&gt;ocaml-multicore/ocaml-uring#123&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/124"&gt;ocaml-multicore/ocaml-uring#124&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Major ocaml-uring v2.7.0 release with socket operations and security fixes; ongoing Eio socket API development</summary><published>2025-09-28T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/multicore/2025/week-38</id><title>Week 38, 2025: Light activity with macOS compatibility fixes in ocaml-iomux v0.4 and process path corrections in eio</title><updated>2025-09-21T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

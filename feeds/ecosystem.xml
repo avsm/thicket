@@ -1,5 +1,93 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/ecosystem.xml</id><title>OCaml Ecosystem (Weekly)</title><updated>2025-09-21T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/ecosystem.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Package repositories and community infrastructure</subtitle><entry><id>https://thicket.dev/groups/ecosystem/2025/week-38</id><title>Week 38, 2025: Package ecosystem expansion with new tools and CI infrastructure stability improvements plus enhanced developer onboarding</title><updated>2025-09-21T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/ecosystem.xml</id><title>OCaml Ecosystem (Weekly)</title><updated>2025-09-28T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/ecosystem.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Package repositories and community infrastructure</subtitle><entry><id>https://thicket.dev/groups/ecosystem/2025/week-39</id><title>Week 39, 2025: Major cmdliner 2.0.0 ecosystem coordination alongside community website improvements and infrastructure modernization</title><updated>2025-09-28T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/28599" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Cmdliner 2.0.0&lt;/strong&gt;&lt;/a&gt; released with breaking changes requiring ecosystem-wide coordination by &lt;a href="https://github.com/dbuenzli"&gt;Daniel Bünzli&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/28599"&gt;ocaml/opam-repository#28599&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/28602"&gt;ocaml/opam-repository#28602&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/28603"&gt;ocaml/opam-repository#28603&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/28585" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Windows MinGW support&lt;/strong&gt;&lt;/a&gt; improvements by &lt;a href="https://github.com/jmid"&gt;Jan Midtgaard&lt;/a&gt; including new conf-gtksourceview3 MinGW packages and CI workflow (&lt;a href="https://github.com/ocaml/opam-repository/issues/28585"&gt;ocaml/opam-repository#28585&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/28598"&gt;ocaml/opam-repository#28598&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3331" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;New OCaml blog content&lt;/strong&gt;&lt;/a&gt; added through automated scraping including database testing guides and opam performance research (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3331"&gt;ocaml/ocaml.org#3331&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/issues/3329"&gt;ocaml/ocaml.org#3329&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/issues/3326"&gt;ocaml/ocaml.org#3326&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/28599" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Package repository&lt;/strong&gt;&lt;/a&gt; dominated by &lt;a href="https://github.com/dbuenzli"&gt;Daniel Bünzli&lt;/a&gt;'s cmdliner 2.0.0 release coordination requiring ecosystem-wide compatibility updates (&lt;a href="https://github.com/ocaml/opam-repository/issues/28599"&gt;ocaml/opam-repository#28599&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3322" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Community website&lt;/strong&gt;&lt;/a&gt; focused on content expansion through automated blog imports and documentation improvements by &lt;a href="https://github.com/jpoly1219"&gt;Jacob Kim&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3322"&gt;ocaml/ocaml.org#3322&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/28585" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Cross-platform support&lt;/strong&gt;&lt;/a&gt; advances with Windows MinGW tooling by &lt;a href="https://github.com/jmid"&gt;Jan Midtgaard&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/28585"&gt;ocaml/opam-repository#28585&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/28598"&gt;ocaml/opam-repository#28598&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Infrastructure modernization&lt;/strong&gt; spanning both repositories with governance updates and automated content management&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/28599" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Cmdliner compatibility coordination&lt;/strong&gt;&lt;/a&gt; required collaboration between &lt;a href="https://github.com/dbuenzli"&gt;Daniel Bünzli&lt;/a&gt; releasing cmdliner 2.0.0 (&lt;a href="https://github.com/ocaml/opam-repository/issues/28599"&gt;ocaml/opam-repository#28599&lt;/a&gt;) and &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; updating opam tooling constraints (&lt;a href="https://github.com/ocaml/opam-repository/issues/28601"&gt;ocaml/opam-repository#28601&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3306" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Community infrastructure modernization&lt;/strong&gt;&lt;/a&gt; coordinated by &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; and &lt;a href="https://github.com/giltho"&gt;Sacha Ayoun&lt;/a&gt; addressing email service shutdown and migration to forum-based discussions (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3306"&gt;ocaml/ocaml.org#3306&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Developer tooling improvements&lt;/strong&gt; spanning both package availability in opam-repository and documentation on ocaml.org, with Windows support and editor configuration being key focus areas&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3322" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;LSP configuration enhancement&lt;/strong&gt;&lt;/a&gt; discussed by &lt;a href="https://github.com/edwintorok"&gt;Török Edwin&lt;/a&gt; who proposed simplifications to upstream nvim-lspconfig while reviewing &lt;a href="https://github.com/jpoly1219"&gt;Jacob Kim&lt;/a&gt;'s comprehensive Neovim setup documentation (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3322"&gt;ocaml/ocaml.org#3322&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3306" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Community infrastructure modernization&lt;/strong&gt;&lt;/a&gt; discussed between &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; and &lt;a href="https://github.com/giltho"&gt;Sacha Ayoun&lt;/a&gt; regarding mailing list removal due to spam issues and migration to discuss.ocaml.org forum (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3306"&gt;ocaml/ocaml.org#3306&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/28601" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Package compatibility coordination&lt;/strong&gt;&lt;/a&gt; with extensive discussion around cmdliner 2.0.0 ecosystem impact and automated constraint management by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/28601"&gt;ocaml/opam-repository#28601&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/28599" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Ecosystem-wide breaking change management&lt;/strong&gt;&lt;/a&gt; demonstrates mature coordination processes with &lt;a href="https://github.com/dbuenzli"&gt;Daniel Bünzli&lt;/a&gt; leading cmdliner 2.0.0 release while community systematically handles compatibility (&lt;a href="https://github.com/ocaml/opam-repository/issues/28599"&gt;ocaml/opam-repository#28599&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/28601"&gt;ocaml/opam-repository#28601&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/28585" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Cross-platform support expansion&lt;/strong&gt;&lt;/a&gt; with &lt;a href="https://github.com/jmid"&gt;Jan Midtgaard&lt;/a&gt; systematically improving Windows compatibility through MinGW tooling and CI infrastructure (&lt;a href="https://github.com/ocaml/opam-repository/issues/28585"&gt;ocaml/opam-repository#28585&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/28598"&gt;ocaml/opam-repository#28598&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3306" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Community infrastructure modernization&lt;/strong&gt;&lt;/a&gt; trend with migration from traditional mailing lists to forum-based discussions and improved automation for content management (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3306"&gt;ocaml/ocaml.org#3306&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Developer experience improvements&lt;/strong&gt; through comprehensive editor documentation expansion and better tooling integration across the ecosystem&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Major cmdliner 2.0.0 ecosystem coordination alongside community website improvements and infrastructure modernization</summary><published>2025-09-28T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/ecosystem/2025/week-38</id><title>Week 38, 2025: Package ecosystem expansion with new tools and CI infrastructure stability improvements plus enhanced developer onboarding</title><updated>2025-09-21T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
