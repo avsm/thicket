@@ -1,5 +1,72 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-merlin.xml</id><title>ocaml/merlin (Weekly)</title><updated>2025-09-28T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-merlin.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/merlin</subtitle><entry><id>https://thicket.dev/repos/ocaml-merlin/2025/week-39</id><title>Week 39, 2025: Benchmarking infrastructure added with timing tests for Merlin operations on large files, plus ongoing refactoring work</title><updated>2025-09-28T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-merlin.xml</id><title>ocaml/merlin (Weekly)</title><updated>2025-10-05T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-merlin.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/merlin</subtitle><entry><id>https://thicket.dev/repos/ocaml-merlin/2025/week-40</id><title>Week 40, 2025: Two releases shipped with new locate-types command, OCaml 5.4 support, and Vim plugin fixes</title><updated>2025-10-05T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+OCaml 5.4 support integrated with two releases (5.6-503 and 5.6-504), dependency updates merged, and ongoing work on inlay hints and refactoring&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt; shipped &lt;a href="https://github.com/ocaml/merlin/issues/1973" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;two releases&lt;/strong&gt;&lt;/a&gt; this week: 5.6-503 for OCaml 5.3 support branch and 5.6-504 with full OCaml 5.4 support on main, both including the new &lt;code&gt;locate-types&lt;/code&gt; command and various fixes (&lt;a href="https://github.com/ocaml/merlin/issues/1973"&gt;#1973&lt;/a&gt;, &lt;a href="https://github.com/ocaml/merlin/issues/1974"&gt;#1974&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/xvw"&gt;Xavier Van de Woestyne&lt;/a&gt; upgraded the &lt;a href="https://github.com/ocaml/merlin/issues/1971" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;vendored typer to OCaml 5.4-RC1&lt;/strong&gt;&lt;/a&gt;, preparing the groundwork for full 5.4 support by merging upstream compiler changes (&lt;a href="https://github.com/ocaml/merlin/issues/1971"&gt;#1971&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/liam923"&gt;Liam Stevenson&lt;/a&gt; implemented the &lt;code&gt;locate-type-multi&lt;/code&gt; query that returns a tree structure representing all type identifiers within complex types, enabling richer IDE navigation for types with arguments (&lt;a href="https://github.com/ocaml/merlin/issues/1951"&gt;#1951&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Tim-ats-d"&gt;Tim ats&lt;/a&gt; added the &lt;code&gt;-use-typer-cache&lt;/code&gt; flag to control typedtree caching behavior, with review feedback leading to clearer naming aligned with existing cache options (&lt;a href="https://github.com/ocaml/merlin/issues/1972"&gt;#1972&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Julow"&gt;Jules Aguillon&lt;/a&gt; fixed a &lt;a href="https://github.com/ocaml/merlin/issues/1970" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Vim plugin crash&lt;/strong&gt;&lt;/a&gt; caused by out-of-bounds access when gathering text previews for occurrences, improving plugin stability (&lt;a href="https://github.com/ocaml/merlin/issues/1970"&gt;#1970&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt; merged additional &lt;a href="https://github.com/ocaml/merlin/issues/1904" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;short-paths test cases&lt;/strong&gt;&lt;/a&gt; addressing edge cases from previous discussions (&lt;a href="https://github.com/ocaml/merlin/issues/1904"&gt;#1904&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/dependabot"&gt;Dependabot&lt;/a&gt; updated &lt;a href="https://github.com/ocaml/merlin/issues/1969" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;cachix/install-nix-action&lt;/strong&gt;&lt;/a&gt; from 31.6.1 to 31.7.0, bringing environment variable improvements and updated Nix version (&lt;a href="https://github.com/ocaml/merlin/issues/1969"&gt;#1969&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/mlasson"&gt;Marc Lasson&lt;/a&gt; has ongoing work on &lt;a href="https://github.com/ocaml/merlin/issues/1894" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;inlay hints handling&lt;/strong&gt;&lt;/a&gt; using &lt;code&gt;[@merlin.hide]&lt;/code&gt; attribute instead of ghost locations for more precise control, with &lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt; requesting a rebase for proper review (&lt;a href="https://github.com/ocaml/merlin/issues/1894"&gt;#1894&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Tim-ats-d"&gt;Tim ats&lt;/a&gt; continues development on &lt;a href="https://github.com/ocaml/merlin/issues/1948" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;expression extraction refactoring&lt;/strong&gt;&lt;/a&gt; command to extract expressions into let bindings, with active collaboration from &lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt; on implementation details (&lt;a href="https://github.com/ocaml/merlin/issues/1948"&gt;#1948&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Two releases shipped with new locate-types command, OCaml 5.4 support, and Vim plugin fixes</summary><published>2025-10-05T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-merlin/2025/week-39</id><title>Week 39, 2025: Benchmarking infrastructure added with timing tests for Merlin operations on large files, plus ongoing refactoring work</title><updated>2025-09-28T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
