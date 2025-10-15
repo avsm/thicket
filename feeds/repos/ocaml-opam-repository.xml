@@ -1,5 +1,71 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam-repository.xml</id><title>ocaml/opam-repository (Weekly)</title><updated>2025-10-05T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam-repository.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam-repository</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2025/week-40</id><title>Week 40, 2025: OCaml 5.4.0 RC1 released, cmdliner 2.0.0 migration completed, MirageOS ecosystem updates, and 43 packages merged</title><updated>2025-10-05T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam-repository.xml</id><title>ocaml/opam-repository (Weekly)</title><updated>2025-10-12T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam-repository.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam-repository</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2025/week-41</id><title>Week 41, 2025: OCaml 5.4.0 officially released with extensive ecosystem updates and 10+ new packages</title><updated>2025-10-12T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Five new PRs opened for packages (otp, p5scm, doi2bib) plus extensive OCaml 5.4.0 ecosystem updates and dependency fixes&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;Five &lt;a href="https://github.com/ocaml/opam-repository/issues/28704" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;new PRs opened&lt;/strong&gt;&lt;/a&gt; this week awaiting review: time-based OTP implementation by &lt;a href="https://github.com/Heyji2"&gt;A.G.&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/28704"&gt;#28704&lt;/a&gt;), Scheme via camlp5 by &lt;a href="https://github.com/drjdn"&gt;Jason D. Nielsen&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/28700"&gt;#28700&lt;/a&gt;), doi2bib with deduplication refactoring by &lt;a href="https://github.com/mseri"&gt;Marcello Seri&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/28703"&gt;#28703&lt;/a&gt;), raylib 5.5 upgrade by &lt;a href="https://github.com/tjammer"&gt;Tobias Mock&lt;/a&gt; with Windows msys issues (&lt;a href="https://github.com/ocaml/opam-repository/issues/28680"&gt;#28680&lt;/a&gt;), and lwt 6.0.0 beta by &lt;a href="https://github.com/raphael-proust"&gt;Raphaël Proust&lt;/a&gt; with lower-bounds failures (&lt;a href="https://github.com/ocaml/opam-repository/issues/28558"&gt;#28558&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/28701" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Ten new packages&lt;/strong&gt;&lt;/a&gt; introduced: mlsolver 1.5 and fadecider 0.7 migrated from OASIS to DUNE and OCaml 5 by &lt;a href="https://github.com/oliverfriedmann"&gt;Oliver Friedmann&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/28701"&gt;#28701&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/28702"&gt;#28702&lt;/a&gt;), pcrc 0.25.2 parameterized CRC implementations by &lt;a href="https://github.com/a12n"&gt;Anton Yabchinskiy&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/28699"&gt;#28699&lt;/a&gt;), oenv composable environment variable reader versions 0.0.1 and 0.1.0 by &lt;a href="https://github.com/Nymphium"&gt;Satoru Kawahara&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/28674"&gt;#28674&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/28698"&gt;#28698&lt;/a&gt;), vsrocq-language-server 2.3.1 LSP server by &lt;a href="https://github.com/vscoqbot"&gt;@vscoqbot&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/28691"&gt;#28691&lt;/a&gt;), spoke 0.0.4 SPAKE+EE with mirage-crypto.1.0.0 by &lt;a href="https://github.com/dinosaure"&gt;Calascibetta Romain&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/28640"&gt;#28640&lt;/a&gt;), incremental_cycles 0.1 by &lt;a href="https://github.com/Armael"&gt;Armaël Guéneau&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/28563"&gt;#28563&lt;/a&gt;), synchronizer 0.1 by &lt;a href="https://github.com/redianthus"&gt;@redianthus&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/28642"&gt;#28642&lt;/a&gt;), mosaique 0.0.1 libvips bindings by &lt;a href="https://github.com/Naora"&gt;@Naora&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/28632"&gt;#28632&lt;/a&gt;), and coq-waterproof 3.0.0+8.19 mathematical proofs by &lt;a href="https://github.com/jim-portegies"&gt;@jim-portegies&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/28499"&gt;#28499&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/28681" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Jane Street packages&lt;/strong&gt;&lt;/a&gt; updated to v0.17.1 by &lt;a href="https://github.com/dkalinichenko-js"&gt;@dkalinichenko-js&lt;/a&gt; including hardcaml, ppx&lt;em&gt;derive&lt;/em&gt;at&lt;em&gt;runtime, ppx&lt;/em&gt;hardcaml, ppx&lt;em&gt;jsonaf&lt;/em&gt;conv, ppx&lt;em&gt;pattern&lt;/em&gt;bind, ppx&lt;em&gt;quick&lt;/em&gt;test, ppx&lt;em&gt;typed&lt;/em&gt;fields, streamable (&lt;a href="https://github.com/ocaml/opam-repository/issues/28681"&gt;#28681&lt;/a&gt;), and ppx&lt;em&gt;js&lt;/em&gt;style/ppx&lt;em&gt;yojson&lt;/em&gt;conv with ppxlib constraints (&lt;a href="https://github.com/ocaml/opam-repository/issues/28673"&gt;#28673&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/28645" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;MirageOS ecosystem&lt;/strong&gt;&lt;/a&gt; updates by &lt;a href="https://github.com/hannesm"&gt;Hannes Mehnert&lt;/a&gt; including mirage 4.10.2 with cmdliner 2.0.0 upgrade (&lt;a href="https://github.com/ocaml/opam-repository/issues/28645"&gt;#28645&lt;/a&gt;), mirage-net-xen 2.1.7 reading MTU from xenstore (&lt;a href="https://github.com/ocaml/opam-repository/issues/28684"&gt;#28684&lt;/a&gt;), and chamelon 0.2.1 littlefs subset by &lt;a href="https://github.com/yomimono"&gt;yomimono&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/28682"&gt;#28682&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/28694" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Infrastructure tools&lt;/strong&gt;&lt;/a&gt; updated including dockerfile 8.3.2 eDSL packages by &lt;a href="https://github.com/mtelvers"&gt;Mark Elvers&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/28694"&gt;#28694&lt;/a&gt;), dunolint 0.0.20251006 build file linter by &lt;a href="https://github.com/mbarbin"&gt;Mathieu Barbin&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/28658"&gt;#28658&lt;/a&gt;), notty-community 0.2.4 terminal library by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/28688"&gt;#28688&lt;/a&gt;), and fstar 2025.10.06 with ppxlib workaround by &lt;a href="https://github.com/mtzguido"&gt;Guido Martínez&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/28661"&gt;#28661&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/28664" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Testing packages&lt;/strong&gt;&lt;/a&gt; multicoretests 0.10 including qcheck-lin, qcheck-multicoretests-util, qcheck-stm by &lt;a href="https://github.com/jmid"&gt;Jan Midtgaard&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/28664"&gt;#28664&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/28695" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Dependency fixes&lt;/strong&gt;&lt;/a&gt; including yojson upper bound for morbig.0.11.0 due to removed Tuple/Variant types by &lt;a href="https://github.com/jmid"&gt;Jan Midtgaard&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/28695"&gt;#28695&lt;/a&gt;), base v0.15.1 patch moved to opam-source-archives for checksum stability by &lt;a href="https://github.com/ejgallego"&gt;Emilio Jesús Gallego Arias&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/28676"&gt;#28676&lt;/a&gt;), cmdliner 2.0.0 constraints for mrmime.0.5.0 (&lt;a href="https://github.com/ocaml/opam-repository/issues/28689"&gt;#28689&lt;/a&gt;), diffast-git-cli (&lt;a href="https://github.com/ocaml/opam-repository/issues/28671"&gt;#28671&lt;/a&gt;), ocamlformat-mlx (&lt;a href="https://github.com/ocaml/opam-repository/issues/28668"&gt;#28668&lt;/a&gt;), and sherlodoc (&lt;a href="https://github.com/ocaml/opam-repository/issues/28656"&gt;#28656&lt;/a&gt;) by &lt;a href="https://github.com/hannesm"&gt;Hannes Mehnert&lt;/a&gt; and &lt;a href="https://github.com/mseri"&gt;Marcello Seri&lt;/a&gt;, dune upper bound for tezt 3.1.0-4.2.0 tests due to Sys.argv.(0) changes (&lt;a href="https://github.com/ocaml/opam-repository/issues/28550"&gt;#28550&lt;/a&gt;), conf-npm added to alcotest-js.1.9.1 (&lt;a href="https://github.com/ocaml/opam-repository/issues/28669"&gt;#28669&lt;/a&gt;), z3.4.15.2 macOS build parallelization by &lt;a href="https://github.com/balsoft"&gt;Alexander Bantyev&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/28678"&gt;#28678&lt;/a&gt;), and macOS CI accept-failures for pyparsing and tomli not available via homebrew by &lt;a href="https://github.com/tiferrei"&gt;Tiago Ferreira&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/28666"&gt;#28666&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/28670"&gt;#28670&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/28652" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Extensive diffast release&lt;/strong&gt;&lt;/a&gt; v0.3.5.1 by &lt;a href="https://github.com/codinuum"&gt;@codinuum&lt;/a&gt; covering 41 packages across multiple programming languages including C++, Fortran, Java, Python, and Verilog support with vlt.0.2.5 marked conflicting with ppxlib.0.37.0~5.4preview (&lt;a href="https://github.com/ocaml/opam-repository/issues/28652"&gt;#28652&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>OCaml 5.4.0 officially released with extensive ecosystem updates and 10+ new packages</summary><published>2025-10-12T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2025/week-40</id><title>Week 40, 2025: OCaml 5.4.0 RC1 released, cmdliner 2.0.0 migration completed, MirageOS ecosystem updates, and 43 packages merged</title><updated>2025-10-05T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

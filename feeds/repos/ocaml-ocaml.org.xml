@@ -1,5 +1,69 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.org.xml</id><title>ocaml/ocaml.org (Weekly)</title><updated>2025-10-05T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.org.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml.org</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml.org/2025/week-40</id><title>Week 40, 2025: Documentation improvements and new Security Response Team announcement dominated the week</title><updated>2025-10-05T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.org.xml</id><title>ocaml/ocaml.org (Weekly)</title><updated>2025-10-12T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.org.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml.org</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml.org/2025/week-41</id><title>Week 41, 2025: OCaml 5.4.0 released with content improvements and new Backstage OCaml section for experimental features</title><updated>2025-10-12T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Website infrastructure improvements, documentation fixes, and ongoing Dune Package Management PR discussion&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3281" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Two PRs remain open&lt;/strong&gt;&lt;/a&gt; awaiting review: Dune Package Management adoption for OCaml.org build by &lt;a href="https://github.com/sabine"&gt;@sabine&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3281"&gt;#3281&lt;/a&gt;) and Ahrefs full-stack web success story by &lt;a href="https://github.com/sabine"&gt;@sabine&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3336"&gt;#3336&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3365" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Infrastructure and organizational improvements&lt;/strong&gt;&lt;/a&gt; included renaming platform&lt;em&gt;tools&lt;/em&gt;releases to platform&lt;em&gt;releases, adding released&lt;/em&gt;on&lt;em&gt;github&lt;/em&gt;by field for better attribution tracking, fixing Backstage OCaml feed name, and moving merlin-domains post to editors folder (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3365"&gt;#3365&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/issues/3361"&gt;#3361&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/issues/3357"&gt;#3357&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/issues/3356"&gt;#3356&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/issues/3351"&gt;#3351&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3368" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Documentation fixes&lt;/strong&gt;&lt;/a&gt; corrected OCaml 5.4.0 release date and RFC link by &lt;a href="https://github.com/khalidbelk"&gt;Khalid&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3368"&gt;#3368&lt;/a&gt;), fixed adjacency list in graph example by &lt;a href="https://github.com/feefs"&gt;@feefs&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3371"&gt;#3371&lt;/a&gt;), and removed duplicate titles (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3350"&gt;#3350&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3360" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Markdown linter configuration&lt;/strong&gt;&lt;/a&gt; updated to disable rules around space before/after code blocks and lists to reduce false positives (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3360"&gt;#3360&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3370" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Content aggregation&lt;/strong&gt;&lt;/a&gt; through automated scraping brought in new OCaml Planet blog posts including LexiFi at FUN OCaml, Ahrefs one-year retrospective, OCaml Weekly News, and Tunbury blog posts about Docker and FreeBSD updates (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3370"&gt;#3370&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/issues/3359"&gt;#3359&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/issues/3348"&gt;#3348&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/issues/3342"&gt;#3342&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/2831" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;PR workflow closed&lt;/strong&gt;&lt;/a&gt; superseding old Alpine/opam update by &lt;a href="https://github.com/MisterDA"&gt;Antonin Décimo&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml.org/issues/2831"&gt;#2831&lt;/a&gt;) and platform releases scraper PR already addressed through individual announcements (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3349"&gt;#3349&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/issues/3309"&gt;#3309&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>OCaml 5.4.0 released with content improvements and new Backstage OCaml section for experimental features</summary><published>2025-10-12T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml.org/2025/week-40</id><title>Week 40, 2025: Documentation improvements and new Security Response Team announcement dominated the week</title><updated>2025-10-05T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

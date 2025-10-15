@@ -1,5 +1,69 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-opam-repository.xml</id><title>oxcaml/opam-repository (Weekly)</title><updated>2025-10-05T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-opam-repository.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/opam-repository</subtitle><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-40</id><title>Week 40, 2025: Fixed uutf package Cmdliner 2.0 compatibility and added dev branch CI workflow</title><updated>2025-10-05T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-opam-repository.xml</id><title>oxcaml/opam-repository (Weekly)</title><updated>2025-10-12T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-opam-repository.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/opam-repository</subtitle><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-41</id><title>Week 41, 2025: Release minus-19 with v0.18~preview.130.55+197 packages, new library support (ctypes, dune 3.20.2, lwt, re), and js_of_ocaml patches.</title><updated>2025-10-12T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Release minus-19 merged 558 files with v0.18~preview.130.55+197 Jane Street packages including new libraries and compiler tooling.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/issues/18" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Release minus-19&lt;/strong&gt;&lt;/a&gt; merged by &lt;a href="https://github.com/dkalinichenko-js"&gt;@dkalinichenko-js&lt;/a&gt; updating to v0.18~preview.130.55+197 across the Jane Street ecosystem with 558 changed files, 21,920 additions, and 7,087 deletions (&lt;a href="https://github.com/oxcaml/opam-repository/issues/18"&gt;#18&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;New Jane Street packages&lt;/strong&gt; added in v0.18~preview.130.55+197 including &lt;code&gt;big_percent&lt;/code&gt;, &lt;code&gt;concurrent&lt;/code&gt;, &lt;code&gt;flexible_sexp&lt;/code&gt;, &lt;code&gt;insertion_ordered_map&lt;/code&gt;, &lt;code&gt;nonempty_interval_lib&lt;/code&gt;, &lt;code&gt;pending_or_error&lt;/code&gt;, &lt;code&gt;portable_async&lt;/code&gt;, &lt;code&gt;portable_ws_deque&lt;/code&gt;, and multiple ppx extensions (&lt;code&gt;ppx_anonymous_record&lt;/code&gt;, &lt;code&gt;ppx_array&lt;/code&gt;, &lt;code&gt;ppx_array_base&lt;/code&gt;, &lt;code&gt;ppx_box&lt;/code&gt;, &lt;code&gt;ppx_fuelproof&lt;/code&gt;, &lt;code&gt;ppx_portable&lt;/code&gt;) (&lt;a href="https://github.com/oxcaml/opam-repository/commit/879a5b204c654db23fde5c0af474aeee51614e21"&gt;879a5b20&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Core libraries&lt;/strong&gt; updated including &lt;code&gt;core&lt;/code&gt;, &lt;code&gt;core_bench&lt;/code&gt;, &lt;code&gt;core_unix&lt;/code&gt;, &lt;code&gt;async&lt;/code&gt; (with multiple variants: &lt;code&gt;async_smtp&lt;/code&gt;, &lt;code&gt;async_kernel&lt;/code&gt;, &lt;code&gt;async_rpc_kernel&lt;/code&gt;, &lt;code&gt;async_unix&lt;/code&gt;, &lt;code&gt;async_js&lt;/code&gt;), &lt;code&gt;bonsai&lt;/code&gt; (with &lt;code&gt;bonsai_test&lt;/code&gt;, &lt;code&gt;bonsai_web&lt;/code&gt;, &lt;code&gt;bonsai_web_test&lt;/code&gt;, &lt;code&gt;bonsai_web_components&lt;/code&gt;), &lt;code&gt;ecaml&lt;/code&gt;, &lt;code&gt;memtrace_viewer&lt;/code&gt;, &lt;code&gt;parallel&lt;/code&gt;, and ppx tooling (&lt;code&gt;ppx_jane&lt;/code&gt;, &lt;code&gt;ppx_log&lt;/code&gt;, &lt;code&gt;ppx_quick_test&lt;/code&gt;, &lt;code&gt;ppx_typed_fields&lt;/code&gt;, &lt;code&gt;ppx_demo&lt;/code&gt;) (&lt;a href="https://github.com/oxcaml/opam-repository/commit/879a5b204c654db23fde5c0af474aeee51614e21"&gt;879a5b20&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Build system&lt;/strong&gt; updates with GitHub Actions test workflow modifications and dune version compatibility improvements (&lt;a href="https://github.com/oxcaml/opam-repository/commit/eeedfd918e54a8741d26af1a4ff2991b21c1045f"&gt;eeedfd91&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/opam-repository/commit/96eafdc6886ac24f1e28ec6d2b9216680f8246a0"&gt;96eafdc6&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;ppxlib and tooling&lt;/strong&gt; patches updated including AST builder enhancements, pattern matching improvements, driver functionality updates, and documentation additions for writing ppxs (&lt;a href="https://github.com/oxcaml/opam-repository/commit/eeedfd918e54a8741d26af1a4ff2991b21c1045f"&gt;eeedfd91&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;gen&lt;em&gt;js&lt;/em&gt;api&lt;/strong&gt; and &lt;strong class="achievement"&gt;ojs&lt;/strong&gt; updated with AST compatibility patches (&lt;a href="https://github.com/oxcaml/opam-repository/commit/eeedfd918e54a8741d26af1a4ff2991b21c1045f"&gt;eeedfd91&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Release minus-19 with v0.18~preview.130.55+197 packages, new library support (ctypes, dune 3.20.2, lwt, re), and js_of_ocaml patches.</summary><published>2025-10-12T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2025/week-40</id><title>Week 40, 2025: Fixed uutf package Cmdliner 2.0 compatibility and added dev branch CI workflow</title><updated>2025-10-05T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
