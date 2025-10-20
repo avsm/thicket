@@ -1,5 +1,68 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam.xml</id><title>ocaml/opam (Weekly)</title><updated>2025-10-12T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam/2025/week-41</id><title>Week 41, 2025: Bug fixes for depext exit codes and pin-depends handling, git submodule checks, and API improvements for repository root handling</title><updated>2025-10-12T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam.xml</id><title>ocaml/opam (Weekly)</title><updated>2025-10-19T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam/2025/week-42</id><title>Week 42, 2025: Released opam 2.5.0~alpha1 with shell initialization improvements, AppArmor support, and bug fixes across multiple platforms</title><updated>2025-10-19T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Released 2.5.0~alpha1, opened six new PRs for future work, optimized CI, and addressed Windows bootstrap challenges&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6750" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Six new PRs opened&lt;/strong&gt;&lt;/a&gt; this week representing future development work: removal of unused admin scripts by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam/issues/6750"&gt;#6750&lt;/a&gt;), cleanup of stale switch directories by &lt;a href="https://github.com/arozovyk"&gt;@arozovyk&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam/issues/6735"&gt;#6735&lt;/a&gt;), hardening of Makefile inline shell scripts (&lt;a href="https://github.com/ocaml/opam/issues/6751"&gt;#6751&lt;/a&gt;), and post-release follow-up work including version bumps and installer updates (&lt;a href="https://github.com/ocaml/opam/issues/6747"&gt;#6747&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam/issues/6748"&gt;#6748&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6744" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Release 2.5.0~alpha1&lt;/strong&gt;&lt;/a&gt; delivered by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; and &lt;a href="https://github.com/rjbou"&gt;R. Boujbel&lt;/a&gt; with comprehensive changelog covering incremental opam file loading, shell initialization improvements, AppArmor support, and numerous bug fixes (&lt;a href="https://github.com/ocaml/opam/issues/6744"&gt;#6744&lt;/a&gt; with extensive review discussion)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6746" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Windows bootstrap dependency revert&lt;/strong&gt;&lt;/a&gt; under discussion by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; and &lt;a href="https://github.com/MisterDA"&gt;Antonin Décimo&lt;/a&gt; due to FlexDLL version parsing issues affecting the build process (&lt;a href="https://github.com/ocaml/opam/issues/6746"&gt;#6746&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6745" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;CI optimization&lt;/strong&gt;&lt;/a&gt; implemented by &lt;a href="https://github.com/rjbou"&gt;R. Boujbel&lt;/a&gt; reducing macOS job overhead by launching solver tests only when &lt;code&gt;src/solver&lt;/code&gt; is modified and removing legacy upgrade tests (&lt;a href="https://github.com/ocaml/opam/issues/6745"&gt;#6745&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6749" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Development branch&lt;/strong&gt;&lt;/a&gt; bumped to 2.6.0~alpha1~dev by &lt;a href="https://github.com/rjbou"&gt;R. Boujbel&lt;/a&gt; following the 2.5.0~alpha1 release (&lt;a href="https://github.com/ocaml/opam/issues/6749"&gt;#6749&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Released opam 2.5.0~alpha1 with shell initialization improvements, AppArmor support, and bug fixes across multiple platforms</summary><published>2025-10-19T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-opam/2025/week-41</id><title>Week 41, 2025: Bug fixes for depext exit codes and pin-depends handling, git submodule checks, and API improvements for repository root handling</title><updated>2025-10-12T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
@@ -2382,7 +2445,7 @@ Several performance and reliability improvements merged across system integratio
 &lt;h2&gt;Activity&lt;/h2&gt;
 
 &lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6324" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;System package detection improvements&lt;/strong&gt;&lt;/a&gt; delivered through enhanced parsing for pacman output with prefix-based filtering and optimized Alpine package parsing (&lt;a href="https://github.com/ocaml/opam/issues/6324"&gt;#6324&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6362" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Platform-specific fixes&lt;/strong&gt;&lt;/a&gt; including OpenBSD &lt;code&gt;pkg_info&lt;/code&gt; command optimization by &lt;a href="https://github.com/semarie"&gt;@semarie&lt;/a&gt; and Alpine depexts test improvements (&lt;a href="https://github.com/ocaml/opam/issues/6362"&gt;#6362&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam/issues/6363"&gt;#6363&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6362" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Platform-specific fixes&lt;/strong&gt;&lt;/a&gt; including OpenBSD &lt;code&gt;pkg_info&lt;/code&gt; command optimization by &lt;a href="https://github.com/semarie"&gt;Sebastien Marie&lt;/a&gt; and Alpine depexts test improvements (&lt;a href="https://github.com/ocaml/opam/issues/6362"&gt;#6362&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam/issues/6363"&gt;#6363&lt;/a&gt;)&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6343" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Package pinning reliability&lt;/strong&gt;&lt;/a&gt; enhanced through fix preventing double pinning of packages in &lt;code&gt;./opam/opam&lt;/code&gt; directory structure by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam/issues/6343"&gt;#6343&lt;/a&gt;)&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6370" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Build infrastructure updates&lt;/strong&gt;&lt;/a&gt; including vendored dependency upgrades and CI workflow improvements for better test coverage (&lt;a href="https://github.com/ocaml/opam/issues/6370"&gt;#6370&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;

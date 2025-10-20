@@ -1,5 +1,70 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml-lsp.xml</id><title>ocaml/ocaml-lsp (Weekly)</title><updated>2025-10-12T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml-lsp.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml-lsp</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml-lsp/2025/week-41</id><title>Week 41, 2025: Bug reports for code lenses and symbol ranges in v1.23.0, discussion on LSP support for alternative build systems</title><updated>2025-10-12T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml-lsp.xml</id><title>ocaml/ocaml-lsp (Weekly)</title><updated>2025-10-19T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml-lsp.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml-lsp</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml-lsp/2025/week-42</id><title>Week 42, 2025: Three new PRs opened for autocompletion, metrics precision, and .merlin fallback behavior improvements</title><updated>2025-10-19T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+New PRs for labelled argument autocompletion, metrics precision, and .merlin fallback alongside ongoing MLX formatting work&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1564" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Labelled argument autocompletion&lt;/strong&gt;&lt;/a&gt; opened by &lt;a href="https://github.com/lessp"&gt;Tom Ekander&lt;/a&gt; adding &lt;code&gt;:&lt;/code&gt; as completion trigger and construct-based suggestions for function arguments (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1564"&gt;#1564&lt;/a&gt;), with &lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt;, &lt;a href="https://github.com/xvw"&gt;Xavier Van de Woestyne&lt;/a&gt;, and &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; discussing scope of trigger characters, usefulness in large codebases, and potential for configurable behavior&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1565" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Metrics timestamp precision&lt;/strong&gt;&lt;/a&gt; improved by &lt;a href="https://github.com/Tim-ats-d"&gt;Tim ats&lt;/a&gt; switching from &lt;code&gt;Unix.time&lt;/code&gt; to &lt;code&gt;Unix.gettimeofday&lt;/code&gt; for sub-second resolution in &lt;code&gt;view-metrics&lt;/code&gt; duration field (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1565"&gt;#1565&lt;/a&gt;), with &lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt; providing changelog formatting feedback&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1563" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;.merlin fallback behavior&lt;/strong&gt;&lt;/a&gt; enhanced by &lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt; for more natural fallback when no dune-project is found (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1563"&gt;#1563&lt;/a&gt;), addressing behavior described in &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1522"&gt;#1522&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1528" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;MLX file formatting&lt;/strong&gt;&lt;/a&gt; support continuing from &lt;a href="https://github.com/davesnx"&gt;David Sancho&lt;/a&gt; with ocamlformat-mlx integration for &lt;code&gt;.mlx&lt;/code&gt; files (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1528"&gt;#1528&lt;/a&gt;), ready for re-review&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1437" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Nix flake dependencies&lt;/strong&gt;&lt;/a&gt; updated automatically including merlin5_3 and nixpkgs overlays (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1437"&gt;#1437&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1210" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Stale PRs closed&lt;/strong&gt;&lt;/a&gt; including draft PR for configurable Merlin cache period (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1210"&gt;#1210&lt;/a&gt;) and type-annotate action fixes (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1048"&gt;#1048&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1052" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Merlin fork upstreaming&lt;/strong&gt;&lt;/a&gt; issue closed after completing monadic IO and Spawn integration work (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1052"&gt;#1052&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Three new PRs opened for autocompletion, metrics precision, and .merlin fallback behavior improvements</summary><published>2025-10-19T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml-lsp/2025/week-41</id><title>Week 41, 2025: Bug reports for code lenses and symbol ranges in v1.23.0, discussion on LSP support for alternative build systems</title><updated>2025-10-12T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

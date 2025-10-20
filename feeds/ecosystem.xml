@@ -1,5 +1,101 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/ecosystem.xml</id><title>OCaml Ecosystem (Weekly)</title><updated>2025-10-12T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/ecosystem.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Package repositories and community infrastructure</subtitle><entry><id>https://thicket.dev/groups/ecosystem/2025/week-41</id><title>Week 41, 2025: OCaml 5.4.0 released with coordinated ecosystem updates across opam-repository and ocaml.org</title><updated>2025-10-12T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/ecosystem.xml</id><title>OCaml Ecosystem (Weekly)</title><updated>2025-10-19T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/ecosystem.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Package repositories and community infrastructure</subtitle><entry><id>https://thicket.dev/groups/ecosystem/2025/week-42</id><title>Week 42, 2025: Package ecosystem activity with Rocq releases, Sail 0.20, ppxlib 0.37.0, and mobile UI improvements for ocaml.org</title><updated>2025-10-19T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/28722" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml 5.4 reference manual&lt;/strong&gt;&lt;/a&gt; update with improved native debugger documentation by &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/pull/28722"&gt;ocaml/opam-repository#28722&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/28713" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Sail 0.20&lt;/strong&gt;&lt;/a&gt; released with Rocq semantics implementation - core stepwise semantics now in Rocq, improved C++ backend support across 13 packages by &lt;a href="https://github.com/Alasdair"&gt;Alasdair Armstrong&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/pull/28713"&gt;ocaml/opam-repository#28713&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/28706" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Rocq 9.1.0 and 9.0.1&lt;/strong&gt;&lt;/a&gt; releases by &lt;a href="https://github.com/silene"&gt;Guillaume Melquiond&lt;/a&gt; bringing latest Coq fork updates (&lt;a href="https://github.com/ocaml/opam-repository/pull/28706"&gt;ocaml/opam-repository#28706&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/pull/28707"&gt;ocaml/opam-repository#28707&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/28686" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;ppxlib 0.37.0&lt;/strong&gt;&lt;/a&gt; released with ppxlib-tools by &lt;a href="https://github.com/NathanReb"&gt;Nathan Rebours&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/pull/28686"&gt;ocaml/opam-repository#28686&lt;/a&gt;), including compatibility fix for ppx_yojson (&lt;a href="https://github.com/ocaml/opam-repository/pull/28717"&gt;ocaml/opam-repository#28717&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/28178" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;lambdapi 3.0.0&lt;/strong&gt;&lt;/a&gt; released with new tactics (simplify, orelse, repeat, eval), string literal builtins, and websearch options by &lt;a href="https://github.com/fblanqui"&gt;Frédéric Blanqui&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/pull/28178"&gt;ocaml/opam-repository#28178&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/28714" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;miou 0.5.0&lt;/strong&gt;&lt;/a&gt; performance improvement - now uses poll(2)/ppoll(2) instead of select(3P) for better concurrency by &lt;a href="https://github.com/dinosaure"&gt;Calascibetta Romain&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/pull/28714"&gt;ocaml/opam-repository#28714&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/28709" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;domain-name 0.5.0&lt;/strong&gt;&lt;/a&gt; bug fix disallowing trailing hyphen (-) in host labels per RFC requirements by &lt;a href="https://github.com/hannesm"&gt;Hannes Mehnert&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/pull/28709"&gt;ocaml/opam-repository#28709&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/28712" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;ca-certs-nss 3.117&lt;/strong&gt;&lt;/a&gt; security update with latest Mozilla NSS X.509 trust anchors from 2025-10-03 by &lt;a href="https://github.com/hannesm"&gt;Hannes Mehnert&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/pull/28712"&gt;ocaml/opam-repository#28712&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/28534" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;coq-lsp 0.2.4+9.1&lt;/strong&gt;&lt;/a&gt; released by &lt;a href="https://github.com/ejgallego"&gt;Emilio Jesús Gallego Arias&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/pull/28534"&gt;ocaml/opam-repository#28534&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/pull/3369" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Mobile package page layout&lt;/strong&gt;&lt;/a&gt; improved by moving table of contents from right sidebar to mobile-friendly location, fixing space consumption issue on small screens by &lt;a href="https://github.com/psethwick"&gt;Seth Rider&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml.org/pull/3369"&gt;ocaml/ocaml.org#3369&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/pull/3372" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;ocaml.nvim Neovim plugin&lt;/strong&gt;&lt;/a&gt; announced providing advanced LSP features like typed holes navigation and semantic code movement (&lt;a href="https://github.com/ocaml/ocaml.org/pull/3372"&gt;ocaml/ocaml.org#3372&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/28706" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Package ecosystem growth&lt;/strong&gt;&lt;/a&gt; with 20 merged package updates in &lt;a href="https://github.com/ocaml/opam-repository"&gt;ocaml/opam-repository&lt;/a&gt; including releases for Rocq 9.x, Sail 0.20, ppxlib 0.37.0, and lambdapi 3.0.0 (&lt;a href="https://github.com/ocaml/opam-repository/pull/28706"&gt;ocaml/opam-repository#28706&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/pull/28713"&gt;ocaml/opam-repository#28713&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/pull/28686"&gt;ocaml/opam-repository#28686&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/pull/28178"&gt;ocaml/opam-repository#28178&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/pull/3369" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Website improvements&lt;/strong&gt;&lt;/a&gt; for &lt;a href="https://github.com/ocaml/ocaml.org"&gt;ocaml/ocaml.org&lt;/a&gt; with mobile UI fixes for package documentation pages and editor tooling announcements (&lt;a href="https://github.com/ocaml/ocaml.org/pull/3369"&gt;ocaml/ocaml.org#3369&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/pull/3372"&gt;ocaml/ocaml.org#3372&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/28722" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml 5.4 preparation&lt;/strong&gt;&lt;/a&gt; beginning with preview packages, reference manual documentation improvements, and ocamlformat support work (&lt;a href="https://github.com/ocaml/opam-repository/pull/28722"&gt;ocaml/opam-repository#28722&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/pull/28716"&gt;ocaml/opam-repository#28716&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/28712" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Security updates&lt;/strong&gt;&lt;/a&gt; with ca-certs-nss 3.117 and base package checksum verification improvements (&lt;a href="https://github.com/ocaml/opam-repository/pull/28712"&gt;ocaml/opam-repository#28712&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/pull/28718"&gt;ocaml/opam-repository#28718&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/pull/3352" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Community content&lt;/strong&gt;&lt;/a&gt; additions including Gospel ecosystem status update and ocaml.nvim plugin announcement on backstage blog (&lt;a href="https://github.com/ocaml/ocaml.org/pull/3352"&gt;ocaml/ocaml.org#3352&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/pull/3372"&gt;ocaml/ocaml.org#3372&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;26 contributors&lt;/strong&gt; actively participated across both repositories with package releases, UI improvements, and content additions&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/pull/3372" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Editor tooling ecosystem&lt;/strong&gt;&lt;/a&gt; expanded with &lt;a href="https://github.com/ocaml/ocaml.org/pull/3372"&gt;ocaml.nvim Neovim plugin&lt;/a&gt; announced on &lt;a href="https://github.com/ocaml/ocaml.org"&gt;ocaml/ocaml.org&lt;/a&gt;, complementing editor-related packages like coq-lsp 0.2.4+9.1 released in &lt;a href="https://github.com/ocaml/opam-repository"&gt;ocaml/opam-repository&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/pull/28534"&gt;ocaml/opam-repository#28534&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/pull/3369" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Package documentation improvements&lt;/strong&gt;&lt;/a&gt; with mobile UI fixes for package pages on &lt;a href="https://github.com/ocaml/ocaml.org"&gt;ocaml/ocaml.org&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml.org/pull/3369"&gt;ocaml/ocaml.org#3369&lt;/a&gt;) benefiting users browsing the 20+ packages released in &lt;a href="https://github.com/ocaml/opam-repository"&gt;ocaml/opam-repository&lt;/a&gt; this week&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/pull/3352" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Formal verification ecosystem&lt;/strong&gt;&lt;/a&gt; visibility with Gospel status update blog post on &lt;a href="https://github.com/ocaml/ocaml.org"&gt;ocaml/ocaml.org&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml.org/pull/3352"&gt;ocaml/ocaml.org#3352&lt;/a&gt;) highlighting tooling available through &lt;a href="https://github.com/ocaml/opam-repository"&gt;ocaml/opam-repository&lt;/a&gt;, coinciding with Rocq releases (&lt;a href="https://github.com/ocaml/opam-repository/pull/28706"&gt;ocaml/opam-repository#28706&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/pull/28707"&gt;ocaml/opam-repository#28707&lt;/a&gt;) and lambdapi 3.0.0 (&lt;a href="https://github.com/ocaml/opam-repository/pull/28178"&gt;ocaml/opam-repository#28178&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/28722" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml 5.4 preparation&lt;/strong&gt;&lt;/a&gt; coordination between reference manual updates in &lt;a href="https://github.com/ocaml/opam-repository"&gt;ocaml/opam-repository&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/pull/28722"&gt;ocaml/opam-repository#28722&lt;/a&gt;) and upcoming documentation needs for &lt;a href="https://github.com/ocaml/ocaml.org"&gt;ocaml/ocaml.org&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/28706" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Rocq ecosystem expansion&lt;/strong&gt;&lt;/a&gt; with releases of 9.0.1 and 9.1.0 (&lt;a href="https://github.com/ocaml/opam-repository/pull/28706"&gt;ocaml/opam-repository#28706&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/pull/28707"&gt;ocaml/opam-repository#28707&lt;/a&gt;), related packages like coq-lsp (&lt;a href="https://github.com/ocaml/opam-repository/pull/28534"&gt;ocaml/opam-repository#28534&lt;/a&gt;), and Sail integrating Rocq semantics (&lt;a href="https://github.com/ocaml/opam-repository/pull/28713"&gt;ocaml/opam-repository#28713&lt;/a&gt;) showing growing adoption of the Coq fork&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/28722" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml 5.4 preparation&lt;/strong&gt;&lt;/a&gt; beginning with preview packages, documentation updates including reference manual improvements (&lt;a href="https://github.com/ocaml/opam-repository/pull/28722"&gt;ocaml/opam-repository#28722&lt;/a&gt;), and compatibility work (&lt;a href="https://github.com/ocaml/opam-repository/pull/28716"&gt;ocaml/opam-repository#28716&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/pull/28719"&gt;ocaml/opam-repository#28719&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/pull/28733"&gt;ocaml/opam-repository#28733&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/28713" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Large coordinated releases&lt;/strong&gt;&lt;/a&gt; such as Sail's 13-package update (&lt;a href="https://github.com/ocaml/opam-repository/pull/28713"&gt;ocaml/opam-repository#28713&lt;/a&gt;) demonstrating ecosystem maturation and better coordination of multi-package projects&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/28712" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Security infrastructure maintenance&lt;/strong&gt;&lt;/a&gt; with regular updates to ca-certs-nss following Mozilla certificate releases (&lt;a href="https://github.com/ocaml/opam-repository/pull/28712"&gt;ocaml/opam-repository#28712&lt;/a&gt;) and checksum verification improvements (&lt;a href="https://github.com/ocaml/opam-repository/pull/28718"&gt;ocaml/opam-repository#28718&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/28723" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Domain-specific languages&lt;/strong&gt;&lt;/a&gt; reaching production readiness with Catala 1.0.0~beta for tax code (&lt;a href="https://github.com/ocaml/opam-repository/pull/28723"&gt;ocaml/opam-repository#28723&lt;/a&gt;) and Sail for processor instruction semantics (&lt;a href="https://github.com/ocaml/opam-repository/pull/28713"&gt;ocaml/opam-repository#28713&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/pull/3369" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Mobile-first design&lt;/strong&gt;&lt;/a&gt; refinements addressing usability issues on package documentation pages with responsive layout adjustments (&lt;a href="https://github.com/ocaml/ocaml.org/pull/3369"&gt;ocaml/ocaml.org#3369&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/pull/3372" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Editor tooling expansion&lt;/strong&gt;&lt;/a&gt; through new plugin releases targeting different editor ecosystems with Neovim support (&lt;a href="https://github.com/ocaml/ocaml.org/pull/3372"&gt;ocaml/ocaml.org#3372&lt;/a&gt;) following earlier Emacs support&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/pull/3352" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Formal verification accessibility&lt;/strong&gt;&lt;/a&gt; highlighted through Gospel ecosystem maturation (&lt;a href="https://github.com/ocaml/ocaml.org/pull/3352"&gt;ocaml/ocaml.org#3352&lt;/a&gt;), emphasizing practical testing tools available today while proof capabilities develop&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Package ecosystem activity with Rocq releases, Sail 0.20, ppxlib 0.37.0, and mobile UI improvements for ocaml.org</summary><published>2025-10-19T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/ecosystem/2025/week-41</id><title>Week 41, 2025: OCaml 5.4.0 released with coordinated ecosystem updates across opam-repository and ocaml.org</title><updated>2025-10-12T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

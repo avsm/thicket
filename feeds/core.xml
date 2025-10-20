@@ -1,5 +1,92 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/core.xml</id><title>OCaml Core (Weekly)</title><updated>2025-10-12T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/core.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Core OCaml language, compiler, and essential tooling</subtitle><entry><id>https://thicket.dev/groups/core/2025/week-41</id><title>Week 41, 2025: OCaml 5.4.0 release preparation merged with C API enhancements for domain-specific thread registration</title><updated>2025-10-12T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/core.xml</id><title>OCaml Core (Weekly)</title><updated>2025-10-19T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/core.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Core OCaml language, compiler, and essential tooling</subtitle><entry><id>https://thicket.dev/groups/core/2025/week-42</id><title>Week 42, 2025: BLAKE128 hash migration merged, thread safety improvements, and ongoing tuple projections RFC discussion</title><updated>2025-10-19T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/13913" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;BLAKE128 hash migration&lt;/strong&gt;&lt;/a&gt; for compiler CRCs replacing MD5 across all file formats (cmi, cmo, cmx, cmxs) and consistency checking by &lt;a href="https://github.com/lthls"&gt;Vincent Laviron&lt;/a&gt; in &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/13913"&gt;ocaml/ocaml#13913&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14275" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;New C API function&lt;/strong&gt;&lt;/a&gt; &lt;code&gt;caml_c_thread_register_in_domain&lt;/code&gt; for registering C threads in specific OCaml domains by &lt;a href="https://github.com/jacknojo"&gt;Jack Joergensen&lt;/a&gt; in &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14275"&gt;ocaml/ocaml#14275&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14255" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;TSan fixes&lt;/strong&gt;&lt;/a&gt; for C calls with many stack arguments affecting ARM64, POWER, RISC-V, s390x, and x86_64 architectures by &lt;a href="https://github.com/OlivierNicole"&gt;Olivier Nicole&lt;/a&gt; in &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14255"&gt;ocaml/ocaml#14255&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14034" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;FlexDLL build improvements&lt;/strong&gt;&lt;/a&gt; with new configuration options for MANIFEST_TOOL, RC (resource compiler), and FLEXLINKFLAGS, requiring FlexDLL &gt;= 0.44 by &lt;a href="https://github.com/MisterDA"&gt;Antonin Décimo&lt;/a&gt; in &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14034"&gt;ocaml/ocaml#14034&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14297" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Type checker determinism&lt;/strong&gt;&lt;/a&gt; improvements avoiding hash table iteration for types and terms by &lt;a href="https://github.com/lthls"&gt;Vincent Laviron&lt;/a&gt; in &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14297"&gt;ocaml/ocaml#14297&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14299"&gt;ocaml/ocaml#14299&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/13747" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Manual updates&lt;/strong&gt;&lt;/a&gt; including new native debugger chapter covering GDB and LLDB support by &lt;a href="https://github.com/tmcgilchrist"&gt;Tim McGilchrist&lt;/a&gt; in &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/13747"&gt;ocaml/ocaml#13747&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14293" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Runtime_events.Timestamp documentation&lt;/strong&gt;&lt;/a&gt; improvements clarifying timestamp precision and behavior by &lt;a href="https://github.com/raphael-proust"&gt;Raphaël Proust&lt;/a&gt; in &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14293"&gt;ocaml/ocaml#14293&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/13050" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Symbol naming changes&lt;/strong&gt;&lt;/a&gt; using &lt;code&gt;$&lt;/code&gt; instead of &lt;code&gt;.&lt;/code&gt; to separate module from identifiers in symbols by &lt;a href="https://github.com/tmcgilchrist"&gt;Tim McGilchrist&lt;/a&gt; in &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/13050"&gt;ocaml/ocaml#13050&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt;&lt;/strong&gt; merged twelve PRs including the BLAKE128 hash migration (&lt;a href="https://github.com/ocaml/ocaml/issues/13913"&gt;ocaml/ocaml#13913&lt;/a&gt;), thread safety improvements (&lt;a href="https://github.com/ocaml/ocaml/issues/14255"&gt;ocaml/ocaml#14255&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14275"&gt;ocaml/ocaml#14275&lt;/a&gt;), and FlexDLL build enhancements (&lt;a href="https://github.com/ocaml/ocaml/issues/14034"&gt;ocaml/ocaml#14034&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml/RFCs"&gt;ocaml/RFCs&lt;/a&gt;&lt;/strong&gt; continued discussion on tuple projections RFC (&lt;a href="https://github.com/ocaml/RFCs/pull/57"&gt;ocaml/RFCs#57&lt;/a&gt;) with focus on row-polymorphic tuples approach&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14291" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;New PRs&lt;/strong&gt;&lt;/a&gt; include &lt;a href="https://github.com/hannesm"&gt;Hannes Mehnert&lt;/a&gt; proposing to make Hashtbl seeded by default (&lt;a href="https://github.com/ocaml/ocaml/issues/14291"&gt;ocaml/ocaml#14291&lt;/a&gt;) and &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; addressing runtime memory safety in multiple areas (&lt;a href="https://github.com/ocaml/ocaml/issues/14303"&gt;ocaml/ocaml#14303&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14304"&gt;ocaml/ocaml#14304&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14305"&gt;ocaml/ocaml#14305&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14306"&gt;ocaml/ocaml#14306&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14275" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Runtime improvements&lt;/strong&gt;&lt;/a&gt; focused on thread safety with TSan fixes and new C API for domain-specific thread registration (&lt;a href="https://github.com/ocaml/ocaml/issues/14275"&gt;ocaml/ocaml#14275&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/12066" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;One-liner comment syntax&lt;/strong&gt;&lt;/a&gt; proposal by &lt;a href="https://github.com/mimoo"&gt;David Wong&lt;/a&gt; exploring the addition of single-line comment syntax to OCaml in &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/12066"&gt;ocaml/ocaml#12066&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/RFCs/pull/57" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Row-polymorphic tuples&lt;/strong&gt;&lt;/a&gt; debate in &lt;a href="https://github.com/ocaml/RFCs"&gt;ocaml/RFCs&lt;/a&gt; with &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt; suggesting separation into a separate RFC and &lt;a href="https://github.com/johnyob"&gt;Alistair&lt;/a&gt; clarifying that the current tuple projections RFC only discusses them as a future compatibility consideration (&lt;a href="https://github.com/ocaml/RFCs/pull/57"&gt;ocaml/RFCs#57&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14291" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Hashtbl seeded by default&lt;/strong&gt;&lt;/a&gt; proposal by &lt;a href="https://github.com/hannesm"&gt;Hannes Mehnert&lt;/a&gt; to improve security and prevent DoS attacks in &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14291"&gt;ocaml/ocaml#14291&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14306" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Runtime memory safety focus&lt;/strong&gt;&lt;/a&gt; with multiple PRs from &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; addressing race conditions and memory management in runtime components including minor GC (&lt;a href="https://github.com/ocaml/ocaml/issues/14306"&gt;ocaml/ocaml#14306&lt;/a&gt;), memprof (&lt;a href="https://github.com/ocaml/ocaml/issues/14304"&gt;ocaml/ocaml#14304&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14305"&gt;ocaml/ocaml#14305&lt;/a&gt;), and domain termination (&lt;a href="https://github.com/ocaml/ocaml/issues/14303"&gt;ocaml/ocaml#14303&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14255" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Thread sanitizer testing&lt;/strong&gt;&lt;/a&gt; becoming more comprehensive with &lt;a href="https://github.com/OlivierNicole"&gt;Olivier Nicole&lt;/a&gt; fixing bugs across multiple architectures (&lt;a href="https://github.com/ocaml/ocaml/issues/14255"&gt;ocaml/ocaml#14255&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14302"&gt;ocaml/ocaml#14302&lt;/a&gt;) and improving test coverage (&lt;a href="https://github.com/ocaml/ocaml/issues/14301"&gt;ocaml/ocaml#14301&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/13913" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Cryptographic hash migration&lt;/strong&gt;&lt;/a&gt; from MD5 to BLAKE128 reflecting modern security practices and performance considerations (&lt;a href="https://github.com/ocaml/ocaml/issues/13913"&gt;ocaml/ocaml#13913&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14034" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Build toolchain flexibility&lt;/strong&gt;&lt;/a&gt; improvements for Windows/FlexDLL enabling better compiler selection and cross-platform support (&lt;a href="https://github.com/ocaml/ocaml/issues/14034"&gt;ocaml/ocaml#14034&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14308"&gt;ocaml/ocaml#14308&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14297" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Compiler determinism&lt;/strong&gt;&lt;/a&gt; as a continued focus with hash table iteration being eliminated from type and term generation (&lt;a href="https://github.com/ocaml/ocaml/issues/14297"&gt;ocaml/ocaml#14297&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14299"&gt;ocaml/ocaml#14299&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>BLAKE128 hash migration merged, thread safety improvements, and ongoing tuple projections RFC discussion</summary><published>2025-10-19T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2025/week-41</id><title>Week 41, 2025: OCaml 5.4.0 release preparation merged with C API enhancements for domain-specific thread registration</title><updated>2025-10-12T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
@@ -4290,7 +4377,7 @@
 &lt;li&gt;&lt;strong class="achievement"&gt;Cross-platform compatibility&lt;/strong&gt; receiving increased attention with Windows API modernization and Unix platform improvements&lt;/li&gt;
 &lt;li&gt;&lt;strong class="achievement"&gt;Language design refinement&lt;/strong&gt; through community feedback on practical applications of new syntax features like raw identifiers&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Runtime improvements and bytecode optimization merged alongside language syntax discussions for raw identifiers</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2024/week-42</id><title>Week 42, 2024: Five PRs merged in ocaml/ocaml including new Thread.set_current_thread_name API and compiler improvements</title><updated>2025-10-15T01:09:20.649160+00:00</updated><content type="html">
+</content><link href="https://thicket.dev/"/><summary>Runtime improvements and bytecode optimization merged alongside language syntax discussions for raw identifiers</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2024/week-42</id><title>Week 42, 2024: Five PRs merged in ocaml/ocaml including new Thread.set_current_thread_name API and compiler improvements</title><updated>2025-10-20T06:38:44.207247+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
