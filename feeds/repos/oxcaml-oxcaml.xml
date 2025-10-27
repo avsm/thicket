@@ -1,5 +1,86 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml</id><title>oxcaml/oxcaml (Weekly)</title><updated>2025-10-19T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/oxcaml</subtitle><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2025/week-42</id><title>Week 42, 2025: Metaprogramming quotation fixes, type system improvements, and compiler debugger enhancements merged this week</title><updated>2025-10-19T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml</id><title>oxcaml/oxcaml (Weekly)</title><updated>2025-10-26T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/oxcaml</subtitle><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2025/week-43</id><title>Week 43, 2025: Runtime improvements for threading and GC control, mode system enhancements, and compiler bug fixes</title><updated>2025-10-26T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Runtime threading improvements, mode system refinements, and ongoing work on preemption, name mangling, and parsing features&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4881" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Preemption support&lt;/strong&gt;&lt;/a&gt; under development with 2500+ line draft PR affecting 62 files for concurrent execution control by &lt;a href="https://github.com/glittershark"&gt;Aspen Smith&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4881"&gt;#4881&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4850" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Name mangling scheme&lt;/strong&gt;&lt;/a&gt; in progress with reversible mangling for full module path reconstruction and demangling implementations for LLVM, Linux kernel, and binutils by &lt;a href="https://github.com/tmcgilchrist"&gt;Tim McGilchrist&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4850"&gt;#4850&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4781" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Crossing syntax parsing&lt;/strong&gt;&lt;/a&gt; adding &lt;code&gt;mod &lt;crossings&gt;&lt;/code&gt; support for per-value mode tracking with 1100+ line implementation by &lt;a href="https://github.com/zackbach"&gt;Zack Eisbach&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4781"&gt;#4781&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4020" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Mixed modules with non-values&lt;/strong&gt;&lt;/a&gt; allowing automatic reordering of module fields to support unboxed types across module boundaries by &lt;a href="https://github.com/jra4"&gt;James Rayman&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4020"&gt;#4020&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4901" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Effect primitive refactoring&lt;/strong&gt;&lt;/a&gt; to remove &lt;code&gt;Must_not_enter_gc&lt;/code&gt; module by making &lt;code&gt;%resume&lt;/code&gt; take continuation directly instead of unpacked fields by &lt;a href="https://github.com/glittershark"&gt;Aspen Smith&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4901"&gt;#4901&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4914" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Backup thread locking improvements&lt;/strong&gt;&lt;/a&gt; extending &lt;code&gt;caml_locking_scheme&lt;/code&gt; interface with better backup thread interactions for custom locking schemes by &lt;a href="https://github.com/stedolan"&gt;Stephen Dolan&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4914"&gt;#4914&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4906" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Quotation system fixes&lt;/strong&gt;&lt;/a&gt; addressing unification bugs in quote/splice handling for metaprogramming by &lt;a href="https://github.com/lpw25"&gt;Leo White&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4906"&gt;#4906&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4911"&gt;#4911&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4912"&gt;#4912&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4910" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Constructor quotation locks bug&lt;/strong&gt;&lt;/a&gt; fixing predef type checking to properly handle locally-defined constructors by &lt;a href="https://github.com/riaqn"&gt;Zesen Qian&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4910"&gt;#4910&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4905" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Frametable relocation optimization&lt;/strong&gt;&lt;/a&gt; proposing &lt;code&gt;.lrodata&lt;/code&gt; section placement to reduce text section size and prevent linker failures under default code model by &lt;a href="https://github.com/mshinwell"&gt;Mark Shinwell&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4905"&gt;#4905&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4920" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;CFG reducibility checking&lt;/strong&gt;&lt;/a&gt; and related terminator simplification improvements for backend optimization by &lt;a href="https://github.com/xclerc"&gt;Xavier Clerc&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4920"&gt;#4920&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4921"&gt;#4921&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4807"&gt;#4807&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4879"&gt;#4879&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4643" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Untagged int arrays&lt;/strong&gt;&lt;/a&gt; implementation adding &lt;code&gt;int8#&lt;/code&gt;, &lt;code&gt;int16#&lt;/code&gt;, and &lt;code&gt;int#&lt;/code&gt; array support with proper tag selection and indexing by &lt;a href="https://github.com/jra4"&gt;James Rayman&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4643"&gt;#4643&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;js&lt;em&gt;of&lt;/em&gt;ocaml integration&lt;/strong&gt; comprehensive test suite and CI updates for JavaScript backend testing by &lt;a href="https://github.com/jvanburen"&gt;Jacob Van Buren&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4753"&gt;#4753&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4908" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;CI runner upgrades&lt;/strong&gt;&lt;/a&gt; enabling larger build machines for faster compilation and test execution by &lt;a href="https://github.com/jvanburen"&gt;Jacob Van Buren&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4908"&gt;#4908&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4904" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;LLVM backend flag control&lt;/strong&gt;&lt;/a&gt; adding &lt;code&gt;-no-llvm-backend&lt;/code&gt; option for selective testing by &lt;a href="https://github.com/gretay-js"&gt;Greta Yorsh&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4904"&gt;#4904&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4812" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Primitive list generation&lt;/strong&gt;&lt;/a&gt; tool discussion about auto-generating comprehensive primitive documentation by &lt;a href="https://github.com/jra4"&gt;James Rayman&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4812"&gt;#4812&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4916" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Debug information layouts&lt;/strong&gt;&lt;/a&gt; improving runtime type representation for flattened arrays by &lt;a href="https://github.com/spiessimon"&gt;Simon Spies&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4916"&gt;#4916&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4776" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Slambda IR development&lt;/strong&gt;&lt;/a&gt; introducing static evaluation phase between translation and lambda with trivial initial implementation by &lt;a href="https://github.com/lukemaurer"&gt;Luke Maurer&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4776"&gt;#4776&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4919" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Mode system refinements&lt;/strong&gt;&lt;/a&gt; including hints for containing types, global/aliased implications, and &lt;code&gt;Lambda.layout&lt;/code&gt; usage by &lt;a href="https://github.com/dkalinichenko-js"&gt;@dkalinichenko-js&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4919"&gt;#4919&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4889"&gt;#4889&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4582"&gt;#4582&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4549"&gt;#4549&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4922" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Jkind subsumption test&lt;/strong&gt;&lt;/a&gt; reproducing cross-file bug for investigation by &lt;a href="https://github.com/glittershark"&gt;Aspen Smith&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4922"&gt;#4922&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4675" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Ikind system prototype&lt;/strong&gt;&lt;/a&gt; implementing new subsumption and mode crossing algorithms behind &lt;code&gt;-extension ikinds&lt;/code&gt; flag by &lt;a href="https://github.com/julesjacobs"&gt;@julesjacobs&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4675"&gt;#4675&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4924" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;VERSION file cleanup&lt;/strong&gt;&lt;/a&gt; removing installation dependency to match upstream OCaml by &lt;a href="https://github.com/dkalinichenko-js"&gt;@dkalinichenko-js&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4924"&gt;#4924&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4549" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Typeopt level preservation&lt;/strong&gt;&lt;/a&gt; fixing unintended type variable level changes affecting principal typing and nullability by &lt;a href="https://github.com/dkalinichenko-js"&gt;@dkalinichenko-js&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4549"&gt;#4549&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4925" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Lex directory removal&lt;/strong&gt;&lt;/a&gt; cleaning up unused lexer code and dependent tests by &lt;a href="https://github.com/jra4"&gt;James Rayman&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4925"&gt;#4925&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Runtime improvements for threading and GC control, mode system enhancements, and compiler bug fixes</summary><published>2025-10-26T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2025/week-42</id><title>Week 42, 2025: Metaprogramming quotation fixes, type system improvements, and compiler debugger enhancements merged this week</title><updated>2025-10-19T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

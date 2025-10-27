@@ -1,5 +1,71 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.xml</id><title>ocaml/ocaml (Weekly)</title><updated>2025-10-19T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml/2025/week-42</id><title>Week 42, 2025: Compiler hash migration to BLAKE128, thread safety improvements, and FlexDLL build enhancements</title><updated>2025-10-19T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.xml</id><title>ocaml/ocaml (Weekly)</title><updated>2025-10-26T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml/2025/week-43</id><title>Week 43, 2025: Eight PRs merged including memprof race condition fix, DWARF detection support, and `#show_constructor` type parameter fix</title><updated>2025-10-26T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Five new issues opened covering stdlib iarray oversights, manual page hierarchy, and compiler features; three issues resolved&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14320" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;New issue discussions&lt;/strong&gt;&lt;/a&gt; this week included &lt;a href="https://github.com/rossberg"&gt;Andreas Rossberg&lt;/a&gt; reporting stdlib oversights around iarray implementation (&lt;a href="https://github.com/ocaml/ocaml/issues/14320"&gt;#14320&lt;/a&gt;), &lt;a href="https://github.com/MisterDA"&gt;Antonin Décimo&lt;/a&gt; proposing to reverse page hierarchy order in manual page titles for better navigation (&lt;a href="https://github.com/ocaml/ocaml/issues/14318"&gt;#14318&lt;/a&gt;), and &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; requesting documentation for internal &lt;code&gt;Ctype.create_scope&lt;/code&gt; function (&lt;a href="https://github.com/ocaml/ocaml/issues/14316"&gt;#14316&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; opened feature request for &lt;a href="https://github.com/ocaml/ocaml/issues/14313" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;compiler support for static linking&lt;/strong&gt;&lt;/a&gt; of C dependencies (&lt;a href="https://github.com/ocaml/ocaml/issues/14313"&gt;#14313&lt;/a&gt;) with discussion about build system integration and cross-platform considerations&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14319" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;caml_shutdown segmentation fault&lt;/strong&gt;&lt;/a&gt; issue (&lt;a href="https://github.com/ocaml/ocaml/issues/14319"&gt;#14319&lt;/a&gt;) reported and resolved quickly by &lt;a href="https://github.com/rwmjones"&gt;@rwmjones&lt;/a&gt;, determined to be duplicate of earlier crash issue (&lt;a href="https://github.com/ocaml/ocaml/issues/14298"&gt;#14298&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14217" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Recursive functors&lt;/strong&gt;&lt;/a&gt; issue (&lt;a href="https://github.com/ocaml/ocaml/issues/14217"&gt;#14217&lt;/a&gt;) by &lt;a href="https://github.com/smuenzel"&gt;Stefan Muenzel&lt;/a&gt; received continued discussion about module aliases in recursive functor definitions&lt;/li&gt;
+&lt;li&gt;Discussion continued on &lt;a href="https://github.com/ocaml/ocaml/issues/14195" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;configurable domain stack sizes&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14195"&gt;#14195&lt;/a&gt;) by &lt;a href="https://github.com/dijkstracula"&gt;Nathan Taylor&lt;/a&gt; and &lt;strong class="achievement"&gt;parallel Sys calls hang&lt;/strong&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14278"&gt;#14278&lt;/a&gt;) by &lt;a href="https://github.com/jmid"&gt;Jan Midtgaard&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Feature request closed: &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt;'s proposal to allow &lt;code&gt;open (struct ... end)&lt;/code&gt; in mli files (&lt;a href="https://github.com/ocaml/ocaml/issues/13564"&gt;#13564&lt;/a&gt;) marked as stale&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14295" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Frame pointer tests&lt;/strong&gt;&lt;/a&gt; updated to normalize symbols for more reliable test results (&lt;a href="https://github.com/ocaml/ocaml/issues/14295"&gt;#14295&lt;/a&gt;) by &lt;a href="https://github.com/tmcgilchrist"&gt;Tim McGilchrist&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14312" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Changes file maintenance&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/zoggy"&gt;Zoggy&lt;/a&gt; fixed missing punctuation (&lt;a href="https://github.com/ocaml/ocaml/issues/14312"&gt;#14312&lt;/a&gt;) and &lt;a href="https://github.com/c-cube"&gt;Simon Cruanes&lt;/a&gt; added missing reviewers for earlier PR (&lt;a href="https://github.com/ocaml/ocaml/issues/14311"&gt;#14311&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Eight PRs merged including memprof race condition fix, DWARF detection support, and `#show_constructor` type parameter fix</summary><published>2025-10-26T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml/2025/week-42</id><title>Week 42, 2025: Compiler hash migration to BLAKE128, thread safety improvements, and FlexDLL build enhancements</title><updated>2025-10-19T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
