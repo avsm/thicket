@@ -1,5 +1,71 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-dune.xml</id><title>ocaml/dune (Weekly)</title><updated>2025-10-26T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-dune.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/dune</subtitle><entry><id>https://thicket.dev/repos/ocaml-dune/2025/week-43</id><title>Week 43, 2025: One Directory per Package feature added, Dune self-pinning implemented, Melange improvements, and multiple bug fixes</title><updated>2025-10-26T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-dune.xml</id><title>ocaml/dune (Weekly)</title><updated>2025-11-02T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-dune.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/dune</subtitle><entry><id>https://thicket.dev/repos/ocaml-dune/2025/week-44</id><title>Week 44, 2025: Package management improvements for portable lockdirs, Melange documentation overhaul, and cram test enhancements</title><updated>2025-11-02T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Active development on portable lockdirs, RPC system refactoring, cram test improvements, and OxCaml parameterized libraries&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/12666" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;New PRs opened&lt;/strong&gt;&lt;/a&gt; this week include &lt;code&gt;-H&lt;/code&gt; flag implementation for hidden modules by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/12666"&gt;#12666&lt;/a&gt;), improved cram test suggestions by &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/12663"&gt;#12663&lt;/a&gt;), setup scripts for cram tests (&lt;a href="https://github.com/ocaml/dune/issues/12650"&gt;#12650&lt;/a&gt;), cross-device link fix for Docker by &lt;a href="https://github.com/punchagan"&gt;Puneeth Chaganti&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/12649"&gt;#12649&lt;/a&gt;), and Windows exclusion from default portable lockdir platforms by &lt;a href="https://github.com/gridbugs"&gt;Stephen Sherratt&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/12654"&gt;#12654&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/12642" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Package management&lt;/strong&gt;&lt;/a&gt; work continues with &lt;a href="https://github.com/gridbugs"&gt;Stephen Sherratt&lt;/a&gt; leading multiple improvements including portable lockdir solver error deduplication (&lt;a href="https://github.com/ocaml/dune/issues/12642"&gt;#12642&lt;/a&gt;), platform-grouped output display (&lt;a href="https://github.com/ocaml/dune/issues/12620"&gt;#12620&lt;/a&gt;), package validation fixes (&lt;a href="https://github.com/ocaml/dune/issues/12640"&gt;#12640&lt;/a&gt;), and ocamlformat auto-relocking (&lt;a href="https://github.com/ocaml/dune/issues/12605"&gt;#12605&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/12655" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Cram test enhancements&lt;/strong&gt;&lt;/a&gt; delivered by &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; including conflict marker text handling (&lt;a href="https://github.com/ocaml/dune/issues/12655"&gt;#12655&lt;/a&gt;), terminology cleanup renaming &lt;code&gt;conflict&lt;/code&gt; to &lt;code&gt;conflict_marker&lt;/code&gt; (&lt;a href="https://github.com/ocaml/dune/issues/12651"&gt;#12651&lt;/a&gt;), and ongoing work on location tracking refactoring (&lt;a href="https://github.com/ocaml/dune/issues/12335"&gt;#12335&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/12657"&gt;#12657&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/12662" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Code quality improvements&lt;/strong&gt;&lt;/a&gt; merged including removal of &lt;code&gt;open!&lt;/code&gt; directive across 120 files by &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/12662"&gt;#12662&lt;/a&gt;), deletion of redundant RPC functions by &lt;a href="https://github.com/ElectreAAS"&gt;Ambre Austen Suhamy&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/12656"&gt;#12656&lt;/a&gt;), and dead code removal in Modules by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/12635"&gt;#12635&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/12631" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Melange support&lt;/strong&gt;&lt;/a&gt; advanced with &lt;a href="https://github.com/anmonteiro"&gt;Antonio Nuno Monteiro&lt;/a&gt; overhauling documentation for melange 1.0 (&lt;a href="https://github.com/ocaml/dune/issues/12631"&gt;#12631&lt;/a&gt;) and fixing &lt;code&gt;@all&lt;/code&gt; alias compilation (&lt;a href="https://github.com/ocaml/dune/issues/12628"&gt;#12628&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/12644" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Bug fixes&lt;/strong&gt;&lt;/a&gt; completed including virtual library implementation in top closure by &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/12644"&gt;#12644&lt;/a&gt;) resolving &lt;code&gt;dune build @check&lt;/code&gt; crashes&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/12632" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Infrastructure updates&lt;/strong&gt;&lt;/a&gt; merged with OxCaml CI migrated to Nix-based workflow (&lt;a href="https://github.com/ocaml/dune/issues/12632"&gt;#12632&lt;/a&gt;) and Dependabot updating GitHub Actions dependencies (&lt;a href="https://github.com/ocaml/dune/issues/12630"&gt;#12630&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/12604" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Ongoing development&lt;/strong&gt;&lt;/a&gt; includes RPC promotion fixes by &lt;a href="https://github.com/ElectreAAS"&gt;Ambre Austen Suhamy&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/12604"&gt;#12604&lt;/a&gt;), parameterized library instantiation by &lt;a href="https://github.com/art-w"&gt;@art-w&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/12561"&gt;#12561&lt;/a&gt;), Merlin file loading improvements by &lt;a href="https://github.com/Durbatuluk1701"&gt;Will Thomas&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/12621"&gt;#12621&lt;/a&gt;), and autolocking feature exploration by &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/12653"&gt;#12653&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Package management improvements for portable lockdirs, Melange documentation overhaul, and cram test enhancements</summary><published>2025-11-02T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-dune/2025/week-43</id><title>Week 43, 2025: One Directory per Package feature added, Dune self-pinning implemented, Melange improvements, and multiple bug fixes</title><updated>2025-10-26T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

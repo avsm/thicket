@@ -1,5 +1,78 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/multicore.xml</id><title>Multicore (Weekly)</title><updated>2025-10-26T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/multicore.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Multicore OCaml</subtitle><entry><id>https://thicket.dev/groups/multicore/2025/week-43</id><title>Week 43, 2025: Light activity week with continued API design work on socket options in eio</title><updated>2025-10-26T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/multicore.xml</id><title>Multicore (Weekly)</title><updated>2025-11-02T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/multicore.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Multicore OCaml</subtitle><entry><id>https://thicket.dev/groups/multicore/2025/week-44</id><title>Week 44, 2025: Quiet week with activity limited to picos: OCaml 5.4 support, ocamlformat upgrade, and adaptive backoff work</title><updated>2025-11-02T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/377" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml 5.4 compatibility&lt;/strong&gt;&lt;/a&gt; for benchmarks in &lt;a href="https://github.com/ocaml-multicore/picos"&gt;ocaml-multicore/picos&lt;/a&gt; with Docker image updated to &lt;code&gt;debian-ocaml-5.4&lt;/code&gt; (&lt;a href="https://github.com/ocaml-multicore/picos/issues/377"&gt;ocaml-multicore/picos#377&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Higher contention benchmarking&lt;/strong&gt; for mpscq with 8 adder threads added to test suite in &lt;a href="https://github.com/ocaml-multicore/picos"&gt;ocaml-multicore/picos&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/picos/commit/6aaf75fce822eddb9fa8c3632012ec95bb468297"&gt;6aaf75f&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/376" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;ocamlformat 0.28.1 upgrade&lt;/strong&gt;&lt;/a&gt; with reformatting applied across 22 files in &lt;a href="https://github.com/ocaml-multicore/picos"&gt;ocaml-multicore/picos&lt;/a&gt; affecting 248 additions and 289 deletions (&lt;a href="https://github.com/ocaml-multicore/picos/issues/376"&gt;ocaml-multicore/picos#376&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong class="achievement"&gt;Single active repository&lt;/strong&gt;: Only &lt;a href="https://github.com/ocaml-multicore/picos"&gt;ocaml-multicore/picos&lt;/a&gt; showed activity this week with 3 PRs (2 merged, 1 draft)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/377" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Tooling focus&lt;/strong&gt;&lt;/a&gt;: Work concentrated on infrastructure updates including OCaml 5.4 support (&lt;a href="https://github.com/ocaml-multicore/picos/issues/377"&gt;ocaml-multicore/picos#377&lt;/a&gt;) and code formatting standardization (&lt;a href="https://github.com/ocaml-multicore/picos/issues/376"&gt;ocaml-multicore/picos#376&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/375" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Performance optimization&lt;/strong&gt;&lt;/a&gt;: Continued development on synchronization primitives with adaptive backoff for mpmcq (&lt;a href="https://github.com/ocaml-multicore/picos/issues/375"&gt;ocaml-multicore/picos#375&lt;/a&gt;) and expanded contention testing (&lt;a href="https://github.com/ocaml-multicore/picos/commit/6aaf75fce822eddb9fa8c3632012ec95bb468297"&gt;6aaf75f&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Quiet period&lt;/strong&gt;: Eight repositories (&lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/domainslib"&gt;ocaml-multicore/domainslib&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/ocaml-uring"&gt;ocaml-multicore/ocaml-uring&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/meio"&gt;ocaml-multicore/meio&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/saturn"&gt;ocaml-multicore/saturn&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/eio-trace"&gt;ocaml-multicore/eio-trace&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/kcas"&gt;ocaml-multicore/kcas&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/ocaml-iomux"&gt;ocaml-multicore/ocaml-iomux&lt;/a&gt;) had no recorded activity&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong class="achievement"&gt;Performance benchmarking focus&lt;/strong&gt; in &lt;a href="https://github.com/ocaml-multicore/picos"&gt;ocaml-multicore/picos&lt;/a&gt; with expanded mpscq contention testing now including 8 adder threads to stress test multi-producer scenarios (&lt;a href="https://github.com/ocaml-multicore/picos/commit/6aaf75fce822eddb9fa8c3632012ec95bb468297"&gt;6aaf75f&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/377" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml 5.4 adoption&lt;/strong&gt;&lt;/a&gt; with tooling and infrastructure in &lt;a href="https://github.com/ocaml-multicore/picos"&gt;ocaml-multicore/picos&lt;/a&gt; updated to support the latest OCaml release (&lt;a href="https://github.com/ocaml-multicore/picos/issues/377"&gt;ocaml-multicore/picos#377&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/375" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Synchronization primitive optimization&lt;/strong&gt;&lt;/a&gt; continuing in &lt;a href="https://github.com/ocaml-multicore/picos"&gt;ocaml-multicore/picos&lt;/a&gt; with both adaptive backoff for mpmcq (&lt;a href="https://github.com/ocaml-multicore/picos/issues/375"&gt;ocaml-multicore/picos#375&lt;/a&gt;) and counter-based condition variables (&lt;a href="https://github.com/ocaml-multicore/picos/issues/371"&gt;ocaml-multicore/picos#371&lt;/a&gt;) under development&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Quiet week with activity limited to picos: OCaml 5.4 support, ocamlformat upgrade, and adaptive backoff work</summary><published>2025-11-02T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/multicore/2025/week-43</id><title>Week 43, 2025: Light activity week with continued API design work on socket options in eio</title><updated>2025-10-26T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

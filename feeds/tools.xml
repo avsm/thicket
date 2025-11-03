@@ -1,5 +1,110 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/tools.xml</id><title>OCaml Tools (Weekly)</title><updated>2025-10-26T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/tools.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Development tools and build systems</subtitle><entry><id>https://thicket.dev/groups/tools/2025/week-43</id><title>Week 43, 2025: Package directory isolation and Dune 3.21.0 prep, opam cmdliner vendoring, LSP code lens config, js_of_ocaml OCaml 5.4 support</title><updated>2025-10-26T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/tools.xml</id><title>OCaml Tools (Weekly)</title><updated>2025-11-02T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/tools.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Development tools and build systems</subtitle><entry><id>https://thicket.dev/groups/tools/2025/week-44</id><title>Week 44, 2025: Portable lockdir improvements in Dune, opam 2.5.0-alpha1 fixes, and tooling updates across the ecosystem</title><updated>2025-11-02T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/12620" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Dune portable lockdirs&lt;/strong&gt;&lt;/a&gt; now display dependency solutions grouped by platform with clear indication of common and platform-specific packages (&lt;a href="https://github.com/ocaml/dune/issues/12620"&gt;ocaml/dune#12620&lt;/a&gt;), deduplicate solver errors across platforms (&lt;a href="https://github.com/ocaml/dune/issues/12642"&gt;ocaml/dune#12642&lt;/a&gt;), and correctly validate packages for multiple platforms (&lt;a href="https://github.com/ocaml/dune/issues/12640"&gt;ocaml/dune#12640&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/12605" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Dune ocamlformat auto-relocking&lt;/strong&gt;&lt;/a&gt; triggers when &lt;code&gt;.ocamlformat&lt;/code&gt; version changes to keep dev tools synchronized (&lt;a href="https://github.com/ocaml/dune/issues/12605"&gt;ocaml/dune#12605&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/12628" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Dune Melange support&lt;/strong&gt;&lt;/a&gt; improved with module compilation added to &lt;code&gt;@all&lt;/code&gt; alias in libraries (&lt;a href="https://github.com/ocaml/dune/issues/12628"&gt;ocaml/dune#12628&lt;/a&gt;) and complete documentation overhaul for melange 1.0 (&lt;a href="https://github.com/ocaml/dune/issues/12631"&gt;ocaml/dune#12631&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/12655" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Dune cram test enhancements&lt;/strong&gt;&lt;/a&gt; allow text after conflict markers and renamed option from &lt;code&gt;(conflict error|ignore)&lt;/code&gt; to &lt;code&gt;(conflict_markers error|ignore)&lt;/code&gt; (&lt;a href="https://github.com/ocaml/dune/issues/12655"&gt;ocaml/dune#12655&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/12651"&gt;ocaml/dune#12651&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/12644" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Dune virtual library bug fix&lt;/strong&gt;&lt;/a&gt; for &lt;code&gt;dune build @check&lt;/code&gt; crashes when virtual modules were present (&lt;a href="https://github.com/ocaml/dune/issues/12644"&gt;ocaml/dune#12644&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/merlin/issues/1978" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Merlin completion fix&lt;/strong&gt;&lt;/a&gt; for inlined record labels in pattern matching contexts (&lt;a href="https://github.com/ocaml/merlin/issues/1978"&gt;ocaml/merlin#1978&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1568" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml-LSP configuration parameter&lt;/strong&gt;&lt;/a&gt; renamed from &lt;code&gt;for_nested_bindings&lt;/code&gt; to &lt;code&gt;forNestedBindings&lt;/code&gt; for VSCode compatibility (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1568"&gt;ocaml/ocaml-lsp#1568&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;js&lt;em&gt;of&lt;/em&gt;ocaml exit code handling&lt;/strong&gt; fixed in &lt;code&gt;jsoo_minify&lt;/code&gt; and &lt;code&gt;wasmoo_link_wasm&lt;/code&gt; tools to properly propagate error codes (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2121"&gt;ocsigen/js&lt;em&gt;of&lt;/em&gt;ocaml#2121&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;js&lt;em&gt;of&lt;/em&gt;ocaml test suite&lt;/strong&gt; concurrency issue resolved with file lock and cleanup to prevent race conditions (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2123"&gt;ocsigen/js&lt;em&gt;of&lt;/em&gt;ocaml#2123&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong class="achievement"&gt;Dune&lt;/strong&gt; led activity with portable lockdir improvements including platform-grouped output, solver error deduplication, and validation fixes, plus Melange documentation overhaul and cram test enhancements across &lt;a href="https://github.com/ocaml/dune"&gt;15+ merged PRs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6765" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Opam 2.5.0-alpha1&lt;/strong&gt;&lt;/a&gt; release quality improvements addressing build system issues on OpenBSD (&lt;a href="https://github.com/ocaml/opam/issues/6765"&gt;ocaml/opam#6765&lt;/a&gt;) and AppArmor compatibility on Debian (&lt;a href="https://github.com/ocaml/opam/issues/6764"&gt;ocaml/opam#6764&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/merlin/issues/1984" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Tooling maintenance&lt;/strong&gt;&lt;/a&gt; wave across the ecosystem with OCamlformat upgrades to 0.28.1 in &lt;a href="https://github.com/ocaml/merlin/issues/1984"&gt;ocaml/merlin#1984&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1569"&gt;ocaml/ocaml-lsp#1569&lt;/a&gt;, and &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2119"&gt;ocsigen/js&lt;em&gt;of&lt;/em&gt;ocaml#2119&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/merlin/issues/1978" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Editor support&lt;/strong&gt;&lt;/a&gt; improvements with Merlin fixing completion for inlined record labels (&lt;a href="https://github.com/ocaml/merlin/issues/1978"&gt;ocaml/merlin#1978&lt;/a&gt;) and OCaml-LSP renaming configuration parameter for better VSCode integration (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1568"&gt;ocaml/ocaml-lsp#1568&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;No activity&lt;/strong&gt; recorded for ocaml/ocamlfind, ocaml/odoc, ocaml/opam-file-format, and ocaml-dune/spawn repositories this week&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/merlin/issues/1984" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCamlformat 0.28.1 migration&lt;/strong&gt;&lt;/a&gt; coordinated across multiple tools with upgrades merged in &lt;a href="https://github.com/ocaml/merlin/issues/1984"&gt;ocaml/merlin#1984&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1569"&gt;ocaml/ocaml-lsp#1569&lt;/a&gt;, and &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2119"&gt;ocsigen/js&lt;em&gt;of&lt;/em&gt;ocaml#2119&lt;/a&gt;, with &lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt; leading the Merlin and OCaml-LSP updates&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/merlin/issues/1978" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Merlin completion improvements&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/ocaml/merlin/issues/1978"&gt;ocaml/merlin#1978&lt;/a&gt; benefit OCaml-LSP users through Merlin's integration as the analysis engine&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/12621" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Dune and Merlin integration&lt;/strong&gt;&lt;/a&gt; work ongoing with &lt;a href="https://github.com/Durbatuluk1701"&gt;Will Thomas&lt;/a&gt; improving Merlin file loading for multi-executable projects in &lt;a href="https://github.com/ocaml/dune/issues/12621"&gt;ocaml/dune#12621&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/12632" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OxCaml integration&lt;/strong&gt;&lt;/a&gt; spanning multiple projects with Dune CI migration (&lt;a href="https://github.com/ocaml/dune/issues/12632"&gt;ocaml/dune#12632&lt;/a&gt;), parameterized library work (&lt;a href="https://github.com/ocaml/dune/issues/12561"&gt;ocaml/dune#12561&lt;/a&gt;), and js&lt;em&gt;of&lt;/em&gt;ocaml Oxcaml support development (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2105"&gt;ocsigen/js&lt;em&gt;of&lt;/em&gt;ocaml#2105&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6765" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Opam and Dune package management&lt;/strong&gt;&lt;/a&gt; development with Dune's portable lockdir feature improving cross-platform dependency handling while opam prepares for 2.5.0 release with better platform compatibility (&lt;a href="https://github.com/ocaml/opam/issues/6765"&gt;ocaml/opam#6765&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/12641"&gt;ocaml/dune#12641&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/12648" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Dune lockdir renaming proposal&lt;/strong&gt;&lt;/a&gt; sparked debate in &lt;a href="https://github.com/ocaml/dune/issues/12648"&gt;ocaml/dune#12648&lt;/a&gt; about renaming &lt;code&gt;dune.lock&lt;/code&gt; to &lt;code&gt;.dune-solution-cache&lt;/code&gt; to discourage version control commits, with mixed community opinions on the approach&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/11868" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Dune portable lockdir UX&lt;/strong&gt;&lt;/a&gt; discussed in &lt;a href="https://github.com/ocaml/dune/issues/11868"&gt;ocaml/dune#11868&lt;/a&gt; with &lt;a href="https://github.com/gridbugs"&gt;Stephen Sherratt&lt;/a&gt; and &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; debating default platform sets and whether to enable portable lockdirs by default&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/12660" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Dune RPC forwarding EINVAL error&lt;/strong&gt;&lt;/a&gt; reported by &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; in &lt;a href="https://github.com/ocaml/dune/issues/12660"&gt;ocaml/dune#12660&lt;/a&gt; with &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; investigating and creating speculative fix in &lt;a href="https://github.com/ocaml/dune/issues/12665"&gt;ocaml/dune#12665&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6762" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Opam 2.5.0-alpha1 release issues&lt;/strong&gt;&lt;/a&gt; identified by &lt;a href="https://github.com/madroach"&gt;@madroach&lt;/a&gt; in &lt;a href="https://github.com/ocaml/opam/issues/6762"&gt;ocaml/opam#6762&lt;/a&gt; where -full tarball incorrectly attempts network downloads despite including vendored dependencies, breaking OpenBSD's network-restricted build phase&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6763" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Opam AppArmor compatibility&lt;/strong&gt;&lt;/a&gt; reported by &lt;a href="https://github.com/yakobowski"&gt;Boris Yakobowski&lt;/a&gt; in &lt;a href="https://github.com/ocaml/opam/issues/6763"&gt;ocaml/opam#6763&lt;/a&gt; where abi/4.0 doesn't exist on Debian bookworm, with discussion about fallback strategies for older AppArmor versions&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6759" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Opam build configuration gaps&lt;/strong&gt;&lt;/a&gt; highlighted by &lt;a href="https://github.com/ccxcz"&gt;@ccxcz&lt;/a&gt; in &lt;a href="https://github.com/ocaml/opam/issues/6759"&gt;ocaml/opam#6759&lt;/a&gt; where ./configure --bindir option is not respected by opam-installer&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1568" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml-LSP configuration capabilities&lt;/strong&gt;&lt;/a&gt; discussed in &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1568"&gt;ocaml/ocaml-lsp#1568&lt;/a&gt; with &lt;a href="https://github.com/xvw"&gt;Xavier Van de Woestyne&lt;/a&gt; questioning whether capabilities are necessary for configuration parameters&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/merlin/issues/1983" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Merlin documentation bug&lt;/strong&gt;&lt;/a&gt; reported by &lt;a href="https://github.com/liam923"&gt;Liam Stevenson&lt;/a&gt; in &lt;a href="https://github.com/ocaml/merlin/issues/1983"&gt;ocaml/merlin#1983&lt;/a&gt; regarding document command concatenating documentation for consecutive variant and record entries&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/12620" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Package management maturation&lt;/strong&gt;&lt;/a&gt; evident in Dune with refined portable lockdir implementation including platform grouping (&lt;a href="https://github.com/ocaml/dune/issues/12620"&gt;ocaml/dune#12620&lt;/a&gt;), error deduplication (&lt;a href="https://github.com/ocaml/dune/issues/12642"&gt;ocaml/dune#12642&lt;/a&gt;), and auto-relocking (&lt;a href="https://github.com/ocaml/dune/issues/12605"&gt;ocaml/dune#12605&lt;/a&gt;), while opam prepares 2.5.0 release with platform compatibility fixes&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Developer experience improvements&lt;/strong&gt; across tools with better error messages, enhanced documentation structure, improved IDE integration, and tooling reliability fixes in exit code handling and test infrastructure&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Coordinated tooling updates&lt;/strong&gt; with OCamlformat 0.28.1 adoption across Merlin, OCaml-LSP, and js&lt;em&gt;of&lt;/em&gt;ocaml demonstrating ecosystem-wide maintenance coordination&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6763" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Platform compatibility focus&lt;/strong&gt;&lt;/a&gt; addressing edge cases in AppArmor support (&lt;a href="https://github.com/ocaml/opam/issues/6763"&gt;ocaml/opam#6763&lt;/a&gt;), OpenBSD builds (&lt;a href="https://github.com/ocaml/opam/issues/6762"&gt;ocaml/opam#6762&lt;/a&gt;), and Windows platform handling (&lt;a href="https://github.com/ocaml/dune/issues/12641"&gt;ocaml/dune#12641&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/12632" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OxCaml integration progress&lt;/strong&gt;&lt;/a&gt; spanning Dune CI (&lt;a href="https://github.com/ocaml/dune/issues/12632"&gt;ocaml/dune#12632&lt;/a&gt;), parameterized libraries (&lt;a href="https://github.com/ocaml/dune/issues/12561"&gt;ocaml/dune#12561&lt;/a&gt;), and js&lt;em&gt;of&lt;/em&gt;ocaml Oxcaml support (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2105"&gt;ocsigen/js&lt;em&gt;of&lt;/em&gt;ocaml#2105&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Cram test ecosystem expansion&lt;/strong&gt; in Dune with conflict marker handling, setup scripts, location tracking, and better suggestions showing investment in testing infrastructure&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2108" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Wasm backend development&lt;/strong&gt;&lt;/a&gt; continuing in js&lt;em&gt;of&lt;/em&gt;ocaml with runtime feature parity work and optimization consistency between JavaScript and WebAssembly backends (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2108"&gt;ocsigen/js&lt;em&gt;of&lt;/em&gt;ocaml#2108&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Portable lockdir improvements in Dune, opam 2.5.0-alpha1 fixes, and tooling updates across the ecosystem</summary><published>2025-11-02T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/tools/2025/week-43</id><title>Week 43, 2025: Package directory isolation and Dune 3.21.0 prep, opam cmdliner vendoring, LSP code lens config, js_of_ocaml OCaml 5.4 support</title><updated>2025-10-26T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

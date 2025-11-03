@@ -1,5 +1,82 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml</id><title>oxcaml/oxcaml (Weekly)</title><updated>2025-10-26T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/oxcaml</subtitle><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2025/week-43</id><title>Week 43, 2025: Runtime improvements for threading and GC control, mode system enhancements, and compiler bug fixes</title><updated>2025-10-26T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml</id><title>oxcaml/oxcaml (Weekly)</title><updated>2025-11-02T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/oxcaml</subtitle><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2025/week-44</id><title>Week 44, 2025: Thread naming support, Flambda2 type system improvements, CI infrastructure upgrades, and DWARF debugging enhancements</title><updated>2025-11-02T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Flambda2 type system work, modality system improvements, DWARF debugging advances, and parameterized modules refinements&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4390" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Flambda2 type system enhancement&lt;/strong&gt;&lt;/a&gt; with relations stored as projections in type kinds, enabling precise tracking during n-way joins for the match-in-match heuristic by &lt;a href="https://github.com/bclement-ocp"&gt;Basile Clément&lt;/a&gt; with extensive review from &lt;a href="https://github.com/lthls"&gt;Vincent Laviron&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4390"&gt;#4390&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4375" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Profiling infrastructure&lt;/strong&gt;&lt;/a&gt; for speculative inlining added by &lt;a href="https://github.com/bclement-ocp"&gt;Basile Clément&lt;/a&gt; to better understand compilation behavior (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4375"&gt;#4375&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/13171" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Domain index exposure&lt;/strong&gt;&lt;/a&gt; proposed by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; adding &lt;code&gt;Domain.self_index&lt;/code&gt; API for per-domain array elements to avoid contention, referencing upstream &lt;a href="https://github.com/ocaml/ocaml/issues/13171"&gt;ocaml/ocaml#13171&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4950"&gt;#4950&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4947" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Linkenv refactoring&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/mshinwell"&gt;Mark Shinwell&lt;/a&gt; removing global state to simplify code and support future work, under review by &lt;a href="https://github.com/Skepfyr"&gt;Jack Rickard&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4947"&gt;#4947&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4949" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Natdynlink performance&lt;/strong&gt;&lt;/a&gt; improvement using skiplist instead of linked list for module GC roots by &lt;a href="https://github.com/NicolasT"&gt;Nicolas Trangez&lt;/a&gt;, enabling efficient duplicate checking during dynamic linking (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4949"&gt;#4949&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4948" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Parameterized modules segfault fix&lt;/strong&gt;&lt;/a&gt; disallowing aliases to parameter modules to prevent signature substitution issues until transparent ascription is available (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4948"&gt;#4948&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4916" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;DWARF debugging advances&lt;/strong&gt;&lt;/a&gt; including layout improvements for runtime type information by &lt;a href="https://github.com/spiessimon"&gt;Simon Spies&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4916"&gt;#4916&lt;/a&gt;), shape constructors for unknown types (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4928"&gt;#4928&lt;/a&gt;), function sections support (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4934"&gt;#4934&lt;/a&gt;), and phantom variable support by &lt;a href="https://github.com/mshinwell"&gt;Mark Shinwell&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4595"&gt;#4595&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4889" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Modality system work&lt;/strong&gt;&lt;/a&gt; with &lt;code&gt;@@ global&lt;/code&gt; implying &lt;code&gt;@@ aliased&lt;/code&gt; for borrowing soundness by &lt;a href="https://github.com/dkalinichenko-js"&gt;@dkalinichenko-js&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4889"&gt;#4889&lt;/a&gt;), mod bound parsing refactoring (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4931"&gt;#4931&lt;/a&gt;), mod contended inference (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4929"&gt;#4929&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4944"&gt;#4944&lt;/a&gt;), exceptions crossing statefulness and visibility (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4891"&gt;#4891&lt;/a&gt;), and stdlib stateless annotations (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4839"&gt;#4839&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4930"&gt;#4930&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4937" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Stdlib local annotations&lt;/strong&gt;&lt;/a&gt; for printing functions by &lt;a href="https://github.com/tkoukpari"&gt;@tkoukpari&lt;/a&gt; across multiple iterations (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4937"&gt;#4937&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4938"&gt;#4938&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4943"&gt;#4943&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4020" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Mixed modules progress&lt;/strong&gt;&lt;/a&gt; with automatic field reordering by &lt;a href="https://github.com/jra4"&gt;James Rayman&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4020"&gt;#4020&lt;/a&gt;) and unsigned divmod work (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4936"&gt;#4936&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4582" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Layout system improvements&lt;/strong&gt;&lt;/a&gt; using &lt;code&gt;Lambda.layout&lt;/code&gt; for &lt;code&gt;transl_exp&lt;/code&gt; and preserving levels in &lt;code&gt;Typeopt.value_kind&lt;/code&gt; by &lt;a href="https://github.com/dkalinichenko-js"&gt;@dkalinichenko-js&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4582"&gt;#4582&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4549"&gt;#4549&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4922" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Type system testing&lt;/strong&gt;&lt;/a&gt; adding jkind subsumption across files test by &lt;a href="https://github.com/glittershark"&gt;Aspen Smith&lt;/a&gt; with review from &lt;a href="https://github.com/liam923"&gt;Liam Stevenson&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4922"&gt;#4922&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4932" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Backend optimizations&lt;/strong&gt;&lt;/a&gt; including CFG peephole rules for neutral elements (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4932"&gt;#4932&lt;/a&gt;), float value propagation (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4879"&gt;#4879&lt;/a&gt;), terminator simplification extensions (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4807"&gt;#4807&lt;/a&gt;), and CFG reducibility work by &lt;a href="https://github.com/xclerc"&gt;Xavier Clerc&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4920"&gt;#4920&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4921"&gt;#4921&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4850" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Name mangling scheme&lt;/strong&gt;&lt;/a&gt; development by &lt;a href="https://github.com/tmcgilchrist"&gt;Tim McGilchrist&lt;/a&gt; enabling reversible demangling with full module paths for improved debugging (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4850"&gt;#4850&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4881" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Preemption support&lt;/strong&gt;&lt;/a&gt; ongoing work by &lt;a href="https://github.com/glittershark"&gt;Aspen Smith&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4881"&gt;#4881&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4939" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Runtime improvements&lt;/strong&gt;&lt;/a&gt; including memprof configuration on major heap by &lt;a href="https://github.com/stedolan"&gt;Stephen Dolan&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4939"&gt;#4939&lt;/a&gt;) and to_cmm illegal reordering prevention by &lt;a href="https://github.com/Gbury"&gt;Guillaume Bury&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4941"&gt;#4941&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4942" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;CI metrics enhancement&lt;/strong&gt;&lt;/a&gt; for compiler profile data collection by &lt;a href="https://github.com/xclerc"&gt;Xavier Clerc&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4942"&gt;#4942&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4905" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Frametables configuration&lt;/strong&gt;&lt;/a&gt; option for &lt;code&gt;.lrodata&lt;/code&gt; placement to handle large code sizes by &lt;a href="https://github.com/mshinwell"&gt;Mark Shinwell&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4905"&gt;#4905&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4374" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Match-in-match heuristic&lt;/strong&gt;&lt;/a&gt; development with improved naked immediate meets by &lt;a href="https://github.com/bclement-ocp"&gt;Basile Clément&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4374"&gt;#4374&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4394"&gt;#4394&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Thread naming support, Flambda2 type system improvements, CI infrastructure upgrades, and DWARF debugging enhancements</summary><published>2025-11-02T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2025/week-43</id><title>Week 43, 2025: Runtime improvements for threading and GC control, mode system enhancements, and compiler bug fixes</title><updated>2025-10-26T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

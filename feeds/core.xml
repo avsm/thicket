@@ -1,5 +1,93 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/core.xml</id><title>OCaml Core (Weekly)</title><updated>2025-10-26T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/core.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Core OCaml language, compiler, and essential tooling</subtitle><entry><id>https://thicket.dev/groups/core/2025/week-43</id><title>Week 43, 2025: Eight PRs merged in ocaml/ocaml fixing runtime race conditions, improving debugging support, and enhancing developer tooling</title><updated>2025-10-26T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/core.xml</id><title>OCaml Core (Weekly)</title><updated>2025-11-02T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/core.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Core OCaml language, compiler, and essential tooling</subtitle><entry><id>https://thicket.dev/groups/core/2025/week-44</id><title>Week 44, 2025: Type system improvements, TSan fixes, and renewed RFC discussion on implicit source positions</title><updated>2025-11-02T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14327" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Existential types&lt;/strong&gt;&lt;/a&gt; now supported in as-patterns, completing previous work and lifting restrictions on retyping patterns containing existentials in &lt;a href="https://github.com/ocaml/ocaml/issues/14327"&gt;ocaml/ocaml#14327&lt;/a&gt; by &lt;a href="https://github.com/t6s"&gt;Takafumi Saikawa&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14037" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Recursive module error messages&lt;/strong&gt;&lt;/a&gt; improved with abstract environment for printing &lt;code&gt;-short-paths&lt;/code&gt; and added error message for types considered abstract during recursive module checking in &lt;a href="https://github.com/ocaml/ocaml/issues/14037"&gt;ocaml/ocaml#14037&lt;/a&gt; by &lt;a href="https://github.com/brandonzstride"&gt;Brandon Stride&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14322" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Pattern constraint handling&lt;/strong&gt;&lt;/a&gt; cleaned up by removing legacy hacks, with behavior change that &lt;code&gt;let rec (_ as x) = ...&lt;/code&gt; is now consistently rejected instead of being treated as &lt;code&gt;let rec x = ...&lt;/code&gt; in &lt;a href="https://github.com/ocaml/ocaml/issues/14322"&gt;ocaml/ocaml#14322&lt;/a&gt; by &lt;a href="https://github.com/lthls"&gt;Vincent Laviron&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14331" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Type-level scope documentation&lt;/strong&gt;&lt;/a&gt; added with detailed explanation of &lt;code&gt;Ctype.create_scope&lt;/code&gt; and enforcement of &lt;code&gt;current_level &lt;= generic_level&lt;/code&gt; invariant in &lt;a href="https://github.com/ocaml/ocaml/issues/14331"&gt;ocaml/ocaml#14331&lt;/a&gt; by &lt;a href="https://github.com/garrigue"&gt;Jacques Garrigue&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14332" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;TSan instrumentation&lt;/strong&gt;&lt;/a&gt; fixed to properly instrument subexpressions and shared heap operations, addressing race detection gaps in &lt;a href="https://github.com/ocaml/ocaml/issues/14332"&gt;ocaml/ocaml#14332&lt;/a&gt; and &lt;a href="https://github.com/ocaml/ocaml/issues/14335"&gt;ocaml/ocaml#14335&lt;/a&gt; by &lt;a href="https://github.com/lthls"&gt;Vincent Laviron&lt;/a&gt; and &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14328" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Dune build support&lt;/strong&gt;&lt;/a&gt; restored with fixes for label reordering and iarray availability in OCaml 5.4 in &lt;a href="https://github.com/ocaml/ocaml/issues/14328"&gt;ocaml/ocaml#14328&lt;/a&gt; by &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong class="achievement"&gt;Primary focus&lt;/strong&gt; on type system precision and thread safety improvements across &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt; with 6 PRs merged and 4 new PRs opened for review&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14327" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Type system work&lt;/strong&gt;&lt;/a&gt; delivered existential type support in as-patterns (&lt;a href="https://github.com/ocaml/ocaml/issues/14327"&gt;ocaml/ocaml#14327&lt;/a&gt;), pattern constraint cleanup (&lt;a href="https://github.com/ocaml/ocaml/issues/14322"&gt;ocaml/ocaml#14322&lt;/a&gt;), and scope level enforcement (&lt;a href="https://github.com/ocaml/ocaml/issues/14331"&gt;ocaml/ocaml#14331&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14332" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Thread safety&lt;/strong&gt;&lt;/a&gt; improvements through TSan instrumentation fixes (&lt;a href="https://github.com/ocaml/ocaml/issues/14332"&gt;ocaml/ocaml#14332&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14335"&gt;ocaml/ocaml#14335&lt;/a&gt;) and atomic class cache accesses under review (&lt;a href="https://github.com/ocaml/ocaml/issues/14333"&gt;ocaml/ocaml#14333&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/RFCs/pull/52" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;RFC activity&lt;/strong&gt;&lt;/a&gt; on &lt;a href="https://github.com/ocaml/RFCs"&gt;ocaml/RFCs&lt;/a&gt; with renewed discussion on implicit source positions (&lt;a href="https://github.com/ocaml/RFCs/pull/52"&gt;ocaml/RFCs#52&lt;/a&gt;) for call tracing functionality&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14324" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;GC improvements&lt;/strong&gt;&lt;/a&gt; initiated with meta-issue tracking pacing logic changes (&lt;a href="https://github.com/ocaml/ocaml/issues/14324"&gt;ocaml/ocaml#14324&lt;/a&gt;) and work accounting fixes under review (&lt;a href="https://github.com/ocaml/ocaml/issues/14329"&gt;ocaml/ocaml#14329&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14328" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Developer tooling&lt;/strong&gt;&lt;/a&gt; enhanced through dune build restoration (&lt;a href="https://github.com/ocaml/ocaml/issues/14328"&gt;ocaml/ocaml#14328&lt;/a&gt;), better error messages (&lt;a href="https://github.com/ocaml/ocaml/issues/14037"&gt;ocaml/ocaml#14037&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14330"&gt;ocaml/ocaml#14330&lt;/a&gt;), and internal API documentation (&lt;a href="https://github.com/ocaml/ocaml/issues/14331"&gt;ocaml/ocaml#14331&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Community engagement&lt;/strong&gt; from 12 contributors including core team members from Inria, OCamlPro, and academic institutions&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14324" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;GC pacing logic&lt;/strong&gt;&lt;/a&gt; meta-issue opened by &lt;a href="https://github.com/damiendoligez"&gt;Damien Doligez&lt;/a&gt; to track changes and improvements to garbage collection work accounting in &lt;a href="https://github.com/ocaml/ocaml/issues/14324"&gt;ocaml/ocaml#14324&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/RFCs/pull/52" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Implicit source positions&lt;/strong&gt;&lt;/a&gt; RFC discussion renewed by &lt;a href="https://github.com/MisterDA"&gt;Antonin Décimo&lt;/a&gt; for call tracing functionality in &lt;a href="https://github.com/ocaml/RFCs/pull/52"&gt;ocaml/RFCs#52&lt;/a&gt;, proposing &lt;code&gt;loc:[%call_pos]&lt;/code&gt; syntax for automatic call site position tracking useful for monadic bind chains, testing frameworks, and error reporting&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14323" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Dynlink error handling&lt;/strong&gt;&lt;/a&gt; discussion initiated by &lt;a href="https://github.com/lefessan"&gt;Fabrice Le Fessant&lt;/a&gt; proposing dlclose on error to prevent resource leaks in &lt;a href="https://github.com/ocaml/ocaml/issues/14323"&gt;ocaml/ocaml#14323&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14334" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;TSan race detection&lt;/strong&gt;&lt;/a&gt; revealed issue in tests/parallel/churn leading to investigation in &lt;a href="https://github.com/ocaml/ocaml/issues/14334"&gt;ocaml/ocaml#14334&lt;/a&gt; by &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14332" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Thread safety focus&lt;/strong&gt;&lt;/a&gt; continues with TSan instrumentation improvements (&lt;a href="https://github.com/ocaml/ocaml/issues/14332"&gt;ocaml/ocaml#14332&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14335"&gt;ocaml/ocaml#14335&lt;/a&gt;), race detection fixes (&lt;a href="https://github.com/ocaml/ocaml/issues/14334"&gt;ocaml/ocaml#14334&lt;/a&gt;), and atomic class cache work (&lt;a href="https://github.com/ocaml/ocaml/issues/14333"&gt;ocaml/ocaml#14333&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14331" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Type system refinement&lt;/strong&gt;&lt;/a&gt; advancing through scope enforcement (&lt;a href="https://github.com/ocaml/ocaml/issues/14331"&gt;ocaml/ocaml#14331&lt;/a&gt;), existential type support (&lt;a href="https://github.com/ocaml/ocaml/issues/14327"&gt;ocaml/ocaml#14327&lt;/a&gt;), pattern constraint cleanup (&lt;a href="https://github.com/ocaml/ocaml/issues/14322"&gt;ocaml/ocaml#14322&lt;/a&gt;), and polymorphic variable handling (&lt;a href="https://github.com/ocaml/ocaml/issues/14325"&gt;ocaml/ocaml#14325&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14037" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Developer experience&lt;/strong&gt;&lt;/a&gt; improvements through better error messages (&lt;a href="https://github.com/ocaml/ocaml/issues/14037"&gt;ocaml/ocaml#14037&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14330"&gt;ocaml/ocaml#14330&lt;/a&gt;), build system fixes (&lt;a href="https://github.com/ocaml/ocaml/issues/14328"&gt;ocaml/ocaml#14328&lt;/a&gt;), and documentation of internal APIs (&lt;a href="https://github.com/ocaml/ocaml/issues/14331"&gt;ocaml/ocaml#14331&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14324" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;GC optimization&lt;/strong&gt;&lt;/a&gt; work emerging with meta-issue for pacing logic (&lt;a href="https://github.com/ocaml/ocaml/issues/14324"&gt;ocaml/ocaml#14324&lt;/a&gt;) and work accounting fixes (&lt;a href="https://github.com/ocaml/ocaml/issues/14329"&gt;ocaml/ocaml#14329&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Type system improvements, TSan fixes, and renewed RFC discussion on implicit source positions</summary><published>2025-11-02T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2025/week-43</id><title>Week 43, 2025: Eight PRs merged in ocaml/ocaml fixing runtime race conditions, improving debugging support, and enhancing developer tooling</title><updated>2025-10-26T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
@@ -4453,7 +4541,7 @@
 &lt;li&gt;&lt;strong class="achievement"&gt;Cross-platform compatibility&lt;/strong&gt; receiving increased attention with Windows API modernization and Unix platform improvements&lt;/li&gt;
 &lt;li&gt;&lt;strong class="achievement"&gt;Language design refinement&lt;/strong&gt; through community feedback on practical applications of new syntax features like raw identifiers&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Runtime improvements and bytecode optimization merged alongside language syntax discussions for raw identifiers</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2024/week-42</id><title>Week 42, 2024: Five PRs merged in ocaml/ocaml including new Thread.set_current_thread_name API and compiler improvements</title><updated>2025-10-27T07:43:37.664100+00:00</updated><content type="html">
+</content><link href="https://thicket.dev/"/><summary>Runtime improvements and bytecode optimization merged alongside language syntax discussions for raw identifiers</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2024/week-42</id><title>Week 42, 2024: Five PRs merged in ocaml/ocaml including new Thread.set_current_thread_name API and compiler improvements</title><updated>2025-11-03T08:39:29.518765+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
