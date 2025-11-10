@@ -1,5 +1,99 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/oxcaml.xml</id><title>OxCaml (Weekly)</title><updated>2025-11-02T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/oxcaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Oxidised OCaml</subtitle><entry><id>https://thicket.dev/groups/oxcaml/2025/week-44</id><title>Week 44, 2025: Compiler improvements with thread naming, Flambda2 type system advances, debugging infrastructure, and package maintenance</title><updated>2025-11-02T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/oxcaml.xml</id><title>OxCaml (Weekly)</title><updated>2025-11-09T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/oxcaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Oxidised OCaml</subtitle><entry><id>https://thicket.dev/groups/oxcaml/2025/week-45</id><title>Week 45, 2025: Mode system maturation, SIMD expansion, and performance optimizations across compiler and tooling with 37 PRs merged.</title><updated>2025-11-09T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4964" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;F16C and FMA SIMD intrinsics&lt;/strong&gt;&lt;/a&gt; added with new &lt;code&gt;Float16x8&lt;/code&gt;, &lt;code&gt;Float16x16&lt;/code&gt;, and &lt;code&gt;Float16x32&lt;/code&gt; vector types for half-precision floating-point operations, plus fused multiply-add support in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4964"&gt;oxcaml/oxcaml#4964&lt;/a&gt; by &lt;a href="https://github.com/TheNumbat"&gt;Max Slater&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4950" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Domain index API&lt;/strong&gt;&lt;/a&gt; exposed via &lt;code&gt;Domain.self_index()&lt;/code&gt; to get a unique integer identifier for the current domain, in range [0; N-1] where N is the peak number of simultaneously running domains in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4950"&gt;oxcaml/oxcaml#4950&lt;/a&gt; by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4959" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Thread-local storage primitive&lt;/strong&gt;&lt;/a&gt; &lt;code&gt;%tls_get&lt;/code&gt; added for accessing thread-local state blocks, complementing the existing domain-local state in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4959"&gt;oxcaml/oxcaml#4959&lt;/a&gt; by &lt;a href="https://github.com/TheNumbat"&gt;Max Slater&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4729" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Untagged char range patterns&lt;/strong&gt;&lt;/a&gt; now supported (e.g., &lt;code&gt;#'a'..#'z'&lt;/code&gt;) with improved match exhaustion checking for small integers and unboxed ints in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4729"&gt;oxcaml/oxcaml#4729&lt;/a&gt; by &lt;a href="https://github.com/jra4"&gt;James Rayman&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/193" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Short-paths graph construction&lt;/strong&gt;&lt;/a&gt; in Merlin no longer forces expensive substitutions, addressing performance issues in large modules especially with ppx_template in &lt;a href="https://github.com/oxcaml/merlin/issues/193"&gt;oxcaml/merlin#193&lt;/a&gt; by &lt;a href="https://github.com/liam923"&gt;Liam Stevenson&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/194" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Parser generation&lt;/strong&gt;&lt;/a&gt; in Merlin now uses &lt;code&gt;--lalr&lt;/code&gt; flag for menhir invocations, matching the compiler's configuration for improved parser performance in &lt;a href="https://github.com/oxcaml/merlin/issues/194"&gt;oxcaml/merlin#194&lt;/a&gt; by &lt;a href="https://github.com/liam923"&gt;Liam Stevenson&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/195" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Index caching&lt;/strong&gt;&lt;/a&gt; in Merlin refactored to use lazy evaluation, with the index buffer only computed when queries actually need it in &lt;a href="https://github.com/oxcaml/merlin/issues/195"&gt;oxcaml/merlin#195&lt;/a&gt; by &lt;a href="https://github.com/liam923"&gt;Liam Stevenson&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4830" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Unix module local annotations&lt;/strong&gt;&lt;/a&gt; added to parameters in functions like &lt;code&gt;execv&lt;/code&gt;, &lt;code&gt;execve&lt;/code&gt;, &lt;code&gt;openfile&lt;/code&gt;, &lt;code&gt;read&lt;/code&gt;, &lt;code&gt;write&lt;/code&gt;, &lt;code&gt;stat&lt;/code&gt;, &lt;code&gt;lstat&lt;/code&gt;, and many file operations to support locality modes in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4830"&gt;oxcaml/oxcaml#4830&lt;/a&gt; by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4869" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Quiet flag for ocamldebug&lt;/strong&gt;&lt;/a&gt; (&lt;code&gt;-quiet&lt;/code&gt;) suppresses printing while executing initialization files, useful for cleaner startup in scripts in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4869"&gt;oxcaml/oxcaml#4869&lt;/a&gt; by &lt;a href="https://github.com/jbachurski"&gt;Jakub Bachurski&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4958" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Locking scheme version&lt;/strong&gt;&lt;/a&gt; added to track runtime locking protocol changes in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4958"&gt;oxcaml/oxcaml#4958&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4943" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Stdlib local annotations&lt;/strong&gt;&lt;/a&gt; now printed for standard library functions to improve visibility of locality mode constraints in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4943"&gt;oxcaml/oxcaml#4943&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4949" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Skiplist for natdynlink roots&lt;/strong&gt;&lt;/a&gt; in the runtime improves performance of dynamic linking in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4949"&gt;oxcaml/oxcaml#4949&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong class="achievement"&gt;37 PRs merged&lt;/strong&gt; across &lt;a href="https://github.com/oxcaml/oxcaml"&gt;oxcaml/oxcaml&lt;/a&gt; (34 PRs) and &lt;a href="https://github.com/oxcaml/merlin"&gt;oxcaml/merlin&lt;/a&gt; (3 PRs) with 17 new PRs opened in oxcaml/oxcaml&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4984" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Mode system maturation&lt;/strong&gt;&lt;/a&gt; was the primary focus with &lt;a href="https://github.com/riaqn"&gt;Zesen Qian&lt;/a&gt; leading 11 merged PRs covering legacy syntax removal (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4984"&gt;oxcaml/oxcaml#4984&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4968"&gt;oxcaml/oxcaml#4968&lt;/a&gt;), improved error messages (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4979"&gt;oxcaml/oxcaml#4979&lt;/a&gt;), and mode compilation (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4792"&gt;oxcaml/oxcaml#4792&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4964" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;SIMD capabilities expanded&lt;/strong&gt;&lt;/a&gt; with F16C/FMA support (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4964"&gt;oxcaml/oxcaml#4964&lt;/a&gt;) and new WIP PRs for generalized memory operands (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4988"&gt;oxcaml/oxcaml#4988&lt;/a&gt;) and cast improvements (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4987"&gt;oxcaml/oxcaml#4987&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4973" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Performance optimization&lt;/strong&gt;&lt;/a&gt; was a cross-repository theme with &lt;a href="https://github.com/xclerc"&gt;Xavier Clerc&lt;/a&gt; opening 5 WIP PRs on x86 peephole optimizations (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4973"&gt;oxcaml/oxcaml#4973&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4975"&gt;oxcaml/oxcaml#4975&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4977"&gt;oxcaml/oxcaml#4977&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4985"&gt;oxcaml/oxcaml#4985&lt;/a&gt;) and &lt;a href="https://github.com/liam923"&gt;Liam Stevenson&lt;/a&gt; improving Merlin's type-checking performance (&lt;a href="https://github.com/oxcaml/merlin/issues/193"&gt;oxcaml/merlin#193&lt;/a&gt;) and making module finding lazy (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4970"&gt;oxcaml/oxcaml#4970&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4785" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Type system and jkinds&lt;/strong&gt;&lt;/a&gt; work included adding levels to sort variables (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4785"&gt;oxcaml/oxcaml#4785&lt;/a&gt;), fixing &lt;code&gt;or_null&lt;/code&gt; with default optional arguments (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4953"&gt;oxcaml/oxcaml#4953&lt;/a&gt;), and exceptions crossing statefulness (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4891"&gt;oxcaml/oxcaml#4891&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4830" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Locality mode annotations&lt;/strong&gt;&lt;/a&gt; continued spreading through the standard library with Unix module coverage (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4830"&gt;oxcaml/oxcaml#4830&lt;/a&gt;) and improved printing support (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4943"&gt;oxcaml/oxcaml#4943&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4970" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Performance optimization collaboration&lt;/strong&gt;&lt;/a&gt; with &lt;a href="https://github.com/liam923"&gt;Liam Stevenson&lt;/a&gt; contributing lazy evaluation improvements to both &lt;a href="https://github.com/oxcaml/oxcaml"&gt;oxcaml/oxcaml&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4970"&gt;oxcaml/oxcaml#4970&lt;/a&gt; for lazy module finding) and &lt;a href="https://github.com/oxcaml/merlin"&gt;oxcaml/merlin&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/merlin/issues/193"&gt;oxcaml/merlin#193&lt;/a&gt; for lazy short-paths, &lt;a href="https://github.com/oxcaml/merlin/issues/195"&gt;oxcaml/merlin#195&lt;/a&gt; for lazy indexing)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/194" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Merlin alignment with compiler&lt;/strong&gt;&lt;/a&gt; through parser generation flag matching in &lt;a href="https://github.com/oxcaml/merlin/issues/194"&gt;oxcaml/merlin#194&lt;/a&gt;, bringing Merlin's menhir configuration in line with the oxcaml compiler&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/merlin/issues/1990" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Upstream backporting&lt;/strong&gt;&lt;/a&gt; from &lt;a href="https://github.com/ocaml/merlin"&gt;ocaml/merlin&lt;/a&gt; continuing with &lt;a href="https://github.com/ocaml/merlin/issues/1990"&gt;ocaml/merlin#1990&lt;/a&gt; and &lt;a href="https://github.com/ocaml/merlin/issues/1991"&gt;ocaml/merlin#1991&lt;/a&gt; being backported to oxcaml/merlin in &lt;a href="https://github.com/oxcaml/merlin/issues/195"&gt;oxcaml/merlin#195&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4792" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Mode system improvements&lt;/strong&gt;&lt;/a&gt; in the compiler (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4792"&gt;oxcaml/oxcaml#4792&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4984"&gt;oxcaml/oxcaml#4984&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4968"&gt;oxcaml/oxcaml#4968&lt;/a&gt;) will require corresponding updates in Merlin for proper IDE support&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4984" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Mode system stabilization&lt;/strong&gt;&lt;/a&gt; with migration away from legacy syntax (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4984"&gt;oxcaml/oxcaml#4984&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4968"&gt;oxcaml/oxcaml#4968&lt;/a&gt;), improved error messages (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4979"&gt;oxcaml/oxcaml#4979&lt;/a&gt;), and better tooling integration (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4943"&gt;oxcaml/oxcaml#4943&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/193" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Lazy evaluation patterns&lt;/strong&gt;&lt;/a&gt; being applied systematically across the codebase for performance gains in short-paths (&lt;a href="https://github.com/oxcaml/merlin/issues/193"&gt;oxcaml/merlin#193&lt;/a&gt;), module finding (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4970"&gt;oxcaml/oxcaml#4970&lt;/a&gt;), and indexing (&lt;a href="https://github.com/oxcaml/merlin/issues/195"&gt;oxcaml/merlin#195&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4964" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;SIMD instruction set expansion&lt;/strong&gt;&lt;/a&gt; continuing with F16C/FMA support (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4964"&gt;oxcaml/oxcaml#4964&lt;/a&gt;) and ongoing work on memory operands (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4988"&gt;oxcaml/oxcaml#4988&lt;/a&gt;) and type conversions (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4987"&gt;oxcaml/oxcaml#4987&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4973" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Compiler optimization infrastructure&lt;/strong&gt;&lt;/a&gt; being built out with peephole optimization framework (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4973"&gt;oxcaml/oxcaml#4973&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4975"&gt;oxcaml/oxcaml#4975&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4977"&gt;oxcaml/oxcaml#4977&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4985"&gt;oxcaml/oxcaml#4985&lt;/a&gt;) and runtime improvements (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4949"&gt;oxcaml/oxcaml#4949&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4830" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Locality mode adoption&lt;/strong&gt;&lt;/a&gt; spreading through standard library APIs with Unix module coverage (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4830"&gt;oxcaml/oxcaml#4830&lt;/a&gt;) and enhanced visibility through annotation printing (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4943"&gt;oxcaml/oxcaml#4943&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Mode system maturation, SIMD expansion, and performance optimizations across compiler and tooling with 37 PRs merged.</summary><published>2025-11-09T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/oxcaml/2025/week-44</id><title>Week 44, 2025: Compiler improvements with thread naming, Flambda2 type system advances, debugging infrastructure, and package maintenance</title><updated>2025-11-02T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
@@ -2849,7 +2943,7 @@
 &lt;li&gt;&lt;strong class="achievement"&gt;Performance optimization&lt;/strong&gt; focus on instruction selection, register allocation, and runtime efficiency improvements across multiple commits&lt;/li&gt;
 &lt;li&gt;&lt;strong class="achievement"&gt;Code organization&lt;/strong&gt; improvements with better separation of target-specific and generic compiler components for maintainability&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Major compiler backend refactoring in oxcaml/oxcaml with new instruction selection code and type system advances</summary><published>2025-04-06T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/oxcaml/2025/week-13</id><title>Week 13, 2025: Major development focus on oxcaml compiler with 35 commits introducing portable continuations and ARM64 enhancements, plus Merlin OCaml integration update</title><updated>2025-11-03T08:39:30.016783+00:00</updated><content type="html">
+</content><link href="https://thicket.dev/"/><summary>Major compiler backend refactoring in oxcaml/oxcaml with new instruction selection code and type system advances</summary><published>2025-04-06T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/oxcaml/2025/week-13</id><title>Week 13, 2025: Major development focus on oxcaml compiler with 35 commits introducing portable continuations and ARM64 enhancements, plus Merlin OCaml integration update</title><updated>2025-11-10T08:07:33.602998+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

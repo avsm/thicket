@@ -1,5 +1,69 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml</id><title>oxcaml/oxcaml (Weekly)</title><updated>2025-11-02T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/oxcaml</subtitle><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2025/week-44</id><title>Week 44, 2025: Thread naming support, Flambda2 type system improvements, CI infrastructure upgrades, and DWARF debugging enhancements</title><updated>2025-11-02T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml</id><title>oxcaml/oxcaml (Weekly)</title><updated>2025-11-09T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/oxcaml</subtitle><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2025/week-45</id><title>Week 45, 2025: Significant progress on modes, SIMD support, and Unix module annotations with 34 PRs merged and 17 new PRs opened.</title><updated>2025-11-09T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+17 new PRs opened including SIMD enhancements and peephole optimizations, with 34 PRs merged covering modes, quotations, and tooling.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4987" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;New PRs opened&lt;/strong&gt;&lt;/a&gt; this week include &lt;a href="https://github.com/oxcaml/oxcaml/issues/4987"&gt;#4987&lt;/a&gt; and &lt;a href="https://github.com/oxcaml/oxcaml/issues/4988"&gt;#4988&lt;/a&gt; for SIMD improvements (stop sign-extending small int casts, generalize memory operands), &lt;a href="https://github.com/oxcaml/oxcaml/issues/4982"&gt;#4982&lt;/a&gt; for a new &lt;code&gt;sharable&lt;/code&gt; mode, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4983"&gt;#4983&lt;/a&gt; to move &lt;code&gt;share_context&lt;/code&gt; to mode hints, and several WIP PRs from &lt;a href="https://github.com/xclerc"&gt;Xavier Clerc&lt;/a&gt; on &lt;strong class="achievement"&gt;x86 peephole optimizations&lt;/strong&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4973"&gt;#4973&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4975"&gt;#4975&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4977"&gt;#4977&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4985"&gt;#4985&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4792" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Mode system improvements&lt;/strong&gt;&lt;/a&gt; were a major theme with &lt;a href="https://github.com/riaqn"&gt;Zesen Qian&lt;/a&gt; contributing &lt;a href="https://github.com/oxcaml/oxcaml/issues/4792"&gt;#4792&lt;/a&gt; (convert mode to constant in cmi), &lt;a href="https://github.com/oxcaml/oxcaml/issues/4984"&gt;#4984&lt;/a&gt; (disallow legacy mode syntax in comprehension), &lt;a href="https://github.com/oxcaml/oxcaml/issues/4968"&gt;#4968&lt;/a&gt; (compiler no longer prints old mode/modality syntax), &lt;a href="https://github.com/oxcaml/oxcaml/issues/4979"&gt;#4979&lt;/a&gt; (remove excessive parentheses in mode error hints), and &lt;a href="https://github.com/oxcaml/oxcaml/issues/4978"&gt;#4978&lt;/a&gt; (add missing Skip hints for monadic modes)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4974" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Quotations and splicing&lt;/strong&gt;&lt;/a&gt; saw fixes with &lt;a href="https://github.com/jbachurski"&gt;Jakub Bachurski&lt;/a&gt; landing &lt;a href="https://github.com/oxcaml/oxcaml/issues/4974"&gt;#4974&lt;/a&gt; for inclusion checks with quotes and splices, &lt;a href="https://github.com/lpw25"&gt;Leo White&lt;/a&gt; fixing quotation unification in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4906"&gt;#4906&lt;/a&gt;, and &lt;a href="https://github.com/riaqn"&gt;Zesen Qian&lt;/a&gt; fixing constructor quotation locks in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4910"&gt;#4910&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4970" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Compiler internals&lt;/strong&gt;&lt;/a&gt; improved with &lt;a href="https://github.com/liam923"&gt;Liam Stevenson&lt;/a&gt; making module finding lazy in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4970"&gt;#4970&lt;/a&gt;, &lt;a href="https://github.com/mshinwell"&gt;Mark Shinwell&lt;/a&gt; removing global state from Linkenv in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4947"&gt;#4947&lt;/a&gt;, and &lt;a href="https://github.com/lukemaurer"&gt;Luke Maurer&lt;/a&gt; fixing a segfault by disallowing aliases to parameter modules in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4948"&gt;#4948&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4785" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Type system and jkinds&lt;/strong&gt;&lt;/a&gt; work included &lt;a href="https://github.com/Dreian"&gt;Andrej Ivašković&lt;/a&gt; adding levels to sort variables in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4785"&gt;#4785&lt;/a&gt;, &lt;a href="https://github.com/dkalinichenko-js"&gt;Dmitrii Kalinichenko&lt;/a&gt; fixing &lt;code&gt;or_null&lt;/code&gt; with default optional arguments in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4953"&gt;#4953&lt;/a&gt; and landing &lt;a href="https://github.com/oxcaml/oxcaml/issues/4891"&gt;#4891&lt;/a&gt; for exceptions crossing statefulness and visibility&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4954" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Documentation and tooling&lt;/strong&gt;&lt;/a&gt; updates included &lt;a href="https://github.com/TheNumbat"&gt;Max Slater&lt;/a&gt; fixing tutorial typos in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4954"&gt;#4954&lt;/a&gt; and &lt;a href="https://github.com/oxcaml/oxcaml/issues/4969"&gt;#4969&lt;/a&gt;, &lt;a href="https://github.com/riaqn"&gt;Zesen Qian&lt;/a&gt; rewording allocation hints in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4957"&gt;#4957&lt;/a&gt;, and &lt;a href="https://github.com/xclerc"&gt;Xavier Clerc&lt;/a&gt; restoring oxcaml-metrics push in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4967"&gt;#4967&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Significant progress on modes, SIMD support, and Unix module annotations with 34 PRs merged and 17 new PRs opened.</summary><published>2025-11-09T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2025/week-44</id><title>Week 44, 2025: Thread naming support, Flambda2 type system improvements, CI infrastructure upgrades, and DWARF debugging enhancements</title><updated>2025-11-02T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
