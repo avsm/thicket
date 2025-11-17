@@ -1,5 +1,71 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.xml</id><title>ocaml/ocaml (Weekly)</title><updated>2025-11-09T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml/2025/week-45</id><title>Week 45, 2025: Seven PRs merged covering GC improvements, Unix API modernization, and C callback safety fixes</title><updated>2025-11-09T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.xml</id><title>ocaml/ocaml (Weekly)</title><updated>2025-11-16T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml/2025/week-46</id><title>Week 46, 2025: String module extended with new splitting functions, opam tooling improved, and several runtime issues reported</title><updated>2025-11-16T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+New PRs opened for String module extensions, debugger improvements, and opam system compiler support&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14362" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;New String module extensions&lt;/strong&gt;&lt;/a&gt; proposed with &lt;code&gt;String.{take,drop,cut}_{first,last}_while&lt;/code&gt; functions by &lt;a href="https://github.com/dbuenzli"&gt;Daniel Bünzli&lt;/a&gt; to complement the newly merged splitting functions (&lt;a href="https://github.com/ocaml/ocaml/issues/14362"&gt;#14362&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14353" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Debugger enhancements&lt;/strong&gt;&lt;/a&gt; opened by &lt;a href="https://github.com/joelreymont"&gt;Joel Reymont&lt;/a&gt; including command history and line editing support for ocamldebug (&lt;a href="https://github.com/ocaml/ocaml/issues/14353"&gt;#14353&lt;/a&gt;), though line number breakpoints proposal was closed (&lt;a href="https://github.com/ocaml/ocaml/issues/14350"&gt;#14350&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14354" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Opam system compiler support&lt;/strong&gt;&lt;/a&gt; expanded with two new PRs by &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt; enabling trunk compiler installation (&lt;a href="https://github.com/ocaml/ocaml/issues/14354"&gt;#14354&lt;/a&gt;) and branch pinning capabilities (&lt;a href="https://github.com/ocaml/ocaml/issues/14355"&gt;#14355&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14358" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Domain exception handling&lt;/strong&gt;&lt;/a&gt; improved in proposed PR by &lt;a href="https://github.com/dijkstracula"&gt;Nathan Taylor&lt;/a&gt; to preserve backtraces when Domain.join raises exceptions (&lt;a href="https://github.com/ocaml/ocaml/issues/14358"&gt;#14358&lt;/a&gt;), though closed pending further work&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14330" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Ongoing type system improvements&lt;/strong&gt;&lt;/a&gt; include spellchecking hints for module errors by &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14330"&gt;#14330&lt;/a&gt;), atomic class cache access by &lt;a href="https://github.com/lthls"&gt;Vincent Laviron&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14333"&gt;#14333&lt;/a&gt;), and polymorphic let constraint handling by &lt;a href="https://github.com/johnyob"&gt;Alistair&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14325"&gt;#14325&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14338" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Runtime fixes&lt;/strong&gt;&lt;/a&gt; progressing with ephemeron marking improvements by &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14338"&gt;#14338&lt;/a&gt;) and backup thread synchronization by &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14303"&gt;#14303&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14243" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Relocatable OCaml initiative&lt;/strong&gt;&lt;/a&gt; continues with five PRs by &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt; addressing various aspects of installation portability (&lt;a href="https://github.com/ocaml/ocaml/issues/14243"&gt;#14243&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14244"&gt;#14244&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14245"&gt;#14245&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14246"&gt;#14246&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14247"&gt;#14247&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14138" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Platform support&lt;/strong&gt;&lt;/a&gt; expanded with Haiku native backend activation by &lt;a href="https://github.com/Sylvain78"&gt;Anarchos&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14138"&gt;#14138&lt;/a&gt;) and typing recovery from Merlin by &lt;a href="https://github.com/xvw"&gt;Xavier Van de Woestyne&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14241"&gt;#14241&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>String module extended with new splitting functions, opam tooling improved, and several runtime issues reported</summary><published>2025-11-16T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml/2025/week-45</id><title>Week 45, 2025: Seven PRs merged covering GC improvements, Unix API modernization, and C callback safety fixes</title><updated>2025-11-09T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

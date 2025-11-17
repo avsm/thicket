@@ -1,5 +1,70 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam.xml</id><title>ocaml/opam (Weekly)</title><updated>2025-11-09T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam/2025/week-45</id><title>Week 45, 2025: Release preparation week with cmdliner vendoring, OCaml 5.5 support, and long-standing macOS sandbox fix</title><updated>2025-11-09T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam.xml</id><title>ocaml/opam (Weekly)</title><updated>2025-11-16T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam/2025/week-46</id><title>Week 46, 2025: Released opam 2.5.0~beta1 with dry-run fixes and macOS sandbox improvements</title><updated>2025-11-16T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Documentation PRs under review, ongoing performance optimization work, and release preparation activities&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6777" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Documentation improvements&lt;/strong&gt;&lt;/a&gt; in progress by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; covering compiler selection with configure-time options (&lt;a href="https://github.com/ocaml/opam/issues/6777"&gt;#6777&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam/issues/6645"&gt;#6645&lt;/a&gt;) and default compiler selection behavior for &lt;code&gt;opam init&lt;/code&gt; and &lt;code&gt;opam switch create&lt;/code&gt; (&lt;a href="https://github.com/ocaml/opam/issues/6778"&gt;#6778&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam/issues/6407"&gt;#6407&lt;/a&gt;), both awaiting updates based on review feedback from &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6760" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Installation script improvements&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/rjbou"&gt;R. Boujbel&lt;/a&gt; updating apparmor profile handling and cleanup procedures (&lt;a href="https://github.com/ocaml/opam/issues/6760"&gt;#6760&lt;/a&gt;) alongside &lt;strong class="achievement"&gt;GitHub Actions workflow fix&lt;/strong&gt; (&lt;a href="https://github.com/ocaml/opam/issues/6767"&gt;#6767&lt;/a&gt;) to properly run hygiene tests for shell scripts&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6625" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Performance optimization research&lt;/strong&gt;&lt;/a&gt; continuing with repository structure redesign to use tar.gz archives directly (&lt;a href="https://github.com/ocaml/opam/issues/6625"&gt;#6625&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam/issues/5741"&gt;#5741&lt;/a&gt;), depext status checking at update time (&lt;a href="https://github.com/ocaml/opam/issues/6489"&gt;#6489&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam/issues/6461"&gt;#6461&lt;/a&gt;), and benchmark expansion for larger repository diffs (&lt;a href="https://github.com/ocaml/opam/issues/6567"&gt;#6567&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam/issues/6561"&gt;#6561&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6751" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Build system hardening&lt;/strong&gt;&lt;/a&gt; with improved Makefile shell script error handling (&lt;a href="https://github.com/ocaml/opam/issues/6751"&gt;#6751&lt;/a&gt;) and patch library update investigation for performance improvements (&lt;a href="https://github.com/ocaml/opam/issues/6772"&gt;#6772&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6783" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Bug fixes in development&lt;/strong&gt;&lt;/a&gt; addressing repository updates after version-equivalent package renames (&lt;a href="https://github.com/ocaml/opam/issues/6783"&gt;#6783&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam/issues/6782"&gt;#6782&lt;/a&gt;) and reftest improvements for hash collision handling (&lt;a href="https://github.com/ocaml/opam/issues/6793"&gt;#6793&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6796" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Release activities&lt;/strong&gt;&lt;/a&gt; including changelog porting from 2.5 branch (&lt;a href="https://github.com/ocaml/opam/issues/6796"&gt;#6796&lt;/a&gt;), version bumping to 2.5~beta1 (&lt;a href="https://github.com/ocaml/opam/issues/6791"&gt;#6791&lt;/a&gt;), and CHANGES file updates (&lt;a href="https://github.com/ocaml/opam/issues/6787"&gt;#6787&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6771" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;CI/CD improvements&lt;/strong&gt;&lt;/a&gt; removing unconditional Windows binary uploads (&lt;a href="https://github.com/ocaml/opam/issues/6771"&gt;#6771&lt;/a&gt;) and renaming hygiene scripts for clarity (&lt;a href="https://github.com/ocaml/opam/issues/6768"&gt;#6768&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Released opam 2.5.0~beta1 with dry-run fixes and macOS sandbox improvements</summary><published>2025-11-16T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-opam/2025/week-45</id><title>Week 45, 2025: Release preparation week with cmdliner vendoring, OCaml 5.5 support, and long-standing macOS sandbox fix</title><updated>2025-11-09T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
