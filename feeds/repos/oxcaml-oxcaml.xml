@@ -1,5 +1,69 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml</id><title>oxcaml/oxcaml (Weekly)</title><updated>2025-11-16T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/oxcaml</subtitle><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2025/week-46</id><title>Week 46, 2025: Modes system enhancements, SIMD intrinsics expansion, slambda IR introduction, and metaprogramming improvements</title><updated>2025-11-16T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml</id><title>oxcaml/oxcaml (Weekly)</title><updated>2025-11-23T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/oxcaml</subtitle><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2025/week-47</id><title>Week 47, 2025: Mixed module support, type system improvements, runtime optimizations, backend enhancements, and probes implementation</title><updated>2025-11-23T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Active development across type system, backend optimizations, runtime improvements, and open PRs for SIMD and layouts&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/pull/5031" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Newly opened PRs&lt;/strong&gt;&lt;/a&gt; include separability as scannable axis renaming pointerness (&lt;a href="https://github.com/oxcaml/oxcaml/pull/5031"&gt;#5031&lt;/a&gt;), fuel optimization with linear consumption (&lt;a href="https://github.com/oxcaml/oxcaml/pull/5009"&gt;#5009&lt;/a&gt;), AVX2 gather intrinsics support (&lt;a href="https://github.com/oxcaml/oxcaml/pull/5040"&gt;#5040&lt;/a&gt;), 128-bit integer arithmetic intrinsics (&lt;a href="https://github.com/oxcaml/oxcaml/pull/5025"&gt;#5025&lt;/a&gt;), staticity mode checking (&lt;a href="https://github.com/oxcaml/oxcaml/pull/5029"&gt;#5029&lt;/a&gt;), immutable arrays of unboxed products (&lt;a href="https://github.com/oxcaml/oxcaml/pull/5026"&gt;#5026&lt;/a&gt;), typed DSL for arm64 (&lt;a href="https://github.com/oxcaml/oxcaml/pull/5037"&gt;#5037&lt;/a&gt;), and module mode hint system (&lt;a href="https://github.com/oxcaml/oxcaml/pull/5034"&gt;#5034&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/pull/4995" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Type system improvements&lt;/strong&gt;&lt;/a&gt; delivered through &lt;code&gt;Tof_jkind&lt;/code&gt; for unboxed existentials and Tpolys by &lt;a href="https://github.com/liam923"&gt;Liam Stevenson&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/pull/4995"&gt;#4995&lt;/a&gt;), v1 safety check optimization avoiding substitutions (&lt;a href="https://github.com/oxcaml/oxcaml/pull/5039"&gt;#5039&lt;/a&gt;), and upstream PR 13866 with marking mechanism updates (&lt;a href="https://github.com/oxcaml/oxcaml/pull/5015"&gt;#5015&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/pull/5011" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Backend enhancements&lt;/strong&gt;&lt;/a&gt; include probes code generation refactoring by &lt;a href="https://github.com/gretay-js"&gt;Greta Yorsh&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/pull/5011"&gt;#5011&lt;/a&gt;), CFG profiling counters for instructions, blocks, and moves by &lt;a href="https://github.com/xclerc"&gt;Xavier Clerc&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/pull/5027"&gt;#5027&lt;/a&gt;), and CFG terminator simplification reinstated with reducibility check (&lt;a href="https://github.com/oxcaml/oxcaml/pull/4921"&gt;#4921&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/pull/4997" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Runtime optimizations&lt;/strong&gt;&lt;/a&gt; landed via marking loop optimization removing global access by &lt;a href="https://github.com/NickBarnes"&gt;Nick Barnes&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/pull/4997"&gt;#4997&lt;/a&gt;), sweep loop global variable elimination (&lt;a href="https://github.com/oxcaml/oxcaml/pull/5022"&gt;#5022&lt;/a&gt;), and multidomain testing without stack-checks by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/pull/5019"&gt;#5019&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/pull/5003" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Infrastructure updates&lt;/strong&gt;&lt;/a&gt; merged including metrics collection refactor for per-artifact tracking by &lt;a href="https://github.com/xclerc"&gt;Xavier Clerc&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/pull/5003"&gt;#5003&lt;/a&gt;), compiler profile data archiving (&lt;a href="https://github.com/oxcaml/oxcaml/pull/5004"&gt;#5004&lt;/a&gt;), Dune version bump to 3.17.2 by &lt;a href="https://github.com/sadiqj"&gt;Sadiq Jaffer&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/pull/5000"&gt;#5000&lt;/a&gt;), and Chamelon boot compiler compatibility by &lt;a href="https://github.com/bclement-ocp"&gt;Basile Clément&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/pull/5020"&gt;#5020&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/pull/5014" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Active development&lt;/strong&gt;&lt;/a&gt; continues on .cmxs format optimization with consolidated imports (&lt;a href="https://github.com/oxcaml/oxcaml/pull/5014"&gt;#5014&lt;/a&gt;), slambda splices integration (&lt;a href="https://github.com/oxcaml/oxcaml/pull/5023"&gt;#5023&lt;/a&gt;), arm64 intrinsics for RDTSC and CRC32 (&lt;a href="https://github.com/oxcaml/oxcaml/pull/5024"&gt;#5024&lt;/a&gt;), reaper consistency for apply (&lt;a href="https://github.com/oxcaml/oxcaml/pull/5038"&gt;#5038&lt;/a&gt;), dump-dir race condition fix (&lt;a href="https://github.com/oxcaml/oxcaml/pull/5010"&gt;#5010&lt;/a&gt;), and manifest files support (&lt;a href="https://github.com/oxcaml/oxcaml/pull/4986"&gt;#4986&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Mixed module support, type system improvements, runtime optimizations, backend enhancements, and probes implementation</summary><published>2025-11-23T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2025/week-46</id><title>Week 46, 2025: Modes system enhancements, SIMD intrinsics expansion, slambda IR introduction, and metaprogramming improvements</title><updated>2025-11-16T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

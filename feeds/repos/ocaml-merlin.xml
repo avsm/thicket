@@ -1,5 +1,68 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-merlin.xml</id><title>ocaml/merlin (Weekly)</title><updated>2025-11-16T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-merlin.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/merlin</subtitle><entry><id>https://thicket.dev/repos/ocaml-merlin/2025/week-46</id><title>Week 46, 2025: Test suite improvements and issue triage with one PR merged addressing non-exhaustive pattern matching warnings</title><updated>2025-11-16T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-merlin.xml</id><title>ocaml/merlin (Weekly)</title><updated>2025-11-23T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-merlin.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/merlin</subtitle><entry><id>https://thicket.dev/repos/ocaml-merlin/2025/week-47</id><title>Week 47, 2025: Test coverage expanded with short-paths testing and issue reproductions, plus ongoing work on signature-help and C code improvements</title><updated>2025-11-23T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Five new PRs opened for testing and bug fixes, two PRs merged expanding test coverage for short-paths and issue reproductions&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;Five &lt;a href="https://github.com/ocaml/merlin/issues/1983" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;new PRs opened&lt;/strong&gt;&lt;/a&gt; this week including test reproductions for issues &lt;a href="https://github.com/ocaml/merlin/issues/1983"&gt;#1983&lt;/a&gt; (&lt;a href="https://github.com/ocaml/merlin/pull/2005"&gt;#2005&lt;/a&gt;), &lt;a href="https://github.com/ocaml/merlin/issues/1949"&gt;#1949&lt;/a&gt; (&lt;a href="https://github.com/ocaml/merlin/pull/2004"&gt;#2004&lt;/a&gt;), &lt;a href="https://github.com/ocaml/merlin/issues/1786"&gt;#1786&lt;/a&gt; (&lt;a href="https://github.com/ocaml/merlin/pull/2002"&gt;#2002&lt;/a&gt;), and &lt;a href="https://github.com/ocaml/merlin/issues/2000"&gt;#2000&lt;/a&gt; (&lt;a href="https://github.com/ocaml/merlin/pull/2003"&gt;#2003&lt;/a&gt;) by &lt;a href="https://github.com/Tim-ats-d"&gt;Tim ats&lt;/a&gt;, plus signature-help improvement (&lt;a href="https://github.com/ocaml/merlin/pull/1997"&gt;#1997&lt;/a&gt;) by &lt;a href="https://github.com/Lucccyo"&gt;Charlène_Gros&lt;/a&gt; and C code quality patches (&lt;a href="https://github.com/ocaml/merlin/pull/1998"&gt;#1998&lt;/a&gt;) by &lt;a href="https://github.com/MisterDA"&gt;Antonin Décimo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/merlin/pull/1994" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Test coverage expansion&lt;/strong&gt;&lt;/a&gt; with two PRs merged: &lt;a href="https://github.com/xvw"&gt;Xavier Van de Woestyne&lt;/a&gt; added extensive short-paths tests covering abbreviations, records, functors, opens, includes, GADTs, and polymorphic variants (&lt;a href="https://github.com/ocaml/merlin/pull/1994"&gt;#1994&lt;/a&gt;), while &lt;a href="https://github.com/Tim-ats-d"&gt;Tim ats&lt;/a&gt; added reproduction test for &lt;a href="https://github.com/ocaml/merlin/issues/1118"&gt;#1118&lt;/a&gt; crash issue (&lt;a href="https://github.com/ocaml/merlin/pull/1996"&gt;#1996&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/merlin/pull/1997" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Signature-help refinement&lt;/strong&gt;&lt;/a&gt; underway as &lt;a href="https://github.com/Lucccyo"&gt;Charlène_Gros&lt;/a&gt; works on preventing signature-help from appearing on function names, limiting it to parameters only (&lt;a href="https://github.com/ocaml/merlin/pull/1997"&gt;#1997&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/merlin/pull/1998" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;C code quality improvements&lt;/strong&gt;&lt;/a&gt; in progress with &lt;a href="https://github.com/MisterDA"&gt;Antonin Décimo&lt;/a&gt; fixing sockaddr_un size computation for BSD systems and improving Windows error handling in &lt;code&gt;ocamlmerlin.c&lt;/code&gt; (&lt;a href="https://github.com/ocaml/merlin/pull/1998"&gt;#1998&lt;/a&gt;), potentially addressing warnings in &lt;a href="https://github.com/ocaml/merlin/issues/1993"&gt;#1993&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;One PR closed as duplicate when &lt;a href="https://github.com/Tim-ats-d"&gt;Tim ats&lt;/a&gt; discovered &lt;a href="https://github.com/ocaml/merlin/pull/2001"&gt;#2001&lt;/a&gt; for Vim plugin KeyError was already fixed in &lt;a href="https://github.com/ocaml/merlin/pull/1970"&gt;#1970&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Test coverage expanded with short-paths testing and issue reproductions, plus ongoing work on signature-help and C code improvements</summary><published>2025-11-23T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-merlin/2025/week-46</id><title>Week 46, 2025: Test suite improvements and issue triage with one PR merged addressing non-exhaustive pattern matching warnings</title><updated>2025-11-16T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

@@ -1,5 +1,90 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/core.xml</id><title>OCaml Core (Weekly)</title><updated>2025-11-16T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/core.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Core OCaml language, compiler, and essential tooling</subtitle><entry><id>https://thicket.dev/groups/core/2025/week-46</id><title>Week 46, 2025: String module extended with splitting functions, opam tooling enhanced, and runtime stability issues identified</title><updated>2025-11-16T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/core.xml</id><title>OCaml Core (Weekly)</title><updated>2025-11-23T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/core.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Core OCaml language, compiler, and essential tooling</subtitle><entry><id>https://thicket.dev/groups/core/2025/week-47</id><title>Week 47, 2025: Format/Printf heterogeneous lists merged, runtime memory safety fixes landed, and uniform array RFC discussions advanced</title><updated>2025-11-23T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;New &lt;a href="https://github.com/ocaml/ocaml/issues/13372" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Format and Printf functions&lt;/strong&gt;&lt;/a&gt; accepting heterogeneous lists as arguments (&lt;code&gt;lfprintf&lt;/code&gt;, &lt;code&gt;lprintf&lt;/code&gt;, &lt;code&gt;leprintf&lt;/code&gt;, &lt;code&gt;lasprintf&lt;/code&gt;, &lt;code&gt;ldprintf&lt;/code&gt; and Printf equivalents) with improved type error messages and compile-time argument checking by &lt;a href="https://github.com/zazedd"&gt;Leonardo Santos&lt;/a&gt; in &lt;a href="https://github.com/ocaml/ocaml/issues/13372"&gt;ocaml/ocaml#13372&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14363" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Domain.join now preserves backtraces&lt;/strong&gt;&lt;/a&gt; when re-raising exceptions from exceptionally terminated domains, improving debugging experience for concurrent programs by &lt;a href="https://github.com/kayceesrk"&gt;KC Sivaramakrishnan&lt;/a&gt; in &lt;a href="https://github.com/ocaml/ocaml/issues/14363"&gt;ocaml/ocaml#14363&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Fixed &lt;a href="https://github.com/ocaml/ocaml/issues/14370" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;C++ header compatibility&lt;/strong&gt;&lt;/a&gt; issues in &lt;code&gt;unixsupport.h&lt;/code&gt; and made &lt;code&gt;&lt;caml/addrmap.h&gt;&lt;/code&gt; internal by &lt;a href="https://github.com/MisterDA"&gt;Antonin Décimo&lt;/a&gt; in &lt;a href="https://github.com/ocaml/ocaml/issues/14370"&gt;ocaml/ocaml#14370&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Fixed &lt;a href="https://github.com/ocaml/ocaml/issues/14368" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;compiler bug&lt;/strong&gt;&lt;/a&gt; where Simplif was incorrectly substituting under letrec lambdas by &lt;a href="https://github.com/stedolan"&gt;Stephen Dolan&lt;/a&gt; in &lt;a href="https://github.com/ocaml/ocaml/issues/14368"&gt;ocaml/ocaml#14368&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Fixed &lt;a href="https://github.com/ocaml/ocaml/issues/14210" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;data race in weak pointers&lt;/strong&gt;&lt;/a&gt; runtime with TSan-compliant relaxed atomic writes for ephemeron data by &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; and &lt;a href="https://github.com/damiendoligez"&gt;Damien Doligez&lt;/a&gt; in &lt;a href="https://github.com/ocaml/ocaml/issues/14210"&gt;ocaml/ocaml#14210&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Fixed &lt;a href="https://github.com/ocaml/ocaml/issues/14209" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;memory model issue&lt;/strong&gt;&lt;/a&gt; in Weak.set operations by &lt;a href="https://github.com/damiendoligez"&gt;Damien Doligez&lt;/a&gt; in &lt;a href="https://github.com/ocaml/ocaml/issues/14209"&gt;ocaml/ocaml#14209&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Improved &lt;a href="https://github.com/ocaml/ocaml/issues/13736" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;GC pacing&lt;/strong&gt;&lt;/a&gt; by resetting major GC's pacing clock after any synchronous GC work by &lt;a href="https://github.com/NickBarnes"&gt;Nick Barnes&lt;/a&gt; in &lt;a href="https://github.com/ocaml/ocaml/issues/13736"&gt;ocaml/ocaml#13736&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; authored the uniform array RFC in &lt;a href="https://github.com/ocaml/RFCs/pull/37"&gt;ocaml/RFCs#37&lt;/a&gt; while concurrently fixing runtime memory model issues in &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt; through &lt;a href="https://github.com/ocaml/ocaml/issues/14210"&gt;#14210&lt;/a&gt; and &lt;a href="https://github.com/ocaml/ocaml/issues/14303"&gt;#14303&lt;/a&gt;, demonstrating active work connecting type system design with runtime implementation&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt; managed language committee governance in &lt;a href="https://github.com/ocaml/RFCs/pull/55"&gt;ocaml/RFCs#55&lt;/a&gt; while contributing tooling improvements in &lt;a href="https://github.com/ocaml/ocaml/issues/14373"&gt;ocaml/ocaml#14373&lt;/a&gt; for cmt file environment stripping&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/OlivierNicole"&gt;Olivier Nicole&lt;/a&gt; expressed continued support for uniform arrays in &lt;a href="https://github.com/ocaml/RFCs/pull/37"&gt;ocaml/RFCs#37&lt;/a&gt; while reporting HACKING.adoc documentation issues in &lt;a href="https://github.com/ocaml/ocaml/issues/13225"&gt;ocaml/ocaml#13225&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/RFCs/pull/37" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Float array optimization future&lt;/strong&gt;&lt;/a&gt; sparked technical debate in &lt;a href="https://github.com/ocaml/RFCs/pull/37"&gt;ocaml/RFCs#37&lt;/a&gt; with &lt;a href="https://github.com/alainfrisch"&gt;Alain Frisch&lt;/a&gt; questioning whether uniform representation should become the default mode given complexity reduction benefits, &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; arguing for improving &lt;code&gt;floatarray&lt;/code&gt; ergonomics first to address performance concerns, and &lt;a href="https://github.com/goldfirere"&gt;Richard Eisenberg&lt;/a&gt; detailing Jane Street's investigation of &lt;code&gt;'a buoyant_array&lt;/code&gt; and unboxed types as alternatives&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/RFCs/pull/37" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Runtime semantic challenges&lt;/strong&gt;&lt;/a&gt; highlighted by &lt;a href="https://github.com/ppedrot"&gt;Pierre-Marie Pédrot&lt;/a&gt; in &lt;a href="https://github.com/ocaml/RFCs/pull/37"&gt;ocaml/RFCs#37&lt;/a&gt; explaining how float array semantics create type-theoretic issues where &lt;code&gt;Obj.t&lt;/code&gt; cannot be treated as a proper universal type, making the runtime problematic for Rocq across VM, native, and extraction targets&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14137" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;String module improvements&lt;/strong&gt;&lt;/a&gt; proposed by &lt;a href="https://github.com/dbuenzli"&gt;Daniel Bünzli&lt;/a&gt; in &lt;a href="https://github.com/ocaml/ocaml/issues/14137"&gt;ocaml/ocaml#14137&lt;/a&gt; including new operations for taking, dropping, and cutting substrings, with implementation PR opened in &lt;a href="https://github.com/ocaml/ocaml/issues/14362"&gt;ocaml/ocaml#14362&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14210" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Runtime memory safety&lt;/strong&gt;&lt;/a&gt; improvements with fixes for TSan-reported issues, weak pointers, and ephemeron data races reflecting increased focus on thread safety in &lt;a href="https://github.com/ocaml/ocaml/issues/14210"&gt;ocaml/ocaml#14210&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14209"&gt;ocaml/ocaml#14209&lt;/a&gt;, and &lt;a href="https://github.com/ocaml/ocaml/issues/14303"&gt;ocaml/ocaml#14303&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14365" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;GC enhancement&lt;/strong&gt;&lt;/a&gt; work with additions for idle phases in &lt;a href="https://github.com/ocaml/ocaml/issues/14365"&gt;ocaml/ocaml#14365&lt;/a&gt;, named parameters in &lt;a href="https://github.com/ocaml/ocaml/issues/14367"&gt;ocaml/ocaml#14367&lt;/a&gt;, and pacing improvements in &lt;a href="https://github.com/ocaml/ocaml/issues/13736"&gt;ocaml/ocaml#13736&lt;/a&gt; showing active optimization of memory management&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/13372" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Standard library API expansion&lt;/strong&gt;&lt;/a&gt; with new Format/Printf heterogeneous list functions in &lt;a href="https://github.com/ocaml/ocaml/issues/13372"&gt;ocaml/ocaml#13372&lt;/a&gt; and proposed String operations in &lt;a href="https://github.com/ocaml/ocaml/issues/14362"&gt;ocaml/ocaml#14362&lt;/a&gt; and &lt;a href="https://github.com/ocaml/ocaml/issues/14137"&gt;ocaml/ocaml#14137&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/RFCs/pull/37" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Type system evolution&lt;/strong&gt;&lt;/a&gt; discussions in &lt;a href="https://github.com/ocaml/RFCs/pull/37"&gt;ocaml/RFCs#37&lt;/a&gt; around uniform arrays, with &lt;a href="https://github.com/goldfirere"&gt;Richard Eisenberg&lt;/a&gt; sharing Jane Street's exploration of alternatives including &lt;code&gt;'a buoyant_array&lt;/code&gt; requiring runtime float representation and kind system extensions&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14364" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Typing system refactoring&lt;/strong&gt;&lt;/a&gt; focus with identification of code sharing opportunities and global state removal in &lt;a href="https://github.com/ocaml/ocaml/issues/14364"&gt;ocaml/ocaml#14364&lt;/a&gt; and &lt;a href="https://github.com/ocaml/ocaml/issues/14366"&gt;ocaml/ocaml#14366&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Format/Printf heterogeneous lists merged, runtime memory safety fixes landed, and uniform array RFC discussions advanced</summary><published>2025-11-23T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2025/week-46</id><title>Week 46, 2025: String module extended with splitting functions, opam tooling enhanced, and runtime stability issues identified</title><updated>2025-11-16T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
@@ -4720,7 +4805,7 @@
 &lt;li&gt;&lt;strong class="achievement"&gt;Cross-platform compatibility&lt;/strong&gt; receiving increased attention with Windows API modernization and Unix platform improvements&lt;/li&gt;
 &lt;li&gt;&lt;strong class="achievement"&gt;Language design refinement&lt;/strong&gt; through community feedback on practical applications of new syntax features like raw identifiers&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Runtime improvements and bytecode optimization merged alongside language syntax discussions for raw identifiers</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2024/week-42</id><title>Week 42, 2024: Five PRs merged in ocaml/ocaml including new Thread.set_current_thread_name API and compiler improvements</title><updated>2025-11-17T10:47:19.105120+00:00</updated><content type="html">
+</content><link href="https://thicket.dev/"/><summary>Runtime improvements and bytecode optimization merged alongside language syntax discussions for raw identifiers</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2024/week-42</id><title>Week 42, 2024: Five PRs merged in ocaml/ocaml including new Thread.set_current_thread_name API and compiler improvements</title><updated>2025-11-24T13:37:56.819369+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
