@@ -1,5 +1,69 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam-repository.xml</id><title>ocaml/opam-repository (Weekly)</title><updated>2025-11-23T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam-repository.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam-repository</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2025/week-47</id><title>Week 47, 2025: opam 2.5.0-rc1 released with 36 packages merged including new avro-simple, salto-analyzer, and expr packages</title><updated>2025-11-23T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam-repository.xml</id><title>ocaml/opam-repository (Weekly)</title><updated>2025-11-30T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam-repository.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam-repository</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2025/week-48</id><title>Week 48, 2025: Package ecosystem growth with email/DNS stack updates, opam 2.5.0 release, cmdliner 2.1.0, and improved OCaml 5.4 compatibility</title><updated>2025-11-30T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Email protocol stack updates dominate merged work, with 18 open PRs awaiting merge including Melange 6.0.1 and dns 10.2.3&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29001" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Newly opened PRs&lt;/strong&gt;&lt;/a&gt; include &lt;a href="https://github.com/ocaml/opam-repository/issues/29001"&gt;Melange 6.0.1&lt;/a&gt; by &lt;a href="https://github.com/anmonteiro"&gt;Antonio Nuno Monteiro&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/29005"&gt;dns 10.2.3&lt;/a&gt; (13 packages) by &lt;a href="https://github.com/hannesm"&gt;Hannes Mehnert&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/28999"&gt;reason 3.17.2&lt;/a&gt; by &lt;a href="https://github.com/anmonteiro"&gt;Antonio Nuno Monteiro&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/28963"&gt;repr 0.8.0&lt;/a&gt; (4 packages) by &lt;a href="https://github.com/samoht"&gt;Thomas Gazagnaire&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/29008"&gt;raylib/raygui 1.6.0&lt;/a&gt; by &lt;a href="https://github.com/tjammer"&gt;Tobias Mock&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/29006"&gt;server-reason-react 0.4.0&lt;/a&gt; and &lt;a href="https://github.com/ocaml/opam-repository/issues/29000"&gt;quickjs 0.2.0&lt;/a&gt; by &lt;a href="https://github.com/davesnx"&gt;David Sancho&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/28969"&gt;passage 0.2.0&lt;/a&gt; by &lt;a href="https://github.com/thatportugueseguy"&gt;José Nogueira&lt;/a&gt;, plus new packages &lt;a href="https://github.com/ocaml/opam-repository/issues/29004"&gt;otp 0.2.2&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/29003"&gt;checked_oint 1.0.1&lt;/a&gt;, and &lt;a href="https://github.com/ocaml/opam-repository/issues/28998"&gt;xdge 1.0.0&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/28992" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Email and network protocol stack&lt;/strong&gt;&lt;/a&gt; saw comprehensive updates from &lt;a href="https://github.com/dinosaure"&gt;Calascibetta Romain&lt;/a&gt; with releases of colombe 0.12.1 (6 packages) for SMTP (&lt;a href="https://github.com/ocaml/opam-repository/issues/28992"&gt;#28992&lt;/a&gt;), mrmime 0.7.1 for MIME (&lt;a href="https://github.com/ocaml/opam-repository/issues/28991"&gt;#28991&lt;/a&gt;), dkim 0.9.0 (4 packages) for email authentication (&lt;a href="https://github.com/ocaml/opam-repository/issues/28982"&gt;#28982&lt;/a&gt;), dmarc 0.0.1 for policy enforcement (&lt;a href="https://github.com/ocaml/opam-repository/issues/28995"&gt;#28995&lt;/a&gt;), uspf 0.2.0 (3 packages) for SPF validation (&lt;a href="https://github.com/ocaml/opam-repository/issues/28980"&gt;#28980&lt;/a&gt;), arc 0.0.1 for authenticated chains (&lt;a href="https://github.com/ocaml/opam-repository/issues/28996"&gt;#28996&lt;/a&gt;), plus supporting libraries prettym 0.0.4 (&lt;a href="https://github.com/ocaml/opam-repository/issues/28984"&gt;#28984&lt;/a&gt;), uuuu 0.4.0 (&lt;a href="https://github.com/ocaml/opam-repository/issues/28985"&gt;#28985&lt;/a&gt;), rosetta 0.4.0 (&lt;a href="https://github.com/ocaml/opam-repository/issues/28988"&gt;#28988&lt;/a&gt;), coin 0.1.5 (&lt;a href="https://github.com/ocaml/opam-repository/issues/28987"&gt;#28987&lt;/a&gt;), and hxd 0.3.6 hex dumper (&lt;a href="https://github.com/ocaml/opam-repository/issues/28997"&gt;#28997&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/28979" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Package ecosystem growth&lt;/strong&gt;&lt;/a&gt; with goblint 2.7.1 static analyzer (&lt;a href="https://github.com/ocaml/opam-repository/issues/28979"&gt;#28979&lt;/a&gt;) by &lt;a href="https://github.com/sim642"&gt;Simmo Saan&lt;/a&gt;, slipshow 0.7.0 presentation tool (&lt;a href="https://github.com/ocaml/opam-repository/issues/28970"&gt;#28970&lt;/a&gt;) by &lt;a href="https://github.com/panglesd"&gt;Paul-Elliot Anglès d'Auriac&lt;/a&gt;, ocaml-protoc 4.0 (4 packages) (&lt;a href="https://github.com/ocaml/opam-repository/issues/28902"&gt;#28902&lt;/a&gt;) by &lt;a href="https://github.com/c-cube"&gt;Simon Cruanes&lt;/a&gt;, raven 1.0.0~alpha2 (11 packages) (&lt;a href="https://github.com/ocaml/opam-repository/issues/28827"&gt;#28827&lt;/a&gt;) by &lt;a href="https://github.com/tmattio"&gt;Thibaut Mattio&lt;/a&gt;, dream-html 3.11.2 (&lt;a href="https://github.com/ocaml/opam-repository/issues/28954"&gt;#28954&lt;/a&gt;) by &lt;a href="https://github.com/yawaramin"&gt;Yawar Amin&lt;/a&gt;, mirage 4.10.4 unikernel framework (&lt;a href="https://github.com/ocaml/opam-repository/issues/28942"&gt;#28942&lt;/a&gt;) by &lt;a href="https://github.com/reynir"&gt;Reynir Björnsson&lt;/a&gt;, query-json 0.6.1 (&lt;a href="https://github.com/ocaml/opam-repository/issues/28958"&gt;#28958&lt;/a&gt;) and melange-fetch 0.2.0 (&lt;a href="https://github.com/ocaml/opam-repository/issues/28990"&gt;#28990&lt;/a&gt;) by &lt;a href="https://github.com/davesnx"&gt;David Sancho&lt;/a&gt;, gendarme 0.4.0 (9 packages) (&lt;a href="https://github.com/ocaml/opam-repository/issues/28983"&gt;#28983&lt;/a&gt;) by &lt;a href="https://github.com/bensmrs"&gt;Benjamin Somers&lt;/a&gt;, liquid-ml 0.1.3 (5 packages) template engine (&lt;a href="https://github.com/ocaml/opam-repository/issues/28951"&gt;#28951&lt;/a&gt;) by &lt;a href="https://github.com/benfaerber"&gt;Ben Faerber&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/28965" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Platform and tooling updates&lt;/strong&gt;&lt;/a&gt; with ocamlmig 5.4-20251020 migration tool (&lt;a href="https://github.com/ocaml/opam-repository/issues/28965"&gt;#28965&lt;/a&gt;), frama-c-metacsl 0.10~beta (&lt;a href="https://github.com/ocaml/opam-repository/issues/28841"&gt;#28841&lt;/a&gt;), ocaml-solo5 1.2.0 unikernel runtime (&lt;a href="https://github.com/ocaml/opam-repository/issues/28964"&gt;#28964&lt;/a&gt;) by &lt;a href="https://github.com/hannesm"&gt;Hannes Mehnert&lt;/a&gt;, diffast 0.3.6 differencing tool (&lt;a href="https://github.com/ocaml/opam-repository/issues/28911"&gt;#28911&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/28938" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;New packages added&lt;/strong&gt;&lt;/a&gt; include azure-cosmos-db 0.3.2 database client (&lt;a href="https://github.com/ocaml/opam-repository/issues/28938"&gt;#28938&lt;/a&gt;) by &lt;a href="https://github.com/mknaack"&gt;Morten Knaack&lt;/a&gt;, soupault 5.2.0 static site generator (&lt;a href="https://github.com/ocaml/opam-repository/issues/28926"&gt;#28926&lt;/a&gt;) by &lt;a href="https://github.com/dmbaturin"&gt;Daniil Baturin&lt;/a&gt;, mazeppa 0.7.0 router (&lt;a href="https://github.com/ocaml/opam-repository/issues/28949"&gt;#28949&lt;/a&gt;), smtml 0.15.0 SMT solver interface (&lt;a href="https://github.com/ocaml/opam-repository/issues/28957"&gt;#28957&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/28993" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Compatibility and build fixes&lt;/strong&gt;&lt;/a&gt; from &lt;a href="https://github.com/jmid"&gt;Jan Midtgaard&lt;/a&gt; including ppx&lt;em&gt;repr upper bound for ppx&lt;/em&gt;irmin (&lt;a href="https://github.com/ocaml/opam-repository/issues/28993"&gt;#28993&lt;/a&gt;), conf-libpcre failure messages for Centos 10 and OpenSUSE (&lt;a href="https://github.com/ocaml/opam-repository/issues/28989"&gt;#28989&lt;/a&gt;), conf-age epel-release depext for Centos (&lt;a href="https://github.com/ocaml/opam-repository/issues/28976"&gt;#28976&lt;/a&gt;), cmdliner 2.0.0 upper bound for runtime&lt;em&gt;event&lt;/em&gt;tools (&lt;a href="https://github.com/ocaml/opam-repository/issues/28972"&gt;#28972&lt;/a&gt;), plus &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; fixing shcaml compatibility with topkg &gt;= 1.1.0 (&lt;a href="https://github.com/ocaml/opam-repository/issues/28959"&gt;#28959&lt;/a&gt;), &lt;a href="https://github.com/ocaml/opam-repository/issues/28849"&gt;MLCUDDIDL OCaml 5.0 support&lt;/a&gt; by &lt;a href="https://github.com/bobot"&gt;François Bobot&lt;/a&gt;, and metadata fixes for avro-simple (&lt;a href="https://github.com/ocaml/opam-repository/issues/28960"&gt;#28960&lt;/a&gt;) by &lt;a href="https://github.com/tmcgilchrist"&gt;Tim McGilchrist&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Package ecosystem growth with email/DNS stack updates, opam 2.5.0 release, cmdliner 2.1.0, and improved OCaml 5.4 compatibility</summary><published>2025-11-30T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2025/week-47</id><title>Week 47, 2025: opam 2.5.0-rc1 released with 36 packages merged including new avro-simple, salto-analyzer, and expr packages</title><updated>2025-11-23T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

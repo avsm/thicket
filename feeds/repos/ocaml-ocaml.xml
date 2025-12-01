@@ -1,5 +1,74 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.xml</id><title>ocaml/ocaml (Weekly)</title><updated>2025-11-23T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml/2025/week-47</id><title>Week 47, 2025: New Format/Printf heterogeneous list functions, Domain.join backtrace preservation, and runtime memory model fixes merged</title><updated>2025-11-23T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.xml</id><title>ocaml/ocaml (Weekly)</title><updated>2025-11-30T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml/2025/week-48</id><title>Week 48, 2025: Seven PRs merged including String module enhancements, ld.conf relocatability improvements, and atomic record fields support</title><updated>2025-11-30T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Active development with 36 open PRs including relocatable OCaml series, atomic operations, String enhancements, and compiler improvements&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14243" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Relocatable OCaml initiative&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt; with merged foundation (&lt;a href="https://github.com/ocaml/ocaml/issues/14243"&gt;#14243&lt;/a&gt;) and four follow-up PRs for --with-relative-libdir (&lt;a href="https://github.com/ocaml/ocaml/issues/14244"&gt;#14244&lt;/a&gt;), searching and suffixing (&lt;a href="https://github.com/ocaml/ocaml/issues/14245"&gt;#14245&lt;/a&gt;), opam integration (&lt;a href="https://github.com/ocaml/ocaml/issues/14246"&gt;#14246&lt;/a&gt;), and switch management (&lt;a href="https://github.com/ocaml/ocaml/issues/14247"&gt;#14247&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/13404" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Atomic operations expansion&lt;/strong&gt;&lt;/a&gt; including merged atomic record fields by &lt;a href="https://github.com/clef-men"&gt;@clef-men&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/13404"&gt;#13404&lt;/a&gt;), open atomic arrays PR (&lt;a href="https://github.com/ocaml/ocaml/issues/14380"&gt;#14380&lt;/a&gt;), and &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; working on Atomic.modify/modify&lt;em&gt;get (&lt;a href="https://github.com/ocaml/ocaml/issues/10798"&gt;#10798&lt;/a&gt;), concurrent lazy thunks with Lazy.Atomic&lt;/em&gt;repeating (&lt;a href="https://github.com/ocaml/ocaml/issues/14043"&gt;#14043&lt;/a&gt;) and Lazy.Concurrent_blocking (&lt;a href="https://github.com/ocaml/ocaml/issues/14393"&gt;#14393&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14362" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;String module enhancements&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/dbuenzli"&gt;Daniel Bünzli&lt;/a&gt; with merged predicate-based functions (&lt;a href="https://github.com/ocaml/ocaml/issues/14362"&gt;#14362&lt;/a&gt;) and open PR adding find&lt;em&gt;{first,last}&lt;/em&gt;index and related search functions (&lt;a href="https://github.com/ocaml/ocaml/issues/14381"&gt;#14381&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/13766" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Compiler tooling improvements&lt;/strong&gt;&lt;/a&gt; including &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt; advancing structured diagnostics (&lt;a href="https://github.com/ocaml/ocaml/issues/13766"&gt;#13766&lt;/a&gt;), spellchecking hints for module errors (&lt;a href="https://github.com/ocaml/ocaml/issues/14330"&gt;#14330&lt;/a&gt;), and cmt file environment stripping (&lt;a href="https://github.com/ocaml/ocaml/issues/14373"&gt;#14373&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14394" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Type system enhancements&lt;/strong&gt;&lt;/a&gt; with &lt;a href="https://github.com/johnyob"&gt;Alistair&lt;/a&gt; refactoring type&lt;em&gt;let into separate nonrec/rec functions (&lt;a href="https://github.com/ocaml/ocaml/issues/14394"&gt;#14394&lt;/a&gt;) and removing let rec module support (&lt;a href="https://github.com/ocaml/ocaml/issues/14388"&gt;#14388&lt;/a&gt;), plus &lt;a href="https://github.com/lthls"&gt;Vincent Laviron&lt;/a&gt; adding Set/Map.S.get&lt;/em&gt;singleton (&lt;a href="https://github.com/ocaml/ocaml/issues/14121"&gt;#14121&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14379" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Pattern matching improvements&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/Alex1005a"&gt;@Alex1005a&lt;/a&gt; fixing exhaustiveness checking for GADTs indexed by non-overlapping polymorphic variants (&lt;a href="https://github.com/ocaml/ocaml/issues/14379"&gt;#14379&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14383" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Developer experience&lt;/strong&gt;&lt;/a&gt; with &lt;a href="https://github.com/mshinwell"&gt;Mark Shinwell&lt;/a&gt; adding AI.md guidelines (&lt;a href="https://github.com/ocaml/ocaml/issues/14383"&gt;#14383&lt;/a&gt;), &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt; improving Git source archives (&lt;a href="https://github.com/ocaml/ocaml/issues/14152"&gt;#14152&lt;/a&gt;), and &lt;a href="https://github.com/xvw"&gt;Xavier Van de Woestyne&lt;/a&gt; integrating Merlin typing recovery (&lt;a href="https://github.com/ocaml/ocaml/issues/14241"&gt;#14241&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14384" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Runtime and GC work&lt;/strong&gt;&lt;/a&gt; including &lt;a href="https://github.com/NickBarnes"&gt;Nick Barnes&lt;/a&gt; using memprof status field for minimal sampling (&lt;a href="https://github.com/ocaml/ocaml/issues/14384"&gt;#14384&lt;/a&gt;), &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; updating young-pointers after barrier (&lt;a href="https://github.com/ocaml/ocaml/issues/14306"&gt;#14306&lt;/a&gt;), and &lt;a href="https://github.com/stedolan"&gt;Stephen Dolan&lt;/a&gt; adding named GC parameters mechanism (&lt;a href="https://github.com/ocaml/ocaml/issues/14367"&gt;#14367&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/13450" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Platform compatibility&lt;/strong&gt;&lt;/a&gt; with &lt;a href="https://github.com/MisterDA"&gt;Antonin Décimo&lt;/a&gt; fixing Windows socketpair AF_UNIX emulation (&lt;a href="https://github.com/ocaml/ocaml/issues/13450"&gt;#13450&lt;/a&gt;) and improving AsciiDoc documentation (&lt;a href="https://github.com/ocaml/ocaml/issues/14392"&gt;#14392&lt;/a&gt;), &lt;a href="https://github.com/hannesm"&gt;Hannes Mehnert&lt;/a&gt; updating shell scripts to use /usr/bin/env bash (&lt;a href="https://github.com/ocaml/ocaml/issues/14398"&gt;#14398&lt;/a&gt;), and &lt;a href="https://github.com/SamB"&gt;Samuel Bronson&lt;/a&gt; checking getentropy declaration (&lt;a href="https://github.com/ocaml/ocaml/issues/14382"&gt;#14382&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14378" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;API additions and fixes&lt;/strong&gt;&lt;/a&gt; including &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; prettifying Filename.quote output on Unix (&lt;a href="https://github.com/ocaml/ocaml/issues/14378"&gt;#14378&lt;/a&gt;), &lt;a href="https://github.com/liam923"&gt;Liam Stevenson&lt;/a&gt; fixing inclusion check error messages (&lt;a href="https://github.com/ocaml/ocaml/issues/14205"&gt;#14205&lt;/a&gt;), and &lt;a href="https://github.com/agle"&gt;am&lt;/a&gt; documenting Iarray.t construction from array literals (&lt;a href="https://github.com/ocaml/ocaml/issues/14397"&gt;#14397&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/13275" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Ongoing long-term initiatives&lt;/strong&gt;&lt;/a&gt; including &lt;a href="https://github.com/samsa1"&gt;Samuel Vivien&lt;/a&gt; on modular explicits (&lt;a href="https://github.com/ocaml/ocaml/issues/13275"&gt;#13275&lt;/a&gt;), &lt;a href="https://github.com/nojb"&gt;Nicolás Ojeda Bär&lt;/a&gt; allowing arbitrary structure items in let expressions (&lt;a href="https://github.com/ocaml/ocaml/issues/14040"&gt;#14040&lt;/a&gt;), &lt;a href="https://github.com/bclement-ocp"&gt;Basile Clément&lt;/a&gt; using opaque types for Dynarray.Dummy (&lt;a href="https://github.com/ocaml/ocaml/issues/14084"&gt;#14084&lt;/a&gt;), and &lt;a href="https://github.com/t6s"&gt;Takafumi Saikawa&lt;/a&gt; enabling -i-variance for classes and extension constructors (&lt;a href="https://github.com/ocaml/ocaml/issues/14315"&gt;#14315&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Seven PRs merged including String module enhancements, ld.conf relocatability improvements, and atomic record fields support</summary><published>2025-11-30T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml/2025/week-47</id><title>Week 47, 2025: New Format/Printf heterogeneous list functions, Domain.join backtrace preservation, and runtime memory model fixes merged</title><updated>2025-11-23T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
