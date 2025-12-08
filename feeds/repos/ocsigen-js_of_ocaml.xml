@@ -1,5 +1,70 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocsigen-js_of_ocaml.xml</id><title>ocsigen/js_of_ocaml (Weekly)</title><updated>2025-11-30T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocsigen-js_of_ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocsigen/js_of_ocaml</subtitle><entry><id>https://thicket.dev/repos/ocsigen-js_of_ocaml/2025/week-48</id><title>Week 48, 2025: Runtime improvements for Deno support and a feature request for distribution-provided Binaryen</title><updated>2025-11-30T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocsigen-js_of_ocaml.xml</id><title>ocsigen/js_of_ocaml (Weekly)</title><updated>2025-12-07T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocsigen-js_of_ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocsigen/js_of_ocaml</subtitle><entry><id>https://thicket.dev/repos/ocsigen-js_of_ocaml/2025/week-49</id><title>Week 49, 2025: Runtime improvements and documentation cleanup with new API for accessing JavaScript runtime values</title><updated>2025-12-07T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Runtime improvements for Deno support and binaryen dependency work ongoing&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/hhugo"&gt;@hhugo&lt;/a&gt; opened PR for &lt;a href="https://github.com/ocsigen/js_of_ocaml/pull/2134" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;binaryen dependency&lt;/strong&gt;&lt;/a&gt; management to address missing dependency issues with documentation needed for version constraints (&lt;a href="https://github.com/ocsigen/js_of_ocaml/pull/2134"&gt;#2134&lt;/a&gt;, fixing &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2131"&gt;#2131&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/vouillon"&gt;Jérôme Vouillon&lt;/a&gt; has &lt;a href="https://github.com/ocsigen/js_of_ocaml/pull/2108" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Wasm runtime&lt;/strong&gt;&lt;/a&gt; work in progress providing JavaScript eval function access for Wasm runtime with merge conflicts to resolve (&lt;a href="https://github.com/ocsigen/js_of_ocaml/pull/2108"&gt;#2108&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/toastal"&gt;@toastal&lt;/a&gt; continues work on &lt;a href="https://github.com/ocsigen/js_of_ocaml/pull/2070" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Intl.RelativeTimeFormat&lt;/strong&gt;&lt;/a&gt; API bindings for ECMAScript internationalization support (&lt;a href="https://github.com/ocsigen/js_of_ocaml/pull/2070"&gt;#2070&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/hhugo"&gt;@hhugo&lt;/a&gt; merged &lt;a href="https://github.com/ocsigen/js_of_ocaml/pull/2132" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;runtime improvements&lt;/strong&gt;&lt;/a&gt; preparing infrastructure for Deno support with cleanup and various runtime fixes (&lt;a href="https://github.com/ocsigen/js_of_ocaml/pull/2132"&gt;#2132&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/hhugo"&gt;@hhugo&lt;/a&gt; merged &lt;a href="https://github.com/ocsigen/js_of_ocaml/pull/2086" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;runtime value access&lt;/strong&gt;&lt;/a&gt; feature enabling direct access to JavaScript runtime exports for better integration with JavaScript code (&lt;a href="https://github.com/ocsigen/js_of_ocaml/pull/2086"&gt;#2086&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/hhugo"&gt;@hhugo&lt;/a&gt; merged &lt;a href="https://github.com/ocsigen/js_of_ocaml/pull/2133" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;documentation fixes&lt;/strong&gt;&lt;/a&gt; correcting typos across 43 files in manual and codebase (&lt;a href="https://github.com/ocsigen/js_of_ocaml/pull/2133"&gt;#2133&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Draft PR for &lt;a href="https://github.com/ocsigen/js_of_ocaml/pull/2047" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;shapes with Dune support&lt;/strong&gt;&lt;/a&gt; was closed without merging (&lt;a href="https://github.com/ocsigen/js_of_ocaml/pull/2047"&gt;#2047&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Runtime improvements and documentation cleanup with new API for accessing JavaScript runtime values</summary><published>2025-12-07T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocsigen-js_of_ocaml/2025/week-48</id><title>Week 48, 2025: Runtime improvements for Deno support and a feature request for distribution-provided Binaryen</title><updated>2025-11-30T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

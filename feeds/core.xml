@@ -1,5 +1,87 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/core.xml</id><title>OCaml Core (Weekly)</title><updated>2025-11-30T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/core.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Core OCaml language, compiler, and essential tooling</subtitle><entry><id>https://thicket.dev/groups/core/2025/week-48</id><title>Week 48, 2025: Seven PRs merged with relocatable installations, atomic record fields, and String enhancements; active RFC discussions on val declarations</title><updated>2025-11-30T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/core.xml</id><title>OCaml Core (Weekly)</title><updated>2025-12-07T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/core.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Core OCaml language, compiler, and essential tooling</subtitle><entry><id>https://thicket.dev/groups/core/2025/week-49</id><title>Week 49, 2025: Six PRs merged in ocaml/ocaml including new let expression syntax; RFC discussion on val declarations in structures</title><updated>2025-12-07T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14040" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Arbitrary structure items in let expressions&lt;/strong&gt;&lt;/a&gt; now supported in &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt;, enabling &lt;code&gt;let module rec&lt;/code&gt;, &lt;code&gt;let exception&lt;/code&gt;, &lt;code&gt;let open&lt;/code&gt;, &lt;code&gt;let type&lt;/code&gt;, and &lt;code&gt;let class&lt;/code&gt; syntax within expression contexts (&lt;a href="https://github.com/ocaml/ocaml/issues/14040"&gt;ocaml/ocaml#14040&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14190" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Toplevel -init flag compatibility&lt;/strong&gt;&lt;/a&gt; with &lt;code&gt;-e&lt;/code&gt; flag fixed, allowing initialization files to load properly during script execution (&lt;a href="https://github.com/ocaml/ocaml/issues/14190"&gt;ocaml/ocaml#14190&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14397" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Iarray documentation expansion&lt;/strong&gt;&lt;/a&gt; with examples for constructing immutable arrays from array literals and additions to core library documentation (&lt;a href="https://github.com/ocaml/ocaml/issues/14397"&gt;ocaml/ocaml#14397&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/RFCs/pull/59" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Val declarations RFC&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/ocaml/RFCs/pull/59"&gt;ocaml/RFCs#59&lt;/a&gt; by &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; proposes new syntax that would require implementation changes in &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt;, with &lt;a href="https://github.com/Niols"&gt;Nicolas Jeannerod&lt;/a&gt; suggesting alternative grammar approaches&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14040" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Language feature discussions&lt;/strong&gt;&lt;/a&gt; spanning both repositories include the merged arbitrary structure items in let expressions (&lt;a href="https://github.com/ocaml/ocaml/issues/14040"&gt;ocaml/ocaml#14040&lt;/a&gt;) and the proposed val declarations RFC (&lt;a href="https://github.com/ocaml/RFCs/pull/59"&gt;ocaml/RFCs#59&lt;/a&gt;), both addressing structure-level syntax extensions&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14407" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Documentation coordination&lt;/strong&gt;&lt;/a&gt; between &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt;'s relaxed value restriction explanation (&lt;a href="https://github.com/ocaml/ocaml/issues/14407"&gt;ocaml/ocaml#14407&lt;/a&gt;) and RFC authoring demonstrates active engagement in both language design and implementation documentation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14406" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Unix socket address length calculation&lt;/strong&gt;&lt;/a&gt; identified as potentially incorrect by &lt;a href="https://github.com/Sylvain78"&gt;Anarchos&lt;/a&gt; in &lt;a href="https://github.com/ocaml/ocaml/discussions/14401"&gt;ocaml/ocaml#14401&lt;/a&gt;, showing Linux adds missing null terminator while Haiku does not, leading to PR &lt;a href="https://github.com/ocaml/ocaml/issues/14406"&gt;ocaml/ocaml#14406&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Hashtbl peek and pop functions&lt;/strong&gt; proposed by &lt;a href="https://github.com/sanette"&gt;珊瑚&lt;/a&gt; for fast access to arbitrary elements without iteration overhead in &lt;a href="https://github.com/ocaml/ocaml/discussions/14402"&gt;ocaml/ocaml#14402&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/RFCs/pull/59" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Alternative grammar for val declarations&lt;/strong&gt;&lt;/a&gt; proposed by &lt;a href="https://github.com/Niols"&gt;Nicolas Jeannerod&lt;/a&gt; in &lt;a href="https://github.com/ocaml/RFCs/pull/59"&gt;ocaml/RFCs#59&lt;/a&gt; suggesting bundling multiple &lt;code&gt;val&lt;/code&gt; declarations with &lt;code&gt;and&lt;/code&gt; separators before &lt;code&gt;let&lt;/code&gt; bindings&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14403" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Single constructor unboxing feature&lt;/strong&gt;&lt;/a&gt; discussed by &lt;a href="https://github.com/backtracking"&gt;Jean-Christophe Filliatre&lt;/a&gt; in &lt;a href="https://github.com/ocaml/ocaml/issues/14403"&gt;ocaml/ocaml#14403&lt;/a&gt; with input from &lt;a href="https://github.com/lthls"&gt;Vincent Laviron&lt;/a&gt; and &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14396" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Queue garbage collection issue&lt;/strong&gt;&lt;/a&gt; investigated by &lt;a href="https://github.com/alastairpatrick"&gt;@alastairpatrick&lt;/a&gt; on Windows in &lt;a href="https://github.com/ocaml/ocaml/issues/14396"&gt;ocaml/ocaml#14396&lt;/a&gt; with debugging assistance from multiple contributors&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14040" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Language syntax expansion&lt;/strong&gt;&lt;/a&gt; evident across multiple efforts including merged arbitrary structure items in let expressions (&lt;a href="https://github.com/ocaml/ocaml/issues/14040"&gt;ocaml/ocaml#14040&lt;/a&gt;), proposed val declarations RFC (&lt;a href="https://github.com/ocaml/RFCs/pull/59"&gt;ocaml/RFCs#59&lt;/a&gt;), and removal of &lt;code&gt;let rec (module M)&lt;/code&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14388"&gt;ocaml/ocaml#14388&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14398" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Platform portability focus&lt;/strong&gt;&lt;/a&gt; with contributions targeting BSD systems (&lt;a href="https://github.com/ocaml/ocaml/issues/14398"&gt;ocaml/ocaml#14398&lt;/a&gt;), Haiku OS (&lt;a href="https://github.com/ocaml/ocaml/issues/14138"&gt;ocaml/ocaml#14138&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14406"&gt;ocaml/ocaml#14406&lt;/a&gt;), Android Termux (&lt;a href="https://github.com/ocaml/ocaml/issues/14382"&gt;ocaml/ocaml#14382&lt;/a&gt;), and Windows (&lt;a href="https://github.com/ocaml/ocaml/issues/13711"&gt;ocaml/ocaml#13711&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14397" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Documentation quality improvements&lt;/strong&gt;&lt;/a&gt; across multiple PRs including Iarray examples (&lt;a href="https://github.com/ocaml/ocaml/issues/14397"&gt;ocaml/ocaml#14397&lt;/a&gt;), AsciiDoc enhancements (&lt;a href="https://github.com/ocaml/ocaml/issues/14392"&gt;ocaml/ocaml#14392&lt;/a&gt;), man page corrections (&lt;a href="https://github.com/ocaml/ocaml/issues/14400"&gt;ocaml/ocaml#14400&lt;/a&gt;), and value restriction explanations (&lt;a href="https://github.com/ocaml/ocaml/issues/14407"&gt;ocaml/ocaml#14407&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14244" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Compiler tooling evolution&lt;/strong&gt;&lt;/a&gt; with work on relocatable OCaml (&lt;a href="https://github.com/ocaml/ocaml/issues/14244"&gt;ocaml/ocaml#14244&lt;/a&gt;), Dune integration improvements (&lt;a href="https://github.com/ocaml/ocaml/issues/14408"&gt;ocaml/ocaml#14408&lt;/a&gt;), and bytecode optimization for WebAssembly targets (&lt;a href="https://github.com/ocaml/ocaml/issues/13438"&gt;ocaml/ocaml#13438&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Six PRs merged in ocaml/ocaml including new let expression syntax; RFC discussion on val declarations in structures</summary><published>2025-12-07T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2025/week-48</id><title>Week 48, 2025: Seven PRs merged with relocatable installations, atomic record fields, and String enhancements; active RFC discussions on val declarations</title><updated>2025-11-30T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
@@ -4907,7 +4989,7 @@
 &lt;li&gt;&lt;strong class="achievement"&gt;Cross-platform compatibility&lt;/strong&gt; receiving increased attention with Windows API modernization and Unix platform improvements&lt;/li&gt;
 &lt;li&gt;&lt;strong class="achievement"&gt;Language design refinement&lt;/strong&gt; through community feedback on practical applications of new syntax features like raw identifiers&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Runtime improvements and bytecode optimization merged alongside language syntax discussions for raw identifiers</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2024/week-42</id><title>Week 42, 2024: Five PRs merged in ocaml/ocaml including new Thread.set_current_thread_name API and compiler improvements</title><updated>2025-12-01T12:34:56.387192+00:00</updated><content type="html">
+</content><link href="https://thicket.dev/"/><summary>Runtime improvements and bytecode optimization merged alongside language syntax discussions for raw identifiers</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2024/week-42</id><title>Week 42, 2024: Five PRs merged in ocaml/ocaml including new Thread.set_current_thread_name API and compiler improvements</title><updated>2025-12-08T09:49:48.938799+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

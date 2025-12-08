@@ -1,5 +1,118 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/tools.xml</id><title>OCaml Tools (Weekly)</title><updated>2025-11-30T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/tools.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Development tools and build systems</subtitle><entry><id>https://thicket.dev/groups/tools/2025/week-48</id><title>Week 48, 2025: Dune package management maturation, opam 2.5.0 release, Rocq Prover integration, and LSP editor improvements</title><updated>2025-11-30T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/tools.xml</id><title>OCaml Tools (Weekly)</title><updated>2025-12-07T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/tools.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Development tools and build systems</subtitle><entry><id>https://thicket.dev/groups/tools/2025/week-49</id><title>Week 49, 2025: Performance optimizations in build and package management tools with improved error messaging and platform compatibility work</title><updated>2025-12-07T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml/dune/issues/12832"&gt;ocaml/dune#12832&lt;/a&gt;&lt;/strong&gt;: Variable expansion in &lt;code&gt;(promote (into ..))&lt;/code&gt; rules enables dynamic control using &lt;code&gt;%{env:VAR}&lt;/code&gt; by &lt;a href="https://github.com/anmonteiro"&gt;Antonio Nuno Monteiro&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml/dune/issues/12848"&gt;ocaml/dune#12848&lt;/a&gt;&lt;/strong&gt;: Package context memoization delivers 70% performance improvement on large projects by &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml/dune/issues/12386"&gt;ocaml/dune#12386&lt;/a&gt;&lt;/strong&gt;: Horizontal mouse scrolling support added to TUI scrollbox widget by &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml/dune/issues/12650"&gt;ocaml/dune#12650&lt;/a&gt;&lt;/strong&gt;: Setup scripts field for cram tests enables pre-test initialization by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml/dune/issues/12833"&gt;ocaml/dune#12833&lt;/a&gt;&lt;/strong&gt;: Improved error messages for invalid version formats by &lt;a href="https://github.com/benodiwal"&gt;Sachin Beniwal&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml/dune/issues/12844"&gt;ocaml/dune#12844&lt;/a&gt;&lt;/strong&gt;: Non-ASCII character detection in version strings with clear error messages by &lt;a href="https://github.com/benodiwal"&gt;Sachin Beniwal&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml/dune/issues/12869"&gt;ocaml/dune#12869&lt;/a&gt;&lt;/strong&gt;: Fixed error location precision for multi-byte UTF-8 characters by &lt;a href="https://github.com/benodiwal"&gt;Sachin Beniwal&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml/dune/issues/12791"&gt;ocaml/dune#12791&lt;/a&gt;&lt;/strong&gt;: Project templates improved with &lt;code&gt;dune init proj&lt;/code&gt; generating test stanzas depending on project library by &lt;a href="https://github.com/shonfeder"&gt;Shon Feder&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml/opam/issues/6818"&gt;ocaml/opam#6818&lt;/a&gt;&lt;/strong&gt;: Performance improvement for &lt;code&gt;opam show&lt;/code&gt; reducing I/O operations by &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml/opam/issues/6823"&gt;ocaml/opam#6823&lt;/a&gt;&lt;/strong&gt;: Fixed AppArmor support in install script for &lt;code&gt;/usr/bin&lt;/code&gt; by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/pull/2086"&gt;ocsigen/js&lt;em&gt;of&lt;/em&gt;ocaml#2086&lt;/a&gt;&lt;/strong&gt;: New &lt;code&gt;runtime_value&lt;/code&gt; API for accessing JavaScript runtime values by &lt;a href="https://github.com/hhugo"&gt;@hhugo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/pull/2132"&gt;ocsigen/js&lt;em&gt;of&lt;/em&gt;ocaml#2132&lt;/a&gt;&lt;/strong&gt;: Runtime filesystem fixes for paths with regex special characters by &lt;a href="https://github.com/hhugo"&gt;@hhugo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml/merlin/issues/2010"&gt;ocaml/merlin#2010&lt;/a&gt;&lt;/strong&gt;: Fixed Mocaml printer documentation update for Reason syntax rendering by &lt;a href="https://github.com/davesnx"&gt;David Sancho&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune"&gt;ocaml/dune&lt;/a&gt; led activity with 29 new PRs and 43 merges focused on performance optimizations (&lt;a href="https://github.com/ocaml/dune/issues/12848"&gt;#12848&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/12768"&gt;#12768&lt;/a&gt;), error message improvements (&lt;a href="https://github.com/ocaml/dune/issues/12833"&gt;#12833&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/12844"&gt;#12844&lt;/a&gt;), and OxCaml feature expansion (&lt;a href="https://github.com/ocaml/dune/issues/12843"&gt;#12843&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/12707"&gt;#12707&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam"&gt;ocaml/opam&lt;/a&gt; delivered performance improvements for &lt;code&gt;opam show&lt;/code&gt; (&lt;a href="https://github.com/ocaml/opam/issues/6818"&gt;#6818&lt;/a&gt;) and addressed terminal compatibility issues (&lt;a href="https://github.com/ocaml/opam/issues/6829"&gt;#6829&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam/issues/6830"&gt;#6830&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/merlin"&gt;ocaml/merlin&lt;/a&gt; saw active work on signature-help improvements (&lt;a href="https://github.com/ocaml/merlin/issues/1997"&gt;#1997&lt;/a&gt;, &lt;a href="https://github.com/ocaml/merlin/issues/2009"&gt;#2009&lt;/a&gt;) and platform portability fixes (&lt;a href="https://github.com/ocaml/merlin/issues/1998"&gt;#1998&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml"&gt;ocsigen/js&lt;em&gt;of&lt;/em&gt;ocaml&lt;/a&gt; focused on runtime improvements preparing for Deno support (&lt;a href="https://github.com/ocsigen/js_of_ocaml/pull/2132"&gt;#2132&lt;/a&gt;) and new JavaScript interop APIs (&lt;a href="https://github.com/ocsigen/js_of_ocaml/pull/2086"&gt;#2086&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind"&gt;ocaml/ocamlfind&lt;/a&gt; continued Windows platform fixes for MSYS2 and Cygwin (&lt;a href="https://github.com/ocaml/ocamlfind/pull/112"&gt;#112&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml-lsp"&gt;ocaml/ocaml-lsp&lt;/a&gt; addressed OCaml 5.3.0 installation compatibility (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1571"&gt;#1571&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/odoc"&gt;ocaml/odoc&lt;/a&gt; received issue report about functor documentation inheritance (&lt;a href="https://github.com/ocaml/odoc/issues/1394"&gt;#1394&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;No activity in &lt;a href="https://github.com/ocaml/opam-file-format"&gt;ocaml/opam-file-format&lt;/a&gt; and &lt;a href="https://github.com/ocaml-dune/spawn"&gt;ocaml-dune/spawn&lt;/a&gt; this week&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/pull/112" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Windows platform compatibility&lt;/strong&gt;&lt;/a&gt; work coordinated between &lt;a href="https://github.com/ocaml/ocamlfind/pull/112"&gt;ocaml/ocamlfind#112&lt;/a&gt; addressing MSYS2 and Cygwin issues referenced in &lt;a href="https://github.com/ocaml/opam/issues/6732"&gt;ocaml/opam#6732&lt;/a&gt; and &lt;a href="https://github.com/ocaml/opam-repository/issues/28636"&gt;ocaml/opam-repository#28636&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1571" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml 5.3.0 compatibility&lt;/strong&gt;&lt;/a&gt; issues in &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1571"&gt;ocaml/ocaml-lsp#1571&lt;/a&gt; resolved through opam 2.5.0 upgrade, linking &lt;a href="https://github.com/ocaml/opam"&gt;ocaml/opam&lt;/a&gt; release work with editor tooling installation&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/merlin/issues/2010" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Merlin printer fix&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/ocaml/merlin/issues/2010"&gt;ocaml/merlin#2010&lt;/a&gt; improves Reason syntax rendering in &lt;a href="https://github.com/ocaml/ocaml-lsp"&gt;ocaml/ocaml-lsp&lt;/a&gt; hover tooltips, demonstrating cross-tool integration&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/12830" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Dependency updates&lt;/strong&gt;&lt;/a&gt; synchronized across repositories with actions/checkout v6 merged in both &lt;a href="https://github.com/ocaml/dune/issues/12830"&gt;ocaml/dune#12830&lt;/a&gt; and &lt;a href="https://github.com/ocaml/merlin/issues/2008"&gt;ocaml/merlin#2008&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/12843" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OxCaml development&lt;/strong&gt;&lt;/a&gt; spans multiple Dune PRs including preprocessor fixes (&lt;a href="https://github.com/ocaml/dune/issues/12843"&gt;#12843&lt;/a&gt;), js&lt;em&gt;of&lt;/em&gt;ocaml integration (&lt;a href="https://github.com/ocaml/dune/issues/12762"&gt;#12762&lt;/a&gt;), and tutorials (&lt;a href="https://github.com/ocaml/dune/issues/12780"&gt;#12780&lt;/a&gt;), while &lt;a href="https://github.com/ocsigen/js_of_ocaml"&gt;ocsigen/js&lt;em&gt;of&lt;/em&gt;ocaml&lt;/a&gt; continues separate runtime work&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Package management evolution&lt;/strong&gt; coordinated between &lt;a href="https://github.com/ocaml/dune"&gt;ocaml/dune&lt;/a&gt; package features and &lt;a href="https://github.com/ocaml/opam"&gt;ocaml/opam&lt;/a&gt; repository format improvements&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6828" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Opam terminal input handling&lt;/strong&gt;&lt;/a&gt; sparked discussion between &lt;a href="https://github.com/arvidj"&gt;@arvidj&lt;/a&gt; and &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; about Emacs shell compatibility (&lt;a href="https://github.com/ocaml/opam/issues/6828"&gt;#6828&lt;/a&gt;), resulting in two proposed solutions: dumb terminal detection (&lt;a href="https://github.com/ocaml/opam/issues/6829"&gt;#6829&lt;/a&gt;) and termio simplification (&lt;a href="https://github.com/ocaml/opam/issues/6830"&gt;#6830&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6825" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Opam extra-files deprecation&lt;/strong&gt;&lt;/a&gt; discussed by &lt;a href="https://github.com/WardBrian"&gt;Brian Ward&lt;/a&gt; and &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; regarding permissions changes in opam 2.4+ affecting &lt;a href="https://github.com/ocaml-cross/opam-cross-windows"&gt;ocaml-cross/opam-cross-windows&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam/issues/6825"&gt;#6825&lt;/a&gt;), raising concerns about local development workflows&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6826" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Opam solver behavior&lt;/strong&gt;&lt;/a&gt; improvements discussed between &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; and &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; regarding breadth-first search in 0install-solver (&lt;a href="https://github.com/ocaml/opam/issues/6826"&gt;#6826&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6816" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Opam repository warnings&lt;/strong&gt;&lt;/a&gt; proposed by &lt;a href="https://github.com/reynir"&gt;Reynir Björnsson&lt;/a&gt; to warn users creating switches without default repository (&lt;a href="https://github.com/ocaml/opam/issues/6816"&gt;#6816&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6812" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Opam shell completion security&lt;/strong&gt;&lt;/a&gt; discussion involving &lt;a href="https://github.com/WardBrian"&gt;Brian Ward&lt;/a&gt;, &lt;a href="https://github.com/hannesm"&gt;Hannes Mehnert&lt;/a&gt;, &lt;a href="https://github.com/reynir"&gt;Reynir Björnsson&lt;/a&gt;, and &lt;a href="https://github.com/dbuenzli"&gt;Daniel Bünzli&lt;/a&gt; on setting &lt;code&gt;XDG_DATA_DIRS&lt;/code&gt; and &lt;code&gt;FPATH&lt;/code&gt; (&lt;a href="https://github.com/ocaml/opam/issues/6812"&gt;#6812&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/merlin/issues/1997" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Merlin signature-help API design&lt;/strong&gt;&lt;/a&gt; reviewed extensively by &lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt; with detailed feedback on position comparison APIs (&lt;a href="https://github.com/ocaml/merlin/issues/1997"&gt;#1997&lt;/a&gt;) and test clarity (&lt;a href="https://github.com/ocaml/merlin/issues/2009"&gt;#2009&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Merlin ppx&lt;em&gt;deriving issue&lt;/strong&gt; (&lt;a href="https://github.com/ocaml/merlin/issues/1910"&gt;#1910&lt;/a&gt;) resolved after identifying root cause in ppx&lt;/em&gt;deriving.create's improper &lt;code&gt;loc&lt;/code&gt; field, tracked in &lt;a href="https://github.com/ocaml-ppx/ppx_deriving/issues/297"&gt;ocaml-ppx/ppx_deriving#297&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;js&lt;em&gt;of&lt;/em&gt;ocaml number type migration&lt;/strong&gt; challenges raised by &lt;a href="https://github.com/tari3x"&gt;@tari3x&lt;/a&gt; seeking conversion strategies after breaking changes from &lt;a href="https://github.com/ocsigen/js_of_ocaml/pull/1650"&gt;#1650&lt;/a&gt; (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2136"&gt;#2136&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/12768" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Performance optimization&lt;/strong&gt;&lt;/a&gt; emerged as major theme with dune's sexp decoder work (&lt;a href="https://github.com/ocaml/dune/issues/12768"&gt;#12768&lt;/a&gt;), package context memoization (&lt;a href="https://github.com/ocaml/dune/issues/12848"&gt;#12848&lt;/a&gt;), and opam's &lt;code&gt;show&lt;/code&gt; command improvements (&lt;a href="https://github.com/ocaml/opam/issues/6818"&gt;#6818&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/12833" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Developer experience improvements&lt;/strong&gt;&lt;/a&gt; through better error messages in dune (&lt;a href="https://github.com/ocaml/dune/issues/12833"&gt;#12833&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/12844"&gt;#12844&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/12869"&gt;#12869&lt;/a&gt;), terminal compatibility in opam (&lt;a href="https://github.com/ocaml/opam/issues/6829"&gt;#6829&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam/issues/6830"&gt;#6830&lt;/a&gt;), and signature-help refinements in merlin (&lt;a href="https://github.com/ocaml/merlin/issues/1997"&gt;#1997&lt;/a&gt;, &lt;a href="https://github.com/ocaml/merlin/issues/2009"&gt;#2009&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/pull/112" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Platform portability&lt;/strong&gt;&lt;/a&gt; work across ocamlfind Windows fixes (&lt;a href="https://github.com/ocaml/ocamlfind/pull/112"&gt;#112&lt;/a&gt;), merlin BSD compatibility (&lt;a href="https://github.com/ocaml/merlin/issues/1998"&gt;#1998&lt;/a&gt;), and js&lt;em&gt;of&lt;/em&gt;ocaml platform detection helpers (&lt;a href="https://github.com/ocsigen/js_of_ocaml/pull/2132"&gt;#2132&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/pull/2132" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;JavaScript runtime expansion&lt;/strong&gt;&lt;/a&gt; with js&lt;em&gt;of&lt;/em&gt;ocaml preparing for Deno support (&lt;a href="https://github.com/ocsigen/js_of_ocaml/pull/2132"&gt;#2132&lt;/a&gt;) and new runtime value access APIs (&lt;a href="https://github.com/ocsigen/js_of_ocaml/pull/2086"&gt;#2086&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/12707" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OxCaml feature maturation&lt;/strong&gt;&lt;/a&gt; in dune with parameterised inline tests (&lt;a href="https://github.com/ocaml/dune/issues/12707"&gt;#12707&lt;/a&gt;), js&lt;em&gt;of&lt;/em&gt;ocaml compilation support (&lt;a href="https://github.com/ocaml/dune/issues/12762"&gt;#12762&lt;/a&gt;), and tutorial development (&lt;a href="https://github.com/ocaml/dune/issues/12780"&gt;#12780&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/12837" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Package management refinement&lt;/strong&gt;&lt;/a&gt; through documentation expansion in dune (&lt;a href="https://github.com/ocaml/dune/issues/12837"&gt;#12837&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/12744"&gt;#12744&lt;/a&gt;) and repository format evolution in opam (&lt;a href="https://github.com/ocaml/opam/issues/6253"&gt;#6253&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam/issues/6625"&gt;#6625&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/12852" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Code architecture cleanup&lt;/strong&gt;&lt;/a&gt; visible in dune's module renames (&lt;a href="https://github.com/ocaml/dune/issues/12852"&gt;#12852&lt;/a&gt;), API simplifications (&lt;a href="https://github.com/ocaml/dune/issues/12880"&gt;#12880&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/12849"&gt;#12849&lt;/a&gt;), and documentation corrections in js&lt;em&gt;of&lt;/em&gt;ocaml (&lt;a href="https://github.com/ocsigen/js_of_ocaml/pull/2133"&gt;#2133&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Performance optimizations in build and package management tools with improved error messaging and platform compatibility work</summary><published>2025-12-07T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/tools/2025/week-48</id><title>Week 48, 2025: Dune package management maturation, opam 2.5.0 release, Rocq Prover integration, and LSP editor improvements</title><updated>2025-11-30T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
