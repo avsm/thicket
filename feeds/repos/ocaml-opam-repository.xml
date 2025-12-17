@@ -1,5 +1,72 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam-repository.xml</id><title>ocaml/opam-repository (Weekly)</title><updated>2025-12-07T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam-repository.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam-repository</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2025/week-49</id><title>Week 49, 2025: Package ecosystem expansion with 6 new packages, major updates across cryptography and web tooling, and active Coq ecosystem development</title><updated>2025-12-07T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam-repository.xml</id><title>ocaml/opam-repository (Weekly)</title><updated>2025-12-14T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam-repository.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam-repository</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2025/week-50</id><title>Week 50, 2025: Melange 6.0.1, Lwt 6.0 beta, Windows CI improvements, and repository governance discussions</title><updated>2025-12-14T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+50 PRs merged including Melange ecosystem updates, Lwt 6.0 beta, new packages, and infrastructure improvements&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29089" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Newly opened PRs&lt;/strong&gt;&lt;/a&gt; this week include OCaml 5.5 compiler option synchronization (&lt;a href="https://github.com/ocaml/opam-repository/issues/29089"&gt;#29089&lt;/a&gt;) by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt;, atd toolchain 3.0.1 release with 10 packages (&lt;a href="https://github.com/ocaml/opam-repository/issues/29055"&gt;#29055&lt;/a&gt;) by &lt;a href="https://github.com/mjambon"&gt;Martin Jambon&lt;/a&gt;, Codex semantics library 1.0-rc4 with 3 packages (&lt;a href="https://github.com/ocaml/opam-repository/issues/29092"&gt;#29092&lt;/a&gt;) by &lt;a href="https://github.com/mlemerre"&gt;Matthieu Lemerre&lt;/a&gt;, secp256k1 0.5.0 (&lt;a href="https://github.com/ocaml/opam-repository/issues/29095"&gt;#29095&lt;/a&gt;) by &lt;a href="https://github.com/dakk"&gt;Davide Gessa&lt;/a&gt;, and relocatable OCaml updates for 5.5 packages (&lt;a href="https://github.com/ocaml/opam-repository/issues/29085"&gt;#29085&lt;/a&gt;) by &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29030" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Melange ecosystem&lt;/strong&gt;&lt;/a&gt; releases by &lt;a href="https://github.com/anmonteiro"&gt;Antonio Nuno Monteiro&lt;/a&gt; including melange-testing-library 0.2.0 (&lt;a href="https://github.com/ocaml/opam-repository/issues/29030"&gt;#29030&lt;/a&gt;), melange-webapi 0.22.0 (&lt;a href="https://github.com/ocaml/opam-repository/issues/29028"&gt;#29028&lt;/a&gt;), melange-jest 0.2.0 (&lt;a href="https://github.com/ocaml/opam-repository/issues/29029"&gt;#29029&lt;/a&gt;), and Melange 6.0.1 core release (&lt;a href="https://github.com/ocaml/opam-repository/issues/29001"&gt;#29001&lt;/a&gt;) with updated OCaml version requirements&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/28894" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Lwt 6.0.0-beta01&lt;/strong&gt;&lt;/a&gt; merged with 4 packages from &lt;a href="https://github.com/ocsigen/lwt"&gt;ocsigen/lwt&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/28894"&gt;#28894&lt;/a&gt;) by &lt;a href="https://github.com/raphael-proust"&gt;Raphaël Proust&lt;/a&gt;, major update to the concurrency library&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29087" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;New packages&lt;/strong&gt;&lt;/a&gt; added including serialport 0.1 for serial communication (&lt;a href="https://github.com/ocaml/opam-repository/issues/29087"&gt;#29087&lt;/a&gt;) by &lt;a href="https://github.com/dx3mod"&gt;Михаил&lt;/a&gt;, cairn 2.1 graph library (&lt;a href="https://github.com/ocaml/opam-repository/issues/29088"&gt;#29088&lt;/a&gt;) by &lt;a href="https://github.com/VincentPenelle"&gt;Vincent Penelle&lt;/a&gt;, kot 20251212 parser toolkit (&lt;a href="https://github.com/ocaml/opam-repository/issues/29081"&gt;#29081&lt;/a&gt;) by &lt;a href="https://github.com/fpottier"&gt;François Pottier&lt;/a&gt;, and mazeppa 0.7.2 (&lt;a href="https://github.com/ocaml/opam-repository/issues/29026"&gt;#29026&lt;/a&gt;) by &lt;a href="https://github.com/hirrolot"&gt;@hirrolot&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29066" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Package updates&lt;/strong&gt;&lt;/a&gt; across ecosystem including elpi 3.4.4 and 3.4.5 (&lt;a href="https://github.com/ocaml/opam-repository/issues/29066"&gt;#29066&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/29076"&gt;#29076&lt;/a&gt;) by &lt;a href="https://github.com/gares"&gt;Enrico Tassi&lt;/a&gt;, json-data-encoding 1.1.1 with 3 packages (&lt;a href="https://github.com/ocaml/opam-repository/issues/29067"&gt;#29067&lt;/a&gt;) by &lt;a href="https://github.com/pirbo"&gt;Pierre Boutillier&lt;/a&gt;, purl 1.0.0 URL parser (&lt;a href="https://github.com/ocaml/opam-repository/issues/29065"&gt;#29065&lt;/a&gt;) by &lt;a href="https://github.com/hannesm"&gt;Hannes Mehnert&lt;/a&gt;, doi2bib 0.9.0 with 2 packages (&lt;a href="https://github.com/ocaml/opam-repository/issues/29069"&gt;#29069&lt;/a&gt;) by &lt;a href="https://github.com/mseri"&gt;Marcello Seri&lt;/a&gt;, html&lt;em&gt;of&lt;/em&gt;jsx 0.0.7 (&lt;a href="https://github.com/ocaml/opam-repository/issues/29032"&gt;#29032&lt;/a&gt;) by &lt;a href="https://github.com/davesnx"&gt;David Sancho&lt;/a&gt;, and flint 0.4.2 (&lt;a href="https://github.com/ocaml/opam-repository/issues/28935"&gt;#28935&lt;/a&gt;) plus camlid 0.1 (&lt;a href="https://github.com/ocaml/opam-repository/issues/29053"&gt;#29053&lt;/a&gt;) by &lt;a href="https://github.com/bobot"&gt;François Bobot&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29035" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Infrastructure releases&lt;/strong&gt;&lt;/a&gt; including prometheus monitoring 1.3 with 2 packages (&lt;a href="https://github.com/ocaml/opam-repository/issues/29035"&gt;#29035&lt;/a&gt;) by &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt;, charrua DHCP 3.0.0 with 4 packages (&lt;a href="https://github.com/ocaml/opam-repository/issues/29044"&gt;#29044&lt;/a&gt;) by &lt;a href="https://github.com/reynir"&gt;Reynir Björnsson&lt;/a&gt;, Frama-C 32.0-Germanium formal verification platform (&lt;a href="https://github.com/ocaml/opam-repository/issues/29023"&gt;#29023&lt;/a&gt;) by &lt;a href="https://github.com/zilbuz"&gt;Basile Desloges&lt;/a&gt;, syslog-rfc5424 0.2 (&lt;a href="https://github.com/ocaml/opam-repository/issues/29041"&gt;#29041&lt;/a&gt;) by &lt;a href="https://github.com/vbmithr"&gt;Vincent Bernardoff&lt;/a&gt;, and rizzo 0.2.0 (&lt;a href="https://github.com/ocaml/opam-repository/issues/29033"&gt;#29033&lt;/a&gt;) by &lt;a href="https://github.com/tjobi"&gt;@tjobi&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29031" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Jane Street packages&lt;/strong&gt;&lt;/a&gt; including ppx_parser 0.2.1 (&lt;a href="https://github.com/ocaml/opam-repository/issues/29031"&gt;#29031&lt;/a&gt;) by &lt;a href="https://github.com/NielsMommen"&gt;@NielsMommen&lt;/a&gt; and legacy releases for extunix 0.4.0, 0.4.3 (&lt;a href="https://github.com/ocaml/opam-repository/issues/20649"&gt;#20649&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/27023"&gt;#27023&lt;/a&gt;) and dockerfile 8.2.5 with 3 packages (&lt;a href="https://github.com/ocaml/opam-repository/issues/27130"&gt;#27130&lt;/a&gt;) by &lt;a href="https://github.com/MisterDA"&gt;Antonin Décimo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29037" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Build tooling updates&lt;/strong&gt;&lt;/a&gt; with tyre 1.0 reverse dependency fixes (&lt;a href="https://github.com/ocaml/opam-repository/issues/29037"&gt;#29037&lt;/a&gt;) by &lt;a href="https://github.com/EmileTrotignon"&gt;Emile Trotignon&lt;/a&gt;, GitHub Actions bumps for actions/cache 4 to 5 (&lt;a href="https://github.com/ocaml/opam-repository/issues/29079"&gt;#29079&lt;/a&gt;) and actions/github-script 7 to 8 (&lt;a href="https://github.com/ocaml/opam-repository/issues/29062"&gt;#29062&lt;/a&gt;) by dependabot, and github-unix compatibility marking for yojson 3.0.0 (&lt;a href="https://github.com/ocaml/opam-repository/issues/29064"&gt;#29064&lt;/a&gt;) by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29034" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Maintenance work&lt;/strong&gt;&lt;/a&gt; including x-maintenance-intent field syntax fixes (&lt;a href="https://github.com/ocaml/opam-repository/issues/29034"&gt;#29034&lt;/a&gt;) and additions to mirage-kv (&lt;a href="https://github.com/ocaml/opam-repository/issues/29043"&gt;#29043&lt;/a&gt;) and ssh-agent (&lt;a href="https://github.com/ocaml/opam-repository/issues/29038"&gt;#29038&lt;/a&gt;) by &lt;a href="https://github.com/hannesm"&gt;Hannes Mehnert&lt;/a&gt;, plus merlin OCaml version constraints fixes (&lt;a href="https://github.com/ocaml/opam-repository/issues/18179"&gt;#18179&lt;/a&gt;) by &lt;a href="https://github.com/MisterDA"&gt;Antonin Décimo&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Melange 6.0.1, Lwt 6.0 beta, Windows CI improvements, and repository governance discussions</summary><published>2025-12-14T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2025/week-49</id><title>Week 49, 2025: Package ecosystem expansion with 6 new packages, major updates across cryptography and web tooling, and active Coq ecosystem development</title><updated>2025-12-07T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

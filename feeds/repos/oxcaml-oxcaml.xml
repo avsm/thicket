@@ -1,5 +1,70 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml</id><title>oxcaml/oxcaml (Weekly)</title><updated>2025-12-07T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/oxcaml</subtitle><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2025/week-49</id><title>Week 49, 2025: Unboxed arrays, flambda2 reaper enhancements, AVX2 SIMD support, and abstract kinds foundation work progressing</title><updated>2025-12-07T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml</id><title>oxcaml/oxcaml (Weekly)</title><updated>2025-12-14T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/oxcaml</subtitle><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2025/week-50</id><title>Week 50, 2025: Untagged int arrays landed alongside compiler optimization fixes and type system refinements</title><updated>2025-12-14T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Type system work focused on abstract kinds, modes, and layouts alongside ongoing debug info and name mangling improvements&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5099" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;New PRs opened&lt;/strong&gt;&lt;/a&gt; include reversible name mangling by &lt;a href="https://github.com/tmcgilchrist"&gt;Tim McGilchrist&lt;/a&gt; enabling full module path reconstruction (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5099"&gt;#5099&lt;/a&gt;), match-in-match fix for over-applications by &lt;a href="https://github.com/gbury"&gt;Guillaume Bury&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5119"&gt;#5119&lt;/a&gt;), functor non-legacy mode support by &lt;a href="https://github.com/riaqn"&gt;Zesen Qian&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5107"&gt;#5107&lt;/a&gt;), debug info performance improvements by &lt;a href="https://github.com/spiessimon"&gt;Simon Spies&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5124"&gt;#5124&lt;/a&gt;), and IRC affinity tweaks by &lt;a href="https://github.com/xclerc"&gt;Xavier Clerc&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5113"&gt;#5113&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5070" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Type system refactoring&lt;/strong&gt;&lt;/a&gt; merged abstract kinds part 1 by &lt;a href="https://github.com/ccasin"&gt;Chris Casinghino&lt;/a&gt; eliminating cyclic dependencies to enable abstract kinds (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5070"&gt;#5070&lt;/a&gt;), with part 2 adding basic abstract kinds and kind aliases now under review (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5071"&gt;#5071&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5086" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Layout and axis work&lt;/strong&gt;&lt;/a&gt; includes &lt;a href="https://github.com/zackbach"&gt;Zack Eisbach&lt;/a&gt; merging nullability as scannable axis (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5086"&gt;#5086&lt;/a&gt;), adding &lt;code&gt;non_pointer64&lt;/code&gt; to separability axis (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5095"&gt;#5095&lt;/a&gt;), and opening PR to use scannable axes in Lambda translation for avoiding unnecessary &lt;code&gt;caml_modify&lt;/code&gt; calls (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5104"&gt;#5104&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5096" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Debug information infrastructure&lt;/strong&gt;&lt;/a&gt; progressing with &lt;a href="https://github.com/tmcgilchrist"&gt;Tim McGilchrist&lt;/a&gt; opening PRs for gathering debug info (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5096"&gt;#5096&lt;/a&gt;), improved debug tracking (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5098"&gt;#5098&lt;/a&gt;), and name mangling configuration (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5097"&gt;#5097&lt;/a&gt;), while &lt;a href="https://github.com/spiessimon"&gt;Simon Spies&lt;/a&gt; works on named binders for shapes (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5111"&gt;#5111&lt;/a&gt;) and shape default flipping (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5103"&gt;#5103&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/4881" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Ongoing work&lt;/strong&gt;&lt;/a&gt; includes preemption by &lt;a href="https://github.com/glittershark"&gt;Aspen Smith&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4881"&gt;#4881&lt;/a&gt;), translquote review by &lt;a href="https://github.com/Skepfyr"&gt;Jack Rickard&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4981"&gt;#4981&lt;/a&gt;), untagged int indexing primitives by &lt;a href="https://github.com/jvanburen"&gt;Jacob Van Buren&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4779"&gt;#4779&lt;/a&gt;), repr_ syntax additions by &lt;a href="https://github.com/jbachurski"&gt;Jakub Bachurski&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5068"&gt;#5068&lt;/a&gt;), and spawnable mode by &lt;a href="https://github.com/rtjoa"&gt;Ryan Tjoa&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5110"&gt;#5110&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5083" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Quote-related fixes&lt;/strong&gt;&lt;/a&gt; progressing with &lt;a href="https://github.com/Dreian"&gt;Andrej Ivašković&lt;/a&gt; addressing annotation drops on &lt;code&gt;let rec&lt;/code&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5083"&gt;#5083&lt;/a&gt;), elaboration of compound terms (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5090"&gt;#5090&lt;/a&gt;), and record/variant disambiguation (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5094"&gt;#5094&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5123" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Infrastructure improvements&lt;/strong&gt;&lt;/a&gt; merged musl variant for GitHub CI by &lt;a href="https://github.com/Svetlitski"&gt;Kevin Svetlitski&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5123"&gt;#5123&lt;/a&gt;) and Reaper debugging flag by &lt;a href="https://github.com/Ekdohibs"&gt;Nathanaëlle Courant&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5106"&gt;#5106&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Untagged int arrays landed alongside compiler optimization fixes and type system refinements</summary><published>2025-12-14T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2025/week-49</id><title>Week 49, 2025: Unboxed arrays, flambda2 reaper enhancements, AVX2 SIMD support, and abstract kinds foundation work progressing</title><updated>2025-12-07T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
