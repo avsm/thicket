@@ -1,5 +1,69 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/multicore.xml</id><title>Multicore (Weekly)</title><updated>2025-12-14T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/multicore.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Multicore OCaml</subtitle><entry><id>https://thicket.dev/groups/multicore/2025/week-50</id><title>Week 50, 2025: None</title><updated>2025-12-14T00:00:00+00:00</updated><content type="html"/><link href="https://thicket.dev/"/><summary>Activity report for multicore - Week 50, 2025</summary><published>2025-12-14T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/multicore/2025/week-49</id><title>Week 49, 2025: None</title><updated>2025-12-07T00:00:00+00:00</updated><content type="html"/><link href="https://thicket.dev/"/><summary>Activity report for multicore - Week 49, 2025</summary><published>2025-12-07T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/multicore/2025/week-48</id><title>Week 48, 2025: None</title><updated>2025-11-30T00:00:00+00:00</updated><content type="html"/><link href="https://thicket.dev/"/><summary>Activity report for multicore - Week 48, 2025</summary><published>2025-11-30T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/multicore/2025/week-47</id><title>Week 47, 2025: Limited activity with Eio resource management feature request and Meio Eio 0.14+ compatibility work</title><updated>2025-11-23T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/multicore.xml</id><title>Multicore (Weekly)</title><updated>2025-12-21T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/multicore.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Multicore OCaml</subtitle><entry><id>https://thicket.dev/groups/multicore/2025/week-51</id><title>Week 51, 2025: Picos scheduler work advances with draft PR for weakly fair FIFO-thread implementation</title><updated>2025-12-21T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;Week 51 saw minimal activity across the multicore group with only the &lt;a href="https://github.com/ocaml-multicore/picos"&gt;ocaml-multicore/picos&lt;/a&gt; repository showing development work&lt;/li&gt;
+&lt;li&gt;A single draft PR was opened exploring scheduler fairness guarantees through a hybrid effects and system threads approach&lt;/li&gt;
+&lt;li&gt;The remaining 8 repositories (eio, domainslib, ocaml-uring, meio, saturn, eio-trace, kcas, ocaml-iomux) had no recorded activity during this period&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;Focus on scheduler fairness in &lt;a href="https://github.com/ocaml-multicore/picos"&gt;ocaml-multicore/picos&lt;/a&gt; with exploration of hybrid approaches combining effects-based and system thread-based scheduling via &lt;a href="https://github.com/ocaml-multicore/picos/pull/379"&gt;ocaml-multicore/picos#379&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Quiet period across the broader multicore ecosystem during the holiday week, with most repositories showing no commits, PRs, or issues&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Picos scheduler work advances with draft PR for weakly fair FIFO-thread implementation</summary><published>2025-12-21T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/multicore/2025/week-50</id><title>Week 50, 2025: None</title><updated>2025-12-14T00:00:00+00:00</updated><content type="html"/><link href="https://thicket.dev/"/><summary>Activity report for multicore - Week 50, 2025</summary><published>2025-12-14T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/multicore/2025/week-49</id><title>Week 49, 2025: None</title><updated>2025-12-07T00:00:00+00:00</updated><content type="html"/><link href="https://thicket.dev/"/><summary>Activity report for multicore - Week 49, 2025</summary><published>2025-12-07T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/multicore/2025/week-48</id><title>Week 48, 2025: None</title><updated>2025-11-30T00:00:00+00:00</updated><content type="html"/><link href="https://thicket.dev/"/><summary>Activity report for multicore - Week 48, 2025</summary><published>2025-11-30T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/multicore/2025/week-47</id><title>Week 47, 2025: Limited activity with Eio resource management feature request and Meio Eio 0.14+ compatibility work</title><updated>2025-11-23T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

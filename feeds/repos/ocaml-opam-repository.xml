@@ -1,5 +1,68 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam-repository.xml</id><title>ocaml/opam-repository (Weekly)</title><updated>2025-12-14T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam-repository.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam-repository</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2025/week-50</id><title>Week 50, 2025: Melange 6.0.1, Lwt 6.0 beta, Windows CI improvements, and repository governance discussions</title><updated>2025-12-14T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam-repository.xml</id><title>ocaml/opam-repository (Weekly)</title><updated>2025-12-21T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam-repository.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam-repository</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2025/week-51</id><title>Week 51, 2025: Two new packages and coordinated releases of ATD, Cohttp, YOCaml, LSP, and QCheck with multi-package updates</title><updated>2025-12-21T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Active week with 8 new PRs including QCheck 0.91, Merlin 5.6.1, Caisar 5.0, LLVM 20/21, plus build fixes and archiving&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29123" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;New PRs opened this week&lt;/strong&gt;&lt;/a&gt; include QCheck 0.91 update by &lt;a href="https://github.com/jmid"&gt;Jan Midtgaard&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29123"&gt;#29123&lt;/a&gt;), Merlin 5.6.1-504 for OCaml 5.04 by &lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29117"&gt;#29117&lt;/a&gt;), Caisar 5.0 verification platform by &lt;a href="https://github.com/caisar-platform"&gt;caisar-platform&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29111"&gt;#29111&lt;/a&gt;), LLVM 20 and 21 releases by &lt;a href="https://github.com/alan-j-hu"&gt;Alan&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29110"&gt;#29110&lt;/a&gt;), F* 2025.12.15 by &lt;a href="https://github.com/mtzguido"&gt;Guido Martínez&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29099"&gt;#29099&lt;/a&gt;), Codex 1.0-rc4 semantics library by &lt;a href="https://github.com/mlemerre"&gt;Matthieu Lemerre&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29092"&gt;#29092&lt;/a&gt;), OCaml 5.5 relocatable packages by &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29085"&gt;#29085&lt;/a&gt;), and Dune 3.21.0 alpha 4 by &lt;a href="https://github.com/shonfeder"&gt;Shon Feder&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29096"&gt;#29096&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29103" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Build system fixes&lt;/strong&gt;&lt;/a&gt; including macOS Homebrew support for conf-secp256k1 by &lt;a href="https://github.com/jmid"&gt;Jan Midtgaard&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29103"&gt;#29103&lt;/a&gt;), CentOS 9 support for conf-ppl by &lt;a href="https://github.com/jmid"&gt;Jan Midtgaard&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29107"&gt;#29107&lt;/a&gt;), and NixOS support for lmdb by &lt;a href="https://github.com/RyanGibb"&gt;Ryan Gibb&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/28931"&gt;#28931&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29109" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Compatibility updates&lt;/strong&gt;&lt;/a&gt; with version bounds adjustment for cohttp-lwt-unix 6.2 by &lt;a href="https://github.com/shonfeder"&gt;Shon Feder&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29109"&gt;#29109&lt;/a&gt;) and QCheck upper bounds for spurs by &lt;a href="https://github.com/jmid"&gt;Jan Midtgaard&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29115"&gt;#29115&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29089" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml compiler infrastructure&lt;/strong&gt;&lt;/a&gt; updates including sync of OCaml 5.5 configure options with upstream trunk by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29089"&gt;#29089&lt;/a&gt;) and URL updates for compiler package extra-source files by &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29080"&gt;#29080&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29119" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;DkML package archiving&lt;/strong&gt;&lt;/a&gt; marking 60+ DkML and Diskuv packages as archived/unmaintained by &lt;a href="https://github.com/jonahbeckford"&gt;@jonahbeckford&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29119"&gt;#29119&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Two new packages and coordinated releases of ATD, Cohttp, YOCaml, LSP, and QCheck with multi-package updates</summary><published>2025-12-21T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2025/week-50</id><title>Week 50, 2025: Melange 6.0.1, Lwt 6.0 beta, Windows CI improvements, and repository governance discussions</title><updated>2025-12-14T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

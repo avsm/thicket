@@ -1,5 +1,73 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.xml</id><title>ocaml/ocaml (Weekly)</title><updated>2025-12-14T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml/2025/week-50</id><title>Week 50, 2025: Relocatable OCaml framework merged with runtime search capabilities and domain backtrace inheritance</title><updated>2025-12-14T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.xml</id><title>ocaml/ocaml (Weekly)</title><updated>2025-12-21T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml/2025/week-51</id><title>Week 51, 2025: Windows platform focus with winpthreads removal, relocatable OCaml, and thread-safety improvements</title><updated>2025-12-21T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Three PRs opened for polymorphic annotations, type checker improvements, and C++ compatibility testing&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/14427" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Polymorphic annotations&lt;/strong&gt;&lt;/a&gt; feature opened by &lt;a href="https://github.com/johnyob"&gt;Alistair&lt;/a&gt; adding support for writing &lt;code&gt;let id = (fun x -&gt; x : 'a. 'a -&gt; 'a)&lt;/code&gt; syntax, motivated by recursive expression typing improvements (&lt;a href="https://github.com/ocaml/ocaml/pull/14427"&gt;#14427&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/14425" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Type checker internal API&lt;/strong&gt;&lt;/a&gt; change proposed by &lt;a href="https://github.com/samsa1"&gt;Samuel Vivien&lt;/a&gt; to have unify return result rather than raising exceptions (&lt;a href="https://github.com/ocaml/ocaml/pull/14425"&gt;#14425&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/14421" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;C++ API compatibility testing&lt;/strong&gt;&lt;/a&gt; infrastructure opened by &lt;a href="https://github.com/MisterDA"&gt;Antonin Décimo&lt;/a&gt; using GCC and MSVC SARIF diagnostics to catch header compatibility issues (&lt;a href="https://github.com/ocaml/ocaml/pull/14421"&gt;#14421&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/14424" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Build system optimizations&lt;/strong&gt;&lt;/a&gt; merged by &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt; computing C dependency information as side-effect of compilation, improving build performance (&lt;a href="https://github.com/ocaml/ocaml/pull/14424"&gt;#14424&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/13705" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Configure script improvements&lt;/strong&gt;&lt;/a&gt; merged including autoconf test caching for faster re-configuration (&lt;a href="https://github.com/ocaml/ocaml/pull/13705"&gt;#13705&lt;/a&gt;), Windows-specific fixes (&lt;a href="https://github.com/ocaml/ocaml/pull/13711"&gt;#13711&lt;/a&gt;), and unnecessary header guards removal (&lt;a href="https://github.com/ocaml/ocaml/pull/14426"&gt;#14426&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/13224" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Runtime system code clarity&lt;/strong&gt;&lt;/a&gt; improved through barrier and spin macro refactoring using delayed expansion and C99 booleans (&lt;a href="https://github.com/ocaml/ocaml/pull/13224"&gt;#13224&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/14428" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Testsuite robustness&lt;/strong&gt;&lt;/a&gt; enhanced with CRLF checkout fixes affecting multiple test files including native-debugger, mnemonics, wc, and ocamltex (&lt;a href="https://github.com/ocaml/ocaml/pull/14428"&gt;#14428&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/14422" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Type checker refactoring&lt;/strong&gt;&lt;/a&gt; merged by &lt;a href="https://github.com/samsa1"&gt;Samuel Vivien&lt;/a&gt; moving match outside if statement in typetexp for cleaner code (&lt;a href="https://github.com/ocaml/ocaml/pull/14422"&gt;#14422&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/14420" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;CI infrastructure updates&lt;/strong&gt;&lt;/a&gt; merged including Cygwin version unpinning on AppVeyor (&lt;a href="https://github.com/ocaml/ocaml/pull/14420"&gt;#14420&lt;/a&gt;) and opam testing in CI (&lt;a href="https://github.com/ocaml/ocaml/pull/14246"&gt;#14246&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/14429" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;C++ compatibility fix&lt;/strong&gt;&lt;/a&gt; for atomic_int missing &lt;code&gt;std::&lt;/code&gt; namespace in unixsupport.h merged (&lt;a href="https://github.com/ocaml/ocaml/pull/14429"&gt;#14429&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Windows platform focus with winpthreads removal, relocatable OCaml, and thread-safety improvements</summary><published>2025-12-21T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml/2025/week-50</id><title>Week 50, 2025: Relocatable OCaml framework merged with runtime search capabilities and domain backtrace inheritance</title><updated>2025-12-14T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

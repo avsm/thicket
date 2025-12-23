@@ -1,5 +1,67 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-merlin.xml</id><title>oxcaml/merlin (Weekly)</title><updated>2025-12-14T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-merlin.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/merlin</subtitle><entry><id>https://thicket.dev/repos/oxcaml-merlin/2025/week-50</id><title>Week 50, 2025: None</title><updated>2025-12-14T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/merlin - Week 50, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/merlin - Week 50, 2025</summary><published>2025-12-14T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-merlin/2025/week-49</id><title>Week 49, 2025: Jkind hover support and improved compiler flag compatibility merged this week</title><updated>2025-12-07T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-merlin.xml</id><title>oxcaml/merlin (Weekly)</title><updated>2025-12-21T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-merlin.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/merlin</subtitle><entry><id>https://thicket.dev/repos/oxcaml-merlin/2025/week-51</id><title>Week 51, 2025: Merged oxcaml 5.2.0minus-25 updates bringing type system and tooling enhancements</title><updated>2025-12-21T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Merged oxcaml 5.2.0minus-25 with typing system and test updates&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/liam923"&gt;Liam Stevenson&lt;/a&gt; merged oxcaml changes from &lt;a href="https://github.com/oxcaml/merlin/issues/203" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;5.2.0minus-25&lt;/strong&gt;&lt;/a&gt; branch with updates across typing subsystem, including jkind enhancements, mode system improvements, and environment API refinements (&lt;a href="https://github.com/oxcaml/merlin/issues/203"&gt;#203&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Fixed &lt;a href="https://github.com/oxcaml/oxcaml/issues/5066" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;laziness issues&lt;/strong&gt;&lt;/a&gt; superseding previous minus-24 changes based on &lt;a href="https://github.com/oxcaml/oxcaml/issues/5066"&gt;oxcaml/oxcaml#5066&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/merlin/commit/ae8671ada8e2dd5a0d002b361563ff0ec453445c"&gt;ae8671a&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Resolved typing errors and bumped &lt;strong class="achievement"&gt;magic numbers&lt;/strong&gt; for updated compiler internals (&lt;a href="https://github.com/oxcaml/merlin/commit/c140d9ed00a2f144a12a6a81e90ace364ebf5625"&gt;c140d9e&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/merlin/commit/1ea6109e139078614409745a0bffda877e1030fd"&gt;1ea6109&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Promoted tests and added ignored flags for improved test coverage (&lt;a href="https://github.com/oxcaml/merlin/commit/0d5201273a9f36f3af2c38e6c14072c3817d6756"&gt;0d52012&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Merged oxcaml 5.2.0minus-25 updates bringing type system and tooling enhancements</summary><published>2025-12-21T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-merlin/2025/week-50</id><title>Week 50, 2025: None</title><updated>2025-12-14T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/merlin - Week 50, 2025&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/merlin - Week 50, 2025</summary><published>2025-12-14T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-merlin/2025/week-49</id><title>Week 49, 2025: Jkind hover support and improved compiler flag compatibility merged this week</title><updated>2025-12-07T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

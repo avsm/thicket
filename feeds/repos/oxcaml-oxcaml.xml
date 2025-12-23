@@ -1,5 +1,68 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml</id><title>oxcaml/oxcaml (Weekly)</title><updated>2025-12-14T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/oxcaml</subtitle><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2025/week-50</id><title>Week 50, 2025: Untagged int arrays landed alongside compiler optimization fixes and type system refinements</title><updated>2025-12-14T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml</id><title>oxcaml/oxcaml (Weekly)</title><updated>2025-12-21T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/oxcaml</subtitle><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2025/week-51</id><title>Week 51, 2025: Compiler development focused on reaper bug fixes, type system improvements, and layout polymorphism work</title><updated>2025-12-21T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+23 new PRs opened including layout poly work, dissector prototype, and bool# type; 26 PRs merged focusing on reaper fixes&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5124" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;New work opened&lt;/strong&gt;&lt;/a&gt; this week includes performance improvements for debug info generation by &lt;a href="https://github.com/spiessimon"&gt;Simon Spies&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5124"&gt;#5124&lt;/a&gt;), arm64 large stack offset fixes by &lt;a href="https://github.com/xclerc"&gt;Xavier Clerc&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5130"&gt;#5130&lt;/a&gt;), SSE register class addition by &lt;a href="https://github.com/glittershark"&gt;Aspen Smith&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5136"&gt;#5136&lt;/a&gt;), dissector prototype for linking large executables with small code model by &lt;a href="https://github.com/mshinwell"&gt;Mark Shinwell&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5146"&gt;#5146&lt;/a&gt;), slambda constructors by &lt;a href="https://github.com/Skepfyr"&gt;Jack Rickard&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5148"&gt;#5148&lt;/a&gt;), abstract &lt;code&gt;unit#&lt;/code&gt; type with void kind by &lt;a href="https://github.com/rtjoa"&gt;Ryan Tjoa&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5151"&gt;#5151&lt;/a&gt;), &lt;code&gt;bool#&lt;/code&gt; type with unboxed literals by &lt;a href="https://github.com/nmatschke"&gt;Nailen Matschke&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5166"&gt;#5166&lt;/a&gt;), and scannable axes for nullability computation by &lt;a href="https://github.com/rtjoa"&gt;Ryan Tjoa&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5169"&gt;#5169&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/5170"&gt;#5170&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5129" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Reaper development&lt;/strong&gt;&lt;/a&gt; reached stability milestone with &lt;a href="https://github.com/Ekdohibs"&gt;Nathanaëlle Courant&lt;/a&gt; fixing multiple crashes including unused argument unboxing (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5129"&gt;#5129&lt;/a&gt;), result&lt;em&gt;types parameter ordering (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5137"&gt;#5137&lt;/a&gt;), indirect&lt;/em&gt;unknown&lt;em&gt;arity argument deletion (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5145"&gt;#5145&lt;/a&gt;), and result&lt;/em&gt;types rewriting (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5125"&gt;#5125&lt;/a&gt;), plus &lt;a href="https://github.com/bclement-ocp"&gt;Basile Clément&lt;/a&gt; adding CI configuration (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5149"&gt;#5149&lt;/a&gt;) and fixing switch operation counting (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5144"&gt;#5144&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5134" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Type system enhancements&lt;/strong&gt;&lt;/a&gt; delivered through depth variable rewriting in coercions by &lt;a href="https://github.com/bclement-ocp"&gt;Basile Clément&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5134"&gt;#5134&lt;/a&gt;), &lt;code&gt;Is_int&lt;/code&gt; and &lt;code&gt;Get_tag&lt;/code&gt; pattern support (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5140"&gt;#5140&lt;/a&gt;), mod bounds debug printing fix by &lt;a href="https://github.com/zackbach"&gt;Zack Eisbach&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5164"&gt;#5164&lt;/a&gt;), and bigarray type index annotations (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5135"&gt;#5135&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5070" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Compiler infrastructure&lt;/strong&gt;&lt;/a&gt; work included abstract kinds refactoring eliminating cyclic dependencies by &lt;a href="https://github.com/ccasin"&gt;Chris Casinghino&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5070"&gt;#5070&lt;/a&gt;), magic number bump for 5.2.0minus-25 release (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5127"&gt;#5127&lt;/a&gt;), CI timeout fixes with cachix action (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5168"&gt;#5168&lt;/a&gt;), debug information gathering improvements (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5096"&gt;#5096&lt;/a&gt;), and stack slot tracking in counters (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5132"&gt;#5132&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5093" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Optimization improvements&lt;/strong&gt;&lt;/a&gt; merged including consideration of &lt;code&gt;value&lt;/code&gt; arguments as non-useful for inlining (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5093"&gt;#5093&lt;/a&gt;), jkind&lt;em&gt;types refactoring with get&lt;/em&gt;sort moved (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5152"&gt;#5152&lt;/a&gt;), and scannable axes influencing Lambda translation (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5155"&gt;#5155&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Compiler development focused on reaper bug fixes, type system improvements, and layout polymorphism work</summary><published>2025-12-21T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2025/week-50</id><title>Week 50, 2025: Untagged int arrays landed alongside compiler optimization fixes and type system refinements</title><updated>2025-12-14T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

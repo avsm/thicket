@@ -1,5 +1,104 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/core.xml</id><title>OCaml Core (Weekly)</title><updated>2025-12-14T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/core.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Core OCaml language, compiler, and essential tooling</subtitle><entry><id>https://thicket.dev/groups/core/2025/week-50</id><title>Week 50, 2025: Relocatable OCaml merged with runtime search and module system RFC approved</title><updated>2025-12-14T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/core.xml</id><title>OCaml Core (Weekly)</title><updated>2025-12-21T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/core.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Core OCaml language, compiler, and essential tooling</subtitle><entry><id>https://thicket.dev/groups/core/2025/week-51</id><title>Week 51, 2025: Windows platform improvements with winpthreads removal, relocatable OCaml, and labeled tuple projection syntax debate</title><updated>2025-12-21T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/14246" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Relocatable OCaml installations&lt;/strong&gt;&lt;/a&gt; now supported through generated opam &lt;code&gt;.install&lt;/code&gt; file and relocation support script, enabling OCaml to be moved after installation (&lt;a href="https://github.com/ocaml/ocaml/pull/14246"&gt;ocaml/ocaml#14246&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/13416" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Native Windows concurrency primitives&lt;/strong&gt;&lt;/a&gt; replace winpthreads dependency with direct WinAPI implementation, removing external dependency and improving Windows platform support (&lt;a href="https://github.com/ocaml/ocaml/pull/13416"&gt;ocaml/ocaml#13416&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/13700" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Thread-safe POSIX functions&lt;/strong&gt;&lt;/a&gt; adopted in libunix using &lt;code&gt;getgrnam_r&lt;/code&gt;, &lt;code&gt;getgrgid_r&lt;/code&gt;, &lt;code&gt;getpwnam_r&lt;/code&gt;, &lt;code&gt;getpwuid_r&lt;/code&gt;, &lt;code&gt;gmtime_r&lt;/code&gt;, &lt;code&gt;localtime_r&lt;/code&gt;, and &lt;code&gt;getlogin_r&lt;/code&gt; for improved thread safety (&lt;a href="https://github.com/ocaml/ocaml/pull/13700"&gt;ocaml/ocaml#13700&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/14416" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Spawned domains inherit backtrace settings&lt;/strong&gt;&lt;/a&gt; from parent domain, improving debugging experience across domain boundaries (&lt;a href="https://github.com/ocaml/ocaml/pull/14416"&gt;ocaml/ocaml#14416&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/14417" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Fixed packed modules&lt;/strong&gt;&lt;/a&gt; on case-insensitive filesystems (macOS) by rewriting pack prefixes to use appropriate separators (&lt;a href="https://github.com/ocaml/ocaml/pull/14417"&gt;ocaml/ocaml#14417&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/14423" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Improved thread naming&lt;/strong&gt;&lt;/a&gt; on Windows with fixed &lt;code&gt;SetThreadDescription&lt;/code&gt; detection on 32-bit platforms, enabling &lt;code&gt;Thread.set_current_thread_name&lt;/code&gt; functionality (&lt;a href="https://github.com/ocaml/ocaml/pull/14423"&gt;ocaml/ocaml#14423&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/14084" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Enhanced Dynarray type safety&lt;/strong&gt;&lt;/a&gt; using opaque abstract type for &lt;code&gt;with_dummy&lt;/code&gt;, future-proofing against compiler optimizations (&lt;a href="https://github.com/ocaml/ocaml/pull/14084"&gt;ocaml/ocaml#14084&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;Activity concentrated in &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt; with 8 merged PRs, 3 new PRs, and 4 issue discussions focused on Windows platform improvements&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/RFCs"&gt;ocaml/RFCs&lt;/a&gt; saw ongoing design discussions on labeled tuple projection syntax (&lt;a href="https://github.com/ocaml/RFCs/pull/57"&gt;ocaml/RFCs#57&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Windows platform received focused attention with removal of winpthreads dependency, native WinAPI primitives, configure fixes, and testsuite CRLF handling&lt;/li&gt;
+&lt;li&gt;Several long-standing PRs from mid-2024 merged this week, indicating completion of infrastructure work&lt;/li&gt;
+&lt;li&gt;Type system evolution continues with polymorphic annotations proposal in &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt; and labeled tuple syntax refinement in &lt;a href="https://github.com/ocaml/RFCs"&gt;ocaml/RFCs&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/14427" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Type system evolution&lt;/strong&gt;&lt;/a&gt; coordination with &lt;a href="https://github.com/johnyob"&gt;Alistair&lt;/a&gt; leading both the polymorphic annotations implementation in &lt;a href="https://github.com/ocaml/ocaml/pull/14427"&gt;ocaml/ocaml#14427&lt;/a&gt; and the labeled tuple projection RFC in &lt;a href="https://github.com/ocaml/RFCs/pull/57"&gt;ocaml/RFCs#57&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Design review consistency&lt;/strong&gt; with &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; providing detailed feedback across both &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt; implementation PRs and &lt;a href="https://github.com/ocaml/RFCs"&gt;ocaml/RFCs&lt;/a&gt; design discussions, ensuring alignment between proposals and implementation&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/RFCs/pull/57" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Syntax design considerations&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/ocaml/RFCs/pull/57"&gt;ocaml/RFCs#57&lt;/a&gt; referencing syntax originally suggested by &lt;a href="https://github.com/samsa1"&gt;Samuel Vivien&lt;/a&gt; for &lt;code&gt;e.l&lt;/code&gt; projection, connecting RFC discussions with compiler implementation work&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/RFCs/pull/57" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Community coordination&lt;/strong&gt;&lt;/a&gt; with &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt; providing process guidance on &lt;a href="https://github.com/ocaml/RFCs/pull/57"&gt;ocaml/RFCs#57&lt;/a&gt; about merging RFCs before implementation proceeds in &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14419" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Unmarshaling memory issue&lt;/strong&gt;&lt;/a&gt; in OCaml 5.x reported by &lt;a href="https://github.com/edwintorok"&gt;Török Edwin&lt;/a&gt; where unmarshaling loops can fail with out-of-memory errors, with &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; proposing &lt;code&gt;caml_request_major_slice&lt;/code&gt; fix for GC pacing (&lt;a href="https://github.com/ocaml/ocaml/issues/14419"&gt;ocaml/ocaml#14419&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/RFCs/pull/57" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Labeled tuple projection syntax&lt;/strong&gt;&lt;/a&gt; sparked detailed debate in &lt;a href="https://github.com/ocaml/RFCs/pull/57"&gt;ocaml/RFCs#57&lt;/a&gt; weighing &lt;code&gt;e.l&lt;/code&gt; (consistent with record syntax and type-disambiguated features) against &lt;code&gt;e.~l&lt;/code&gt; (clearer errors but conflicts with MetaOCaml), with &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; prioritizing error message quality for beginners using nominal records over convenience for labeled tuple users&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14418" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Module signature type inference&lt;/strong&gt;&lt;/a&gt; discussion by &lt;a href="https://github.com/Alex1005a"&gt;@Alex1005a&lt;/a&gt; requesting ability to omit type declarations in structures when present in signatures, with &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt; suggesting &lt;code&gt;_&lt;/code&gt; placeholder approach for importing declarations (&lt;a href="https://github.com/ocaml/ocaml/issues/14418"&gt;ocaml/ocaml#14418&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/13685" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Int.repr function&lt;/strong&gt;&lt;/a&gt; feature request by &lt;a href="https://github.com/Ekdohibs"&gt;Nathanaëlle Courant&lt;/a&gt; for Patricia tree operations, requesting function to expose tagged integer representation as nativeint for bitwise operations efficiency (&lt;a href="https://github.com/ocaml/ocaml/issues/13685"&gt;ocaml/ocaml#13685&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14372" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Windows socketpair TOCTOU race&lt;/strong&gt;&lt;/a&gt; investigation by &lt;a href="https://github.com/dijkstracula"&gt;Nathan Taylor&lt;/a&gt; identifying possible time-of-check-time-of-use vulnerability in socketpair implementation with temp file deletion (&lt;a href="https://github.com/ocaml/ocaml/issues/14372"&gt;ocaml/ocaml#14372&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/RFCs/pull/57" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Error message quality&lt;/strong&gt;&lt;/a&gt; concerns raised by &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; in &lt;a href="https://github.com/ocaml/RFCs/pull/57"&gt;ocaml/RFCs#57&lt;/a&gt; regarding how &lt;code&gt;e.l&lt;/code&gt; syntax defaults to record projection when type information is unknown, potentially creating confusing errors that mention advanced OCaml features unfamiliar to users&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/RFCs/pull/57" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Feature complexity perception&lt;/strong&gt;&lt;/a&gt; discussed with &lt;a href="https://github.com/andreypopp"&gt;Andrey Popp&lt;/a&gt; noting labeled tuples feel similar in complexity to labeled arguments based on OCaml 5.4 usage experience, though &lt;a href="https://github.com/johnyob"&gt;Alistair&lt;/a&gt; and &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; agreed they are less commonly used than nominal records (&lt;a href="https://github.com/ocaml/RFCs/pull/57"&gt;ocaml/RFCs#57&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/13416" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Windows platform improvements&lt;/strong&gt;&lt;/a&gt; concentrated this week with removal of winpthreads dependency (&lt;a href="https://github.com/ocaml/ocaml/pull/13416"&gt;ocaml/ocaml#13416&lt;/a&gt;), native WinAPI concurrency primitives, configure fixes (&lt;a href="https://github.com/ocaml/ocaml/pull/13711"&gt;ocaml/ocaml#13711&lt;/a&gt;), thread naming fixes (&lt;a href="https://github.com/ocaml/ocaml/pull/14423"&gt;ocaml/ocaml#14423&lt;/a&gt;), and CRLF testsuite handling (&lt;a href="https://github.com/ocaml/ocaml/pull/14428"&gt;ocaml/ocaml#14428&lt;/a&gt;), representing renewed focus on Windows ecosystem quality&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Long-standing PR completions&lt;/strong&gt; with several PRs from mid-2024 finally merged this week, indicating backlog reduction and completion of previously-started infrastructure work in &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/14424" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Build system modernization&lt;/strong&gt;&lt;/a&gt; through dependency computation optimizations (&lt;a href="https://github.com/ocaml/ocaml/pull/14424"&gt;ocaml/ocaml#14424&lt;/a&gt;), configure script caching (&lt;a href="https://github.com/ocaml/ocaml/pull/13705"&gt;ocaml/ocaml#13705&lt;/a&gt;), and CI infrastructure updates suggesting ongoing effort to improve developer experience&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/13416" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Thread safety focus&lt;/strong&gt;&lt;/a&gt; across both Windows (native primitives in &lt;a href="https://github.com/ocaml/ocaml/pull/13416"&gt;ocaml/ocaml#13416&lt;/a&gt;) and Unix (POSIX thread-safe functions in &lt;a href="https://github.com/ocaml/ocaml/pull/13700"&gt;ocaml/ocaml#13700&lt;/a&gt;) platforms indicating attention to multicore OCaml requirements&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/14427" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Type system enhancements&lt;/strong&gt;&lt;/a&gt; with polymorphic annotations proposal (&lt;a href="https://github.com/ocaml/ocaml/pull/14427"&gt;ocaml/ocaml#14427&lt;/a&gt;), type checker refactoring (&lt;a href="https://github.com/ocaml/ocaml/pull/14422"&gt;ocaml/ocaml#14422&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/pull/14425"&gt;ocaml/ocaml#14425&lt;/a&gt;), and labeled tuple syntax refinement (&lt;a href="https://github.com/ocaml/RFCs/pull/57"&gt;ocaml/RFCs#57&lt;/a&gt;) showing continued evolution of OCaml's type system capabilities&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Windows platform improvements with winpthreads removal, relocatable OCaml, and labeled tuple projection syntax debate</summary><published>2025-12-21T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2025/week-50</id><title>Week 50, 2025: Relocatable OCaml merged with runtime search and module system RFC approved</title><updated>2025-12-14T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
@@ -5088,7 +5187,7 @@
 &lt;li&gt;&lt;strong class="achievement"&gt;Cross-platform compatibility&lt;/strong&gt; receiving increased attention with Windows API modernization and Unix platform improvements&lt;/li&gt;
 &lt;li&gt;&lt;strong class="achievement"&gt;Language design refinement&lt;/strong&gt; through community feedback on practical applications of new syntax features like raw identifiers&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Runtime improvements and bytecode optimization merged alongside language syntax discussions for raw identifiers</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2024/week-42</id><title>Week 42, 2024: Five PRs merged in ocaml/ocaml including new Thread.set_current_thread_name API and compiler improvements</title><updated>2025-12-17T08:18:48.646840+00:00</updated><content type="html">
+</content><link href="https://thicket.dev/"/><summary>Runtime improvements and bytecode optimization merged alongside language syntax discussions for raw identifiers</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2024/week-42</id><title>Week 42, 2024: Five PRs merged in ocaml/ocaml including new Thread.set_current_thread_name API and compiler improvements</title><updated>2025-12-23T12:20:14.475861+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
