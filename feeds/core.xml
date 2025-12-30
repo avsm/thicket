@@ -1,5 +1,87 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/core.xml</id><title>OCaml Core (Weekly)</title><updated>2025-12-21T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/core.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Core OCaml language, compiler, and essential tooling</subtitle><entry><id>https://thicket.dev/groups/core/2025/week-51</id><title>Week 51, 2025: Windows platform improvements with winpthreads removal, relocatable OCaml, and labeled tuple projection syntax debate</title><updated>2025-12-21T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/core.xml</id><title>OCaml Core (Weekly)</title><updated>2025-12-28T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/core.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Core OCaml language, compiler, and essential tooling</subtitle><entry><id>https://thicket.dev/groups/core/2025/week-52</id><title>Week 52, 2025: String module additions and DragonFly BSD native backend support merged in ocaml/ocaml</title><updated>2025-12-28T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14440" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;String.of_char&lt;/strong&gt;&lt;/a&gt; function converts a single character to a string, providing clearer intent than &lt;code&gt;String.make 1 c&lt;/code&gt; in &lt;a href="https://github.com/ocaml/ocaml/issues/14440"&gt;ocaml/ocaml#14440&lt;/a&gt; by &lt;a href="https://github.com/dbuenzli"&gt;Daniel Bünzli&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14438" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;String.is_empty&lt;/strong&gt;&lt;/a&gt; predicate checks if a string is empty in &lt;a href="https://github.com/ocaml/ocaml/issues/14438"&gt;ocaml/ocaml#14438&lt;/a&gt; by &lt;a href="https://github.com/dbuenzli"&gt;Daniel Bünzli&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14431" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;DragonFly BSD native backend&lt;/strong&gt;&lt;/a&gt; enabled, making &lt;code&gt;ocamlopt&lt;/code&gt; available on DragonFly BSD x86_64 systems in &lt;a href="https://github.com/ocaml/ocaml/issues/14431"&gt;ocaml/ocaml#14431&lt;/a&gt; by &lt;a href="https://github.com/mneumann"&gt;Michael Neumann&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14435" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Testsuite enhancement&lt;/strong&gt;&lt;/a&gt; with new &lt;code&gt;not-root&lt;/code&gt; builtin action allowing tests to be skipped when running as superuser in &lt;a href="https://github.com/ocaml/ocaml/issues/14435"&gt;ocaml/ocaml#14435&lt;/a&gt; by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong class="achievement"&gt;Single active repository&lt;/strong&gt;: All activity this week occurred in &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt; with no commits in &lt;a href="https://github.com/ocaml/RFCs"&gt;ocaml/RFCs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14440" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Four features merged&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/ocaml/ocaml/issues/14440"&gt;String.of&lt;em&gt;char&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14438"&gt;String.is&lt;/em&gt;empty&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14431"&gt;DragonFly BSD native backend&lt;/a&gt;, and &lt;a href="https://github.com/ocaml/ocaml/issues/14435"&gt;testsuite not-root action&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14381" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Seven new PRs opened&lt;/strong&gt;&lt;/a&gt;: String module enhancements (&lt;a href="https://github.com/ocaml/ocaml/issues/14381"&gt;ocaml/ocaml#14381&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14436"&gt;ocaml/ocaml#14436&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14437"&gt;ocaml/ocaml#14437&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14439"&gt;ocaml/ocaml#14439&lt;/a&gt;), numeric stdlib additions (&lt;a href="https://github.com/ocaml/ocaml/issues/14433"&gt;ocaml/ocaml#14433&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14432"&gt;ocaml/ocaml#14432&lt;/a&gt;), and testsuite improvements (&lt;a href="https://github.com/ocaml/ocaml/issues/14441"&gt;ocaml/ocaml#14441&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Standard library modernization focus&lt;/strong&gt;: &lt;a href="https://github.com/dbuenzli"&gt;Daniel Bünzli&lt;/a&gt; and &lt;a href="https://github.com/xavierleroy"&gt;Xavier Leroy&lt;/a&gt; driving systematic stdlib API expansion across String and numeric modules&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14137" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;String module API design&lt;/strong&gt;&lt;/a&gt; extensively discussed in &lt;a href="https://github.com/ocaml/ocaml/issues/14137"&gt;ocaml/ocaml#14137&lt;/a&gt; with &lt;a href="https://github.com/dbuenzli"&gt;Daniel Bünzli&lt;/a&gt; proposing naming conventions using &lt;code&gt;first&lt;/code&gt;, &lt;code&gt;last&lt;/code&gt;, and &lt;code&gt;all&lt;/code&gt; keywords for search-based operations, balancing readability with consistency across &lt;code&gt;find&lt;/code&gt;, &lt;code&gt;replace&lt;/code&gt;, and &lt;code&gt;split&lt;/code&gt; functions&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14430" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Unstable features mechanism&lt;/strong&gt;&lt;/a&gt; debated in &lt;a href="https://github.com/ocaml/ocaml/issues/14430"&gt;ocaml/ocaml#14430&lt;/a&gt; with &lt;a href="https://github.com/johnyob"&gt;Alistair&lt;/a&gt; arguing for Rust-style unstable attributes to enable faster stdlib evolution, while &lt;a href="https://github.com/dbuenzli"&gt;Daniel Bünzli&lt;/a&gt; and &lt;a href="https://github.com/giltho"&gt;Sacha Ayoun&lt;/a&gt; expressing concerns about ecosystem fragmentation and design responsibility&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14434" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Polymorphic parameters soundness&lt;/strong&gt;&lt;/a&gt; discussed in &lt;a href="https://github.com/ocaml/ocaml/issues/14434"&gt;ocaml/ocaml#14434&lt;/a&gt; where &lt;a href="https://github.com/johnyob"&gt;Alistair&lt;/a&gt; reported segfault with pattern matching on polymorphic parameters, with &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; identifying exhaustiveness checking failure in &lt;code&gt;Parmatch&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14381" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;String module modernization&lt;/strong&gt;&lt;/a&gt; gaining momentum with &lt;a href="https://github.com/dbuenzli"&gt;Daniel Bünzli&lt;/a&gt; systematically adding search (&lt;a href="https://github.com/ocaml/ocaml/issues/14381"&gt;ocaml/ocaml#14381&lt;/a&gt;), replace (&lt;a href="https://github.com/ocaml/ocaml/issues/14436"&gt;ocaml/ocaml#14436&lt;/a&gt;), split (&lt;a href="https://github.com/ocaml/ocaml/issues/14437"&gt;ocaml/ocaml#14437&lt;/a&gt;), empty check (&lt;a href="https://github.com/ocaml/ocaml/issues/14438"&gt;ocaml/ocaml#14438&lt;/a&gt;), affix check (&lt;a href="https://github.com/ocaml/ocaml/issues/14439"&gt;ocaml/ocaml#14439&lt;/a&gt;), and char conversion (&lt;a href="https://github.com/ocaml/ocaml/issues/14440"&gt;ocaml/ocaml#14440&lt;/a&gt;) functions addressing long-standing gaps in string processing&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14433" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Stdlib API expansion&lt;/strong&gt;&lt;/a&gt; continuing with mathematical functions by &lt;a href="https://github.com/xavierleroy"&gt;Xavier Leroy&lt;/a&gt; adding bit manipulation (&lt;a href="https://github.com/ocaml/ocaml/issues/14433"&gt;ocaml/ocaml#14433&lt;/a&gt;) and division operations (&lt;a href="https://github.com/ocaml/ocaml/issues/14432"&gt;ocaml/ocaml#14432&lt;/a&gt;) that match capabilities found in libraries like Zarith&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14430" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Stdlib evolution process&lt;/strong&gt;&lt;/a&gt; under examination with proposals for unstable features in &lt;a href="https://github.com/ocaml/ocaml/issues/14430"&gt;ocaml/ocaml#14430&lt;/a&gt; and Format_string module in &lt;a href="https://github.com/ocaml/ocaml/issues/12670"&gt;ocaml/ocaml#12670&lt;/a&gt; reflecting broader discussion about balancing stability with faster feature delivery&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14431" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Platform support expansion&lt;/strong&gt;&lt;/a&gt; with DragonFly BSD (&lt;a href="https://github.com/ocaml/ocaml/issues/14431"&gt;ocaml/ocaml#14431&lt;/a&gt;) and Haiku OS (&lt;a href="https://github.com/ocaml/ocaml/issues/14138"&gt;ocaml/ocaml#14138&lt;/a&gt;) native backends being enabled&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>String module additions and DragonFly BSD native backend support merged in ocaml/ocaml</summary><published>2025-12-28T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2025/week-51</id><title>Week 51, 2025: Windows platform improvements with winpthreads removal, relocatable OCaml, and labeled tuple projection syntax debate</title><updated>2025-12-21T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
@@ -5187,7 +5269,7 @@
 &lt;li&gt;&lt;strong class="achievement"&gt;Cross-platform compatibility&lt;/strong&gt; receiving increased attention with Windows API modernization and Unix platform improvements&lt;/li&gt;
 &lt;li&gt;&lt;strong class="achievement"&gt;Language design refinement&lt;/strong&gt; through community feedback on practical applications of new syntax features like raw identifiers&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Runtime improvements and bytecode optimization merged alongside language syntax discussions for raw identifiers</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2024/week-42</id><title>Week 42, 2024: Five PRs merged in ocaml/ocaml including new Thread.set_current_thread_name API and compiler improvements</title><updated>2025-12-23T12:20:14.475861+00:00</updated><content type="html">
+</content><link href="https://thicket.dev/"/><summary>Runtime improvements and bytecode optimization merged alongside language syntax discussions for raw identifiers</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2024/week-42</id><title>Week 42, 2024: Five PRs merged in ocaml/ocaml including new Thread.set_current_thread_name API and compiler improvements</title><updated>2025-12-30T02:01:49.039024+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

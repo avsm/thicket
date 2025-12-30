@@ -1,5 +1,100 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/ecosystem.xml</id><title>OCaml Ecosystem (Weekly)</title><updated>2025-12-21T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/ecosystem.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Package repositories and community infrastructure</subtitle><entry><id>https://thicket.dev/groups/ecosystem/2025/week-51</id><title>Week 51, 2025: Two new packages, coordinated multi-package releases, DkML project sunset, and ocaml.org content expansion</title><updated>2025-12-21T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/ecosystem.xml</id><title>OCaml Ecosystem (Weekly)</title><updated>2025-12-28T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/ecosystem.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Package repositories and community infrastructure</subtitle><entry><id>https://thicket.dev/groups/ecosystem/2025/week-52</id><title>Week 52, 2025: Package ecosystem expanded with 11 new packages while ocaml.org improved reliability with error logging and uptime fixes</title><updated>2025-12-28T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong class="achievement"&gt;New package &lt;code&gt;menhir-lsp.0.1.1&lt;/code&gt;&lt;/strong&gt; providing Language Server Protocol implementation for Menhir and ocamllex with navigation and completion features (&lt;a href="https://github.com/ocaml/opam-repository/issues/29137"&gt;ocaml/opam-repository#29137&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;New package &lt;code&gt;polymarket.0.1.0&lt;/code&gt;&lt;/strong&gt; providing OCaml client library for Polymarket prediction market API with market data retrieval and order management (&lt;a href="https://github.com/ocaml/opam-repository/issues/29133"&gt;ocaml/opam-repository#29133&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;New package &lt;code&gt;shellwords.1.0.0&lt;/code&gt;&lt;/strong&gt; implementing POSIX shell command word parsing and quoting utilities, compatible with Rust shell-words crate (&lt;a href="https://github.com/ocaml/opam-repository/issues/29126"&gt;ocaml/opam-repository#29126&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;New package &lt;code&gt;frontmatter_extractor.0.1&lt;/code&gt;&lt;/strong&gt; for extracting front-matter sections from text files with YAML support (&lt;a href="https://github.com/ocaml/opam-repository/issues/29129"&gt;ocaml/opam-repository#29129&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29123" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;QCheck 0.91&lt;/strong&gt;&lt;/a&gt; released with compatibility updates across qcheck, qcheck-core, qcheck-alcotest, and qcheck-ounit packages (&lt;a href="https://github.com/ocaml/opam-repository/issues/29123"&gt;ocaml/opam-repository#29123&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29124" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Sail 0.20.1&lt;/strong&gt;&lt;/a&gt; bugfix release with loop syntax improvements and unification of &lt;code&gt;bit&lt;/code&gt; type with &lt;code&gt;bits(1)&lt;/code&gt; type (&lt;a href="https://github.com/ocaml/opam-repository/issues/29124"&gt;ocaml/opam-repository#29124&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29134" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;MLX 0.11&lt;/strong&gt;&lt;/a&gt; updated with OCaml 5.4 support and Windows fixes (&lt;a href="https://github.com/ocaml/opam-repository/issues/29134"&gt;ocaml/opam-repository#29134&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29131" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;opam-check-npm-deps 4.1.0&lt;/strong&gt;&lt;/a&gt; now supports opam 2.5 and removes most vendored code (&lt;a href="https://github.com/ocaml/opam-repository/issues/29131"&gt;ocaml/opam-repository#29131&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29122" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Pacomb 1.4.1&lt;/strong&gt;&lt;/a&gt; parser combinator library adds &lt;code&gt;not charset&lt;/code&gt; combinator and compatibility with latest OCaml and ppxlib (&lt;a href="https://github.com/ocaml/opam-repository/issues/29122"&gt;ocaml/opam-repository#29122&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29138" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Expr 0.6.0&lt;/strong&gt;&lt;/a&gt; adds string parsing and comparison capabilities (&lt;a href="https://github.com/ocaml/opam-repository/issues/29138"&gt;ocaml/opam-repository#29138&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29125" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;QuickJS 0.4.1&lt;/strong&gt;&lt;/a&gt; updated to remove uutf dependency (&lt;a href="https://github.com/ocaml/opam-repository/issues/29125"&gt;ocaml/opam-repository#29125&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29141" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;conf-taglib_c.2&lt;/strong&gt;&lt;/a&gt; extended with Debian 13+ support (&lt;a href="https://github.com/ocaml/opam-repository/issues/29141"&gt;ocaml/opam-repository#29141&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3433" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Improved error handling&lt;/strong&gt;&lt;/a&gt; in ocaml.org YouTube feed scraper with exception logging that reports source name, URL, and error details when feeds cannot be fetched (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3433"&gt;ocaml/ocaml.org#3433&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29137" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Package ecosystem growth&lt;/strong&gt;&lt;/a&gt; with 11 new packages merged to &lt;a href="https://github.com/ocaml/opam-repository"&gt;ocaml/opam-repository&lt;/a&gt; including Language Server Protocol support for Menhir, API client libraries, and utility packages (&lt;a href="https://github.com/ocaml/opam-repository/issues/29137"&gt;ocaml/opam-repository#29137&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/29133"&gt;ocaml/opam-repository#29133&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/29126"&gt;ocaml/opam-repository#29126&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/29129"&gt;ocaml/opam-repository#29129&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29123" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Major package updates&lt;/strong&gt;&lt;/a&gt; across testing frameworks (QCheck 0.91), specification languages (Sail 0.20.1), and platform support libraries (MLX 0.11) with OCaml 5.4 compatibility improvements (&lt;a href="https://github.com/ocaml/opam-repository/issues/29123"&gt;ocaml/opam-repository#29123&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/29124"&gt;ocaml/opam-repository#29124&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/29134"&gt;ocaml/opam-repository#29134&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3432" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Website stability&lt;/strong&gt;&lt;/a&gt; maintained for &lt;a href="https://github.com/ocaml/ocaml.org"&gt;ocaml/ocaml.org&lt;/a&gt; with December 26 downtime quickly resolved and error logging improvements for better diagnostics (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3432"&gt;ocaml/ocaml.org#3432&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/issues/3433"&gt;ocaml/ocaml.org#3433&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29075" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Active PR pipeline&lt;/strong&gt;&lt;/a&gt; with 4 new package submissions in opam-repository including major version updates for rpclib, reason-react, posix packages, and jupyter (&lt;a href="https://github.com/ocaml/opam-repository/issues/29075"&gt;ocaml/opam-repository#29075&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/29132"&gt;ocaml/opam-repository#29132&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/29128"&gt;ocaml/opam-repository#29128&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/29142"&gt;ocaml/opam-repository#29142&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3429" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Content expansion&lt;/strong&gt;&lt;/a&gt; on ocaml.org with automated scraping adding new blog posts and videos, plus proposal for new blog source from chrisarmstrong.dev (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3429"&gt;ocaml/ocaml.org#3429&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/issues/3430"&gt;ocaml/ocaml.org#3430&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/issues/3431"&gt;ocaml/ocaml.org#3431&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/issues/3428"&gt;ocaml/ocaml.org#3428&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29131" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;opam 2.5 support&lt;/strong&gt;&lt;/a&gt; demonstrated in opam-check-npm-deps 4.1.0 release, showing progress toward next opam version while opam-repository continues managing packages for current versions (&lt;a href="https://github.com/ocaml/opam-repository/issues/29131"&gt;ocaml/opam-repository#29131&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3432" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Community infrastructure reliability&lt;/strong&gt;&lt;/a&gt; maintained across both repositories with responsive incident handling for ocaml.org downtime and continuous CI review ensuring package quality in opam-repository (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3432"&gt;ocaml/ocaml.org#3432&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/29136"&gt;ocaml/opam-repository#29136&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3428" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Package discovery and documentation&lt;/strong&gt;&lt;/a&gt; supported through ocaml.org's content aggregation complementing opam-repository's package management, with new blog sources expanding community visibility (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3428"&gt;ocaml/ocaml.org#3428&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29134" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml 5.4 compatibility&lt;/strong&gt;&lt;/a&gt; becoming priority across ecosystem with multiple packages updating to support latest compiler version, including MLX and jupyter packages (&lt;a href="https://github.com/ocaml/opam-repository/issues/29134"&gt;ocaml/opam-repository#29134&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/29142"&gt;ocaml/opam-repository#29142&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29131" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Dependency lower bounds&lt;/strong&gt;&lt;/a&gt; receiving increased attention from CI review process catching compatibility issues early across package submissions (&lt;a href="https://github.com/ocaml/opam-repository/issues/29131"&gt;ocaml/opam-repository#29131&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/29136"&gt;ocaml/opam-repository#29136&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/29122"&gt;ocaml/opam-repository#29122&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29137" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Language Server Protocol support&lt;/strong&gt;&lt;/a&gt; expanding with menhir-lsp providing editor integration for parser development, continuing trend of improved developer tooling (&lt;a href="https://github.com/ocaml/opam-repository/issues/29137"&gt;ocaml/opam-repository#29137&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29126" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Cross-language compatibility&lt;/strong&gt;&lt;/a&gt; patterns emerging with packages like shellwords targeting behavior compatibility with implementations in other languages (&lt;a href="https://github.com/ocaml/opam-repository/issues/29126"&gt;ocaml/opam-repository#29126&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29128" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Platform-specific testing improvements&lt;/strong&gt;&lt;/a&gt; with sandboxing and architecture-specific issues being identified and addressed, particularly for BSD compatibility and riscv64 support (&lt;a href="https://github.com/ocaml/opam-repository/issues/29128"&gt;ocaml/opam-repository#29128&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/29075"&gt;ocaml/opam-repository#29075&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3433" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Operational visibility&lt;/strong&gt;&lt;/a&gt; improvements through better error logging and diagnostics, exemplified by YouTube feed scraper exception reporting on ocaml.org (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3433"&gt;ocaml/ocaml.org#3433&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29141" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Configuration package maintenance&lt;/strong&gt;&lt;/a&gt; continuing with updates for newer distribution versions, ensuring ecosystem compatibility with evolving Linux distributions (&lt;a href="https://github.com/ocaml/opam-repository/issues/29141"&gt;ocaml/opam-repository#29141&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Package ecosystem expanded with 11 new packages while ocaml.org improved reliability with error logging and uptime fixes</summary><published>2025-12-28T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/ecosystem/2025/week-51</id><title>Week 51, 2025: Two new packages, coordinated multi-package releases, DkML project sunset, and ocaml.org content expansion</title><updated>2025-12-21T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
