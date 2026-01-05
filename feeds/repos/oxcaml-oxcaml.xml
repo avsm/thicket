@@ -1,5 +1,70 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml</id><title>oxcaml/oxcaml (Weekly)</title><updated>2025-12-28T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/oxcaml</subtitle><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2025/week-52</id><title>Week 52, 2025: Jkind error reporting improvements, CFG backend bug fixes, and new PRs for `or_null` type handling and ARM64 machine code emitter</title><updated>2025-12-28T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml</id><title>oxcaml/oxcaml (Weekly)</title><updated>2026-01-04T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/oxcaml</subtitle><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2026/week-1</id><title>Week 1, 2026: Dissector pass for linking large executables merged, arm64 work progressing, modes system improvements underway</title><updated>2026-01-04T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+17 new PRs opened including arm64 DSL, modes improvements, and tooling updates; arm64 and modes work progressing&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5194" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;New PRs opened&lt;/strong&gt;&lt;/a&gt; this week include Nix flake update for OCaml 5.4 by &lt;a href="https://github.com/jvanburen"&gt;Jacob Van Buren&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5194"&gt;#5194&lt;/a&gt;), modality hints by &lt;a href="https://github.com/riaqn"&gt;Zesen Qian&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5183"&gt;#5183&lt;/a&gt;), scannable axis modifiers by &lt;a href="https://github.com/rtjoa"&gt;Ryan Tjoa&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5187"&gt;#5187&lt;/a&gt;), ocamlformat upgrade by &lt;a href="https://github.com/spiessimon"&gt;Simon Spies&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5180"&gt;#5180&lt;/a&gt;), and multiple arm64 infrastructure PRs by &lt;a href="https://github.com/mshinwell"&gt;Mark Shinwell&lt;/a&gt; including typed DSL (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5193"&gt;#5193&lt;/a&gt;), logical immediate refactoring (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5192"&gt;#5192&lt;/a&gt;), and platform-independent ocaml-jit (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5186"&gt;#5186&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5193" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Arm64 binary emitter work&lt;/strong&gt;&lt;/a&gt; progressing with infrastructure improvements including typed DSL rewrite (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5193"&gt;#5193&lt;/a&gt;), improved label/symbol typing in Asm_directives (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5185"&gt;#5185&lt;/a&gt;), extra owee functionality (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5188"&gt;#5188&lt;/a&gt;), and binary emitter itself in draft form (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5177"&gt;#5177&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5183" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Modes system refinements&lt;/strong&gt;&lt;/a&gt; with &lt;a href="https://github.com/riaqn"&gt;Zesen Qian&lt;/a&gt; working on modality hints (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5183"&gt;#5183&lt;/a&gt;), explicit val&lt;em&gt;modalities application (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5190"&gt;#5190&lt;/a&gt;), and module mode hints (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5034"&gt;#5034&lt;/a&gt;), while &lt;a href="https://github.com/rtjoa"&gt;Ryan Tjoa&lt;/a&gt; addresses scannable axes behavior (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5187"&gt;#5187&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/5169"&gt;#5169&lt;/a&gt;) and or&lt;/em&gt;null layout precision (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5176"&gt;#5176&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/5178"&gt;#5178&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5179" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Zero-alloc checker improvements&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/xclerc"&gt;Xavier Clerc&lt;/a&gt; preventing Widen exception escapes (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5179"&gt;#5179&lt;/a&gt;) and synchronizing destruction point checks (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5182"&gt;#5182&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5191" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Dissector refinements&lt;/strong&gt;&lt;/a&gt; following merge with stack overflow fix (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5191"&gt;#5191&lt;/a&gt;) and test simplification (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5195"&gt;#5195&lt;/a&gt;) by &lt;a href="https://github.com/spiessimon"&gt;Simon Spies&lt;/a&gt; and &lt;a href="https://github.com/mshinwell"&gt;Mark Shinwell&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5094" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Metaprogramming features&lt;/strong&gt;&lt;/a&gt; advancing with quote disambiguation work by &lt;a href="https://github.com/jbachurski"&gt;Jakub Bachurski&lt;/a&gt; for records/variants (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5094"&gt;#5094&lt;/a&gt;) and polymorphic applications (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5154"&gt;#5154&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5180" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml 5.4 upgrade&lt;/strong&gt;&lt;/a&gt; preparations continuing by &lt;a href="https://github.com/spiessimon"&gt;Simon Spies&lt;/a&gt; with ocamlformat version bump (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5180"&gt;#5180&lt;/a&gt;) as part of broader upgrade effort (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5036"&gt;#5036&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Dissector pass for linking large executables merged, arm64 work progressing, modes system improvements underway</summary><published>2026-01-04T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2025/week-52</id><title>Week 52, 2025: Jkind error reporting improvements, CFG backend bug fixes, and new PRs for `or_null` type handling and ARM64 machine code emitter</title><updated>2025-12-28T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
