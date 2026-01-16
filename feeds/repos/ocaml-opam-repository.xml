@@ -1,5 +1,69 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam-repository.xml</id><title>ocaml/opam-repository (Weekly)</title><updated>2026-01-04T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam-repository.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam-repository</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2026/week-1</id><title>Week 1, 2026: Cryptokit 1.21.1 adds elliptic curves and Paillier encryption; 21 packages merged including new Neo4j client and music manager</title><updated>2026-01-04T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam-repository.xml</id><title>ocaml/opam-repository (Weekly)</title><updated>2026-01-11T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam-repository.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam-repository</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2026/week-2</id><title>Week 2, 2026: Package ecosystem expansion with new releases for ffmpeg, POSIX bindings, OCurrent, and Merlin alongside ongoing CI testing discussions.</title><updated>2026-01-11T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Active week with package maintenance, major library updates including ffmpeg 1.2.8 and POSIX bindings 4.0.1, plus several open PRs for new tooling.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29207" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Twelve PRs opened&lt;/strong&gt;&lt;/a&gt; this week including Liquidsoap 2.4.1 release by &lt;a href="https://github.com/toots"&gt;Romain Beauxis&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29207"&gt;#29207&lt;/a&gt;), Lwt 6.0.0 upgrade by &lt;a href="https://github.com/raphael-proust"&gt;Raphaël Proust&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29184"&gt;#29184&lt;/a&gt;), Dune 3.21.0~alpha5 with comprehensive fixes by &lt;a href="https://github.com/shonfeder"&gt;Shon Feder&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29189"&gt;#29189&lt;/a&gt;), ART 0.3.0 Adaptive Radix Tree by &lt;a href="https://github.com/dinosaure"&gt;Calascibetta Romain&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29208"&gt;#29208&lt;/a&gt;), relocatable OCaml updates by &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29085"&gt;#29085&lt;/a&gt;), Menhir LSP 0.2 language server by &lt;a href="https://github.com/dalps"&gt;@dalps&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29203"&gt;#29203&lt;/a&gt;), conf-dwarfutils package by &lt;a href="https://github.com/ajbt200128"&gt;Austin Theriault&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29202"&gt;#29202&lt;/a&gt;), Canary 0.0.4 exception reporting tool by &lt;a href="https://github.com/mabiede"&gt;Marc&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29199"&gt;#29199&lt;/a&gt;), intel_hex 0.1 for embedded systems by &lt;a href="https://github.com/dx3mod"&gt;Михаил&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29180"&gt;#29180&lt;/a&gt;), Raga 0.1.1 static site generator by &lt;a href="https://github.com/nikochiko"&gt;Kaustubh Maske Patil&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29197"&gt;#29197&lt;/a&gt;), BINSEC 0.11.0 binary analysis tool by &lt;a href="https://github.com/recoules"&gt;Frédéric Recoules&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29193"&gt;#29193&lt;/a&gt;), and LLVM 20/21 releases by &lt;a href="https://github.com/alan-j-hu"&gt;Alan&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29110"&gt;#29110&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29163" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;FFmpeg bindings 1.2.8&lt;/strong&gt;&lt;/a&gt; merged with 8 packages covering avcodec, avdevice, avfilter, avutil, swresample, and swscale by &lt;a href="https://github.com/toots"&gt;Romain Beauxis&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29163"&gt;#29163&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29206" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;POSIX bindings 4.0.1&lt;/strong&gt;&lt;/a&gt; released with 14 packages including base, errno, getopt, math2, resource, signal, socket, stat, time2, types, uname, and unistd by &lt;a href="https://github.com/toots"&gt;Romain Beauxis&lt;/a&gt;, superseding 4.0.0 with FreeBSD fix (&lt;a href="https://github.com/ocaml/opam-repository/issues/29206"&gt;#29206&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29191" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCurrent 0.7.3&lt;/strong&gt;&lt;/a&gt; updated with 10 packages for pipeline language and plugins (docker, git, github, gitlab, rpc, slack, ssh, web) by &lt;a href="https://github.com/mtelvers"&gt;Mark Elvers&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29191"&gt;#29191&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29204" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Package maintenance&lt;/strong&gt;&lt;/a&gt; included rfsm 2.3 StateChart toolset by &lt;a href="https://github.com/jserot"&gt;@jserot&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29204"&gt;#29204&lt;/a&gt;), fit 1.4.1 configuration improvements by &lt;a href="https://github.com/lindig"&gt;Christian Lindig&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29201"&gt;#29201&lt;/a&gt;), simple_httpd 1.0.1 timing fix by &lt;a href="https://github.com/craff"&gt;Christophe Raffalli&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29174"&gt;#29174&lt;/a&gt;), alice 0.4.0 by &lt;a href="https://github.com/gridbugs"&gt;Stephen Sherratt&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29187"&gt;#29187&lt;/a&gt;), metadata 0.3.2 file format reader by &lt;a href="https://github.com/toots"&gt;Romain Beauxis&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29183"&gt;#29183&lt;/a&gt;), and memcpy 0.3.0 with Windows constraints by &lt;a href="https://github.com/yallop"&gt;Jeremy Yallop&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29144"&gt;#29144&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29186" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Compatibility fixes&lt;/strong&gt;&lt;/a&gt; addressed server-reason-react ppxlib bounds by &lt;a href="https://github.com/raphael-proust"&gt;Raphaël Proust&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29186"&gt;#29186&lt;/a&gt;), kinetic-client 0.0.1 build failures (&lt;a href="https://github.com/ocaml/opam-repository/issues/29156"&gt;#29156&lt;/a&gt;), lwt ocamlfind version constraint from &lt;code&gt;dev&lt;/code&gt; to &lt;code&gt;with-dev-setup&lt;/code&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29195"&gt;#29195&lt;/a&gt;), camlp4 5.4 macOS/Windows requirements (&lt;a href="https://github.com/ocaml/opam-repository/issues/29192"&gt;#29192&lt;/a&gt;), cca package CI errors (&lt;a href="https://github.com/ocaml/opam-repository/issues/29155"&gt;#29155&lt;/a&gt;), rocq-prover metapackage versioning by &lt;a href="https://github.com/proux01"&gt;Pierre Roux&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29190"&gt;#29190&lt;/a&gt;), restricted 1.1 setup fix by &lt;a href="https://github.com/stopusingghpls"&gt;@stopusingghpls&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29182"&gt;#29182&lt;/a&gt;), and osc 0.1.4 version removal by &lt;a href="https://github.com/raphael-proust"&gt;Raphaël Proust&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29185"&gt;#29185&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Package ecosystem expansion with new releases for ffmpeg, POSIX bindings, OCurrent, and Merlin alongside ongoing CI testing discussions.</summary><published>2026-01-11T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2026/week-1</id><title>Week 1, 2026: Cryptokit 1.21.1 adds elliptic curves and Paillier encryption; 21 packages merged including new Neo4j client and music manager</title><updated>2026-01-04T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

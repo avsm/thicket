@@ -1,5 +1,76 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.xml</id><title>ocaml/ocaml (Weekly)</title><updated>2026-01-04T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-1</id><title>Week 1, 2026: None</title><updated>2026-01-04T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocaml - Week 1, 2026&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocaml - Week 1, 2026</summary><published>2026-01-04T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml/2025/week-52</id><title>Week 52, 2025: String module additions and DragonFly BSD native backend support merged</title><updated>2025-12-28T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.xml</id><title>ocaml/ocaml (Weekly)</title><updated>2026-01-11T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-2</id><title>Week 2, 2026: Stdlib extensions for string search, division operations, and bit counting; improved module error messages with spellchecking hints</title><updated>2026-01-11T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+17 new PRs including String extensions, Windows fixes, and type system improvements; 13 PRs merged for stdlib, tooling, and error messages&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/jmgrosen"&gt;Jessie Grosen&lt;/a&gt; opened PR for &lt;a href="https://github.com/ocaml/ocaml/issues/14461" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Windows socket reliability&lt;/strong&gt;&lt;/a&gt; fix addressing racy socketpair implementation (&lt;a href="https://github.com/ocaml/ocaml/issues/14461"&gt;#14461&lt;/a&gt;), &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt; proposed &lt;strong class="achievement"&gt;trunk compiler support&lt;/strong&gt; in ocaml-system opam package (&lt;a href="https://github.com/ocaml/ocaml/issues/14354"&gt;#14354&lt;/a&gt;), &lt;a href="https://github.com/mshinwell"&gt;Mark Shinwell&lt;/a&gt; added &lt;strong class="achievement"&gt;AI policy documentation&lt;/strong&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14383"&gt;#14383&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/dbuenzli"&gt;Daniel Bünzli&lt;/a&gt; opened three PRs extending &lt;a href="https://github.com/ocaml/ocaml/issues/14436" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;String module&lt;/strong&gt;&lt;/a&gt; with &lt;code&gt;replace_{first,last,all}&lt;/code&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14436"&gt;#14436&lt;/a&gt;), &lt;code&gt;includes&lt;/code&gt; predicate (&lt;a href="https://github.com/ocaml/ocaml/issues/14439"&gt;#14439&lt;/a&gt;), and &lt;code&gt;split_{first,last,all}&lt;/code&gt; plus &lt;code&gt;rsplit_all&lt;/code&gt; functions (&lt;a href="https://github.com/ocaml/ocaml/issues/14437"&gt;#14437&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/nojb"&gt;Nicolás Ojeda Bär&lt;/a&gt; proposed &lt;a href="https://github.com/ocaml/ocaml/issues/14459" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;stdlib design guidelines&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14459"&gt;#14459&lt;/a&gt;), &lt;a href="https://github.com/mjambon"&gt;Martin Jambon&lt;/a&gt; added &lt;strong class="achievement"&gt;exhaustiveness checking&lt;/strong&gt; for ocamllex regular expressions (&lt;a href="https://github.com/ocaml/ocaml/issues/14448"&gt;#14448&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/goldfirere"&gt;Richard Eisenberg&lt;/a&gt; continued work on &lt;a href="https://github.com/ocaml/ocaml/issues/13328" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;name retention&lt;/strong&gt;&lt;/a&gt; system (&lt;a href="https://github.com/ocaml/ocaml/issues/13328"&gt;#13328&lt;/a&gt;), &lt;a href="https://github.com/lthls"&gt;Vincent Laviron&lt;/a&gt; proposed &lt;code&gt;get_singleton&lt;/code&gt; functions for &lt;strong class="achievement"&gt;Set and Map modules&lt;/strong&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14121"&gt;#14121&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/samsa1"&gt;Samuel Vivien&lt;/a&gt; opened PRs for &lt;a href="https://github.com/ocaml/ocaml/issues/13275" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;modular explicits&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/13275"&gt;#13275&lt;/a&gt;) and &lt;strong class="achievement"&gt;unify result handling&lt;/strong&gt; to return results rather than raise exceptions (&lt;a href="https://github.com/ocaml/ocaml/issues/14425"&gt;#14425&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/johnyob"&gt;Alistair&lt;/a&gt; proposed three PRs including &lt;a href="https://github.com/ocaml/ocaml/issues/14430" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;unstable features annotation&lt;/strong&gt;&lt;/a&gt; &lt;code&gt;[@@unstable]&lt;/code&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14430"&gt;#14430&lt;/a&gt;), &lt;strong class="achievement"&gt;polymorphic annotations&lt;/strong&gt; in typing (&lt;a href="https://github.com/ocaml/ocaml/issues/14427"&gt;#14427&lt;/a&gt;), and opened issue about &lt;strong class="achievement"&gt;polymorphic parameters soundness bug&lt;/strong&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14434"&gt;#14434&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt; opened PR to &lt;a href="https://github.com/ocaml/ocaml/issues/14453" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;silence duplicated alert messages&lt;/strong&gt;&lt;/a&gt; in auxiliary typechecker functions (&lt;a href="https://github.com/ocaml/ocaml/issues/14453"&gt;#14453&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/MisterDA"&gt;Antonin Décimo&lt;/a&gt; opened PRs for &lt;a href="https://github.com/ocaml/ocaml/issues/14421" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;C++ API compatibility testing&lt;/strong&gt;&lt;/a&gt; using GCC and MSVC SARIF diagnostics (&lt;a href="https://github.com/ocaml/ocaml/issues/14421"&gt;#14421&lt;/a&gt;) and using &lt;strong class="achievement"&gt;C2y countof operator&lt;/strong&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14413"&gt;#14413&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/lthls"&gt;Vincent Laviron&lt;/a&gt; merged PR rewriting &lt;a href="https://github.com/ocaml/ocaml/issues/14417" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;pack prefixes&lt;/strong&gt;&lt;/a&gt; to replace dots with appropriate separators (&lt;a href="https://github.com/ocaml/ocaml/issues/14417"&gt;#14417&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt; merged &lt;a href="https://github.com/ocaml/ocaml/issues/14250" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;opam scripts modernization&lt;/strong&gt;&lt;/a&gt; changing scripts to plain .ml files with explicit variable passing and unified structure (&lt;a href="https://github.com/ocaml/ocaml/issues/14250"&gt;#14250&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/bclement-ocp"&gt;Basile Clément&lt;/a&gt; fixed &lt;a href="https://github.com/ocaml/ocaml/issues/14457" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;untypeast&lt;/strong&gt;&lt;/a&gt; to handle &lt;code&gt;Tpat_open&lt;/code&gt; patterns (&lt;a href="https://github.com/ocaml/ocaml/issues/14457"&gt;#14457&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; improved &lt;a href="https://github.com/ocaml/ocaml/issues/14441" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;testsuite stability&lt;/strong&gt;&lt;/a&gt; to avoid churn when Stdlib changes (&lt;a href="https://github.com/ocaml/ocaml/issues/14441"&gt;#14441&lt;/a&gt;), &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt; updated dune file following module error message changes (&lt;a href="https://github.com/ocaml/ocaml/issues/14456"&gt;#14456&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/c-cube"&gt;Simon Cruanes&lt;/a&gt; closed PR for &lt;a href="https://github.com/ocaml/ocaml/issues/14460" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;tail-rec-mod-cons List.flatten&lt;/strong&gt;&lt;/a&gt; after benchmarking showed performance concerns (&lt;a href="https://github.com/ocaml/ocaml/issues/14460"&gt;#14460&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Stdlib extensions for string search, division operations, and bit counting; improved module error messages with spellchecking hints</summary><published>2026-01-11T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-1</id><title>Week 1, 2026: None</title><updated>2026-01-04T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocaml - Week 1, 2026&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocaml - Week 1, 2026</summary><published>2026-01-04T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml/2025/week-52</id><title>Week 52, 2025: String module additions and DragonFly BSD native backend support merged</title><updated>2025-12-28T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

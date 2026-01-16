@@ -1,5 +1,69 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.org.xml</id><title>ocaml/ocaml.org (Weekly)</title><updated>2026-01-04T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.org.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml.org</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml.org/2026/week-1</id><title>Week 1, 2026: Documentation updates removing DkML instructions and infrastructure improvements to HTTP scraping tools</title><updated>2026-01-04T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.org.xml</id><title>ocaml/ocaml.org (Weekly)</title><updated>2026-01-11T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.org.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml.org</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml.org/2026/week-2</id><title>Week 2, 2026: Platform releases scraper fixed, FUN OCaml conference data added, and Chris Armstrong's blog integrated into Planet</title><updated>2026-01-11T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Two new PRs opened for cookbook recipe and missing platform releases, plus blog aggregation and conference data updates&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3447" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;New cookbook recipe&lt;/strong&gt;&lt;/a&gt; opened by &lt;a href="https://github.com/Adamme-le-codeur-fou"&gt;Adam&lt;/a&gt; adding "Measure Elapsed Time" example using &lt;code&gt;Unix.gettimeofday&lt;/code&gt; for the Date and Time section (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3447"&gt;#3447&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3444" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Missing platform releases&lt;/strong&gt;&lt;/a&gt; PR opened by &lt;a href="https://github.com/sabine"&gt;@sabine&lt;/a&gt; to backfill November and December releases for Dune, Merlin, OCaml-LSP, OCamlFormat, and other tools after the scraper was broken for several months (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3444"&gt;#3444&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3445" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Automated platform releases scraping&lt;/strong&gt;&lt;/a&gt; PR opened by automation to add newly detected releases (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3445"&gt;#3445&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3428" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Planet blog aggregation&lt;/strong&gt;&lt;/a&gt; completed with &lt;a href="https://github.com/chris-armstrong"&gt;Chris Armstrong&lt;/a&gt;'s OCaml-focused blog added to sources (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3428"&gt;#3428&lt;/a&gt;), bringing in posts on dead code elimination, PPX libraries, cross-compilation, serverless readiness, and AWS SDK development&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3411" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Conference data&lt;/strong&gt;&lt;/a&gt; updated with FUN OCaml 2025 event information merged by &lt;a href="https://github.com/sabine"&gt;@sabine&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3411"&gt;#3411&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3441" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Automated content scraping&lt;/strong&gt;&lt;/a&gt; continued with daily updates bringing in new blog posts from OCaml Weekly News, Jane Street, OCamlPro, and other community sources (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3441"&gt;#3441&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/issues/3442"&gt;#3442&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/issues/3446"&gt;#3446&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Platform releases scraper fixed, FUN OCaml conference data added, and Chris Armstrong's blog integrated into Planet</summary><published>2026-01-11T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml.org/2026/week-1</id><title>Week 1, 2026: Documentation updates removing DkML instructions and infrastructure improvements to HTTP scraping tools</title><updated>2026-01-04T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

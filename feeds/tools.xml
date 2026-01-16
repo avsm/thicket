@@ -1,5 +1,106 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/tools.xml</id><title>OCaml Tools (Weekly)</title><updated>2026-01-04T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/tools.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Development tools and build systems</subtitle><entry><id>https://thicket.dev/groups/tools/2026/week-1</id><title>Week 1, 2026: Highly active week with 110 PRs merged in Dune resolving long-standing include_subdirs issues and advancing tracing</title><updated>2026-01-04T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/tools.xml</id><title>OCaml Tools (Weekly)</title><updated>2026-01-11T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/tools.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Development tools and build systems</subtitle><entry><id>https://thicket.dev/groups/tools/2026/week-2</id><title>Week 2, 2026: Dune tracing infrastructure and Melange optimizations led tools group activity with additional work on LSP and Merlin</title><updated>2026-01-11T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13261" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Process start events&lt;/strong&gt;&lt;/a&gt; now tracked in &lt;a href="https://github.com/ocaml/dune"&gt;ocaml/dune&lt;/a&gt; traces with comprehensive metadata including PID, directory, program, arguments, and timeout information (&lt;a href="https://github.com/ocaml/dune/issues/13261"&gt;ocaml/dune#13261&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13241" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Resource usage tracking&lt;/strong&gt;&lt;/a&gt; (&lt;code&gt;rusage&lt;/code&gt;) added to completed process events in &lt;a href="https://github.com/ocaml/dune"&gt;ocaml/dune&lt;/a&gt; traces, enabling performance analysis (&lt;a href="https://github.com/ocaml/dune/issues/13241"&gt;ocaml/dune#13241&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13265" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Custom action tracing&lt;/strong&gt;&lt;/a&gt; implemented in &lt;a href="https://github.com/ocaml/dune"&gt;ocaml/dune&lt;/a&gt; to track custom build actions with start and finish events (&lt;a href="https://github.com/ocaml/dune/issues/13265"&gt;ocaml/dune#13265&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13285" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Buffered event writes&lt;/strong&gt;&lt;/a&gt; added to &lt;a href="https://github.com/ocaml/dune"&gt;ocaml/dune&lt;/a&gt; tracing system for improved performance with optional buffering parameter (&lt;a href="https://github.com/ocaml/dune/issues/13285"&gt;ocaml/dune#13285&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13272" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Select field fix&lt;/strong&gt;&lt;/a&gt; for Melange libraries in &lt;a href="https://github.com/ocaml/dune"&gt;ocaml/dune&lt;/a&gt; - now correctly skips select form files without dialect extensions, eliminating false positive "no solution" errors (&lt;a href="https://github.com/ocaml/dune/issues/13272"&gt;ocaml/dune#13272&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13232" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Multiple identical opam pins&lt;/strong&gt;&lt;/a&gt; on local packages in &lt;a href="https://github.com/ocaml/dune"&gt;ocaml/dune&lt;/a&gt; now correctly merged instead of causing errors (&lt;a href="https://github.com/ocaml/dune/issues/13232"&gt;ocaml/dune#13232&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13268" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;macOS SIGCHLD handling&lt;/strong&gt;&lt;/a&gt; fixed in &lt;a href="https://github.com/ocaml/dune"&gt;ocaml/dune&lt;/a&gt; to correctly wait for child processes without race conditions (&lt;a href="https://github.com/ocaml/dune/issues/13268"&gt;ocaml/dune#13268&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13245" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;PID race conditions&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/ocaml/dune"&gt;ocaml/dune&lt;/a&gt; scheduler resolved, preventing attempts to kill already-reaped processes (&lt;a href="https://github.com/ocaml/dune/issues/13245"&gt;ocaml/dune#13245&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13224" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Pin error reporting&lt;/strong&gt;&lt;/a&gt; improved in &lt;a href="https://github.com/ocaml/dune"&gt;ocaml/dune&lt;/a&gt; to show location only once instead of duplicating it (&lt;a href="https://github.com/ocaml/dune/issues/13224"&gt;ocaml/dune#13224&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13109" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Documentation warning&lt;/strong&gt;&lt;/a&gt; added to &lt;a href="https://github.com/ocaml/dune"&gt;ocaml/dune&lt;/a&gt; dune-site manual clarifying that dependence on &lt;code&gt;dune-site&lt;/code&gt; forces &lt;code&gt;linkall&lt;/code&gt; compilation flag (&lt;a href="https://github.com/ocaml/dune/issues/13109"&gt;ocaml/dune#13109&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;OCaml 5.4.0 development environment&lt;/strong&gt; updated in &lt;a href="https://github.com/ocaml/ocaml-lsp"&gt;ocaml/ocaml-lsp&lt;/a&gt; Makefile, enabling contributors to test with the latest OCaml compiler version (&lt;a href="https://github.com/ocaml/ocaml-lsp/commit/0d2f5d1da59c689f31f9030233355ce80a62a543"&gt;0d2f5d1&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune"&gt;ocaml/dune&lt;/a&gt; led activity with extensive tracing infrastructure additions by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/13261"&gt;ocaml/dune#13261&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13241"&gt;ocaml/dune#13241&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13265"&gt;ocaml/dune#13265&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13285"&gt;ocaml/dune#13285&lt;/a&gt;), systematic scheduler refactoring (&lt;a href="https://github.com/ocaml/dune/issues/13215"&gt;ocaml/dune#13215&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13220"&gt;ocaml/dune#13220&lt;/a&gt;), and Melange test suite optimization by &lt;a href="https://github.com/anmonteiro"&gt;Antonio Nuno Monteiro&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/13283"&gt;ocaml/dune#13283&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13273"&gt;ocaml/dune#13273&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/merlin"&gt;ocaml/merlin&lt;/a&gt; focused on test coverage with &lt;a href="https://github.com/Lucccyo"&gt;Charlène_Gros&lt;/a&gt; opening signature help fix (&lt;a href="https://github.com/ocaml/merlin/issues/2023"&gt;ocaml/merlin#2023&lt;/a&gt;) and three bug reproduction test cases receiving review from &lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt; (&lt;a href="https://github.com/ocaml/merlin/issues/2020"&gt;ocaml/merlin#2020&lt;/a&gt;, &lt;a href="https://github.com/ocaml/merlin/issues/2021"&gt;ocaml/merlin#2021&lt;/a&gt;, &lt;a href="https://github.com/ocaml/merlin/issues/2022"&gt;ocaml/merlin#2022&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml-lsp"&gt;ocaml/ocaml-lsp&lt;/a&gt; saw new PRs for configurable Merlin server by &lt;a href="https://github.com/andreypopp"&gt;Andrey Popp&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1581"&gt;ocaml/ocaml-lsp#1581&lt;/a&gt;) and signature help formatting by &lt;a href="https://github.com/Lucccyo"&gt;Charlène_Gros&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1580"&gt;ocaml/ocaml-lsp#1580&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/odoc"&gt;ocaml/odoc&lt;/a&gt; had crash bug reported by &lt;a href="https://github.com/lukemaurer"&gt;Luke Maurer&lt;/a&gt; affecting redundant type constraints (&lt;a href="https://github.com/ocaml/odoc/issues/1397"&gt;ocaml/odoc#1397&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam"&gt;ocaml/opam&lt;/a&gt; saw ongoing review of license field PR by &lt;a href="https://github.com/raphael-proust"&gt;Raphaël Proust&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam/issues/6841"&gt;ocaml/opam#6841&lt;/a&gt;) and solver behavior issue reported by &lt;a href="https://github.com/tobil4sk"&gt;@tobil4sk&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam/issues/6843"&gt;ocaml/opam#6843&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind"&gt;ocaml/ocamlfind&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-file-format"&gt;ocaml/opam-file-format&lt;/a&gt;, &lt;a href="https://github.com/ocaml-dune/spawn"&gt;ocaml-dune/spawn&lt;/a&gt;, and &lt;a href="https://github.com/ocsigen/js_of_ocaml"&gt;ocsigen/js&lt;em&gt;of&lt;/em&gt;ocaml&lt;/a&gt; had no activity this week&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/merlin/issues/2023" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Signature help improvements&lt;/strong&gt;&lt;/a&gt; coordinated across &lt;a href="https://github.com/ocaml/merlin"&gt;ocaml/merlin&lt;/a&gt; and &lt;a href="https://github.com/ocaml/ocaml-lsp"&gt;ocaml/ocaml-lsp&lt;/a&gt; by &lt;a href="https://github.com/Lucccyo"&gt;Charlène_Gros&lt;/a&gt; with fix in Merlin preventing parameter looping (&lt;a href="https://github.com/ocaml/merlin/issues/2023"&gt;ocaml/merlin#2023&lt;/a&gt;) and formatting improvements in ocaml-lsp (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1580"&gt;ocaml/ocaml-lsp#1580&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1581" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Merlin integration enhancements&lt;/strong&gt;&lt;/a&gt; with &lt;a href="https://github.com/ocaml/ocaml-lsp"&gt;ocaml/ocaml-lsp&lt;/a&gt; exploring configurable Merlin server setup (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1581"&gt;ocaml/ocaml-lsp#1581&lt;/a&gt;) and &lt;a href="https://github.com/ocaml/merlin"&gt;ocaml/merlin&lt;/a&gt; improving test infrastructure and bug reproduction (&lt;a href="https://github.com/ocaml/merlin/issues/2020"&gt;ocaml/merlin#2020&lt;/a&gt;, &lt;a href="https://github.com/ocaml/merlin/issues/2021"&gt;ocaml/merlin#2021&lt;/a&gt;, &lt;a href="https://github.com/ocaml/merlin/issues/2022"&gt;ocaml/merlin#2022&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13232" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Package management&lt;/strong&gt;&lt;/a&gt; work in &lt;a href="https://github.com/ocaml/dune"&gt;ocaml/dune&lt;/a&gt; with opam integration improvements (&lt;a href="https://github.com/ocaml/dune/issues/13232"&gt;ocaml/dune#13232&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13216"&gt;ocaml/dune#13216&lt;/a&gt;) while &lt;a href="https://github.com/ocaml/opam"&gt;ocaml/opam&lt;/a&gt; addresses solver behavior issues (&lt;a href="https://github.com/ocaml/opam/issues/6843"&gt;ocaml/opam#6843&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/tobil4sk"&gt;@tobil4sk&lt;/a&gt; reported in &lt;a href="https://github.com/ocaml/opam"&gt;ocaml/opam&lt;/a&gt; that the default &lt;code&gt;builtin-0install&lt;/code&gt; solver resolves both i686 and x86&lt;em&gt;64 variants of mingw packages, while &lt;code&gt;builtin-mccs+glpk&lt;/code&gt; resolves only x86&lt;/em&gt;64 (&lt;a href="https://github.com/ocaml/opam/issues/6843"&gt;ocaml/opam#6843&lt;/a&gt;), creating unintended multi-architecture installations in CI environments&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/correnson"&gt;Correnson Loïc&lt;/a&gt; provided minimal reproduction case in &lt;a href="https://github.com/ocaml/ocaml-lsp"&gt;ocaml/ocaml-lsp&lt;/a&gt; for document symbols bug affecting optional arguments, showing incorrect parent-child relationships with invalid position data (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1560"&gt;ocaml/ocaml-lsp#1560&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt; identified in &lt;a href="https://github.com/ocaml/merlin"&gt;ocaml/merlin&lt;/a&gt; that &lt;a href="https://github.com/ocaml/merlin/issues/1987"&gt;ocaml/merlin#1987&lt;/a&gt; reproduction reveals broader issue with Merlin's environment being empty before first structure item ends (&lt;a href="https://github.com/ocaml/merlin/issues/2020"&gt;ocaml/merlin#2020&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; reviewed &lt;a href="https://github.com/ocaml/opam"&gt;ocaml/opam&lt;/a&gt; license field PR noting that raw field syntax &lt;code&gt;license:&lt;/code&gt; already works but isn't well documented (&lt;a href="https://github.com/ocaml/opam/issues/6841"&gt;ocaml/opam#6841&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/andreypopp"&gt;Andrey Popp&lt;/a&gt; questioned in &lt;a href="https://github.com/ocaml/ocaml-lsp"&gt;ocaml/ocaml-lsp&lt;/a&gt; whether Merlin config file path has meaningful use beyond debug output (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1581"&gt;ocaml/ocaml-lsp#1581&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13267" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Tracing infrastructure expansion&lt;/strong&gt;&lt;/a&gt; accelerating in &lt;a href="https://github.com/ocaml/dune"&gt;ocaml/dune&lt;/a&gt; with multiple coordinated PRs adding process events, resource usage, custom actions, and buffered writes to support broader Action Tracing feature (&lt;a href="https://github.com/ocaml/dune/issues/13267"&gt;ocaml/dune#13267&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13261"&gt;ocaml/dune#13261&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13241"&gt;ocaml/dune#13241&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13265"&gt;ocaml/dune#13265&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13285"&gt;ocaml/dune#13285&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13272" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Melange support enhancements&lt;/strong&gt;&lt;/a&gt; concentrated in &lt;a href="https://github.com/ocaml/dune"&gt;ocaml/dune&lt;/a&gt; with test optimization, bug fixes for dialect extensions (&lt;a href="https://github.com/ocaml/dune/issues/13272"&gt;ocaml/dune#13272&lt;/a&gt;), and single-context-universal refactoring (&lt;a href="https://github.com/ocaml/dune/issues/13275"&gt;ocaml/dune#13275&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13276"&gt;ocaml/dune#13276&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13233" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Test coverage expansion&lt;/strong&gt;&lt;/a&gt; across multiple repositories with &lt;a href="https://github.com/ocaml/dune"&gt;ocaml/dune&lt;/a&gt; adding shellcheck and unused library detection (&lt;a href="https://github.com/ocaml/dune/issues/13233"&gt;ocaml/dune#13233&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13242"&gt;ocaml/dune#13242&lt;/a&gt;) and &lt;a href="https://github.com/ocaml/merlin"&gt;ocaml/merlin&lt;/a&gt; systematically reproducing historical bug reports (&lt;a href="https://github.com/ocaml/merlin/issues/2020"&gt;ocaml/merlin#2020&lt;/a&gt;, &lt;a href="https://github.com/ocaml/merlin/issues/2021"&gt;ocaml/merlin#2021&lt;/a&gt;, &lt;a href="https://github.com/ocaml/merlin/issues/2022"&gt;ocaml/merlin#2022&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1581" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Alternative build system support&lt;/strong&gt;&lt;/a&gt; being explored in &lt;a href="https://github.com/ocaml/ocaml-lsp"&gt;ocaml/ocaml-lsp&lt;/a&gt; through configurable Merlin server setup enabling systems beyond Dune (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1581"&gt;ocaml/ocaml-lsp#1581&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1580" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;User experience improvements&lt;/strong&gt;&lt;/a&gt; focused on formatting and readability in &lt;a href="https://github.com/ocaml/ocaml-lsp"&gt;ocaml/ocaml-lsp&lt;/a&gt; and &lt;a href="https://github.com/ocaml/merlin"&gt;ocaml/merlin&lt;/a&gt; with signature help enhancements and progress display proposals (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1580"&gt;ocaml/ocaml-lsp#1580&lt;/a&gt;, &lt;a href="https://github.com/ocaml/merlin/issues/2023"&gt;ocaml/merlin#2023&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13263"&gt;ocaml/dune#13263&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Dune tracing infrastructure and Melange optimizations led tools group activity with additional work on LSP and Merlin</summary><published>2026-01-11T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/tools/2026/week-1</id><title>Week 1, 2026: Highly active week with 110 PRs merged in Dune resolving long-standing include_subdirs issues and advancing tracing</title><updated>2026-01-04T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
