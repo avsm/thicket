@@ -1,5 +1,94 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/core.xml</id><title>OCaml Core (Weekly)</title><updated>2026-01-11T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/core.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Core OCaml language, compiler, and essential tooling</subtitle><entry><id>https://thicket.dev/groups/core/2026/week-2</id><title>Week 2, 2026: Stdlib extensions for string search, numeric operations, and bit counting merged alongside improved module error messages with spellchecking</title><updated>2026-01-11T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/core.xml</id><title>OCaml Core (Weekly)</title><updated>2026-01-18T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/core.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Core OCaml language, compiler, and essential tooling</subtitle><entry><id>https://thicket.dev/groups/core/2026/week-3</id><title>Week 3, 2026: Standard library expanded with three new functions, documentation improved, Windows bugs fixed, and RFC discussion on tuple projections</title><updated>2026-01-18T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong class="achievement"&gt;Array.stable&lt;em&gt;sort&lt;/em&gt;sub&lt;/strong&gt; function added to sort subarrays in-place using stable sorting algorithm (&lt;a href="https://github.com/ocaml/ocaml/issues/13343"&gt;ocaml/ocaml#13343&lt;/a&gt;) by &lt;a href="https://github.com/fpottier"&gt;François Pottier&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14439" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;String.includes&lt;/strong&gt;&lt;/a&gt; function added to test if a substring occurs anywhere in a string (&lt;a href="https://github.com/ocaml/ocaml/issues/14439"&gt;ocaml/ocaml#14439&lt;/a&gt;) by &lt;a href="https://github.com/dbuenzli"&gt;Daniel Bünzli&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/10177" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Seq.delay&lt;/strong&gt;&lt;/a&gt; function added to enable proper lazy evaluation in recursive sequence constructors (&lt;a href="https://github.com/ocaml/ocaml/issues/10177"&gt;ocaml/ocaml#10177&lt;/a&gt;) by &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14468" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Raw identifier syntax&lt;/strong&gt;&lt;/a&gt; documented in manual allowing &lt;code&gt;#keyword&lt;/code&gt; to use keywords as regular identifiers (&lt;a href="https://github.com/ocaml/ocaml/issues/14468"&gt;ocaml/ocaml#14468&lt;/a&gt;) by &lt;a href="https://github.com/nojb"&gt;Nicolás Ojeda Bär&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14468" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Effect keyword&lt;/strong&gt;&lt;/a&gt; added to manual's keyword list with documentation on &lt;code&gt;-keywords&lt;/code&gt; flag for modifying available keywords (&lt;a href="https://github.com/ocaml/ocaml/issues/14468"&gt;ocaml/ocaml#14468&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14461" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Windows socketpair race condition&lt;/strong&gt;&lt;/a&gt; fixed preventing address-in-use errors during concurrent socketpair creation (&lt;a href="https://github.com/ocaml/ocaml/issues/14461"&gt;ocaml/ocaml#14461&lt;/a&gt;) by &lt;a href="https://github.com/jmgrosen"&gt;Jessie Grosen&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14463" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Substring search micro-optimization&lt;/strong&gt;&lt;/a&gt; in stdlib improving string matching performance (&lt;a href="https://github.com/ocaml/ocaml/issues/14463"&gt;ocaml/ocaml#14463&lt;/a&gt;) by &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong class="achievement"&gt;10 PRs merged&lt;/strong&gt; in &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt; with standard library additions, documentation improvements, Windows platform fixes, and tooling enhancements&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14469" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;4 new PRs opened&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt; covering continuation optimization (&lt;a href="https://github.com/ocaml/ocaml/issues/14469"&gt;ocaml/ocaml#14469&lt;/a&gt;), workflow automation (&lt;a href="https://github.com/ocaml/ocaml/issues/14467"&gt;ocaml/ocaml#14467&lt;/a&gt;), runtime events cleanup (&lt;a href="https://github.com/ocaml/ocaml/issues/14470"&gt;ocaml/ocaml#14470&lt;/a&gt;), and stdlib design guidelines (&lt;a href="https://github.com/ocaml/ocaml/issues/14459"&gt;ocaml/ocaml#14459&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/RFCs/pull/57" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Active RFC discussion&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/ocaml/RFCs"&gt;ocaml/RFCs&lt;/a&gt; on labeled tuple projections (&lt;a href="https://github.com/ocaml/RFCs/pull/57"&gt;ocaml/RFCs#57&lt;/a&gt;) with &lt;a href="https://github.com/garrigue"&gt;Jacques Garrigue&lt;/a&gt; providing detailed technical analysis of polymorphic index projection approach&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/RFCs/pull/57" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Polymorphic tuple projections&lt;/strong&gt;&lt;/a&gt; debated in &lt;a href="https://github.com/ocaml/RFCs/pull/57"&gt;ocaml/RFCs#57&lt;/a&gt; with &lt;a href="https://github.com/garrigue"&gt;Jacques Garrigue&lt;/a&gt; analyzing polymorphic index projection versus labeled projection, discussing type system implications, principality requirements for label ordering, and tradeoffs between ML-style polymorphism versus type propagation approaches&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14468" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Raw identifier syntax and effect keyword&lt;/strong&gt;&lt;/a&gt; documentation generated substantial discussion in &lt;a href="https://github.com/ocaml/ocaml/issues/14468"&gt;ocaml/ocaml#14468&lt;/a&gt; with 10 comments reviewing the syntax specification and manual clarity&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14439" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;String.includes function&lt;/strong&gt;&lt;/a&gt; underwent detailed API design review in &lt;a href="https://github.com/ocaml/ocaml/issues/14439"&gt;ocaml/ocaml#14439&lt;/a&gt; with 8 comments discussing naming conventions and partial application efficiency&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/10177" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Seq.delay implementation&lt;/strong&gt;&lt;/a&gt; received thorough examination in &lt;a href="https://github.com/ocaml/ocaml/issues/10177"&gt;ocaml/ocaml#10177&lt;/a&gt; with 9 comments from reviewers analyzing lazy evaluation semantics and use cases&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Array.stable&lt;em&gt;sort&lt;/em&gt;sub&lt;/strong&gt; reviewed extensively in &lt;a href="https://github.com/ocaml/ocaml/issues/13343"&gt;ocaml/ocaml#13343&lt;/a&gt; with 9 comments covering algorithm correctness and API design&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14461" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Windows socketpair race condition&lt;/strong&gt;&lt;/a&gt; discussed with 7 comments in &lt;a href="https://github.com/ocaml/ocaml/issues/14461"&gt;ocaml/ocaml#14461&lt;/a&gt; analyzing TOCTOU race conditions and testing approaches&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14439" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Standard library string functions&lt;/strong&gt;&lt;/a&gt; receiving significant attention with multiple contributions from &lt;a href="https://github.com/dbuenzli"&gt;Daniel Bünzli&lt;/a&gt; including String.includes merged in &lt;a href="https://github.com/ocaml/ocaml/issues/14439"&gt;ocaml/ocaml#14439&lt;/a&gt; this week and related functions like split, replace, and find in adjacent PRs&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14468" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Documentation quality improvements&lt;/strong&gt;&lt;/a&gt; focusing on language features previously under-documented, particularly the effect keyword and raw identifier syntax in &lt;a href="https://github.com/ocaml/ocaml/issues/14468"&gt;ocaml/ocaml#14468&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14461" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Platform-specific bug fixes&lt;/strong&gt;&lt;/a&gt; addressing Windows-specific issues like the socketpair race condition in &lt;a href="https://github.com/ocaml/ocaml/issues/14461"&gt;ocaml/ocaml#14461&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14120" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Tooling infrastructure&lt;/strong&gt;&lt;/a&gt; being enhanced for IDE support with better shape indexing for items without concrete definitions in &lt;a href="https://github.com/ocaml/ocaml/issues/14120"&gt;ocaml/ocaml#14120&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14467" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Process automation&lt;/strong&gt;&lt;/a&gt; proposed with workflow for automatic labeling of stdlib PRs in &lt;a href="https://github.com/ocaml/ocaml/issues/14467"&gt;ocaml/ocaml#14467&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/RFCs/pull/57" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Type system extensions&lt;/strong&gt;&lt;/a&gt; under discussion with RFC on tuple projections exploring polymorphic access patterns in &lt;a href="https://github.com/ocaml/RFCs/pull/57"&gt;ocaml/RFCs#57&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Standard library expanded with three new functions, documentation improved, Windows bugs fixed, and RFC discussion on tuple projections</summary><published>2026-01-18T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2026/week-2</id><title>Week 2, 2026: Stdlib extensions for string search, numeric operations, and bit counting merged alongside improved module error messages with spellchecking</title><updated>2026-01-11T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
@@ -5356,7 +5445,7 @@
 &lt;li&gt;&lt;strong class="achievement"&gt;Cross-platform compatibility&lt;/strong&gt; receiving increased attention with Windows API modernization and Unix platform improvements&lt;/li&gt;
 &lt;li&gt;&lt;strong class="achievement"&gt;Language design refinement&lt;/strong&gt; through community feedback on practical applications of new syntax features like raw identifiers&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Runtime improvements and bytecode optimization merged alongside language syntax discussions for raw identifiers</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2024/week-42</id><title>Week 42, 2024: Five PRs merged in ocaml/ocaml including new Thread.set_current_thread_name API and compiler improvements</title><updated>2026-01-16T14:32:08.968955+00:00</updated><content type="html">
+</content><link href="https://thicket.dev/"/><summary>Runtime improvements and bytecode optimization merged alongside language syntax discussions for raw identifiers</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2024/week-42</id><title>Week 42, 2024: Five PRs merged in ocaml/ocaml including new Thread.set_current_thread_name API and compiler improvements</title><updated>2026-01-21T12:28:16.045679+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

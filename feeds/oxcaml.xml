@@ -1,5 +1,112 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/oxcaml.xml</id><title>OxCaml (Weekly)</title><updated>2026-01-11T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/oxcaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Oxidised OCaml</subtitle><entry><id>https://thicket.dev/groups/oxcaml/2026/week-2</id><title>Week 2, 2026: Major compiler upgrade to OCaml 5.4.0 with new type system features and enhanced debugging infrastructure</title><updated>2026-01-11T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/oxcaml.xml</id><title>OxCaml (Weekly)</title><updated>2026-01-18T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/oxcaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Oxidised OCaml</subtitle><entry><id>https://thicket.dev/groups/oxcaml/2026/week-3</id><title>Week 3, 2026: ARM64 backend maturation, mode system refinements, package ecosystem updates, and tooling improvements</title><updated>2026-01-18T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;ARM64 backend now uses typed DSL with constraints enforced by OCaml's type system, improving type safety for instruction generation in &lt;a href="https://github.com/oxcaml/oxcaml/issues/5193"&gt;oxcaml/oxcaml#5193&lt;/a&gt; by &lt;a href="https://github.com/mshinwell"&gt;Mark Shinwell&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Native expect test infrastructure with &lt;code&gt;expect.opt&lt;/code&gt; tool for native toplevel testing in &lt;a href="https://github.com/oxcaml/oxcaml/issues/5245"&gt;oxcaml/oxcaml#5245&lt;/a&gt;, &lt;code&gt;[%%expect.ignore_echo]&lt;/code&gt; directive in &lt;a href="https://github.com/oxcaml/oxcaml/issues/5244"&gt;oxcaml/oxcaml#5244&lt;/a&gt;, and spacing consistency improvements in &lt;a href="https://github.com/oxcaml/oxcaml/issues/5243"&gt;oxcaml/oxcaml#5243&lt;/a&gt; by &lt;a href="https://github.com/jra4"&gt;James Rayman&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Mode system improvements: functor currying now properly constrains modes for soundness in &lt;a href="https://github.com/oxcaml/oxcaml/issues/5230"&gt;oxcaml/oxcaml#5230&lt;/a&gt;, mode solver commutativity bug fixed in &lt;a href="https://github.com/oxcaml/oxcaml/issues/5233"&gt;oxcaml/oxcaml#5233&lt;/a&gt;, and separability merged into layouts extension enabling zero-alloc &lt;code&gt;Array.get&lt;/code&gt; in &lt;a href="https://github.com/oxcaml/oxcaml/issues/5231"&gt;oxcaml/oxcaml#5231&lt;/a&gt; by &lt;a href="https://github.com/dkalinichenko-js"&gt;@dkalinichenko-js&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Exposed &lt;code&gt;Sys.io_buffer_size&lt;/code&gt; constant in stdlib providing access to IO buffer size used by runtime system and Unix library primitives in &lt;a href="https://github.com/oxcaml/oxcaml/issues/5078"&gt;oxcaml/oxcaml#5078&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Chamelon test minimizer gained new capabilities: transforms single-pattern matches into lets and adds &lt;code&gt;reduce-pat&lt;/code&gt; minimizer for removing match branches in &lt;a href="https://github.com/oxcaml/oxcaml/issues/5212"&gt;oxcaml/oxcaml#5212&lt;/a&gt; by &lt;a href="https://github.com/bclement-ocp"&gt;Basile Clément&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Fixed switch optimization for constant lookup tables that previously caused quadratic code size growth under &lt;code&gt;-Oclassic -inline 20&lt;/code&gt; in &lt;a href="https://github.com/oxcaml/oxcaml/issues/5200"&gt;oxcaml/oxcaml#5200&lt;/a&gt; by &lt;a href="https://github.com/lthls"&gt;Vincent Laviron&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Dune 3.21.0+ox packages added with complete build toolchain in &lt;a href="https://github.com/oxcaml/opam-repository/pull/29"&gt;oxcaml/opam-repository#29&lt;/a&gt; by &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Lwt 6.0.0+ox packages including lwt, lwt&lt;em&gt;direct, lwt&lt;/em&gt;ppx, and lwt&lt;em&gt;runtime&lt;/em&gt;events in &lt;a href="https://github.com/oxcaml/opam-repository/pull/30"&gt;oxcaml/opam-repository#30&lt;/a&gt;, partially upstreamed to &lt;a href="https://github.com/ocsigen/lwt/issues/1096"&gt;ocsigen/lwt#1096&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Compiler build concurrency optimization achieved 2x speedup (32 to 14 minutes) by unsetting &lt;code&gt;INSIDE_DUNE&lt;/code&gt; environment variable in &lt;a href="https://github.com/oxcaml/opam-repository/pull/25"&gt;oxcaml/opam-repository#25&lt;/a&gt; by &lt;a href="https://github.com/Sudha247"&gt;Sudha Parimala&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Effect primitives refactored to eliminate &lt;code&gt;Must_not_enter_gc&lt;/code&gt; special case handling in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4901"&gt;oxcaml/oxcaml#4901&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Fixed &lt;code&gt;Sys.getenv_opt&lt;/code&gt; to preserve backtraces instead of discarding them in &lt;a href="https://github.com/oxcaml/oxcaml/issues/5076"&gt;oxcaml/oxcaml#5076&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;Invalid&lt;/code&gt; construct through Flambda → Cmm → Cfg → Linear pipeline, avoiding special case handling in &lt;a href="https://github.com/oxcaml/oxcaml/issues/5208"&gt;oxcaml/oxcaml#5208&lt;/a&gt; by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5193" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Core compiler focus&lt;/strong&gt;&lt;/a&gt;: Significant progress on ARM64 backend with typed DSL foundation in &lt;a href="https://github.com/oxcaml/oxcaml/issues/5193"&gt;oxcaml/oxcaml#5193&lt;/a&gt;, mode system refinements across multiple PRs (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5230"&gt;oxcaml/oxcaml#5230&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/5233"&gt;oxcaml/oxcaml#5233&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/5231"&gt;oxcaml/oxcaml#5231&lt;/a&gt;), and layout polymorphism groundwork in &lt;a href="https://github.com/oxcaml/oxcaml/issues/5238"&gt;oxcaml/oxcaml#5238&lt;/a&gt; and &lt;a href="https://github.com/oxcaml/oxcaml/issues/5148"&gt;oxcaml/oxcaml#5148&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5245" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Testing infrastructure expansion&lt;/strong&gt;&lt;/a&gt;: Native expect tests introduced via &lt;a href="https://github.com/oxcaml/oxcaml/issues/5245"&gt;oxcaml/oxcaml#5245&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/5244"&gt;oxcaml/oxcaml#5244&lt;/a&gt;, and &lt;a href="https://github.com/oxcaml/oxcaml/issues/5243"&gt;oxcaml/oxcaml#5243&lt;/a&gt;, with chamelon minimizer enhancements in &lt;a href="https://github.com/oxcaml/oxcaml/issues/5212"&gt;oxcaml/oxcaml#5212&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/pull/29" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Package ecosystem updates&lt;/strong&gt;&lt;/a&gt;: Over 100 Jane Street packages updated to v0.18~preview.130.83+317 in oxcaml/opam-repository, Dune 3.21.0+ox packages added in &lt;a href="https://github.com/oxcaml/opam-repository/pull/29"&gt;oxcaml/opam-repository#29&lt;/a&gt;, and Lwt 6.0.0+ox packages in &lt;a href="https://github.com/oxcaml/opam-repository/pull/30"&gt;oxcaml/opam-repository#30&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/pull/25" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Build performance improvements&lt;/strong&gt;&lt;/a&gt;: Compiler build time reduced by 2x through concurrency optimization in &lt;a href="https://github.com/oxcaml/opam-repository/pull/25"&gt;oxcaml/opam-repository#25&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/205" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Editor integration&lt;/strong&gt;&lt;/a&gt;: Merlin signature help refinements for labelled arguments in &lt;a href="https://github.com/oxcaml/merlin/issues/205"&gt;oxcaml/merlin#205&lt;/a&gt; and function name triggering in &lt;a href="https://github.com/oxcaml/merlin/issues/206"&gt;oxcaml/merlin#206&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Active development&lt;/strong&gt;: 15+ merged PRs in oxcaml/oxcaml, 3+ merged PRs in oxcaml/opam-repository, multiple ongoing initiatives including SIMD vectors, Flambda2 improvements, and mode documentation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/pull/29" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Package management coordination&lt;/strong&gt;&lt;/a&gt;: Dune 3.21.0+ox packages added to &lt;a href="https://github.com/oxcaml/opam-repository"&gt;oxcaml/opam-repository&lt;/a&gt; in &lt;a href="https://github.com/oxcaml/opam-repository/pull/29"&gt;#29&lt;/a&gt; support compiler build optimization work in &lt;a href="https://github.com/oxcaml/opam-repository/pull/25"&gt;#25&lt;/a&gt; that improved build times from 32 to 14 minutes&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/pull/30" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Upstream collaboration&lt;/strong&gt;&lt;/a&gt;: Lwt 6.0.0+ox packages in &lt;a href="https://github.com/oxcaml/opam-repository/pull/30"&gt;oxcaml/opam-repository#30&lt;/a&gt; are partially upstreamed to &lt;a href="https://github.com/ocsigen/lwt/issues/1096"&gt;ocsigen/lwt#1096&lt;/a&gt;, demonstrating effort to contribute changes back to upstream projects&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/pull/26" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Patch reduction strategy&lt;/strong&gt;&lt;/a&gt;: Changes being upstreamed to original projects (lwt, js&lt;em&gt;of&lt;/em&gt;ocaml, mdx, re, utop) reduce maintenance burden in oxcaml/opam-repository as seen in &lt;a href="https://github.com/oxcaml/opam-repository/pull/26"&gt;oxcaml/opam-repository#26&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5218" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Merlin integration&lt;/strong&gt;&lt;/a&gt;: Mode/modality typedtree annotations work in &lt;a href="https://github.com/oxcaml/oxcaml/issues/5218"&gt;oxcaml/oxcaml#5218&lt;/a&gt; by &lt;a href="https://github.com/liam923"&gt;Liam Stevenson&lt;/a&gt; explicitly targets &lt;a href="https://github.com/oxcaml/merlin"&gt;oxcaml/merlin&lt;/a&gt; editor integration improvements&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Library naming alignment&lt;/strong&gt;: oxcaml&lt;em&gt;effect renamed to handled&lt;/em&gt;effect in oxcaml/opam-repository aligns with upstream naming conventions and improves consistency across the ecosystem&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Jane Street ecosystem synchronization&lt;/strong&gt;: Over 100 packages updated in lockstep to v0.18~preview.130.83+317 across oxcaml/opam-repository ensures compatibility and represents coordinated release management&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;Extensive design iteration on mode/modality typedtree representation between &lt;a href="https://github.com/riaqn"&gt;Zesen Qian&lt;/a&gt; and &lt;a href="https://github.com/liam923"&gt;Liam Stevenson&lt;/a&gt; covering whether to use lists vs records, naming conventions, and correspondence with parsetree structures in &lt;a href="https://github.com/oxcaml/oxcaml/issues/5218"&gt;oxcaml/oxcaml#5218&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;ARM64 typed DSL implementation review with detailed feedback from &lt;a href="https://github.com/xclerc"&gt;Xavier Clerc&lt;/a&gt; and &lt;a href="https://github.com/TheNumbat"&gt;Max Slater&lt;/a&gt; on register type handling, logical immediate encoding return types, and assertion helpers in &lt;a href="https://github.com/oxcaml/oxcaml/issues/5193"&gt;oxcaml/oxcaml#5193&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Discussion on base non-value kinds crossing externality by &lt;a href="https://github.com/nmatschke"&gt;Nailen Matschke&lt;/a&gt; and &lt;a href="https://github.com/goldfirere"&gt;Richard Eisenberg&lt;/a&gt; weighing UX improvements through implications against consistency with modal bounds in &lt;a href="https://github.com/oxcaml/oxcaml/issues/5162"&gt;oxcaml/oxcaml#5162&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Debate over usefulness of &lt;code&gt;[%%expect.ignore_echo]&lt;/code&gt; directive with &lt;a href="https://github.com/goldfirere"&gt;Richard Eisenberg&lt;/a&gt; questioning whether thrown-away information is valuable for verification in &lt;a href="https://github.com/oxcaml/oxcaml/issues/5244"&gt;oxcaml/oxcaml#5244&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; questioned marking operations using physical equality as stateful/observing, discussing implications for atomics and locks in &lt;a href="https://github.com/oxcaml/oxcaml/issues/4839"&gt;oxcaml/oxcaml#4839&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5193" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;ARM64 backend maturation&lt;/strong&gt;&lt;/a&gt;: Typed DSL foundation in &lt;a href="https://github.com/oxcaml/oxcaml/issues/5193"&gt;oxcaml/oxcaml#5193&lt;/a&gt;, SIMD vector array support in &lt;a href="https://github.com/oxcaml/oxcaml/issues/5239"&gt;oxcaml/oxcaml#5239&lt;/a&gt; and &lt;a href="https://github.com/oxcaml/oxcaml/issues/5240"&gt;oxcaml/oxcaml#5240&lt;/a&gt;, and comprehensive logical immediate testing demonstrate sustained focus on ARM64 performance and correctness&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5230" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Type system refinements&lt;/strong&gt;&lt;/a&gt;: Coordinated improvements across modes (functor currying in &lt;a href="https://github.com/oxcaml/oxcaml/issues/5230"&gt;oxcaml/oxcaml#5230&lt;/a&gt;, solver fixes in &lt;a href="https://github.com/oxcaml/oxcaml/issues/5233"&gt;oxcaml/oxcaml#5233&lt;/a&gt;), jkinds (separability merge in &lt;a href="https://github.com/oxcaml/oxcaml/issues/5231"&gt;oxcaml/oxcaml#5231&lt;/a&gt;, externality crossing in &lt;a href="https://github.com/oxcaml/oxcaml/issues/5162"&gt;oxcaml/oxcaml#5162&lt;/a&gt;), and layout polymorphism foundation work in &lt;a href="https://github.com/oxcaml/oxcaml/issues/5238"&gt;oxcaml/oxcaml#5238&lt;/a&gt; and &lt;a href="https://github.com/oxcaml/oxcaml/issues/5148"&gt;oxcaml/oxcaml#5148&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5245" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Testing infrastructure expansion&lt;/strong&gt;&lt;/a&gt;: Native expect tests in &lt;a href="https://github.com/oxcaml/oxcaml/issues/5245"&gt;oxcaml/oxcaml#5245&lt;/a&gt;, chamelon minimizer improvements in &lt;a href="https://github.com/oxcaml/oxcaml/issues/5212"&gt;oxcaml/oxcaml#5212&lt;/a&gt;, and CI additions demonstrate investment in test tooling quality&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/pull/25" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Build performance optimization&lt;/strong&gt;&lt;/a&gt;: Compiler build time improvement from 32 to 14 minutes in &lt;a href="https://github.com/oxcaml/opam-repository/pull/25"&gt;oxcaml/opam-repository#25&lt;/a&gt; and backend optimizations like switch improvements in &lt;a href="https://github.com/oxcaml/oxcaml/issues/5200"&gt;oxcaml/oxcaml#5200&lt;/a&gt; show focus on developer experience&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5134" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Flambda2 bug fixes&lt;/strong&gt;&lt;/a&gt;: Multiple reaper-related fixes in &lt;a href="https://github.com/oxcaml/oxcaml/issues/5134"&gt;oxcaml/oxcaml#5134&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/5140"&gt;oxcaml/oxcaml#5140&lt;/a&gt;, and &lt;a href="https://github.com/oxcaml/oxcaml/issues/5125"&gt;oxcaml/oxcaml#5125&lt;/a&gt; plus inlining decision improvements in &lt;a href="https://github.com/oxcaml/oxcaml/issues/5093"&gt;oxcaml/oxcaml#5093&lt;/a&gt; indicate ongoing stabilization efforts&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Upstream contribution pattern&lt;/strong&gt;: Patches being upstreamed to lwt, js&lt;em&gt;of&lt;/em&gt;ocaml, and other projects reduces long-term maintenance burden and benefits the broader OCaml ecosystem&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Jane Street v0.18 preview development&lt;/strong&gt;: Version 130.83+317 package updates across ecosystem represent active development of effect handlers and related features with coordinated release management&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>ARM64 backend maturation, mode system refinements, package ecosystem updates, and tooling improvements</summary><published>2026-01-18T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/oxcaml/2026/week-2</id><title>Week 2, 2026: Major compiler upgrade to OCaml 5.4.0 with new type system features and enhanced debugging infrastructure</title><updated>2026-01-11T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
@@ -3687,7 +3794,7 @@
 &lt;li&gt;&lt;strong class="achievement"&gt;Performance optimization&lt;/strong&gt; focus on instruction selection, register allocation, and runtime efficiency improvements across multiple commits&lt;/li&gt;
 &lt;li&gt;&lt;strong class="achievement"&gt;Code organization&lt;/strong&gt; improvements with better separation of target-specific and generic compiler components for maintainability&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Major compiler backend refactoring in oxcaml/oxcaml with new instruction selection code and type system advances</summary><published>2025-04-06T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/oxcaml/2025/week-13</id><title>Week 13, 2025: Major development focus on oxcaml compiler with 35 commits introducing portable continuations and ARM64 enhancements, plus Merlin OCaml integration update</title><updated>2026-01-16T14:32:09.621117+00:00</updated><content type="html">
+</content><link href="https://thicket.dev/"/><summary>Major compiler backend refactoring in oxcaml/oxcaml with new instruction selection code and type system advances</summary><published>2025-04-06T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/oxcaml/2025/week-13</id><title>Week 13, 2025: Major development focus on oxcaml compiler with 35 commits introducing portable continuations and ARM64 enhancements, plus Merlin OCaml integration update</title><updated>2026-01-21T12:28:16.711924+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

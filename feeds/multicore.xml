@@ -1,5 +1,88 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/multicore.xml</id><title>Multicore (Weekly)</title><updated>2026-01-11T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/multicore.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Multicore OCaml</subtitle><entry><id>https://thicket.dev/groups/multicore/2026/week-2</id><title>Week 2, 2026: Focused work on Eio process handling improvements and MacOS platform compatibility</title><updated>2026-01-11T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/multicore.xml</id><title>Multicore (Weekly)</title><updated>2026-01-18T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/multicore.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Multicore OCaml</subtitle><entry><id>https://thicket.dev/groups/multicore/2026/week-3</id><title>Week 3, 2026: Light week with Picos hash table improvements and Eio API discussions for ergonomics and MacOS support</title><updated>2026-01-18T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;Fixed &lt;code&gt;picos_aux.htbl&lt;/code&gt; &lt;a href="https://github.com/ocaml-multicore/picos/issues/384" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;size adjustment during resize&lt;/strong&gt;&lt;/a&gt; to properly handle pending resize operations, preventing race conditions during concurrent resizing (&lt;a href="https://github.com/ocaml-multicore/picos/issues/384"&gt;ocaml-multicore/picos#384&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Upgraded &lt;a href="https://github.com/ocaml-multicore/picos/issues/383" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Lwt integration&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/ocaml-multicore/picos"&gt;ocaml-multicore/picos&lt;/a&gt; to version 6.0.0 with safer notification handling using &lt;code&gt;option&lt;/code&gt; types instead of sentinel values (&lt;a href="https://github.com/ocaml-multicore/picos/issues/383"&gt;ocaml-multicore/picos#383&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Added new &lt;a href="https://github.com/ocaml-multicore/picos/issues/385" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;fill1m benchmark&lt;/strong&gt;&lt;/a&gt; for hash table performance testing with 250,000 operations per domain in &lt;a href="https://github.com/ocaml-multicore/picos"&gt;ocaml-multicore/picos&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/picos/issues/385"&gt;ocaml-multicore/picos#385&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;Light activity week with only 2 of 9 repositories showing changes&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos"&gt;ocaml-multicore/picos&lt;/a&gt; led activity with 3 merged PRs (hash table fixes, Lwt upgrade, benchmark) and 1 draft PR for experimental lock-free hash table by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt; saw 1 ongoing PR for MacOS block device support (&lt;a href="https://github.com/ocaml-multicore/eio/pull/827"&gt;ocaml-multicore/eio#827&lt;/a&gt;) and 2 feature requests focused on API ergonomics (&lt;a href="https://github.com/ocaml-multicore/eio/issues/828"&gt;ocaml-multicore/eio#828&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/eio/issues/829"&gt;ocaml-multicore/eio#829&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;No activity in &lt;a href="https://github.com/ocaml-multicore/domainslib"&gt;ocaml-multicore/domainslib&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/ocaml-uring"&gt;ocaml-multicore/ocaml-uring&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/meio"&gt;ocaml-multicore/meio&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/saturn"&gt;ocaml-multicore/saturn&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/eio-trace"&gt;ocaml-multicore/eio-trace&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/kcas"&gt;ocaml-multicore/kcas&lt;/a&gt;, or &lt;a href="https://github.com/ocaml-multicore/ocaml-iomux"&gt;ocaml-multicore/ocaml-iomux&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Four contributors active: &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; driving Picos development, &lt;a href="https://github.com/vog"&gt;Volker Diels-Grabsch&lt;/a&gt; raising API enhancement requests, &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; providing maintainer feedback, and &lt;a href="https://github.com/aaronjeline"&gt;Aaron Eline&lt;/a&gt; continuing MacOS compatibility work&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/eio/issues/828" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;File deletion API enhancement&lt;/strong&gt;&lt;/a&gt; discussion in &lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt; where &lt;a href="https://github.com/vog"&gt;Volker Diels-Grabsch&lt;/a&gt; proposed adding an optional &lt;code&gt;missing_ok&lt;/code&gt; parameter to &lt;code&gt;Eio.Path.unlink&lt;/code&gt; to allow deletion without requiring file existence, with &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; suggesting adding the case to the existing exception handler (&lt;a href="https://github.com/ocaml-multicore/eio/issues/828"&gt;ocaml-multicore/eio#828&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/eio/issues/829" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Formatted output convenience&lt;/strong&gt;&lt;/a&gt; discussion in &lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt; where &lt;a href="https://github.com/vog"&gt;Volker Diels-Grabsch&lt;/a&gt; sought easier integration with Fmt for production code output, leading to discovery that &lt;code&gt;Buf_write.printf&lt;/code&gt; already provides this functionality (&lt;a href="https://github.com/ocaml-multicore/eio/issues/829"&gt;ocaml-multicore/eio#829&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/eio/pull/827" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;MacOS platform compatibility&lt;/strong&gt;&lt;/a&gt; discussion on &lt;a href="https://github.com/ocaml-multicore/eio/pull/827"&gt;ocaml-multicore/eio#827&lt;/a&gt; exploring implementation approaches (switching from &lt;code&gt;poll()&lt;/code&gt; to &lt;code&gt;select()&lt;/code&gt; globally vs maintaining separate thread) for handling block devices that report POLLNVAL on MacOS&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/eio/issues/828" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;API convenience improvements&lt;/strong&gt;&lt;/a&gt; theme emerging in &lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt; with requests for more ergonomic interfaces around existing functionality (&lt;a href="https://github.com/ocaml-multicore/eio/issues/828"&gt;ocaml-multicore/eio#828&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/eio/issues/829"&gt;ocaml-multicore/eio#829&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/382" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Lock-free data structures&lt;/strong&gt;&lt;/a&gt; development continuing in &lt;a href="https://github.com/ocaml-multicore/picos"&gt;ocaml-multicore/picos&lt;/a&gt; with experimental hash table implementation featuring incremental resizing for better concurrency (&lt;a href="https://github.com/ocaml-multicore/picos/issues/382"&gt;ocaml-multicore/picos#382&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/picos/issues/383" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Type safety improvements&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/ocaml-multicore/picos"&gt;ocaml-multicore/picos&lt;/a&gt; Lwt integration replacing sentinel integer values with explicit &lt;code&gt;option&lt;/code&gt; types for notification IDs (&lt;a href="https://github.com/ocaml-multicore/picos/issues/383"&gt;ocaml-multicore/picos#383&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/eio/pull/827" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Platform-specific I/O challenges&lt;/strong&gt;&lt;/a&gt; continuing to surface in &lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt;, particularly around MacOS compatibility with block devices requiring different polling strategies (&lt;a href="https://github.com/ocaml-multicore/eio/pull/827"&gt;ocaml-multicore/eio#827&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/eio/issues/757"&gt;ocaml-multicore/eio#757&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/eio/issues/829" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Documentation discovery&lt;/strong&gt;&lt;/a&gt; pattern in &lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt; where users request features that already exist, suggesting potential for improved API discoverability (&lt;a href="https://github.com/ocaml-multicore/eio/issues/829"&gt;ocaml-multicore/eio#829&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Light week with Picos hash table improvements and Eio API discussions for ergonomics and MacOS support</summary><published>2026-01-18T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/multicore/2026/week-2</id><title>Week 2, 2026: Focused work on Eio process handling improvements and MacOS platform compatibility</title><updated>2026-01-11T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
