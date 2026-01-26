@@ -1,5 +1,70 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.xml</id><title>ocaml/ocaml (Weekly)</title><updated>2026-01-18T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-3</id><title>Week 3, 2026: Standard library additions with Array.stable_sort_sub, String.includes, and Seq.delay, plus documentation improvements and Windows bug fixes</title><updated>2026-01-18T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.xml</id><title>ocaml/ocaml (Weekly)</title><updated>2026-01-25T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-4</id><title>Week 4, 2026: String module enhancements, GC tweaks mechanism, type-checker determinism fixes, and FreeBSD profiling support merged</title><updated>2026-01-25T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Six new PRs opened including polymorphic pattern fixes and CFI support, with ongoing discussions about stdlib unstable features&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14480" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Six new PRs opened&lt;/strong&gt;&lt;/a&gt; this week including soundness fix for polymorphic parameters by &lt;a href="https://github.com/johnyob"&gt;Alistair&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14480"&gt;#14480&lt;/a&gt;) addressing &lt;a href="https://github.com/ocaml/ocaml/issues/14434"&gt;#14434&lt;/a&gt;, alternative fix by &lt;a href="https://github.com/stedolan"&gt;Stephen Dolan&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14479"&gt;#14479&lt;/a&gt;), Power backend CFI support by &lt;a href="https://github.com/tmcgilchrist"&gt;Tim McGilchrist&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14482"&gt;#14482&lt;/a&gt;), ocp-indent formatting configuration by &lt;a href="https://github.com/johnyob"&gt;Alistair&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14485"&gt;#14485&lt;/a&gt;), and proposed &lt;code&gt;String.drop_prefix&lt;/code&gt; additions by &lt;a href="https://github.com/mneumann"&gt;Michael Neumann&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14487"&gt;#14487&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14488" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Runtime and compiler improvements&lt;/strong&gt;&lt;/a&gt; delivered through opcode synchronization simplification eliminating &lt;code&gt;jumptbl.h&lt;/code&gt; and &lt;code&gt;opnames.h&lt;/code&gt; using X-Macro pattern (&lt;a href="https://github.com/ocaml/ocaml/issues/14488"&gt;#14488&lt;/a&gt;), runtime header include fixes allowing independent inclusion (&lt;a href="https://github.com/ocaml/ocaml/issues/14489"&gt;#14489&lt;/a&gt;), and C++ compatibility improvements suppressing flexible array member warnings (&lt;a href="https://github.com/ocaml/ocaml/issues/14490"&gt;#14490&lt;/a&gt;) by &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14476" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Shape occurrences bug fix&lt;/strong&gt;&lt;/a&gt; resolving assertion failure in &lt;code&gt;env.ml&lt;/code&gt; by extending &lt;code&gt;Env.find_uid&lt;/code&gt; to handle extended paths for constructors and labels (&lt;a href="https://github.com/ocaml/ocaml/issues/14476"&gt;#14476&lt;/a&gt;) by &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt;, fixing &lt;a href="https://github.com/ocaml/ocaml/issues/14474"&gt;#14474&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14413" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Internal refactoring&lt;/strong&gt;&lt;/a&gt; using C2y &lt;code&gt;_Countof&lt;/code&gt; operator for array size calculations with type safety (&lt;a href="https://github.com/ocaml/ocaml/issues/14413"&gt;#14413&lt;/a&gt;) and labeling boolean argument in &lt;code&gt;typing/env.ml&lt;/code&gt; for readability (&lt;a href="https://github.com/ocaml/ocaml/issues/14477"&gt;#14477&lt;/a&gt;) by &lt;a href="https://github.com/MisterDA"&gt;Antonin Décimo&lt;/a&gt; and &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14475" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Opam package management&lt;/strong&gt;&lt;/a&gt; updated with missing conflict declaration for compiler packages (&lt;a href="https://github.com/ocaml/ocaml/issues/14475"&gt;#14475&lt;/a&gt;) by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14430" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;PRs closed without merge&lt;/strong&gt;&lt;/a&gt; including unstable attribute proposal (&lt;a href="https://github.com/ocaml/ocaml/issues/14430"&gt;#14430&lt;/a&gt;) after developer meeting showed no consensus on ecosystem implications, automated stdlib labeling workflow (&lt;a href="https://github.com/ocaml/ocaml/issues/14467"&gt;#14467&lt;/a&gt;) replaced by giving stdlib team triaging rights, and constructor redefinition warning (&lt;a href="https://github.com/ocaml/ocaml/issues/12312"&gt;#12312&lt;/a&gt;) closed per consensus in &lt;a href="https://github.com/ocaml/ocaml/issues/10655"&gt;#10655&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14393" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Ongoing review activity&lt;/strong&gt;&lt;/a&gt; on mutex-protected lazy thunks proposal (&lt;a href="https://github.com/ocaml/ocaml/issues/14393"&gt;#14393&lt;/a&gt;) by &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt;, &lt;code&gt;Fun.todo&lt;/code&gt; addition approved by stdlib team (&lt;a href="https://github.com/ocaml/ocaml/issues/13101"&gt;#13101&lt;/a&gt;) by &lt;a href="https://github.com/pkhry"&gt;Pavlo Khrystenko&lt;/a&gt;, continuation representation optimization (&lt;a href="https://github.com/ocaml/ocaml/issues/14469"&gt;#14469&lt;/a&gt;) by &lt;a href="https://github.com/kayceesrk"&gt;KC Sivaramakrishnan&lt;/a&gt;, labeled tuple projections (&lt;a href="https://github.com/ocaml/ocaml/issues/14257"&gt;#14257&lt;/a&gt;) by &lt;a href="https://github.com/johnyob"&gt;Alistair&lt;/a&gt;, and arm64 miscompilation fix (&lt;a href="https://github.com/ocaml/ocaml/issues/14010"&gt;#14010&lt;/a&gt;) by &lt;a href="https://github.com/mshinwell"&gt;Mark Shinwell&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>String module enhancements, GC tweaks mechanism, type-checker determinism fixes, and FreeBSD profiling support merged</summary><published>2026-01-25T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-3</id><title>Week 3, 2026: Standard library additions with Array.stable_sort_sub, String.includes, and Seq.delay, plus documentation improvements and Windows bug fixes</title><updated>2026-01-18T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
