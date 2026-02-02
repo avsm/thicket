@@ -1,5 +1,80 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml</id><title>oxcaml/oxcaml (Weekly)</title><updated>2026-01-25T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/oxcaml</subtitle><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2026/week-4</id><title>Week 4, 2026: Flambda2 optimization work, ARM64 improvements, modes/modalities for Merlin, and testing infrastructure enhancements</title><updated>2026-01-25T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml</id><title>oxcaml/oxcaml (Weekly)</title><updated>2026-02-01T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/oxcaml</subtitle><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2026/week-5</id><title>Week 5, 2026: ARM64 binary emitter shipped with verification infrastructure, plus new unboxed unit type and syntax</title><updated>2026-02-01T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+24 new PRs opened including type system work, backend improvements, and upstream merge efforts&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/jbachurski"&gt;Jakub Bachurski&lt;/a&gt; opened &lt;a href="https://github.com/oxcaml/oxcaml/issues/5320" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;six new PRs&lt;/strong&gt;&lt;/a&gt; for metaprogramming improvements including module pack annotations (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5320"&gt;#5320&lt;/a&gt;), quote and splice typing fixes (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5323"&gt;#5323&lt;/a&gt;), lazy substitution construction (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5347"&gt;#5347&lt;/a&gt;), empty &lt;code&gt;Tpoly&lt;/code&gt; handling (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5336"&gt;#5336&lt;/a&gt;), test installation paths (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5314"&gt;#5314&lt;/a&gt;), and revert consideration (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5317"&gt;#5317&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rtjoa"&gt;Ryan Tjoa&lt;/a&gt; opened &lt;a href="https://github.com/oxcaml/oxcaml/issues/5342" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;four new PRs&lt;/strong&gt;&lt;/a&gt; advancing kind system with &lt;code&gt;box_&lt;/code&gt; type operator (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5342"&gt;#5342&lt;/a&gt;), &lt;code&gt;box_kind&lt;/code&gt; constructor (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5343"&gt;#5343&lt;/a&gt;), block index optimization (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5328"&gt;#5328&lt;/a&gt;), and &lt;code&gt;[@flatten_floats]&lt;/code&gt; attribute requirement (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5329"&gt;#5329&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt; opened &lt;a href="https://github.com/oxcaml/oxcaml/issues/5348" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;two infrastructure PRs&lt;/strong&gt;&lt;/a&gt; for tool version checking in &lt;code&gt;configure&lt;/code&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5348"&gt;#5348&lt;/a&gt;) and simpler development opam switch management (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5344"&gt;#5344&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/spiessimon"&gt;Simon Spies&lt;/a&gt; opened &lt;a href="https://github.com/oxcaml/oxcaml/issues/5325" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;upstream merge PR&lt;/strong&gt;&lt;/a&gt; for OCaml 5.4 integration (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5325"&gt;#5325&lt;/a&gt;) and runtime array function rename backport (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5339"&gt;#5339&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/lukemaurer"&gt;Luke Maurer&lt;/a&gt; opened PR allowing &lt;strong class="achievement"&gt;fields and constructor arguments of kind &lt;code&gt;any&lt;/code&gt;&lt;/strong&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5330"&gt;#5330&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/glittershark"&gt;Aspen Smith&lt;/a&gt; opened draft PR &lt;a href="https://github.com/oxcaml/oxcaml/issues/5349" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;moving tick thread into runtime&lt;/strong&gt;&lt;/a&gt; for effects system (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5349"&gt;#5349&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/riaqn"&gt;Zesen Qian&lt;/a&gt; opened PR &lt;strong class="achievement"&gt;removing &lt;code&gt;Unknown_non_rigid&lt;/code&gt;&lt;/strong&gt; from type system (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5335"&gt;#5335&lt;/a&gt;) and merged refactoring combining &lt;code&gt;here_occurs&lt;/code&gt; and &lt;code&gt;access_order&lt;/code&gt; into unified &lt;code&gt;usage_order&lt;/code&gt; type (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5302"&gt;#5302&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; opened draft PR making &lt;strong class="achievement"&gt;&lt;code&gt;Reg_class&lt;/code&gt; the source of physical register information&lt;/strong&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5308"&gt;#5308&lt;/a&gt;) and merged build dependency fix (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5318"&gt;#5318&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/xclerc"&gt;Xavier Clerc&lt;/a&gt; opened draft PR &lt;strong class="achievement"&gt;changing linear instruction representation to &lt;code&gt;DLL.t&lt;/code&gt;&lt;/strong&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5331"&gt;#5331&lt;/a&gt;) and merged zero-alloc exception handling fix (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5179"&gt;#5179&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/TheNumbat"&gt;Max Slater&lt;/a&gt; opened PR &lt;a href="https://github.com/oxcaml/oxcaml/issues/5307" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;refactoring bigstring get/set safety properties&lt;/strong&gt;&lt;/a&gt; for SIMD primitives (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5307"&gt;#5307&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/dkalinichenko-js"&gt;@dkalinichenko-js&lt;/a&gt; opened draft PR for &lt;a href="https://github.com/oxcaml/oxcaml/issues/5311" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;functor mode test updates&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5311"&gt;#5311&lt;/a&gt;) and merged test disablement (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5327"&gt;#5327&lt;/a&gt;) plus signature modality improvements (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5290"&gt;#5290&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/jra4"&gt;James Rayman&lt;/a&gt; opened PR adding &lt;a href="https://github.com/oxcaml/oxcaml/issues/5341" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Jekyll front matter to let mutable docs&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5341"&gt;#5341&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Keryan-dev"&gt;Keryan Didier&lt;/a&gt; opened PR for &lt;a href="https://github.com/oxcaml/oxcaml/issues/5346" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;flambda files in ocamltest&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5346"&gt;#5346&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/jvanburen"&gt;Jacob Van Buren&lt;/a&gt; opened &lt;a href="https://github.com/oxcaml/oxcaml/issues/5332" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;magic number bump PR&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5332"&gt;#5332&lt;/a&gt;) and merged instruction ordering consistency fix (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5334"&gt;#5334&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5333" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Build and CI improvements&lt;/strong&gt;&lt;/a&gt; merged including toplevel &lt;code&gt;.depend&lt;/code&gt; file removal by &lt;a href="https://github.com/spiessimon"&gt;Simon Spies&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5333"&gt;#5333&lt;/a&gt;), test installation fixes by &lt;a href="https://github.com/jbachurski"&gt;Jakub Bachurski&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5316"&gt;#5316&lt;/a&gt;), macOS test enablement (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5337"&gt;#5337&lt;/a&gt;), and merge_group CI triggers (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5321"&gt;#5321&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/5322"&gt;#5322&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5304" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Type system refinements&lt;/strong&gt;&lt;/a&gt; merged including Merlin jkind printing by &lt;a href="https://github.com/liam923"&gt;Liam Stevenson&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5304"&gt;#5304&lt;/a&gt;), functor modality zapping by &lt;a href="https://github.com/riaqn"&gt;Zesen Qian&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5306"&gt;#5306&lt;/a&gt;), and Typedtree mode fixes by &lt;a href="https://github.com/jbachurski"&gt;Jakub Bachurski&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5319"&gt;#5319&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5310" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Backend architecture work&lt;/strong&gt;&lt;/a&gt; including dissector partition improvements (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5310"&gt;#5310&lt;/a&gt;), Cfg.Raise argument fixes (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5315"&gt;#5315&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/5313"&gt;#5313&lt;/a&gt;), and compilation unit path handling by &lt;a href="https://github.com/shym"&gt;@shym&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5289"&gt;#5289&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>ARM64 binary emitter shipped with verification infrastructure, plus new unboxed unit type and syntax</summary><published>2026-02-01T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2026/week-4</id><title>Week 4, 2026: Flambda2 optimization work, ARM64 improvements, modes/modalities for Merlin, and testing infrastructure enhancements</title><updated>2026-01-25T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

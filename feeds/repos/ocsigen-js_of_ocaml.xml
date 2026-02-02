@@ -1,5 +1,73 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocsigen-js_of_ocaml.xml</id><title>ocsigen/js_of_ocaml (Weekly)</title><updated>2026-01-25T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocsigen-js_of_ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocsigen/js_of_ocaml</subtitle><entry><id>https://thicket.dev/repos/ocsigen-js_of_ocaml/2026/week-4</id><title>Week 4, 2026: JavaScript parser modernization with ES6+ features including using declarations, import attributes, and defer imports</title><updated>2026-01-25T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocsigen-js_of_ocaml.xml</id><title>ocsigen/js_of_ocaml (Weekly)</title><updated>2026-02-01T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocsigen-js_of_ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocsigen/js_of_ocaml</subtitle><entry><id>https://thicket.dev/repos/ocsigen-js_of_ocaml/2026/week-5</id><title>Week 5, 2026: JavaScript parser improvements, runtime eval enhancements, comprehensive manual rewrite, and loop miscompilation fix merged</title><updated>2026-02-01T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Three PRs opened for static evaluation experiments, 6.3 release preparation, and static evaluation; wasm runtime and manual documentation work completed&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2153" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Static evaluation experiment&lt;/strong&gt;&lt;/a&gt; PR opened by &lt;a href="https://github.com/vouillon"&gt;Jérôme Vouillon&lt;/a&gt; exploring compile-time optimization opportunities (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2153"&gt;#2153&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2152" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Release preparation&lt;/strong&gt;&lt;/a&gt; for version 6.3 opened by &lt;a href="https://github.com/hhugo"&gt;@hhugo&lt;/a&gt; addressing pending PRs and runtime value re-export (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2152"&gt;#2152&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2108" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Wasm runtime eval&lt;/strong&gt;&lt;/a&gt; functionality merged providing JavaScript eval function access in WebAssembly runtime after review discussions (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2108"&gt;#2108&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2150" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Manual documentation&lt;/strong&gt;&lt;/a&gt; underwent substantial rewrite adding quickstart guide, consolidated JavaScript interop documentation, error handling guide, syntax reference, improved options and PPX documentation, plus new runtime representation guide (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2150"&gt;#2150&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2149" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;JavaScript parser&lt;/strong&gt;&lt;/a&gt; test infrastructure enhanced with tc39/test262 integration, test flexibility improvements, and recovery strategy enhancements (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2149"&gt;#2149&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/1734" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Popover API implementation&lt;/strong&gt;&lt;/a&gt; continues with review addressing property capitalization, options handling, and specification updates by &lt;a href="https://github.com/SylvainBoilard"&gt;Sylvain Boilard&lt;/a&gt; (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/1734"&gt;#1734&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/1772" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Ongoing draft work&lt;/strong&gt;&lt;/a&gt; includes JavaScript string implementation for Wasm (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/1772"&gt;#1772&lt;/a&gt;), function/block parameter unboxing (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/1953"&gt;#1953&lt;/a&gt;), primitive inlining (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/1928"&gt;#1928&lt;/a&gt;), exception handling via null returns (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/1910"&gt;#1910&lt;/a&gt;), Stack Switching proposal effects (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/1832"&gt;#1832&lt;/a&gt;), WASI runtime (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/1831"&gt;#1831&lt;/a&gt;), and Oxcaml support (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2105"&gt;#2105&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/1886" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Performance optimizations&lt;/strong&gt;&lt;/a&gt; awaiting review include aggressive lambda lifting (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/1886"&gt;#1886&lt;/a&gt;), bigstring operations (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2144"&gt;#2144&lt;/a&gt;), string/arraybuffer conversions (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2124"&gt;#2124&lt;/a&gt;), and exception handling (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2098"&gt;#2098&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/1833" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Library enhancements&lt;/strong&gt;&lt;/a&gt; in progress include CSS Font Loading API wrapper by &lt;a href="https://github.com/mesmerizingwaft"&gt;Mesmera (WAFT)&lt;/a&gt; (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/1833"&gt;#1833&lt;/a&gt;) and Intl.RelativeTimeFormat API by &lt;a href="https://github.com/toastal"&gt;@toastal&lt;/a&gt; (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2070"&gt;#2070&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/13438" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Compiler infrastructure&lt;/strong&gt;&lt;/a&gt; work includes OCaml hints consumption from &lt;a href="https://github.com/ocaml/ocaml/issues/13438"&gt;ocaml/ocaml#13438&lt;/a&gt; (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/1721"&gt;#1721&lt;/a&gt;), lambda lifting refinements (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/1885"&gt;#1885&lt;/a&gt;), and Wasm type precision improvements (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/1907"&gt;#1907&lt;/a&gt;, &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/1908"&gt;#1908&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>JavaScript parser improvements, runtime eval enhancements, comprehensive manual rewrite, and loop miscompilation fix merged</summary><published>2026-02-01T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocsigen-js_of_ocaml/2026/week-4</id><title>Week 4, 2026: JavaScript parser modernization with ES6+ features including using declarations, import attributes, and defer imports</title><updated>2026-01-25T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

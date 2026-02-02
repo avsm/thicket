@@ -1,5 +1,66 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-opam-repository.xml</id><title>oxcaml/opam-repository (Weekly)</title><updated>2026-01-25T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-opam-repository.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/opam-repository</subtitle><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2026/week-4</id><title>Week 4, 2026: Two new PRs opened for package coinstallability and js_of_ocaml integration, with ongoing package update PR</title><updated>2026-01-25T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-opam-repository.xml</id><title>oxcaml/opam-repository (Weekly)</title><updated>2026-02-01T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-opam-repository.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/opam-repository</subtitle><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2026/week-5</id><title>Week 5, 2026: Added opam-core and opam-format packages with locality fixes; expanded CI testing to include odoc and sherlodoc</title><updated>2026-02-01T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Fixed opam-core compilation errors and expanded CI coverage for documentation tools&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/issues/33" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Locality type conversion patches&lt;/strong&gt;&lt;/a&gt; applied to opam-core 2.5.0+ox addressing compilation failures where locality-annotated functions (&lt;code&gt;_ @ local -&gt; _&lt;/code&gt;) were not automatically cast to global context (&lt;code&gt;_ @ global -&gt; _&lt;/code&gt;), requiring explicit lambda wrappers as a quickfix by &lt;a href="https://github.com/art-w"&gt;@art-w&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/opam-repository/issues/33"&gt;#33&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/issues/34" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Documentation toolchain support&lt;/strong&gt;&lt;/a&gt; improved with &lt;a href="https://github.com/mt-caret"&gt;mt_caret&lt;/a&gt; adding odoc and sherlodoc to CI package testing, resolving installation verification for oxcaml/odoc#22 compilation errors (&lt;a href="https://github.com/oxcaml/opam-repository/issues/34"&gt;#34&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13342" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Upstream contribution discussion&lt;/strong&gt;&lt;/a&gt; initiated by &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; suggesting these locality fixes should be fed back to upstream opam as quality of life improvements, similar to recent &lt;a href="https://github.com/ocaml/dune/issues/13342"&gt;ocaml/dune#13342&lt;/a&gt; changes (&lt;a href="https://github.com/oxcaml/opam-repository/issues/33"&gt;#33&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Added opam-core and opam-format packages with locality fixes; expanded CI testing to include odoc and sherlodoc</summary><published>2026-02-01T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2026/week-4</id><title>Week 4, 2026: Two new PRs opened for package coinstallability and js_of_ocaml integration, with ongoing package update PR</title><updated>2026-01-25T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

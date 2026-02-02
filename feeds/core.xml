@@ -1,5 +1,86 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/core.xml</id><title>OCaml Core (Weekly)</title><updated>2026-01-25T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/core.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Core OCaml language, compiler, and essential tooling</subtitle><entry><id>https://thicket.dev/groups/core/2026/week-4</id><title>Week 4, 2026: String module enhancements merged, persistent compiler RFC proposed, type system soundness fixes, and FreeBSD profiling support added</title><updated>2026-01-25T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/core.xml</id><title>OCaml Core (Weekly)</title><updated>2026-02-01T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/core.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Core OCaml language, compiler, and essential tooling</subtitle><entry><id>https://thicket.dev/groups/core/2026/week-5</id><title>Week 5, 2026: Testing infrastructure modernization, architecture support expansion, and stdlib guidelines</title><updated>2026-02-01T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;Fixed &lt;a href="https://github.com/ocaml/ocaml/issues/14010" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;string operation miscompilation&lt;/strong&gt;&lt;/a&gt; affecting liveness analysis in native code generation, backported to 5.4 branch (&lt;a href="https://github.com/ocaml/ocaml/issues/14010"&gt;ocaml/ocaml#14010&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14502" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;ocamltest negation syntax&lt;/strong&gt;&lt;/a&gt; added allowing &lt;code&gt;not &lt;action&gt;&lt;/code&gt; to negate predicate-like actions in test specifications (&lt;a href="https://github.com/ocaml/ocaml/issues/14502"&gt;ocaml/ocaml#14502&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14499" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;ocamltest legacy syntax&lt;/strong&gt;&lt;/a&gt; removed including the old tree syntax with &lt;code&gt;***&lt;/code&gt; and the &lt;code&gt;-translate&lt;/code&gt; option that converted from this syntax (&lt;a href="https://github.com/ocaml/ocaml/issues/14499"&gt;ocaml/ocaml#14499&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14459" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;stdlib design guidelines&lt;/strong&gt;&lt;/a&gt; added in GUIDELINES.md covering scope, consistency, pragmatism, ergonomics, generality, naming, and stability principles for standard library development (&lt;a href="https://github.com/ocaml/ocaml/issues/14459"&gt;ocaml/ocaml#14459&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14421" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;C++ API compatibility testing&lt;/strong&gt;&lt;/a&gt; improved with GCC and MSVC SARIF diagnostics, refactored bigarray.h C++ support to suppress warnings in strict mode (&lt;a href="https://github.com/ocaml/ocaml/issues/14421"&gt;ocaml/ocaml#14421&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14496"&gt;ocaml/ocaml#14496&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14498" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Public header testing&lt;/strong&gt;&lt;/a&gt; hardened with pedantic compilation checks for each header individually, added include guard to sizeclasses.h, and consistent macro usage for promoted header checks (&lt;a href="https://github.com/ocaml/ocaml/issues/14498"&gt;ocaml/ocaml#14498&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14494"&gt;ocaml/ocaml#14494&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14502" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;ocamltest actions&lt;/strong&gt;&lt;/a&gt; added for compiler type detection including &lt;code&gt;msvc&lt;/code&gt;, &lt;code&gt;clang&lt;/code&gt;, &lt;code&gt;has-cxx&lt;/code&gt; actions and exposed &lt;code&gt;cxx&lt;/code&gt; and &lt;code&gt;ccomp_type&lt;/code&gt; variables (&lt;a href="https://github.com/ocaml/ocaml/issues/14502"&gt;ocaml/ocaml#14502&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14421"&gt;ocaml/ocaml#14421&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/13317" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;ocamltest self-testing&lt;/strong&gt;&lt;/a&gt; infrastructure added allowing ocamltest to test itself with new &lt;code&gt;ocamltest&lt;/code&gt; action (&lt;a href="https://github.com/ocaml/ocaml/issues/13317"&gt;ocaml/ocaml#13317&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt; focused on testing infrastructure modernization with four ocamltest PRs merged by &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14502"&gt;ocaml/ocaml#14502&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14501"&gt;ocaml/ocaml#14501&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14499"&gt;ocaml/ocaml#14499&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/13317"&gt;ocaml/ocaml#13317&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Architecture support expansion with three new PRs for frame pointer support on RiscV and POWER platforms by &lt;a href="https://github.com/tmcgilchrist"&gt;Tim McGilchrist&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14506"&gt;ocaml/ocaml#14506&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14505"&gt;ocaml/ocaml#14505&lt;/a&gt;) and &lt;a href="https://github.com/Zaneham"&gt;Zane Hambly&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14504"&gt;ocaml/ocaml#14504&lt;/a&gt;), plus CFI information fixes for s390x (&lt;a href="https://github.com/ocaml/ocaml/issues/14500"&gt;ocaml/ocaml#14500&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Runtime and GC improvements with four PRs from &lt;a href="https://github.com/NickBarnes"&gt;Nick Barnes&lt;/a&gt; addressing minor GC bugs and memory management issues (&lt;a href="https://github.com/ocaml/ocaml/issues/14495"&gt;ocaml/ocaml#14495&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14493"&gt;ocaml/ocaml#14493&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14492"&gt;ocaml/ocaml#14492&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14494"&gt;ocaml/ocaml#14494&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Stdlib governance formalization through documented design guidelines merged from &lt;a href="https://github.com/nojb"&gt;Nicolás Ojeda Bär&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14459"&gt;ocaml/ocaml#14459&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/RFCs"&gt;ocaml/RFCs&lt;/a&gt; had no activity this week&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14506" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Architecture support&lt;/strong&gt;&lt;/a&gt; expansion with three new PRs for frame pointer support targeting RiscV and POWER platforms plus CFI information fixes for s390x (&lt;a href="https://github.com/ocaml/ocaml/issues/14506"&gt;ocaml/ocaml#14506&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14504"&gt;ocaml/ocaml#14504&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14505"&gt;ocaml/ocaml#14505&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14500"&gt;ocaml/ocaml#14500&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14502" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Testing infrastructure&lt;/strong&gt;&lt;/a&gt; receiving substantial attention with ocamltest modernization, public header hardening, and C++ API compatibility testing improvements (&lt;a href="https://github.com/ocaml/ocaml/issues/14502"&gt;ocaml/ocaml#14502&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14501"&gt;ocaml/ocaml#14501&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14499"&gt;ocaml/ocaml#14499&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/13317"&gt;ocaml/ocaml#13317&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14498"&gt;ocaml/ocaml#14498&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14421"&gt;ocaml/ocaml#14421&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14495" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;GC and runtime&lt;/strong&gt;&lt;/a&gt; improvements continuing with multiple PRs addressing minor GC bugs and memory management issues (&lt;a href="https://github.com/ocaml/ocaml/issues/14495"&gt;ocaml/ocaml#14495&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14493"&gt;ocaml/ocaml#14493&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14492"&gt;ocaml/ocaml#14492&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14421" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;C++ interoperability&lt;/strong&gt;&lt;/a&gt; emphasis with improved testing and header compatibility work (&lt;a href="https://github.com/ocaml/ocaml/issues/14421"&gt;ocaml/ocaml#14421&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14496"&gt;ocaml/ocaml#14496&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14459" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Stdlib governance&lt;/strong&gt;&lt;/a&gt; formalization through documented design guidelines establishing principles for future development (&lt;a href="https://github.com/ocaml/ocaml/issues/14459"&gt;ocaml/ocaml#14459&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Testing infrastructure modernization, architecture support expansion, and stdlib guidelines</summary><published>2026-02-01T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2026/week-4</id><title>Week 4, 2026: String module enhancements merged, persistent compiler RFC proposed, type system soundness fixes, and FreeBSD profiling support added</title><updated>2026-01-25T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
@@ -5548,7 +5629,7 @@
 &lt;li&gt;&lt;strong class="achievement"&gt;Cross-platform compatibility&lt;/strong&gt; receiving increased attention with Windows API modernization and Unix platform improvements&lt;/li&gt;
 &lt;li&gt;&lt;strong class="achievement"&gt;Language design refinement&lt;/strong&gt; through community feedback on practical applications of new syntax features like raw identifiers&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Runtime improvements and bytecode optimization merged alongside language syntax discussions for raw identifiers</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2024/week-42</id><title>Week 42, 2024: Five PRs merged in ocaml/ocaml including new Thread.set_current_thread_name API and compiler improvements</title><updated>2026-01-26T10:54:26.982400+00:00</updated><content type="html">
+</content><link href="https://thicket.dev/"/><summary>Runtime improvements and bytecode optimization merged alongside language syntax discussions for raw identifiers</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2024/week-42</id><title>Week 42, 2024: Five PRs merged in ocaml/ocaml including new Thread.set_current_thread_name API and compiler improvements</title><updated>2026-02-02T10:57:29.778912+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
