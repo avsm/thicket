@@ -1,5 +1,70 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocsigen-js_of_ocaml.xml</id><title>ocsigen/js_of_ocaml (Weekly)</title><updated>2026-02-01T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocsigen-js_of_ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocsigen/js_of_ocaml</subtitle><entry><id>https://thicket.dev/repos/ocsigen-js_of_ocaml/2026/week-5</id><title>Week 5, 2026: JavaScript parser improvements, runtime eval enhancements, comprehensive manual rewrite, and loop miscompilation fix merged</title><updated>2026-02-01T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocsigen-js_of_ocaml.xml</id><title>ocsigen/js_of_ocaml (Weekly)</title><updated>2026-02-08T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocsigen-js_of_ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocsigen/js_of_ocaml</subtitle><entry><id>https://thicket.dev/repos/ocsigen-js_of_ocaml/2026/week-6</id><title>Week 6, 2026: Release 6.3.0 with constant sinking optimization, improved DOM bindings, and compiler bug fixes</title><updated>2026-02-08T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Finalized 6.3.0 release with 67 commits improving compiler correctness, DOM bindings, and examples&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong class="achievement"&gt;Version 6.3.0 released&lt;/strong&gt; on February 6, 2026 by &lt;a href="https://github.com/hhugo"&gt;@hhugo&lt;/a&gt; with 121 downloads of the release tarball, containing compilation optimizations, DOM binding fixes, and enhanced examples (&lt;a href="https://github.com/ocsigen/js_of_ocaml/releases/tag/6.3.0"&gt;release 6.3.0&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Compiler optimization work&lt;/strong&gt; included new constant sinking pass by &lt;a href="https://github.com/vouillon"&gt;Jérôme Vouillon&lt;/a&gt; (&lt;a href="https://github.com/ocsigen/js_of_ocaml/commit/2d0135073234045ace7aecc9e676114e91a690ac"&gt;2d01350&lt;/a&gt;), elimination of unnecessary boolean conversions (&lt;a href="https://github.com/ocsigen/js_of_ocaml/commit/8627d6f5e12a9bb411dc2d046181c7fb24c32f74"&gt;8627d6f&lt;/a&gt;), and improved generated name tracking (&lt;a href="https://github.com/ocsigen/js_of_ocaml/commit/e11a80ef76e47a6ef9431e997defc24124ea5fa7"&gt;e11a80e&lt;/a&gt;, &lt;a href="https://github.com/ocsigen/js_of_ocaml/commit/4bf89f09af5d871147b69e64e85f59f50943e197"&gt;4bf89f0&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Compiler correctness fixes&lt;/strong&gt; addressed parallel renaming bug (&lt;a href="https://github.com/ocsigen/js_of_ocaml/commit/9cf94111319f3831627d178dca3390dd416d14b5"&gt;9cf9411&lt;/a&gt;), Global&lt;em&gt;flow monotonicity (&lt;a href="https://github.com/ocsigen/js_of_ocaml/commit/61b2c254c0a3da2ce96bc62bda140a76c141c28a"&gt;61b2c25&lt;/a&gt;), static evaluation of caml&lt;/em&gt;nativeint&lt;em&gt;to&lt;/em&gt;int (&lt;a href="https://github.com/ocsigen/js_of_ocaml/commit/51abfcd3d0b6b6f696b87894e351e195f885a6dd"&gt;51abfcd&lt;/a&gt;), invalid simplification (&lt;a href="https://github.com/ocsigen/js_of_ocaml/commit/2b6f6070a4b879952be550060b4e0eac93c0eca8"&gt;2b6f607&lt;/a&gt;), and targetint bounds (&lt;a href="https://github.com/ocsigen/js_of_ocaml/commit/80ccb02d0ffe61bf75a85264237df1bfaf735f11"&gt;80ccb02&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;DOM binding improvements&lt;/strong&gt; by &lt;a href="https://github.com/hhugo"&gt;@hhugo&lt;/a&gt; fixed numerous type issues in Dom&lt;em&gt;html (submitEvent, mediaQueryListEvent, pointerEvent, element scrollWidth/scrollHeight), Dom&lt;/em&gt;svg (numberList), and other modules (eventSource.url, file types, geolocation timestamp, WebGL constants), plus removed non-existent Js.date methods (&lt;a href="https://github.com/ocsigen/js_of_ocaml/commit/2b5743b23e7f042d2d328dc35423f0c33da695d8"&gt;2b57432&lt;/a&gt;, &lt;a href="https://github.com/ocsigen/js_of_ocaml/commit/c8d6e129210c580a61c2a99b27fddd7d7e8f57f7"&gt;c8d6e12&lt;/a&gt;, &lt;a href="https://github.com/ocsigen/js_of_ocaml/commit/5798832edf06b2b08574c1c0bcda3ffc0be1f4ed"&gt;5798832&lt;/a&gt;, &lt;a href="https://github.com/ocsigen/js_of_ocaml/commit/e23569fc855cc9b356b87e70640d4dbcc82b512d"&gt;e23569f&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Example and documentation enhancements&lt;/strong&gt; included 12 commits improving demo applications (boulderdash, cubes, graph viewer, graphics, hyperbolic, minesweeper, planet, webgl, wiki, wysiwyg), toplevel examples with better graphics support, and new API status documentation with improved manual organization (&lt;a href="https://github.com/ocsigen/js_of_ocaml/compare/759ad73aa6360b977048524e7ac07866222d6ec9...c5a6d4daec9be9d8ec3bcac6101b336cf95a316c"&gt;multiple commits&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Runtime improvements&lt;/strong&gt; fixed graphics resize/clear functionality (&lt;a href="https://github.com/ocsigen/js_of_ocaml/commit/238d3610a3226a184868882bf440248c3a7ea079"&gt;238d361&lt;/a&gt;) and Windows build compatibility (&lt;a href="https://github.com/ocsigen/js_of_ocaml/commit/13dfd19bcfe7bd6eb21ade9a06e44b3c38eb1bbe"&gt;13dfd19&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Testing infrastructure&lt;/strong&gt; added new tests for scopes, forIn/forOf loops (&lt;a href="https://github.com/ocsigen/js_of_ocaml/commit/2ed2277a8ec822e67b8d79611d76e5fb61a22172"&gt;2ed2277&lt;/a&gt;), constant sinking behavior, and bool context handling, plus reorganized test directories by moving namespace and separate compilation examples out of examples/ (&lt;a href="https://github.com/ocsigen/js_of_ocaml/commit/7af7c039524d7e262fd2e0fcd3f946cc1cf1d111"&gt;7af7c03&lt;/a&gt;, &lt;a href="https://github.com/ocsigen/js_of_ocaml/commit/c3f4a9200e3de0f87cfbb166d485cb64c8bf379f"&gt;c3f4a92&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Release 6.3.0 with constant sinking optimization, improved DOM bindings, and compiler bug fixes</summary><published>2026-02-08T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocsigen-js_of_ocaml/2026/week-5</id><title>Week 5, 2026: JavaScript parser improvements, runtime eval enhancements, comprehensive manual rewrite, and loop miscompilation fix merged</title><updated>2026-02-01T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

@@ -1,5 +1,73 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-dune.xml</id><title>ocaml/dune (Weekly)</title><updated>2026-02-01T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-dune.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/dune</subtitle><entry><id>https://thicket.dev/repos/ocaml-dune/2026/week-5</id><title>Week 5, 2026: Package management CLI improvements, sandboxing enhancements, and OxCaml workspace support added</title><updated>2026-02-01T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-dune.xml</id><title>ocaml/dune (Weekly)</title><updated>2026-02-08T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-dune.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/dune</subtitle><entry><id>https://thicket.dev/repos/ocaml-dune/2026/week-6</id><title>Week 6, 2026: High-velocity week with markdown documentation generation, OxCaml .cms support, Windows fixes, extensive RPC refactoring, and sandbox tracing</title><updated>2026-02-08T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+52 PRs merged including major RPC refactoring, path system improvements, Melange support, and extensive test coverage additions&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13550" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Extensive RPC system refactoring&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; with 14+ merged PRs reorganizing csexp&lt;em&gt;rpc into separate modules for client, server, session, and socket (&lt;a href="https://github.com/ocaml/dune/issues/13550"&gt;#13550&lt;/a&gt;), removing signature duplication (&lt;a href="https://github.com/ocaml/dune/issues/13548"&gt;#13548&lt;/a&gt;), introducing abstract method name types (&lt;a href="https://github.com/ocaml/dune/issues/13578"&gt;#13578&lt;/a&gt;), merging Fiber&lt;/em&gt;event_bus into Fiber (&lt;a href="https://github.com/ocaml/dune/issues/13547"&gt;#13547&lt;/a&gt;), and breaking change separating write/close operations (&lt;a href="https://github.com/ocaml/dune/issues/13569"&gt;#13569&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13584" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Path system improvements&lt;/strong&gt;&lt;/a&gt; including strict extension type requiring extensions to start with "." (&lt;a href="https://github.com/ocaml/dune/issues/13584"&gt;#13584&lt;/a&gt;), removal of &lt;code&gt;Path.exists&lt;/code&gt; (&lt;a href="https://github.com/ocaml/dune/issues/13583"&gt;#13583&lt;/a&gt;), and removal of &lt;code&gt;Path.is_directory&lt;/code&gt; (&lt;a href="https://github.com/ocaml/dune/issues/13582"&gt;#13582&lt;/a&gt;) impacting 139 files total&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13529" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Rocq CI re-enabled&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; with Coq removed from nix flake and 736 lines of test output updates (&lt;a href="https://github.com/ocaml/dune/issues/13529"&gt;#13529&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13522" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Melange improvements&lt;/strong&gt;&lt;/a&gt; including &lt;code&gt;melange.emit&lt;/code&gt; respecting &lt;code&gt;-p &lt;PKG&gt;&lt;/code&gt; flag (&lt;a href="https://github.com/ocaml/dune/issues/13522"&gt;#13522&lt;/a&gt;) and test showing in-source promotion shortcomings (&lt;a href="https://github.com/ocaml/dune/issues/13537"&gt;#13537&lt;/a&gt;) by &lt;a href="https://github.com/anmonteiro"&gt;Antonio Nuno Monteiro&lt;/a&gt;, with backport to 3.21.1-rc (&lt;a href="https://github.com/ocaml/dune/issues/13563"&gt;#13563&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13534" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Test infrastructure improvements&lt;/strong&gt;&lt;/a&gt; with menhir version-agnostic tests (&lt;a href="https://github.com/ocaml/dune/issues/13534"&gt;#13534&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13561"&gt;#13561&lt;/a&gt;), rev_store mutable state reproduction (&lt;a href="https://github.com/ocaml/dune/issues/13559"&gt;#13559&lt;/a&gt;), and &lt;code&gt;(dir ..)&lt;/code&gt; interaction tests (&lt;a href="https://github.com/ocaml/dune/issues/13351"&gt;#13351&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13562" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OxCaml compatibility&lt;/strong&gt;&lt;/a&gt; added with eta-expansions for function compatibility (&lt;a href="https://github.com/ocaml/dune/issues/13562"&gt;#13562&lt;/a&gt;) and comprehensive &lt;code&gt;.cms&lt;/code&gt; file tests including dependency handling and instantiation (&lt;a href="https://github.com/ocaml/dune/issues/13397"&gt;#13397&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13498" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Package management fixes&lt;/strong&gt;&lt;/a&gt; including removal of obsolete &lt;code&gt;--ignore-lock-dir&lt;/code&gt; flag (&lt;a href="https://github.com/ocaml/dune/issues/13498"&gt;#13498&lt;/a&gt;), git rev&lt;em&gt;store bug fix (&lt;a href="https://github.com/ocaml/dune/commit/d93a8e089278c8520b0ea9f46dde1fdb19bcb6ab"&gt;d93a8e0&lt;/a&gt;), and test for exported&lt;/em&gt;env opam variable handling (&lt;a href="https://github.com/ocaml/dune/issues/13524"&gt;#13524&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13540" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Documentation and cleanup&lt;/strong&gt;&lt;/a&gt; with format-dune-file action documentation fixes (&lt;a href="https://github.com/ocaml/dune/issues/13540"&gt;#13540&lt;/a&gt;), removal of &lt;code&gt;program_not_found_message&lt;/code&gt; utility (&lt;a href="https://github.com/ocaml/dune/issues/13546"&gt;#13546&lt;/a&gt;), library dependency fixes (&lt;a href="https://github.com/ocaml/dune/issues/13527"&gt;#13527&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13528"&gt;#13528&lt;/a&gt;), and Fpath.traverse semantics tweaks (&lt;a href="https://github.com/ocaml/dune/issues/13530"&gt;#13530&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13560" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;BSD platform support&lt;/strong&gt;&lt;/a&gt; with ocaml-lmdb bump fixing NetBSD and OpenBSD builds (&lt;a href="https://github.com/ocaml/dune/issues/13560"&gt;#13560&lt;/a&gt;) addressing earlier build breakage (&lt;a href="https://github.com/ocaml/dune/issues/13070"&gt;#13070&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13564" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;RPC server improvements&lt;/strong&gt;&lt;/a&gt; including stopping RPC startup with &lt;code&gt;dune promote&lt;/code&gt; (&lt;a href="https://github.com/ocaml/dune/issues/13564"&gt;#13564&lt;/a&gt;) and test exit code fixes for 3.21 (&lt;a href="https://github.com/ocaml/dune/issues/13565"&gt;#13565&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>High-velocity week with markdown documentation generation, OxCaml .cms support, Windows fixes, extensive RPC refactoring, and sandbox tracing</summary><published>2026-02-08T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-dune/2026/week-5</id><title>Week 5, 2026: Package management CLI improvements, sandboxing enhancements, and OxCaml workspace support added</title><updated>2026-02-01T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

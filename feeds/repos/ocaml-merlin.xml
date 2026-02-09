@@ -1,5 +1,66 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-merlin.xml</id><title>ocaml/merlin (Weekly)</title><updated>2026-02-01T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-merlin.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/merlin</subtitle><entry><id>https://thicket.dev/repos/ocaml-merlin/2026/week-5</id><title>Week 5, 2026: Test coverage improvements with four new test cases merged and signature help fix</title><updated>2026-02-01T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-merlin.xml</id><title>ocaml/merlin (Weekly)</title><updated>2026-02-08T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-merlin.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/merlin</subtitle><entry><id>https://thicket.dev/repos/ocaml-merlin/2026/week-6</id><title>Week 6, 2026: Signature help improvements and OCaml 5.5 planning discussions progressed with two new PRs under review</title><updated>2026-02-08T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Two PRs opened to improve signature help and fix declaration finding bugs, OCamlformat upgrade reverted after merge&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/merlin/issues/2031" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCamlformat 0.28.1 upgrade&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt; was merged and subsequently reverted on the same day (&lt;a href="https://github.com/ocaml/merlin/issues/2031"&gt;#2031&lt;/a&gt;) - the upgrade affected code formatting across 50 files but was rolled back&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/merlin/issues/2032" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Signature help improvements&lt;/strong&gt;&lt;/a&gt; for labelled and optional parameters by &lt;a href="https://github.com/Lucccyo"&gt;Charlène_Gros&lt;/a&gt; currently under review with detailed feedback from &lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt; (&lt;a href="https://github.com/ocaml/merlin/issues/2032"&gt;#2032&lt;/a&gt;) - fixes incorrect &lt;code&gt;active_parameter&lt;/code&gt; behavior when cursor is positioned around label colons&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/merlin/issues/2033" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Declaration finding bug&lt;/strong&gt;&lt;/a&gt; reported by &lt;a href="https://github.com/Tim-ats-d"&gt;Tim ats&lt;/a&gt; where type declarations cannot be found when editor position is in another declaration (&lt;a href="https://github.com/ocaml/merlin/issues/2033"&gt;#2033&lt;/a&gt;), with accompanying test case added in &lt;a href="https://github.com/ocaml/merlin/issues/2034"&gt;#2034&lt;/a&gt; related to &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1586"&gt;ocaml/ocaml-lsp#1586&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Signature help improvements and OCaml 5.5 planning discussions progressed with two new PRs under review</summary><published>2026-02-08T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-merlin/2026/week-5</id><title>Week 5, 2026: Test coverage improvements with four new test cases merged and signature help fix</title><updated>2026-02-01T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

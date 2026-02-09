@@ -1,5 +1,76 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml</id><title>oxcaml/oxcaml (Weekly)</title><updated>2026-02-01T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/oxcaml</subtitle><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2026/week-5</id><title>Week 5, 2026: ARM64 binary emitter shipped with verification infrastructure, plus new unboxed unit type and syntax</title><updated>2026-02-01T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml</id><title>oxcaml/oxcaml (Weekly)</title><updated>2026-02-08T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/oxcaml</subtitle><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2026/week-6</id><title>Week 6, 2026: Type system additions with bool# primitives, borrowing support, and new Format_doc API</title><updated>2026-02-08T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+21 new PRs opened including functors modality work, manual initialization, and bytecode product fields&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5371" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;21 new PRs opened&lt;/strong&gt;&lt;/a&gt; this week including &lt;a href="https://github.com/dkalinichenko-js"&gt;@dkalinichenko-js&lt;/a&gt; work on functors with modalities (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5371"&gt;#5371&lt;/a&gt;), &lt;a href="https://github.com/mshinwell"&gt;Mark Shinwell&lt;/a&gt; manual module initialization (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5395"&gt;#5395&lt;/a&gt;), &lt;a href="https://github.com/rtjoa"&gt;Ryan Tjoa&lt;/a&gt; bytecode deep copy of product fields (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5386"&gt;#5386&lt;/a&gt;), &lt;a href="https://github.com/jra4"&gt;James Rayman&lt;/a&gt; small int ctz/clz/popcnt (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5393"&gt;#5393&lt;/a&gt;), &lt;a href="https://github.com/ttebbi-janestreet"&gt;@ttebbi-janestreet&lt;/a&gt; expect_asm support (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5350"&gt;#5350&lt;/a&gt;), and &lt;a href="https://github.com/riaqn"&gt;Zesen Qian&lt;/a&gt; parsing for &lt;code&gt;let poly_&lt;/code&gt; and &lt;code&gt;val poly_&lt;/code&gt; syntax (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5392"&gt;#5392&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5357" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Upstream backports&lt;/strong&gt;&lt;/a&gt; progressed with &lt;a href="https://github.com/spiessimon"&gt;Simon Spies&lt;/a&gt; merging Format&lt;em&gt;doc introduction (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5357"&gt;#5357&lt;/a&gt;) plus opening three additional Format&lt;/em&gt;doc refinement PRs (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5378"&gt;#5378&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/5380"&gt;#5380&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/5381"&gt;#5381&lt;/a&gt;) and build system conflict resolution (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5376"&gt;#5376&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5377" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Flambda2 reaper&lt;/strong&gt;&lt;/a&gt; improvements by &lt;a href="https://github.com/Ekdohibs"&gt;Nathanaëlle Courant&lt;/a&gt; with exception handler parameter fix preventing incorrect unboxing (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5377"&gt;#5377&lt;/a&gt;), overzealous rebuild check fix (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5374"&gt;#5374&lt;/a&gt;), and dead code removal (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5379"&gt;#5379&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5389" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;CFG backend work&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/xclerc"&gt;Xavier Clerc&lt;/a&gt; merging simplify terminator bug fix (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5389"&gt;#5389&lt;/a&gt;) and opening liveness checking at function entry (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5375"&gt;#5375&lt;/a&gt;), basic invariant validation (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5390"&gt;#5390&lt;/a&gt;), and additional arity tests for terminators (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5388"&gt;#5388&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5119" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Match-in-match&lt;/strong&gt;&lt;/a&gt; optimization fix by &lt;a href="https://github.com/Gbury"&gt;Guillaume Bury&lt;/a&gt; for over-applications in specialized handlers merged after 8+ weeks (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5119"&gt;#5119&lt;/a&gt;), with follow-up flow analysis cleanup (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5370"&gt;#5370&lt;/a&gt;) and ongoing data flow constant handling (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5368"&gt;#5368&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5387" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Chamelon build tool&lt;/strong&gt;&lt;/a&gt; enhanced by &lt;a href="https://github.com/bclement-ocp"&gt;Basile Clément&lt;/a&gt; with consistent ocamlformat config merged (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5387"&gt;#5387&lt;/a&gt;), module minimization in progress (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5356"&gt;#5356&lt;/a&gt;), and reaper constant type rewriting opened (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5391"&gt;#5391&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5372" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Type system and modalities&lt;/strong&gt;&lt;/a&gt; work by &lt;a href="https://github.com/dkalinichenko-js"&gt;@dkalinichenko-js&lt;/a&gt; including internal ticket 5116 fix merged (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5372"&gt;#5372&lt;/a&gt;), redundant modality warning (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5373"&gt;#5373&lt;/a&gt;), imprecise kind annotation warnings (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5362"&gt;#5362&lt;/a&gt;), and modules aliased many requirement (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5364"&gt;#5364&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5396" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Dissector&lt;/strong&gt;&lt;/a&gt; fixes by &lt;a href="https://github.com/mshinwell"&gt;Mark Shinwell&lt;/a&gt; removing overzealous AS check (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5396"&gt;#5396&lt;/a&gt;), eh&lt;em&gt;frame&lt;/em&gt;hdr section removal (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5394"&gt;#5394&lt;/a&gt;), and eh_frame cleanup in form rewrite (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5384"&gt;#5384&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5363" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Runtime and tooling&lt;/strong&gt;&lt;/a&gt; improvements including &lt;a href="https://github.com/TheNumbat"&gt;Max Slater&lt;/a&gt; fiber return to allocating domain (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5363"&gt;#5363&lt;/a&gt;) and ARM test enablement (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5385"&gt;#5385&lt;/a&gt;), &lt;a href="https://github.com/riaqn"&gt;Zesen Qian&lt;/a&gt; printtyp modalities exception fix (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5382"&gt;#5382&lt;/a&gt;), &lt;a href="https://github.com/tkoukpari"&gt;@tkoukpari&lt;/a&gt; local annotations (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5366"&gt;#5366&lt;/a&gt;), and cleanup of AI agent make output (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5365"&gt;#5365&lt;/a&gt;) plus test environment scrubbing (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5361"&gt;#5361&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5360" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Build and configuration&lt;/strong&gt;&lt;/a&gt; updates including opam switch configuration (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5360"&gt;#5360&lt;/a&gt;), prefetching feature detection macro fixes (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5359"&gt;#5359&lt;/a&gt;), and Jekyll front matter for let mutable docs (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5341"&gt;#5341&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5162" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Kind system&lt;/strong&gt;&lt;/a&gt; enhancements with non-value kinds crossing externality (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5162"&gt;#5162&lt;/a&gt;), bigstring safety property refactoring (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5307"&gt;#5307&lt;/a&gt;), and removal of &lt;code&gt;Unknown_non_rigid&lt;/code&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5335"&gt;#5335&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5367" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Address review&lt;/strong&gt;&lt;/a&gt; skill tool implementation merged providing automated PR review response workflow (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5367"&gt;#5367&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5383" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Classic mode inlining&lt;/strong&gt;&lt;/a&gt; fallback heuristic disabled to improve optimization behavior in non-Flambda2 mode (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5383"&gt;#5383&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Type system additions with bool# primitives, borrowing support, and new Format_doc API</summary><published>2026-02-08T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2026/week-5</id><title>Week 5, 2026: ARM64 binary emitter shipped with verification infrastructure, plus new unboxed unit type and syntax</title><updated>2026-02-01T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

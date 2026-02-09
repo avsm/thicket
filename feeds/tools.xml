@@ -1,5 +1,103 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/tools.xml</id><title>OCaml Tools (Weekly)</title><updated>2026-02-01T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/tools.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Development tools and build systems</subtitle><entry><id>https://thicket.dev/groups/tools/2026/week-5</id><title>Week 5, 2026: Dune sandboxing rollout, LSP custom request expansion, js_of_ocaml parser improvements, and OxCaml integration progressing</title><updated>2026-02-01T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/tools.xml</id><title>OCaml Tools (Weekly)</title><updated>2026-02-08T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/tools.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Development tools and build systems</subtitle><entry><id>https://thicket.dev/groups/tools/2026/week-6</id><title>Week 6, 2026: High-velocity week with dune's 52 merged PRs, js_of_ocaml 6.3.0 release, and coordinated OCaml 5.5 planning across tools</title><updated>2026-02-08T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune"&gt;ocaml/dune&lt;/a&gt; added &lt;a href="https://github.com/ocaml/dune/issues/12581" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;markdown documentation generation&lt;/strong&gt;&lt;/a&gt; via &lt;code&gt;dune build @doc-markdown&lt;/code&gt; using odoc 3.1.0 (&lt;a href="https://github.com/ocaml/dune/issues/12581"&gt;ocaml/dune#12581&lt;/a&gt;), &lt;strong class="achievement"&gt;OxCaml &lt;code&gt;.cms&lt;/code&gt; files support&lt;/strong&gt; for trimmed type information with &lt;code&gt;(using oxcaml 0.1)&lt;/code&gt; (&lt;a href="https://github.com/ocaml/dune/issues/13397"&gt;ocaml/dune#13397&lt;/a&gt;), &lt;strong class="achievement"&gt;Windows script execution&lt;/strong&gt; with shebang parsing (&lt;a href="https://github.com/ocaml/dune/issues/13293"&gt;ocaml/dune#13293&lt;/a&gt;), &lt;strong class="achievement"&gt;Windows OS detection&lt;/strong&gt; for Cygwin/MSYS2 (&lt;a href="https://github.com/ocaml/dune/issues/13536"&gt;ocaml/dune#13536&lt;/a&gt;), &lt;strong class="achievement"&gt;sandbox tracing events&lt;/strong&gt; for debugging (&lt;a href="https://github.com/ocaml/dune/issues/13538"&gt;ocaml/dune#13538&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13541"&gt;ocaml/dune#13541&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13544"&gt;ocaml/dune#13544&lt;/a&gt;), and &lt;strong class="achievement"&gt;&lt;code&gt;patch_back_source_tree&lt;/code&gt; sandboxing mode&lt;/strong&gt; for safer linter integration (&lt;a href="https://github.com/ocaml/dune/issues/13495"&gt;ocaml/dune#13495&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml"&gt;ocsigen/js&lt;em&gt;of&lt;/em&gt;ocaml&lt;/a&gt; &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2167" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;released version 6.3.0&lt;/strong&gt;&lt;/a&gt; (February 6) with &lt;strong class="achievement"&gt;constant sinking optimization&lt;/strong&gt; moving declarations closer to usage (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2167"&gt;ocsigen/js&lt;em&gt;of&lt;/em&gt;ocaml#2167&lt;/a&gt;), &lt;strong class="achievement"&gt;WASM-safe &lt;code&gt;Dom_html.onload&lt;/code&gt;&lt;/strong&gt; function (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/1948"&gt;ocsigen/js&lt;em&gt;of&lt;/em&gt;ocaml#1948&lt;/a&gt;), &lt;strong class="achievement"&gt;&lt;code&gt;Js.Unsafe.runtime_value&lt;/code&gt; API&lt;/strong&gt; for referencing runtime values (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2086"&gt;ocsigen/js&lt;em&gt;of&lt;/em&gt;ocaml#2086&lt;/a&gt;), eliminated unnecessary boolean conversions (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2168"&gt;ocsigen/js&lt;em&gt;of&lt;/em&gt;ocaml#2168&lt;/a&gt;), and fixed multiple DOM binding types&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml-lsp"&gt;ocaml/ocaml-lsp&lt;/a&gt; now applies &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1580" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;ocamlformat to signature help&lt;/strong&gt;&lt;/a&gt; for improved readability of long function signatures (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1580"&gt;ocaml/ocaml-lsp#1580&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam"&gt;ocaml/opam&lt;/a&gt; documentation now &lt;a href="https://github.com/ocaml/opam/pull/6846" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;explicitly mentions raw field syntax&lt;/strong&gt;&lt;/a&gt; for &lt;code&gt;opam list --columns&lt;/code&gt;, allowing arbitrary field queries like &lt;code&gt;license:&lt;/code&gt; (&lt;a href="https://github.com/ocaml/opam/pull/6846"&gt;ocaml/opam#6846&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune"&gt;ocaml/dune&lt;/a&gt; led activity with 52 merged PRs including &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt;'s extensive RPC refactoring (14+ PRs), &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt;'s 22+ PRs across CI/testing/fixes, Windows support advances by &lt;a href="https://github.com/punchagan"&gt;Puneeth Chaganti&lt;/a&gt;, and preparation for 3.21.1 release (&lt;a href="https://github.com/ocaml/dune/issues/13557"&gt;ocaml/dune#13557&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml"&gt;ocsigen/js&lt;em&gt;of&lt;/em&gt;ocaml&lt;/a&gt; shipped &lt;strong class="achievement"&gt;version 6.3.0&lt;/strong&gt; with 67 commits including compiler optimizations, correctness fixes, and DOM binding improvements by &lt;a href="https://github.com/hhugo"&gt;@hhugo&lt;/a&gt; and &lt;a href="https://github.com/vouillon"&gt;Jérôme Vouillon&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam"&gt;ocaml/opam&lt;/a&gt; merged documentation improvements by &lt;a href="https://github.com/raphael-proust"&gt;Raphaël Proust&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam/pull/6846"&gt;ocaml/opam#6846&lt;/a&gt;) and active discussions on cmdliner upgrade with PowerShell completion support (&lt;a href="https://github.com/ocaml/opam/issues/6853"&gt;ocaml/opam#6853&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam/issues/6849"&gt;ocaml/opam#6849&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/merlin"&gt;ocaml/merlin&lt;/a&gt; had two PRs under review improving signature help (&lt;a href="https://github.com/ocaml/merlin/issues/2032"&gt;ocaml/merlin#2032&lt;/a&gt;) and fixing declaration navigation (&lt;a href="https://github.com/ocaml/merlin/issues/2034"&gt;ocaml/merlin#2034&lt;/a&gt;), plus OCamlformat upgrade reverted after same-day merge (&lt;a href="https://github.com/ocaml/merlin/issues/2031"&gt;ocaml/merlin#2031&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml-lsp"&gt;ocaml/ocaml-lsp&lt;/a&gt; merged signature formatting feature by &lt;a href="https://github.com/Lucccyo"&gt;Charlène_Gros&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1580"&gt;ocaml/ocaml-lsp#1580&lt;/a&gt;) with bug reports on type navigation (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1586"&gt;ocaml/ocaml-lsp#1586&lt;/a&gt;) and error persistence (&lt;a href="https://github.com/ocaml/ocaml-lsp/discussions/1585"&gt;ocaml/ocaml-lsp#1585&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/odoc"&gt;ocaml/odoc&lt;/a&gt; had &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; open OCaml 5.5 support request (&lt;a href="https://github.com/ocaml/odoc/issues/1401"&gt;ocaml/odoc#1401&lt;/a&gt;) and &lt;a href="https://github.com/jonludlam"&gt;Jon Ludlam&lt;/a&gt; continuing bug fix work (&lt;a href="https://github.com/ocaml/odoc/pull/1400"&gt;ocaml/odoc#1400&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind"&gt;ocaml/ocamlfind&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-file-format"&gt;ocaml/opam-file-format&lt;/a&gt;, and &lt;a href="https://github.com/ocaml-dune/spawn"&gt;ocaml-dune/spawn&lt;/a&gt; had no recorded activity this week&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/odoc/issues/1401" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml 5.5 support planning&lt;/strong&gt;&lt;/a&gt; coordinated across multiple repositories with &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; opening support requests in &lt;a href="https://github.com/ocaml/odoc/issues/1401"&gt;ocaml/odoc#1401&lt;/a&gt; and participating in &lt;a href="https://github.com/ocaml/merlin/issues/2024"&gt;ocaml/merlin#2024&lt;/a&gt; discussions where &lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt; confirmed upgrade work starting this week after modular explicit was merged upstream&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/merlin/issues/2032" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Signature help improvements&lt;/strong&gt;&lt;/a&gt; spanning &lt;a href="https://github.com/ocaml/merlin"&gt;ocaml/merlin&lt;/a&gt; and &lt;a href="https://github.com/ocaml/ocaml-lsp"&gt;ocaml/ocaml-lsp&lt;/a&gt; with &lt;a href="https://github.com/Lucccyo"&gt;Charlène_Gros&lt;/a&gt; working on both repositories: labelled parameter fixes in &lt;a href="https://github.com/ocaml/merlin/issues/2032"&gt;ocaml/merlin#2032&lt;/a&gt; and ocamlformat integration in &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1580"&gt;ocaml/ocaml-lsp#1580&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/merlin/issues/2033" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Type declaration navigation bug&lt;/strong&gt;&lt;/a&gt; reported by &lt;a href="https://github.com/Tim-ats-d"&gt;Tim ats&lt;/a&gt; affecting both &lt;a href="https://github.com/ocaml/merlin/issues/2033"&gt;ocaml/merlin#2033&lt;/a&gt; and &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1586"&gt;ocaml/ocaml-lsp#1586&lt;/a&gt;, with &lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt; confirming the issue originates in Merlin's typing environment&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/12581" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Markdown documentation&lt;/strong&gt;&lt;/a&gt; enabled in &lt;a href="https://github.com/ocaml/dune"&gt;ocaml/dune&lt;/a&gt; via &lt;a href="https://github.com/ocaml/dune/issues/12581"&gt;ocaml/dune#12581&lt;/a&gt; depends on &lt;a href="https://github.com/ocaml/odoc"&gt;ocaml/odoc&lt;/a&gt; 3.1.0 capabilities&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13293" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Windows platform improvements&lt;/strong&gt;&lt;/a&gt; progressing in both &lt;a href="https://github.com/ocaml/dune"&gt;ocaml/dune&lt;/a&gt; with script execution (&lt;a href="https://github.com/ocaml/dune/issues/13293"&gt;ocaml/dune#13293&lt;/a&gt;) and OS detection (&lt;a href="https://github.com/ocaml/dune/issues/13536"&gt;ocaml/dune#13536&lt;/a&gt;), and &lt;a href="https://github.com/ocaml/opam"&gt;ocaml/opam&lt;/a&gt; with PowerShell completion proposal (&lt;a href="https://github.com/ocaml/opam/issues/6853"&gt;ocaml/opam#6853&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6849" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Cmdliner vendor update planning&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/ocaml/opam"&gt;ocaml/opam&lt;/a&gt; with &lt;a href="https://github.com/jberdine"&gt;Josh Berdine&lt;/a&gt; reporting missing upstream fixes (&lt;a href="https://github.com/ocaml/opam/issues/6849"&gt;ocaml/opam#6849&lt;/a&gt;), team confirming backports for 2.6 milestone and future vendoring of cmdliner 2.1, while &lt;a href="https://github.com/dbuenzli"&gt;Daniel Bünzli&lt;/a&gt; and &lt;a href="https://github.com/WardBrian"&gt;Brian Ward&lt;/a&gt; discussed completion improvements including switch-aware package suggestions&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6853" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;PowerShell completion support&lt;/strong&gt;&lt;/a&gt; proposed by &lt;a href="https://github.com/WardBrian"&gt;Brian Ward&lt;/a&gt; for Windows users by bumping vendored cmdliner while preserving opam's prefix behavior (&lt;a href="https://github.com/ocaml/opam/issues/6853"&gt;ocaml/opam#6853&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/merlin/issues/2024" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml 5.5 support planning&lt;/strong&gt;&lt;/a&gt; between &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; and &lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt; in &lt;a href="https://github.com/ocaml/merlin/issues/2024"&gt;ocaml/merlin#2024&lt;/a&gt;, with team planning to start upgrade work this week after modular explicit merged upstream&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;LSP error persistence&lt;/strong&gt; discussed by &lt;a href="https://github.com/reidrac"&gt;Juan J. Martínez&lt;/a&gt; reporting ocamllsp sometimes fails to clear errors after successful &lt;code&gt;dune build --watch&lt;/code&gt;, requiring file re-saving or restart (&lt;a href="https://github.com/ocaml/ocaml-lsp/discussions/1585"&gt;ocaml/ocaml-lsp#1585&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6852" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Repository origin display&lt;/strong&gt;&lt;/a&gt; identified by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; as UI improvement needed when packages exist in multiple repositories (&lt;a href="https://github.com/ocaml/opam/issues/6852"&gt;ocaml/opam#6852&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong class="achievement"&gt;Internal code quality focus&lt;/strong&gt; with &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; leading systematic refactoring across &lt;a href="https://github.com/ocaml/dune"&gt;ocaml/dune&lt;/a&gt; RPC and path systems, reorganizing over 2000 lines while reducing duplication, paralleled by &lt;a href="https://github.com/ocsigen/js_of_ocaml"&gt;ocsigen/js&lt;em&gt;of&lt;/em&gt;ocaml&lt;/a&gt;'s compiler correctness work fixing edge cases in optimization passes&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13293" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Windows ecosystem maturation&lt;/strong&gt;&lt;/a&gt; accelerating with &lt;a href="https://github.com/ocaml/dune"&gt;ocaml/dune&lt;/a&gt; adding script execution (&lt;a href="https://github.com/ocaml/dune/issues/13293"&gt;ocaml/dune#13293&lt;/a&gt;) and OS detection (&lt;a href="https://github.com/ocaml/dune/issues/13536"&gt;ocaml/dune#13536&lt;/a&gt;), &lt;a href="https://github.com/ocaml/opam"&gt;ocaml/opam&lt;/a&gt; discussing PowerShell completion (&lt;a href="https://github.com/ocaml/opam/issues/6853"&gt;ocaml/opam#6853&lt;/a&gt;), and user reports showing growing Windows adoption&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/odoc/issues/1401" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml 5.5 coordination&lt;/strong&gt;&lt;/a&gt; beginning across the tools ecosystem with &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; driving support requests in &lt;a href="https://github.com/ocaml/odoc/issues/1401"&gt;ocaml/odoc#1401&lt;/a&gt; and &lt;a href="https://github.com/ocaml/merlin/issues/2024"&gt;ocaml/merlin#2024&lt;/a&gt;, indicating coordinated upgrade cycle&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Editor tooling polish&lt;/strong&gt; with &lt;a href="https://github.com/Lucccyo"&gt;Charlène_Gros&lt;/a&gt; improving signature help across &lt;a href="https://github.com/ocaml/merlin"&gt;ocaml/merlin&lt;/a&gt; and &lt;a href="https://github.com/ocaml/ocaml-lsp"&gt;ocaml/ocaml-lsp&lt;/a&gt;, addressing user experience details for labelled parameters and formatting&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13397" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OxCaml compiler integration&lt;/strong&gt;&lt;/a&gt; expanding in &lt;a href="https://github.com/ocaml/dune"&gt;ocaml/dune&lt;/a&gt; with &lt;code&gt;.cms&lt;/code&gt; file support (&lt;a href="https://github.com/ocaml/dune/issues/13397"&gt;ocaml/dune#13397&lt;/a&gt;) and compatibility fixes (&lt;a href="https://github.com/ocaml/dune/issues/13562"&gt;ocaml/dune#13562&lt;/a&gt;), indicating growing adoption of the new compiler variant&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13534" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Testing culture strengthening&lt;/strong&gt;&lt;/a&gt; across repositories with reproduction cases added before fixes in &lt;a href="https://github.com/ocaml/dune"&gt;ocaml/dune&lt;/a&gt;, version-agnostic tests (&lt;a href="https://github.com/ocaml/dune/issues/13534"&gt;ocaml/dune#13534&lt;/a&gt;), and comprehensive test suites for new features&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>High-velocity week with dune's 52 merged PRs, js_of_ocaml 6.3.0 release, and coordinated OCaml 5.5 planning across tools</summary><published>2026-02-08T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/tools/2026/week-5</id><title>Week 5, 2026: Dune sandboxing rollout, LSP custom request expansion, js_of_ocaml parser improvements, and OxCaml integration progressing</title><updated>2026-02-01T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

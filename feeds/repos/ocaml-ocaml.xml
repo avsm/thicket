@@ -1,5 +1,69 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.xml</id><title>ocaml/ocaml (Weekly)</title><updated>2026-02-01T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-5</id><title>Week 5, 2026: Testing infrastructure improvements, string operation bug fix, and stdlib guidelines added</title><updated>2026-02-01T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.xml</id><title>ocaml/ocaml (Weekly)</title><updated>2026-02-08T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-6</id><title>Week 6, 2026: Module-dependent functions merged, 20 new PRs opened for platform support and stdlib additions</title><updated>2026-02-08T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+20 new PRs opened including platform support, stdlib additions, and typing improvements&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;Twenty &lt;a href="https://github.com/ocaml/ocaml/issues/14517" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;new PRs opened&lt;/strong&gt;&lt;/a&gt; this week including support for locally abstract types in recursive let bindings by &lt;a href="https://github.com/johnyob"&gt;Alistair&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14517"&gt;#14517&lt;/a&gt;), nested record definitions proposal by &lt;a href="https://github.com/davesnx"&gt;David Sancho&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14527"&gt;#14527&lt;/a&gt;), Merlin typing recovery integration by &lt;a href="https://github.com/xvw"&gt;Xavier Van de Woestyne&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14241"&gt;#14241&lt;/a&gt;), unlimited non-constant constructors by &lt;a href="https://github.com/lthls"&gt;Vincent Laviron&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14507"&gt;#14507&lt;/a&gt;), and pure functors by &lt;a href="https://github.com/samsa1"&gt;Samuel Vivien&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/13905"&gt;#13905&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14525" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Standard library additions&lt;/strong&gt;&lt;/a&gt; include &lt;code&gt;Fun.todo&lt;/code&gt; with code location by &lt;a href="https://github.com/OlivierNicole"&gt;Olivier Nicole&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14525"&gt;#14525&lt;/a&gt;) and &lt;a href="https://github.com/pkhry"&gt;Pavlo Khrystenko&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/13101"&gt;#13101&lt;/a&gt;), &lt;code&gt;List.append_map&lt;/code&gt; and &lt;code&gt;List.rev_append_map&lt;/code&gt; by &lt;a href="https://github.com/SylvainBoilard"&gt;Sylvain Boilard&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/13554"&gt;#13554&lt;/a&gt;), &lt;code&gt;String.drop_prefix&lt;/code&gt; and &lt;code&gt;String.drop_suffix&lt;/code&gt; by &lt;a href="https://github.com/mneumann"&gt;Michael Neumann&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14487"&gt;#14487&lt;/a&gt;), and &lt;code&gt;Atomic.modify&lt;/code&gt;/&lt;code&gt;Atomic.modify_get&lt;/code&gt; operations by &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/10798"&gt;#10798&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14514" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;s390x architecture support&lt;/strong&gt;&lt;/a&gt; receiving attention with shared library crash fix by &lt;a href="https://github.com/Zaneham"&gt;Zane Hambly&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14514"&gt;#14514&lt;/a&gt;), native atomic fetch-add implementation (&lt;a href="https://github.com/ocaml/ocaml/issues/14524"&gt;#14524&lt;/a&gt;), and CFI information fixes by &lt;a href="https://github.com/tmcgilchrist"&gt;Tim McGilchrist&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14500"&gt;#14500&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14302" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Platform-specific improvements&lt;/strong&gt;&lt;/a&gt; include POWER architecture TSan shadow stack fixes by &lt;a href="https://github.com/OlivierNicole"&gt;Olivier Nicole&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14302"&gt;#14302&lt;/a&gt;) and CFI support by &lt;a href="https://github.com/tmcgilchrist"&gt;Tim McGilchrist&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14482"&gt;#14482&lt;/a&gt;), RISC-V frame pointer support (&lt;a href="https://github.com/ocaml/ocaml/issues/14506"&gt;#14506&lt;/a&gt;), FreeBSD frame pointer testsuite updates (&lt;a href="https://github.com/ocaml/ocaml/issues/14530"&gt;#14530&lt;/a&gt;), and AMD64 endbr64 emission optimization by &lt;a href="https://github.com/Zaneham"&gt;Zane Hambly&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14515"&gt;#14515&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/13026" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Runtime and memory management&lt;/strong&gt;&lt;/a&gt; work includes slow domain join fix by &lt;a href="https://github.com/damiendoligez"&gt;Damien Doligez&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/13026"&gt;#13026&lt;/a&gt;), gradual minor heap address reservation by &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14162"&gt;#14162&lt;/a&gt;), thread-local storage improvements (&lt;a href="https://github.com/ocaml/ocaml/issues/13355"&gt;#13355&lt;/a&gt;), missing minor heap allocations fix by &lt;a href="https://github.com/tmcgilchrist"&gt;Tim McGilchrist&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14522"&gt;#14522&lt;/a&gt;), runtime events cleanup on SIGINT by &lt;a href="https://github.com/gridbugs"&gt;Stephen Sherratt&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14470"&gt;#14470&lt;/a&gt;), ephe&lt;em&gt;mark minor fix (&lt;a href="https://github.com/ocaml/ocaml/issues/14338"&gt;#14338&lt;/a&gt;), mutex-protected lazy thunks (&lt;a href="https://github.com/ocaml/ocaml/issues/14393"&gt;#14393&lt;/a&gt;), No&lt;/em&gt;scan_tag macro replacements by &lt;a href="https://github.com/NickBarnes"&gt;Nick Barnes&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14493"&gt;#14493&lt;/a&gt;), and &lt;code&gt;Obj.dup&lt;/code&gt; closure fix (&lt;a href="https://github.com/ocaml/ocaml/issues/14492"&gt;#14492&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14512" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Type system and tooling&lt;/strong&gt;&lt;/a&gt; enhancements with warning 16 (&lt;code&gt;unerasable-optional-argument&lt;/code&gt;) check improvements by &lt;a href="https://github.com/johnyob"&gt;Alistair&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14512"&gt;#14512&lt;/a&gt;), ocp-indent check addition (&lt;a href="https://github.com/ocaml/ocaml/issues/14485"&gt;#14485&lt;/a&gt;), and Dune build dependency improvements for opcodes sanity by &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14509"&gt;#14509&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Module-dependent functions merged, 20 new PRs opened for platform support and stdlib additions</summary><published>2026-02-08T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-5</id><title>Week 5, 2026: Testing infrastructure improvements, string operation bug fix, and stdlib guidelines added</title><updated>2026-02-01T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
