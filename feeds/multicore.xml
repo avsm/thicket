@@ -1,5 +1,92 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/multicore.xml</id><title>Multicore (Weekly)</title><updated>2026-02-08T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/multicore.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Multicore OCaml</subtitle><entry><id>https://thicket.dev/groups/multicore/2026/week-6</id><title>Week 6, 2026: Minimal activity with OCaml 5.5 compatibility work and one closed MacOS support PR</title><updated>2026-02-08T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/multicore.xml</id><title>Multicore (Weekly)</title><updated>2026-02-15T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/multicore.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Multicore OCaml</subtitle><entry><id>https://thicket.dev/groups/multicore/2026/week-7</id><title>Week 7, 2026: Activity this week was limited to ocaml-multicore/meio, which landed Eio 0.14+ compatibility via a migration from deprecated private APIs.</title><updated>2026-02-15T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong class="achievement"&gt;Migration from &lt;code&gt;Eio.Private.Ctf&lt;/code&gt; to &lt;code&gt;Eio_runtime_events&lt;/code&gt;&lt;/strong&gt; in &lt;a href="https://github.com/ocaml-multicore/meio"&gt;ocaml-multicore/meio&lt;/a&gt;: the internal event callback system was rewritten to use the new &lt;code&gt;Eio_runtime_events&lt;/code&gt; module and its typed &lt;code&gt;event&lt;/code&gt; variant, replacing the older &lt;code&gt;Ctf&lt;/code&gt;-based callback approach with a unified &lt;code&gt;RE.add_callbacks&lt;/code&gt; call (&lt;a href="https://github.com/ocaml-multicore/meio/issues/72"&gt;ocaml-multicore/meio#72&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/meio/commit/673fdbd110a5695b1ed297d938e1a27233464c68"&gt;673fdbd&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Switch from &lt;code&gt;nottui&lt;/code&gt; to &lt;code&gt;nottui-unix&lt;/code&gt;&lt;/strong&gt; in &lt;a href="https://github.com/ocaml-multicore/meio"&gt;ocaml-multicore/meio&lt;/a&gt;: the UI event loop now uses &lt;code&gt;Nottui_unix.run&lt;/code&gt; instead of &lt;code&gt;Nottui.Ui_loop.run&lt;/code&gt;, reflecting an upstream split of the nottui library (&lt;a href="https://github.com/ocaml-multicore/meio/issues/72"&gt;ocaml-multicore/meio#72&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/meio/commit/673fdbd110a5695b1ed297d938e1a27233464c68"&gt;673fdbd&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;New &lt;code&gt;eio_name&lt;/code&gt; helper library for examples&lt;/strong&gt;: a small &lt;code&gt;Eio_name&lt;/code&gt; library extracted into &lt;code&gt;example/eio_name.ml&lt;/code&gt; provides a &lt;code&gt;name&lt;/code&gt; function using &lt;code&gt;Eio.Private.Trace.name&lt;/code&gt;, replacing direct use of &lt;code&gt;Eio.Private.Ctf.set_name&lt;/code&gt; and &lt;code&gt;Eio.Private.Ctf.log&lt;/code&gt; in example programs (&lt;a href="https://github.com/ocaml-multicore/meio/issues/72"&gt;ocaml-multicore/meio#72&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/meio/commit/673fdbd110a5695b1ed297d938e1a27233464c68"&gt;673fdbd&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/meio/issues/72" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;opam dependency updates&lt;/strong&gt;&lt;/a&gt;: &lt;code&gt;meio.opam&lt;/code&gt; now requires &lt;code&gt;eio &gt;= 0.14&lt;/code&gt;, &lt;code&gt;nottui-unix&lt;/code&gt; (replacing &lt;code&gt;nottui&lt;/code&gt;), and &lt;code&gt;dune &gt;= 3.10&lt;/code&gt;; the custom git pin-depends on a private eio fork have been removed, enabling installation from the standard opam repository (&lt;a href="https://github.com/ocaml-multicore/meio/issues/72"&gt;ocaml-multicore/meio#72&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/meio/commit/673fdbd110a5695b1ed297d938e1a27233464c68"&gt;673fdbd&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/meio/issues/72" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Improved task kind display&lt;/strong&gt;&lt;/a&gt;: &lt;code&gt;console.ml&lt;/code&gt; now renders task kinds using &lt;code&gt;Eio_runtime_events.pp_event&lt;/code&gt; for unknown event types, and correctly distinguishes cancellation contexts (&lt;code&gt;cc&lt;/code&gt;) from fibers (&lt;code&gt;task&lt;/code&gt;) using new variant patterns from &lt;code&gt;Eio_runtime_events.event&lt;/code&gt; (&lt;a href="https://github.com/ocaml-multicore/meio/issues/72"&gt;ocaml-multicore/meio#72&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/meio/commit/673fdbd110a5695b1ed297d938e1a27233464c68"&gt;673fdbd&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Removed &lt;code&gt;Ctf.with_tracing&lt;/code&gt; requirement from examples&lt;/strong&gt;: &lt;code&gt;burn.ml&lt;/code&gt;, &lt;code&gt;burn_domains.ml&lt;/code&gt;, &lt;code&gt;main.ml&lt;/code&gt;, and &lt;code&gt;zero.ml&lt;/code&gt; no longer need to wrap execution in &lt;code&gt;Ctf.with_tracing&lt;/code&gt;, simplifying example entry points (&lt;a href="https://github.com/ocaml-multicore/meio/issues/72"&gt;ocaml-multicore/meio#72&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/meio/commit/673fdbd110a5695b1ed297d938e1a27233464c68"&gt;673fdbd&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/meio/issues/72" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;CI updated to OCaml 5.3&lt;/strong&gt;&lt;/a&gt;: the CI workflow now targets OCaml 5.3 (from 5.1.1) and uses &lt;code&gt;ocaml/setup-ocaml@v3&lt;/code&gt;, removing custom opam repository overrides and the custom notty pin (&lt;a href="https://github.com/ocaml-multicore/meio/issues/72"&gt;ocaml-multicore/meio#72&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/meio/commit/673fdbd110a5695b1ed297d938e1a27233464c68"&gt;673fdbd&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;Activity this week was confined to &lt;a href="https://github.com/ocaml-multicore/meio"&gt;ocaml-multicore/meio&lt;/a&gt;; all other repositories (eio, domainslib, ocaml-uring, saturn, eio-trace, picos, kcas, ocaml-iomux) recorded no commits, PRs, or issues&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/meio/issues/72"&gt;ocaml-multicore/meio#72&lt;/a&gt; landed Eio 0.14+ compatibility, bringing meio up to date with current Eio API surfaces and removing reliance on &lt;code&gt;Eio.Private.Ctf&lt;/code&gt; internal APIs&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/tmcgilchrist"&gt;Tim McGilchrist&lt;/a&gt; rebased &lt;a href="https://github.com/patricoferris"&gt;Patrick Ferris&lt;/a&gt;'s earlier work from &lt;a href="https://github.com/ocaml-multicore/meio/issues/71"&gt;ocaml-multicore/meio#71&lt;/a&gt; and merged it as &lt;a href="https://github.com/ocaml-multicore/meio/issues/72"&gt;ocaml-multicore/meio#72&lt;/a&gt; (22 files changed)&lt;/li&gt;
+&lt;li&gt;A follow-up issue &lt;a href="https://github.com/ocaml-multicore/meio/issues/73"&gt;ocaml-multicore/meio#73&lt;/a&gt; was opened to track re-enabling screencast generation in CI, which was disabled due to a dependency on a patched &lt;code&gt;notty&lt;/code&gt; library hardcoding terminal size&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;The meio Eio 0.14+ update (&lt;a href="https://github.com/ocaml-multicore/meio/issues/72"&gt;ocaml-multicore/meio#72&lt;/a&gt;) directly tracks the &lt;code&gt;Eio_runtime_events&lt;/code&gt; API stabilised in &lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt; 0.14+, illustrating how downstream tools in the group must follow Eio's evolving public API surface&lt;/li&gt;
+&lt;li&gt;The removal of the private git pin-depends on a custom eio fork in &lt;code&gt;meio.opam&lt;/code&gt; (part of &lt;a href="https://github.com/ocaml-multicore/meio/issues/72"&gt;ocaml-multicore/meio#72&lt;/a&gt;) unblocks standard opam installation, reducing friction for users of the broader multicore tooling ecosystem&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/patricoferris"&gt;Patrick Ferris&lt;/a&gt; commented on &lt;a href="https://github.com/ocaml-multicore/meio/issues/72"&gt;ocaml-multicore/meio#72&lt;/a&gt; thanking &lt;a href="https://github.com/tmcgilchrist"&gt;Tim McGilchrist&lt;/a&gt; for rebasing and landing the Eio 0.14+ compatibility work originally authored in &lt;a href="https://github.com/ocaml-multicore/meio/issues/71"&gt;ocaml-multicore/meio#71&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/meio/issues/72" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Eio API modernisation across the group&lt;/strong&gt;&lt;/a&gt;: the migration in &lt;a href="https://github.com/ocaml-multicore/meio/issues/72"&gt;ocaml-multicore/meio#72&lt;/a&gt; from &lt;code&gt;Eio.Private.Ctf&lt;/code&gt; to &lt;code&gt;Eio_runtime_events&lt;/code&gt; reflects stabilisation of the runtime-events interface in Eio 0.14+; other tools in the group that still reference &lt;code&gt;Eio.Private.*&lt;/code&gt; APIs may face similar migration work&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/meio/issues/73" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;CI infrastructure debt&lt;/strong&gt;&lt;/a&gt;: the screencast generation pipeline in meio was disabled rather than updated (&lt;a href="https://github.com/ocaml-multicore/meio/issues/73"&gt;ocaml-multicore/meio#73&lt;/a&gt;), highlighting a recurring pattern where documentation and tooling CI falls behind library dependency evolution&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Activity this week was limited to ocaml-multicore/meio, which landed Eio 0.14+ compatibility via a migration from deprecated private APIs.</summary><published>2026-02-15T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/multicore/2026/week-6</id><title>Week 6, 2026: Minimal activity with OCaml 5.5 compatibility work and one closed MacOS support PR</title><updated>2026-02-08T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

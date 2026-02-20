@@ -1,5 +1,70 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-dune.xml</id><title>ocaml/dune (Weekly)</title><updated>2026-02-08T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-dune.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/dune</subtitle><entry><id>https://thicket.dev/repos/ocaml-dune/2026/week-6</id><title>Week 6, 2026: High-velocity week with markdown documentation generation, OxCaml .cms support, Windows fixes, extensive RPC refactoring, and sandbox tracing</title><updated>2026-02-08T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-dune.xml</id><title>ocaml/dune (Weekly)</title><updated>2026-02-15T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-dune.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/dune</subtitle><entry><id>https://thicket.dev/repos/ocaml-dune/2026/week-7</id><title>Week 7, 2026: Sandbox improvements for tests and Melange, new trace features, memo deadlock fix, and odoc config generation.</title><updated>2026-02-15T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Active week with Melange sandboxing, trace improvements, jsof&lt;/em&gt;ocaml incremental build refactors, and 3.21.1 release prep ongoing.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13632" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Newly opened and unmerged PRs this week&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/rlepigre-skylabs-ai"&gt;Rodolphe Lepigre&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/dune/issues/13632"&gt;#13632&lt;/a&gt; adding expected-output tests for Rocq theories (&lt;code&gt;.v&lt;/code&gt; files with &lt;code&gt;.expected&lt;/code&gt; counterparts trigger diff-based testing under &lt;code&gt;runtest&lt;/code&gt;); &lt;a href="https://github.com/vouillon"&gt;Jérôme Vouillon&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/dune/issues/13611"&gt;#13611&lt;/a&gt; to make jsoo library archive rule generation demand-driven instead of upfront, with follow-on &lt;a href="https://github.com/ocaml/dune/issues/13612"&gt;#13612&lt;/a&gt; for per-cmo incremental JS compilation and &lt;a href="https://github.com/ocaml/dune/issues/13613"&gt;#13613&lt;/a&gt; to move jsoo config management out of dune; &lt;a href="https://github.com/vouillon"&gt;Jérôme Vouillon&lt;/a&gt; also opened &lt;a href="https://github.com/ocaml/dune/issues/13621"&gt;#13621&lt;/a&gt; for workspace-wide sharing of standalone jsoo runtimes, reducing redundant build artifacts; &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; has &lt;a href="https://github.com/ocaml/dune/issues/13466"&gt;#13466&lt;/a&gt; (draft) to make variables of unknown packages evaluate to empty strings; &lt;a href="https://github.com/punchagan"&gt;Puneeth Chaganti&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/dune/issues/13620"&gt;#13620&lt;/a&gt; (draft) to use &lt;code&gt;Bin.add_exe&lt;/code&gt; instead of manual concatenation; &lt;a href="https://github.com/gridbugs"&gt;Stephen Sherratt&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/dune/issues/13592"&gt;#13592&lt;/a&gt; to recognize default dune build commands in lockfiles, a step toward building dependencies in-process; &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/dune/issues/13598"&gt;#13598&lt;/a&gt; (draft) as a test reproducing unnecessary git re-fetching from &lt;a href="https://github.com/ocaml/dune/issues/13323"&gt;#13323&lt;/a&gt;; &lt;a href="https://github.com/shonfeder"&gt;Shon Feder&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/dune/issues/13627"&gt;#13627&lt;/a&gt; to merge the 3.21.1 release branch back into main&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13557" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;3.21.1 release preparation&lt;/strong&gt;&lt;/a&gt; is tracked in &lt;a href="https://github.com/ocaml/dune/issues/13557"&gt;#13557&lt;/a&gt;; the release branch was prepared with backport PRs (&lt;a href="https://github.com/ocaml/dune/issues/13560"&gt;#13560&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13561"&gt;#13561&lt;/a&gt;); the earlier merge PR &lt;a href="https://github.com/ocaml/dune/issues/13602"&gt;#13602&lt;/a&gt; was superseded by &lt;a href="https://github.com/ocaml/dune/issues/13627"&gt;#13627&lt;/a&gt; after team discussion on the correct merge strategy for release branches&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13618" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Trace subsystem&lt;/strong&gt;&lt;/a&gt; saw a cluster of fixes and features merged: file-write events (&lt;a href="https://github.com/ocaml/dune/issues/13618"&gt;#13618&lt;/a&gt;), ordered at-exit hooks (&lt;a href="https://github.com/ocaml/dune/issues/13608"&gt;#13608&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13609"&gt;#13609&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13605"&gt;#13605&lt;/a&gt;), &lt;code&gt;--follow&lt;/code&gt; exit detection fix (&lt;a href="https://github.com/ocaml/dune/issues/13607"&gt;#13607&lt;/a&gt;), and handling of JSON action trace payloads (&lt;a href="https://github.com/ocaml/dune/issues/13604"&gt;#13604&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13588" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Rev store / package management&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; merged a fix preventing false cache hits in the git rev store (&lt;a href="https://github.com/ocaml/dune/issues/13588"&gt;#13588&lt;/a&gt;); the fix for extra files handling with autolocking (&lt;a href="https://github.com/ocaml/dune/issues/13595"&gt;#13595&lt;/a&gt;) remains open; &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; also added a factored-out git test utilities module in preparation for additional rev store tests (&lt;a href="https://github.com/ocaml/dune/issues/13593"&gt;#13593&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13414" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OxCaml / parameterised libraries&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/ocaml/dune/issues/13414"&gt;#13414&lt;/a&gt; by &lt;a href="https://github.com/art-w"&gt;@art-w&lt;/a&gt; adding jsoo support for OxCaml parameterised libraries is unmerged and awaiting review, now unblocked by oxcaml opam-repository update&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13601" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Test suite maintenance&lt;/strong&gt;&lt;/a&gt;: several cleanup PRs removing &lt;code&gt;--display short&lt;/code&gt; flags from tests (&lt;a href="https://github.com/ocaml/dune/issues/13601"&gt;#13601&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13614"&gt;#13614&lt;/a&gt;) and removing unnecessary temp dir settings (&lt;a href="https://github.com/ocaml/dune/issues/13615"&gt;#13615&lt;/a&gt;) were merged by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13610" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Unification of binary distribution&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/Leonidas-from-XIV"&gt;Marek Kubica&lt;/a&gt; opened issue &lt;a href="https://github.com/ocaml/dune/issues/13610"&gt;#13610&lt;/a&gt; proposing to consolidate &lt;code&gt;dune-bin&lt;/code&gt; and &lt;code&gt;binary-distribution&lt;/code&gt; into a single install mechanism with one script covering both nightlies and stable releases&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Sandbox improvements for tests and Melange, new trace features, memo deadlock fix, and odoc config generation.</summary><published>2026-02-15T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-dune/2026/week-6</id><title>Week 6, 2026: High-velocity week with markdown documentation generation, OxCaml .cms support, Windows fixes, extensive RPC refactoring, and sandbox tracing</title><updated>2026-02-08T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

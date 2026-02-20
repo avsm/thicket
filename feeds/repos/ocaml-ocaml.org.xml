@@ -1,5 +1,73 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.org.xml</id><title>ocaml/ocaml.org (Weekly)</title><updated>2026-02-08T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.org.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml.org</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml.org/2026/week-6</id><title>Week 6, 2026: OCaml history page restored, security grants announced, platform releases added, and internationalization work continued</title><updated>2026-02-08T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.org.xml</id><title>ocaml/ocaml.org (Weekly)</title><updated>2026-02-15T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.org.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml.org</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml.org/2026/week-7</id><title>Week 7, 2026: Extensive tutorial and documentation quality improvements alongside scraper infrastructure enhancements.</title><updated>2026-02-15T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Several open PRs pursue documentation quality and i18n, while merged work fixed tutorials, dead code, and scraper infrastructure.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3493" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Newly opened PRs awaiting review&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/bbatsov"&gt;Bozhidar Batsov&lt;/a&gt; has three open cleanup PRs — typo and lint fixes in root-level and developer docs (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3493"&gt;#3493&lt;/a&gt;), lint fixes across exercise files including a file rename (&lt;code&gt;084_minimal_splanning_tree.md&lt;/code&gt; → &lt;code&gt;084_minimal_spanning_tree.md&lt;/code&gt;) (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3494"&gt;#3494&lt;/a&gt;), and lint fixes across smaller data directories (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3495"&gt;#3495&lt;/a&gt;), all awaiting rebase and final review after &lt;a href="https://github.com/ocaml/ocaml.org/issues/3500"&gt;#3500&lt;/a&gt; landed.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3509" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Emacs editor setup tutorial&lt;/strong&gt;&lt;/a&gt; update opened by &lt;a href="https://github.com/bbatsov"&gt;Bozhidar Batsov&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3509"&gt;#3509&lt;/a&gt;) cleans up the Emacs section, streamlines mode recommendations toward Eglot + ocamllsp, and reduces mentions of legacy modes; under active review discussion with &lt;a href="https://github.com/cuihtlauac"&gt;Cuihtlauac Alvarado&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3498" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Automated platform releases PR&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3498"&gt;#3498&lt;/a&gt;) opened by &lt;code&gt;github-actions&lt;/code&gt; adding 28 lines of new platform release data is open and awaiting merge.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3238" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Internationalization initiative&lt;/strong&gt;&lt;/a&gt; continues with two draft/open PRs by &lt;a href="https://github.com/mt-caret"&gt;mt_caret&lt;/a&gt;: the foundational i18n infrastructure adding language frontmatter and a language selector (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3238"&gt;#3238&lt;/a&gt;) and an extension adding more Japanese translations of getting-started pages (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3489"&gt;#3489&lt;/a&gt;, draft); &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt; raised sustainability questions about maintaining translations long-term in the discussion.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3421" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Neovim plugin installation instructions&lt;/strong&gt;&lt;/a&gt; update (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3421"&gt;#3421&lt;/a&gt;) by &lt;a href="https://github.com/Lucccyo"&gt;Charlène_Gros&lt;/a&gt; remains open with merge conflicts; &lt;a href="https://github.com/bbatsov"&gt;Bozhidar Batsov&lt;/a&gt; suggested pointing directly to the upstream &lt;code&gt;ocaml.nvim&lt;/code&gt; docs to avoid drift.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3506" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Suggestion for module TOC&lt;/strong&gt;&lt;/a&gt; filed by &lt;a href="https://github.com/krtab"&gt;Arthur Carcano&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3506"&gt;#3506&lt;/a&gt;) proposes adding a clickable table of contents for functions in module documentation pages, similar to the sidebar navigation on docs.rs.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3491" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Comprehensive tutorial quality sweep&lt;/strong&gt;&lt;/a&gt; merged: &lt;a href="https://github.com/bbatsov"&gt;Bozhidar Batsov&lt;/a&gt; fixed ~100 typos and grammar issues across 41 tutorial files (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3491"&gt;#3491&lt;/a&gt;) and then resolved all 469 markdownlint violations across tutorials including adding code block language specifiers, fixing heading levels, and improving link text (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3492"&gt;#3492&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3500" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Mechanical markdown lint batch&lt;/strong&gt;&lt;/a&gt; extracted and merged by &lt;a href="https://github.com/cuihtlauac"&gt;Cuihtlauac Alvarado&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3500"&gt;#3500&lt;/a&gt;): one commit per lint rule (MD025/MD001 heading levels across 96 files, MD009 trailing whitespace across 13 files, MD047 missing final newlines across 117 files), co-authored with &lt;a href="https://github.com/bbatsov"&gt;Bozhidar Batsov&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3496" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Dead code removal&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/bbatsov"&gt;Bozhidar Batsov&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3496"&gt;#3496&lt;/a&gt;) removed unused &lt;code&gt;Url.blog_post&lt;/code&gt; function and a stale &lt;code&gt;planet-local-blogs&lt;/code&gt; source_tree dependency from the dune build.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3505" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Small grammar fix&lt;/strong&gt;&lt;/a&gt; in the language section merged by &lt;a href="https://github.com/joserlopes"&gt;José Lopes&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3505"&gt;#3505&lt;/a&gt;), correcting "this correspond" to "these correspond" for plural agreement.&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Extensive tutorial and documentation quality improvements alongside scraper infrastructure enhancements.</summary><published>2026-02-15T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml.org/2026/week-6</id><title>Week 6, 2026: OCaml history page restored, security grants announced, platform releases added, and internationalization work continued</title><updated>2026-02-08T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

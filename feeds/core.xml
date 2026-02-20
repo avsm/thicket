@@ -1,5 +1,106 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/core.xml</id><title>OCaml Core (Weekly)</title><updated>2026-02-08T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/core.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Core OCaml language, compiler, and essential tooling</subtitle><entry><id>https://thicket.dev/groups/core/2026/week-6</id><title>Week 6, 2026: Module-dependent functions merged, 20 new PRs opened covering platform support and stdlib additions</title><updated>2026-02-08T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/core.xml</id><title>OCaml Core (Weekly)</title><updated>2026-02-15T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/core.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Core OCaml language, compiler, and essential tooling</subtitle><entry><id>https://thicket.dev/groups/core/2026/week-7</id><title>Week 7, 2026: GC idle phase landed, String.drop_prefix/suffix added, GADT errors improved, and RFC #59 on val declarations discussed.</title><updated>2026-02-15T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;String.drop_prefix&lt;/code&gt; and &lt;code&gt;String.drop_suffix&lt;/code&gt;&lt;/strong&gt; added to the stdlib, returning &lt;code&gt;Some t&lt;/code&gt; when the string matches the given prefix/suffix or &lt;code&gt;None&lt;/code&gt; otherwise (&lt;a href="https://github.com/ocaml/ocaml/issues/14487"&gt;ocaml/ocaml#14487&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14365" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Major GC idle phase&lt;/strong&gt;&lt;/a&gt; merged: adds an &lt;code&gt;Idle&lt;/code&gt; phase allowing the GC to skip unnecessary work between cycles, addressing CPU usage regressions for OCaml 5.x workloads (&lt;a href="https://github.com/ocaml/ocaml/issues/14365"&gt;ocaml/ocaml#14365&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14142" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Improved GADT error messages&lt;/strong&gt;&lt;/a&gt; now include hints about type variables introduced by GADT equations when they appear in error output without context (e.g. &lt;code&gt;$0&lt;/code&gt;, &lt;code&gt;$1&lt;/code&gt;, &lt;code&gt;$2&lt;/code&gt;) (&lt;a href="https://github.com/ocaml/ocaml/issues/14142"&gt;ocaml/ocaml#14142&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;lazy v&lt;/code&gt; optimization for structured constants&lt;/strong&gt;: expressions like &lt;code&gt;lazy (Cons (x, s))&lt;/code&gt; are now optimized at compile time, achieving ~2.7x speedup in benchmarks vs. OCaml 5.3 (&lt;a href="https://github.com/ocaml/ocaml/issues/13919"&gt;ocaml/ocaml#13919&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;ocamltest&lt;/code&gt; conditionals&lt;/strong&gt; &lt;code&gt;&amp;&amp;&lt;/code&gt;, &lt;code&gt;||&lt;/code&gt;, and &lt;code&gt;if/then/else&lt;/code&gt; added to the test statement language for platform-conditional test setup (&lt;a href="https://github.com/ocaml/ocaml/issues/14532"&gt;ocaml/ocaml#14532&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;ocamltest&lt;/code&gt; &lt;code&gt;system&lt;/code&gt; variable&lt;/strong&gt; introduced, exposing the configure-time system name (e.g. &lt;code&gt;macosx&lt;/code&gt;, &lt;code&gt;linux&lt;/code&gt;, &lt;code&gt;freebsd&lt;/code&gt;) for use in test conditions (&lt;a href="https://github.com/ocaml/ocaml/issues/14545"&gt;ocaml/ocaml#14545&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14205" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Inclusion check error messages&lt;/strong&gt;&lt;/a&gt; improved: error messages now reference the original source file rather than ppx-generated artifacts (&lt;a href="https://github.com/ocaml/ocaml/issues/14205"&gt;ocaml/ocaml#14205&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;git-archive&lt;/code&gt; export-ignore&lt;/strong&gt; merged: removes testsuite, manual, and other files from GitHub-generated source archives, shrinking opam installation archives by ~25% and saving ~100 seconds on first-time Windows installs (&lt;a href="https://github.com/ocaml/ocaml/issues/14152"&gt;ocaml/ocaml#14152&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;Scannable_*&lt;/code&gt; macros&lt;/strong&gt; replace raw &lt;code&gt;No_scan_tag&lt;/code&gt; comparisons throughout the runtime, reducing direction/equality errors and fixing a latent bug in &lt;code&gt;weak.c&lt;/code&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14493"&gt;ocaml/ocaml#14493&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;Load_path.remove_dir&lt;/code&gt; bug fixed&lt;/strong&gt; in the toplevel: calling &lt;code&gt;#remove_directory&lt;/code&gt; previously destroyed the &lt;code&gt;auto_include_callback&lt;/code&gt;, causing &lt;code&gt;open Str&lt;/code&gt; to fail after directory manipulation (&lt;a href="https://github.com/ocaml/ocaml/issues/14551"&gt;ocaml/ocaml#14551&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;Activity in &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt; was broad, spanning GC improvements, stdlib additions, tooling overhauls, type system fixes, and platform-specific backend work&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/RFCs"&gt;ocaml/RFCs&lt;/a&gt; saw focused discussion on &lt;a href="https://github.com/ocaml/RFCs/issues/59"&gt;ocaml/RFCs#59&lt;/a&gt; (&lt;code&gt;val&lt;/code&gt; declarations in structures), with debate around shadowing semantics and bidirectional type checking implications&lt;/li&gt;
+&lt;li&gt;Key merges in &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt; this week include the GC idle phase (&lt;a href="https://github.com/ocaml/ocaml/issues/14365"&gt;ocaml/ocaml#14365&lt;/a&gt;), &lt;code&gt;String.drop_prefix/suffix&lt;/code&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14487"&gt;ocaml/ocaml#14487&lt;/a&gt;), &lt;code&gt;lazy&lt;/code&gt; structured constant optimization (&lt;a href="https://github.com/ocaml/ocaml/issues/13919"&gt;ocaml/ocaml#13919&lt;/a&gt;), and &lt;code&gt;ocamltest&lt;/code&gt; DSL extensions (&lt;a href="https://github.com/ocaml/ocaml/issues/14532"&gt;ocaml/ocaml#14532&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14545"&gt;ocaml/ocaml#14545&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Fourteen contributors were active in &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt;; &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; also connects both repositories as the author of &lt;a href="https://github.com/ocaml/RFCs/issues/59"&gt;ocaml/RFCs#59&lt;/a&gt; and a reviewer in &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;OxCaml upstream contributions visible in several merged PRs: &lt;a href="https://github.com/ocaml/ocaml/issues/14493"&gt;ocaml/ocaml#14493&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14492"&gt;ocaml/ocaml#14492&lt;/a&gt;, and &lt;a href="https://github.com/ocaml/ocaml/issues/14205"&gt;ocaml/ocaml#14205&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; is active in both repositories: he is the author of &lt;a href="https://github.com/ocaml/RFCs/issues/59"&gt;ocaml/RFCs#59&lt;/a&gt; on &lt;code&gt;val&lt;/code&gt; declarations, and this week merged the &lt;code&gt;lazy&lt;/code&gt; structured constant optimization (&lt;a href="https://github.com/ocaml/ocaml/issues/13919"&gt;ocaml/ocaml#13919&lt;/a&gt;) and &lt;code&gt;ocamltest&lt;/code&gt; conditionals (&lt;a href="https://github.com/ocaml/ocaml/issues/14532"&gt;ocaml/ocaml#14532&lt;/a&gt;) in &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;The RFC &lt;a href="https://github.com/ocaml/RFCs/issues/59"&gt;ocaml/RFCs#59&lt;/a&gt; on &lt;code&gt;val&lt;/code&gt; declarations is conceptually linked to ongoing typechecking improvements in &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt;, including &lt;a href="https://github.com/johnyob"&gt;Alistair&lt;/a&gt;'s &lt;code&gt;let rec&lt;/code&gt; approximation series (&lt;a href="https://github.com/ocaml/ocaml/issues/14517"&gt;ocaml/ocaml#14517&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14537"&gt;ocaml/ocaml#14537&lt;/a&gt;) and &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt;'s error trace restructuring (&lt;a href="https://github.com/ocaml/ocaml/issues/14536"&gt;ocaml/ocaml#14536&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;val&lt;/code&gt; shadowing semantics discussed in &lt;a href="https://github.com/ocaml/RFCs/issues/59"&gt;ocaml/RFCs#59&lt;/a&gt; have direct implications for bidirectional type propagation from &lt;code&gt;.mli&lt;/code&gt; files to &lt;code&gt;.ml&lt;/code&gt; implementations, a direction that several &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt; typing PRs are incrementally enabling&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;Fun.todo&lt;/code&gt; API design&lt;/strong&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14525"&gt;ocaml/ocaml#14525&lt;/a&gt;) generated discussion on encoding call location in the exception payload: &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; argued for payload inclusion for cases without backtraces, &lt;a href="https://github.com/dbuenzli"&gt;Daniel Bünzli&lt;/a&gt; wanted an abstract type to avoid committing to a representation, and &lt;a href="https://github.com/yawaramin"&gt;Yawar Amin&lt;/a&gt; argued for a simple &lt;code&gt;Todo of string&lt;/code&gt; with manual &lt;code&gt;~__LOC__&lt;/code&gt; passing; the PR now uses an abstract &lt;code&gt;todo&lt;/code&gt; type marked deprecated&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14533" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;GC pacing defaults in OCaml 5.5&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14533"&gt;ocaml/ocaml#14533&lt;/a&gt;) discussed after &lt;a href="https://github.com/toots"&gt;Romain Beauxis&lt;/a&gt; reported significantly higher CPU usage than 4.14 for streaming workloads with large custom blocks; &lt;code&gt;custom_major_ratio = 250&lt;/code&gt; was found to restore near-4.14 behavior, and the merged GC idle phase (&lt;a href="https://github.com/ocaml/ocaml/issues/14365"&gt;ocaml/ocaml#14365&lt;/a&gt;) is expected to help further&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;let module&lt;/code&gt; value restriction regression&lt;/strong&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14554"&gt;ocaml/ocaml#14554&lt;/a&gt;) reported by &lt;a href="https://github.com/anmonteiro"&gt;Antonio Nuno Monteiro&lt;/a&gt; in OCaml 5.5 related to &lt;a href="https://github.com/ocaml/ocaml/issues/13839"&gt;ocaml/ocaml#13839&lt;/a&gt;; &lt;a href="https://github.com/nojb"&gt;Nicolás Ojeda Bär&lt;/a&gt; confirmed it should not break previously-typechecking code and looped in &lt;a href="https://github.com/samsa1"&gt;Samuel Vivien&lt;/a&gt; and &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14534" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;AI-assisted bug finding&lt;/strong&gt;&lt;/a&gt; highlighted in multiple PRs: &lt;a href="https://github.com/hhugo"&gt;@hhugo&lt;/a&gt; used Claude to find the &lt;code&gt;PUSHENVACC4&lt;/code&gt; off-by-one (&lt;a href="https://github.com/ocaml/ocaml/issues/14534"&gt;ocaml/ocaml#14534&lt;/a&gt;) and several other bytecode optimizations, generating discussion on test methodology for AI-discovered fixes&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;RFC #59 &lt;code&gt;val&lt;/code&gt; shadowing semantics&lt;/strong&gt; (&lt;a href="https://github.com/ocaml/RFCs/issues/59"&gt;ocaml/RFCs#59&lt;/a&gt;): &lt;a href="https://github.com/stedolan"&gt;Stephen Dolan&lt;/a&gt; raised concerns that the RFC is ambiguous about whether &lt;code&gt;val&lt;/code&gt; can be shadowed by a plain &lt;code&gt;let&lt;/code&gt; or &lt;code&gt;include&lt;/code&gt;, arguing that disallowing shadowing would make bidirectional type propagation practical; &lt;a href="https://github.com/Niols"&gt;Nicolas Jeannerod&lt;/a&gt; responded that &lt;code&gt;val&lt;/code&gt; should not be shadowable, interpreting it as attached to the last binding of that name&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/13860" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Readable multi-line quoted string literals&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/13860"&gt;ocaml/ocaml#13860&lt;/a&gt;) saw renewed discussion with &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; proposing &lt;code&gt;{foo\ ... |foo}&lt;/code&gt; syntax and &lt;a href="https://github.com/dbuenzli"&gt;Daniel Bünzli&lt;/a&gt; discussing the &lt;code&gt;odoc&lt;/code&gt; specification for stripping leading whitespace&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Floating attributes with &lt;code&gt;-no-alias-deps&lt;/code&gt; ignored&lt;/strong&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/11867"&gt;ocaml/ocaml#11867&lt;/a&gt;) saw &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt; propose an &lt;code&gt;[@@inherit alert]&lt;/code&gt; attribute on module aliases as a potential solution&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14524" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;s390x architecture receiving sustained attention&lt;/strong&gt;&lt;/a&gt;: three separate PRs this week from &lt;a href="https://github.com/Zaneham"&gt;Zane Hambly&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14524"&gt;ocaml/ocaml#14524&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14547"&gt;ocaml/ocaml#14547&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14514"&gt;ocaml/ocaml#14514&lt;/a&gt;) plus an existing CFI fix (&lt;a href="https://github.com/ocaml/ocaml/issues/14500"&gt;ocaml/ocaml#14500&lt;/a&gt;) show growing community effort to bring s390x to full feature parity with other native backends&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14534" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;AI-assisted code review&lt;/strong&gt;&lt;/a&gt; becoming visible in the codebase: both the &lt;code&gt;PUSHENVACC4&lt;/code&gt; fix (&lt;a href="https://github.com/ocaml/ocaml/issues/14534"&gt;ocaml/ocaml#14534&lt;/a&gt;) and the subsequently closed &lt;code&gt;Complex.sqrt&lt;/code&gt; investigation (&lt;a href="https://github.com/ocaml/ocaml/issues/14535"&gt;ocaml/ocaml#14535&lt;/a&gt;) were found by &lt;a href="https://github.com/hhugo"&gt;@hhugo&lt;/a&gt; using Claude, prompting discussion about test methodology for AI-discovered fixes&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14394" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Typing infrastructure refactoring&lt;/strong&gt;&lt;/a&gt; gaining momentum with a multi-PR series by &lt;a href="https://github.com/johnyob"&gt;Alistair&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14394"&gt;ocaml/ocaml#14394&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14538"&gt;ocaml/ocaml#14538&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14517"&gt;ocaml/ocaml#14517&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14537"&gt;ocaml/ocaml#14537&lt;/a&gt;) targeting &lt;code&gt;let rec&lt;/code&gt; approximation, alongside &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt;'s error trace restructuring (&lt;a href="https://github.com/ocaml/ocaml/issues/14536"&gt;ocaml/ocaml#14536&lt;/a&gt;) and the RFC-level discussion in &lt;a href="https://github.com/ocaml/RFCs/issues/59"&gt;ocaml/RFCs#59&lt;/a&gt; on &lt;code&gt;val&lt;/code&gt; declarations&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;ocamltest&lt;/code&gt; DSL expansion&lt;/strong&gt; continuing: &lt;code&gt;if/then/else&lt;/code&gt; and &lt;code&gt;&amp;&amp;&lt;/code&gt;/&lt;code&gt;||&lt;/code&gt; conditionals (&lt;a href="https://github.com/ocaml/ocaml/issues/14532"&gt;ocaml/ocaml#14532&lt;/a&gt;) and the new &lt;code&gt;system&lt;/code&gt; variable (&lt;a href="https://github.com/ocaml/ocaml/issues/14545"&gt;ocaml/ocaml#14545&lt;/a&gt;) show incremental improvement of the test framework to reduce boilerplate in platform-specific tests&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14493" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OxCaml upstream contributions&lt;/strong&gt;&lt;/a&gt; visible in several merged PRs: &lt;code&gt;Scannable_*&lt;/code&gt; macros (&lt;a href="https://github.com/ocaml/ocaml/issues/14493"&gt;ocaml/ocaml#14493&lt;/a&gt;), &lt;code&gt;Fix Obj.dup&lt;/code&gt; on closures (&lt;a href="https://github.com/ocaml/ocaml/issues/14492"&gt;ocaml/ocaml#14492&lt;/a&gt;), and inclusion check error improvement (&lt;a href="https://github.com/ocaml/ocaml/issues/14205"&gt;ocaml/ocaml#14205&lt;/a&gt;) were all noted as upstreamed from &lt;code&gt;oxcaml/oxcaml&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>GC idle phase landed, String.drop_prefix/suffix added, GADT errors improved, and RFC #59 on val declarations discussed.</summary><published>2026-02-15T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2026/week-6</id><title>Week 6, 2026: Module-dependent functions merged, 20 new PRs opened covering platform support and stdlib additions</title><updated>2026-02-08T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
@@ -5707,7 +5808,7 @@
 &lt;li&gt;&lt;strong class="achievement"&gt;Cross-platform compatibility&lt;/strong&gt; receiving increased attention with Windows API modernization and Unix platform improvements&lt;/li&gt;
 &lt;li&gt;&lt;strong class="achievement"&gt;Language design refinement&lt;/strong&gt; through community feedback on practical applications of new syntax features like raw identifiers&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Runtime improvements and bytecode optimization merged alongside language syntax discussions for raw identifiers</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2024/week-42</id><title>Week 42, 2024: Five PRs merged in ocaml/ocaml including new Thread.set_current_thread_name API and compiler improvements</title><updated>2026-02-09T17:57:12.524572+00:00</updated><content type="html">
+</content><link href="https://thicket.dev/"/><summary>Runtime improvements and bytecode optimization merged alongside language syntax discussions for raw identifiers</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2024/week-42</id><title>Week 42, 2024: Five PRs merged in ocaml/ocaml including new Thread.set_current_thread_name API and compiler improvements</title><updated>2026-02-20T12:16:59.089232+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
