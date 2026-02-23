@@ -1,5 +1,100 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/core.xml</id><title>OCaml Core (Weekly)</title><updated>2026-02-15T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/core.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Core OCaml language, compiler, and essential tooling</subtitle><entry><id>https://thicket.dev/groups/core/2026/week-7</id><title>Week 7, 2026: GC idle phase landed, String.drop_prefix/suffix added, GADT errors improved, and RFC #59 on val declarations discussed.</title><updated>2026-02-15T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/core.xml</id><title>OCaml Core (Weekly)</title><updated>2026-02-22T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/core.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Core OCaml language, compiler, and essential tooling</subtitle><entry><id>https://thicket.dev/groups/core/2026/week-8</id><title>Week 8, 2026: 24 PRs merged with exhaustiveness checking for ocamllex, new Array fold functions, and GC improvements.</title><updated>2026-02-22T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14448" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Exhaustiveness checking for ocamllex regular expressions&lt;/strong&gt;&lt;/a&gt; - If a rule does not match some input, an example of nonmatching input is shown in a warning message. The new warning can be disabled using &lt;code&gt;-w -missing-case&lt;/code&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14448"&gt;ocaml/ocaml#14448&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Array.fold&lt;em&gt;left2 and Array.fold&lt;/em&gt;right2 functions&lt;/strong&gt; - New standard library functions that fold over two arrays simultaneously, raising Invalid_argument if arrays have different lengths (&lt;a href="https://github.com/ocaml/ocaml/issues/14553"&gt;ocaml/ocaml#14553&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Improved runtime clarity with Scannable&lt;em&gt;* macros&lt;/strong&gt; - Replaced all comparisons against No&lt;/em&gt;scan_tag with macros for better legibility and correctness, fixing one bug in weak.c (&lt;a href="https://github.com/ocaml/ocaml/issues/14493"&gt;ocaml/ocaml#14493&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14576" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Iarray API consistency&lt;/strong&gt;&lt;/a&gt; - Updated Iarray module to expose 'a Iarray.t in function types rather than 'a iarray, making the built-in iarray type an implementation detail (&lt;a href="https://github.com/ocaml/ocaml/issues/14576"&gt;ocaml/ocaml#14576&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14152" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Improved installation time in opam&lt;/strong&gt;&lt;/a&gt; - Shrinking Git-generated source archives to reduce installation time (&lt;a href="https://github.com/ocaml/ocaml/issues/14152"&gt;ocaml/ocaml#14152&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14558" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Fix for --disable-unix-lib build&lt;/strong&gt;&lt;/a&gt; - ocamltest now builds correctly when configured with --disable-unix-lib (&lt;a href="https://github.com/ocaml/ocaml/issues/14558"&gt;ocaml/ocaml#14558&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14573" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Linux ppc64 architecture detection&lt;/strong&gt;&lt;/a&gt; - Proper detection for Linux distros targeting ELFv1 (like Debian), correctly setting the arch configure variable (&lt;a href="https://github.com/ocaml/ocaml/issues/14573"&gt;ocaml/ocaml#14573&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14448" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;24 PRs merged&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt; with major features including exhaustiveness checking for ocamllex (&lt;a href="https://github.com/ocaml/ocaml/issues/14448"&gt;ocaml/ocaml#14448&lt;/a&gt;), new Array functions (&lt;a href="https://github.com/ocaml/ocaml/issues/14553"&gt;ocaml/ocaml#14553&lt;/a&gt;), and GC improvements (&lt;a href="https://github.com/ocaml/ocaml/issues/14365"&gt;ocaml/ocaml#14365&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;18 new PRs opened&lt;/strong&gt; covering runtime optimizations, stdlib additions, and architecture improvements in &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14574" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;5 new issues reported&lt;/strong&gt;&lt;/a&gt; including a regression in 5.4.1 on aarch64 (&lt;a href="https://github.com/ocaml/ocaml/issues/14574"&gt;ocaml/ocaml#14574&lt;/a&gt;) and GC pacing discussion (&lt;a href="https://github.com/ocaml/ocaml/issues/14533"&gt;ocaml/ocaml#14533&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/RFCs/issues/61" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Documentation maintenance&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/ocaml/RFCs"&gt;ocaml/RFCs&lt;/a&gt; with improved contributor image rendering in Committee.md (&lt;a href="https://github.com/ocaml/RFCs/issues/61"&gt;ocaml/RFCs#61&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Strong community participation&lt;/strong&gt; with contributions from &lt;a href="https://github.com/bbatsov"&gt;Bozhidar Batsov&lt;/a&gt; (4 PRs), &lt;a href="https://github.com/damiendoligez"&gt;Damien Doligez&lt;/a&gt; (4 PRs), &lt;a href="https://github.com/tmcgilchrist"&gt;Tim McGilchrist&lt;/a&gt; (3 PRs), and &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; (2 PRs)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14408" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Shared contributor activity&lt;/strong&gt;&lt;/a&gt; - &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; contributed both to &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt; with dune improvements (&lt;a href="https://github.com/ocaml/ocaml/issues/14408"&gt;ocaml/ocaml#14408&lt;/a&gt;) and to &lt;a href="https://github.com/ocaml/RFCs"&gt;ocaml/RFCs&lt;/a&gt; with committee documentation fixes (&lt;a href="https://github.com/ocaml/RFCs/issues/61"&gt;ocaml/RFCs#61&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/13839" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Review coordination&lt;/strong&gt;&lt;/a&gt; - &lt;a href="https://github.com/nojb"&gt;Nicolás Ojeda Bär&lt;/a&gt; actively reviewed and merged work across both repositories, contributing to &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt; parser improvements (&lt;a href="https://github.com/ocaml/ocaml/issues/13839"&gt;ocaml/ocaml#13839&lt;/a&gt;) and maintaining &lt;a href="https://github.com/ocaml/RFCs"&gt;ocaml/RFCs&lt;/a&gt; documentation (&lt;a href="https://github.com/ocaml/RFCs/issues/61"&gt;ocaml/RFCs#61&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14533" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;GC pacing and default parameters in 5.5&lt;/strong&gt;&lt;/a&gt; - Active discussion about performance characteristics and tuning parameters for the garbage collector in upcoming releases (&lt;a href="https://github.com/ocaml/ocaml/issues/14533"&gt;ocaml/ocaml#14533&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14574" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Regression in 5.4.1 on aarch64&lt;/strong&gt;&lt;/a&gt; - Investigation of assembler failure with "Error: immediate out of range" when rebuilding libguestfs, traced to SELinux permissions (&lt;a href="https://github.com/ocaml/ocaml/issues/14574"&gt;ocaml/ocaml#14574&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14516" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;C API function declarations guarantees&lt;/strong&gt;&lt;/a&gt; - Developer discussion about guarantees and contracts for C API function declarations (&lt;a href="https://github.com/ocaml/ocaml/issues/14516"&gt;ocaml/ocaml#14516&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14557" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Uncaught exception with parameterised classes&lt;/strong&gt;&lt;/a&gt; - Fatal error regression since 4.14.0 when using certain class patterns, under investigation (&lt;a href="https://github.com/ocaml/ocaml/issues/14557"&gt;ocaml/ocaml#14557&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/RFCs/issues/61" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;GitHub avatar image rendering&lt;/strong&gt;&lt;/a&gt; - Technical discussion between &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; and &lt;a href="https://github.com/nojb"&gt;Nicolás Ojeda Bär&lt;/a&gt; about GitHub's inconsistent handling of size parameters for avatar images (&lt;a href="https://github.com/ocaml/RFCs/issues/61"&gt;ocaml/RFCs#61&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14555" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Documentation quality focus&lt;/strong&gt;&lt;/a&gt; - Multiple PRs across the week improving stdlib documentation accuracy, with &lt;a href="https://github.com/bbatsov"&gt;Bozhidar Batsov&lt;/a&gt; leading efforts to fix typos and add missing @since annotations (&lt;a href="https://github.com/ocaml/ocaml/issues/14555"&gt;ocaml/ocaml#14555&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14560"&gt;ocaml/ocaml#14560&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14561"&gt;ocaml/ocaml#14561&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14563"&gt;ocaml/ocaml#14563&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14567"&gt;ocaml/ocaml#14567&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14365" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Runtime performance and clarity&lt;/strong&gt;&lt;/a&gt; - Continued work on GC improvements with Idle phase for major GC (&lt;a href="https://github.com/ocaml/ocaml/issues/14365"&gt;ocaml/ocaml#14365&lt;/a&gt;), faster minor GC (&lt;a href="https://github.com/ocaml/ocaml/issues/14571"&gt;ocaml/ocaml#14571&lt;/a&gt;), and code clarity improvements with Scannable_* macros (&lt;a href="https://github.com/ocaml/ocaml/issues/14493"&gt;ocaml/ocaml#14493&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14573" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Multi-architecture expansion&lt;/strong&gt;&lt;/a&gt; - Growing support for ppc64 (&lt;a href="https://github.com/ocaml/ocaml/issues/14573"&gt;ocaml/ocaml#14573&lt;/a&gt;), s390x (&lt;a href="https://github.com/ocaml/ocaml/issues/14524"&gt;ocaml/ocaml#14524&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14547"&gt;ocaml/ocaml#14547&lt;/a&gt;), and aarch64 platforms with native implementations and architecture-specific fixes&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14565" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Build system modernization&lt;/strong&gt;&lt;/a&gt; - Ongoing improvements to configure scripts, dependency generation, and CI infrastructure with timeout increases (&lt;a href="https://github.com/ocaml/ocaml/issues/14565"&gt;ocaml/ocaml#14565&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14537" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Type system refinements&lt;/strong&gt;&lt;/a&gt; - Active work on modular explicits in let rec (&lt;a href="https://github.com/ocaml/ocaml/issues/14537"&gt;ocaml/ocaml#14537&lt;/a&gt;), type approximation refactoring (&lt;a href="https://github.com/ocaml/ocaml/issues/14538"&gt;ocaml/ocaml#14538&lt;/a&gt;), and fixing class-related edge cases (&lt;a href="https://github.com/ocaml/ocaml/issues/14557"&gt;ocaml/ocaml#14557&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>24 PRs merged with exhaustiveness checking for ocamllex, new Array fold functions, and GC improvements.</summary><published>2026-02-22T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2026/week-7</id><title>Week 7, 2026: GC idle phase landed, String.drop_prefix/suffix added, GADT errors improved, and RFC #59 on val declarations discussed.</title><updated>2026-02-15T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
@@ -5808,7 +5903,7 @@
 &lt;li&gt;&lt;strong class="achievement"&gt;Cross-platform compatibility&lt;/strong&gt; receiving increased attention with Windows API modernization and Unix platform improvements&lt;/li&gt;
 &lt;li&gt;&lt;strong class="achievement"&gt;Language design refinement&lt;/strong&gt; through community feedback on practical applications of new syntax features like raw identifiers&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Runtime improvements and bytecode optimization merged alongside language syntax discussions for raw identifiers</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2024/week-42</id><title>Week 42, 2024: Five PRs merged in ocaml/ocaml including new Thread.set_current_thread_name API and compiler improvements</title><updated>2026-02-20T12:16:59.089232+00:00</updated><content type="html">
+</content><link href="https://thicket.dev/"/><summary>Runtime improvements and bytecode optimization merged alongside language syntax discussions for raw identifiers</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2024/week-42</id><title>Week 42, 2024: Five PRs merged in ocaml/ocaml including new Thread.set_current_thread_name API and compiler improvements</title><updated>2026-02-23T16:32:35.261517+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

@@ -1,5 +1,102 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/ecosystem.xml</id><title>OCaml Ecosystem (Weekly)</title><updated>2026-02-15T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/ecosystem.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Package repositories and community infrastructure</subtitle><entry><id>https://thicket.dev/groups/ecosystem/2026/week-7</id><title>Week 7, 2026: Major package releases, large-scale opam-repository archival, and extensive ocaml.org documentation quality improvements.</title><updated>2026-02-15T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/ecosystem.xml</id><title>OCaml Ecosystem (Weekly)</title><updated>2026-02-22T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/ecosystem.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Package repositories and community infrastructure</subtitle><entry><id>https://thicket.dev/groups/ecosystem/2026/week-8</id><title>Week 8, 2026: Active week with 67 new packages added to opam-repository and ocaml.org content infrastructure improvements</title><updated>2026-02-22T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29422" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;charrua&lt;/strong&gt;&lt;/a&gt; package added to &lt;a href="https://github.com/ocaml/opam-repository"&gt;ocaml/opam-repository&lt;/a&gt; by &lt;a href="https://github.com/reynir"&gt;Reynir Björnsson&lt;/a&gt; in &lt;a href="https://github.com/ocaml/opam-repository/pull/29422"&gt;ocaml/opam-repository#29422&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29372" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;containers&lt;/strong&gt;&lt;/a&gt; package added to &lt;a href="https://github.com/ocaml/opam-repository"&gt;ocaml/opam-repository&lt;/a&gt; by &lt;a href="https://github.com/c-cube"&gt;Simon Cruanes&lt;/a&gt; in &lt;a href="https://github.com/ocaml/opam-repository/pull/29372"&gt;ocaml/opam-repository#29372&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29414" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;flux&lt;/strong&gt;&lt;/a&gt; package added to &lt;a href="https://github.com/ocaml/opam-repository"&gt;ocaml/opam-repository&lt;/a&gt; by &lt;a href="https://github.com/dinosaure"&gt;Calascibetta Romain&lt;/a&gt; in &lt;a href="https://github.com/ocaml/opam-repository/pull/29414"&gt;ocaml/opam-repository#29414&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29309" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;frama-clang&lt;/strong&gt;&lt;/a&gt; package added to &lt;a href="https://github.com/ocaml/opam-repository"&gt;ocaml/opam-repository&lt;/a&gt; by &lt;a href="https://github.com/zilbuz"&gt;Basile Desloges&lt;/a&gt; in &lt;a href="https://github.com/ocaml/opam-repository/pull/29309"&gt;ocaml/opam-repository#29309&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;gen&lt;em&gt;js&lt;/em&gt;api&lt;/strong&gt; package added to &lt;a href="https://github.com/ocaml/opam-repository"&gt;ocaml/opam-repository&lt;/a&gt; by &lt;a href="https://github.com/mlasson"&gt;Marc Lasson&lt;/a&gt; in &lt;a href="https://github.com/ocaml/opam-repository/pull/29403"&gt;ocaml/opam-repository#29403&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29379" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;grace&lt;/strong&gt;&lt;/a&gt; package added to &lt;a href="https://github.com/ocaml/opam-repository"&gt;ocaml/opam-repository&lt;/a&gt; by &lt;a href="https://github.com/johnyob"&gt;Alistair&lt;/a&gt; in &lt;a href="https://github.com/ocaml/opam-repository/pull/29379"&gt;ocaml/opam-repository#29379&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29427" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;httpcats&lt;/strong&gt;&lt;/a&gt; package added to &lt;a href="https://github.com/ocaml/opam-repository"&gt;ocaml/opam-repository&lt;/a&gt; by &lt;a href="https://github.com/dinosaure"&gt;Calascibetta Romain&lt;/a&gt; in &lt;a href="https://github.com/ocaml/opam-repository/pull/29427"&gt;ocaml/opam-repository#29427&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29419" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;hxd&lt;/strong&gt;&lt;/a&gt; package added to &lt;a href="https://github.com/ocaml/opam-repository"&gt;ocaml/opam-repository&lt;/a&gt; by &lt;a href="https://github.com/dinosaure"&gt;Calascibetta Romain&lt;/a&gt; in &lt;a href="https://github.com/ocaml/opam-repository/pull/29419"&gt;ocaml/opam-repository#29419&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29430" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;ipaddr&lt;/strong&gt;&lt;/a&gt; package added to &lt;a href="https://github.com/ocaml/opam-repository"&gt;ocaml/opam-repository&lt;/a&gt; by &lt;a href="https://github.com/hannesm"&gt;Hannes Mehnert&lt;/a&gt; in &lt;a href="https://github.com/ocaml/opam-repository/pull/29430"&gt;ocaml/opam-repository#29430&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/pull/3516" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Security documentation&lt;/strong&gt;&lt;/a&gt; on &lt;a href="https://github.com/ocaml/ocaml.org"&gt;ocaml/ocaml.org&lt;/a&gt; now includes direct link to SRT reports on GitHub in &lt;a href="https://github.com/ocaml/ocaml.org/pull/3516"&gt;ocaml/ocaml.org#3516&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/pull/3514" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Planet feed sources&lt;/strong&gt;&lt;/a&gt; on &lt;a href="https://github.com/ocaml/ocaml.org"&gt;ocaml/ocaml.org&lt;/a&gt; updated to disable defunct feeds (ujamjar, coq) and add Rocq Prover as new source in &lt;a href="https://github.com/ocaml/ocaml.org/pull/3514"&gt;ocaml/ocaml.org#3514&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository"&gt;ocaml/opam-repository&lt;/a&gt; had 34 PRs merged adding 67 new packages with contributions from 34 community members&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org"&gt;ocaml/ocaml.org&lt;/a&gt; focused on content infrastructure improvements including planet feed maintenance and security documentation updates&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/hannesm"&gt;Hannes Mehnert&lt;/a&gt; contributed across both repositories with package updates in &lt;a href="https://github.com/ocaml/opam-repository"&gt;ocaml/opam-repository&lt;/a&gt; and security documentation improvements in &lt;a href="https://github.com/ocaml/ocaml.org"&gt;ocaml/ocaml.org&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/cuihtlauac"&gt;Cuihtlauac Alvarado&lt;/a&gt; addressed content aggregation infrastructure issues on &lt;a href="https://github.com/ocaml/ocaml.org"&gt;ocaml/ocaml.org&lt;/a&gt; including planet feed source cleanup in &lt;a href="https://github.com/ocaml/ocaml.org/pull/3514"&gt;ocaml/ocaml.org#3514&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/hannesm"&gt;Hannes Mehnert&lt;/a&gt; contributed to both &lt;a href="https://github.com/ocaml/opam-repository"&gt;ocaml/opam-repository&lt;/a&gt; and &lt;a href="https://github.com/ocaml/ocaml.org"&gt;ocaml/ocaml.org&lt;/a&gt; this week: merged 5 package update PRs including ipaddr and archive in &lt;a href="https://github.com/ocaml/opam-repository/pull/29416"&gt;ocaml/opam-repository#29416&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/pull/29417"&gt;ocaml/opam-repository#29417&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/pull/29430"&gt;ocaml/opam-repository#29430&lt;/a&gt; while improving security documentation on &lt;a href="https://github.com/ocaml/ocaml.org"&gt;ocaml/ocaml.org&lt;/a&gt; in &lt;a href="https://github.com/ocaml/ocaml.org/pull/3516"&gt;ocaml/ocaml.org#3516&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/cuihtlauac"&gt;Cuihtlauac Alvarado&lt;/a&gt; focused on &lt;a href="https://github.com/ocaml/ocaml.org"&gt;ocaml/ocaml.org&lt;/a&gt; infrastructure maintenance including planet feed source cleanup in &lt;a href="https://github.com/ocaml/ocaml.org/pull/3514"&gt;ocaml/ocaml.org#3514&lt;/a&gt; and scraper improvements in &lt;a href="https://github.com/ocaml/ocaml.org/issues/3513"&gt;ocaml/ocaml.org#3513&lt;/a&gt;, which supports the package ecosystem by aggregating community content&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29447" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;UCRT64 Environment Support&lt;/strong&gt;&lt;/a&gt; issue reported by &lt;a href="https://github.com/z-rui"&gt;张睿 Zhang Rui&lt;/a&gt; in &lt;a href="https://github.com/ocaml/opam-repository/issues/29447"&gt;ocaml/opam-repository#29447&lt;/a&gt; regarding unsupported or unrecognised environment&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;js&lt;em&gt;of&lt;/em&gt;ocaml-compiler compilation failure&lt;/strong&gt; reported by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; in &lt;a href="https://github.com/ocaml/opam-repository/issues/29433"&gt;ocaml/opam-repository#29433&lt;/a&gt; where version 5.9.1 fails to compile with OCaml 4.14.3&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3513" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Planet scraper improvements&lt;/strong&gt;&lt;/a&gt; tracked in &lt;a href="https://github.com/ocaml/ocaml.org/issues/3513"&gt;ocaml/ocaml.org#3513&lt;/a&gt; addressing two failure modes: 3-second HTTP timeout too short for several feeds (ocamlpro.com, mirage.io, robur.coop), and missing User-Agent header causing 403 errors from Cloudflare-protected sites&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3512" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;YouTube RSS feed outage&lt;/strong&gt;&lt;/a&gt; documented in &lt;a href="https://github.com/ocaml/ocaml.org/issues/3512"&gt;ocaml/ocaml.org#3512&lt;/a&gt; affecting 9 video sources with platform-wide 404 errors, confirmed as upstream YouTube issue requiring no code changes&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3437" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;QCheck documentation&lt;/strong&gt;&lt;/a&gt; issue &lt;a href="https://github.com/ocaml/ocaml.org/issues/3437"&gt;ocaml/ocaml.org#3437&lt;/a&gt; marked resolved with documentation now available at ocaml.org/p/qcheck-core/latest&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong class="achievement"&gt;Ecosystem growth continues&lt;/strong&gt; with 67 new packages introduced to &lt;a href="https://github.com/ocaml/opam-repository"&gt;ocaml/opam-repository&lt;/a&gt; demonstrating sustained package submission activity across the community&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/pull/3514" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Content infrastructure reliability&lt;/strong&gt;&lt;/a&gt; emerging as priority on &lt;a href="https://github.com/ocaml/ocaml.org"&gt;ocaml/ocaml.org&lt;/a&gt; with feed source cleanup in &lt;a href="https://github.com/ocaml/ocaml.org/pull/3514"&gt;ocaml/ocaml.org#3514&lt;/a&gt;, scraper timeout issues in &lt;a href="https://github.com/ocaml/ocaml.org/issues/3513"&gt;ocaml/ocaml.org#3513&lt;/a&gt;, and platform-wide outage tracking in &lt;a href="https://github.com/ocaml/ocaml.org/issues/3512"&gt;ocaml/ocaml.org#3512&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Active maintenance by core contributors&lt;/strong&gt; with &lt;a href="https://github.com/dinosaure"&gt;Calascibetta Romain&lt;/a&gt; merging 6 package updates in &lt;a href="https://github.com/ocaml/opam-repository"&gt;ocaml/opam-repository&lt;/a&gt; and &lt;a href="https://github.com/hannesm"&gt;Hannes Mehnert&lt;/a&gt; contributing across both repositories&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/pull/3516" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Documentation improvements&lt;/strong&gt;&lt;/a&gt; continuing across the ecosystem with security resources in &lt;a href="https://github.com/ocaml/ocaml.org/pull/3516"&gt;ocaml/ocaml.org#3516&lt;/a&gt;, tutorial fixes in &lt;a href="https://github.com/ocaml/ocaml.org/pull/3518"&gt;ocaml/ocaml.org#3518&lt;/a&gt;, and platform newsletter updates in &lt;a href="https://github.com/ocaml/ocaml.org/pull/3519"&gt;ocaml/ocaml.org#3519&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Active week with 67 new packages added to opam-repository and ocaml.org content infrastructure improvements</summary><published>2026-02-22T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/ecosystem/2026/week-7</id><title>Week 7, 2026: Major package releases, large-scale opam-repository archival, and extensive ocaml.org documentation quality improvements.</title><updated>2026-02-15T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
