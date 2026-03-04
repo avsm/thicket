@@ -1,5 +1,71 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-dune.xml</id><title>ocaml/dune (Weekly)</title><updated>2026-02-22T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-dune.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/dune</subtitle><entry><id>https://thicket.dev/repos/ocaml-dune/2026/week-8</id><title>Week 8, 2026: OxCaml jsoo support for parameterised libraries, C stub dependency fixes, and Rocq extraction improvements merged</title><updated>2026-02-22T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-dune.xml</id><title>ocaml/dune (Weekly)</title><updated>2026-03-01T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-dune.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/dune</subtitle><entry><id>https://thicket.dev/repos/ocaml-dune/2026/week-9</id><title>Week 9, 2026: Rev store performance improvements, code quality refactoring, and package management optimization planning</title><updated>2026-03-01T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Code quality refactoring of diff actions, package management improvements, release documentation, and package management optimization planning&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13690" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Diff action refactoring&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; removing unnecessary optionality (&lt;a href="https://github.com/ocaml/dune/issues/13690"&gt;#13690&lt;/a&gt;), moving Path.Permissions to Stdune (&lt;a href="https://github.com/ocaml/dune/issues/13693"&gt;#13693&lt;/a&gt;), improving path handling (&lt;a href="https://github.com/ocaml/dune/issues/13694"&gt;#13694&lt;/a&gt;), simplifying fallback logic (&lt;a href="https://github.com/ocaml/dune/issues/13695"&gt;#13695&lt;/a&gt;), and enhancing test coverage (&lt;a href="https://github.com/ocaml/dune/issues/13689"&gt;#13689&lt;/a&gt;), plus &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; applying diff actions to CI script promotion (&lt;a href="https://github.com/ocaml/dune/issues/13662"&gt;#13662&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13664" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Package management improvements&lt;/strong&gt;&lt;/a&gt; including removing unnecessary vendor cleanup step (&lt;a href="https://github.com/ocaml/dune/issues/13664"&gt;#13664&lt;/a&gt;) by &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; and install circular dependency fix (&lt;a href="https://github.com/ocaml/dune/issues/13692"&gt;#13692&lt;/a&gt;) by &lt;a href="https://github.com/anmonteiro"&gt;Antonio Nuno Monteiro&lt;/a&gt; resolving &lt;a href="https://github.com/ocaml/dune/issues/5771"&gt;#5771&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13681" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Release documentation&lt;/strong&gt;&lt;/a&gt; moved into repository at &lt;code&gt;doc/dev/releases/process.md&lt;/code&gt; (&lt;a href="https://github.com/ocaml/dune/issues/13681"&gt;#13681&lt;/a&gt;) with updated checklist template (&lt;a href="https://github.com/ocaml/dune/issues/13673"&gt;#13673&lt;/a&gt;) by &lt;a href="https://github.com/shonfeder"&gt;Shon Feder&lt;/a&gt;, plus 3.22.0 release tracker opened (&lt;a href="https://github.com/ocaml/dune/issues/13674"&gt;#13674&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13700" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Testing improvements&lt;/strong&gt;&lt;/a&gt; including ctypes module exclusion bug test (&lt;a href="https://github.com/ocaml/dune/issues/13700"&gt;#13700&lt;/a&gt;), removal of --display short flag (&lt;a href="https://github.com/ocaml/dune/issues/13661"&gt;#13661&lt;/a&gt;) by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt;, and Nix infrastructure updates (&lt;a href="https://github.com/ocaml/dune/issues/13701"&gt;#13701&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13702"&gt;#13702&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13703"&gt;#13703&lt;/a&gt;) by &lt;a href="https://github.com/anmonteiro"&gt;Antonio Nuno Monteiro&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13660" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Package management optimization planning&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; with systematic issues exploring lock time simplification: converting undefined variables to defaults (&lt;a href="https://github.com/ocaml/dune/issues/13660"&gt;#13660&lt;/a&gt;), simplifying &lt;code&gt;%{pkg-self:name}&lt;/code&gt; (&lt;a href="https://github.com/ocaml/dune/issues/13665"&gt;#13665&lt;/a&gt;), &lt;code&gt;%{pkg:foo:dev}&lt;/code&gt; variables (&lt;a href="https://github.com/ocaml/dune/issues/13666"&gt;#13666&lt;/a&gt;), &lt;code&gt;%{pkg-self:pinned}&lt;/code&gt; substitution (&lt;a href="https://github.com/ocaml/dune/issues/13667"&gt;#13667&lt;/a&gt;), depext filtering with platform values (&lt;a href="https://github.com/ocaml/dune/issues/13668"&gt;#13668&lt;/a&gt;), boolean variable reduction (&lt;a href="https://github.com/ocaml/dune/issues/13669"&gt;#13669&lt;/a&gt;), &lt;code&gt;%{pkg:other-pkg:installed}&lt;/code&gt; substitution (&lt;a href="https://github.com/ocaml/dune/issues/13670"&gt;#13670&lt;/a&gt;), rev_store relevant tips negotiation (&lt;a href="https://github.com/ocaml/dune/issues/13671"&gt;#13671&lt;/a&gt;), depexts compiler build issue (&lt;a href="https://github.com/ocaml/dune/issues/13677"&gt;#13677&lt;/a&gt;), plus tar unpacking/decompression separation (&lt;a href="https://github.com/ocaml/dune/issues/13687"&gt;#13687&lt;/a&gt;) by &lt;a href="https://github.com/Leonidas-from-XIV"&gt;Marek Kubica&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13657" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Documentation issues&lt;/strong&gt;&lt;/a&gt; for depexts (&lt;a href="https://github.com/ocaml/dune/issues/13657"&gt;#13657&lt;/a&gt;) by &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; and variable example values (&lt;a href="https://github.com/ocaml/dune/issues/13675"&gt;#13675&lt;/a&gt;) by &lt;a href="https://github.com/maroneze"&gt;Andre&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13676" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Other issues&lt;/strong&gt;&lt;/a&gt; including RPC binary lookup (&lt;a href="https://github.com/ocaml/dune/issues/13676"&gt;#13676&lt;/a&gt;) by &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt;, Windows --release flag behavior (&lt;a href="https://github.com/ocaml/dune/issues/13658"&gt;#13658&lt;/a&gt;) by &lt;a href="https://github.com/maroneze"&gt;Andre&lt;/a&gt;, relocatable ocamlbuild (&lt;a href="https://github.com/ocaml/dune/issues/13678"&gt;#13678&lt;/a&gt;), and portable lock file format behavior changes (&lt;a href="https://github.com/ocaml/dune/issues/13680"&gt;#13680&lt;/a&gt;) by &lt;a href="https://github.com/shonfeder"&gt;Shon Feder&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13651" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Issues closed&lt;/strong&gt;&lt;/a&gt; including C stubs underspecification (&lt;a href="https://github.com/ocaml/dune/issues/13651"&gt;#13651&lt;/a&gt;), full git history fetching (&lt;a href="https://github.com/ocaml/dune/issues/13323"&gt;#13323&lt;/a&gt;), 3.21.1 release completion (&lt;a href="https://github.com/ocaml/dune/issues/13557"&gt;#13557&lt;/a&gt;), diagnostic log message (&lt;a href="https://github.com/ocaml/dune/issues/13679"&gt;#13679&lt;/a&gt;), plus old issues on overcaching (&lt;a href="https://github.com/ocaml/dune/issues/4604"&gt;#4604&lt;/a&gt;) and dune file syntax (&lt;a href="https://github.com/ocaml/dune/issues/2355"&gt;#2355&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Rev store performance improvements, code quality refactoring, and package management optimization planning</summary><published>2026-03-01T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-dune/2026/week-8</id><title>Week 8, 2026: OxCaml jsoo support for parameterised libraries, C stub dependency fixes, and Rocq extraction improvements merged</title><updated>2026-02-22T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

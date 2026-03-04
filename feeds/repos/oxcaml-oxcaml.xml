@@ -1,5 +1,75 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml</id><title>oxcaml/oxcaml (Weekly)</title><updated>2026-02-22T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/oxcaml</subtitle><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2026/week-8</id><title>Week 8, 2026: Active week with type system evolution, backend optimizations, and major Chamelon dune integration work</title><updated>2026-02-22T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml</id><title>oxcaml/oxcaml (Weekly)</title><updated>2026-03-01T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/oxcaml</subtitle><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2026/week-9</id><title>Week 9, 2026: 15 PRs merged with compiler backend optimizations, type system improvements, and extensive test coverage expansion.</title><updated>2026-03-01T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Major focus on OCaml 5.4 merge preparation, backend testing, and type system development across 8 merged and 11 open PRs.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/pull/5477" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;5.4 merge conflict resolution&lt;/strong&gt;&lt;/a&gt;: Multiple PRs merged to resolve conflicts including &lt;a href="https://github.com/oxcaml/oxcaml/pull/5477"&gt;#5477&lt;/a&gt; (driver by &lt;a href="https://github.com/dra27-js"&gt;David Allsopp&lt;/a&gt;), &lt;a href="https://github.com/oxcaml/oxcaml/pull/5469"&gt;#5469&lt;/a&gt; (file formats by &lt;a href="https://github.com/spiessimon"&gt;Simon Spies&lt;/a&gt;), &lt;a href="https://github.com/oxcaml/oxcaml/pull/5463"&gt;#5463&lt;/a&gt; (middle/backend by &lt;a href="https://github.com/spiessimon"&gt;Simon Spies&lt;/a&gt;), &lt;a href="https://github.com/oxcaml/oxcaml/pull/5442"&gt;#5442&lt;/a&gt; (utils by &lt;a href="https://github.com/spiessimon"&gt;Simon Spies&lt;/a&gt;), and &lt;a href="https://github.com/oxcaml/oxcaml/pull/5491"&gt;#5491&lt;/a&gt; (CI workflow by &lt;a href="https://github.com/dra27-js"&gt;David Allsopp&lt;/a&gt;), with additional PRs in progress for .mli files, parsing, lambda, and bytecomp.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/pull/5447" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Comprehensive backend test coverage&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/pull/5447"&gt;#5447&lt;/a&gt;) by &lt;a href="https://github.com/ttebbi-janestreet"&gt;@ttebbi-janestreet&lt;/a&gt; added 3,300+ lines of &lt;code&gt;[%%expect_asm]&lt;/code&gt; tests covering allocation, arrays, float&lt;em&gt;u, int64&lt;/em&gt;u, intrinsics, loops, register allocation, and variants to catch codegen regressions.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/pull/5497" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Old pacing policy removal&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/pull/5497"&gt;#5497&lt;/a&gt;) by &lt;a href="https://github.com/NickBarnes"&gt;Nick Barnes&lt;/a&gt; cleaned up obsolete GC pacing code after new policy proved effective.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/pull/5507" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Parser-change nag improvements&lt;/strong&gt;&lt;/a&gt;: Multiple fixes by &lt;a href="https://github.com/jra4"&gt;James Rayman&lt;/a&gt; including &lt;a href="https://github.com/oxcaml/oxcaml/pull/5507"&gt;#5507&lt;/a&gt; and &lt;a href="https://github.com/oxcaml/oxcaml/pull/5501"&gt;#5501&lt;/a&gt; to improve developer workflow when parser changes require ppxlib updates.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/pull/5500" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Magic number bump&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/pull/5500"&gt;#5500&lt;/a&gt;) by &lt;a href="https://github.com/jra4"&gt;James Rayman&lt;/a&gt; for release 5.2.0minus-32.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/pull/5498" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Layout polymorphism work&lt;/strong&gt;&lt;/a&gt;: Multiple PRs including canonical value descriptions (&lt;a href="https://github.com/oxcaml/oxcaml/pull/5498"&gt;#5498&lt;/a&gt;) and type checking (&lt;a href="https://github.com/oxcaml/oxcaml/pull/5513"&gt;#5513&lt;/a&gt;) by &lt;a href="https://github.com/riaqn"&gt;Zesen Qian&lt;/a&gt; advancing the &lt;code&gt;sort_&lt;/code&gt;/&lt;code&gt;layout_&lt;/code&gt; polymorphism feature.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/pull/5402" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Runtime metaprogramming&lt;/strong&gt;&lt;/a&gt;: Beta-reducing &lt;code&gt;eval&lt;/code&gt; in type expressions (&lt;a href="https://github.com/oxcaml/oxcaml/pull/5402"&gt;#5402&lt;/a&gt;) and quote/splice typing fixes (&lt;a href="https://github.com/oxcaml/oxcaml/pull/5323"&gt;#5323&lt;/a&gt;) by &lt;a href="https://github.com/jbachurski"&gt;Jakub Bachurski&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/pull/5493" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Zero-alloc on function parameters&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/pull/5493"&gt;#5493&lt;/a&gt;) by &lt;a href="https://github.com/Dreian"&gt;Andrej Ivašković&lt;/a&gt; enabling &lt;code&gt;zero_alloc&lt;/code&gt; attributes on higher-order function arguments.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/pull/5488" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Mode polymorphism printing&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/pull/5488"&gt;#5488&lt;/a&gt;) by &lt;a href="https://github.com/ainageorges"&gt;@ainageorges&lt;/a&gt; implementing comprehensive printing of polymorphic mode variables.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/pull/5516" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Better mode hint formatting&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/pull/5516"&gt;#5516&lt;/a&gt;) by &lt;a href="https://github.com/goldfirere"&gt;Richard Eisenberg&lt;/a&gt; improving error message formatting for mode errors.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/pull/5514" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Backend optimizations in review&lt;/strong&gt;&lt;/a&gt;: Register spill/reload improvements (&lt;a href="https://github.com/oxcaml/oxcaml/pull/5514"&gt;#5514&lt;/a&gt;) and codegen tests for intrinsics (&lt;a href="https://github.com/oxcaml/oxcaml/pull/5489"&gt;#5489&lt;/a&gt;) by &lt;a href="https://github.com/ttebbi-janestreet"&gt;@ttebbi-janestreet&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/pull/5505" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;More Bigarray locality support&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/pull/5505"&gt;#5505&lt;/a&gt;) by &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; adding &lt;code&gt;@local_opt&lt;/code&gt; annotations to sub, change&lt;em&gt;layout, and size&lt;/em&gt;in_bytes.&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>15 PRs merged with compiler backend optimizations, type system improvements, and extensive test coverage expansion.</summary><published>2026-03-01T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2026/week-8</id><title>Week 8, 2026: Active week with type system evolution, backend optimizations, and major Chamelon dune integration work</title><updated>2026-02-22T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
