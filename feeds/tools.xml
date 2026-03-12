@@ -1,5 +1,109 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/tools.xml</id><title>OCaml Tools (Weekly)</title><updated>2026-03-01T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/tools.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Development tools and build systems</subtitle><entry><id>https://thicket.dev/groups/tools/2026/week-9</id><title>Week 9, 2026: None</title><updated>2026-03-01T00:00:00+00:00</updated><content type="html"/><link href="https://thicket.dev/"/><summary>Activity report for tools - Week 9, 2026</summary><published>2026-03-01T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/tools/2026/week-8</id><title>Week 8, 2026: OxCaml support advances in Dune/odoc, opam performance optimization merged, js_of_ocaml Wasm enhancements shipped</title><updated>2026-02-22T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/tools.xml</id><title>OCaml Tools (Weekly)</title><updated>2026-03-08T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/tools.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Development tools and build systems</subtitle><entry><id>https://thicket.dev/groups/tools/2026/week-10</id><title>Week 10, 2026: Package management improvements, LSP refactoring features, and OCaml 5.5 support work across tooling ecosystem</title><updated>2026-03-08T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13688" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Dune tar extraction compatibility&lt;/strong&gt;&lt;/a&gt; on systems with non-auto-detecting tar implementations (e.g., OpenBSD) by passing explicit decompression flags in &lt;a href="https://github.com/ocaml/dune/issues/13688"&gt;ocaml/dune#13688&lt;/a&gt; by &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13714" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Dune Windows cache&lt;/strong&gt;&lt;/a&gt; now uses hard links for better performance (&lt;a href="https://github.com/ocaml/dune/issues/13714"&gt;ocaml/dune#13714&lt;/a&gt;) and correctly handles renames onto read-only files during deduplication (&lt;a href="https://github.com/ocaml/dune/issues/13713"&gt;ocaml/dune#13713&lt;/a&gt;) by &lt;a href="https://github.com/Nevor"&gt;Roven Gabriel&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13712" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Dune relative path handling&lt;/strong&gt;&lt;/a&gt; in &lt;code&gt;%{bin:..}&lt;/code&gt; and &lt;code&gt;%{bin-available:..}&lt;/code&gt; now interprets paths correctly relative to the dune file location in &lt;a href="https://github.com/ocaml/dune/issues/13712"&gt;ocaml/dune#13712&lt;/a&gt; by &lt;a href="https://github.com/anmonteiro"&gt;Antonio Nuno Monteiro&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13710" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Dune memo system deadlock fix&lt;/strong&gt;&lt;/a&gt; checking for self-dependency cycles before blocking on ivar in &lt;a href="https://github.com/ocaml/dune/issues/13710"&gt;ocaml/dune#13710&lt;/a&gt; by &lt;a href="https://github.com/anmonteiro"&gt;Antonio Nuno Monteiro&lt;/a&gt;, resolving issue from 2022 (&lt;a href="https://github.com/ocaml/dune/issues/5771"&gt;ocaml/dune#5771&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/merlin/pull/1948" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Merlin experimental refactor-extract-region command&lt;/strong&gt;&lt;/a&gt; for extracting code regions into fresh let bindings in &lt;a href="https://github.com/ocaml/merlin/pull/1948"&gt;ocaml/merlin#1948&lt;/a&gt; by &lt;a href="https://github.com/Tim-ats-d"&gt;Tim ats&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1591" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml-LSP range formatting support&lt;/strong&gt;&lt;/a&gt; via &lt;code&gt;textDocument/rangeFormatting&lt;/code&gt; request enables formatting selected code regions while preserving context in &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1591"&gt;ocaml/ocaml-lsp#1591&lt;/a&gt; by &lt;a href="https://github.com/WardBrian"&gt;Brian Ward&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1584" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml-LSP locate types custom request&lt;/strong&gt;&lt;/a&gt; (&lt;code&gt;ocamllsp/locateTypes&lt;/code&gt;) returns tree representation of all types composing an expression's type in &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1584"&gt;ocaml/ocaml-lsp#1584&lt;/a&gt; by &lt;a href="https://github.com/xvw"&gt;Xavier Van de Woestyne&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1545" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml-LSP refactor extract custom query&lt;/strong&gt;&lt;/a&gt; (&lt;code&gt;ocamllsp/refactorExtract&lt;/code&gt;) provides commands to extract arbitrary code regions into fresh let bindings in &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1545"&gt;ocaml/ocaml-lsp#1545&lt;/a&gt; by &lt;a href="https://github.com/Tim-ats-d"&gt;Tim ats&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13688" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Dune&lt;/strong&gt;&lt;/a&gt; led activity with extensive package management improvements including tar extraction fixes (&lt;a href="https://github.com/ocaml/dune/issues/13688"&gt;ocaml/dune#13688&lt;/a&gt;), Windows cache enhancements (&lt;a href="https://github.com/ocaml/dune/issues/13714"&gt;ocaml/dune#13714&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13713"&gt;ocaml/dune#13713&lt;/a&gt;), and resolution of long-standing bugs from 2022-2024&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1591" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml-LSP&lt;/strong&gt;&lt;/a&gt; delivered new refactoring capabilities with range formatting (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1591"&gt;ocaml/ocaml-lsp#1591&lt;/a&gt;), type location queries (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1584"&gt;ocaml/ocaml-lsp#1584&lt;/a&gt;), and extract commands (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1545"&gt;ocaml/ocaml-lsp#1545&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/merlin/pull/1948" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Merlin&lt;/strong&gt;&lt;/a&gt; merged experimental refactor-extract-region command (&lt;a href="https://github.com/ocaml/merlin/pull/1948"&gt;ocaml/merlin#1948&lt;/a&gt;) enabling code extraction into let bindings&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/pull/2195" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml 5.5 support&lt;/strong&gt;&lt;/a&gt; work initiated in &lt;a href="https://github.com/ocsigen/js_of_ocaml/pull/2195"&gt;ocsigen/js&lt;em&gt;of&lt;/em&gt;ocaml#2195&lt;/a&gt; and requested for &lt;a href="https://github.com/ocaml/odoc/issues/1401"&gt;ocaml/odoc#1401&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6862" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Opam&lt;/strong&gt;&lt;/a&gt; received Windows compatibility fixes (&lt;a href="https://github.com/ocaml/opam/issues/6862"&gt;ocaml/opam#6862&lt;/a&gt;) and UI action ordering improvements (&lt;a href="https://github.com/ocaml/opam/issues/6864"&gt;ocaml/opam#6864&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Cross-repository refactoring work&lt;/strong&gt; coordinated between &lt;a href="https://github.com/Tim-ats-d"&gt;Tim ats&lt;/a&gt; in Merlin and OCaml-LSP for code extraction features&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;No activity&lt;/strong&gt; reported in &lt;a href="https://github.com/ocaml/ocamlfind"&gt;ocaml/ocamlfind&lt;/a&gt; or &lt;a href="https://github.com/ocaml-dune/spawn"&gt;ocaml-dune/spawn&lt;/a&gt; repositories&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/merlin/pull/1948" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Refactor-extract feature&lt;/strong&gt;&lt;/a&gt; coordinated by &lt;a href="https://github.com/Tim-ats-d"&gt;Tim ats&lt;/a&gt; between Merlin (&lt;a href="https://github.com/ocaml/merlin/pull/1948"&gt;ocaml/merlin#1948&lt;/a&gt;) and OCaml-LSP (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1545"&gt;ocaml/ocaml-lsp#1545&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1546"&gt;ocaml/ocaml-lsp#1546&lt;/a&gt;), with LSP implementation depending on Merlin's command implementation&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2193" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml 5.5 support&lt;/strong&gt;&lt;/a&gt; coordination between &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; requesting updates across multiple repositories including &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2193"&gt;ocsigen/js&lt;em&gt;of&lt;/em&gt;ocaml#2193&lt;/a&gt; and &lt;a href="https://github.com/ocaml/odoc/issues/1401"&gt;ocaml/odoc#1401&lt;/a&gt;, with &lt;a href="https://github.com/hhugo"&gt;@hhugo&lt;/a&gt; responding with branch references for alpha testing&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/merlin/pull/2044" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Merlin CI dependency&lt;/strong&gt;&lt;/a&gt; on OCaml-LSP repository required URL update in &lt;a href="https://github.com/ocaml/merlin/pull/2044"&gt;ocaml/merlin#2044&lt;/a&gt; to maintain compatibility testing&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1461" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Jump functionality&lt;/strong&gt;&lt;/a&gt; in OCaml-LSP (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1461"&gt;ocaml/ocaml-lsp#1461&lt;/a&gt;) depends on corresponding Merlin implementation for querying jump targets&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-file-format/issues/64" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Opam-file-format circular dependency&lt;/strong&gt;&lt;/a&gt; concern raised by &lt;a href="https://github.com/gdt"&gt;Greg Troxel&lt;/a&gt; regarding dune bootstrapping in pkgsrc ecosystem (&lt;a href="https://github.com/ocaml/opam-file-format/issues/64"&gt;ocaml/opam-file-format#64&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13715" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Archive decompression support&lt;/strong&gt;&lt;/a&gt; requested by &lt;a href="https://github.com/Leonidas-from-XIV"&gt;Marek Kubica&lt;/a&gt; for XZ (&lt;a href="https://github.com/ocaml/dune/issues/13715"&gt;ocaml/dune#13715&lt;/a&gt;) and LZMA (&lt;a href="https://github.com/ocaml/dune/issues/13716"&gt;ocaml/dune#13716&lt;/a&gt;) compressed tarballs in Dune&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13731" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Dune CI testing improvements&lt;/strong&gt;&lt;/a&gt; proposed by &lt;a href="https://github.com/shonfeder"&gt;Shon Feder&lt;/a&gt; to test lower bounds and package correctness (&lt;a href="https://github.com/ocaml/dune/issues/13731"&gt;ocaml/dune#13731&lt;/a&gt;), with packaging misconfiguration reported for dune-action-trace (&lt;a href="https://github.com/ocaml/dune/issues/13732"&gt;ocaml/dune#13732&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1591" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml-LSP range formatting approach&lt;/strong&gt;&lt;/a&gt; debated by &lt;a href="https://github.com/sidkshatriya"&gt;Sidharth Kshatriya&lt;/a&gt;, &lt;a href="https://github.com/WardBrian"&gt;Brian Ward&lt;/a&gt;, and &lt;a href="https://github.com/xvw"&gt;Xavier Van de Woestyne&lt;/a&gt; about handling code snippets versus whole documents (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1591"&gt;ocaml/ocaml-lsp#1591&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-file-format/issues/64" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Opam-file-format build dependency documentation&lt;/strong&gt;&lt;/a&gt; discussed after &lt;a href="https://github.com/gdt"&gt;Greg Troxel&lt;/a&gt; encountered menhir requirement not mentioned in README while updating pkgsrc package (&lt;a href="https://github.com/ocaml/opam-file-format/issues/64"&gt;ocaml/opam-file-format#64&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/merlin/issues/2045" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Merlin OxCaml compatibility&lt;/strong&gt;&lt;/a&gt; bug reported by &lt;a href="https://github.com/bhlieberman"&gt;Ben Lieberman&lt;/a&gt; where Merlin enters debugger repeatedly when using OxCaml with Emacs (&lt;a href="https://github.com/ocaml/merlin/issues/2045"&gt;ocaml/merlin#2045&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;js&lt;em&gt;of&lt;/em&gt;ocaml wasm&lt;em&gt;of&lt;/em&gt;ocaml support&lt;/strong&gt; limitations identified requiring &lt;a href="https://github.com/vouillon"&gt;Jérôme Vouillon&lt;/a&gt;'s attention for OCaml 5.5 compatibility (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2193"&gt;ocsigen/js&lt;em&gt;of&lt;/em&gt;ocaml#2193&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong class="achievement"&gt;Package management robustness&lt;/strong&gt; continues as focus area with comprehensive work on archive extraction, lock file handling, depext filtering, and autolocking across multiple Dune PRs by &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13714" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Windows platform support&lt;/strong&gt;&lt;/a&gt; receiving dedicated attention with Dune cache improvements (&lt;a href="https://github.com/ocaml/dune/issues/13714"&gt;ocaml/dune#13714&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13713"&gt;ocaml/dune#13713&lt;/a&gt;) and opam MSYS2 build fixes (&lt;a href="https://github.com/ocaml/opam/issues/6862"&gt;ocaml/opam#6862&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/5771" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Long-standing bug resolution&lt;/strong&gt;&lt;/a&gt; with closure of Dune issues from 2022-2024 including infinite loop in cycle checking (&lt;a href="https://github.com/ocaml/dune/issues/5771"&gt;ocaml/dune#5771&lt;/a&gt;), OpenBSD tar compatibility (&lt;a href="https://github.com/ocaml/dune/issues/10123"&gt;ocaml/dune#10123&lt;/a&gt;), and relative path handling (&lt;a href="https://github.com/ocaml/dune/issues/9564"&gt;ocaml/dune#9564&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1584" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Custom LSP request expansion&lt;/strong&gt;&lt;/a&gt; continues with new specialized extensions for type location (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1584"&gt;ocaml/ocaml-lsp#1584&lt;/a&gt;) and code refactoring (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1545"&gt;ocaml/ocaml-lsp#1545&lt;/a&gt;), building on pattern established by earlier custom requests&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1461" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Merlin integration driving new features&lt;/strong&gt;&lt;/a&gt; with multiple OCaml-LSP PRs depending on corresponding Merlin implementations for jump functionality (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1461"&gt;ocaml/ocaml-lsp#1461&lt;/a&gt;) and extraction commands (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1545"&gt;ocaml/ocaml-lsp#1545&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/pull/2195" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml 5.5 preparation&lt;/strong&gt;&lt;/a&gt; gaining momentum across tooling ecosystem with support work in js&lt;em&gt;of&lt;/em&gt;ocaml (&lt;a href="https://github.com/ocsigen/js_of_ocaml/pull/2195"&gt;ocsigen/js&lt;em&gt;of&lt;/em&gt;ocaml#2195&lt;/a&gt;) and requests for odoc updates (&lt;a href="https://github.com/ocaml/odoc/issues/1401"&gt;ocaml/odoc#1401&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Cross-platform compatibility&lt;/strong&gt; improvements addressing OpenBSD tar implementations, Windows cache behavior, and preparing for broader archive format support (XZ, LZMA)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Package management improvements, LSP refactoring features, and OCaml 5.5 support work across tooling ecosystem</summary><published>2026-03-08T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/tools/2026/week-9</id><title>Week 9, 2026: None</title><updated>2026-03-01T00:00:00+00:00</updated><content type="html"/><link href="https://thicket.dev/"/><summary>Activity report for tools - Week 9, 2026</summary><published>2026-03-01T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/tools/2026/week-8</id><title>Week 8, 2026: OxCaml support advances in Dune/odoc, opam performance optimization merged, js_of_ocaml Wasm enhancements shipped</title><updated>2026-02-22T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

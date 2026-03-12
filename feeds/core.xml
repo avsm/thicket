@@ -1,5 +1,94 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/core.xml</id><title>OCaml Core (Weekly)</title><updated>2026-03-01T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/core.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Core OCaml language, compiler, and essential tooling</subtitle><entry><id>https://thicket.dev/groups/core/2026/week-9</id><title>Week 9, 2026: None</title><updated>2026-03-01T00:00:00+00:00</updated><content type="html"/><link href="https://thicket.dev/"/><summary>Activity report for core - Week 9, 2026</summary><published>2026-03-01T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2026/week-8</id><title>Week 8, 2026: 24 PRs merged with exhaustiveness checking for ocamllex, new Array fold functions, and GC improvements.</title><updated>2026-02-22T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/core.xml</id><title>OCaml Core (Weekly)</title><updated>2026-03-08T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/core.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Core OCaml language, compiler, and essential tooling</subtitle><entry><id>https://thicket.dev/groups/core/2026/week-10</id><title>Week 10, 2026: OCaml compiler saw 15 PRs merged and 14 new PRs opened, with focus on type system fixes, runtime improvements, and OCaml 5.5 regressions</title><updated>2026-03-08T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;Added &lt;a href="https://github.com/ocaml/ocaml/pull/14525"&gt;ocaml/ocaml#14525&lt;/a&gt; &lt;code&gt;Fun.todo&lt;/code&gt; function to signal unimplemented functionality, with code location support and optional &lt;code&gt;todo&lt;/code&gt; alert for detecting remaining placeholder code (merged by &lt;a href="https://github.com/OlivierNicole"&gt;Olivier Nicole&lt;/a&gt;, closing long-standing &lt;a href="https://github.com/ocaml/ocaml/issues/13072"&gt;ocaml/ocaml#13072&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Improved &lt;a href="https://github.com/ocaml/ocaml/pull/14512"&gt;ocaml/ocaml#14512&lt;/a&gt; warning 16 (unerasable-optional-argument) detection to properly handle module-dependent function types (&lt;code&gt;Tfunctor&lt;/code&gt;) introduced in OCaml 5.5 (merged by &lt;a href="https://github.com/johnyob"&gt;Alistair&lt;/a&gt;, fixing regression &lt;a href="https://github.com/ocaml/ocaml/issues/14622"&gt;ocaml/ocaml#14622&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Optimized &lt;a href="https://github.com/ocaml/ocaml/pull/14620"&gt;ocaml/ocaml#14620&lt;/a&gt; UTF-8 lexeme processing in the compiler for better performance (merged by &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Made continuation objects more efficient by reducing from two fields to one in &lt;a href="https://github.com/ocaml/ocaml/pull/14469"&gt;ocaml/ocaml#14469&lt;/a&gt; (backported to trunk via &lt;a href="https://github.com/ocaml/ocaml/pull/14613"&gt;ocaml/ocaml#14613&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Fixed &lt;a href="https://github.com/ocaml/ocaml/pull/14604"&gt;ocaml/ocaml#14604&lt;/a&gt; uncaught Cannot_apply exception when mixing polymorphic types and unboxed constructors (merged by &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt;, fixing &lt;a href="https://github.com/ocaml/ocaml/issues/14603"&gt;ocaml/ocaml#14603&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;The core group saw focused activity exclusively in &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt; with 15 PRs merged and 14 new PRs opened during week 10&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/RFCs"&gt;ocaml/RFCs&lt;/a&gt; had no activity this week&lt;/li&gt;
+&lt;li&gt;Primary focus areas included type system fixes for OCaml 5.5 regressions, runtime cleanup and domain management, performance optimizations, and continued work on complex type system refactorings&lt;/li&gt;
+&lt;li&gt;34 contributors participated in code review, issue reporting, and development across &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Multiple OCaml 5.5 regressions were identified and addressed, particularly related to the new &lt;code&gt;Tfunctor&lt;/code&gt; type constructor introduced by modular explicits in &lt;a href="https://github.com/ocaml/ocaml/issues/14622"&gt;ocaml/ocaml#14622&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14630"&gt;ocaml/ocaml#14630&lt;/a&gt;, and &lt;a href="https://github.com/ocaml/ocaml/issues/14629"&gt;ocaml/ocaml#14629&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14594" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Runtime Cleanup&lt;/strong&gt;&lt;/a&gt;: Extensive discussion on &lt;a href="https://github.com/ocaml/ocaml/issues/14594"&gt;ocaml/ocaml#14594&lt;/a&gt; about segfaults and timeouts in parallel tests with cleanup-at-exit mode, exploring fundamental design questions about thread cancellation and resource cleanup, with follow-up PR &lt;a href="https://github.com/ocaml/ocaml/pull/14614"&gt;ocaml/ocaml#14614&lt;/a&gt; proposing fatal errors for unjoined domains&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14627" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Feature Request&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/ocaml/ocaml/issues/14627"&gt;ocaml/ocaml#14627&lt;/a&gt; proposing programmable patterns for OCaml to enable pattern matching on abstract types without exposing constructors, similar to Haskell's pattern synonyms and F#'s active patterns&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14622" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Type System Regression&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/ocaml/ocaml/issues/14622"&gt;ocaml/ocaml#14622&lt;/a&gt; reporting warning 16 incorrectly raised with GADTs and first-class modules in 5.5 (closed by &lt;a href="https://github.com/ocaml/ocaml/pull/14512"&gt;ocaml/ocaml#14512&lt;/a&gt;, caused by modular explicits introducing &lt;code&gt;Tfunctor&lt;/code&gt; type constructor)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14630" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Type System Regression&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/ocaml/ocaml/issues/14630"&gt;ocaml/ocaml#14630&lt;/a&gt; about signature inference failure with recursive functions and first-class modules in 5.5, likely to be fixed by &lt;a href="https://github.com/ocaml/ocaml/pull/14537"&gt;ocaml/ocaml#14537&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14629" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Type System Regression&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/ocaml/ocaml/issues/14629"&gt;ocaml/ocaml#14629&lt;/a&gt; about local open changing typechecker behavior for optional argument elimination in 5.5&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14621" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Performance&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/ocaml/ocaml/issues/14621"&gt;ocaml/ocaml#14621&lt;/a&gt; identifying tests taking too long on AppVeyor CI (some over 185 seconds, including forbidden.ml at 185s)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14619" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Stdlib&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/ocaml/ocaml/issues/14619"&gt;ocaml/ocaml#14619&lt;/a&gt; questioning why List.concat/flatten is not tail-recursive&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;Multiple OCaml 5.5 regressions identified related to modular explicits and the new &lt;code&gt;Tfunctor&lt;/code&gt; type constructor in &lt;a href="https://github.com/ocaml/ocaml/issues/14622"&gt;ocaml/ocaml#14622&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14630"&gt;ocaml/ocaml#14630&lt;/a&gt;, and &lt;a href="https://github.com/ocaml/ocaml/issues/14629"&gt;ocaml/ocaml#14629&lt;/a&gt;, highlighting need for systematic audits when introducing new type constructors&lt;/li&gt;
+&lt;li&gt;Continued active work on the complex keep-expansion type system refactoring in &lt;a href="https://github.com/ocaml/ocaml/pull/11648"&gt;ocaml/ocaml#11648&lt;/a&gt;, with cross-review between &lt;a href="https://github.com/garrigue"&gt;Jacques Garrigue&lt;/a&gt; and &lt;a href="https://github.com/smuenzel"&gt;Stefan Muenzel&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Focus on runtime cleanup and domain management issues, particularly around cleanup-at-exit mode and proper resource management in &lt;a href="https://github.com/ocaml/ocaml/issues/14594"&gt;ocaml/ocaml#14594&lt;/a&gt; and &lt;a href="https://github.com/ocaml/ocaml/pull/14614"&gt;ocaml/ocaml#14614&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Performance optimization work focusing on UTF-8 processing in &lt;a href="https://github.com/ocaml/ocaml/pull/14620"&gt;ocaml/ocaml#14620&lt;/a&gt; and Unicode normalization in &lt;a href="https://github.com/ocaml/ocaml/pull/14618"&gt;ocaml/ocaml#14618&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Security vulnerability addressed with &lt;a href="https://github.com/ocaml/ocaml/pull/14615"&gt;ocaml/ocaml#14615&lt;/a&gt; fixing CVE-2026-28364&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>OCaml compiler saw 15 PRs merged and 14 new PRs opened, with focus on type system fixes, runtime improvements, and OCaml 5.5 regressions</summary><published>2026-03-08T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2026/week-9</id><title>Week 9, 2026: None</title><updated>2026-03-01T00:00:00+00:00</updated><content type="html"/><link href="https://thicket.dev/"/><summary>Activity report for core - Week 9, 2026</summary><published>2026-03-01T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2026/week-8</id><title>Week 8, 2026: 24 PRs merged with exhaustiveness checking for ocamllex, new Array fold functions, and GC improvements.</title><updated>2026-02-22T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
@@ -5903,7 +5992,7 @@
 &lt;li&gt;&lt;strong class="achievement"&gt;Cross-platform compatibility&lt;/strong&gt; receiving increased attention with Windows API modernization and Unix platform improvements&lt;/li&gt;
 &lt;li&gt;&lt;strong class="achievement"&gt;Language design refinement&lt;/strong&gt; through community feedback on practical applications of new syntax features like raw identifiers&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Runtime improvements and bytecode optimization merged alongside language syntax discussions for raw identifiers</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2024/week-42</id><title>Week 42, 2024: Five PRs merged in ocaml/ocaml including new Thread.set_current_thread_name API and compiler improvements</title><updated>2026-03-04T20:02:05.951143+00:00</updated><content type="html">
+</content><link href="https://thicket.dev/"/><summary>Runtime improvements and bytecode optimization merged alongside language syntax discussions for raw identifiers</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2024/week-42</id><title>Week 42, 2024: Five PRs merged in ocaml/ocaml including new Thread.set_current_thread_name API and compiler improvements</title><updated>2026-03-12T08:14:44.067862+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

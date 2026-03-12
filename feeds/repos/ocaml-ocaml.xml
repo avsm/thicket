@@ -1,5 +1,82 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.xml</id><title>ocaml/ocaml (Weekly)</title><updated>2026-03-01T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-9</id><title>Week 9, 2026: Standard library additions, runtime optimizations, compiler bug fixes, and architecture-specific improvements merged</title><updated>2026-03-01T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.xml</id><title>ocaml/ocaml (Weekly)</title><updated>2026-03-08T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-10</id><title>Week 10, 2026: Week 10 of 2026 saw significant activity in the OCaml compiler development, with 15 PRs merged, 14 new PRs opened, and several important bug fixes ...</title><updated>2026-03-08T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+14 new PRs opened covering type system, GC, runtime, security, and performance, plus 15 PRs merged&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/14611" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Type System&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/ocaml/ocaml/pull/14611"&gt;#14611&lt;/a&gt; opened to keep expansion rebase well-founded, continuing work on long-standing &lt;a href="https://github.com/ocaml/ocaml/pull/11648"&gt;#11648&lt;/a&gt; (by &lt;a href="https://github.com/garrigue"&gt;Jacques Garrigue&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/14625" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Type System&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/ocaml/ocaml/pull/14625"&gt;#14625&lt;/a&gt; opened addressing recursive modules and module-dependent functions (by &lt;a href="https://github.com/lthls"&gt;Vincent Laviron&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/14626" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Type System&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/ocaml/ocaml/pull/14626"&gt;#14626&lt;/a&gt; opened to fix handling of module-dependent functions in warning 16 (by &lt;a href="https://github.com/johnyob"&gt;Alistair&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/14624" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Type System&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/ocaml/ocaml/pull/14624"&gt;#14624&lt;/a&gt; opened documenting Tfunctor FIXMEs needing attention (by &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/14610" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Garbage Collection&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/ocaml/ocaml/pull/14610"&gt;#14610&lt;/a&gt; opened to consume budget when marking ephemerons (by &lt;a href="https://github.com/NickBarnes"&gt;Nick Barnes&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/14614" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Runtime&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/ocaml/ocaml/pull/14614"&gt;#14614&lt;/a&gt; opened introducing fatal error when unjoined domains remain at cleanup-on-exit, addressing issues in &lt;a href="https://github.com/ocaml/ocaml/issues/14594"&gt;#14594&lt;/a&gt; (by &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/14615" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Security&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/ocaml/ocaml/pull/14615"&gt;#14615&lt;/a&gt; opened to fix CVE-2026-28364 (by &lt;a href="Caleb Wolfe"&gt;Caleb Wolfe (@xcawolfe-amzn)&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/14618" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Performance&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/ocaml/ocaml/pull/14618"&gt;#14618&lt;/a&gt; opened for faster unicode normalization in misc module (by &lt;a href="https://github.com/smuenzel"&gt;Stefan Muenzel&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/14616" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Documentation&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/ocaml/ocaml/pull/14616"&gt;#14616&lt;/a&gt; opened to document values given to MSVC prefetch intrinsics (by &lt;a href="https://github.com/MisterDA"&gt;Antonin Décimo&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/14617" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Tooling&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/ocaml/ocaml/pull/14617"&gt;#14617&lt;/a&gt; opened to make ocaml&lt;em&gt;deprecated&lt;/em&gt;cli alert fatal in compiler development flags (by &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/14604" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Type System Improvements&lt;/strong&gt;&lt;/a&gt;: Fixed &lt;a href="https://github.com/ocaml/ocaml/pull/14604"&gt;#14604&lt;/a&gt; uncaught Cannot_apply exception when mixing polymorphic types and unboxed constructors (merged &lt;a href="https://github.com/ocaml/ocaml/pull/14604"&gt;#14604&lt;/a&gt; by &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt;, fixing &lt;a href="https://github.com/ocaml/ocaml/issues/14603"&gt;#14603&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/14600" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Error Messages&lt;/strong&gt;&lt;/a&gt;: Improved &lt;a href="https://github.com/ocaml/ocaml/pull/14600"&gt;#14600&lt;/a&gt; type parameter error messages to clarify they are bound in type declarations (merged &lt;a href="https://github.com/ocaml/ocaml/pull/14600"&gt;#14600&lt;/a&gt; by &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt;, addressing &lt;a href="https://github.com/ocaml/ocaml/issues/6634"&gt;#6634&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/14601" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Code Cleanup&lt;/strong&gt;&lt;/a&gt;: Removed &lt;a href="https://github.com/ocaml/ocaml/pull/14601"&gt;#14601&lt;/a&gt; impossible unbound error path in extension constructor declarations (merged &lt;a href="https://github.com/ocaml/ocaml/pull/14601"&gt;#14601&lt;/a&gt; by &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/14623" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Dead Code&lt;/strong&gt;&lt;/a&gt;: Removed &lt;a href="https://github.com/ocaml/ocaml/pull/14623"&gt;#14623&lt;/a&gt; dead Ctype.arity code (merged &lt;a href="https://github.com/ocaml/ocaml/pull/14623"&gt;#14623&lt;/a&gt; by &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/14612" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;CI Improvements&lt;/strong&gt;&lt;/a&gt;: Disabled &lt;a href="https://github.com/ocaml/ocaml/pull/14612"&gt;#14612&lt;/a&gt; in-prefix tests with --enable-tsan on Inria CI to avoid test failures (merged &lt;a href="https://github.com/ocaml/ocaml/pull/14612"&gt;#14612&lt;/a&gt; by &lt;a href="https://github.com/OlivierNicole"&gt;Olivier Nicole&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/14608" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Jenkins&lt;/strong&gt;&lt;/a&gt;: Ensured &lt;a href="https://github.com/ocaml/ocaml/pull/14608"&gt;#14608&lt;/a&gt; Jenkins workers always clean up installation (merged &lt;a href="https://github.com/ocaml/ocaml/pull/14608"&gt;#14608&lt;/a&gt; by &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/14613" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Backports&lt;/strong&gt;&lt;/a&gt;: Cherry-picked &lt;a href="https://github.com/ocaml/ocaml/pull/14613"&gt;#14613&lt;/a&gt; continuation optimization from trunk (merged &lt;a href="https://github.com/ocaml/ocaml/pull/14613"&gt;#14613&lt;/a&gt; by &lt;a href="https://github.com/damiendoligez"&gt;Damien Doligez&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/14609" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Backports&lt;/strong&gt;&lt;/a&gt;: Re-added &lt;a href="https://github.com/ocaml/ocaml/pull/14609"&gt;#14609&lt;/a&gt; missing commit from #14547 (merged &lt;a href="https://github.com/ocaml/ocaml/pull/14609"&gt;#14609&lt;/a&gt; by &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/14607" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Backports&lt;/strong&gt;&lt;/a&gt;: Fixed &lt;a href="https://github.com/ocaml/ocaml/pull/14607"&gt;#14607&lt;/a&gt; linking with libasmrun_shared.so on Risc-V for 4.14 branch (merged &lt;a href="https://github.com/ocaml/ocaml/pull/14607"&gt;#14607&lt;/a&gt; by &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Week 10 of 2026 saw significant activity in the OCaml compiler development, with 15 PRs merged, 14 new PRs opened, and several important bug fixes ...</summary><published>2026-03-08T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-9</id><title>Week 9, 2026: Standard library additions, runtime optimizations, compiler bug fixes, and architecture-specific improvements merged</title><updated>2026-03-01T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
