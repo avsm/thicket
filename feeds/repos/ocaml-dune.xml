@@ -1,5 +1,76 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-dune.xml</id><title>ocaml/dune (Weekly)</title><updated>2026-03-08T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-dune.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/dune</subtitle><entry><id>https://thicket.dev/repos/ocaml-dune/2026/week-10</id><title>Week 10, 2026: Package management improvements with tar extraction fixes, Windows cache fixes, and memo deadlock resolution</title><updated>2026-03-08T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-dune.xml</id><title>ocaml/dune (Weekly)</title><updated>2026-03-15T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-dune.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/dune</subtitle><entry><id>https://thicket.dev/repos/ocaml-dune/2026/week-11</id><title>Week 11, 2026: Active week with sandboxing enabled by default in 3.23, async digests merged, regression fix for dune lang 1.0 select semantics, and the version bumped to 3.23.</title><updated>2026-03-15T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+The week saw 46 commits with significant internal refactoring, several bug fixes including a dune lang 1.0 regression, and the project bumped to version 3.23.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;Newly opened PR &lt;a href="https://github.com/ocaml/dune/issues/13813"&gt;#13813&lt;/a&gt; proposes allowing sandboxed actions to produce corrected files without declaring targets&lt;/li&gt;
+&lt;li&gt;Newly opened PR &lt;a href="https://github.com/ocaml/dune/issues/13800"&gt;#13800&lt;/a&gt; proposes a &lt;code&gt;@revdep&lt;/code&gt; alias to build all reverse dependencies of libraries in a directory&lt;/li&gt;
+&lt;li&gt;Newly opened PR &lt;a href="https://github.com/ocaml/dune/issues/13792"&gt;#13792&lt;/a&gt; resolves directory symlinks in fetched package targets, a step toward the relocatable compiler work&lt;/li&gt;
+&lt;li&gt;Newly opened PR &lt;a href="https://github.com/ocaml/dune/issues/13791"&gt;#13791&lt;/a&gt; adds clarifying documentation to &lt;code&gt;Io.links&lt;/code&gt; to fix confusing &lt;code&gt;src&lt;/code&gt;/&lt;code&gt;dst&lt;/code&gt; semantics&lt;/li&gt;
+&lt;li&gt;Newly opened PR &lt;a href="https://github.com/ocaml/dune/issues/13749"&gt;#13749&lt;/a&gt; adds a how-to guide for using multiple dune contexts (e.g. ThreadSanitizer)&lt;/li&gt;
+&lt;li&gt;Fixed &lt;a href="https://github.com/ocaml/dune/issues/13804" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;regression in dune lang 1.0&lt;/strong&gt;&lt;/a&gt; &lt;code&gt;(select ..)&lt;/code&gt; semantics for non-OCaml files, which was causing build failures for packages like &lt;code&gt;mccs&lt;/code&gt; (&lt;a href="https://github.com/ocaml/dune/issues/13804"&gt;#13804&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Fixed &lt;a href="https://github.com/ocaml/dune/issues/13767" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;silent hang&lt;/strong&gt;&lt;/a&gt; when dune tries to connect to a non-existent RPC server while the build directory is locked (&lt;a href="https://github.com/ocaml/dune/issues/13767"&gt;#13767&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Fixed &lt;a href="https://github.com/ocaml/dune/issues/13735" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;trace file placement&lt;/strong&gt;&lt;/a&gt;: default trace file is now placed inside the build directory at workspace root rather than relative to the current directory (&lt;a href="https://github.com/ocaml/dune/issues/13735"&gt;#13735&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Fixed &lt;a href="https://github.com/ocaml/dune/issues/13733" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Rocq module duplication&lt;/strong&gt;&lt;/a&gt; error: internal error when a module is shared between &lt;code&gt;rocq.theory&lt;/code&gt; and &lt;code&gt;rocq.extraction&lt;/code&gt; stanzas now produces a hint (&lt;a href="https://github.com/ocaml/dune/issues/13733"&gt;#13733&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Fixed &lt;a href="https://github.com/ocaml/dune/issues/13778" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;opam test target generation&lt;/strong&gt;&lt;/a&gt; for packages using &lt;code&gt;(dir ..)&lt;/code&gt;, limiting the target to the package directory (&lt;a href="https://github.com/ocaml/dune/issues/13778"&gt;#13778&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Version bumped to &lt;a href="https://github.com/ocaml/dune/issues/13777" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;3.23&lt;/strong&gt;&lt;/a&gt; on the main branch (&lt;a href="https://github.com/ocaml/dune/issues/13777"&gt;#13777&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Extensive internal refactoring of digest, fs_cache, and rule cache modules in preparation for async digest work&lt;/li&gt;
+&lt;li&gt;Test reorganization: fs memo tests split by category, install command tests moved to own directory&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Active week with sandboxing enabled by default in 3.23, async digests merged, regression fix for dune lang 1.0 select semantics, and the version bumped to 3.23.</summary><published>2026-03-15T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-dune/2026/week-10</id><title>Week 10, 2026: Package management improvements with tar extraction fixes, Windows cache fixes, and memo deadlock resolution</title><updated>2026-03-08T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

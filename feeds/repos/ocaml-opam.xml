@@ -1,5 +1,68 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam.xml</id><title>ocaml/opam (Weekly)</title><updated>2026-03-08T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam/2026/week-10</id><title>Week 10, 2026: Two PRs opened addressing Windows compatibility and UI action ordering improvements</title><updated>2026-03-08T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam.xml</id><title>ocaml/opam (Weekly)</title><updated>2026-03-15T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam/2026/week-11</id><title>Week 11, 2026: Three open PRs active with review discussions, two new issues filed including two tagged as good first issues.</title><updated>2026-03-15T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Three open PRs progressing through review, covering Windows portability, Darcs VCS cleanup, and shell PATH behaviour.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6866" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;New PR&lt;/strong&gt;&lt;/a&gt; opened by &lt;a href="https://github.com/toastal"&gt;@toastal&lt;/a&gt; to remove the legacy &lt;code&gt;Num&lt;/code&gt; patches fallback in &lt;code&gt;OpamDarcs&lt;/code&gt;, eliminating code that has been superseded since Darcs 2.10.3 (2016); discussion touched on broader VCS abstraction design issues (&lt;a href="https://github.com/ocaml/opam/issues/6866"&gt;#6866&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6862" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Windows portability fix&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/Firobe"&gt;Virgile Robles&lt;/a&gt; sets &lt;code&gt;_WIN32_WINNT&lt;/code&gt; to Windows 8.1 to resolve a build failure in MSYS2 environments caused by &lt;code&gt;GetCurrentProcessToken&lt;/code&gt; not being available on Windows 7; &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt; suggested moving the flag to &lt;code&gt;configure.ac&lt;/code&gt; or the dune file rather than the C source, and the change was updated accordingly (&lt;a href="https://github.com/ocaml/opam/issues/6862"&gt;#6862&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6859" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Shell hook PATH ordering&lt;/strong&gt;&lt;/a&gt; PR by &lt;a href="https://github.com/gridbugs"&gt;Stephen Sherratt&lt;/a&gt; proposes updating the opam switch entry in PATH in-place rather than prepending it, preserving user-defined precedence; &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; noted the option documentation could be clearer and flagged the potential for a breaking change for users who add paths after sourcing &lt;code&gt;opam-init.sh&lt;/code&gt; (&lt;a href="https://github.com/ocaml/opam/issues/6859"&gt;#6859&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; filed an issue proposing reordering the action list shown during install/upgrade so that removals appear after reinstalls, downgrades, upgrades, and installs rather than first, reducing the need to scroll to find relevant changes (&lt;a href="https://github.com/ocaml/opam/issues/6863"&gt;#6863&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/raphael-proust"&gt;Raphaël Proust&lt;/a&gt; filed a feature request for &lt;code&gt;opam admin add-conflict&lt;/code&gt;, noting the subcommand is currently missing from the &lt;code&gt;opam admin&lt;/code&gt; interface (&lt;a href="https://github.com/ocaml/opam/issues/6865"&gt;#6865&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Three open PRs active with review discussions, two new issues filed including two tagged as good first issues.</summary><published>2026-03-15T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-opam/2026/week-10</id><title>Week 10, 2026: Two PRs opened addressing Windows compatibility and UI action ordering improvements</title><updated>2026-03-08T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

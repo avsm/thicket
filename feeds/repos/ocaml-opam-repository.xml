@@ -1,5 +1,78 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam-repository.xml</id><title>ocaml/opam-repository (Weekly)</title><updated>2026-03-01T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam-repository.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam-repository</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2026/week-9</id><title>Week 9, 2026: OCaml 5.5.0~alpha1 released with compiler cloning support; 40+ packages merged including mosaic terminal UI framework and raven ML updates</title><updated>2026-03-01T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam-repository.xml</id><title>ocaml/opam-repository (Weekly)</title><updated>2026-03-15T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam-repository.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam-repository</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2026/week-11</id><title>Week 11, 2026: Active week with ~30 merged PRs covering new packages, infrastructure tooling, security libs, and a notable policy change on package immutability.</title><updated>2026-03-15T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Around 30 packages were merged including tls 2.0.4, charrua 3.1.1, 14 posix binding packages, MPI 1.07, and smtml 0.23.0.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29532"&gt;#29532&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29532" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;tls 2.0.4&lt;/strong&gt;&lt;/a&gt; (6 packages) — fixes an exception in &lt;code&gt;parse_change_cipher_spec&lt;/code&gt; on empty input present since 0.1.0, by &lt;a href="https://github.com/hannesm"&gt;Hannes Mehnert&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29520"&gt;#29520&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29520" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;mpi 1.07&lt;/strong&gt;&lt;/a&gt; — OCaml MPI bindings updated for OCaml &gt;= 5.4.1 compatibility and dynamic linking of stubs, by &lt;a href="https://github.com/xavierleroy"&gt;Xavier Leroy&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29538"&gt;#29538&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29538" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;charrua 3.1.1&lt;/strong&gt;&lt;/a&gt; (4 packages) — DHCP wire frame library with cancellation semantics fix, by &lt;a href="https://github.com/reynir"&gt;Reynir Björnsson&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29495"&gt;#29495&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29495" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;posix bindings 4.0.2&lt;/strong&gt;&lt;/a&gt; (14 packages) — new release of the savonet/ocaml-posix suite covering sockets, stat, signals, time, uname, and more, by &lt;a href="https://github.com/toots"&gt;Romain Beauxis&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29534"&gt;#29534&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29534" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;smtml.0.23.0&lt;/strong&gt;&lt;/a&gt; — SMT solver frontend with improved SMTZilla decision tree cleanup and new CLI options, by &lt;a href="https://github.com/filipeom"&gt;@filipeom&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29529"&gt;#29529&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29529" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;malfunction.0.7.1&lt;/strong&gt;&lt;/a&gt; — new release of the malfunction intermediate language, by &lt;a href="https://github.com/mattam82"&gt;Matthieu Sozeau&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29533"&gt;#29533&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29533" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;jasmin.2026.03.0&lt;/strong&gt;&lt;/a&gt; — new date-versioned release of the Jasmin cryptographic compiler, by &lt;a href="https://github.com/eponier"&gt;Jean-Christophe Léchenet&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29539"&gt;#29539&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29539" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;slipshow.0.10.0&lt;/strong&gt;&lt;/a&gt; — presentation tool with improved compile-time warnings and keyboard shortcut fixes, by &lt;a href="https://github.com/panglesd"&gt;Paul-Elliot Anglès d'Auriac&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29540"&gt;#29540&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29540" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;melange-fest.0.2.0&lt;/strong&gt;&lt;/a&gt; — minimal Melange test framework updated for melange 6 API changes, by &lt;a href="https://github.com/davesnx"&gt;David Sancho&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29483"&gt;#29483&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29483" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;ortools.9.15.0-1&lt;/strong&gt;&lt;/a&gt; (2 packages) — updated Google OR-Tools bindings removing eigen3 depext, by &lt;a href="https://github.com/tbrk"&gt;Timothy Bourke&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29527"&gt;#29527&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29527" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;tm-grammars.1.0.1&lt;/strong&gt;&lt;/a&gt; — TextMate grammars as OCaml strings (replacing broken 1.0.0 release), by &lt;a href="https://github.com/davesnx"&gt;David Sancho&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29524"&gt;#29524&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29524" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;iri.1.2.0&lt;/strong&gt;&lt;/a&gt; — Internationalized Resource Identifiers implementation, by &lt;a href="https://github.com/zoggy"&gt;Zoggy&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29545"&gt;#29545&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29545" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;mirage-crypto.2.1.0&lt;/strong&gt;&lt;/a&gt; (7 packages) — adds &lt;code&gt;Mirage_crypto_ec.Dsa.Primitive&lt;/code&gt; exposing NIST curve operations for protocols like SPAKE2, by &lt;a href="https://github.com/hannesm"&gt;Hannes Mehnert&lt;/a&gt; (open)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29490"&gt;#29490&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29490" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;raven.1.0.0~alpha3&lt;/strong&gt;&lt;/a&gt; (11 packages) — scientific computing suite including new nx-oxcaml pure-OCaml SIMD tensor backend and kaun-board TUI training dashboard, by &lt;a href="https://github.com/tmattio"&gt;Thibaut Mattio&lt;/a&gt; (open)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29507"&gt;#29507&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29507" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;ppxlib.0.38.0~5.5preview&lt;/strong&gt;&lt;/a&gt; — preview release of ppxlib for upcoming OCaml 5.5, by &lt;a href="https://github.com/NathanReb"&gt;Nathan Rebours&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Active week with ~30 merged PRs covering new packages, infrastructure tooling, security libs, and a notable policy change on package immutability.</summary><published>2026-03-15T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2026/week-9</id><title>Week 9, 2026: OCaml 5.5.0~alpha1 released with compiler cloning support; 40+ packages merged including mosaic terminal UI framework and raven ML updates</title><updated>2026-03-01T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
