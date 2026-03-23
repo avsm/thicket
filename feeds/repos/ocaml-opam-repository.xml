@@ -1,5 +1,78 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam-repository.xml</id><title>ocaml/opam-repository (Weekly)</title><updated>2026-03-15T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam-repository.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam-repository</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2026/week-11</id><title>Week 11, 2026: Active week with ~30 merged PRs covering new packages, infrastructure tooling, security libs, and a notable policy change on package immutability.</title><updated>2026-03-15T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam-repository.xml</id><title>ocaml/opam-repository (Weekly)</title><updated>2026-03-22T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam-repository.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam-repository</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2026/week-12</id><title>Week 12, 2026: A major week dominated by the dune 3.22.0 release, large scientific computing package raven 1.0.0~alpha3, and a wave of Windows/MSYS2 support improvements.</title><updated>2026-03-22T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Dune 3.22.0 released after two alpha/RC iterations, triggering a cascade of upper-bound fixes across ocaml-lsp-server, stdune, ocamlformat, and other dependents.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29563" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Open PRs awaiting review:&lt;/strong&gt;&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/pull/29563"&gt;ppxlib and ppxlib-tools 0.38.0&lt;/a&gt; — adds OCaml 5.5 support, bivariant type parameters, and labeled tuple utilities; &lt;a href="https://github.com/ocaml/opam-repository/pull/29564"&gt;Ortac 0.8.0&lt;/a&gt; — adds QCheck-STM+Domains parallel testing support; &lt;a href="https://github.com/ocaml/opam-repository/pull/29565"&gt;lsp 1.26.0-5.5~preview&lt;/a&gt; — adds a destruct custom request and support for non-dune build systems via &lt;code&gt;$OCAMLLSP_PROJECT_BUILD_SYSTEM&lt;/code&gt;; &lt;a href="https://github.com/ocaml/opam-repository/pull/29566"&gt;gendarme 0.4.1 (9 packages)&lt;/a&gt; — marshalling library with ppxlib&gt;=0.36 support; &lt;a href="https://github.com/ocaml/opam-repository/pull/29556"&gt;alcobar 0.3&lt;/a&gt; — Alcotest-compatible fuzzing library forked from Crowbar; &lt;a href="https://github.com/ocaml/opam-repository/pull/29574"&gt;libinput 1.29&lt;/a&gt; — OCaml bindings for libinput with broader version support back to libinput 1.20; &lt;a href="https://github.com/ocaml/opam-repository/pull/29583"&gt;oniguruma 0.2.0&lt;/a&gt; — breaking update to Oniguruma regex bindings adding new syntaxes and search options; &lt;a href="https://github.com/ocaml/opam-repository/pull/29581"&gt;spectrum 1.0.0.alpha2 (5 packages)&lt;/a&gt; — terminal color and formatting library suite; &lt;a href="https://github.com/ocaml/opam-repository/pull/29580"&gt;wcwidth 1.1.0&lt;/a&gt; — terminal display width calculation&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29562"&gt;dune 3.22.0&lt;/a&gt;&lt;/strong&gt; merged — major release with 18 packages, featuring extensive build tracing, expanded sandboxing defaults, oxcaml &lt;code&gt;.cms&lt;/code&gt; file support, and many bug fixes; preceded by alpha1 and alpha2 candidate PRs that were closed during the stabilization process&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29552"&gt;atd 4.0.0 (11 packages)&lt;/a&gt;&lt;/strong&gt; merged — &lt;a href="https://github.com/ocaml/opam-repository/pull/29552" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;major release&lt;/strong&gt;&lt;/a&gt; introducing experimental module support with &lt;code&gt;from ... import ...&lt;/code&gt; syntax, a new &lt;code&gt;atdml&lt;/code&gt; tool as the recommended successor to &lt;code&gt;atdgen&lt;/code&gt; for OCaml JSON, and a minimum requirement of Dune &gt;= 3.18&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29553"&gt;ocamlformat 0.29.0&lt;/a&gt;&lt;/strong&gt; merged — adds OCaml 5.5 syntax support, updates to Odoc 3.0 parser, adds &lt;code&gt;letop-punning&lt;/code&gt; option, and sets OCaml version default to 5.4&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29545"&gt;mirage-crypto 2.1.0 (7 packages)&lt;/a&gt;&lt;/strong&gt; merged — adds &lt;code&gt;Mirage_crypto_ec.Dsa.Primitive&lt;/code&gt; exposing NIST curve primitives useful for protocols like SPAKE2&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29572"&gt;letsencrypt 2.0.0 (4 packages)&lt;/a&gt;&lt;/strong&gt; merged — removes yojson in favour of jws/jsont, and decouples the core from lwt/uri via functor-based scheduler abstraction&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29567"&gt;ocaml-version 4.0.4&lt;/a&gt;&lt;/strong&gt; merged — library for parsing and manipulating OCaml compiler version strings&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29559"&gt;Gospel 0.3.1&lt;/a&gt;&lt;/strong&gt; merged — OCaml specification language update for ppxlib and cmdliner compatibility&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29558"&gt;elpi 3.6.2&lt;/a&gt;&lt;/strong&gt; merged — embeddable λProlog interpreter; fixes quadratic growth in program signature storage&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29538"&gt;charrua 3.1.1 (4 packages)&lt;/a&gt;&lt;/strong&gt; merged — DHCP library bugfix for cancellation semantics in &lt;code&gt;listen&lt;/code&gt;; &lt;a href="https://github.com/ocaml/opam-repository/pull/29570"&gt;charrua-client 3.0.0 and 3.1.0 marked &lt;code&gt;avoid-version&lt;/code&gt;&lt;/a&gt; due to MirageOS network stack runtime issues&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29571"&gt;mirage-runtime lwt constraint relaxed&lt;/a&gt;&lt;/strong&gt; merged — allows lwt &gt;= 6 when dune &gt;= 3.22 is used, unblocking mirage unikernels from the lwt &lt; 6 restriction&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29542"&gt;xapi-backtrace 0.8&lt;/a&gt;&lt;/strong&gt; merged — adds license, fixes backtrace loss on reraise, adds regression tests&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29546"&gt;camlpdf 2.9 and cpdf 2.9&lt;/a&gt;&lt;/strong&gt; merged — PDF library and command-line tools update&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29561" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Dune 3.22 compatibility fixes:&lt;/strong&gt;&lt;/a&gt; upper bounds added to &lt;a href="https://github.com/ocaml/opam-repository/pull/29561"&gt;stdune&lt;/a&gt; and &lt;a href="https://github.com/ocaml/opam-repository/pull/29555"&gt;dune-rpc&lt;/a&gt; for breaking API changes; &lt;a href="https://github.com/ocaml/opam-repository/pull/29568"&gt;ocamlformat constraints on Dune 3.22&lt;/a&gt; pending due to changed &lt;code&gt;(diff)&lt;/code&gt; rule behaviour with non-existent files&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29550" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Package metadata:&lt;/strong&gt;&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/pull/29550"&gt;various packages metadata update&lt;/a&gt; including tarball URLs and &lt;code&gt;x-maintenance-intent&lt;/code&gt; fields; &lt;a href="https://github.com/ocaml/opam-repository/pull/29554"&gt;tm-grammars 1.0.0 marked unavailable&lt;/a&gt; due to broken release tarball&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>A major week dominated by the dune 3.22.0 release, large scientific computing package raven 1.0.0~alpha3, and a wave of Windows/MSYS2 support improvements.</summary><published>2026-03-22T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2026/week-11</id><title>Week 11, 2026: Active week with ~30 merged PRs covering new packages, infrastructure tooling, security libs, and a notable policy change on package immutability.</title><updated>2026-03-15T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

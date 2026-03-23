@@ -1,5 +1,104 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/ecosystem.xml</id><title>OCaml Ecosystem (Weekly)</title><updated>2026-03-15T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/ecosystem.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Package repositories and community infrastructure</subtitle><entry><id>https://thicket.dev/groups/ecosystem/2026/week-11</id><title>Week 11, 2026: ~30 opam packages merged including new linter and SIMD tensor backend; ocaml.org improved devcontainer tutorials and scraper CI.</title><updated>2026-03-15T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/ecosystem.xml</id><title>OCaml Ecosystem (Weekly)</title><updated>2026-03-22T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/ecosystem.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Package repositories and community infrastructure</subtitle><entry><id>https://thicket.dev/groups/ecosystem/2026/week-12</id><title>Week 12, 2026: Dune 3.22.0 release, OCaml 4.14.3 LTS security fix, and Windows/MSYS2 improvements drove ecosystem activity.</title><updated>2026-03-22T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3571" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml 4.14.3 LTS release page&lt;/strong&gt;&lt;/a&gt; added to ocaml.org (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3571"&gt;ocaml/ocaml.org#3571&lt;/a&gt;), marking it as the current LTS and documenting the &lt;strong class="achievement"&gt;CVE-2026-28364&lt;/strong&gt; security fix (Marshal deserialization buffer over-read, OSEC-2026-01), plus backports for &lt;a href="https://github.com/ocaml/ocaml/issues/12207"&gt;ocaml/ocaml#12207&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/13430"&gt;ocaml/ocaml#13430&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/13448"&gt;ocaml/ocaml#13448&lt;/a&gt;, and &lt;a href="https://github.com/ocaml/ocaml/issues/14007"&gt;ocaml/ocaml#14007&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29526"&gt;parseff 0.1.0 and 0.2.0&lt;/a&gt;&lt;/strong&gt; merged — direct-style parser combinator library for OCaml 5 using algebraic effects, with zero-copy span APIs and domain-safe operation; 0.2.0 (&lt;a href="https://github.com/ocaml/opam-repository/pull/29573"&gt;ocaml/opam-repository#29573&lt;/a&gt;) unified &lt;code&gt;*1&lt;/code&gt; combinators with an &lt;code&gt;~at_least&lt;/code&gt; parameter&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29490"&gt;raven 1.0.0~alpha3&lt;/a&gt;&lt;/strong&gt; merged — 11-package scientific computing suite including &lt;code&gt;nx-oxcaml&lt;/code&gt; (pure-OCaml SIMD tensor backend) and &lt;code&gt;kaun-board&lt;/code&gt; (TUI training dashboard), with a unified &lt;code&gt;Nx.t&lt;/code&gt;/&lt;code&gt;Rune.t&lt;/code&gt; tensor type&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29557"&gt;jws 0.0.1&lt;/a&gt;&lt;/strong&gt; merged — RFC 7515 JWS implementation using jsont and mirage-crypto; later used as a dependency in letsencrypt 2.0.0&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29541"&gt;dnsrobot 0.1.0&lt;/a&gt;&lt;/strong&gt; merged — OCaml client for DNS Robot providing DNS lookups, WHOIS, SSL checks, and 50+ network tools via an Lwt-based async API&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29536"&gt;dune-ai-context 0.1.2&lt;/a&gt;&lt;/strong&gt; merged — extracts dune external dependencies and generates interface context for AI-assisted coding tools&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29548"&gt;tm-grammars 1.1.0&lt;/a&gt;&lt;/strong&gt; merged — adds TextMate grammar definitions for 200+ languages as OCaml strings, replacing the broken 1.0.0 tarball&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29562"&gt;dune 3.22.0&lt;/a&gt;&lt;/strong&gt; released to opam-repository with 18 packages, featuring extensive build tracing, expanded sandboxing defaults, and oxcaml &lt;code&gt;.cms&lt;/code&gt; file support; a companion announcement PR (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3570"&gt;ocaml/ocaml.org#3570&lt;/a&gt;) is awaiting merge on ocaml.org&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3571" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml 4.14.3 LTS&lt;/strong&gt;&lt;/a&gt; published on ocaml.org (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3571"&gt;ocaml/ocaml.org#3571&lt;/a&gt;) with a CVE-2026-28364 security fix and several backported bug fixes from OCaml 5.x&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29575" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Windows/MSYS2 support&lt;/strong&gt;&lt;/a&gt; received sustained attention with four new issues (&lt;a href="https://github.com/ocaml/opam-repository/issues/29575"&gt;ocaml/opam-repository#29575&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/29576"&gt;#29576&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/29577"&gt;#29577&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/29578"&gt;#29578&lt;/a&gt;) covering missing MSYS2 depext declarations and UCRT64 migration needs&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29572" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;MirageOS ecosystem modernisation&lt;/strong&gt;&lt;/a&gt; progressed: &lt;a href="https://github.com/ocaml/opam-repository/pull/29572"&gt;letsencrypt 2.0.0&lt;/a&gt; drops yojson, &lt;a href="https://github.com/ocaml/opam-repository/pull/29571"&gt;mirage-runtime&lt;/a&gt; relaxes the lwt &lt; 6 constraint, and &lt;a href="https://github.com/ocaml/opam-repository/pull/29538"&gt;charrua 3.1.1&lt;/a&gt; fixes DHCP cancellation semantics&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29552"&gt;atd 4.0.0&lt;/a&gt;&lt;/strong&gt; released with 11 packages, introducing experimental module support and the new &lt;code&gt;atdml&lt;/code&gt; code generator as successor to &lt;code&gt;atdgen&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29553"&gt;ocamlformat 0.29.0&lt;/a&gt;&lt;/strong&gt; released with OCaml 5.5 syntax support, Odoc 3.0 parser integration, and a new &lt;code&gt;letop-punning&lt;/code&gt; option&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3566" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Planet content&lt;/strong&gt;&lt;/a&gt; on ocaml.org expanded with automated scrapes merging posts from tunbury, cwn, and anil across PRs &lt;a href="https://github.com/ocaml/ocaml.org/issues/3566"&gt;ocaml/ocaml.org#3566&lt;/a&gt;–&lt;a href="https://github.com/ocaml/ocaml.org/issues/3569"&gt;#3569&lt;/a&gt; and &lt;a href="https://github.com/ocaml/ocaml.org/issues/3573"&gt;#3573&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29562" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Dune 3.22 coordinated release&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/shonfeder"&gt;Shon Feder&lt;/a&gt; led the dune 3.22.0 release in opam-repository (&lt;a href="https://github.com/ocaml/opam-repository/pull/29562"&gt;ocaml/opam-repository#29562&lt;/a&gt;) and simultaneously opened the release announcement on ocaml.org (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3570"&gt;ocaml/ocaml.org#3570&lt;/a&gt;), representing a coordinated release across both repositories&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3571" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml 4.14.3 LTS publication&lt;/strong&gt;&lt;/a&gt;: The new LTS release page on ocaml.org (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3571"&gt;ocaml/ocaml.org#3571&lt;/a&gt;) documents fixes for upstream compiler issues (&lt;a href="https://github.com/ocaml/ocaml/issues/12207"&gt;ocaml/ocaml#12207&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/13430"&gt;ocaml/ocaml#13430&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/13448"&gt;ocaml/ocaml#13448&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14007"&gt;ocaml/ocaml#14007&lt;/a&gt;), connecting the website content directly to compiler repository work&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29557" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;jws → letsencrypt dependency chain&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/ocaml/opam-repository/pull/29557"&gt;ocaml/opam-repository#29557&lt;/a&gt; (jws 0.0.1) was merged as a prerequisite for &lt;a href="https://github.com/ocaml/opam-repository/pull/29572"&gt;ocaml/opam-repository#29572&lt;/a&gt; (letsencrypt 2.0.0), illustrating a same-week dependency resolution in opam-repository&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29575"&gt;MSYS2 depext gaps&lt;/a&gt;&lt;/strong&gt; — &lt;a href="https://github.com/smorimoto"&gt;Sora Morimoto&lt;/a&gt; filed four issues (&lt;a href="https://github.com/ocaml/opam-repository/issues/29575"&gt;ocaml/opam-repository#29575&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/29576"&gt;#29576&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/29577"&gt;#29577&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/29578"&gt;#29578&lt;/a&gt;) covering missing MSYS2 depext declarations for conf-m4, conf-perl, and conf-findutils, and the need to support UCRT64 as MSYS2 deprecated MINGW64 in March 2026; companion PR &lt;a href="https://github.com/ocaml/opam-repository/pull/29579"&gt;ocaml/opam-repository#29579&lt;/a&gt; addresses all four with package-prefix variable interpolation&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29582"&gt;New ocaml-option-clang-cl package&lt;/a&gt;&lt;/strong&gt; — &lt;a href="https://github.com/smorimoto"&gt;Sora Morimoto&lt;/a&gt; proposes a marker package enabling MSVC clang-cl as the OCaml compiler's CC, following the pattern of ocaml-option-musl, affecting 16 compiler packages&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29569"&gt;MirageOS lwt/dune dependency puzzle&lt;/a&gt;&lt;/strong&gt; — &lt;a href="https://github.com/hannesm"&gt;Hannes Mehnert&lt;/a&gt; asked how to express conditional lwt version constraints depending on dune version; &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; and &lt;a href="https://github.com/mseri"&gt;Marcello Seri&lt;/a&gt; explained the disjunctive constraint pattern &lt;code&gt;"dune" {&gt;= "3.22"} | "lwt" {&lt; "6"}&lt;/code&gt;, noting that the 0install solver gives slight priority to earlier disjunction terms&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29530"&gt;Refine constraints on lwt 6&lt;/a&gt;&lt;/strong&gt; — &lt;a href="https://github.com/raphael-proust"&gt;Raphaël Proust&lt;/a&gt; continues broad lwt 6 compatibility work spanning 84 files; discussion covers using opam-health-check-ng to detect which packages need &lt;code&gt;lwt &lt; 6&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/28249"&gt;MetaOCaml unexpected solver selection&lt;/a&gt;&lt;/strong&gt; — ongoing discussion on solver heuristics where &lt;code&gt;ocaml-option-tsan&lt;/code&gt; switch creation unexpectedly installs BER MetaOCaml variants; suggestion to add &lt;code&gt;flags: avoid-version&lt;/code&gt; to MetaOCaml packages&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29578" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Windows/MSYS2 ecosystem support&lt;/strong&gt;&lt;/a&gt; is receiving focused attention: UCRT64 environment support for mingw-w64 packages (&lt;a href="https://github.com/ocaml/opam-repository/issues/29578"&gt;ocaml/opam-repository#29578&lt;/a&gt;), missing MSYS2 depext declarations (&lt;a href="https://github.com/ocaml/opam-repository/issues/29575"&gt;ocaml/opam-repository#29575&lt;/a&gt;–&lt;a href="https://github.com/ocaml/opam-repository/issues/29577"&gt;#29577&lt;/a&gt;), and the proposed &lt;code&gt;ocaml-option-clang-cl&lt;/code&gt; marker package (&lt;a href="https://github.com/ocaml/opam-repository/pull/29582"&gt;ocaml/opam-repository#29582&lt;/a&gt;) — all driven by MSYS2's deprecation of MINGW64 in March 2026&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29561" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Dune 3.22 ripple effects&lt;/strong&gt;&lt;/a&gt; — the major dune release required coordinated upper-bound fixes in stdune (&lt;a href="https://github.com/ocaml/opam-repository/pull/29561"&gt;ocaml/opam-repository#29561&lt;/a&gt;), dune-rpc (&lt;a href="https://github.com/ocaml/opam-repository/pull/29555"&gt;ocaml/opam-repository#29555&lt;/a&gt;), and ocamlformat (&lt;a href="https://github.com/ocaml/opam-repository/pull/29568"&gt;ocaml/opam-repository#29568&lt;/a&gt;), and triggered a release announcement on ocaml.org (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3570"&gt;ocaml/ocaml.org#3570&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29526" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml 5 / algebraic effects adoption&lt;/strong&gt;&lt;/a&gt; — &lt;a href="https://github.com/ocaml/opam-repository/pull/29526"&gt;parseff 0.1.0&lt;/a&gt; demonstrates continued growth in algebraic-effects programming style; &lt;a href="https://github.com/ocaml/opam-repository/pull/29490"&gt;raven's nx-oxcaml backend&lt;/a&gt; shows pure-OCaml SIMD via OxCaml's unboxed types approaching C backend performance&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29572" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;MirageOS dependency modernisation&lt;/strong&gt;&lt;/a&gt; — &lt;a href="https://github.com/ocaml/opam-repository/pull/29572"&gt;letsencrypt 2.0.0&lt;/a&gt; drops yojson in favour of jws/jsont, &lt;a href="https://github.com/ocaml/opam-repository/pull/29571"&gt;mirage-runtime&lt;/a&gt; relaxes the lwt &lt; 6 restriction when dune &gt;= 3.22 is used, and &lt;a href="https://github.com/ocaml/opam-repository/pull/29570"&gt;charrua buggy versions&lt;/a&gt; are marked avoid-version&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3571" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;LTS maintenance alongside OCaml 5 transition&lt;/strong&gt;&lt;/a&gt; — the 4.14.3 LTS release page on ocaml.org (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3571"&gt;ocaml/ocaml.org#3571&lt;/a&gt;) reflects continued investment in the OCaml 4.14 security track during the OCaml 5 migration period&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3566" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Planet scrape failures&lt;/strong&gt;&lt;/a&gt; are appearing consistently: &lt;code&gt;ocamlpro&lt;/code&gt;, &lt;code&gt;mirage&lt;/code&gt;, &lt;code&gt;patricoferris&lt;/code&gt;, and &lt;code&gt;dinosaure&lt;/code&gt; regularly time out, while &lt;code&gt;emilpriver&lt;/code&gt; returns 403 and &lt;code&gt;jonludlam&lt;/code&gt; returns 404 (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3566"&gt;ocaml/ocaml.org#3566&lt;/a&gt;–&lt;a href="https://github.com/ocaml/ocaml.org/issues/3569"&gt;#3569&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/issues/3573"&gt;#3573&lt;/a&gt;), suggesting stale feed registrations needing cleanup&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Dune 3.22.0 release, OCaml 4.14.3 LTS security fix, and Windows/MSYS2 improvements drove ecosystem activity.</summary><published>2026-03-22T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/ecosystem/2026/week-11</id><title>Week 11, 2026: ~30 opam packages merged including new linter and SIMD tensor backend; ocaml.org improved devcontainer tutorials and scraper CI.</title><updated>2026-03-15T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
