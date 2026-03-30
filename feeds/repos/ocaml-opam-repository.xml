@@ -1,5 +1,92 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam-repository.xml</id><title>ocaml/opam-repository (Weekly)</title><updated>2026-03-22T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam-repository.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam-repository</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2026/week-12</id><title>Week 12, 2026: A major week dominated by the dune 3.22.0 release, large scientific computing package raven 1.0.0~alpha3, and a wave of Windows/MSYS2 support improvements.</title><updated>2026-03-22T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam-repository.xml</id><title>ocaml/opam-repository (Weekly)</title><updated>2026-03-29T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam-repository.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam-repository</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2026/week-13</id><title>Week 13, 2026: Active week with ~30 PRs merged covering OCaml 5.5 alpha3, tooling releases, new packages, and Windows CI improvements.</title><updated>2026-03-29T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+A busy week with OCaml 5.5 alpha3, platform tooling updates, and a significant switch of the Windows CI to setup-ocaml.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29600"&gt;OCaml 5.5.0 third alpha&lt;/a&gt; merged by &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt;: fixes relocatable tagging, code-gen bugs on s390x and linear-scan spilling, type-system soundness issues, and a Float.Array bug; beta expected in early April&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29604"&gt;utop 2.17.0&lt;/a&gt; merged by &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt;: adds OCaml 5.5 support and neocaml major-mode support; utop 2.16.0 marked incompatible with OCaml 5.5.0&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29563"&gt;ppxlib 0.38.0 and ppxlib-tools 0.38.0&lt;/a&gt; merged by &lt;a href="https://github.com/NathanReb"&gt;Nathan Rebours&lt;/a&gt;: OCaml 5.5 support, bivariant type parameters, labeled tuples, and effect-pattern AST utilities&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29565"&gt;lsp 1.26.0-5.5~preview (3 packages)&lt;/a&gt; merged: adds destruct custom request, build-system agnostic merlin configuration, and signature-help readability improvements&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29603"&gt;dune-release 2.2.1&lt;/a&gt; merged by &lt;a href="https://github.com/Leonidas-from-XIV"&gt;Marek Kubica&lt;/a&gt;: adds prerelease marking support&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29596"&gt;core v0.17.2&lt;/a&gt; merged: Jane Street Core fix for OCaml 5.5 compatibility&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29595"&gt;fstar 2026.03.24&lt;/a&gt; merged by &lt;a href="https://github.com/mtzguido"&gt;Guido Martínez&lt;/a&gt;: updated release removing depexts on newer packages&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29598"&gt;ocaml-protoc 4.1 (4 packages)&lt;/a&gt; merged by &lt;a href="https://github.com/c-cube"&gt;Simon Cruanes&lt;/a&gt;: bugfixes for large signed int64, wrapped options, and codegen&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29608"&gt;10 packages from ocurrent/ocurrent 0.7.4&lt;/a&gt; merged by &lt;a href="https://github.com/mtelvers"&gt;Mark Elvers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29605"&gt;3 packages from ocurrent/ocaml-dockerfile 8.3.5&lt;/a&gt; merged by &lt;a href="https://github.com/mtelvers"&gt;Mark Elvers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29567"&gt;ocaml-version 4.0.4&lt;/a&gt; merged by &lt;a href="https://github.com/mtelvers"&gt;Mark Elvers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29588"&gt;tsdl 1.3.0&lt;/a&gt; merged by &lt;a href="https://github.com/dbuenzli"&gt;Daniel Bünzli&lt;/a&gt;: SDL bindings adding RGBA32 pixel format, metal and tooltip window flags&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29597"&gt;polly 0.5.0&lt;/a&gt; merged by &lt;a href="https://github.com/lindig"&gt;Christian Lindig&lt;/a&gt;: OCaml 5 C-binding compatibility, releasing runtime lock around C calls&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29592"&gt;miou 0.5.5&lt;/a&gt; merged by &lt;a href="https://github.com/dinosaure"&gt;Calascibetta Romain&lt;/a&gt;: internal bitv structure improvements for miou_unix&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29591"&gt;httpcats 0.2.1&lt;/a&gt; merged by &lt;a href="https://github.com/dinosaure"&gt;Calascibetta Romain&lt;/a&gt;: ownership-based resource release, performance improvements&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29589"&gt;passage 0.3.4&lt;/a&gt; merged by &lt;a href="https://github.com/thatportugueseguy"&gt;José Nogueira&lt;/a&gt;: new overlap command, warn-on-skip for refresh, inline comment bug fix&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29593"&gt;passage 0.3.2 &amp; 0.3.3: avoid-version flags&lt;/a&gt; merged by &lt;a href="https://github.com/arvidj"&gt;@arvidj&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29580"&gt;wcwidth 1.1.0&lt;/a&gt; merged by &lt;a href="https://github.com/penelopeysm"&gt;Penelope Yong&lt;/a&gt;: terminal display width utility&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29568"&gt;ocamlformat: add Dune 3.22 constraints&lt;/a&gt; merged by &lt;a href="https://github.com/Julow"&gt;Jules Aguillon&lt;/a&gt;: fixes testsuite breakage with Dune 3.22 diff-rule changes&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29571"&gt;mirage-runtime: relax lwt dependency&lt;/a&gt; merged by &lt;a href="https://github.com/hannesm"&gt;Hannes Mehnert&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29570"&gt;charrua-client 3.0.0 &amp; 3.1.0: avoid-version&lt;/a&gt; merged by &lt;a href="https://github.com/hannesm"&gt;Hannes Mehnert&lt;/a&gt;: MirageOS network stack issues fixed in 3.1.1&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29573"&gt;parseff 0.2.0&lt;/a&gt; merged by &lt;a href="https://github.com/davesnx"&gt;David Sancho&lt;/a&gt; (earlier in the window)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29614"&gt;Switch Windows CI to setup-ocaml&lt;/a&gt; merged by &lt;a href="https://github.com/smorimoto"&gt;Sora Morimoto&lt;/a&gt;: replaces manual MSYS2/opam setup with ocaml/setup-ocaml@v3, using git+file:// for symlink-safe local repo reference&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29586"&gt;mdx 2.5.2&lt;/a&gt; opened by &lt;a href="https://github.com/Julow"&gt;Jules Aguillon&lt;/a&gt;: OCaml 5.5 support, labelled priority for next OCaml release&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29601"&gt;ocaml-solo5 1.2.2&lt;/a&gt; opened by &lt;a href="https://github.com/hannesm"&gt;Hannes Mehnert&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29582"&gt;ocaml-option-llvm&lt;/a&gt; opened by &lt;a href="https://github.com/smorimoto"&gt;Sora Morimoto&lt;/a&gt;: new cross-platform LLVM toolchain option package (clang-cl on Windows, clang elsewhere)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29613"&gt;conf-perl.3 and conf-perl-* CPAN support&lt;/a&gt; opened (draft) by &lt;a href="https://github.com/smorimoto"&gt;Sora Morimoto&lt;/a&gt;: Cygwin/MSYS2 CPAN-based install for Perl modules missing from system package repos&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29599"&gt;oniguruma bounds for textmate-language&lt;/a&gt; opened by &lt;a href="https://github.com/alan-j-hu"&gt;Alan&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29566"&gt;gendarme 0.4.1 (9 packages)&lt;/a&gt; opened by &lt;a href="https://github.com/bensmrs"&gt;Benjamin Somers&lt;/a&gt;: marshalling library suite with CSV, JSON, TOML, YAML backends&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Active week with ~30 PRs merged covering OCaml 5.5 alpha3, tooling releases, new packages, and Windows CI improvements.</summary><published>2026-03-29T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2026/week-12</id><title>Week 12, 2026: A major week dominated by the dune 3.22.0 release, large scientific computing package raven 1.0.0~alpha3, and a wave of Windows/MSYS2 support improvements.</title><updated>2026-03-22T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

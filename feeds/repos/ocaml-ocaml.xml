@@ -1,5 +1,88 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.xml</id><title>ocaml/ocaml (Weekly)</title><updated>2026-03-22T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-12</id><title>Week 12, 2026: New `Atomic.Array` module, `List.append_map`/`rev_append_map`, stdlib additions, type soundness fixes, and GC improvements merged.</title><updated>2026-03-22T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.xml</id><title>ocaml/ocaml (Weekly)</title><updated>2026-03-29T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-13</id><title>Week 13, 2026: Active week with 10 merged PRs: GC fixes (ephemerons reverted+re-attempted), type system improvements, POWER CFI support, and testsuite speedups.</title><updated>2026-03-29T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+10 PRs merged; 33 files changed with 1018 insertions and 393 deletions in git; active GC debugging around ephemeron race conditions.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+Merged PRs this week:&lt;/strong&gt;&lt;/br&gt;
+- #14680&lt;/a&gt;: Class type system improvements (rebased #12150) — 359 additions, 189 deletions, 13 files. By Florian Angeletti&lt;/a&gt;.&lt;/br&gt;
+- #14689&lt;/a&gt;: Cosmetic ocamltest refactorings — 38 additions, 32 deletions, 5 files. By Gabriel Scherer&lt;/a&gt;.&lt;/br&gt;
+- #14394&lt;/a&gt;: Refactor type_let&lt;/code&gt; into type_let_nonrec&lt;/code&gt; and type_let_rec&lt;/code&gt; — 376 additions, 211 deletions, 2 files. By Alistair&lt;/a&gt;.&lt;/br&gt;
+- #14684&lt;/a&gt;: Clean up ocamlopt&lt;/code&gt; man page — 97 additions, 66 deletions, 2 files. By shym&lt;/a&gt;, reviewed by Florian Angeletti&lt;/a&gt;.&lt;/br&gt;
+- #14665&lt;/a&gt;: Always emit prefetchw&lt;/code&gt; on x86/x8664 — 56 additions, 4 deletions, 3 files. By Antonin Décimo&lt;/a&gt;.&lt;/br&gt;
+- #14482&lt;/a&gt;: CFI support for POWER architecture — 171 additions, 18 deletions, 7 files. By Tim McGilchrist&lt;/a&gt;.&lt;/br&gt;
+- #14683&lt;/a&gt;: Fix memory-model tests default test size — 2 additions, 2 deletions. By Gabriel Scherer&lt;/a&gt;.&lt;/br&gt;
+- #14681&lt;/a&gt;: Speed up lazy/lazy5.ml&lt;/code&gt; test from 10s to 0.1s — 33 additions, 18 deletions. By Gabriel Scherer&lt;/a&gt;.&lt;/br&gt;
+- #14682&lt;/a&gt;: Revert ephemeron PR #14657 (race condition introduced) — 2 additions, 43 deletions. By Gabriel Scherer&lt;/a&gt;.&lt;/br&gt;
+- #14667&lt;/a&gt;: Modular explicits: enable application warnings — 222 additions, 15 deletions. By Florian Angeletti&lt;/a&gt;.&lt;/br&gt;
+- #14669&lt;/a&gt;: Allow Config.is_official_release&lt;/code&gt; to change without bootstrap — 8 additions, 22 deletions. By David Allsopp&lt;/a&gt;.&lt;/br&gt;
+- #14662&lt;/a&gt;: Correct order of compiler flags in ocamltest — 5 additions, 5 deletions. By David Allsopp&lt;/a&gt;.&lt;/br&gt;
+- #14678&lt;/a&gt;: Fix test for #14380 (reserved&lt;/em&gt;header_bits config variable) — 10 additions. By Damien Doligez&lt;/a&gt;.&lt;/p&gt;
+
+Open PRs with notable activity:&lt;/strong&gt;&lt;/br&gt;
+- #14688&lt;/a&gt;: Revised ephemeron optimization (without the race condition) — under review.&lt;/br&gt;
+- #14580&lt;/a&gt;: GC for continuations&lt;/strong&gt; (draft) — major infrastructure for automatically finalising dropped effects continuations. By KC Sivaramakrishnan&lt;/a&gt;.&lt;/br&gt;
+- #14673&lt;/a&gt;: Keep expansion 5.4 (rebase of #11648) — ecosystem testing revealing type-checker bugs in ppxlib and base_quickcheck.&lt;/br&gt;
+- #14692&lt;/a&gt;: Syntax proposal: unparenthesized applications in record update syntax — e.g. { Gc.get () with ... }&lt;/code&gt;. By Stephen Dolan&lt;/a&gt;.&lt;/br&gt;
+- #14695&lt;/a&gt;: Add hint about type annotations for GADT equation scope escapes. By Stefan Muenzel&lt;/a&gt;.&lt;/br&gt;
+- #14691&lt;/a&gt;: Bigarray overflow fix&lt;/strong&gt; in caml_ba_reshape&lt;/code&gt; — security relevant, should be backported to 4.14. By Stephen Dolan&lt;/a&gt;.&lt;/p&gt;
+
+Closed without merge:&lt;/strong&gt;&lt;/br&gt;
+- #14674&lt;/a&gt;: Bigarray 4.14 backport superseded by better fix in #14691.&lt;/br&gt;
+- #10286&lt;/a&gt;: Old Array.unsafe_blit&lt;/code&gt; PR closed after 5 years of inactivity.&lt;/br&gt;
+- #14672&lt;/a&gt;: Automated shell-injection PR superseded by #14676.&lt;/p&gt;
+</content><link href="https://thicket.dev/"/><summary>Active week with 10 merged PRs: GC fixes (ephemerons reverted+re-attempted), type system improvements, POWER CFI support, and testsuite speedups.</summary><published>2026-03-29T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-12</id><title>Week 12, 2026: New `Atomic.Array` module, `List.append_map`/`rev_append_map`, stdlib additions, type soundness fixes, and GC improvements merged.</title><updated>2026-03-22T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

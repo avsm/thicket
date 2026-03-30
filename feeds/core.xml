@@ -1,5 +1,102 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/core.xml</id><title>OCaml Core (Weekly)</title><updated>2026-03-22T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/core.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Core OCaml language, compiler, and essential tooling</subtitle><entry><id>https://thicket.dev/groups/core/2026/week-12</id><title>Week 12, 2026: Atomic.Array, List.append_map/rev_append_map merged; GC improvements, type soundness fixes, and bytecode effects bug landed in ocaml/ocaml.</title><updated>2026-03-22T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/core.xml</id><title>OCaml Core (Weekly)</title><updated>2026-03-29T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/core.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Core OCaml language, compiler, and essential tooling</subtitle><entry><id>https://thicket.dev/groups/core/2026/week-13</id><title>Week 13, 2026: 10 PRs merged in ocaml/ocaml: GC ephemeron revert/re-fix, POWER CFI, type system improvements, and testsuite speedups.</title><updated>2026-03-29T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14482"&gt;ocaml/ocaml#14482&lt;/a&gt;: DWARF CFI support for the POWER backend, bringing backtraces and GDB debugger/profiler support to the last native backend missing them. By &lt;a href="https://github.com/tmcgilchrist"&gt;Tim McGilchrist&lt;/a&gt;, reviewed by &lt;a href="https://github.com/xavierleroy"&gt;Xavier Leroy&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14667"&gt;ocaml/ocaml#14667&lt;/a&gt;: Application warnings for modular explicit (module-dependent) functions — partial application, over-application, and unused argument warnings now enabled for &lt;code&gt;Tfunctor&lt;/code&gt; types. By &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt;, reviewed by &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14680"&gt;ocaml/ocaml#14680&lt;/a&gt;: Class type system improvements (rebase of &lt;a href="https://github.com/ocaml/ocaml/issues/12150"&gt;ocaml/ocaml#12150&lt;/a&gt; by &lt;a href="https://github.com/lpw25"&gt;Leo White&lt;/a&gt;) — fixes long-standing issues in the OO type system. Rebased and merged by &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14394"&gt;ocaml/ocaml#14394&lt;/a&gt;: Refactor &lt;code&gt;type_let&lt;/code&gt; into &lt;code&gt;type_let_nonrec&lt;/code&gt; and &lt;code&gt;type_let_rec&lt;/code&gt; — prerequisite for future improvements to recursive-binding typing. By &lt;a href="https://github.com/johnyob"&gt;Alistair&lt;/a&gt;, reviewed by &lt;a href="https://github.com/samsa1"&gt;Samuel Vivien&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14693"&gt;ocaml/ocaml#14693&lt;/a&gt;: &lt;code&gt;Dynarray.{of,to}_iarray&lt;/code&gt; — adds conversions between &lt;code&gt;Dynarray&lt;/code&gt; and &lt;code&gt;iarray&lt;/code&gt; (immutable arrays) with a single-copy implementation. By &lt;a href="https://github.com/OlivierNicole"&gt;Olivier Nicole&lt;/a&gt;, approved by &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14665"&gt;ocaml/ocaml#14665&lt;/a&gt;: Always emit &lt;code&gt;prefetchw&lt;/code&gt; on x86/x86_64, removing the need for the &lt;code&gt;-mprfchw&lt;/code&gt; compiler flag. By &lt;a href="https://github.com/MisterDA"&gt;Antonin Décimo&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;Activity this week was concentrated in &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt;; &lt;a href="https://github.com/ocaml/RFCs"&gt;ocaml/RFCs&lt;/a&gt; had no recorded activity.&lt;/li&gt;
+&lt;li&gt;10 PRs merged in &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt; with 33 files changed (1018 insertions, 393 deletions).&lt;/li&gt;
+&lt;li&gt;Key themes: GC correctness (ephemeron race condition diagnosed, reverted via &lt;a href="https://github.com/ocaml/ocaml/issues/14682"&gt;ocaml/ocaml#14682&lt;/a&gt;, and re-attempted via &lt;a href="https://github.com/ocaml/ocaml/issues/14688"&gt;ocaml/ocaml#14688&lt;/a&gt;), type-system infrastructure, and architecture backend completeness.&lt;/li&gt;
+&lt;li&gt;17+ contributors active; &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; authored or co-reviewed 5 merged PRs.&lt;/li&gt;
+&lt;li&gt;Notable open work: GC for continuations (&lt;a href="https://github.com/ocaml/ocaml/issues/14580"&gt;ocaml/ocaml#14580&lt;/a&gt;) and a security-relevant Bigarray overflow fix (&lt;a href="https://github.com/ocaml/ocaml/issues/14691"&gt;ocaml/ocaml#14691&lt;/a&gt;) pending review.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/RFCs"&gt;ocaml/RFCs&lt;/a&gt; had no recorded activity this week; all cross-repository coordination was informal.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14668"&gt;ocaml/ocaml#14668&lt;/a&gt;: Discussion on adding extension point placeholders to more AST positions in &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt; for ppxlib compatibility — an ongoing coordination point between the compiler and the ppxlib project.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14673"&gt;ocaml/ocaml#14673&lt;/a&gt;: Ecosystem testing of &lt;a href="https://github.com/ocaml/ocaml/issues/11648"&gt;ocaml/ocaml#11648&lt;/a&gt; (&lt;code&gt;keep-expansion&lt;/code&gt;) against external packages (ppxlib, base_quickcheck) revealed integration issues that need resolution before merger.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14634" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Minor heap size defaults&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14634"&gt;ocaml/ocaml#14634&lt;/a&gt;): &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; argues the 256KW (2MiB) default, unchanged since 2011, is too conservative for modern hardware; benchmarks show up to 3x speedup with &lt;code&gt;s=32M&lt;/code&gt; on allocation-heavy programs. &lt;a href="https://github.com/stedolan"&gt;Stephen Dolan&lt;/a&gt; supports increasing the default (Jane Street has used 8MiB since 2017) but cautions against over-interpreting synthetic benchmarks.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14580" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;GC for continuations&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14580"&gt;ocaml/ocaml#14580&lt;/a&gt;): &lt;a href="https://github.com/kayceesrk"&gt;KC Sivaramakrishnan&lt;/a&gt; proposes automatically finalising dropped effects continuations for resource cleanup; debate about whether this encourages treating &lt;code&gt;Fun.protect&lt;/code&gt; finalizers as GC finalizers (~2% overhead on chameneos benchmark).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14668" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Extension points in the OCaml AST for ppxlib&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14668"&gt;ocaml/ocaml#14668&lt;/a&gt;): &lt;a href="https://github.com/NathanReb"&gt;Nathan Rebours&lt;/a&gt; proposes adding extension point placeholders to more AST positions (especially &lt;code&gt;type_declaration&lt;/code&gt;) so ppxlib can encode new language features without ppx breakage.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14679" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Ephemeron race condition&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14679"&gt;ocaml/ocaml#14679&lt;/a&gt;): &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; diagnosed a race in &lt;a href="https://github.com/ocaml/ocaml/issues/14657"&gt;ocaml/ocaml#14657&lt;/a&gt; where &lt;code&gt;num_domains_to_mark&lt;/code&gt; was decremented before &lt;code&gt;ephe_next_round()&lt;/code&gt; was called, causing major GC deadlock in multi-domain programs. The PR was reverted (&lt;a href="https://github.com/ocaml/ocaml/issues/14682"&gt;ocaml/ocaml#14682&lt;/a&gt;) and a fixed version (&lt;a href="https://github.com/ocaml/ocaml/issues/14688"&gt;ocaml/ocaml#14688&lt;/a&gt;) proposed.&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;keep-expansion&lt;/code&gt; type-checker PR&lt;/strong&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14673"&gt;ocaml/ocaml#14673&lt;/a&gt;): Ecosystem testing of &lt;a href="https://github.com/ocaml/ocaml/issues/11648"&gt;ocaml/ocaml#11648&lt;/a&gt; (&lt;a href="https://github.com/garrigue"&gt;Jacques Garrigue&lt;/a&gt;'s multi-year type-checker correctness fix) revealed an "Unbound record field" in ppxlib and a &lt;code&gt;Ctype.Unify&lt;/code&gt; exception in base_quickcheck.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14594" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Segfaults in cleanup-at-exit mode&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14594"&gt;ocaml/ocaml#14594&lt;/a&gt;): Ongoing debate on whether &lt;code&gt;caml_shutdown&lt;/code&gt; should cancel unjoined domains; &lt;a href="https://github.com/stedolan"&gt;Stephen Dolan&lt;/a&gt; argues the cleanup-at-exit mode has both false positives and false negatives and should be deleted.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14682" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Ephemeron performance and correctness&lt;/strong&gt;&lt;/a&gt;: A full cycle of merge, revert (&lt;a href="https://github.com/ocaml/ocaml/issues/14682"&gt;ocaml/ocaml#14682&lt;/a&gt;), and re-attempt (&lt;a href="https://github.com/ocaml/ocaml/issues/14688"&gt;ocaml/ocaml#14688&lt;/a&gt;) of ephemeron GC optimization illustrates the difficulty of concurrent GC modifications; the fix targets a quadratic blowup affecting the Rocq proof assistant's evar map use case.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14394" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Type-checker infrastructure overhaul&lt;/strong&gt;&lt;/a&gt;: Multiple interrelated PRs (&lt;a href="https://github.com/ocaml/ocaml/issues/14394"&gt;ocaml/ocaml#14394&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14538"&gt;ocaml/ocaml#14538&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14517"&gt;ocaml/ocaml#14517&lt;/a&gt;) by &lt;a href="https://github.com/johnyob"&gt;Alistair&lt;/a&gt; systematically refactor &lt;code&gt;type_let&lt;/code&gt; and &lt;code&gt;type_approx&lt;/code&gt; to enable correct handling of polymorphic recursive bindings — groundwork for fixing &lt;a href="https://github.com/ocaml/ocaml/issues/14253"&gt;ocaml/ocaml#14253&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;keep-expansion&lt;/code&gt; type correctness&lt;/strong&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/11648"&gt;ocaml/ocaml#11648&lt;/a&gt; / &lt;a href="https://github.com/ocaml/ocaml/issues/14673"&gt;ocaml/ocaml#14673&lt;/a&gt;): &lt;a href="https://github.com/garrigue"&gt;Jacques Garrigue&lt;/a&gt;'s multi-year effort to fix principality and non-termination bugs via &lt;code&gt;Texpand&lt;/code&gt; type nodes is approaching merger, with ecosystem testing now revealing integration issues in ppxlib and base_quickcheck.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14681" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;CI robustness and testsuite speed&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; merged multiple PRs reducing testsuite runtime (&lt;a href="https://github.com/ocaml/ocaml/issues/14681"&gt;ocaml/ocaml#14681&lt;/a&gt;: lazy5.ml 10s→0.1s; &lt;a href="https://github.com/ocaml/ocaml/issues/14683"&gt;ocaml/ocaml#14683&lt;/a&gt;: memory-model tests 7s→2s).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14482" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Architecture backend completeness&lt;/strong&gt;&lt;/a&gt;: POWER CFI support (&lt;a href="https://github.com/ocaml/ocaml/issues/14482"&gt;ocaml/ocaml#14482&lt;/a&gt;) completes native debugger support across all supported architectures; s390x CFI fix (&lt;a href="https://github.com/ocaml/ocaml/issues/14500"&gt;ocaml/ocaml#14500&lt;/a&gt;) also pending.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14668" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;ppxlib/compiler interface evolution&lt;/strong&gt;&lt;/a&gt;: Discussion on &lt;a href="https://github.com/ocaml/ocaml/issues/14668"&gt;ocaml/ocaml#14668&lt;/a&gt; reflects ongoing coordination between ppxlib (moving to a frozen AST model) and the compiler team.&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>10 PRs merged in ocaml/ocaml: GC ephemeron revert/re-fix, POWER CFI, type system improvements, and testsuite speedups.</summary><published>2026-03-29T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2026/week-12</id><title>Week 12, 2026: Atomic.Array, List.append_map/rev_append_map merged; GC improvements, type soundness fixes, and bytecode effects bug landed in ocaml/ocaml.</title><updated>2026-03-22T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
@@ -6172,7 +6269,7 @@
 &lt;li&gt;&lt;strong class="achievement"&gt;Cross-platform compatibility&lt;/strong&gt; receiving increased attention with Windows API modernization and Unix platform improvements&lt;/li&gt;
 &lt;li&gt;&lt;strong class="achievement"&gt;Language design refinement&lt;/strong&gt; through community feedback on practical applications of new syntax features like raw identifiers&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Runtime improvements and bytecode optimization merged alongside language syntax discussions for raw identifiers</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2024/week-42</id><title>Week 42, 2024: Five PRs merged in ocaml/ocaml including new Thread.set_current_thread_name API and compiler improvements</title><updated>2026-03-23T13:49:17.339685+00:00</updated><content type="html">
+</content><link href="https://thicket.dev/"/><summary>Runtime improvements and bytecode optimization merged alongside language syntax discussions for raw identifiers</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2024/week-42</id><title>Week 42, 2024: Five PRs merged in ocaml/ocaml including new Thread.set_current_thread_name API and compiler improvements</title><updated>2026-03-30T17:34:46.138517+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

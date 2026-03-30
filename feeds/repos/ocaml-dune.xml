@@ -1,5 +1,81 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-dune.xml</id><title>ocaml/dune (Weekly)</title><updated>2026-03-22T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-dune.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/dune</subtitle><entry><id>https://thicket.dev/repos/ocaml-dune/2026/week-12</id><title>Week 12, 2026: Dune 3.22.0 was released on March 18, followed by an extensive internal cache and module restructuring effort.</title><updated>2026-03-22T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-dune.xml</id><title>ocaml/dune (Weekly)</title><updated>2026-03-29T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-dune.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/dune</subtitle><entry><id>https://thicket.dev/repos/ocaml-dune/2026/week-13</id><title>Week 13, 2026: Directory diffing, promote prefix support, and sandboxed corrections merged alongside 3.22.1 release prep and OCaml 4.14 minimum bump.</title><updated>2026-03-29T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Active week with new diff/promote capabilities merged, extensive internal refactoring, 3.22.1 backports, and several new PRs targeting upcoming features.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; opened several PRs targeting upcoming features and fixes: &lt;strong class="achievement"&gt;&lt;code&gt;DUNE_PROJECT_ROOT&lt;/code&gt; environment variable&lt;/strong&gt; (&lt;a href="https://github.com/ocaml/dune/issues/13934"&gt;#13934&lt;/a&gt;), &lt;a href="https://github.com/ocaml/dune/issues/13934" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;improved mtime precision&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/13962"&gt;#13962&lt;/a&gt;), &lt;strong class="achievement"&gt;source directory dependency fix&lt;/strong&gt; (&lt;a href="https://github.com/ocaml/dune/issues/13966"&gt;#13966&lt;/a&gt;), &lt;strong class="achievement"&gt;directory diff in &lt;code&gt;_build&lt;/code&gt;&lt;/strong&gt; (&lt;a href="https://github.com/ocaml/dune/issues/13968"&gt;#13968&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13970"&gt;#13970&lt;/a&gt;), and internal refactors for sandbox config (&lt;a href="https://github.com/ocaml/dune/issues/13898"&gt;#13898&lt;/a&gt;), repr-based digests (&lt;a href="https://github.com/ocaml/dune/issues/13943"&gt;#13943&lt;/a&gt;), workspace local cache cleanup (&lt;a href="https://github.com/ocaml/dune/issues/13969"&gt;#13969&lt;/a&gt;), and temporary dir hooks (&lt;a href="https://github.com/ocaml/dune/issues/13971"&gt;#13971&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; opened a fix for &lt;a href="https://github.com/ocaml/dune/issues/13930" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;runtest running in all contexts&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/13930"&gt;#13930&lt;/a&gt;) and maintains the draft &lt;strong class="achievement"&gt;relocatable compiler support&lt;/strong&gt; PR (&lt;a href="https://github.com/ocaml/dune/issues/13321"&gt;#13321&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/shonfeder"&gt;Shon Feder&lt;/a&gt; opened PRs for &lt;a href="https://github.com/ocaml/dune/issues/13952" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;backport script automation&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/13952"&gt;#13952&lt;/a&gt;) and &lt;strong class="achievement"&gt;release process documentation updates&lt;/strong&gt; (&lt;a href="https://github.com/ocaml/dune/issues/13953"&gt;#13953&lt;/a&gt;), alongside the &lt;strong class="achievement"&gt;3.22.1 release PR&lt;/strong&gt; (&lt;a href="https://github.com/ocaml/dune/issues/13947"&gt;#13947&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ElectreAAS"&gt;Ambre Austen Suhamy&lt;/a&gt; has open draft PRs for &lt;strong class="achievement"&gt;clarifying &lt;code&gt;Io.links&lt;/code&gt; documentation&lt;/strong&gt; (&lt;a href="https://github.com/ocaml/dune/issues/13791"&gt;#13791&lt;/a&gt;) and &lt;a href="https://github.com/ocaml/dune/issues/13791" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;resolving directory symlinks in fetched targets&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/13792"&gt;#13792&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/anmonteiro"&gt;Antonio Nuno Monteiro&lt;/a&gt; has an open draft fix for &lt;strong class="achievement"&gt;multiple &lt;code&gt;(dirs ..)&lt;/code&gt; stanzas&lt;/strong&gt; (&lt;a href="https://github.com/ocaml/dune/issues/13734"&gt;#13734&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/sabine"&gt;@sabine&lt;/a&gt; has a draft PR for &lt;a href="https://github.com/ocaml/dune/issues/13831" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;depexts reference documentation&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/13831"&gt;#13831&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13880" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Diff and promote feature expansion&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt;: directory diffing (&lt;a href="https://github.com/ocaml/dune/issues/13880"&gt;#13880&lt;/a&gt;), promote prefix support (&lt;a href="https://github.com/ocaml/dune/issues/13876"&gt;#13876&lt;/a&gt;), sandboxed corrections (&lt;a href="https://github.com/ocaml/dune/issues/13813"&gt;#13813&lt;/a&gt;), &lt;code&gt;dune clean&lt;/code&gt; path arguments (&lt;a href="https://github.com/ocaml/dune/issues/13875"&gt;#13875&lt;/a&gt;), and &lt;code&gt;--debug-backtraces&lt;/code&gt; for promotion/trace/cache commands (&lt;a href="https://github.com/ocaml/dune/issues/13933"&gt;#13933&lt;/a&gt;) all merged&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13875" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Digest and cache refactoring&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt;: &lt;code&gt;Cached_digest&lt;/code&gt; broken into dedicated &lt;code&gt;Digest_result&lt;/code&gt; and &lt;code&gt;Reduced_stats&lt;/code&gt; modules, moved into &lt;code&gt;Fs_memo&lt;/code&gt;, per-target digest storage moved into rule cache (&lt;a href="https://github.com/ocaml/dune/issues/13875"&gt;#13875&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13956"&gt;#13956&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13957"&gt;#13957&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13958"&gt;#13958&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13959"&gt;#13959&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13945"&gt;#13945&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13938"&gt;#13938&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13533" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml 4.14 minimum version&lt;/strong&gt;&lt;/a&gt; established by &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt;, with removal of accumulated compat shims for &lt;code&gt;Either&lt;/code&gt;, &lt;code&gt;Val_none&lt;/code&gt;, &lt;code&gt;Array.find_opt&lt;/code&gt;, &lt;code&gt;String&lt;/code&gt;, and boot stdlib shims (&lt;a href="https://github.com/ocaml/dune/issues/13533"&gt;#13533&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13924"&gt;#13924&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13922"&gt;#13922&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13925"&gt;#13925&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13926"&gt;#13926&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13927"&gt;#13927&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13941" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;3.22.1 release preparation&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/shonfeder"&gt;Shon Feder&lt;/a&gt; managed four backport merges (&lt;a href="https://github.com/ocaml/dune/issues/13941"&gt;#13941&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13946"&gt;#13946&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13948"&gt;#13948&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13949"&gt;#13949&lt;/a&gt;) targeting Windows and portability fixes, with the release draft (&lt;a href="https://github.com/ocaml/dune/issues/13947"&gt;#13947&lt;/a&gt;) in progress&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13905" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Windows and portability fixes&lt;/strong&gt;&lt;/a&gt;: Windows 7 compatibility restored in time&lt;em&gt;stubs.c (&lt;a href="https://github.com/ocaml/dune/issues/13905"&gt;#13905&lt;/a&gt; by &lt;a href="https://github.com/nojb"&gt;Nicolás Ojeda Bär&lt;/a&gt;), macOS clock fallback added (&lt;a href="https://github.com/ocaml/dune/issues/13918"&gt;#13918&lt;/a&gt;), time&lt;/em&gt;stubs.c warning fixed (&lt;a href="https://github.com/ocaml/dune/issues/13914"&gt;#13914&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13888" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Package management fixes&lt;/strong&gt;&lt;/a&gt;: &lt;code&gt;OPAMSWITCH&lt;/code&gt; in build env (&lt;a href="https://github.com/ocaml/dune/issues/13888"&gt;#13888&lt;/a&gt;), &lt;code&gt;.exe&lt;/code&gt; handling on Windows (&lt;a href="https://github.com/ocaml/dune/issues/13864"&gt;#13864&lt;/a&gt;), stronger hash preference (&lt;a href="https://github.com/ocaml/dune/issues/13901"&gt;#13901&lt;/a&gt;), relative path lock outside workspace (&lt;a href="https://github.com/ocaml/dune/issues/13915"&gt;#13915&lt;/a&gt;) all merged&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13844" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;CI improvements&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/Sudha247"&gt;Sudha Parimala&lt;/a&gt;: added a CI job for package dependency specification and lower bounds checking (&lt;a href="https://github.com/ocaml/dune/issues/13844"&gt;#13844&lt;/a&gt;) and a test for dev tool constraints (&lt;a href="https://github.com/ocaml/dune/issues/13036"&gt;#13036&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/13873" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Changelog tooling simplification&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/shonfeder"&gt;Shon Feder&lt;/a&gt;: the changelog update process was simplified with a deterministic format and machine-generated warning headers (&lt;a href="https://github.com/ocaml/dune/issues/13873"&gt;#13873&lt;/a&gt;), along with a release issue template update (&lt;a href="https://github.com/ocaml/dune/issues/13900"&gt;#13900&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/toots"&gt;Romain Beauxis&lt;/a&gt; fixed &lt;strong class="achievement"&gt;&lt;code&gt;enabled_if&lt;/code&gt; evaluation in &lt;code&gt;lib_entries_of_package&lt;/code&gt;&lt;/strong&gt; to resolve a dependency cycle when using the &lt;code&gt;package&lt;/code&gt; field (&lt;a href="https://github.com/ocaml/dune/issues/13833"&gt;#13833&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/mefyl"&gt;mefyl&lt;/a&gt; added a &lt;strong class="achievement"&gt;hint when building targets excluded by &lt;code&gt;(dirs ...)&lt;/code&gt;&lt;/strong&gt; (&lt;a href="https://github.com/ocaml/dune/issues/13919"&gt;#13919&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/meet0806"&gt;Meet Zalavadiya&lt;/a&gt; improved &lt;a href="https://github.com/ocaml/dune/issues/13954" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;unsupported opam variable translation error messages&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/13954"&gt;#13954&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/anmonteiro"&gt;Antonio Nuno Monteiro&lt;/a&gt; added a &lt;strong class="achievement"&gt;Melange &lt;code&gt;--mel-cross-module-opt&lt;/code&gt; test&lt;/strong&gt; showing &lt;code&gt;.cmj&lt;/code&gt; files are not staged (&lt;a href="https://github.com/ocaml/dune/issues/13886"&gt;#13886&lt;/a&gt;) and updated Nix and OxCaml flakes (&lt;a href="https://github.com/ocaml/dune/issues/13935"&gt;#13935&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13936"&gt;#13936&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Directory diffing, promote prefix support, and sandboxed corrections merged alongside 3.22.1 release prep and OCaml 4.14 minimum bump.</summary><published>2026-03-29T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-dune/2026/week-12</id><title>Week 12, 2026: Dune 3.22.0 was released on March 18, followed by an extensive internal cache and module restructuring effort.</title><updated>2026-03-22T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

@@ -1,5 +1,69 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam.xml</id><title>ocaml/opam (Weekly)</title><updated>2026-03-22T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam/2026/week-12</id><title>Week 12, 2026: Four-PR series by Brian Ward to overhaul opam shell completions using cmdliner 2.1.0 with new PowerShell support.</title><updated>2026-03-22T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam.xml</id><title>ocaml/opam (Weekly)</title><updated>2026-03-29T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam/2026/week-13</id><title>Week 13, 2026: Week focused on open PRs addressing repository loading bugs, symlink handling, Nushell support, and disk space optimization.</title><updated>2026-03-29T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Four PRs were open during the week covering repository loading, shell portability, and file handling improvements.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/pull/6874" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Newly opened&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/smorimoto"&gt;Sora Morimoto&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/opam/pull/6874"&gt;#6874&lt;/a&gt; to follow symlinks transparently in &lt;code&gt;get_diff&lt;/code&gt;, fixing failures when using &lt;code&gt;file://&lt;/code&gt; repositories with symlinks&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/pull/6873" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Newly opened&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/jneem"&gt;@jneem&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/opam/pull/6873"&gt;#6873&lt;/a&gt; adding Nushell shell support for &lt;code&gt;opam env&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/pull/6871" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Ongoing&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/rjbou"&gt;R. Boujbel&lt;/a&gt; has &lt;a href="https://github.com/ocaml/opam/pull/6871"&gt;#6871&lt;/a&gt; (draft) open to update the repository diff-loading mechanism, simplifying code and preventing updates to unrelated paths&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/pull/6440" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Ongoing&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; has &lt;a href="https://github.com/ocaml/opam/pull/6440"&gt;#6440&lt;/a&gt; open to reduce disk usage by caching only dev packages into the &lt;code&gt;.opam-switch/sources&lt;/code&gt; directory&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6872" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Issue opened&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; filed &lt;a href="https://github.com/ocaml/opam/issues/6872"&gt;#6872&lt;/a&gt; reporting that incremental repository loading introduced in opam 2.5.0 scans from the repository root rather than the &lt;code&gt;packages/&lt;/code&gt; subdirectory, causing missed packages on first load&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6870" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Issue active&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/johnwhitington"&gt;John Whitington&lt;/a&gt; reported &lt;a href="https://github.com/ocaml/opam/issues/6870"&gt;#6870&lt;/a&gt; where &lt;code&gt;opam publish&lt;/code&gt; uses a wrong archive URL when run automatically after the plugin is installed&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Week focused on open PRs addressing repository loading bugs, symlink handling, Nushell support, and disk space optimization.</summary><published>2026-03-29T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-opam/2026/week-12</id><title>Week 12, 2026: Four-PR series by Brian Ward to overhaul opam shell completions using cmdliner 2.1.0 with new PowerShell support.</title><updated>2026-03-22T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
