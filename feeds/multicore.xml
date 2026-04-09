@@ -1,5 +1,82 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/multicore.xml</id><title>Multicore (Weekly)</title><updated>2026-03-29T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/multicore.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Multicore OCaml</subtitle><entry><id>https://thicket.dev/groups/multicore/2026/week-13</id><title>Week 13, 2026: Quiet week across the multicore group; only eio saw activity, with discussion of a race condition in Eio.Path.load.</title><updated>2026-03-29T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/multicore.xml</id><title>Multicore (Weekly)</title><updated>2026-04-05T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/multicore.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Multicore OCaml</subtitle><entry><id>https://thicket.dev/groups/multicore/2026/week-14</id><title>Week 14, 2026: Activity confined to eio: configurable eventfd/pipe backend parameters added; two open issues received discussion.</title><updated>2026-04-05T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/eio/issues/836" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Configurable eventfd creation&lt;/strong&gt;&lt;/a&gt; in the &lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt; Linux backend: &lt;code&gt;run_event_loop&lt;/code&gt; and &lt;code&gt;run&lt;/code&gt; in &lt;code&gt;lib_eio_linux&lt;/code&gt; now accept an optional &lt;code&gt;?eventfd&lt;/code&gt; parameter, allowing callers to supply a custom function for creating event file descriptors (&lt;a href="https://github.com/ocaml-multicore/eio/issues/836"&gt;ocaml-multicore/eio#836&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/eio/issues/836" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Configurable pipe creation&lt;/strong&gt;&lt;/a&gt; in the Posix backend: &lt;code&gt;lib_eio_posix&lt;/code&gt; domain manager and scheduler now accept an optional &lt;code&gt;?pipe&lt;/code&gt; parameter, enabling callers to control how pipes are created — useful for shells that need to move FDs to higher numbers (e.g. &lt;code&gt;dash savefd&lt;/code&gt; pattern) (&lt;a href="https://github.com/ocaml-multicore/eio/issues/836"&gt;ocaml-multicore/eio#836&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;Activity this week was limited to &lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt;; all other repositories (domainslib, ocaml-uring, meio, saturn, eio-trace, picos, kcas, ocaml-iomux) had no recorded commits or discussions&lt;/li&gt;
+&lt;li&gt;One new PR was opened in eio (&lt;a href="https://github.com/ocaml-multicore/eio/issues/836"&gt;ocaml-multicore/eio#836&lt;/a&gt;) making Linux and Posix backend event FD creation configurable, affecting 8 files (35 additions, 26 deletions)&lt;/li&gt;
+&lt;li&gt;Two pre-existing issues received follow-up discussion: &lt;a href="https://github.com/ocaml-multicore/eio/issues/835"&gt;ocaml-multicore/eio#835&lt;/a&gt; (Path.load race condition) and &lt;a href="https://github.com/ocaml-multicore/eio/issues/382"&gt;ocaml-multicore/eio#382&lt;/a&gt; (lock-free waiters)&lt;/li&gt;
+&lt;li&gt;Contributors this week: &lt;a href="https://github.com/patricoferris"&gt;Patrick Ferris&lt;/a&gt;, &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt;, &lt;a href="https://github.com/vog"&gt;Volker Diels-Grabsch&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/vog"&gt;Volker Diels-Grabsch&lt;/a&gt; reported in &lt;a href="https://github.com/ocaml-multicore/eio/issues/835"&gt;ocaml-multicore/eio#835&lt;/a&gt; that &lt;code&gt;Eio.Path.load&lt;/code&gt; uses file size as an exact buffer bound rather than a hint, causing silent truncation under race conditions and returning empty strings for &lt;code&gt;/proc&lt;/code&gt; virtual files; &lt;a href="https://github.com/patricoferris"&gt;Patrick Ferris&lt;/a&gt; acknowledged overlap with &lt;a href="https://github.com/ocaml-multicore/eio/issues/798"&gt;ocaml-multicore/eio#798&lt;/a&gt; and suggested splitting the race condition concern into a dedicated issue&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; noted on &lt;a href="https://github.com/ocaml-multicore/eio/issues/382"&gt;ocaml-multicore/eio#382&lt;/a&gt; that the &lt;code&gt;cells.mli&lt;/code&gt; module already implements part of the lock-free waiter design described in the referenced Kotlin coroutines paper, updating the status of that long-running design discussion&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/eio/issues/836" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Backend extensibility for system-level tools&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/ocaml-multicore/eio/issues/836"&gt;ocaml-multicore/eio#836&lt;/a&gt; reflects a pattern where shell authors and low-level tool writers need hooks into how Eio creates internal file descriptors, pointing toward a broader need for configurable backend primitives&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;Eio.Path.load&lt;/code&gt; correctness for virtual filesystems&lt;/strong&gt;: both &lt;a href="https://github.com/ocaml-multicore/eio/issues/835"&gt;ocaml-multicore/eio#835&lt;/a&gt; and &lt;a href="https://github.com/ocaml-multicore/eio/issues/798"&gt;ocaml-multicore/eio#798&lt;/a&gt; highlight that &lt;code&gt;Path.load&lt;/code&gt;'s stat-then-read approach is unsuitable for virtual filesystems (e.g. &lt;code&gt;/proc&lt;/code&gt;) and concurrent environments, suggesting a fix is becoming a priority&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Activity confined to eio: configurable eventfd/pipe backend parameters added; two open issues received discussion.</summary><published>2026-04-05T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/multicore/2026/week-13</id><title>Week 13, 2026: Quiet week across the multicore group; only eio saw activity, with discussion of a race condition in Eio.Path.load.</title><updated>2026-03-29T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

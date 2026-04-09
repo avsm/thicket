@@ -1,5 +1,93 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam-repository.xml</id><title>ocaml/opam-repository (Weekly)</title><updated>2026-03-29T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam-repository.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam-repository</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2026/week-13</id><title>Week 13, 2026: Active week with ~30 PRs merged covering OCaml 5.5 alpha3, tooling releases, new packages, and Windows CI improvements.</title><updated>2026-03-29T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam-repository.xml</id><title>ocaml/opam-repository (Weekly)</title><updated>2026-04-05T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam-repository.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam-repository</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2026/week-14</id><title>Week 14, 2026: A busy week with 86 files changed, featuring Rocq 9.2.0, dune 3.22.1, and many new package releases including cryptography and OCaml tooling.</title><updated>2026-04-05T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Numerous open PRs await review including Windows/MSYS2 support improvements, colibri2 0.5 SMT solver, and ocsigen-i18n 5.0.0.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29579"&gt;#29579&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29579" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;MSYS2 depext and UCRT64 support&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/smorimoto"&gt;Sora Morimoto&lt;/a&gt;, adding missing MSYS2 depext declarations and UCRT64 environment support for &lt;code&gt;conf-mingw-w64-*&lt;/code&gt; packages — marked &lt;code&gt;consider for merge&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29613"&gt;#29613&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29613" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;conf-perl and Cygwin/MSYS2 support&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/smorimoto"&gt;Sora Morimoto&lt;/a&gt;, adding support for Perl module packages on Cygwin and MSYS2 — marked &lt;code&gt;priority for windows support&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29484"&gt;#29484&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29484" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;colibri2 0.5&lt;/strong&gt;&lt;/a&gt; (4 packages) opened by &lt;a href="https://github.com/bobot"&gt;François Bobot&lt;/a&gt;, a CP solver for smtlib with new FP/BV theory propagators and theory of arrays&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29643"&gt;#29643&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29643" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;ocsigen-i18n 5.0.0&lt;/strong&gt;&lt;/a&gt; opened by &lt;a href="https://github.com/balat"&gt;Vincent Balat&lt;/a&gt;, an internationalisation library for OCaml apps&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29623"&gt;#29623&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29623" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;ocgtk 0.1~preview0&lt;/strong&gt;&lt;/a&gt; preview release opened by &lt;a href="https://github.com/chris-armstrong"&gt;Chris Armstrong&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29631"&gt;#29631&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29631" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;server-reason-react 0.5.0&lt;/strong&gt;&lt;/a&gt; opened by &lt;a href="https://github.com/davesnx"&gt;David Sancho&lt;/a&gt;, server-side React component rendering natively in OCaml&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29530"&gt;#29530&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29530" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Refine constraints on lwt6&lt;/strong&gt;&lt;/a&gt; opened by &lt;a href="https://github.com/raphael-proust"&gt;Raphaël Proust&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29068"&gt;#29068&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29068" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;matcha 0.1.0&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/eldh"&gt;Andreas Eldh&lt;/a&gt;, a React-like terminal UI library for ReasonML still awaiting merge&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29629"&gt;#29629&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29629" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;rpclib 10.2.0&lt;/strong&gt;&lt;/a&gt; (6 packages) merged by &lt;a href="https://github.com/edwintorok"&gt;Török Edwin&lt;/a&gt;, improving ppxlib 0.35 compatibility and fixing JSONRPC unmarshalling&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29630"&gt;#29630&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29630" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;binsec 0.11.1&lt;/strong&gt;&lt;/a&gt; merged by &lt;a href="https://github.com/recoules"&gt;Frédéric Recoules&lt;/a&gt;, fixing compilation with OCaml &gt;= 5.4 and updating qcheck dependency&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29624"&gt;#29624&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29624" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;bitwuzla 1.0.6&lt;/strong&gt;&lt;/a&gt; (2 packages) merged by &lt;a href="https://github.com/recoules"&gt;Frédéric Recoules&lt;/a&gt;, adding quantifiers and a Cadical 2.1.2 vendor bump&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29583"&gt;#29583&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29583" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;oniguruma 0.2.0&lt;/strong&gt;&lt;/a&gt; merged by &lt;a href="https://github.com/alan-j-hu"&gt;Alan&lt;/a&gt;, raising minimum OCaml to 4.12 and changing option composition operator&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29642"&gt;#29642&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29642" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;lwt_eio 0.6&lt;/strong&gt;&lt;/a&gt; merged by &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29626"&gt;#29626&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29626" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;out-channel-redirect 0.1&lt;/strong&gt;&lt;/a&gt; merged by &lt;a href="https://github.com/hhugo"&gt;(@hhugo)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29636"&gt;#29636&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29636" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;passage 0.3.5&lt;/strong&gt;&lt;/a&gt; merged by &lt;a href="https://github.com/arvidj"&gt;(@arvidj)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29628"&gt;#29628&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29628" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;menhir-lsp 0.3.0&lt;/strong&gt;&lt;/a&gt; merged by &lt;a href="https://github.com/dalps"&gt;(@dalps)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29616"&gt;#29616&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29616" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;smtml 0.24.0&lt;/strong&gt;&lt;/a&gt; merged by &lt;a href="https://github.com/filipeom"&gt;(@filipeom)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29611"&gt;#29611&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29611" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;binaryen 0.35.0&lt;/strong&gt;&lt;/a&gt; merged by &lt;a href="https://github.com/grainbot"&gt;Grain Bot&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29598"&gt;#29598&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29598" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;ocaml-protoc 4.1&lt;/strong&gt;&lt;/a&gt; (4 packages) merged by &lt;a href="https://github.com/c-cube"&gt;Simon Cruanes&lt;/a&gt;, with bugfixes for large signed int64 and wrapped options&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29603"&gt;#29603&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29603" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;dune-release 2.2.1&lt;/strong&gt;&lt;/a&gt; merged by &lt;a href="https://github.com/Leonidas-from-XIV"&gt;Marek Kubica&lt;/a&gt;, adding prerelease support&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29586"&gt;#29586&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29586" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;mdx 2.5.2&lt;/strong&gt;&lt;/a&gt; merged by &lt;a href="https://github.com/Julow"&gt;Jules Aguillon&lt;/a&gt;, adding OCaml 5.5 support&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29601"&gt;#29601&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29601" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;ocaml-solo5 1.2.2&lt;/strong&gt;&lt;/a&gt; merged by &lt;a href="https://github.com/hannesm"&gt;Hannes Mehnert&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29615"&gt;#29615&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29615" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;google-drive-ocamlfuse 0.8.1&lt;/strong&gt;&lt;/a&gt; merged by &lt;a href="https://github.com/astrada"&gt;Alessandro Strada&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29649"&gt;#29649&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29649" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;binsec ocaml.5.4.0 upper bound&lt;/strong&gt;&lt;/a&gt; (versions 0.8.2–0.11.0) merged by &lt;a href="https://github.com/jmid"&gt;Jan Midtgaard&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29645"&gt;#29645&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29645" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;conf-brotli Windows fix&lt;/strong&gt;&lt;/a&gt; merged by &lt;a href="https://github.com/a2line"&gt;A2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29618"&gt;#29618&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29618" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;unidecode 0.5.0&lt;/strong&gt;&lt;/a&gt; merged by &lt;a href="https://github.com/a2line"&gt;A2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29647"&gt;#29647&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29647" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;styled-ppx: restrict server-reason-react version range&lt;/strong&gt;&lt;/a&gt; merged by &lt;a href="https://github.com/mseri"&gt;Marcello Seri&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29622"&gt;#29622&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29622" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;conf-libpcre: add NixOS depext&lt;/strong&gt;&lt;/a&gt; merged by &lt;a href="https://github.com/filipeom"&gt;(@filipeom)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29621"&gt;#29621&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29621" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;pplumbing deprecation documented&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/mbarbin"&gt;Mathieu Barbin&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29599"&gt;#29599&lt;/a&gt; &lt;a href="https://github.com/ocaml/opam-repository/issues/29599" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;textmate-language: add oniguruma upper bounds&lt;/strong&gt;&lt;/a&gt; merged by &lt;a href="https://github.com/alan-j-hu"&gt;Alan&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>A busy week with 86 files changed, featuring Rocq 9.2.0, dune 3.22.1, and many new package releases including cryptography and OCaml tooling.</summary><published>2026-04-05T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2026/week-13</id><title>Week 13, 2026: Active week with ~30 PRs merged covering OCaml 5.5 alpha3, tooling releases, new packages, and Windows CI improvements.</title><updated>2026-03-29T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

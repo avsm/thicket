@@ -1,5 +1,76 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-dune.xml</id><title>ocaml/dune (Weekly)</title><updated>2026-03-29T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-dune.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/dune</subtitle><entry><id>https://thicket.dev/repos/ocaml-dune/2026/week-13</id><title>Week 13, 2026: Directory diffing, promote prefix support, and sandboxed corrections merged alongside 3.22.1 release prep and OCaml 4.14 minimum bump.</title><updated>2026-03-29T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-dune.xml</id><title>ocaml/dune (Weekly)</title><updated>2026-04-05T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-dune.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/dune</subtitle><entry><id>https://thicket.dev/repos/ocaml-dune/2026/week-14</id><title>Week 14, 2026: Dune 3.22.1 was released, with new features including DUNE_PROJECT_ROOT env var, relocatable compiler support, Windows hardlink sandboxing, and c_library_flags for foreign_library.</title><updated>2026-04-05T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Active week combining the 3.22.1 patch release with substantial ongoing work on the digest/marshal refactor, sandbox fixes, and relocatable compiler integration.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/pull/14051" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Open PRs under active review&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/ocaml/dune/pull/14051"&gt;#14051&lt;/a&gt; by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; proposes replacing &lt;code&gt;marshal&lt;/code&gt;-based digests with &lt;code&gt;repr&lt;/code&gt;-derived functions for improved robustness and boot speed; &lt;a href="https://github.com/ocaml/dune/pull/13337"&gt;#13337&lt;/a&gt; by &lt;a href="https://github.com/samoht"&gt;Thomas Gazagnaire&lt;/a&gt; adds a &lt;code&gt;scope&lt;/code&gt; stanza for library visibility control when vendoring; &lt;a href="https://github.com/ocaml/dune/pull/14021"&gt;#14021&lt;/a&gt; and &lt;a href="https://github.com/ocaml/dune/pull/14030"&gt;#14030&lt;/a&gt; by &lt;a href="https://github.com/robinbb"&gt;Robin Bate Boerop&lt;/a&gt; work toward finer per-module dependency analysis between libraries (&lt;a href="https://github.com/ocaml/dune/issues/4572"&gt;#4572&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/pull/13947" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Dune 3.22.1 released&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/pull/13947"&gt;#13947&lt;/a&gt;): Patch release merged by &lt;a href="https://github.com/shonfeder"&gt;Shon Feder&lt;/a&gt;, fixing Windows 7 compatibility, a crash in &lt;code&gt;dune test&lt;/code&gt; without a default context (&lt;a href="https://github.com/ocaml/dune/issues/13930"&gt;#13930&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13904"&gt;#13904&lt;/a&gt;), and Chrome trace format timestamps (&lt;a href="https://github.com/ocaml/dune/issues/13911"&gt;#13911&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Sandbox fix: honor sandbox config from &lt;code&gt;(:include ..)&lt;/code&gt; deps&lt;/strong&gt; (&lt;a href="https://github.com/ocaml/dune/pull/13898"&gt;#13898&lt;/a&gt;): Sandbox specifications inside &lt;code&gt;(:include foo.sexp)&lt;/code&gt; dependency expressions were previously ignored — fixed by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Melange fix: stage &lt;code&gt;.cmj&lt;/code&gt; files in sandbox with &lt;code&gt;--mel-cross-module-opt&lt;/code&gt;&lt;/strong&gt; (&lt;a href="https://github.com/ocaml/dune/pull/14018"&gt;#14018&lt;/a&gt;): Fix by &lt;a href="https://github.com/anmonteiro"&gt;Antonio Nuno Monteiro&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/pull/13983" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;RPC error message improvement&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/pull/13983"&gt;#13983&lt;/a&gt;): Clarified the error shown when another dune instance is running to read "Another Dune instance is currently running. Aborting..." — contributed by &lt;a href="https://github.com/meet0806"&gt;Meet Zalavadiya&lt;/a&gt;, fixing &lt;a href="https://github.com/ocaml/dune/issues/13902"&gt;#13902&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/pull/14047" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Scheduler: ignore unset SIGCHLD signals on macOS&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/pull/14047"&gt;#14047&lt;/a&gt;): Fixed a crash during SIGINT cleanup on macOS where &lt;code&gt;SIGCHLD&lt;/code&gt; handling received garbage signals — merged by &lt;a href="https://github.com/anmonteiro"&gt;Antonio Nuno Monteiro&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/pull/13991" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Digest caching fix: use device/inode&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/pull/13991"&gt;#13991&lt;/a&gt;) and inode storage fix (&lt;a href="https://github.com/ocaml/dune/pull/14058"&gt;#14058&lt;/a&gt;): Digest cache now invalidates based on device and inode numbers rather than floating-point mtime approximations, and the inode field was corrected (previously stored the device instead) — by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Diff action fix with directories in &lt;code&gt;_build&lt;/code&gt;&lt;/strong&gt; (&lt;a href="https://github.com/ocaml/dune/issues/13970"&gt;#13970&lt;/a&gt;): Fixed &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/pull/14013" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;CI: line-ending check added&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/pull/14013"&gt;#14013&lt;/a&gt;): Detects files committed with incorrect line endings (a recurring issue for Windows/&lt;code&gt;jj&lt;/code&gt; users) — merged by &lt;a href="https://github.com/punchagan"&gt;Puneeth Chaganti&lt;/a&gt;, closing &lt;a href="https://github.com/ocaml/dune/issues/14006"&gt;#14006&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/pull/13996" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Rocq updated to 9.2&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/pull/13996"&gt;#13996&lt;/a&gt;): Drops OCaml 4 from Rocq support — merged by &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/pull/14014" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Revdep workflow improvements&lt;/strong&gt;&lt;/a&gt;: Made reusable (&lt;a href="https://github.com/ocaml/dune/pull/14014"&gt;#14014&lt;/a&gt;) and fixed multi-target invocation (&lt;a href="https://github.com/ocaml/dune/pull/14024"&gt;#14024&lt;/a&gt;) by &lt;a href="https://github.com/Leonidas-from-XIV"&gt;Marek Kubica&lt;/a&gt;; fixed run on untagged versions (&lt;a href="https://github.com/ocaml/dune/pull/14000"&gt;#14000&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/pull/13952" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Backporting script added&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/pull/13952"&gt;#13952&lt;/a&gt;): Automates most of the work of cherry-picking fixes to release candidate branches — merged by &lt;a href="https://github.com/shonfeder"&gt;Shon Feder&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/pull/14032" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Extensive test digest cleanup&lt;/strong&gt;&lt;/a&gt;: Multiple PRs (&lt;a href="https://github.com/ocaml/dune/pull/14032"&gt;#14032&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/14033"&gt;#14033&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/14034"&gt;#14034&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/14035"&gt;#14035&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/14036"&gt;#14036&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/14041"&gt;#14041&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/14043"&gt;#14043&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/14048"&gt;#14048&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/14050"&gt;#14050&lt;/a&gt;) remove concrete digest values from tests to reduce test churn — by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Dune 3.22.1 was released, with new features including DUNE_PROJECT_ROOT env var, relocatable compiler support, Windows hardlink sandboxing, and c_library_flags for foreign_library.</summary><published>2026-04-05T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-dune/2026/week-13</id><title>Week 13, 2026: Directory diffing, promote prefix support, and sandboxed corrections merged alongside 3.22.1 release prep and OCaml 4.14 minimum bump.</title><updated>2026-03-29T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

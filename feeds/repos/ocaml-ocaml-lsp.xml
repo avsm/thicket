@@ -1,5 +1,70 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml-lsp.xml</id><title>ocaml/ocaml-lsp (Weekly)</title><updated>2026-03-29T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml-lsp.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml-lsp</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml-lsp/2026/week-13</id><title>Week 13, 2026: Revert of signature_help readability changes opened after discovering editors ignore line breaks in label fields.</title><updated>2026-03-29T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml-lsp.xml</id><title>ocaml/ocaml-lsp (Weekly)</title><updated>2026-04-05T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml-lsp.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml-lsp</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml-lsp/2026/week-14</id><title>Week 14, 2026: Hover improvements for class/object constructs merged, signature-help readability change reverted, and Dune 3.22 build fix applied.</title><updated>2026-04-05T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Changelog PR for 1.26.0-504 opened; short-paths config fix remains under review; stale DocumentUri PR closed.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/PizieDust"&gt;PixieDust&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1600"&gt;#1600&lt;/a&gt; to update the changelog ahead of the 1.26.0-504 release, currently awaiting review.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/SkySkimmer"&gt;Gaëtan Gilbert&lt;/a&gt;'s long-standing PR &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1579"&gt;#1579&lt;/a&gt; to fix the &lt;code&gt;-short-paths&lt;/code&gt; configuration passed to Merlin remains open; &lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt; and &lt;a href="https://github.com/SkySkimmer"&gt;Gaëtan Gilbert&lt;/a&gt; reached agreement on reverting to upstream defaults and a rebase with changelog entry was requested.&lt;/li&gt;
+&lt;li&gt;Automated flake.lock PR &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1437"&gt;#1437&lt;/a&gt; updated inputs for merlin5_3 and nixpkgs to 2026-04-04 revisions, remaining open as GitHub Actions cannot auto-run workflows on bot-opened PRs.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1594" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Dune 3.22 build fix&lt;/strong&gt;&lt;/a&gt; merged from &lt;a href="https://github.com/anmonteiro"&gt;Antonio Nuno Monteiro&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1594"&gt;#1594&lt;/a&gt;), resolving a compilation breakage introduced by the Dune 3.22 release.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1598" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Signature-help readability revert&lt;/strong&gt;&lt;/a&gt; merged by &lt;a href="https://github.com/Lucccyo"&gt;Charlène_Gros&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1598"&gt;#1598&lt;/a&gt;): the line-break formatting introduced in &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1580"&gt;#1580&lt;/a&gt; was reverted because editors render the &lt;code&gt;label&lt;/code&gt; field of signature-help as a one-liner, ignoring embedded newlines; a proper LSP-friendly solution is deferred.&lt;/li&gt;
+&lt;li&gt;Coverage CI &lt;strong class="achievement"&gt;ppx_bisect&lt;/strong&gt; step disabled (&lt;a href="https://github.com/ocaml/ocaml-lsp/commit/5032524ea749fc899dc461913721c98a08ab21f6"&gt;5032524&lt;/a&gt;) due to co-installability issues.&lt;/li&gt;
+&lt;li&gt;Stale PR &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1429"&gt;#1429&lt;/a&gt; (Use DocumentUri converter directly in Merlin Call Compatible params) closed by &lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt; without merging.&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Hover improvements for class/object constructs merged, signature-help readability change reverted, and Dune 3.22 build fix applied.</summary><published>2026-04-05T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml-lsp/2026/week-13</id><title>Week 13, 2026: Revert of signature_help readability changes opened after discovering editors ignore line breaks in label fields.</title><updated>2026-03-29T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

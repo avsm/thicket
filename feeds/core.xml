@@ -1,5 +1,98 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/core.xml</id><title>OCaml Core (Weekly)</title><updated>2026-03-29T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/core.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Core OCaml language, compiler, and essential tooling</subtitle><entry><id>https://thicket.dev/groups/core/2026/week-13</id><title>Week 13, 2026: 10 PRs merged in ocaml/ocaml: GC ephemeron revert/re-fix, POWER CFI, type system improvements, and testsuite speedups.</title><updated>2026-03-29T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/core.xml</id><title>OCaml Core (Weekly)</title><updated>2026-04-05T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/core.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Core OCaml language, compiler, and essential tooling</subtitle><entry><id>https://thicket.dev/groups/core/2026/week-14</id><title>Week 14, 2026: Bytecode fixes, stdlib additions, and a Pphyscomp optimisation landed in ocaml/ocaml; ocaml/RFCs revived the implicit source positions design debate.</title><updated>2026-04-05T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/14693"&gt;Dynarray.of&lt;em&gt;iarray and Dynarray.to&lt;/em&gt;iarray&lt;/a&gt; added to the standard library, enabling O(n) round-trips between dynamic and immutable arrays.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/13588"&gt;ocaml/ocaml#13588&lt;/a&gt; merged after a long review: physical comparison operators (&lt;code&gt;==&lt;/code&gt; and &lt;code&gt;!=&lt;/code&gt;) now propagate as a distinct &lt;code&gt;Pphyscomp&lt;/code&gt; primitive to the lambda IR, enabling backends such as js&lt;em&gt;of&lt;/em&gt;ocaml to emit semantically correct code for these operators.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14692"&gt;ocaml/ocaml#14692&lt;/a&gt; relaxed record update syntax so that &lt;code&gt;{ (Gc.get ()) with ... }&lt;/code&gt; no longer requires surrounding parentheses around function application expressions.&lt;/li&gt;
+&lt;li&gt;s390x CFI (Call Frame Information) debug metadata improved via &lt;a href="https://github.com/ocaml/ocaml/issues/14500"&gt;ocaml/ocaml#14500&lt;/a&gt;, adding a &lt;code&gt;cfi_val_offset&lt;/code&gt; emission helper and GDB regression tests.&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;PUSHENVACC4&lt;/code&gt; bytecode opcode, silently never emitted due to an off-by-one in the peephole optimiser, is now correctly generated following &lt;a href="https://github.com/ocaml/ocaml/issues/14534"&gt;ocaml/ocaml#14534&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt; had a productive week: five PRs merged covering stdlib additions (&lt;a href="https://github.com/ocaml/ocaml/issues/14693"&gt;ocaml/ocaml#14693&lt;/a&gt;), bytecode correctness (&lt;a href="https://github.com/ocaml/ocaml/issues/14534"&gt;ocaml/ocaml#14534&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14641"&gt;ocaml/ocaml#14641&lt;/a&gt;), lambda optimisation (&lt;a href="https://github.com/ocaml/ocaml/issues/13588"&gt;ocaml/ocaml#13588&lt;/a&gt;), and parser relaxation (&lt;a href="https://github.com/ocaml/ocaml/issues/14692"&gt;ocaml/ocaml#14692&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/RFCs"&gt;ocaml/RFCs&lt;/a&gt; saw renewed activity on &lt;a href="https://github.com/ocaml/RFCs/issues/52"&gt;ocaml/RFCs#52&lt;/a&gt; (implicit source positions) after approximately a year of inactivity, with a proposal to resolve the stalled design debate via a caml-devel meeting.&lt;/li&gt;
+&lt;li&gt;A CVE (CVE-2026-34353) was assigned for the &lt;code&gt;Bigarray.reshape&lt;/code&gt; overflow reported in &lt;a href="https://github.com/ocaml/ocaml/issues/14655"&gt;ocaml/ocaml#14655&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Several new PRs were opened addressing libunix thread-safety (&lt;a href="https://github.com/ocaml/ocaml/issues/14715"&gt;ocaml/ocaml#14715&lt;/a&gt;), typing error hints (&lt;a href="https://github.com/ocaml/ocaml/issues/14695"&gt;ocaml/ocaml#14695&lt;/a&gt;), and ocamltest infrastructure (&lt;a href="https://github.com/ocaml/ocaml/issues/14713"&gt;ocaml/ocaml#14713&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/OlivierNicole"&gt;Olivier Nicole&lt;/a&gt; is active in both repositories: as release manager merging PRs in &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt; and as a key participant re-energising the implicit source positions RFC in &lt;a href="https://github.com/ocaml/RFCs/issues/52"&gt;ocaml/RFCs#52&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/nojb"&gt;Nicolás Ojeda Bär&lt;/a&gt; connected work across both repositories: responding to the ppxlib extension point request in &lt;a href="https://github.com/ocaml/ocaml/issues/14668"&gt;ocaml/ocaml#14668&lt;/a&gt; and simultaneously proposing to escalate &lt;a href="https://github.com/ocaml/RFCs/issues/52"&gt;ocaml/RFCs#52&lt;/a&gt; to the caml-devel meeting, suggesting these language design discussions benefit from the same structured meeting format.&lt;/li&gt;
+&lt;li&gt;The ppxlib AST stability request in &lt;a href="https://github.com/ocaml/ocaml/issues/14668"&gt;ocaml/ocaml#14668&lt;/a&gt; (adding extension point entries to ease frozen-AST strategies) mirrors the broader pattern of features awaiting compiler-level support that the RFCs process is intended to formalise.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14580"&gt;ocaml/ocaml#14580&lt;/a&gt; on GC for continuations saw a new proposal: rather than &lt;code&gt;discontinue&lt;/code&gt;-ing unreachable continuations from finalisers, a first step could free fiber stack memory only, with an optional explicit &lt;code&gt;Gc.flush()&lt;/code&gt; API for users needing finalisation at a known point.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14668"&gt;ocaml/ocaml#14668&lt;/a&gt; by &lt;a href="https://github.com/NathanReb"&gt;Nathan Rebours&lt;/a&gt; requesting new extension point entries in the OCaml AST to aid ppxlib's frozen-AST strategy received a constructive response from &lt;a href="https://github.com/nojb"&gt;Nicolás Ojeda Bär&lt;/a&gt;, who suggested opening a concrete PR ahead of an upcoming developer meeting.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14676"&gt;ocaml/ocaml#14676&lt;/a&gt; on preventing shell injection in GitHub Actions workflows is stalled: environment variable names conflict with GitHub's own reserved names (e.g., &lt;code&gt;GITHUB_REF_NAME&lt;/code&gt;), complicating the security fix.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14594"&gt;ocaml/ocaml#14594&lt;/a&gt; on parallel test segfaults in cleanup-at-exit mode continued: &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; traced a race condition in &lt;code&gt;ephetest_par&lt;/code&gt; where domains can deadlock waiting on ephemerons, reproduced reliably by enabling GC verbose logging.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14655"&gt;ocaml/ocaml#14655&lt;/a&gt; on overflow in &lt;code&gt;Bigarray.reshape&lt;/code&gt; now has CVE-2026-34353 assigned.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/RFCs/issues/52"&gt;ocaml/RFCs#52&lt;/a&gt; implicit source positions: the unresolved design question is whether call-site positions should use &lt;code&gt;Lexing.position&lt;/code&gt; (option 1) or a richer location type (option 2b); &lt;a href="https://github.com/OlivierNicole"&gt;Olivier Nicole&lt;/a&gt; argues for 2b with option 1 only if performance concerns are demonstrated.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;The runtime team is working through several multicore-specific correctness issues concurrently: continuation memory leaks (&lt;a href="https://github.com/ocaml/ocaml/issues/14580"&gt;ocaml/ocaml#14580&lt;/a&gt;), cleanup-at-exit races (&lt;a href="https://github.com/ocaml/ocaml/issues/14642"&gt;ocaml/ocaml#14642&lt;/a&gt;), and ephemeron GC liveness (&lt;a href="https://github.com/ocaml/ocaml/issues/14594"&gt;ocaml/ocaml#14594&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Multiple bytecode-related fixes landed in the same week (&lt;a href="https://github.com/ocaml/ocaml/issues/14534"&gt;ocaml/ocaml#14534&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14641"&gt;ocaml/ocaml#14641&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/13588"&gt;ocaml/ocaml#13588&lt;/a&gt;), reflecting increased attention to the bytecode backend's correctness and its use as a compilation target by tools such as js&lt;em&gt;of&lt;/em&gt;ocaml.&lt;/li&gt;
+&lt;li&gt;The ppxlib ecosystem is pushing for upstream changes to ease long-term AST stability, with &lt;a href="https://github.com/ocaml/ocaml/issues/14668"&gt;ocaml/ocaml#14668&lt;/a&gt; opening a formal discussion track.&lt;/li&gt;
+&lt;li&gt;Long-stalled RFCs with prior design consensus are being revived via structured meetings rather than async PR discussion, as seen with &lt;a href="https://github.com/ocaml/RFCs/issues/52"&gt;ocaml/RFCs#52&lt;/a&gt; after approximately a year of inactivity.&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Bytecode fixes, stdlib additions, and a Pphyscomp optimisation landed in ocaml/ocaml; ocaml/RFCs revived the implicit source positions design debate.</summary><published>2026-04-05T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2026/week-13</id><title>Week 13, 2026: 10 PRs merged in ocaml/ocaml: GC ephemeron revert/re-fix, POWER CFI, type system improvements, and testsuite speedups.</title><updated>2026-03-29T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
@@ -6269,7 +6362,7 @@
 &lt;li&gt;&lt;strong class="achievement"&gt;Cross-platform compatibility&lt;/strong&gt; receiving increased attention with Windows API modernization and Unix platform improvements&lt;/li&gt;
 &lt;li&gt;&lt;strong class="achievement"&gt;Language design refinement&lt;/strong&gt; through community feedback on practical applications of new syntax features like raw identifiers&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Runtime improvements and bytecode optimization merged alongside language syntax discussions for raw identifiers</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2024/week-42</id><title>Week 42, 2024: Five PRs merged in ocaml/ocaml including new Thread.set_current_thread_name API and compiler improvements</title><updated>2026-03-30T17:34:46.138517+00:00</updated><content type="html">
+</content><link href="https://thicket.dev/"/><summary>Runtime improvements and bytecode optimization merged alongside language syntax discussions for raw identifiers</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2024/week-42</id><title>Week 42, 2024: Five PRs merged in ocaml/ocaml including new Thread.set_current_thread_name API and compiler improvements</title><updated>2026-04-09T20:09:05.430636+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

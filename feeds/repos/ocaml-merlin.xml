@@ -1,5 +1,68 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-merlin.xml</id><title>ocaml/merlin (Weekly)</title><updated>2026-03-29T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-merlin.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/merlin</subtitle><entry><id>https://thicket.dev/repos/ocaml-merlin/2026/week-13</id><title>Week 13, 2026: Indexer improvements in progress: LRU cache for memory and pointer-based index files; ocamlformat 0.29.0 upgrade merged.</title><updated>2026-03-29T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-merlin.xml</id><title>ocaml/merlin (Weekly)</title><updated>2026-04-05T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-merlin.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/merlin</subtitle><entry><id>https://thicket.dev/repos/ocaml-merlin/2026/week-14</id><title>Week 14, 2026: Improved type enclosing for classes/objects merged, plus ongoing indexer performance work with LRU cache and pointing indexes.</title><updated>2026-04-05T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+New PRs opened for 5.7.0-504 changelog and indexer memory optimizations; older PPX-expand and jump-list PRs were closed.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/merlin/issues/2055" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Changelog preparation for 5.7.0-504&lt;/strong&gt;&lt;/a&gt; opened by &lt;a href="https://github.com/PizieDust"&gt;PixieDust&lt;/a&gt; to document the upcoming release (&lt;a href="https://github.com/ocaml/merlin/issues/2055"&gt;#2055&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Pointing indexes for &lt;code&gt;ocaml-index&lt;/code&gt;&lt;/strong&gt; under active review: &lt;a href="https://github.com/Tim-ats-d"&gt;Tim ats&lt;/a&gt;'s PR adds support for index files that reference another on-disk index rather than duplicating data, yielding ~2.7x write performance improvement in benchmarks with similar read performance; &lt;a href="https://github.com/art-w"&gt;@art-w&lt;/a&gt; is providing detailed review feedback on race conditions and ID-checking logic (&lt;a href="https://github.com/ocaml/merlin/issues/2051"&gt;#2051&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/merlin/issues/2050" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;LRU cache for indexer memory usage&lt;/strong&gt;&lt;/a&gt; under review: &lt;a href="https://github.com/Lucccyo"&gt;Charlène_Gros&lt;/a&gt;'s PR replaces an unbounded &lt;code&gt;Hashtable&lt;/code&gt; in the indexer with an LRU cache to bound memory consumption; benchmarks show ~1.1x memory increase without the eviction step, discussion ongoing about cache correctness (&lt;a href="https://github.com/ocaml/merlin/issues/2050"&gt;#2050&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Dependabot &lt;code&gt;cachix/install-nix-action&lt;/code&gt; bump&lt;/strong&gt; from 31.8.4 to 31.10.3 opened and awaiting merge (&lt;a href="https://github.com/ocaml/merlin/issues/2052"&gt;#2052&lt;/a&gt;); an earlier bump to 31.10.1 (&lt;a href="https://github.com/ocaml/merlin/issues/2048"&gt;#2048&lt;/a&gt;) was closed in favour of this newer version&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;get_all&lt;/code&gt; jump targets PR closed&lt;/strong&gt;: &lt;a href="https://github.com/PizieDust"&gt;PixieDust&lt;/a&gt;'s PR implementing a single-trip query returning all jump targets was closed without merging due to conflicts (&lt;a href="https://github.com/ocaml/merlin/issues/1891"&gt;#1891&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Improved type enclosing for classes/objects merged, plus ongoing indexer performance work with LRU cache and pointing indexes.</summary><published>2026-04-05T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-merlin/2026/week-13</id><title>Week 13, 2026: Indexer improvements in progress: LRU cache for memory and pointer-based index files; ocamlformat 0.29.0 upgrade merged.</title><updated>2026-03-29T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
