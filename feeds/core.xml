@@ -1,5 +1,100 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/core.xml</id><title>OCaml Core (Weekly)</title><updated>2026-04-05T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/core.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Core OCaml language, compiler, and essential tooling</subtitle><entry><id>https://thicket.dev/groups/core/2026/week-14</id><title>Week 14, 2026: Bytecode fixes, stdlib additions, and a Pphyscomp optimisation landed in ocaml/ocaml; ocaml/RFCs revived the implicit source positions design debate.</title><updated>2026-04-05T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/core.xml</id><title>OCaml Core (Weekly)</title><updated>2026-04-12T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/core.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Core OCaml language, compiler, and essential tooling</subtitle><entry><id>https://thicket.dev/groups/core/2026/week-15</id><title>Week 15, 2026: Keep-expansion typechecker fix and primitive aliases (RFC #44) merged; implicit source positions RFC design narrowed to options 2a/2b.</title><updated>2026-04-12T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/RFCs/issues/44" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Primitive aliases&lt;/strong&gt;&lt;/a&gt; (implementing &lt;a href="https://github.com/ocaml/RFCs/issues/44"&gt;ocaml/RFCs#44&lt;/a&gt;) landed via &lt;a href="https://github.com/ocaml/ocaml/issues/13377"&gt;ocaml/ocaml#13377&lt;/a&gt;, enabling &lt;code&gt;external foo = Bar.baz&lt;/code&gt; syntax to alias C primitives; contributed by &lt;a href="https://github.com/nmatschke"&gt;Nailen Matschke&lt;/a&gt;, reviewed by &lt;a href="https://github.com/yallop"&gt;Jeremy Yallop&lt;/a&gt;, &lt;a href="https://github.com/lpw25"&gt;Leo White&lt;/a&gt;, and &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;Atomic.update&lt;/code&gt;&lt;/strong&gt; was merged via &lt;a href="https://github.com/ocaml/ocaml/issues/10798"&gt;ocaml/ocaml#10798&lt;/a&gt;, adding a retry-loop helper &lt;code&gt;('a -&gt; 'a) -&gt; 'a t -&gt; unit&lt;/code&gt; to &lt;code&gt;Atomic&lt;/code&gt;, &lt;code&gt;Atomic.Loc&lt;/code&gt;, and &lt;code&gt;Atomic.Array&lt;/code&gt;; contributed by &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; with extensive review.&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;Format.pp_print_iarray&lt;/code&gt;&lt;/strong&gt; was added via &lt;a href="https://github.com/ocaml/ocaml/issues/14724"&gt;ocaml/ocaml#14724&lt;/a&gt; by &lt;a href="https://github.com/OlivierNicole"&gt;Olivier Nicole&lt;/a&gt;, addressing the stdlib gap noted in &lt;a href="https://github.com/ocaml/ocaml/issues/14320"&gt;ocaml/ocaml#14320&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;Format.pp_print_dynarray&lt;/code&gt;&lt;/strong&gt; was added via &lt;a href="https://github.com/ocaml/ocaml/issues/14726"&gt;ocaml/ocaml#14726&lt;/a&gt; by &lt;a href="https://github.com/OlivierNicole"&gt;Olivier Nicole&lt;/a&gt;, building on the iarray printer.&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;ocamltest &lt;code&gt;cold&lt;/code&gt; predicate&lt;/strong&gt; was introduced via &lt;a href="https://github.com/ocaml/ocaml/issues/14713"&gt;ocaml/ocaml#14713&lt;/a&gt; by &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt;, allowing tests to be disabled by default and run only when explicitly requested, closing &lt;a href="https://github.com/ocaml/ocaml/issues/12418"&gt;ocaml/ocaml#12418&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;Activity was concentrated in &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt;, with a high-impact week combining long-awaited typechecker corrections, runtime GC fixes, and stdlib additions.&lt;/li&gt;
+&lt;li&gt;The "keep expansion" typechecker overhaul &lt;a href="https://github.com/ocaml/ocaml/issues/11648"&gt;ocaml/ocaml#11648&lt;/a&gt; merged after years of development, resolving multiple non-termination and principality bugs.&lt;/li&gt;
+&lt;li&gt;Primitive aliases from &lt;a href="https://github.com/ocaml/RFCs/issues/44"&gt;ocaml/RFCs#44&lt;/a&gt; were implemented and merged via &lt;a href="https://github.com/ocaml/ocaml/issues/13377"&gt;ocaml/ocaml#13377&lt;/a&gt;, completing a full RFC-to-implementation cycle.&lt;/li&gt;
+&lt;li&gt;In &lt;a href="https://github.com/ocaml/RFCs"&gt;ocaml/RFCs&lt;/a&gt;, design discussion on the implicit source positions RFC (&lt;a href="https://github.com/ocaml/RFCs/issues/52"&gt;ocaml/RFCs#52&lt;/a&gt;) converged toward implementation options 2a/2b.&lt;/li&gt;
+&lt;li&gt;Key contributors active across both repositories include &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; and &lt;a href="https://github.com/OlivierNicole"&gt;Olivier Nicole&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/RFCs/issues/44" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Primitive aliases RFC #44 → implementation&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/ocaml/RFCs/issues/44"&gt;ocaml/RFCs#44&lt;/a&gt; completed its full RFC-to-merge cycle this week, with the implementation landing in &lt;a href="https://github.com/ocaml/ocaml/issues/13377"&gt;ocaml/ocaml#13377&lt;/a&gt;; &lt;a href="https://github.com/nmatschke"&gt;Nailen Matschke&lt;/a&gt; authored the implementation after &lt;a href="https://github.com/yallop"&gt;Jeremy Yallop&lt;/a&gt;, &lt;a href="https://github.com/lpw25"&gt;Leo White&lt;/a&gt;, and &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt; completed review.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/RFCs/issues/52" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Implicit source positions RFC #52 → future ocaml/ocaml work&lt;/strong&gt;&lt;/a&gt;: design discussion in &lt;a href="https://github.com/ocaml/RFCs/issues/52"&gt;ocaml/RFCs#52&lt;/a&gt; between &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; and &lt;a href="https://github.com/OlivierNicole"&gt;Olivier Nicole&lt;/a&gt; narrowed the implementation strategy to options 2a/2b, with 2a identified as an acceptable incremental first step toward the full 2b approach before work moves to &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; and &lt;a href="https://github.com/OlivierNicole"&gt;Olivier Nicole&lt;/a&gt; contributed actively to both repositories this week, with Scherer driving runtime/stdlib merges in &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14716"&gt;ocaml/ocaml#14716&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14718"&gt;ocaml/ocaml#14718&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/10798"&gt;ocaml/ocaml#10798&lt;/a&gt;) and RFC design in &lt;a href="https://github.com/ocaml/RFCs/issues/52"&gt;ocaml/RFCs#52&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14720" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Ephemeron orphaning and adoption semantics&lt;/strong&gt;&lt;/a&gt; were analysed in &lt;a href="https://github.com/ocaml/ocaml/issues/14720"&gt;ocaml/ocaml#14720&lt;/a&gt; by &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt;, questioning whether orphaned ephemerons should survive across GC cycles and proposing simplifications; the thread involves &lt;a href="https://github.com/damiendoligez"&gt;Damien Doligez&lt;/a&gt;, &lt;a href="https://github.com/kayceesrk"&gt;KC Sivaramakrishnan&lt;/a&gt;, &lt;a href="https://github.com/NickBarnes"&gt;Nick Barnes&lt;/a&gt;, and &lt;a href="https://github.com/stedolan"&gt;Stephen Dolan&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14668" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Adding extension points to the AST&lt;/strong&gt;&lt;/a&gt; for ppxlib compatibility was discussed in &lt;a href="https://github.com/ocaml/ocaml/issues/14668"&gt;ocaml/ocaml#14668&lt;/a&gt; by &lt;a href="https://github.com/NathanReb"&gt;Nathan Rebours&lt;/a&gt;, exploring how to encode new language features without breaking existing ppx-es, with a concrete proposal forthcoming.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14719" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Misleading syntactic arity error message&lt;/strong&gt;&lt;/a&gt; was reported in &lt;a href="https://github.com/ocaml/ocaml/issues/14719"&gt;ocaml/ocaml#14719&lt;/a&gt; by &lt;a href="https://github.com/yallop"&gt;Jeremy Yallop&lt;/a&gt; for valid functions with module-dependent arrows, prompting a fix PR &lt;a href="https://github.com/ocaml/ocaml/issues/14721"&gt;ocaml/ocaml#14721&lt;/a&gt; from &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;Atomic.fold_update&lt;/code&gt; naming&lt;/strong&gt; continued in &lt;a href="https://github.com/ocaml/ocaml/issues/14725"&gt;ocaml/ocaml#14725&lt;/a&gt;, with &lt;a href="https://github.com/c-cube"&gt;Simon Cruanes&lt;/a&gt; and &lt;a href="https://github.com/dbuenzli"&gt;Daniel Bünzli&lt;/a&gt; preferring &lt;code&gt;modify_get&lt;/code&gt; or &lt;code&gt;map_update&lt;/code&gt; over &lt;code&gt;fold_update&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Stdlib gaps around &lt;code&gt;iarray&lt;/code&gt;&lt;/strong&gt; were noted in &lt;a href="https://github.com/ocaml/ocaml/issues/14320"&gt;ocaml/ocaml#14320&lt;/a&gt; by &lt;a href="https://github.com/rossberg"&gt;Andreas Rossberg&lt;/a&gt;, flagging that &lt;code&gt;Iarray.sub&lt;/code&gt; has a divergent signature and &lt;code&gt;Dynarray.to/of_iarray&lt;/code&gt; conversions are absent, with &lt;a href="https://github.com/ocaml/ocaml/issues/14724"&gt;ocaml/ocaml#14724&lt;/a&gt; as a partial fix.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/RFCs/issues/52" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Implicit source positions implementation strategy&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/ocaml/RFCs/issues/52"&gt;ocaml/RFCs#52&lt;/a&gt;: &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; and &lt;a href="https://github.com/OlivierNicole"&gt;Olivier Nicole&lt;/a&gt; agreed that option 2a is a viable incremental path toward the fuller 2b design for the &lt;code&gt;[%call_pos]&lt;/code&gt; feature.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/11648" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Typechecker correctness and well-foundedness&lt;/strong&gt;&lt;/a&gt;: the landmark keep-expansion merge &lt;a href="https://github.com/ocaml/ocaml/issues/11648"&gt;ocaml/ocaml#11648&lt;/a&gt; resolves deep-seated non-termination and principality bugs; follow-on work is expected around class types and recursive modules.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14732" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Ephemeron GC hardening for multicore&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; opened a structured multi-PR series (&lt;a href="https://github.com/ocaml/ocaml/issues/14732"&gt;ocaml/ocaml#14732&lt;/a&gt;–&lt;a href="https://github.com/ocaml/ocaml/issues/14735"&gt;ocaml/ocaml#14735&lt;/a&gt;) to systematically clarify and fix ephemeron lifecycle management, motivated by multicoretests reproductions from &lt;a href="https://github.com/jmid"&gt;Jan Midtgaard&lt;/a&gt; in &lt;a href="https://github.com/ocaml/ocaml/issues/14349"&gt;ocaml/ocaml#14349&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14724" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Stdlib completeness for immutable and dynamic arrays&lt;/strong&gt;&lt;/a&gt;: addition of &lt;code&gt;pp_print_iarray&lt;/code&gt; &lt;a href="https://github.com/ocaml/ocaml/issues/14724"&gt;ocaml/ocaml#14724&lt;/a&gt; and &lt;code&gt;pp_print_dynarray&lt;/code&gt; &lt;a href="https://github.com/ocaml/ocaml/issues/14726"&gt;ocaml/ocaml#14726&lt;/a&gt; reflects ongoing work to bring &lt;code&gt;iarray&lt;/code&gt; and &lt;code&gt;Dynarray&lt;/code&gt; to feature parity with &lt;code&gt;Array&lt;/code&gt;, with further gaps tracked in &lt;a href="https://github.com/ocaml/ocaml/issues/14320"&gt;ocaml/ocaml#14320&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/RFCs/issues/44" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;RFC-to-implementation pipeline&lt;/strong&gt;&lt;/a&gt;: primitive aliases completing the &lt;a href="https://github.com/ocaml/RFCs/issues/44"&gt;ocaml/RFCs#44&lt;/a&gt; → &lt;a href="https://github.com/ocaml/ocaml/issues/13377"&gt;ocaml/ocaml#13377&lt;/a&gt; cycle, and implicit source positions (&lt;a href="https://github.com/ocaml/RFCs/issues/52"&gt;ocaml/RFCs#52&lt;/a&gt;) advancing toward implementation, illustrate the RFC process maturing as a design gateway for language changes.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14676" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;CI security hygiene&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/ocaml/ocaml/issues/14676"&gt;ocaml/ocaml#14676&lt;/a&gt; by &lt;a href="https://github.com/ajbt200128"&gt;Austin Theriault&lt;/a&gt; proposed preventing shell injection in GitHub Actions workflows, reflecting broader supply-chain security attention.&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Keep-expansion typechecker fix and primitive aliases (RFC #44) merged; implicit source positions RFC design narrowed to options 2a/2b.</summary><published>2026-04-12T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2026/week-14</id><title>Week 14, 2026: Bytecode fixes, stdlib additions, and a Pphyscomp optimisation landed in ocaml/ocaml; ocaml/RFCs revived the implicit source positions design debate.</title><updated>2026-04-05T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
@@ -6362,7 +6457,7 @@
 &lt;li&gt;&lt;strong class="achievement"&gt;Cross-platform compatibility&lt;/strong&gt; receiving increased attention with Windows API modernization and Unix platform improvements&lt;/li&gt;
 &lt;li&gt;&lt;strong class="achievement"&gt;Language design refinement&lt;/strong&gt; through community feedback on practical applications of new syntax features like raw identifiers&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Runtime improvements and bytecode optimization merged alongside language syntax discussions for raw identifiers</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2024/week-42</id><title>Week 42, 2024: Five PRs merged in ocaml/ocaml including new Thread.set_current_thread_name API and compiler improvements</title><updated>2026-04-09T20:09:05.430636+00:00</updated><content type="html">
+</content><link href="https://thicket.dev/"/><summary>Runtime improvements and bytecode optimization merged alongside language syntax discussions for raw identifiers</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2024/week-42</id><title>Week 42, 2024: Five PRs merged in ocaml/ocaml including new Thread.set_current_thread_name API and compiler improvements</title><updated>2026-04-18T07:01:47.828119+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

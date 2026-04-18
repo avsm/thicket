@@ -1,5 +1,100 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml</id><title>oxcaml/oxcaml (Weekly)</title><updated>2026-04-05T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/oxcaml</subtitle><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2026/week-14</id><title>Week 14, 2026: A highly active week with major advances in staging/GADTs, abstract kinds, new modes, Flambda2 optimizations, and backend codegen improvements.</title><updated>2026-04-05T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml</id><title>oxcaml/oxcaml (Weekly)</title><updated>2026-04-12T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/oxcaml</subtitle><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2026/week-15</id><title>Week 15, 2026: Active week across layout polymorphism, unboxed types, Flambda2 reaper, backend codegen, and runtime improvements.</title><updated>2026-04-12T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Layout polymorphism, Flambda2 reaper refactoring, unboxed type representation changes, and backend improvements were the main threads of activity.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;Draft SSA variant of the CFG backend opened by &lt;a href="https://github.com/ttebbi-janestreet"&gt;@ttebbi-janestreet&lt;/a&gt; &lt;a href="https://github.com/oxcaml/oxcaml/issues/5810"&gt;#5810&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Draft deletion of empty loops using induction variable analysis built on top of the SSA CFG, opened by &lt;a href="https://github.com/mshinwell"&gt;Mark Shinwell&lt;/a&gt; &lt;a href="https://github.com/oxcaml/oxcaml/issues/5840"&gt;#5840&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Skip &lt;code&gt;caml_modify&lt;/code&gt; for &lt;code&gt;non_pointer&lt;/code&gt; values opened by &lt;a href="https://github.com/rtjoa"&gt;Ryan Tjoa&lt;/a&gt;, rebasing &lt;a href="https://github.com/zackbach"&gt;Zack Eisbach&lt;/a&gt;'s earlier work &lt;a href="https://github.com/oxcaml/oxcaml/issues/5831"&gt;#5831&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Represent all-value/void mixed records and variants as uniform blocks opened by &lt;a href="https://github.com/rtjoa"&gt;Ryan Tjoa&lt;/a&gt; &lt;a href="https://github.com/oxcaml/oxcaml/issues/5774"&gt;#5774&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Represent &lt;code&gt;float64&lt;/code&gt; records as mixed blocks and add &lt;code&gt;[@@represent_as_float_array]&lt;/code&gt; attribute opened by &lt;a href="https://github.com/rtjoa"&gt;Ryan Tjoa&lt;/a&gt; &lt;a href="https://github.com/oxcaml/oxcaml/issues/5796"&gt;#5796&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Require &lt;code&gt;[@@flatten_floats]&lt;/code&gt; attribute on mixed &lt;code&gt;float&lt;/code&gt;-&lt;code&gt;float64&lt;/code&gt; records opened by &lt;a href="https://github.com/rtjoa"&gt;Ryan Tjoa&lt;/a&gt; &lt;a href="https://github.com/oxcaml/oxcaml/issues/5795"&gt;#5795&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Move Flambda2 export info out of &lt;code&gt;.cmx&lt;/code&gt; inline &lt;code&gt;Marshal&lt;/code&gt; block into a section, opened by &lt;a href="https://github.com/NicolasT"&gt;Nicolas Trangez&lt;/a&gt; &lt;a href="https://github.com/oxcaml/oxcaml/issues/5809"&gt;#5809&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Structured Fexpr primitive representation for improved parameterization of fexprs opened by &lt;a href="https://github.com/Keryan-dev"&gt;Keryan Didier&lt;/a&gt; &lt;a href="https://github.com/oxcaml/oxcaml/issues/5825"&gt;#5825&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Reaper code size computation when rebuilding terms opened by &lt;a href="https://github.com/Ekdohibs"&gt;Nathanaëlle Courant&lt;/a&gt; &lt;a href="https://github.com/oxcaml/oxcaml/issues/5793"&gt;#5793&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Allow immediates in upstream-compatible code merged &lt;a href="https://github.com/oxcaml/oxcaml/issues/5699"&gt;#5699&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ikinds&lt;/code&gt; on minus24 backend feature merged &lt;a href="https://github.com/oxcaml/oxcaml/issues/5159"&gt;#5159&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Reaper: &lt;code&gt;dep_solver.ml&lt;/code&gt; split into separate modules merged by &lt;a href="https://github.com/Ekdohibs"&gt;Nathanaëlle Courant&lt;/a&gt; &lt;a href="https://github.com/oxcaml/oxcaml/issues/5776"&gt;#5776&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Reaper cleanup after dep_solver split merged &lt;a href="https://github.com/oxcaml/oxcaml/issues/5787"&gt;#5787&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Patricia trees: additional &lt;code&gt;union_total&lt;/code&gt; function families to avoid allocations merged &lt;a href="https://github.com/oxcaml/oxcaml/issues/5803"&gt;#5803&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Simplify &lt;code&gt;lpoly&lt;/code&gt; generalize via path compression merged by &lt;a href="https://github.com/riaqn"&gt;Zesen Qian&lt;/a&gt; &lt;a href="https://github.com/oxcaml/oxcaml/issues/5792"&gt;#5792&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Scannable axes compute nullability and separability merged &lt;a href="https://github.com/oxcaml/oxcaml/issues/5169"&gt;#5169&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;update_level&lt;/code&gt; corrected to ignore level when sort variable contents is &lt;code&gt;Some _&lt;/code&gt; merged &lt;a href="https://github.com/oxcaml/oxcaml/issues/5791"&gt;#5791&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Layout var instantiation changed to &lt;code&gt;fatal_error&lt;/code&gt; rather than &lt;code&gt;Not_found&lt;/code&gt; merged &lt;a href="https://github.com/oxcaml/oxcaml/issues/5817"&gt;#5817&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;moregeneral&lt;/code&gt; always restores &lt;code&gt;current_level&lt;/code&gt; merged &lt;a href="https://github.com/oxcaml/oxcaml/issues/5816"&gt;#5816&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Layout instantiation restricted to static values merged &lt;a href="https://github.com/oxcaml/oxcaml/issues/5783"&gt;#5783&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Attempt to reset tick thread after &lt;code&gt;fork()&lt;/code&gt; merged by &lt;a href="https://github.com/glittershark"&gt;Aspen Smith&lt;/a&gt; &lt;a href="https://github.com/oxcaml/oxcaml/issues/5829"&gt;#5829&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Additional compactions in the dissector merged &lt;a href="https://github.com/oxcaml/oxcaml/issues/5790"&gt;#5790&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Fine-grained profiling added to the linker scan-file loop merged by &lt;a href="https://github.com/NicolasT"&gt;Nicolas Trangez&lt;/a&gt; &lt;a href="https://github.com/oxcaml/oxcaml/issues/5808"&gt;#5808&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Fix annoying REPL issue with metaprogramming syntax directive merged by &lt;a href="https://github.com/Dreian"&gt;Andrej Ivašković&lt;/a&gt; &lt;a href="https://github.com/oxcaml/oxcaml/issues/5801"&gt;#5801&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Graceful reporting of unsupported language features in runtime metaprogramming merged &lt;a href="https://github.com/oxcaml/oxcaml/issues/5823"&gt;#5823&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Handle staging in &lt;code&gt;Printtyp&lt;/code&gt; more carefully merged by &lt;a href="https://github.com/jbachurski"&gt;Jakub Bachurski&lt;/a&gt; &lt;a href="https://github.com/oxcaml/oxcaml/issues/5785"&gt;#5785&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Eliminate useless shifts in string/bytes indexed access merged &lt;a href="https://github.com/oxcaml/oxcaml/issues/5746"&gt;#5746&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Share code in emitters for data items merged &lt;a href="https://github.com/oxcaml/oxcaml/issues/5794"&gt;#5794&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Patricia tree callback modules for function specialisation merged &lt;a href="https://github.com/oxcaml/oxcaml/issues/5770"&gt;#5770&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Remove line numbers from assertion failures in tests merged &lt;a href="https://github.com/oxcaml/oxcaml/issues/5782"&gt;#5782&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Delete &lt;code&gt;equal_obj&lt;/code&gt; and &lt;code&gt;equal_morph&lt;/code&gt;, using compare instead merged &lt;a href="https://github.com/oxcaml/oxcaml/issues/5799"&gt;#5799&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Review of Traverse and Traverse_acc modules merged &lt;a href="https://github.com/oxcaml/oxcaml/issues/5789"&gt;#5789&lt;/a&gt; &lt;a href="https://github.com/oxcaml/oxcaml/issues/5797"&gt;#5797&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;5.4 merge: various testsuite promotions merged &lt;a href="https://github.com/oxcaml/oxcaml/issues/5757"&gt;#5757&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Fix statmemprof exception tests merged &lt;a href="https://github.com/oxcaml/oxcaml/issues/5804"&gt;#5804&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Reaper: remove &lt;code&gt;field_{usages,sources}_top&lt;/code&gt; merged &lt;a href="https://github.com/oxcaml/oxcaml/issues/5748"&gt;#5748&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Simplify: update recursive flag to fix reaper inlining decision merged &lt;a href="https://github.com/oxcaml/oxcaml/issues/5819"&gt;#5819&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Avoid persistent env wrapper partial applications, saving ~100mb allocation when compiling &lt;code&gt;typecore.ml&lt;/code&gt; merged &lt;a href="https://github.com/oxcaml/oxcaml/issues/5631"&gt;#5631&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Active week across layout polymorphism, unboxed types, Flambda2 reaper, backend codegen, and runtime improvements.</summary><published>2026-04-12T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2026/week-14</id><title>Week 14, 2026: A highly active week with major advances in staging/GADTs, abstract kinds, new modes, Flambda2 optimizations, and backend codegen improvements.</title><updated>2026-04-05T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

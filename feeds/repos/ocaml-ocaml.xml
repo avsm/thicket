@@ -1,5 +1,73 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.xml</id><title>ocaml/ocaml (Weekly)</title><updated>2026-04-05T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-14</id><title>Week 14, 2026: A productive week with stdlib additions, bytecode fixes, parser improvements, and a long-pending physical comparison optimisation landing on trunk.</title><updated>2026-04-05T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.xml</id><title>ocaml/ocaml (Weekly)</title><updated>2026-04-12T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-15</id><title>Week 15, 2026: A landmark week merging the long-awaited "keep expansion" typechecker fix and primitive aliases, alongside major runtime and stdlib improvements.</title><updated>2026-04-12T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Major merges this week include the landmark keep-expansion typechecker fix, primitive aliases, runtime domain and ephemeron improvements, and several stdlib additions.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/11648" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Keep expansion&lt;/strong&gt;&lt;/a&gt; typechecker overhaul &lt;a href="https://github.com/ocaml/ocaml/issues/11648"&gt;#11648&lt;/a&gt; was merged after years of development by &lt;a href="https://github.com/garrigue"&gt;Jacques Garrigue&lt;/a&gt; and &lt;a href="https://github.com/smuenzel"&gt;Stefan Muenzel&lt;/a&gt;, fixing long-standing non-termination bugs (&lt;a href="https://github.com/ocaml/ocaml/issues/9314"&gt;#9314&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/13230"&gt;#13230&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/13881"&gt;#13881&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14036"&gt;#14036&lt;/a&gt;) and principality regressions.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14716" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Domain unique_id assignment&lt;/strong&gt;&lt;/a&gt; was moved earlier during domain creation via &lt;a href="https://github.com/ocaml/ocaml/issues/14716"&gt;#14716&lt;/a&gt; by &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt;, improving debuggability of domain lifecycle logging.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14718" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Ephemeron orphaning bug fix&lt;/strong&gt;&lt;/a&gt; for 5.5 was submitted via &lt;a href="https://github.com/ocaml/ocaml/issues/14718"&gt;#14718&lt;/a&gt; by &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; and merged, addressing the runtime assertion failures reported in &lt;a href="https://github.com/ocaml/ocaml/issues/14349"&gt;#14349&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14685" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Compaction corner case test&lt;/strong&gt;&lt;/a&gt; was improved via &lt;a href="https://github.com/ocaml/ocaml/issues/14685"&gt;#14685&lt;/a&gt; by &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt;, reducing test runtime from 14s to 1.5s while making the test actually reproduce the original bug.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14695" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;GADT scope-escape hint&lt;/strong&gt;&lt;/a&gt; was added to the typechecker error message via &lt;a href="https://github.com/ocaml/ocaml/issues/14695"&gt;#14695&lt;/a&gt; by &lt;a href="https://github.com/smuenzel"&gt;Stefan Muenzel&lt;/a&gt;, providing actionable guidance for users encountering ambivalent type errors.&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Minor cleanup in &lt;code&gt;Typecore.type_effect_cases&lt;/code&gt;&lt;/strong&gt; was merged via &lt;a href="https://github.com/ocaml/ocaml/issues/14723"&gt;#14723&lt;/a&gt; by &lt;a href="https://github.com/ccasin"&gt;Chris Casinghino&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;translmod.ml&lt;/code&gt; refactoring&lt;/strong&gt; to introduce a &lt;code&gt;lambda_subst&lt;/code&gt; helper was merged via &lt;a href="https://github.com/ocaml/ocaml/issues/14728"&gt;#14728&lt;/a&gt; by &lt;a href="https://github.com/nojb"&gt;Nicolás Ojeda Bär&lt;/a&gt;, suggested by &lt;a href="https://github.com/alainfrisch"&gt;Alain Frisch&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14730" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Regression test for rectypes keep-expansion&lt;/strong&gt;&lt;/a&gt; was merged via &lt;a href="https://github.com/ocaml/ocaml/issues/14730"&gt;#14730&lt;/a&gt; by &lt;a href="https://github.com/brandonzstride"&gt;Brandon Stride&lt;/a&gt;, preventing re-introduction of a typechecker infinite loop.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14727" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Typechecker memory usage fix&lt;/strong&gt;&lt;/a&gt; for counter-example search was proposed via &lt;a href="https://github.com/ocaml/ocaml/issues/14727"&gt;#14727&lt;/a&gt; by &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt;, addressing excessive memory use in pattern-matching exhaustiveness checks.&lt;/li&gt;
+&lt;li&gt;A series of &lt;a href="https://github.com/ocaml/ocaml/issues/14732" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;ephemeron runtime refactoring PRs&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14732"&gt;#14732&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14733"&gt;#14733&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14734"&gt;#14734&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14735"&gt;#14735&lt;/a&gt;) were opened by &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; to clarify phase-change logic and fix the ephemeron orphaning correctness bug on trunk.&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>A landmark week merging the long-awaited "keep expansion" typechecker fix and primitive aliases, alongside major runtime and stdlib improvements.</summary><published>2026-04-12T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-14</id><title>Week 14, 2026: A productive week with stdlib additions, bytecode fixes, parser improvements, and a long-pending physical comparison optimisation landing on trunk.</title><updated>2026-04-05T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
