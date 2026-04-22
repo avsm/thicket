@@ -1,5 +1,89 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/core.xml</id><title>OCaml Core (Weekly)</title><updated>2026-04-12T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/core.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Core OCaml language, compiler, and essential tooling</subtitle><entry><id>https://thicket.dev/groups/core/2026/week-15</id><title>Week 15, 2026: Keep-expansion typechecker fix and primitive aliases (RFC #44) merged; implicit source positions RFC design narrowed to options 2a/2b.</title><updated>2026-04-12T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/core.xml</id><title>OCaml Core (Weekly)</title><updated>2026-04-19T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/core.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Core OCaml language, compiler, and essential tooling</subtitle><entry><id>https://thicket.dev/groups/core/2026/week-16</id><title>Week 16, 2026: Typechecker improvements, stdlib additions (Atomic.update, pp_print_dynarray), runtime fixes, and ephemeron GC refactoring in ocaml/ocaml.</title><updated>2026-04-19T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;Format.pp_print_dynarray&lt;/code&gt;&lt;/strong&gt; added to the standard library for printing &lt;code&gt;Dynarray.t&lt;/code&gt; values with a separator, mirroring &lt;code&gt;pp_print_array&lt;/code&gt; and &lt;code&gt;pp_print_iarray&lt;/code&gt; — &lt;a href="https://github.com/ocaml/ocaml/issues/14726"&gt;ocaml/ocaml#14726&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Nested &lt;code&gt;with&lt;/code&gt; constraints in package types&lt;/strong&gt; now supported as syntactic sugar: &lt;code&gt;(module T with type x = ... with type y = ...)&lt;/code&gt; accepted alongside the existing &lt;code&gt;and&lt;/code&gt; form — &lt;a href="https://github.com/ocaml/ocaml/issues/14710"&gt;ocaml/ocaml#14710&lt;/a&gt;, closes &lt;a href="https://github.com/ocaml/ocaml/issues/14274"&gt;ocaml/ocaml#14274&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;Atomic.update&lt;/code&gt;&lt;/strong&gt; (formerly &lt;code&gt;Atomic.modify&lt;/code&gt;) merged, providing a high-level retry-loop abstraction over &lt;code&gt;compare_and_set&lt;/code&gt; — &lt;a href="https://github.com/ocaml/ocaml/issues/10798"&gt;ocaml/ocaml#10798&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;ctype.mli&lt;/code&gt;&lt;/strong&gt; exposes new &lt;code&gt;filter_arity&lt;/code&gt; function and &lt;code&gt;Pattern_env.save&lt;/code&gt;/&lt;code&gt;reset&lt;/code&gt; state for external use — &lt;a href="https://github.com/ocaml/ocaml/issues/14738"&gt;ocaml/ocaml#14738&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;errortrace.mli&lt;/code&gt;&lt;/strong&gt; gains a new &lt;code&gt;Kind_differ&lt;/code&gt; error variant for better reporting of mismatched privacy levels on object method types — &lt;a href="https://github.com/ocaml/ocaml/issues/14738"&gt;ocaml/ocaml#14738&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;Activity concentrated in &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt;; &lt;a href="https://github.com/ocaml/RFCs"&gt;ocaml/RFCs&lt;/a&gt; had no new activity this week&lt;/li&gt;
+&lt;li&gt;12 PRs merged in &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt; spanning typechecker correctness, memory optimization, runtime fixes, and build system improvements&lt;/li&gt;
+&lt;li&gt;7 new PRs/issues opened across stdlib, runtime, and documentation areas, including multiple competing implementations for &lt;a href="https://github.com/ocaml/ocaml/issues/14658"&gt;ocaml/ocaml#14658&lt;/a&gt; (OCAMLRUNPARAM unit suffixes)&lt;/li&gt;
+&lt;li&gt;14 individual contributors active in &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt; this week, led by &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt;, &lt;a href="https://github.com/samsa1"&gt;Samuel Vivien&lt;/a&gt;, &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt;, and &lt;a href="https://github.com/MisterDA"&gt;Antonin Décimo&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14757" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCAMLRUNPARAM unit suffix design&lt;/strong&gt;&lt;/a&gt; attracted discussion between &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt;, &lt;a href="https://github.com/y1lan"&gt;Yang Lin&lt;/a&gt;, and &lt;a href="https://github.com/glyh"&gt;Yihang "Corvo" Liu&lt;/a&gt; about whether to support &lt;code&gt;MiB&lt;/code&gt;/&lt;code&gt;MB&lt;/code&gt;/&lt;code&gt;Mw&lt;/code&gt; or only IEC-style prefixes to avoid SI vs binary ambiguity — &lt;a href="https://github.com/ocaml/ocaml/issues/14757"&gt;ocaml/ocaml#14757&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14756"&gt;ocaml/ocaml#14756&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14658"&gt;ocaml/ocaml#14658&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;ocamlyacc&lt;/code&gt; &lt;code&gt;calloc&lt;/code&gt; vs &lt;code&gt;malloc&lt;/code&gt;&lt;/strong&gt; prompted an exchange between &lt;a href="https://github.com/xavierleroy"&gt;Xavier Leroy&lt;/a&gt;, &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt;, and &lt;a href="https://github.com/nojb"&gt;Nicolás Ojeda Bär&lt;/a&gt; about whether zero-initialization by default hides bugs or reduces CVE risk in this legacy codebase — &lt;a href="https://github.com/ocaml/ocaml/issues/14748"&gt;ocaml/ocaml#14748&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Merging &lt;code&gt;eqtype&lt;/code&gt; and &lt;code&gt;moregen&lt;/code&gt;&lt;/strong&gt; continued with &lt;a href="https://github.com/samsa1"&gt;Samuel Vivien&lt;/a&gt; landing two preparatory PRs (&lt;a href="https://github.com/ocaml/ocaml/issues/14738"&gt;ocaml/ocaml#14738&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14737"&gt;ocaml/ocaml#14737&lt;/a&gt;) and opening &lt;a href="https://github.com/ocaml/ocaml/issues/14739"&gt;ocaml/ocaml#14739&lt;/a&gt; for the final merge; &lt;a href="https://github.com/garrigue"&gt;Jacques Garrigue&lt;/a&gt; noted subtle differences in variable handling — &lt;a href="https://github.com/ocaml/ocaml/issues/14364"&gt;ocaml/ocaml#14364&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14752" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Mass typo-fix PR policy&lt;/strong&gt;&lt;/a&gt; sparked debate when &lt;a href="https://github.com/ocaml/ocaml/issues/14752"&gt;ocaml/ocaml#14752&lt;/a&gt; was submitted fixing &lt;code&gt;occured&lt;/code&gt; → &lt;code&gt;occurred&lt;/code&gt; across &lt;code&gt;ocamldoc&lt;/code&gt;; &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt; expressed concern about accepting PRs optimising GitHub metrics, with &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; ultimately merging and closing the discussion&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14720" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Ephemeron GC refactoring&lt;/strong&gt;&lt;/a&gt; is a multi-PR campaign by &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; building on &lt;a href="https://github.com/ocaml/ocaml/issues/14720"&gt;ocaml/ocaml#14720&lt;/a&gt;: &lt;a href="https://github.com/ocaml/ocaml/issues/14732"&gt;ocaml/ocaml#14732&lt;/a&gt; refactors phase-change helpers, &lt;a href="https://github.com/ocaml/ocaml/issues/14734"&gt;ocaml/ocaml#14734&lt;/a&gt; fixes orphaning during sweep phase, &lt;a href="https://github.com/ocaml/ocaml/issues/14733"&gt;ocaml/ocaml#14733&lt;/a&gt; clarifies ephemeron counters, and &lt;a href="https://github.com/ocaml/ocaml/issues/14735"&gt;ocaml/ocaml#14735&lt;/a&gt; introduces higher-level list operations&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14666" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;C compiler warnings cleanup&lt;/strong&gt;&lt;/a&gt; is an ongoing effort by &lt;a href="https://github.com/MisterDA"&gt;Antonin Décimo&lt;/a&gt;: &lt;code&gt;-Wwrite-strings&lt;/code&gt; landed this week (&lt;a href="https://github.com/ocaml/ocaml/issues/14666"&gt;ocaml/ocaml#14666&lt;/a&gt;) and &lt;code&gt;-Wformat-signedness&lt;/code&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14694"&gt;ocaml/ocaml#14694&lt;/a&gt;) is open for review&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14738" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Typechecker diagnostics improvements&lt;/strong&gt;&lt;/a&gt; feature prominently this week: object-type privacy errors (&lt;a href="https://github.com/ocaml/ocaml/issues/14738"&gt;ocaml/ocaml#14738&lt;/a&gt;), signature-inclusion alias errors (&lt;a href="https://github.com/ocaml/ocaml/issues/14746"&gt;ocaml/ocaml#14746&lt;/a&gt;), and arity error fixes (&lt;a href="https://github.com/ocaml/ocaml/issues/14721"&gt;ocaml/ocaml#14721&lt;/a&gt;) all landed or are in review&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;Atomic&lt;/code&gt; stdlib expansion&lt;/strong&gt;: &lt;code&gt;Atomic.update&lt;/code&gt; merged (&lt;a href="https://github.com/ocaml/ocaml/issues/10798"&gt;ocaml/ocaml#10798&lt;/a&gt;) and &lt;code&gt;Atomic.fold_update&lt;/code&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14725"&gt;ocaml/ocaml#14725&lt;/a&gt;) is proposed as a follow-up to support pop-style operations on lock-free data structures&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Typechecker improvements, stdlib additions (Atomic.update, pp_print_dynarray), runtime fixes, and ephemeron GC refactoring in ocaml/ocaml.</summary><published>2026-04-19T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2026/week-15</id><title>Week 15, 2026: Keep-expansion typechecker fix and primitive aliases (RFC #44) merged; implicit source positions RFC design narrowed to options 2a/2b.</title><updated>2026-04-12T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
@@ -6457,7 +6541,7 @@
 &lt;li&gt;&lt;strong class="achievement"&gt;Cross-platform compatibility&lt;/strong&gt; receiving increased attention with Windows API modernization and Unix platform improvements&lt;/li&gt;
 &lt;li&gt;&lt;strong class="achievement"&gt;Language design refinement&lt;/strong&gt; through community feedback on practical applications of new syntax features like raw identifiers&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Runtime improvements and bytecode optimization merged alongside language syntax discussions for raw identifiers</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2024/week-42</id><title>Week 42, 2024: Five PRs merged in ocaml/ocaml including new Thread.set_current_thread_name API and compiler improvements</title><updated>2026-04-18T07:01:47.828119+00:00</updated><content type="html">
+</content><link href="https://thicket.dev/"/><summary>Runtime improvements and bytecode optimization merged alongside language syntax discussions for raw identifiers</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2024/week-42</id><title>Week 42, 2024: Five PRs merged in ocaml/ocaml including new Thread.set_current_thread_name API and compiler improvements</title><updated>2026-04-22T16:36:38.431028+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

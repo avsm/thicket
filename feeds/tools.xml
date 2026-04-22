@@ -1,5 +1,126 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/tools.xml</id><title>OCaml Tools (Weekly)</title><updated>2026-04-12T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/tools.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Development tools and build systems</subtitle><entry><id>https://thicket.dev/groups/tools/2026/week-15</id><title>Week 15, 2026: Dune 3.22.2, merlin v5.7.0-504, and ocaml-lsp 1.26.0 released; js_of_ocaml Wasm dynlink/toplevel support merged.</title><updated>2026-04-12T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/tools.xml</id><title>OCaml Tools (Weekly)</title><updated>2026-04-19T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/tools.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Development tools and build systems</subtitle><entry><id>https://thicket.dev/groups/tools/2026/week-16</id><title>Week 16, 2026: opam 2.5.1 security release, dune approaching 3.23.0, and OxCaml support merged into odoc and js_of_ocaml.</title><updated>2026-04-19T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+ocaml/dune&lt;/a&gt;&lt;/strong&gt;&lt;/br&gt;
+- compile_commands.json generation&lt;/strong&gt; for C/C++ foreign stubs produced as part of @check&lt;/code&gt; when using (lang dune 3.23)&lt;/code&gt;, enabling clangd and other tools (ocaml/dune#14185&lt;/a&gt;, by Ali Caglayan&lt;/a&gt;)&lt;/br&gt;
+- SIGTERM before SIGKILL&lt;/strong&gt; sent to child processes on shutdown and watch-mode cancellation, closing a 7-year-old issue (ocaml/dune#14224&lt;/a&gt;, fixes ocaml/dune#2445&lt;/a&gt;, by Robin Bate Boerop&lt;/a&gt;)&lt;/br&gt;
+- Opam file generation now requires explicit promotion&lt;/strong&gt; via dune promote&lt;/code&gt;; generation triggered by @install&lt;/code&gt;, @runtest&lt;/code&gt;, and @opam&lt;/code&gt;; in release mode source opam files are used directly (ocaml/dune#14108&lt;/a&gt;, by Rudi Grinberg&lt;/a&gt;) — requires dune 3.23&lt;/br&gt;
+- RPC lifecycle trace events&lt;/strong&gt; added for accepting clients and shutting down the RPC server (ocaml/dune#14232&lt;/a&gt;, by Rudi Grinberg&lt;/a&gt;)&lt;/br&gt;
+- Watch mode build iterations&lt;/strong&gt; included in build events, enabling external tooling to track rebuild cycles (ocaml/dune#14166&lt;/a&gt;, by Rudi Grinberg&lt;/a&gt;)&lt;/br&gt;
+- Auto-injection of menhir lower bound&lt;/strong&gt; in generated opam files when the menhir extension is used (ocaml/dune#14168&lt;/a&gt;, fixes ocaml/dune#10707&lt;/a&gt;, by Robin Bate Boerop&lt;/a&gt;)&lt;/br&gt;
+- Duplicate dune version bounds fixed&lt;/strong&gt; in generated opam files (ocaml/dune#14175&lt;/a&gt;, fixes ocaml/dune#3916&lt;/a&gt;, by Robin Bate Boerop&lt;/a&gt;)&lt;/br&gt;
+- Inline tests now execute for byte-only libraries&lt;/strong&gt; when a library has (modes byte)&lt;/code&gt; (ocaml/dune#14174&lt;/a&gt;, fixes ocaml/dune#9757&lt;/a&gt;, by Robin Bate Boerop&lt;/a&gt;)&lt;/br&gt;
+- Dyn.pp&lt;/code&gt; now prints valid OCaml literals&lt;/strong&gt; for Char&lt;/code&gt;, Int32&lt;/code&gt;/Int64&lt;/code&gt;/Nativeint&lt;/code&gt;, and Float&lt;/code&gt; (ocaml/dune#13394&lt;/a&gt;, by Ali Caglayan&lt;/a&gt;)&lt;/p&gt;
+
+ocaml/odoc&lt;/a&gt;&lt;/strong&gt;&lt;/br&gt;
+- OxCaml upstream support&lt;/strong&gt; merged, rebasing Luke Maurer&lt;/a&gt;'s patches from the oxcaml/odoc fork via @art-w&lt;/a&gt;, adding OxCaml-specific syntax handling including modes, layouts, iarray, labeled tuples, and unboxed records (ocaml/odoc#1399&lt;/a&gt;)&lt;/br&gt;
+- OCaml 5.5 compatibility&lt;/strong&gt; added by Paul-Elliot Anglès d'Auriac&lt;/a&gt;, including support for external types and module arrow types in signatures (ocaml/odoc#1406&lt;/a&gt;)&lt;/br&gt;
+- Fixed missing parentheses&lt;/strong&gt; for polymorphic parameters in OxCaml rendering (ocaml/odoc#1404&lt;/a&gt;, by @art-w&lt;/a&gt;)&lt;/p&gt;
+
+ocaml/opam&lt;/a&gt;&lt;/strong&gt;&lt;/br&gt;
+- opam 2.5.1 released&lt;/strong&gt; (ocaml/opam#6899&lt;/a&gt;), a security and bug-fix release merged by Kate&lt;/a&gt;&lt;/br&gt;
+- Security fix (OSEC-2026-03)&lt;/strong&gt;: .install&lt;/code&gt; files with destination filepaths attempting path escape via ..&lt;/code&gt; or absolute paths are now invalidated (ocaml/opam#6897&lt;/a&gt;)&lt;/br&gt;
+- Nix depexts&lt;/strong&gt; now loads package names from a JSON file instead of inlining them, fixing a potential string injection vulnerability (ocaml/opam#6894&lt;/a&gt;)&lt;/br&gt;
+- Gentoo distribution detection restored&lt;/strong&gt; with support for single-quoted values in /etc/os-release&lt;/code&gt; (ocaml/opam#6886&lt;/a&gt;)&lt;/p&gt;
+
+ocsigen/jsof&lt;/em&gt;ocaml&lt;/a&gt;&lt;/strong&gt;&lt;/br&gt;
+- OxCaml support&lt;/strong&gt; merged across 140 files (ocsigen/jsof&lt;/em&gt;ocaml#2105&lt;/a&gt;), adding Float32 operations, small integer types (int8_u&lt;/code&gt;, int16_u&lt;/code&gt;), unboxed int indexing, Float16 conversion primitives, and new atomic/domain primitives, by Jérôme Vouillon&lt;/a&gt;&lt;/br&gt;
+- JSPI effects availability&lt;/strong&gt; clarified in documentation: --effects=jspi&lt;/code&gt; works out-of-the-box in Chrome 137 and Node.js 25+ (ocsigen/jsof&lt;/em&gt;ocaml#2213&lt;/a&gt;)&lt;/p&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;Six of ten repositories saw activity this week; &lt;a href="https://github.com/ocaml/ocamlfind"&gt;ocaml/ocamlfind&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-file-format"&gt;ocaml/opam-file-format&lt;/a&gt;, and &lt;a href="https://github.com/ocaml-dune/spawn"&gt;ocaml-dune/spawn&lt;/a&gt; had no commits or PRs&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam"&gt;ocaml/opam&lt;/a&gt; shipped opam 2.5.1 (&lt;a href="https://github.com/ocaml/opam/issues/6899"&gt;ocaml/opam#6899&lt;/a&gt;), a security and bug-fix release addressing a path-escape vulnerability (OSEC-2026-03) and two GC corruption bugs in C stubs&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune"&gt;ocaml/dune&lt;/a&gt; is approaching the 3.23.0 release (&lt;a href="https://github.com/ocaml/dune/issues/14211"&gt;ocaml/dune#14211&lt;/a&gt;), targeting 2026-04-20, with 228 files changed across the week and 11 new features landing&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml"&gt;ocsigen/js&lt;em&gt;of&lt;/em&gt;ocaml&lt;/a&gt; merged OxCaml compatibility across 140 files (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2105"&gt;ocsigen/js&lt;em&gt;of&lt;/em&gt;ocaml#2105&lt;/a&gt;), adding Float32, small int types, atomic primitives, and dedicated CI pipelines&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/odoc"&gt;ocaml/odoc&lt;/a&gt; merged three PRs bringing OxCaml upstream support (&lt;a href="https://github.com/ocaml/odoc/issues/1399"&gt;ocaml/odoc#1399&lt;/a&gt;), OCaml 5.5 compatibility (&lt;a href="https://github.com/ocaml/odoc/issues/1406"&gt;ocaml/odoc#1406&lt;/a&gt;), and polymorphic parameter fixes (&lt;a href="https://github.com/ocaml/odoc/issues/1404"&gt;ocaml/odoc#1404&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/merlin"&gt;ocaml/merlin&lt;/a&gt; had four new PRs opened covering menhirLib snapshot updates, &lt;code&gt;misc.ml&lt;/code&gt; synchronization with upstream OCaml, and saved parts investigation (&lt;a href="https://github.com/ocaml/merlin/issues/2058"&gt;ocaml/merlin#2058&lt;/a&gt;, &lt;a href="https://github.com/ocaml/merlin/issues/2059"&gt;ocaml/merlin#2059&lt;/a&gt;, &lt;a href="https://github.com/ocaml/merlin/issues/2060"&gt;ocaml/merlin#2060&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml-lsp"&gt;ocaml/ocaml-lsp&lt;/a&gt; had only an automated Nix flake lock update (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1437"&gt;ocaml/ocaml-lsp#1437&lt;/a&gt;) bumping the merlin input to the 2026-04-17 snapshot&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/odoc/issues/1399" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OxCaml compatibility effort spans four repositories&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/ocaml/odoc"&gt;ocaml/odoc&lt;/a&gt; merged OxCaml support (&lt;a href="https://github.com/ocaml/odoc/issues/1399"&gt;ocaml/odoc#1399&lt;/a&gt;); &lt;a href="https://github.com/ocsigen/js_of_ocaml"&gt;ocsigen/js&lt;em&gt;of&lt;/em&gt;ocaml&lt;/a&gt; merged OxCaml support across 140 files (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2105"&gt;ocsigen/js&lt;em&gt;of&lt;/em&gt;ocaml#2105&lt;/a&gt;); &lt;a href="https://github.com/ocaml/dune"&gt;ocaml/dune&lt;/a&gt; added OxCaml CI Nix jobs (&lt;a href="https://github.com/ocaml/dune/issues/14248"&gt;ocaml/dune#14248&lt;/a&gt;) and a Nix derivation for OxCaml trunk builds (&lt;a href="https://github.com/ocaml/dune/issues/14228"&gt;ocaml/dune#14228&lt;/a&gt;); &lt;a href="https://github.com/ocaml/merlin"&gt;ocaml/merlin&lt;/a&gt;'s saved parts investigation (&lt;a href="https://github.com/ocaml/merlin/issues/2060"&gt;ocaml/merlin#2060&lt;/a&gt;) was motivated by OxCaml-related upstream OCaml changes in &lt;a href="https://github.com/ocaml/ocaml/issues/14241"&gt;ocaml/ocaml#14241&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;js&lt;em&gt;of&lt;/em&gt;ocaml WASI and Wasm effects PRs are blocked on a dune fix&lt;/strong&gt;: &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/1831"&gt;ocsigen/js&lt;em&gt;of&lt;/em&gt;ocaml#1831&lt;/a&gt; and &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2189"&gt;ocsigen/js&lt;em&gt;of&lt;/em&gt;ocaml#2189&lt;/a&gt; are blocked waiting on &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2177"&gt;ocaml/dune#13613&lt;/a&gt; and a new dune release&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6899" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;opam 2.5.1 release coordination with setup-ocaml&lt;/strong&gt;&lt;/a&gt;: the opam 2.5.1 release (&lt;a href="https://github.com/ocaml/opam/issues/6899"&gt;ocaml/opam#6899&lt;/a&gt;) caused a downstream breakage reported in &lt;a href="https://github.com/ocaml/opam/issues/6901"&gt;ocaml/opam#6901&lt;/a&gt; when pre-built binaries were not immediately available; &lt;a href="https://github.com/smorimoto"&gt;Sora Morimoto&lt;/a&gt; linked the corresponding setup-ocaml fix&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1437" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Merlin version tracking across ocaml-lsp&lt;/strong&gt;&lt;/a&gt;: the &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1437"&gt;ocaml/ocaml-lsp#1437&lt;/a&gt; flake.lock update bumped the &lt;code&gt;merlin5_3&lt;/code&gt; input from the 2026-03-16 snapshot to 2026-04-17, reflecting &lt;a href="https://github.com/ocaml/merlin"&gt;ocaml/merlin&lt;/a&gt;'s version bump toward 5.7.0&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14108" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Dune opam file generation changes affect opam workflow&lt;/strong&gt;&lt;/a&gt;: the new explicit promotion requirement for opam files (&lt;a href="https://github.com/ocaml/dune/issues/14108"&gt;ocaml/dune#14108&lt;/a&gt;) directly affects how projects use &lt;a href="https://github.com/ocaml/opam"&gt;ocaml/opam&lt;/a&gt; to publish packages, with &lt;code&gt;dune promote&lt;/code&gt; now required before &lt;code&gt;opam publish&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14211" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;dune 3.23.0 release tracker&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/14211"&gt;ocaml/dune#14211&lt;/a&gt;) opened by &lt;a href="https://github.com/shonfeder"&gt;Shon Feder&lt;/a&gt;, targeting 2026-04-20; current blockers include sandboxed package dependency regression (&lt;a href="https://github.com/ocaml/dune/issues/14213"&gt;ocaml/dune#14213&lt;/a&gt;) and OxCaml CI compatibility (&lt;a href="https://github.com/ocaml/dune/issues/14214"&gt;ocaml/dune#14214&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14213" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Sandboxed package deps regression&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/14213"&gt;ocaml/dune#14213&lt;/a&gt;) raised by &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; as a blocker for 3.23.0; a reproduction case is being developed in &lt;a href="https://github.com/ocaml/dune/issues/14189"&gt;ocaml/dune#14189&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Allow arbitrary opam fields in &lt;code&gt;dune-project&lt;/code&gt;&lt;/strong&gt; (&lt;a href="https://github.com/ocaml/dune/issues/14197"&gt;ocaml/dune#14197&lt;/a&gt;) opened by &lt;a href="https://github.com/Leonidas-from-XIV"&gt;Marek Kubica&lt;/a&gt;; &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; proposed &lt;code&gt;(opam_fields (depexts "..."))&lt;/code&gt; syntax as a lighter-weight alternative to opam.template files&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14121" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Dune Monitor long-term plan&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/14121"&gt;ocaml/dune#14121&lt;/a&gt;) by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; outlines making &lt;code&gt;dune monitor&lt;/code&gt; a standalone binary using Lwt instead of Fiber, with Notty/Lwd rendering and RPC/trace-file observation&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6901" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;opam 2.5.1 release impact on setup-ocaml&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam/issues/6901"&gt;ocaml/opam#6901&lt;/a&gt;): &lt;a href="https://github.com/ajbt200128"&gt;Austin Theriault&lt;/a&gt; reported setup-ocaml breakage when binaries were unavailable at release; &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; clarified that release binaries are for the install script, not setup-ocaml&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6900" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Supply chain security for opam releases&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam/issues/6900"&gt;ocaml/opam#6900&lt;/a&gt;): &lt;a href="https://github.com/ajbt200128"&gt;Austin Theriault&lt;/a&gt; requested switching to GitHub immutable releases; &lt;a href="https://github.com/smorimoto"&gt;Sora Morimoto&lt;/a&gt; suggested combining this with GitHub artifact attestations&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6907" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;opam-installer dependency cycle&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam/issues/6907"&gt;ocaml/opam#6907&lt;/a&gt;): &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; raised that &lt;code&gt;opam-installer&lt;/code&gt; depends on &lt;code&gt;opam-core&lt;/code&gt; which depends on &lt;code&gt;jsonm&lt;/code&gt;, making it hard to bootstrap &lt;code&gt;jsonm&lt;/code&gt; without opam&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/merlin/issues/2060" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Merlin saved parts and browse tree blowup&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/merlin/issues/2060"&gt;ocaml/merlin#2060&lt;/a&gt;): &lt;a href="https://github.com/trefis"&gt;Thomas Refis&lt;/a&gt; identified that mimicking the typechecker's saved-types behavior leads to unwanted nesting; &lt;a href="https://github.com/xvw"&gt;Xavier Van de Woestyne&lt;/a&gt; suggested opening a tracking ticket for the performance implications&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;@inline&lt;/code&gt; tag on module declarations&lt;/strong&gt; (&lt;a href="https://github.com/ocaml/odoc/issues/1408"&gt;ocaml/odoc#1408&lt;/a&gt;): &lt;a href="https://github.com/jonludlam"&gt;Jon Ludlam&lt;/a&gt; explained why the approach differs from inlined includes — inline modules require tracking during path/reference resolution — and closed the PR as needs further architectural work&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/odoc/issues/1399" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OxCaml compatibility is becoming a group-wide priority&lt;/strong&gt;&lt;/a&gt;: dedicated support landed in &lt;a href="https://github.com/ocaml/odoc"&gt;ocaml/odoc&lt;/a&gt; (&lt;a href="https://github.com/ocaml/odoc/issues/1399"&gt;ocaml/odoc#1399&lt;/a&gt;), &lt;a href="https://github.com/ocsigen/js_of_ocaml"&gt;ocsigen/js&lt;em&gt;of&lt;/em&gt;ocaml&lt;/a&gt; (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2105"&gt;ocsigen/js&lt;em&gt;of&lt;/em&gt;ocaml#2105&lt;/a&gt;), and &lt;a href="https://github.com/ocaml/dune"&gt;ocaml/dune&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/14248"&gt;ocaml/dune#14248&lt;/a&gt;) this week, each with dedicated CI pipelines and test suites&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14228" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Nix flake as the standard cross-compiler testing mechanism&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/ocaml/dune"&gt;ocaml/dune&lt;/a&gt; replaced its revdeps-dev-build workflow with a full Nix derivation (&lt;a href="https://github.com/ocaml/dune/issues/14228"&gt;ocaml/dune#14228&lt;/a&gt;); &lt;a href="https://github.com/ocaml/ocaml-lsp"&gt;ocaml/ocaml-lsp&lt;/a&gt; auto-updates its flake.lock (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1437"&gt;ocaml/ocaml-lsp#1437&lt;/a&gt;); &lt;a href="https://github.com/ocaml/merlin"&gt;ocaml/merlin&lt;/a&gt; bumped &lt;code&gt;cachix/install-nix-action&lt;/code&gt; (&lt;a href="https://github.com/ocaml/merlin/issues/2056"&gt;ocaml/merlin#2056&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/merlin/issues/2058" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Synchronization with upstream OCaml compiler&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/ocaml/merlin"&gt;ocaml/merlin&lt;/a&gt; has multiple open PRs (&lt;a href="https://github.com/ocaml/merlin/issues/2058"&gt;ocaml/merlin#2058&lt;/a&gt;, &lt;a href="https://github.com/ocaml/merlin/issues/2059"&gt;ocaml/merlin#2059&lt;/a&gt;) reducing historical drift with upstream; &lt;a href="https://github.com/ocaml/odoc"&gt;ocaml/odoc&lt;/a&gt; is tracking OCaml 5.5 features; &lt;a href="https://github.com/ocsigen/js_of_ocaml"&gt;ocsigen/js&lt;em&gt;of&lt;/em&gt;ocaml&lt;/a&gt; is blocked on WASI and effects work pending a new dune release (&lt;a href="https://github.com/ocaml/dune/issues/13613"&gt;ocaml/dune#13613&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6897" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Security hardening at the release and runtime level&lt;/strong&gt;&lt;/a&gt;: opam 2.5.1 addressed OSEC-2026-03 (&lt;a href="https://github.com/ocaml/opam/issues/6897"&gt;ocaml/opam#6897&lt;/a&gt;) and two GC corruption bugs (&lt;a href="https://github.com/ocaml/opam/issues/6880"&gt;ocaml/opam#6880&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam/issues/6882"&gt;ocaml/opam#6882&lt;/a&gt;); downstream supply chain concerns are driving discussions about immutable releases and artifact attestations (&lt;a href="https://github.com/ocaml/opam/issues/6900"&gt;ocaml/opam#6900&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14202" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Resource safety abstractions in dune&lt;/strong&gt;&lt;/a&gt;: systematic replacement of raw &lt;code&gt;Unix.file_descr&lt;/code&gt; with a managed &lt;code&gt;Fd.t&lt;/code&gt; type (&lt;a href="https://github.com/ocaml/dune/issues/14202"&gt;ocaml/dune#14202&lt;/a&gt; et al.) mirrors opam's work standardising C stub GC root registration (&lt;a href="https://github.com/ocaml/opam/issues/6883"&gt;ocaml/opam#6883&lt;/a&gt;), reflecting a broader push toward eliminating resource-management bugs&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Wasm backend optimisation focus in js&lt;em&gt;of&lt;/em&gt;ocaml&lt;/strong&gt;: both &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2211"&gt;ocsigen/js&lt;em&gt;of&lt;/em&gt;ocaml#2211&lt;/a&gt; and &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2212"&gt;ocsigen/js&lt;em&gt;of&lt;/em&gt;ocaml#2212&lt;/a&gt; target the toplevel/init function as a recurring Wasm engine bottleneck, alongside JSPI standardization shifting documentation from experimental caveats to concrete browser version guidance (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2213"&gt;ocsigen/js&lt;em&gt;of&lt;/em&gt;ocaml#2213&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>opam 2.5.1 security release, dune approaching 3.23.0, and OxCaml support merged into odoc and js_of_ocaml.</summary><published>2026-04-19T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/tools/2026/week-15</id><title>Week 15, 2026: Dune 3.22.2, merlin v5.7.0-504, and ocaml-lsp 1.26.0 released; js_of_ocaml Wasm dynlink/toplevel support merged.</title><updated>2026-04-12T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

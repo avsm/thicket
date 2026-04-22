@@ -1,5 +1,85 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.xml</id><title>ocaml/ocaml (Weekly)</title><updated>2026-04-12T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-15</id><title>Week 15, 2026: A landmark week merging the long-awaited "keep expansion" typechecker fix and primitive aliases, alongside major runtime and stdlib improvements.</title><updated>2026-04-12T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.xml</id><title>ocaml/ocaml (Weekly)</title><updated>2026-04-19T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-16</id><title>Week 16, 2026: Active week with typechecker improvements, stdlib additions, runtime fixes, and ongoing ephemeron GC refactoring work.</title><updated>2026-04-19T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Twelve PRs merged this week covering typechecker correctness, memory optimizations, runtime bug fixes, and build system improvements.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14754" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Newly opened&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/smuenzel"&gt;Stefan Muenzel&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/ocaml/issues/14754"&gt;#14754&lt;/a&gt; to fix cyclic types introduced by &lt;code&gt;with type&lt;/code&gt; module constraints by rechecking well-foundedness after applying them&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14746" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Newly opened&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/smuenzel"&gt;Stefan Muenzel&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/ocaml/issues/14746"&gt;#14746&lt;/a&gt; to allow aliases when checking signature inclusion, fixing &lt;a href="https://github.com/ocaml/ocaml/issues/14204"&gt;#14204&lt;/a&gt; with careful handling of private types and parameter reordering&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14759" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Newly opened&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/ocaml/issues/14759"&gt;#14759&lt;/a&gt; to add C stubs for testing &lt;code&gt;OCAMLRUNPARAM&lt;/code&gt; parsing by calling &lt;code&gt;caml_parse_ocamlrunparam&lt;/code&gt; directly&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14757" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Newly opened&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/y1lan"&gt;Yang Lin&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/ocaml/issues/14757"&gt;#14757&lt;/a&gt; to add explicit unit suffixes (bytes/words) to memory-size OCAMLRUNPARAM options&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14756" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Newly opened&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/glyh"&gt;Yihang "Corvo" Liu&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/ocaml/issues/14756"&gt;#14756&lt;/a&gt; adding &lt;code&gt;kw/Mw/Gw&lt;/code&gt;, &lt;code&gt;kB/MB/GB&lt;/code&gt;, and &lt;code&gt;kiB/MiB/GiB&lt;/code&gt; suffixes to OCAMLRUNPARAM word-sized params, closing &lt;a href="https://github.com/ocaml/ocaml/issues/14658"&gt;#14658&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14755" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Newly opened&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/y1lan"&gt;Yang Lin&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/ocaml/issues/14755"&gt;#14755&lt;/a&gt; to fix a broken link to &lt;code&gt;ocamltest/OCAMLTEST.adoc&lt;/code&gt; in &lt;code&gt;testsuite/HACKING.adoc&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14758" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Newly opened&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/z-rui"&gt;张睿 Zhang Rui&lt;/a&gt; opened issue &lt;a href="https://github.com/ocaml/ocaml/issues/14758"&gt;#14758&lt;/a&gt; reporting an internal error in &lt;code&gt;select_win32.c&lt;/code&gt; related to cross-list socket merging corrupting &lt;code&gt;lpOrigIdx&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14721" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Merged&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt; merged &lt;a href="https://github.com/ocaml/ocaml/issues/14721"&gt;#14721&lt;/a&gt; fixing a spurious syntactic arity error for module-dependent arrow types, closing &lt;a href="https://github.com/ocaml/ocaml/issues/14719"&gt;#14719&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14710" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Merged&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt; merged &lt;a href="https://github.com/ocaml/ocaml/issues/14710"&gt;#14710&lt;/a&gt; adding nested &lt;code&gt;with&lt;/code&gt; constraints in package types, closing &lt;a href="https://github.com/ocaml/ocaml/issues/14274"&gt;#14274&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14727" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Merged&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt; merged &lt;a href="https://github.com/ocaml/ocaml/issues/14727"&gt;#14727&lt;/a&gt; reducing typechecker memory use during counter-example search in exhaustiveness checking by scoping type node pools to individual branches&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14738" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Merged&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/samsa1"&gt;Samuel Vivien&lt;/a&gt; merged &lt;a href="https://github.com/ocaml/ocaml/issues/14738"&gt;#14738&lt;/a&gt; simplifying field-kind handling in &lt;code&gt;eqtype&lt;/code&gt; and &lt;code&gt;moregen&lt;/code&gt; and &lt;a href="https://github.com/ocaml/ocaml/issues/14737"&gt;#14737&lt;/a&gt; unifying the order of missing-field checks between the two functions&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14666" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Merged&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/MisterDA"&gt;Antonin Décimo&lt;/a&gt; merged &lt;a href="https://github.com/ocaml/ocaml/issues/14666"&gt;#14666&lt;/a&gt; enabling &lt;code&gt;-Wwrite-strings&lt;/code&gt; throughout the C runtime, followed by &lt;a href="https://github.com/ocaml/ocaml/issues/14751"&gt;#14751&lt;/a&gt; fixing a Cygwin build error the change exposed&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14748" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Merged&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/nojb"&gt;Nicolás Ojeda Bär&lt;/a&gt; merged &lt;a href="https://github.com/ocaml/ocaml/issues/14748"&gt;#14748&lt;/a&gt; fixing an uninitialized &lt;code&gt;malloc&lt;/code&gt; in &lt;code&gt;ocamlyacc&lt;/code&gt;'s &lt;code&gt;symtab.c&lt;/code&gt; that could produce incorrect line directives, fixing &lt;a href="https://github.com/ocaml/ocaml/issues/14747"&gt;#14747&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14691" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Merged&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/stedolan"&gt;Stephen Dolan&lt;/a&gt; merged &lt;a href="https://github.com/ocaml/ocaml/issues/14691"&gt;#14691&lt;/a&gt; adding overflow checking to &lt;code&gt;caml_ba_reshape&lt;/code&gt; to fix an out-of-bounds read / segfault on 4.14, fixing &lt;a href="https://github.com/ocaml/ocaml/issues/14655"&gt;#14655&lt;/a&gt; and &lt;a href="https://github.com/ocaml/ocaml/issues/14674"&gt;#14674&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14749" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Merged&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt; merged &lt;a href="https://github.com/ocaml/ocaml/issues/14749"&gt;#14749&lt;/a&gt; hardening &lt;code&gt;ocamltest&lt;/code&gt; to reject expect tests that use &lt;code&gt;include&lt;/code&gt; and fixing AFL test noise&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14742" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Merged&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/OlivierNicole"&gt;Olivier Nicole&lt;/a&gt; merged &lt;a href="https://github.com/ocaml/ocaml/issues/14742"&gt;#14742&lt;/a&gt; promoting a Cmm output test whose stamps changed after &lt;a href="https://github.com/ocaml/ocaml/issues/10798"&gt;#10798&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14723" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Merged&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/ccasin"&gt;Chris Casinghino&lt;/a&gt; merged &lt;a href="https://github.com/ocaml/ocaml/issues/14723"&gt;#14723&lt;/a&gt; with minor cleanup in &lt;code&gt;Typecore.type_effect_cases&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14703" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Merged&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/hhugo"&gt;@hhugo&lt;/a&gt; merged &lt;a href="https://github.com/ocaml/ocaml/issues/14703"&gt;#14703&lt;/a&gt; fixing swapped &lt;code&gt;None&lt;/code&gt;/&lt;code&gt;Some&lt;/code&gt; branches in &lt;code&gt;bytecomp/dll.ml&lt;/code&gt; &lt;code&gt;open_dll&lt;/code&gt; when upgrading a DLL from checking to execution mode&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14730" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Merged&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/brandonzstride"&gt;Brandon Stride&lt;/a&gt; merged &lt;a href="https://github.com/ocaml/ocaml/issues/14730"&gt;#14730&lt;/a&gt; adding a regression test for the &lt;code&gt;rectypes&lt;/code&gt; keep-expansion fix of &lt;a href="https://github.com/ocaml/ocaml/issues/11648"&gt;#11648&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14752" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Merged&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/SAY-5"&gt;Sai Asish Y&lt;/a&gt; merged &lt;a href="https://github.com/ocaml/ocaml/issues/14752"&gt;#14752&lt;/a&gt; fixing the &lt;code&gt;occured&lt;/code&gt; → &lt;code&gt;occurred&lt;/code&gt; typo in three &lt;code&gt;ocamldoc&lt;/code&gt; files&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14736" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Closed without merge&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/smuenzel"&gt;Stefan Muenzel&lt;/a&gt; closed &lt;a href="https://github.com/ocaml/ocaml/issues/14736"&gt;#14736&lt;/a&gt; (follow type abbreviations for manifest types) after discovering it incorrectly accepted parameter-reordered types; superseded by &lt;a href="https://github.com/ocaml/ocaml/issues/14746"&gt;#14746&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14712" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Closed without merge&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/smuenzel"&gt;Stefan Muenzel&lt;/a&gt; closed draft &lt;a href="https://github.com/ocaml/ocaml/issues/14712"&gt;#14712&lt;/a&gt; (all-in-one rectypes expect test variant) after incorporating its approach into &lt;a href="https://github.com/ocaml/ocaml/issues/14643"&gt;#14643&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Active week with typechecker improvements, stdlib additions, runtime fixes, and ongoing ephemeron GC refactoring work.</summary><published>2026-04-19T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-15</id><title>Week 15, 2026: A landmark week merging the long-awaited "keep expansion" typechecker fix and primitive aliases, alongside major runtime and stdlib improvements.</title><updated>2026-04-12T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
