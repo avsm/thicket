@@ -1,5 +1,128 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-merlin.xml</id><title>ocaml/merlin (Weekly)</title><updated>2026-04-19T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-merlin.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/merlin</subtitle><entry><id>https://thicket.dev/repos/ocaml-merlin/2026/week-16</id><title>Week 16, 2026: Test fix merged, version bumped toward 5.7.0, and new PRs opened for menhirLib, misc.ml sync, and saved parts investigation.</title><updated>2026-04-19T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-merlin.xml</id><title>ocaml/merlin (Weekly)</title><updated>2026-05-03T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-merlin.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/merlin</subtitle><entry><id>https://thicket.dev/repos/ocaml-merlin/2026/week-18</id><title>Week 18, 2026: Merlin 5.7.1 released with typer cache fix and Misc module refactoring; ocamlgrep integration proposed.</title><updated>2026-05-03T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Dependabot opened a Nix CI action bump; ocamlgrep integration was proposed as a new project-wide type-aware search feature.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/merlin/issues/2061" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Dependabot&lt;/strong&gt;&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/merlin/issues/2061"&gt;#2061&lt;/a&gt; to bump &lt;code&gt;cachix/install-nix-action&lt;/code&gt; from 31.8.4 to 31.10.5 (including a Nix sandbox privilege escalation security fix); this PR is open and pending merge&lt;/li&gt;
+&lt;li&gt;An earlier dependabot bump PR &lt;a href="https://github.com/ocaml/merlin/issues/2056"&gt;#2056&lt;/a&gt; for the same action (to 31.10.4) was closed without merging when the newer &lt;a href="https://github.com/ocaml/merlin/issues/2061"&gt;#2061&lt;/a&gt; superseded it&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/liam923"&gt;Liam Stevenson&lt;/a&gt;'s &lt;code&gt;misc.ml&lt;/code&gt; synchronization PR &lt;a href="https://github.com/ocaml/merlin/issues/2059"&gt;#2059&lt;/a&gt; (opened April 15) continued review during the week and was merged on May 4, just outside the week window&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt; noted the &lt;a href="https://github.com/ocaml/merlin/issues/2059" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Fuzzy CI&lt;/strong&gt;&lt;/a&gt; generation step is broken for OCaml 5.4 and flagged it to &lt;a href="https://github.com/pitag-ha"&gt;Sonja Heinze&lt;/a&gt; and &lt;a href="https://github.com/Lucccyo"&gt;Charlène_Gros&lt;/a&gt; for assessment (&lt;a href="https://github.com/ocaml/merlin/issues/2059"&gt;#2059&lt;/a&gt; comments)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Merlin 5.7.1 released with typer cache fix and Misc module refactoring; ocamlgrep integration proposed.</summary><published>2026-05-03T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-merlin/2026/week-17</id><title>Week 17, 2026: Index pointer system merged to reduce index file sizes; menhirLib snapshot updated.</title><updated>2026-04-26T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+One open PR proposes LRU-based memory bounding for the indexer; two PRs were merged this week.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/merlin/issues/2050" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;LRU cache for indexer memory&lt;/strong&gt;&lt;/a&gt; proposed by &lt;a href="https://github.com/Lucccyo"&gt;Charlène_Gros&lt;/a&gt; remains open with active review from &lt;a href="https://github.com/art-w"&gt;@art-w&lt;/a&gt;; the PR replaces an unbounded &lt;code&gt;Hashtbl&lt;/code&gt; with an LRU to cap memory use, but currently has merge conflicts and ongoing discussion about &lt;code&gt;Duplicate&lt;/code&gt; link handling (&lt;a href="https://github.com/ocaml/merlin/issues/2050"&gt;#2050&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/merlin/issues/2051" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Index pointer support&lt;/strong&gt;&lt;/a&gt; merged by &lt;a href="https://github.com/Tim-ats-d"&gt;Tim ats&lt;/a&gt;, reviewed and merged by &lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt;, including regression tests added to &lt;code&gt;union.t&lt;/code&gt; for the outdated-store scenario (&lt;a href="https://github.com/ocaml/merlin/issues/2051"&gt;#2051&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/merlin/issues/2058" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;MenhirLib snapshot update&lt;/strong&gt;&lt;/a&gt; merged by &lt;a href="https://github.com/trefis"&gt;Thomas Refis&lt;/a&gt;, updating the vendored parser and type-parser generated files to reflect the current menhir version (&lt;a href="https://github.com/ocaml/merlin/issues/2058"&gt;#2058&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Index pointer system merged to reduce index file sizes; menhirLib snapshot updated.</summary><published>2026-04-26T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-merlin/2026/week-16</id><title>Week 16, 2026: Test fix merged, version bumped toward 5.7.0, and new PRs opened for menhirLib, misc.ml sync, and saved parts investigation.</title><updated>2026-04-19T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

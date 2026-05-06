@@ -1,5 +1,126 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-merlin.xml</id><title>oxcaml/merlin (Weekly)</title><updated>2026-04-19T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-merlin.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/merlin</subtitle><entry><id>https://thicket.dev/repos/oxcaml-merlin/2026/week-16</id><title>Week 16, 2026: Signature-help improvements merged: optional argument highlighting and let..in binding fixes, with compiler sync and typeopt cleanup PRs opened.</title><updated>2026-04-19T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-merlin.xml</id><title>oxcaml/merlin (Weekly)</title><updated>2026-05-03T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-merlin.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/merlin</subtitle><entry><id>https://thicket.dev/repos/oxcaml-merlin/2026/week-18</id><title>Week 18, 2026: Improved CMI cache invalidation correctness and reduced typeopt diff vs upstream compiler.</title><updated>2026-05-03T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Two upstream-sync PRs merged; Nix flake update to OCaml 5.4 opened and awaiting merge.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/236" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Nix flake update&lt;/strong&gt;&lt;/a&gt; to OCaml 5.4 opened by &lt;a href="https://github.com/gavinleroy"&gt;Gavin Gray&lt;/a&gt;: the build toolchain was bumped from 5.2 to 5.4 and NixPkgs pinned to 2026-02-14 to avoid a &lt;code&gt;menhirGLR&lt;/code&gt; packaging conflict (&lt;a href="https://github.com/oxcaml/merlin/issues/236"&gt;#236&lt;/a&gt;), reviewed and approved by &lt;a href="https://github.com/glittershark"&gt;Aspen Smith&lt;/a&gt; with a request to add a revision comment — merged on 2026-05-04&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin/issues/237" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;CMI cache invalidation&lt;/strong&gt;&lt;/a&gt; backport merged by &lt;a href="https://github.com/liam923"&gt;Liam Stevenson&lt;/a&gt;, cherry-picking three commits from upstream and adding a new &lt;code&gt;cmi-appears&lt;/code&gt; test case to verify correct cache behaviour when a &lt;code&gt;.cmi&lt;/code&gt; file becomes available after a failed lookup (&lt;a href="https://github.com/oxcaml/merlin/issues/237"&gt;#237&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;typeopt&lt;/code&gt; diff reduction&lt;/strong&gt; merged by &lt;a href="https://github.com/liam923"&gt;Liam Stevenson&lt;/a&gt;, reviewed with detailed suggestions by &lt;a href="https://github.com/dra27-js"&gt;David Allsopp&lt;/a&gt; covering stub function naming and flat float array handling to further shrink the compiler delta (&lt;a href="https://github.com/oxcaml/merlin/issues/233"&gt;#233&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Improved CMI cache invalidation correctness and reduced typeopt diff vs upstream compiler.</summary><published>2026-05-03T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-merlin/2026/week-17</id><title>Week 17, 2026: Expanded syntax-doc support for scannable axes and merged compiler changes from 5.2.0minus-37 including -Ix flag handling.</title><updated>2026-04-26T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Two PRs merged on 2026-04-20: compiler sync from 5.2.0minus-37 and improved scannable-axes syntax documentation.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5654" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Compiler sync&lt;/strong&gt;&lt;/a&gt; from &lt;code&gt;5.2.0minus-37&lt;/code&gt; merged by &lt;a href="https://github.com/liam923"&gt;Liam Stevenson&lt;/a&gt;, bringing upstream OCaml compiler changes into Merlin and resolving conflicts around the &lt;code&gt;-I&lt;/code&gt; vs &lt;code&gt;-Ix&lt;/code&gt; include flag distinction introduced in &lt;a href="https://github.com/oxcaml/oxcaml/issues/5654"&gt;oxcaml/oxcaml#5654&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/merlin/issues/234"&gt;#234&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.comlin/oxcaml/merlin/issues/235" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Scannable axes syntax-doc improvements&lt;/strong&gt;&lt;/a&gt; merged, adding hover documentation for the full set of kind modifiers in OxCaml's kind system (&lt;a href="https://github.comlin/oxcaml/merlin/issues/235"&gt;#235&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Expanded syntax-doc support for scannable axes and merged compiler changes from 5.2.0minus-37 including -Ix flag handling.</summary><published>2026-04-26T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-merlin/2026/week-16</id><title>Week 16, 2026: Signature-help improvements merged: optional argument highlighting and let..in binding fixes, with compiler sync and typeopt cleanup PRs opened.</title><updated>2026-04-19T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

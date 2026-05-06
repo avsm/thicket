@@ -1,5 +1,179 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-dune.xml</id><title>ocaml/dune (Weekly)</title><updated>2026-04-19T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-dune.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/dune</subtitle><entry><id>https://thicket.dev/repos/ocaml-dune/2026/week-16</id><title>Week 16, 2026: A busy week ahead of the 3.23.0 release with compile_commands.json generation, SIGTERM grace period for child processes, opam file workflow changes, and extensive RPC and internal refactoring.</title><updated>2026-04-19T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-dune.xml</id><title>ocaml/dune (Weekly)</title><updated>2026-05-03T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-dune.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/dune</subtitle><entry><id>https://thicket.dev/repos/ocaml-dune/2026/week-18</id><title>Week 18, 2026: 3.23.0 alpha releases published; new %{pkg:foo:lib:file} pforms, ppx_optcomp bootstrap support, and single-context compilation work.</title><updated>2026-05-03T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Release 3.23.0 alpha cycle is active; broad test coverage expansion, RPC refactoring, and several large feature drafts opened.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14211" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Three 3.23.0 alpha pre-releases&lt;/strong&gt;&lt;/a&gt; (&lt;code&gt;alpha0&lt;/code&gt;, &lt;code&gt;alpha1&lt;/code&gt;, &lt;code&gt;alpha2&lt;/code&gt;) were published to opam-repository on 2026-04-30 by &lt;a href="https://github.com/shonfeder"&gt;Shon Feder&lt;/a&gt;, with the release tracking issue at &lt;a href="https://github.com/ocaml/dune/issues/14211"&gt;#14211&lt;/a&gt; and the release PR &lt;a href="https://github.com/ocaml/dune/issues/14212"&gt;#14212&lt;/a&gt; still open.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14401" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Newly opened feature drafts&lt;/strong&gt;&lt;/a&gt; represent substantial upcoming work: &lt;strong class="achievement"&gt;allocation profiling&lt;/strong&gt; support (&lt;a href="https://github.com/ocaml/dune/issues/14401"&gt;#14401&lt;/a&gt; by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt;), &lt;strong class="achievement"&gt;action runners&lt;/strong&gt; revival (&lt;a href="https://github.com/ocaml/dune/issues/14240"&gt;#14240&lt;/a&gt; by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt;), &lt;strong class="achievement"&gt;&lt;code&gt;include_qualified&lt;/code&gt; directory renaming&lt;/strong&gt; (&lt;a href="https://github.com/ocaml/dune/issues/13691"&gt;#13691&lt;/a&gt; by &lt;a href="https://github.com/anmonteiro"&gt;Antonio Nuno Monteiro&lt;/a&gt;), and &lt;strong class="achievement"&gt;&lt;code&gt;-I&lt;/code&gt; flag filtering per-module&lt;/strong&gt; to match dependency filtering (&lt;a href="https://github.com/ocaml/dune/issues/14186"&gt;#14186&lt;/a&gt; by &lt;a href="https://github.com/robinbb"&gt;Robin Bate Boerop&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14367" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;RPC subsystem refactoring&lt;/strong&gt;&lt;/a&gt; merged across multiple PRs: server registry moved into its own module (&lt;a href="https://github.com/ocaml/dune/issues/14367"&gt;#14367&lt;/a&gt;), Dune_engine.Rpc moved to Rpc.Global (&lt;a href="https://github.com/ocaml/dune/issues/14362"&gt;#14362&lt;/a&gt;), read/write paths simplified (&lt;a href="https://github.com/ocaml/dune/issues/14366"&gt;#14366&lt;/a&gt;), and &lt;code&gt;Mutex.protect&lt;/code&gt; refactored (&lt;a href="https://github.com/ocaml/dune/issues/14399"&gt;#14399&lt;/a&gt;) — all by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt;. A debug dump of active RPC requests is in draft at &lt;a href="https://github.com/ocaml/dune/issues/14405"&gt;#14405&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14375" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Extensive observational test baselines&lt;/strong&gt;&lt;/a&gt; added by &lt;a href="https://github.com/robinbb"&gt;Robin Bate Boerop&lt;/a&gt; to lock in current behavior before upcoming changes: per-module include flags (&lt;a href="https://github.com/ocaml/dune/issues/14375"&gt;#14375&lt;/a&gt;), unreferenced transitive module (&lt;a href="https://github.com/ocaml/dune/issues/14374"&gt;#14374&lt;/a&gt;), per-module rebuild counts (&lt;a href="https://github.com/ocaml/dune/issues/14310"&gt;#14310&lt;/a&gt;), broad-include leak of wrapped-library internal names (&lt;a href="https://github.com/ocaml/dune/issues/14317"&gt;#14317&lt;/a&gt;), unreferenced transitive library dep (&lt;a href="https://github.com/ocaml/dune/issues/14332"&gt;#14332&lt;/a&gt;), sibling-module and single-module consumer unreferenced-dep guards (&lt;a href="https://github.com/ocaml/dune/issues/14309"&gt;#14309&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/14308"&gt;#14308&lt;/a&gt;), cross-lib reads of unwrapped libs with &lt;code&gt;private_modules&lt;/code&gt; (&lt;a href="https://github.com/ocaml/dune/issues/14388"&gt;#14388&lt;/a&gt;), cross-lib reads of action-preprocessed deps (&lt;a href="https://github.com/ocaml/dune/issues/14383"&gt;#14383&lt;/a&gt;), single-module leaf libs (&lt;a href="https://github.com/ocaml/dune/issues/14389"&gt;#14389&lt;/a&gt;), and menhir grammars referencing library deps (&lt;a href="https://github.com/ocaml/dune/issues/14391"&gt;#14391&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;ocamldep&lt;/code&gt; refactoring&lt;/strong&gt; by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; eliminated named targets (&lt;a href="https://github.com/ocaml/dune/issues/14385"&gt;#14385&lt;/a&gt;) and simplified sandbox handling (&lt;a href="https://github.com/ocaml/dune/issues/14386"&gt;#14386&lt;/a&gt;), cleaning up the dep-rules interface.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14353" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Package management work&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; continued pkg work with a test for applying patches to packages without sources (&lt;a href="https://github.com/ocaml/dune/issues/14353"&gt;#14353&lt;/a&gt;) and directory-to-file target change promotion test (&lt;a href="https://github.com/ocaml/dune/issues/14370"&gt;#14370&lt;/a&gt;); &lt;a href="https://github.com/ElectreAAS"&gt;Ambre Austen Suhamy&lt;/a&gt; simplified &lt;code&gt;Pkg_rules.source_files&lt;/code&gt; (&lt;a href="https://github.com/ocaml/dune/issues/14301"&gt;#14301&lt;/a&gt;) and has &lt;a href="https://github.com/ocaml/dune/issues/13792"&gt;#13792&lt;/a&gt; open for resolving directory symlinks in fetched targets.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14319" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OxCaml / trunk build&lt;/strong&gt;&lt;/a&gt; fixes from &lt;a href="https://github.com/Sudha247"&gt;Sudha Parimala&lt;/a&gt;: trunk build fix (&lt;a href="https://github.com/ocaml/dune/issues/14319"&gt;#14319&lt;/a&gt;) and crash reproduction for &lt;a href="https://github.com/ocaml/dune/issues/14272"&gt;#14272&lt;/a&gt; in &lt;a href="https://github.com/ocaml/dune/issues/14289"&gt;#14289&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;DUNE_PKG&lt;/code&gt; environment variable PR&lt;/strong&gt; (&lt;a href="https://github.com/ocaml/dune/issues/14318"&gt;#14318&lt;/a&gt; by &lt;a href="https://github.com/desumn"&gt;@desumn&lt;/a&gt;) was closed after the dev-meeting concluded there is insufficient user demand for the feature at this time.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14407" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Remove explicit OCaml transitive dependency files&lt;/strong&gt;&lt;/a&gt; PR (&lt;a href="https://github.com/ocaml/dune/issues/14407"&gt;#14407&lt;/a&gt; by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt;) is open, aiming to simplify the transitive dependency tracking mechanism.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/shonfeder"&gt;Shon Feder&lt;/a&gt; fixed the &lt;code&gt;--note-remote&lt;/code&gt; logic in dune-release tooling (&lt;a href="https://github.com/ocaml/dune/issues/14111"&gt;#14111&lt;/a&gt;) and added dune-release target configuration variables (&lt;a href="https://github.com/ocaml/dune/issues/14378"&gt;#14378&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;A test reproducing the &lt;code&gt;dune build @doc&lt;/code&gt; failure when odoc is installed via &lt;code&gt;dune tools install&lt;/code&gt; was added by &lt;a href="https://github.com/mt-caret"&gt;mt_caret&lt;/a&gt; in &lt;a href="https://github.com/ocaml/dune/issues/14234"&gt;#14234&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>3.23.0 alpha releases published; new %{pkg:foo:lib:file} pforms, ppx_optcomp bootstrap support, and single-context compilation work.</summary><published>2026-05-03T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-dune/2026/week-17</id><title>Week 17, 2026: A major week with the dune_patch OCaml implementation, Lev/Async_io scheduler overhaul, RPC reliability fixes, and a version bump to 3.24.</title><updated>2026-04-26T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Heavy RPC reliability and scheduler refactoring merged alongside the native patch implementation; CI workflows were improved for OxCaml and release branch automation.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14344"&gt;#14344&lt;/a&gt; &lt;strong class="achievement"&gt;refactor: get rid of pointless &lt;code&gt;Path.as_outside_build_dir_exn&lt;/code&gt;&lt;/strong&gt; by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; — open, awaiting merge&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14186"&gt;#14186&lt;/a&gt; &lt;strong class="achievement"&gt;feat: filter &lt;code&gt;-I&lt;/code&gt; flags per-module to match dependency filtering&lt;/strong&gt; by &lt;a href="https://github.com/robinbb"&gt;Robin Bate Boerop&lt;/a&gt; — draft, narrows per-module include flags to reduce cache-key bloat and improve soundness&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14335"&gt;#14335&lt;/a&gt; &lt;strong class="achievement"&gt;test: lock in incremental-rebuild for &lt;code&gt;root_module&lt;/code&gt;-aliased deps&lt;/strong&gt; by &lt;a href="https://github.com/robinbb"&gt;Robin Bate Boerop&lt;/a&gt; — open&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14328"&gt;#14328&lt;/a&gt; &lt;a href="https://github.com/ocaml/dune/issues/14328" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;fix(lev): suppress C compiler warnings in libev via build flags&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/copilot-swe-agent"&gt;@copilot-swe-agent&lt;/a&gt; — open, under active iteration&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14319"&gt;#14319&lt;/a&gt; &lt;a href="https://github.com/ocaml/dune/issues/14319" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Fix OxCaml trunk build&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/Sudha247"&gt;Sudha Parimala&lt;/a&gt; — open&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14318"&gt;#14318&lt;/a&gt; &lt;strong class="achievement"&gt;Add &lt;code&gt;DUNE_PKG&lt;/code&gt; environment variable&lt;/strong&gt; by &lt;a href="https://github.com/desumn"&gt;@desumn&lt;/a&gt; — open, community contribution&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14345"&gt;#14345&lt;/a&gt; &lt;a href="https://github.com/ocaml/dune/issues/14345" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;refactor(rpc): cosmetic cleanups&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; — merged&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14342"&gt;#14342&lt;/a&gt; &lt;strong class="achievement"&gt;refactor: remove &lt;code&gt;Dst.add_suffix&lt;/code&gt;&lt;/strong&gt; by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; — merged&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14340"&gt;#14340&lt;/a&gt; &lt;strong class="achievement"&gt;refactor: replace &lt;code&gt;Dst.add_prefix&lt;/code&gt; with &lt;code&gt;Dst.prepend_local&lt;/code&gt;&lt;/strong&gt; by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; — merged&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14339"&gt;#14339&lt;/a&gt; &lt;strong class="achievement"&gt;refactor: &lt;code&gt;Entry.Dst.concat_all&lt;/code&gt;&lt;/strong&gt; by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; — merged&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14337"&gt;#14337&lt;/a&gt; &lt;a href="https://github.com/ocaml/dune/issues/14337" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;refactor: stop polymorphically comparing "kind"&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; — merged&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14338"&gt;#14338&lt;/a&gt; &lt;strong class="achievement"&gt;refactor: stop exposing &lt;code&gt;Dst.explicit&lt;/code&gt;&lt;/strong&gt; by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; — merged&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14336"&gt;#14336&lt;/a&gt; &lt;a href="https://github.com/ocaml/dune/issues/14336" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;scheduler: make timer wakeups deterministic&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; — merged&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14334"&gt;#14334&lt;/a&gt; &lt;a href="https://github.com/ocaml/dune/issues/14334" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;fix(rpc): cancel pending requests&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; — merged&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14333"&gt;#14333&lt;/a&gt; &lt;a href="https://github.com/ocaml/dune/issues/14333" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;chore: bump dune version to 3.24&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; — merged&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14312"&gt;#14312&lt;/a&gt; &lt;a href="https://github.com/ocaml/dune/issues/14312" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;fix(rpc): cancel pending requests (server-side)&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; — merged&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14329"&gt;#14329&lt;/a&gt; &lt;a href="https://github.com/ocaml/dune/issues/14329" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;refactor(dune_scheduler): replace the alarm-clock thread&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; — merged&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14177"&gt;#14177&lt;/a&gt; &lt;strong class="achievement"&gt;feat(pkg): OCaml implementation of &lt;code&gt;dune_patch&lt;/code&gt;&lt;/strong&gt; by &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; — merged&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14327"&gt;#14327&lt;/a&gt; &lt;a href="https://github.com/ocaml/dune/issues/14327" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;test(rpc): reproduce shutdown bugs&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; — merged&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14330"&gt;#14330&lt;/a&gt; &lt;a href="https://github.com/ocaml/dune/issues/14330" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;fix: rpc bind failure fatal&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; — merged&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14325"&gt;#14325&lt;/a&gt; &lt;strong class="achievement"&gt;refactor(lev): use &lt;code&gt;Stdune.Time&lt;/code&gt; in the bindings&lt;/strong&gt; by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; — merged&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14321"&gt;#14321&lt;/a&gt; &lt;a href="https://github.com/ocaml/dune/issues/14321" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;copilot-setup-steps: add Nix dev shell setup and Copilot instructions&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/copilot-swe-agent"&gt;@copilot-swe-agent&lt;/a&gt; — merged&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14283"&gt;#14283&lt;/a&gt; &lt;a href="https://github.com/ocaml/dune/issues/14283" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Async_io cleanups&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; — merged&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14323"&gt;#14323&lt;/a&gt; &lt;strong class="achievement"&gt;refactor: remove module &lt;code&gt;Rec&lt;/code&gt;&lt;/strong&gt; by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; — merged&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14322"&gt;#14322&lt;/a&gt; &lt;a href="https://github.com/ocaml/dune/issues/14322" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;fix(rpc): wait for listener shutdown to complete&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; — merged&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14316"&gt;#14316&lt;/a&gt; &lt;a href="https://github.com/ocaml/dune/issues/14316" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;fix: guard SIGTERM grace period in shutdown on Windows&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/robinbb"&gt;Robin Bate Boerop&lt;/a&gt; — merged, fixes &lt;a href="https://github.com/ocaml/dune/issues/14302"&gt;#14302&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14301"&gt;#14301&lt;/a&gt; &lt;strong class="achievement"&gt;Simplify &lt;code&gt;Pkg_rules.source_files&lt;/code&gt;&lt;/strong&gt; by &lt;a href="https://github.com/ElectreAAS"&gt;Ambre Austen Suhamy&lt;/a&gt; — merged&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14296"&gt;#14296&lt;/a&gt; &lt;strong class="achievement"&gt;refactor: introduce &lt;code&gt;Bin.strip_exe&lt;/code&gt;&lt;/strong&gt; by &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; — merged&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14291"&gt;#14291&lt;/a&gt; &lt;strong class="achievement"&gt;Use &lt;code&gt;Fpath.traverse&lt;/code&gt; in &lt;code&gt;pkg_rules&lt;/code&gt;&lt;/strong&gt; by &lt;a href="https://github.com/ElectreAAS"&gt;Ambre Austen Suhamy&lt;/a&gt; — merged&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14305"&gt;#14305&lt;/a&gt; &lt;a href="https://github.com/ocaml/dune/issues/14305" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Update OxCaml to 5.2.0minus-31&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; — merged&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14299"&gt;#14299&lt;/a&gt; &lt;a href="https://github.com/ocaml/dune/issues/14299" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;chore(ci): fix oxcaml update workflow for new oxcaml&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; — merged&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14269"&gt;#14269&lt;/a&gt; &lt;a href="https://github.com/ocaml/dune/issues/14269" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;feat(trace): create trace backups&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; — merged&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14253"&gt;#14253&lt;/a&gt; &lt;a href="https://github.com/ocaml/dune/issues/14253" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;refactor(boot): move duneboot to temp file&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; — merged&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14271"&gt;#14271&lt;/a&gt; &lt;strong class="achievement"&gt;Run release checks on &lt;code&gt;*-rc&lt;/code&gt; branches&lt;/strong&gt; by &lt;a href="https://github.com/shonfeder"&gt;Shon Feder&lt;/a&gt; — merged, closes &lt;a href="https://github.com/ocaml/dune/issues/14268"&gt;#14268&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14284"&gt;#14284&lt;/a&gt; &lt;a href="https://github.com/ocaml/dune/issues/14284" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;test(async_io): cover close cancellation and watcher re-arming&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; — merged&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14286"&gt;#14286&lt;/a&gt; &lt;a href="https://github.com/ocaml/dune/issues/14286" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;chore: don't pin packages for OxCaml opam tests&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; — merged&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14285"&gt;#14285&lt;/a&gt; &lt;a href="https://github.com/ocaml/dune/issues/14285" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;lev: fix boxed values returned by C stubs&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; — merged&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14282"&gt;#14282&lt;/a&gt; &lt;a href="https://github.com/ocaml/dune/issues/14282" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;lev: release runtime lock during sleep&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; — merged&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14246"&gt;#14246&lt;/a&gt; &lt;a href="https://github.com/ocaml/dune/issues/14246" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;fix: fsevents warning on macOS&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; — merged&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14243"&gt;#14243&lt;/a&gt; &lt;strong class="achievement"&gt;feature: port &lt;code&gt;Async_io&lt;/code&gt; to &lt;code&gt;Lev&lt;/code&gt;&lt;/strong&gt; by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; — merged&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14276"&gt;#14276&lt;/a&gt; &lt;a href="https://github.com/ocaml/dune/issues/14276" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;fix: track inline test runner input deps&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; — merged&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14248"&gt;#14248&lt;/a&gt; &lt;a href="https://github.com/ocaml/dune/issues/14248" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;chore(ci): oxcaml nix job&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; — merged&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14198"&gt;#14198&lt;/a&gt; &lt;strong class="achievement"&gt;Add reference docs for &lt;code&gt;dune tools&lt;/code&gt;&lt;/strong&gt; by &lt;a href="https://github.com/Leonidas-from-XIV"&gt;Marek Kubica&lt;/a&gt; — merged&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14257"&gt;#14257&lt;/a&gt; &lt;a href="https://github.com/ocaml/dune/issues/14257" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;fix: sandbox generation of the inline test runner&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; — merged&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14270"&gt;#14270&lt;/a&gt; &lt;strong class="achievement"&gt;Avoid &lt;code&gt;@install&lt;/code&gt; in &lt;code&gt;make release&lt;/code&gt;&lt;/strong&gt; by &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; — merged&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14228"&gt;#14228&lt;/a&gt; &lt;a href="https://github.com/ocaml/dune/issues/14228" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;chore: replace revdeps-dev-build workflow with a full nix derivation&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; — merged&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/12974"&gt;#12974&lt;/a&gt; &lt;a href="https://github.com/ocaml/dune/issues/12974" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;feat: don't print entering/leaving directory message when no output&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; — merged&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>A major week with the dune_patch OCaml implementation, Lev/Async_io scheduler overhaul, RPC reliability fixes, and a version bump to 3.24.</summary><published>2026-04-26T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-dune/2026/week-16</id><title>Week 16, 2026: A busy week ahead of the 3.23.0 release with compile_commands.json generation, SIGTERM grace period for child processes, opam file workflow changes, and extensive RPC and internal refactoring.</title><updated>2026-04-19T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

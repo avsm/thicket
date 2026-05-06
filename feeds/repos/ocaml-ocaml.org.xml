@@ -1,5 +1,127 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.org.xml</id><title>ocaml/ocaml.org (Weekly)</title><updated>2026-04-19T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.org.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml.org</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml.org/2026/week-16</id><title>Week 16, 2026: A busy week with syntax highlighting fixes, platform release scraper improvements, new backstage posts, and several platform tool changelogs.</title><updated>2026-04-19T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.org.xml</id><title>ocaml/ocaml.org (Weekly)</title><updated>2026-05-03T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.org.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml.org</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml.org/2026/week-18</id><title>Week 18, 2026: Tutorial accuracy fix, new community event listing, and expanded OCaml Planet content with 14 new posts scraped.</title><updated>2026-05-03T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Two community PRs opened: adding a recurring London OCaml event and expanding Hashtbl vs Map tutorial documentation.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3633" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;New PR opened&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/giltho"&gt;Sacha Ayoun&lt;/a&gt; proposed adding the recurring &lt;strong class="achievement"&gt;Caml in the Capital&lt;/strong&gt; event to the community listings, and correcting the S-REPLS location from "London" to "England" (since it moves around South England, including Cambridge) (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3633"&gt;#3633&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3631" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;New PR opened&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/LordPatate"&gt;@LordPatate&lt;/a&gt; opened a follow-up to their complexity fix, expanding the &lt;strong class="achievement"&gt;Hashtbl vs Map tutorial&lt;/strong&gt; to better explain when to choose one over the other — noting that the existing doc only highlighted Hashtbl's advantages without explaining Maps' functional interface and ordering benefits (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3631"&gt;#3631&lt;/a&gt;), with review feedback from &lt;a href="https://github.com/cuihtlauac"&gt;Cuihtlauac Alvarado&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Automated &lt;a href="https://github.com/ocaml/ocaml.org/issues/3628" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml Planet scraping&lt;/strong&gt;&lt;/a&gt; merged five batches of new posts, adding entries from tunbury, jonludlam, anil, tsmc, chrisarmstrong, and the OCaml Weekly News (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3628"&gt;#3628&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/issues/3629"&gt;#3629&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/issues/3632"&gt;#3632&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/issues/3634"&gt;#3634&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/issues/3635"&gt;#3635&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Tutorial accuracy fix, new community event listing, and expanded OCaml Planet content with 14 new posts scraped.</summary><published>2026-05-03T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml.org/2026/week-17</id><title>Week 17, 2026: OCaml Planet received seven new posts including notable entries on pure-OCaml Tailwind CSS and GTK4 bindings.</title><updated>2026-04-26T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+One open PR for new platform releases is pending merge, and a bug report was filed about incorrect dates on the news page.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3621" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;New Platform Releases PR&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3621"&gt;#3621&lt;/a&gt;) opened by the automated scraper on 2026-04-17 remains open, adding 1321 lines across 13 files with newly scraped platform release data awaiting merge&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3624" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Automated OCaml Planet scraping&lt;/strong&gt;&lt;/a&gt; merged three PRs this week (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3624"&gt;#3624&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/issues/3625"&gt;#3625&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/issues/3626"&gt;#3626&lt;/a&gt;), each adding new community blog posts and videos to the Planet feed&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3627" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Wrong dates in news page&lt;/strong&gt;&lt;/a&gt; reported in &lt;a href="https://github.com/ocaml/ocaml.org/issues/3627"&gt;#3627&lt;/a&gt; by &lt;a href="https://github.com/756D61"&gt;@756D61&lt;/a&gt; on 2026-04-26, flagging a potential date display issue on the news section of the website&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>OCaml Planet received seven new posts including notable entries on pure-OCaml Tailwind CSS and GTK4 bindings.</summary><published>2026-04-26T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml.org/2026/week-16</id><title>Week 16, 2026: A busy week with syntax highlighting fixes, platform release scraper improvements, new backstage posts, and several platform tool changelogs.</title><updated>2026-04-19T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

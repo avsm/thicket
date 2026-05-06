@@ -1,5 +1,128 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocamlfind.xml</id><title>ocaml/ocamlfind (Weekly)</title><updated>2026-04-19T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocamlfind.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocamlfind</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2026/week-16</id><title>Week 16, 2026: None</title><updated>2026-04-19T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 16, 2026&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 16, 2026</summary><published>2026-04-19T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2026/week-15</id><title>Week 15, 2026: None</title><updated>2026-04-12T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 15, 2026&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 15, 2026</summary><published>2026-04-12T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2026/week-14</id><title>Week 14, 2026: None</title><updated>2026-04-05T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 14, 2026&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 14, 2026</summary><published>2026-04-05T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2026/week-13</id><title>Week 13, 2026: None</title><updated>2026-03-29T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 13, 2026&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 13, 2026</summary><published>2026-03-29T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2026/week-12</id><title>Week 12, 2026: Issue filed about duplicate ld.conf warnings appearing with OCaml 5.5 when invoking ocamlfind.</title><updated>2026-03-22T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocamlfind.xml</id><title>ocaml/ocamlfind (Weekly)</title><updated>2026-05-03T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocamlfind.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocamlfind</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2026/week-18</id><title>Week 18, 2026: CI workflow improvements and a threads exception fix are open for review, both by @shym.</title><updated>2026-05-03T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Two open PRs targeting CI improvements and a threads availability bug fix, both awaiting merge.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/shym"&gt;@shym&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/ocamlfind/issues/116"&gt;#116&lt;/a&gt; &lt;a href="https://github.com/ocaml/ocamlfind/issues/116" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Update the CI workflow&lt;/strong&gt;&lt;/a&gt;, which upgrades &lt;code&gt;actions/checkout&lt;/code&gt; away from the deprecated v4, adds human-readable &lt;strong class="achievement"&gt;step names&lt;/strong&gt; to workflow logs, and expands test coverage with additional &lt;code&gt;ocamlfind&lt;/code&gt; subcommand invocations; the extra tests were extracted from &lt;a href="https://github.com/ocaml/ocamlfind/issues/99"&gt;#99&lt;/a&gt; to keep that PR focused&lt;/li&gt;
+&lt;li&gt;The long-standing &lt;a href="https://github.com/ocaml/ocamlfind/issues/99"&gt;#99&lt;/a&gt; &lt;strong class="achievement"&gt;Fix the exception to catch when &lt;code&gt;threads&lt;/code&gt; is not available&lt;/strong&gt; by &lt;a href="https://github.com/shym"&gt;@shym&lt;/a&gt; was rebased onto master this week after CI portions were split into &lt;a href="https://github.com/ocaml/ocamlfind/issues/116"&gt;#116&lt;/a&gt;; the fix corrects the exception handler used when the compiler is built with &lt;code&gt;--disable-systhreads&lt;/code&gt;, addressing a failure where &lt;code&gt;ocamlfind ocamlopt -config&lt;/code&gt; incorrectly reported &lt;code&gt;Package 'threads' not found&lt;/code&gt;, originally surfaced in &lt;a href="https://github.com/ocaml/ocamlfind/issues/67"&gt;#67&lt;/a&gt; and &lt;a href="https://github.com/mirage/ocaml-solo5/issues/148"&gt;mirage/ocaml-solo5#148&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>CI workflow improvements and a threads exception fix are open for review, both by @shym.</summary><published>2026-05-03T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2026/week-17</id><title>Week 17, 2026: CI workflow added for multi-platform testing and HTTPS links updated across README and opam metadata.</title><updated>2026-04-26T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Open PRs cover Windows build fixes, threads exception handling, configure hardening, and OCAMLPATH ordering debate.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/112" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Windows build fixes&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/ocaml/ocamlfind/issues/112"&gt;#112&lt;/a&gt; by &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt; remain open, addressing &lt;code&gt;findlib.conf&lt;/code&gt; misgeneration on Cygwin with OCaml 5.0+ (tracked in &lt;a href="https://github.com/ocaml/opam/issues/6732"&gt;ocaml/opam#6732&lt;/a&gt;) and on MSYS2/mingw-w64 (tracked in &lt;a href="https://github.com/ocaml/opam-repository/issues/28636"&gt;ocaml/opam-repository#28636&lt;/a&gt;), plus a fix for an incorrect &lt;code&gt;META.pkg&lt;/code&gt; check in &lt;code&gt;ocamlfind install&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/99" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Exception handling fix&lt;/strong&gt;&lt;/a&gt; for the &lt;code&gt;threads&lt;/code&gt; package lookup in &lt;a href="https://github.com/ocaml/ocamlfind/issues/99"&gt;#99&lt;/a&gt; by &lt;a href="https://github.com/shym"&gt;@shym&lt;/a&gt; is awaiting an update to align its CI test with the newly merged workflow from &lt;a href="https://github.com/ocaml/ocamlfind/issues/113"&gt;#113&lt;/a&gt;, as requested by &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/101" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Configure script hardening&lt;/strong&gt;&lt;/a&gt; via &lt;code&gt;set -e&lt;/code&gt; in &lt;a href="https://github.com/ocaml/ocamlfind/issues/101"&gt;#101&lt;/a&gt; by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; remains open; the related fix was cherry-picked into &lt;a href="https://github.com/ocaml/ocamlfind/issues/112"&gt;#112&lt;/a&gt; with an alternate approach eliminating &lt;code&gt;find&lt;/code&gt; and &lt;code&gt;sh&lt;/code&gt; usage&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/106" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCAMLPATH ordering change&lt;/strong&gt;&lt;/a&gt; proposed in &lt;a href="https://github.com/ocaml/ocamlfind/issues/106"&gt;#106&lt;/a&gt; by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; (originating from &lt;a href="https://github.com/ocaml/opam-repository/issues/27712"&gt;ocaml/opam-repository#27712&lt;/a&gt;) is under discussion, with &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt; raising concerns that placing &lt;code&gt;site-lib&lt;/code&gt; before the stdlib directory could shadow compiler &lt;code&gt;META&lt;/code&gt; files in standard opam switches&lt;/li&gt;
+&lt;li&gt;Issue &lt;a href="https://github.com/ocaml/ocamlfind/issues/68"&gt;#68&lt;/a&gt; reported by &lt;a href="https://github.com/ChenQi1989"&gt;Chen Qi&lt;/a&gt; about the HTTP homepage URL was closed after being resolved by the merged &lt;a href="https://github.com/ocaml/ocamlfind/issues/83"&gt;#83&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>CI workflow added for multi-platform testing and HTTPS links updated across README and opam metadata.</summary><published>2026-04-26T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2026/week-16</id><title>Week 16, 2026: None</title><updated>2026-04-19T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 16, 2026&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 16, 2026</summary><published>2026-04-19T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2026/week-15</id><title>Week 15, 2026: None</title><updated>2026-04-12T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 15, 2026&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 15, 2026</summary><published>2026-04-12T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2026/week-14</id><title>Week 14, 2026: None</title><updated>2026-04-05T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 14, 2026&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 14, 2026</summary><published>2026-04-05T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2026/week-13</id><title>Week 13, 2026: None</title><updated>2026-03-29T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 13, 2026&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 13, 2026</summary><published>2026-03-29T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2026/week-12</id><title>Week 12, 2026: Issue filed about duplicate ld.conf warnings appearing with OCaml 5.5 when invoking ocamlfind.</title><updated>2026-03-22T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

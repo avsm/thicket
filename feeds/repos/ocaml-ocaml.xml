@@ -1,5 +1,151 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.xml</id><title>ocaml/ocaml (Weekly)</title><updated>2026-04-19T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-16</id><title>Week 16, 2026: Active week with typechecker improvements, stdlib additions, runtime fixes, and ongoing ephemeron GC refactoring work.</title><updated>2026-04-19T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.xml</id><title>ocaml/ocaml (Weekly)</title><updated>2026-05-03T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-18</id><title>Week 18, 2026: Week 18 brought Seq performance improvements, man page overhaul, OCamlFDO compatibility fixes, and active typechecker work.</title><updated>2026-05-03T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Six PRs were merged during the week covering man page improvements, Seq performance, OCamlFDO compatibility, typechecker debuggability, and CI security fixes.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14786"&gt;#14786&lt;/a&gt; by &lt;a href="https://github.com/MisterDA"&gt;Antonin Décimo&lt;/a&gt; proposes updating GitHub Actions dependencies to avoid warnings about outdated Node versions in CI runs; open and awaiting review.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14784"&gt;#14784&lt;/a&gt; by &lt;a href="https://github.com/yallop"&gt;Jeremy Yallop&lt;/a&gt; proposes making &lt;code&gt;Seq.cycle&lt;/code&gt; create a true cyclic sequence using a single shared tail closure, reducing per-element memory from 41 words to 1 word; open and under discussion.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14783"&gt;#14783&lt;/a&gt; by &lt;a href="https://github.com/yallop"&gt;Jeremy Yallop&lt;/a&gt; makes &lt;code&gt;Seq.repeat&lt;/code&gt; constant-space by structuring it as a single cyclic closure-and-cons-cell pair; merged after the week boundary.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14782"&gt;#14782&lt;/a&gt; by &lt;a href="https://github.com/shym"&gt;@shym&lt;/a&gt; overhauled &lt;code&gt;ocamlc&lt;/code&gt;'s man page with improved formatting, style, synopsis reformatting, sub-list rendering, and &lt;code&gt;-o&lt;/code&gt; option clarifications, plus minor fixes to &lt;code&gt;ocamlopt&lt;/code&gt;'s man page; merged 2026-05-03.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14781"&gt;#14781&lt;/a&gt; by &lt;a href="https://github.com/hyphenrf"&gt;Haz&lt;/a&gt; reduced closure allocation in &lt;code&gt;Seq.cycle&lt;/code&gt;, &lt;code&gt;Seq.repeat&lt;/code&gt;, and &lt;code&gt;Seq.forever&lt;/code&gt;; merged 2026-05-01.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14779"&gt;#14779&lt;/a&gt; by &lt;a href="https://github.com/smuenzel"&gt;Stefan Muenzel&lt;/a&gt; proposes fixing the typechecker loop reported in &lt;a href="https://github.com/ocaml/ocaml/issues/14769"&gt;#14769&lt;/a&gt; by detecting cycles in &lt;code&gt;update_level&lt;/code&gt;; open and under review.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14778"&gt;#14778&lt;/a&gt; by &lt;a href="https://github.com/NickBarnes"&gt;Nick Barnes&lt;/a&gt; fixed OCamlFDO compatibility by restoring hard-wired symbol names and registering the hot code segment in &lt;code&gt;startup_nat.c&lt;/code&gt;; merged 2026-04-29.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14777"&gt;#14777&lt;/a&gt; by &lt;a href="https://github.com/smuenzel"&gt;Stefan Muenzel&lt;/a&gt; made a small cleanup to &lt;code&gt;value_rec_check.ml&lt;/code&gt;; merged 2026-04-29.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14776"&gt;#14776&lt;/a&gt; by &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt; fixes a missing &lt;code&gt;wrap_trace_gadts_instance&lt;/code&gt; call in &lt;code&gt;moregen&lt;/code&gt; when checking first-class module inclusion; open and under review.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14775"&gt;#14775&lt;/a&gt; by &lt;a href="https://github.com/c-cube"&gt;Simon Cruanes&lt;/a&gt; proposes extensible IO channels implementing the RFC for modular IO, introducing a new channel abstraction alongside the existing C channels; open and under review.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14769"&gt;#14769&lt;/a&gt; by &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt; documents a newly found typechecker loop triggered by heavy use of conjunctive types after &lt;code&gt;Keep_expansion&lt;/code&gt;; merged 2026-04-29.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14676"&gt;#14676&lt;/a&gt; by &lt;a href="https://github.com/ajbt200128"&gt;Austin Theriault&lt;/a&gt; fixed shell injection vulnerabilities in GitHub Actions workflows; merged 2026-05-04.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14772"&gt;#14772&lt;/a&gt; by &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt; improved typechecker debuggability by adding a printer for unscoped identifiers used in &lt;code&gt;Rawprinttyp&lt;/code&gt; and &lt;code&gt;Gprinttyp&lt;/code&gt;; merged 2026-04-27.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14771"&gt;#14771&lt;/a&gt; by &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt; added a breakpoint capability on &lt;code&gt;tfunctor&lt;/code&gt; nodes in the typechecker debugger; merged 2026-04-27.&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Week 18 brought Seq performance improvements, man page overhaul, OCamlFDO compatibility fixes, and active typechecker work.</summary><published>2026-05-03T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-17</id><title>Week 17, 2026: A focused week fixing type system regressions, improving ephemeron runtime internals, and adding C compiler warning coverage.</title><updated>2026-04-26T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Several PRs opened targeting Windows bugs, ephemeron GC correctness, type system improvements, and a large extensible IO channels proposal.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/c-cube"&gt;Simon Cruanes&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/ocaml/issues/14775"&gt;#14775&lt;/a&gt; &lt;a href="https://github.com/ocaml/ocaml/issues/14775" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;extensible IO channels&lt;/strong&gt;&lt;/a&gt;, an ambitious implementation of the &lt;a href="https://github.com/ocaml/RFCs/blob/master/rfcs/modular_io.md"&gt;modular IO RFC&lt;/a&gt; adding a polymorphic channel type alongside the existing native channels.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/ocaml/issues/14774"&gt;#14774&lt;/a&gt; &lt;a href="https://github.com/ocaml/ocaml/issues/14774" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Ephemerons: wait on all domains before asking for another marking round&lt;/strong&gt;&lt;/a&gt;, continuing the multi-PR ephemeron GC correctness series.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/ocaml/issues/14763"&gt;#14763&lt;/a&gt; &lt;a href="https://github.com/ocaml/ocaml/issues/14763" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Lambda: merge nested labelled applications&lt;/strong&gt;&lt;/a&gt;, addressing a spurious intermediary closure created when partial application of optional-argument functions is composed.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/ocaml/issues/14772"&gt;#14772&lt;/a&gt; &lt;a href="https://github.com/ocaml/ocaml/issues/14772" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;typechecker debugging: better unscoped printing&lt;/strong&gt;&lt;/a&gt;, adding a printer for unscoped identifiers using a &lt;code&gt;U:&lt;/code&gt; prefix to avoid confusion in debug output.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/ocaml/issues/14770"&gt;#14770&lt;/a&gt; &lt;a href="https://github.com/ocaml/ocaml/issues/14770" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;no more rigid variants mode for unification&lt;/strong&gt;&lt;/a&gt;, proposing to remove the rigid variants mode added as a class-constraint fix.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/ocaml/issues/14769"&gt;#14769&lt;/a&gt; &lt;a href="https://github.com/ocaml/ocaml/issues/14769" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;testsuite: document a new loop in conjunctive types after Keep_expansion&lt;/strong&gt;&lt;/a&gt;, adding a regression test for a typechecker loop with heavy use of conjunctive types.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/ocaml/issues/14771"&gt;#14771&lt;/a&gt; &lt;a href="https://github.com/ocaml/ocaml/issues/14771" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;debugger: breakpoint on tfunctor&lt;/strong&gt;&lt;/a&gt;, making it possible to set a breakpoint on a module-dependent function.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/z-rui"&gt;张睿 Zhang Rui&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/ocaml/issues/14764"&gt;#14764&lt;/a&gt; &lt;strong class="achievement"&gt;Fix socket&lt;em&gt;poll&lt;/em&gt;add in select_win32.c&lt;/strong&gt;, fixing a logic error where &lt;code&gt;socket_poll_add&lt;/code&gt; returns the dispatched node rather than the updated list head, causing corrupted SELECT operations.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/edwintorok"&gt;Török Edwin&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/ocaml/issues/14761"&gt;#14761&lt;/a&gt; &lt;a href="https://github.com/ocaml/ocaml/issues/14761" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;configure: fix build error on OpenSUSE&lt;/strong&gt;&lt;/a&gt;, addressing a conflict between &lt;code&gt;--with-relative-libdir&lt;/code&gt; and &lt;code&gt;--libdir&lt;/code&gt; on systems where &lt;code&gt;libdir&lt;/code&gt; defaults to &lt;code&gt;${exec_prefix}/lib64&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Sylvain78"&gt;Anarchos&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/ocaml/issues/14773"&gt;#14773&lt;/a&gt; &lt;a href="https://github.com/ocaml/ocaml/issues/14773" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;[Haiku] Unix socket test + single-thread setlocale + signals&lt;/strong&gt;&lt;/a&gt;, adapting the testsuite for Haiku OS specifics.&lt;/li&gt;
+&lt;li&gt;Merged &lt;a href="https://github.com/ocaml/ocaml/issues/14735"&gt;#14735&lt;/a&gt; (&lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt;): runtime refactor adding higher-level ephemeron list operations.&lt;/li&gt;
+&lt;li&gt;Merged &lt;a href="https://github.com/ocaml/ocaml/issues/14768"&gt;#14768&lt;/a&gt; (&lt;a href="https://github.com/smuenzel"&gt;Stefan Muenzel&lt;/a&gt;): fix for &lt;a href="https://github.com/ocaml/ocaml/issues/14766"&gt;#14766&lt;/a&gt; type checker regression in &lt;code&gt;nondep_type_rec_aux&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Merged &lt;a href="https://github.com/ocaml/ocaml/issues/14709"&gt;#14709&lt;/a&gt; (&lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt;): ocamldoc now uses &lt;code&gt;Module_name (Library name)&lt;/code&gt; page title format instead of &lt;code&gt;Library name: Module_name&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Merged &lt;a href="https://github.com/ocaml/ocaml/issues/14755"&gt;#14755&lt;/a&gt; (&lt;a href="https://github.com/y1lan"&gt;Yang Lin&lt;/a&gt;): corrected a broken link to &lt;code&gt;ocamltest/OCAMLTEST.adoc&lt;/code&gt; in &lt;code&gt;testsuite/HACKING.adoc&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Merged &lt;a href="https://github.com/ocaml/ocaml/issues/14744"&gt;#14744&lt;/a&gt; (&lt;a href="https://github.com/OlivierNicole"&gt;Olivier Nicole&lt;/a&gt;): fixed the &lt;code&gt;atomic-locs/cmm.ml&lt;/code&gt; testsuite entry when &lt;code&gt;ocamlopt&lt;/code&gt; is absent.&lt;/li&gt;
+&lt;li&gt;Merged &lt;a href="https://github.com/ocaml/ocaml/issues/14694"&gt;#14694&lt;/a&gt; (&lt;a href="https://github.com/MisterDA"&gt;Antonin Décimo&lt;/a&gt;): &lt;code&gt;-Wformat-signedness&lt;/code&gt; C compiler warning enabled.&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>A focused week fixing type system regressions, improving ephemeron runtime internals, and adding C compiler warning coverage.</summary><published>2026-04-26T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-16</id><title>Week 16, 2026: Active week with typechecker improvements, stdlib additions, runtime fixes, and ongoing ephemeron GC refactoring work.</title><updated>2026-04-19T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

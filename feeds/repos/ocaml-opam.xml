@@ -1,5 +1,137 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam.xml</id><title>ocaml/opam (Weekly)</title><updated>2026-04-19T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam/2026/week-16</id><title>Week 16, 2026: Week 16 of 2026 was dominated by the release of opam 2.5.1, a security and bug-fix release. The week saw 38 commits spanning security hardening, GC corruption fixes, OS detection improvements, build system cleanup, and post-release follow-up work. A security fix addressed a path-escape vulnerability in .install files (OSEC-2026-03), and two rare GC corruption bugs in C stubs were resolved.</title><updated>2026-04-19T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam.xml</id><title>ocaml/opam (Weekly)</title><updated>2026-05-03T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam/2026/week-18</id><title>Week 18, 2026: New OpamFilename.Unix module for cross-platform path handling merged, with several API and patch system PRs opened.</title><updated>2026-05-03T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Seven new PRs opened covering patch handling, path modules, benchmarking, and documentation; several long-running API refactors remain active.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/rjbou"&gt;R. Boujbel&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/opam/issues/6915" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;patch system overhaul&lt;/strong&gt;&lt;/a&gt; PR &lt;a href="https://github.com/ocaml/opam/issues/6915"&gt;#6915&lt;/a&gt; (1777 additions) to allow &lt;code&gt;dir -&gt; file&lt;/code&gt; type changes when applying patches, a previously unsupported scenario that caused failures&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rjbou"&gt;R. Boujbel&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/opam/issues/6917" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;path element name modules&lt;/strong&gt;&lt;/a&gt; PR &lt;a href="https://github.com/ocaml/opam/issues/6917"&gt;#6917&lt;/a&gt; (2072 additions across 41 files), a large refactor adding explicit modules for well-known opam path component names to improve consistency&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; opened &lt;strong class="achievement"&gt;&lt;code&gt;opam install&lt;/code&gt; benchmark&lt;/strong&gt; PR &lt;a href="https://github.com/ocaml/opam/issues/6912"&gt;#6912&lt;/a&gt;, adding infrastructure to measure install performance, used to validate the build-directory-cleanup change in &lt;a href="https://github.com/ocaml/opam/issues/6906"&gt;#6906&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/faccinib"&gt;Guilherme FACCINI BANDEIRA&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/opam/issues/6921"&gt;#6921&lt;/a&gt; to &lt;a href="https://github.com/ocaml/opam/issues/6921" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;homogenise manpage reference highlighting&lt;/strong&gt;&lt;/a&gt;, addressing the long-standing issue &lt;a href="https://github.com/ocaml/opam/issues/6112"&gt;#6112&lt;/a&gt; — their first contribution, made as a student at Université Paris-Cité&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ccoulombel"&gt;Corentin Coulombel&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/opam/issues/6920"&gt;#6920&lt;/a&gt; to &lt;a href="https://github.com/ocaml/opam/issues/6920" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;improve visibility of the depopts filter note&lt;/strong&gt;&lt;/a&gt; in documentation, addressing &lt;a href="https://github.com/ocaml/opam/issues/5367"&gt;#5367&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt;'s &lt;a href="https://github.com/ocaml/opam/issues/6906" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;build directory cleanup&lt;/strong&gt;&lt;/a&gt; PR &lt;a href="https://github.com/ocaml/opam/issues/6906"&gt;#6906&lt;/a&gt; (queued, labeled &lt;code&gt;AREA: PERFORMANCE&lt;/code&gt;) benchmarked at 0.3% degradation for regular installs but ~5% improvement on IO-constrained filesystems&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/NathanReb"&gt;Nathan Rebours&lt;/a&gt;'s &lt;strong class="achievement"&gt;&lt;code&gt;chdir&lt;/code&gt; removal&lt;/strong&gt; PR &lt;a href="https://github.com/ocaml/opam/issues/6910"&gt;#6910&lt;/a&gt; is stalled awaiting a decision on whether to keep deprecated API entries given that &lt;code&gt;opam-rt&lt;/code&gt; also needs patching&lt;/li&gt;
+&lt;li&gt;Long-running API refactors remain open: &lt;a href="https://github.com/ocaml/opam/issues/6680" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;repository root abstraction&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam/issues/6680"&gt;#6680&lt;/a&gt;, open since September 2025), and &lt;strong class="achievement"&gt;HTTP repository format improvement&lt;/strong&gt; using tar.gz directly (&lt;a href="https://github.com/ocaml/opam/issues/6625"&gt;#6625&lt;/a&gt;, open since July 2025)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rjbou"&gt;R. Boujbel&lt;/a&gt;'s &lt;a href="https://github.com/ocaml/opam/issues/6871" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;repository load-from-diff&lt;/strong&gt;&lt;/a&gt; PR &lt;a href="https://github.com/ocaml/opam/issues/6871"&gt;#6871&lt;/a&gt; continues to be reviewed&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; opened two API design issues: &lt;a href="https://github.com/ocaml/opam/issues/6919"&gt;#6919&lt;/a&gt; proposing a &lt;code&gt;prefix&lt;/code&gt; field for &lt;code&gt;.install&lt;/code&gt; files, and &lt;a href="https://github.com/ocaml/opam/issues/6918"&gt;#6918&lt;/a&gt; proposing to change &lt;code&gt;OpamFile.typed_file&lt;/code&gt; to return an option&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6896"&gt;#6896&lt;/a&gt; (&lt;code&gt;OpamFilename.might_escape&lt;/code&gt; Windows fix) was closed as the change was integrated into &lt;a href="https://github.com/ocaml/opam/issues/6897"&gt;#6897&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>New OpamFilename.Unix module for cross-platform path handling merged, with several API and patch system PRs opened.</summary><published>2026-05-03T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-opam/2026/week-17</id><title>Week 17, 2026: New PR to remove chdir usage opened, plus two new issues on Windows case-sensitivity and depexts variable expansion.</title><updated>2026-04-26T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+One new PR opened for chdir removal; ongoing work on cmdliner completions, Nushell support, disk space optimizations, and repos-config syntax.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/NathanReb"&gt;Nathan Rebours&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/opam/issues/6910"&gt;#6910&lt;/a&gt; to &lt;strong class="achievement"&gt;remove use of &lt;code&gt;chdir&lt;/code&gt;&lt;/strong&gt; from the codebase, porting work from &lt;a href="https://github.com/ocaml/opam/issues/5966"&gt;#5966&lt;/a&gt; as requested in &lt;a href="https://github.com/ocaml/opam/issues/6600"&gt;#6600&lt;/a&gt;; this small but targeted change touches 9 files and is expected to also fix the long-standing &lt;a href="https://github.com/ocaml/opam/issues/3171"&gt;#3171&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/WardBrian"&gt;Brian Ward&lt;/a&gt; continues advancing a four-part &lt;a href="https://github.com/ocaml/opam/issues/6854" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;cmdliner completion overhaul&lt;/strong&gt;&lt;/a&gt;: source compatibility with newer cmdliner (&lt;a href="https://github.com/ocaml/opam/issues/6854"&gt;#6854&lt;/a&gt;), vendored cmdliner updated to 2.1.1 (&lt;a href="https://github.com/ocaml/opam/issues/6867"&gt;#6867&lt;/a&gt;), argument definitions updated with completion functions (&lt;a href="https://github.com/ocaml/opam/issues/6868"&gt;#6868&lt;/a&gt;), and final installation of cmdliner-based completions with new &lt;strong class="achievement"&gt;PowerShell support&lt;/strong&gt; (&lt;a href="https://github.com/ocaml/opam/issues/6869"&gt;#6869&lt;/a&gt;, closing &lt;a href="https://github.com/ocaml/opam/issues/6853"&gt;#6853&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/jneem"&gt;@jneem&lt;/a&gt; is working on &lt;a href="https://github.com/ocaml/opam/issues/6873" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Nushell shell support&lt;/strong&gt;&lt;/a&gt; for &lt;code&gt;opam env&lt;/code&gt; via JSON output in &lt;a href="https://github.com/ocaml/opam/issues/6873"&gt;#6873&lt;/a&gt;, continuing &lt;a href="https://github.com/ocaml/opam/issues/6330"&gt;#6330&lt;/a&gt;; discussion this week focused on version-checking challenges with older Nushell releases&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; has two open &lt;a href="https://github.com/ocaml/opam/issues/6906" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;disk space reduction&lt;/strong&gt;&lt;/a&gt; PRs: removing the build directory earlier during package installation (&lt;a href="https://github.com/ocaml/opam/issues/6906"&gt;#6906&lt;/a&gt;, fixing &lt;a href="https://github.com/ocaml/opam/issues/5884"&gt;#5884&lt;/a&gt;) and caching only dev packages in the internal sources directory (&lt;a href="https://github.com/ocaml/opam/issues/6440"&gt;#6440&lt;/a&gt;, fixing &lt;a href="https://github.com/ocaml/opam/issues/5448"&gt;#5448&lt;/a&gt; and &lt;a href="https://github.com/ocaml/opam/issues/4056"&gt;#4056&lt;/a&gt;); live tests report max disk+RAM usage dropping from 4-10GB to under 2GB&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rjbou"&gt;R. Boujbel&lt;/a&gt; is pursuing a new &lt;strong class="achievement"&gt;&lt;code&gt;repos-config&lt;/code&gt; file syntax&lt;/strong&gt; with labeled fields per repository section in &lt;a href="https://github.com/ocaml/opam/issues/6393"&gt;#6393&lt;/a&gt;, fixing &lt;a href="https://github.com/ocaml/opam/issues/6327"&gt;#6327&lt;/a&gt; and queued behind &lt;a href="https://github.com/ocaml/opam/issues/6417"&gt;#6417&lt;/a&gt; and &lt;a href="https://github.com/ocaml/opam/issues/6839"&gt;#6839&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>New PR to remove chdir usage opened, plus two new issues on Windows case-sensitivity and depexts variable expansion.</summary><published>2026-04-26T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-opam/2026/week-16</id><title>Week 16, 2026: Week 16 of 2026 was dominated by the release of opam 2.5.1, a security and bug-fix release. The week saw 38 commits spanning security hardening, GC corruption fixes, OS detection improvements, build system cleanup, and post-release follow-up work. A security fix addressed a path-escape vulnerability in .install files (OSEC-2026-03), and two rare GC corruption bugs in C stubs were resolved.</title><updated>2026-04-19T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

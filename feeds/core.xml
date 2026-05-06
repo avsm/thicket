@@ -1,5 +1,182 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/core.xml</id><title>OCaml Core (Weekly)</title><updated>2026-04-19T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/core.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Core OCaml language, compiler, and essential tooling</subtitle><entry><id>https://thicket.dev/groups/core/2026/week-16</id><title>Week 16, 2026: Typechecker improvements, stdlib additions (Atomic.update, pp_print_dynarray), runtime fixes, and ephemeron GC refactoring in ocaml/ocaml.</title><updated>2026-04-19T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/core.xml</id><title>OCaml Core (Weekly)</title><updated>2026-05-03T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/core.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Core OCaml language, compiler, and essential tooling</subtitle><entry><id>https://thicket.dev/groups/core/2026/week-18</id><title>Week 18, 2026: Seq constant-space improvements merged, OCamlFDO compatibility restored, and the modular IO RFC revived via a new ocaml/ocaml PR.</title><updated>2026-05-03T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/hyphenrf"&gt;Haz&lt;/a&gt; reduced closure allocation in &lt;code&gt;Seq.(cycle, repeat, forever)&lt;/code&gt; by reusing tail closures in &lt;a href="https://github.com/ocaml/ocaml/issues/14781"&gt;ocaml/ocaml#14781&lt;/a&gt;, merged by &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/smuenzel"&gt;Stefan Muenzel&lt;/a&gt; improved &lt;code&gt;Value_rec_check&lt;/code&gt; in &lt;a href="https://github.com/ocaml/ocaml/issues/14777"&gt;ocaml/ocaml#14777&lt;/a&gt; by switching to &lt;code&gt;Ident.Map&lt;/code&gt; and using &lt;code&gt;Map.union&lt;/code&gt; for join, merged by &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/NickBarnes"&gt;Nick Barnes&lt;/a&gt; restored hard-wired &lt;code&gt;caml_hot__code_begin&lt;/code&gt;/&lt;code&gt;caml_hot__code_end&lt;/code&gt; symbol names required by OCamlFDO and moved hot-code segment registration into &lt;code&gt;startup_nat.c&lt;/code&gt; in &lt;a href="https://github.com/ocaml/ocaml/issues/14778"&gt;ocaml/ocaml#14778&lt;/a&gt;, merged by &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt; merged six or more PRs this week spanning Stdlib &lt;code&gt;Seq&lt;/code&gt; performance, man page improvements, OCamlFDO compatibility, typechecker debuggability, and CI security hardening.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/RFCs"&gt;ocaml/RFCs&lt;/a&gt; saw a single event: &lt;a href="https://github.com/c-cube"&gt;Simon Cruanes&lt;/a&gt; withdrew his 2022 proposal &lt;a href="https://github.com/ocaml/RFCs/issues/30"&gt;ocaml/RFCs#30&lt;/a&gt; to remove the modular IO RFC, citing lack of intent to implement it himself.&lt;/li&gt;
+&lt;li&gt;The modular IO topic connects both repositories: the RFC withdrawal in &lt;a href="https://github.com/ocaml/RFCs"&gt;ocaml/RFCs&lt;/a&gt; coincides with &lt;a href="https://github.com/c-cube"&gt;Simon Cruanes&lt;/a&gt; opening &lt;a href="https://github.com/ocaml/ocaml/issues/14775"&gt;ocaml/ocaml#14775&lt;/a&gt; proposing extensible IO channels implementing that same RFC in the compiler repo.&lt;/li&gt;
+&lt;li&gt;Ten contributors were active across the group, with merged work from &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt;, &lt;a href="https://github.com/NickBarnes"&gt;Nick Barnes&lt;/a&gt;, &lt;a href="https://github.com/smuenzel"&gt;Stefan Muenzel&lt;/a&gt;, &lt;a href="https://github.com/hyphenrf"&gt;Haz&lt;/a&gt;, &lt;a href="https://github.com/shym"&gt;@shym&lt;/a&gt;, &lt;a href="https://github.com/ajbt200128"&gt;Austin Theriault&lt;/a&gt;, and &lt;a href="https://github.com/yallop"&gt;Jeremy Yallop&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/c-cube"&gt;Simon Cruanes&lt;/a&gt; withdrew &lt;a href="https://github.com/ocaml/RFCs/issues/30"&gt;ocaml/RFCs#30&lt;/a&gt; (remove the modular IO RFC) while simultaneously opening &lt;a href="https://github.com/ocaml/ocaml/issues/14775"&gt;ocaml/ocaml#14775&lt;/a&gt; proposing extensible IO channels that implement the very RFC he chose not to remove — indicating renewed momentum around that design in the compiler rather than at the RFC level.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14784"&gt;ocaml/ocaml#14784&lt;/a&gt; and &lt;a href="https://github.com/ocaml/ocaml/issues/14785"&gt;ocaml/ocaml#14785&lt;/a&gt; sparked a debate between &lt;a href="https://github.com/yallop"&gt;Jeremy Yallop&lt;/a&gt; and &lt;a href="https://github.com/hyphenrf"&gt;Haz&lt;/a&gt; on whether &lt;code&gt;Seq.cycle&lt;/code&gt; should produce a truly cyclic (sharing) structure or a constant-space infinite one; &lt;a href="https://github.com/ocaml/ocaml/issues/14785"&gt;ocaml/ocaml#14785&lt;/a&gt; was closed as superseded by &lt;a href="https://github.com/ocaml/ocaml/issues/14784"&gt;ocaml/ocaml#14784&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14780"&gt;ocaml/ocaml#14780&lt;/a&gt; opened by &lt;a href="https://github.com/balat"&gt;Vincent Balat&lt;/a&gt; reports that &lt;code&gt;module type of M&lt;/code&gt; when &lt;code&gt;M&lt;/code&gt; is accessed through an alias unexpectedly strengthens functor parameter signatures, blocking application to sibling modules; attracted discussion on the intended semantics of module alias strengthening.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14779"&gt;ocaml/ocaml#14779&lt;/a&gt; discusses the root cause of the typechecker loop in &lt;a href="https://github.com/ocaml/ocaml/issues/14769"&gt;ocaml/ocaml#14769&lt;/a&gt;: &lt;code&gt;update_level&lt;/code&gt; encountering the expanded type of its own argument, and the correct approach to detect and break that cycle.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14781" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Seq constant-space work&lt;/strong&gt;&lt;/a&gt; is converging across multiple PRs: &lt;a href="https://github.com/ocaml/ocaml/issues/14781"&gt;ocaml/ocaml#14781&lt;/a&gt; landed, &lt;a href="https://github.com/ocaml/ocaml/issues/14783"&gt;ocaml/ocaml#14783&lt;/a&gt; merged post-week, and &lt;a href="https://github.com/ocaml/ocaml/issues/14784"&gt;ocaml/ocaml#14784&lt;/a&gt; proposes a fully cyclic &lt;code&gt;Seq.cycle&lt;/code&gt;, showing sustained effort from &lt;a href="https://github.com/yallop"&gt;Jeremy Yallop&lt;/a&gt; and &lt;a href="https://github.com/hyphenrf"&gt;Haz&lt;/a&gt; to minimise allocation in lazy sequences.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14771" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Typechecker debuggability&lt;/strong&gt;&lt;/a&gt; additions by &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14771"&gt;ocaml/ocaml#14771&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14772"&gt;ocaml/ocaml#14772&lt;/a&gt;) continue a pattern of building internal tooling to support OCaml 5.5 typechecker development.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14778" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Native-code tooling compatibility&lt;/strong&gt;&lt;/a&gt; work in &lt;a href="https://github.com/ocaml/ocaml/issues/14778"&gt;ocaml/ocaml#14778&lt;/a&gt; reflects continued effort to keep the runtime compatible with profile-guided optimisation workflows such as OCamlFDO.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/RFCs/issues/30" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Modular IO&lt;/strong&gt;&lt;/a&gt; is regaining attention: the RFC withdrawal in &lt;a href="https://github.com/ocaml/RFCs/issues/30"&gt;ocaml/RFCs#30&lt;/a&gt; and the new implementation proposal &lt;a href="https://github.com/ocaml/ocaml/issues/14775"&gt;ocaml/ocaml#14775&lt;/a&gt; together suggest the design may advance at the implementation level rather than through further RFC revision.&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Seq constant-space improvements merged, OCamlFDO compatibility restored, and the modular IO RFC revived via a new ocaml/ocaml PR.</summary><published>2026-05-03T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2026/week-17</id><title>Week 17, 2026: Ephemeron GC fixes, type system regressions, Windows compatibility work, and the primitive aliases RFC advancing in ocaml/RFCs.</title><updated>2026-04-26T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14735" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Ephemeron list API&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14735"&gt;ocaml/ocaml#14735&lt;/a&gt;): &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; added higher-level helper functions to &lt;code&gt;runtime/caml/weak.h&lt;/code&gt; — &lt;code&gt;caml_ephe_list_tail&lt;/code&gt;, &lt;code&gt;caml_ephe_list_cons&lt;/code&gt;, &lt;code&gt;caml_ephe_list_append&lt;/code&gt;, &lt;code&gt;caml_ephe_list_pop&lt;/code&gt; and variants — refactoring &lt;code&gt;major_gc.c&lt;/code&gt; to use these abstractions and reducing duplication.&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;reserved_header_bits&lt;/code&gt; exposed to ocamltest&lt;/strong&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14744"&gt;ocaml/ocaml#14744&lt;/a&gt;): &lt;a href="https://github.com/OlivierNicole"&gt;Olivier Nicole&lt;/a&gt; added &lt;code&gt;val reserved_header_bits : int&lt;/code&gt; to &lt;code&gt;ocamltest_config.mli&lt;/code&gt;, allowing tests to query how many bits of a block header are reserved, and fixing &lt;code&gt;atomic-locs/cmm.ml&lt;/code&gt; when ocamlopt is absent.&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;-Wformat-signedness&lt;/code&gt; C compiler warning&lt;/strong&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14694"&gt;ocaml/ocaml#14694&lt;/a&gt;): &lt;a href="https://github.com/MisterDA"&gt;Antonin Décimo&lt;/a&gt; enabled the &lt;code&gt;-Wformat-signedness&lt;/code&gt; warning when available, fixing discrepancies between &lt;code&gt;%x&lt;/code&gt;-family format specifiers and signed/unsigned argument types across the runtime.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt; saw six merged PRs covering ephemeron runtime internals (&lt;a href="https://github.com/ocaml/ocaml/issues/14735"&gt;ocaml/ocaml#14735&lt;/a&gt;), a type checker regression fix (&lt;a href="https://github.com/ocaml/ocaml/issues/14768"&gt;ocaml/ocaml#14768&lt;/a&gt;), and C compiler warning coverage (&lt;a href="https://github.com/ocaml/ocaml/issues/14694"&gt;ocaml/ocaml#14694&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/RFCs"&gt;ocaml/RFCs&lt;/a&gt; had no merged PRs but active discussion continued on the primitive aliases RFC (&lt;a href="https://github.com/ocaml/RFCs/issues/44"&gt;ocaml/RFCs#44&lt;/a&gt;), which carries a &lt;code&gt;positive-committee-recommendation&lt;/code&gt; label.&lt;/li&gt;
+&lt;li&gt;A major new proposal (&lt;a href="https://github.com/ocaml/ocaml/issues/14775"&gt;ocaml/ocaml#14775&lt;/a&gt;) implementing the modular IO RFC was opened this week, directly connecting the two repositories.&lt;/li&gt;
+&lt;li&gt;Windows compatibility received attention via two active bug reports (&lt;a href="https://github.com/ocaml/ocaml/issues/14758"&gt;ocaml/ocaml#14758&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14767"&gt;ocaml/ocaml#14767&lt;/a&gt;) and a fix PR (&lt;a href="https://github.com/ocaml/ocaml/issues/14764"&gt;ocaml/ocaml#14764&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt;'s ongoing ephemeron GC correctness series continues to grow, now spanning seven related PRs.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14775"&gt;ocaml/ocaml#14775&lt;/a&gt;, opened by &lt;a href="https://github.com/c-cube"&gt;Simon Cruanes&lt;/a&gt;, directly implements the &lt;a href="https://github.com/ocaml/RFCs/blob/master/rfcs/modular_io.md"&gt;modular IO RFC&lt;/a&gt; tracked in &lt;a href="https://github.com/ocaml/RFCs"&gt;ocaml/RFCs&lt;/a&gt;, making it a concrete cross-repository deliverable from an approved RFC.&lt;/li&gt;
+&lt;li&gt;The primitive aliases RFC &lt;a href="https://github.com/ocaml/RFCs/issues/44"&gt;ocaml/RFCs#44&lt;/a&gt; is at the design stage but will eventually require implementation work in &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt;; the current discussion clarifies constraints to simplify future compiler implementation.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14767"&gt;ocaml/ocaml#14767&lt;/a&gt; &lt;a href="https://github.com/ocaml/ocaml/issues/14767" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Win32: opendir returns EUNKNOWNERR -267&lt;/strong&gt;&lt;/a&gt; — &lt;a href="https://github.com/amongonz"&gt;Adrián Montesinos González&lt;/a&gt; reported that &lt;code&gt;Sys.readdir&lt;/code&gt; fails on Windows with an unmapped error code; &lt;a href="https://github.com/nojb"&gt;Nicolás Ojeda Bär&lt;/a&gt; confirmed the bug and suggested mapping &lt;code&gt;ERROR_DIRECTORY&lt;/code&gt; to &lt;code&gt;ENOTDIR&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14758"&gt;ocaml/ocaml#14758&lt;/a&gt; &lt;strong class="achievement"&gt;[Win32] &lt;code&gt;Unix.select&lt;/code&gt; raises 'original file handle not found'&lt;/strong&gt; — &lt;a href="https://github.com/z-rui"&gt;张睿 Zhang Rui&lt;/a&gt; provided a detailed analysis, discovered an additional logic error in &lt;code&gt;socket_poll_add&lt;/code&gt;, and opened &lt;a href="https://github.com/ocaml/ocaml/issues/14764"&gt;ocaml/ocaml#14764&lt;/a&gt; with a fix; &lt;a href="https://github.com/nojb"&gt;Nicolás Ojeda Bär&lt;/a&gt; encouraged the patch submission.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14760"&gt;ocaml/ocaml#14760&lt;/a&gt; &lt;a href="https://github.com/ocaml/ocaml/issues/14760" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml 5.5.0~beta1 configure failure on OpenSUSE&lt;/strong&gt;&lt;/a&gt; — &lt;a href="https://github.com/edwintorok"&gt;Török Edwin&lt;/a&gt; traced the issue to &lt;code&gt;libdir=${exec_prefix}/lib64&lt;/code&gt; triggering a false conflict with &lt;code&gt;--with-relative-libdir&lt;/code&gt;, and opened &lt;a href="https://github.com/ocaml/ocaml/issues/14761"&gt;ocaml/ocaml#14761&lt;/a&gt; with a fix.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14765"&gt;ocaml/ocaml#14765&lt;/a&gt; &lt;strong class="achievement"&gt;Sys&lt;em&gt;error exception in Format.flush&lt;/em&gt;standard_formatters&lt;/strong&gt; — &lt;a href="https://github.com/oandrieu"&gt;Olivier Andrieu&lt;/a&gt; reported that closing stdout before program exit causes an uncaught &lt;code&gt;Sys_error&lt;/code&gt; from OCaml's format library finalizers.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/RFCs/issues/44"&gt;ocaml/RFCs#44&lt;/a&gt; — &lt;a href="https://github.com/nmatschke"&gt;Nailen Matschke&lt;/a&gt; clarified that a &lt;code&gt;with external x = y&lt;/code&gt; constraint form would not allow abstract primitives and that existing &lt;code&gt;with type t = u&lt;/code&gt; constraints already cover the plausible use cases, effectively closing off a potential scope expansion of the RFC.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14722" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Ephemeron GC overhaul&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; has a series of related PRs (&lt;a href="https://github.com/ocaml/ocaml/issues/14722"&gt;ocaml/ocaml#14722&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14732"&gt;ocaml/ocaml#14732&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14733"&gt;ocaml/ocaml#14733&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14734"&gt;ocaml/ocaml#14734&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14735"&gt;ocaml/ocaml#14735&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14745"&gt;ocaml/ocaml#14745&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14774"&gt;ocaml/ocaml#14774&lt;/a&gt;) systematically fixing ephemeron marking correctness and refactoring the runtime, following bugs exposed by multicore randomized testing.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14758" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Windows platform fixes&lt;/strong&gt;&lt;/a&gt;: Multiple issues (&lt;a href="https://github.com/ocaml/ocaml/issues/14758"&gt;ocaml/ocaml#14758&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14767"&gt;ocaml/ocaml#14767&lt;/a&gt;) and PRs (&lt;a href="https://github.com/ocaml/ocaml/issues/14764"&gt;ocaml/ocaml#14764&lt;/a&gt;) highlight continued effort to improve Win32 compatibility in Unix and I/O subsystems.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/11648" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Type system regression tracking&lt;/strong&gt;&lt;/a&gt;: The well-foundedness check (&lt;a href="https://github.com/ocaml/ocaml/issues/11648"&gt;ocaml/ocaml#11648&lt;/a&gt;) continues to surface edge cases (&lt;a href="https://github.com/ocaml/ocaml/issues/14754"&gt;ocaml/ocaml#14754&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14766"&gt;ocaml/ocaml#14766&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14769"&gt;ocaml/ocaml#14769&lt;/a&gt;), with reactive fixes from type system contributors.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14775" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;RFC-to-implementation pipeline&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/ocaml/ocaml/issues/14775"&gt;ocaml/ocaml#14775&lt;/a&gt; translating the &lt;a href="https://github.com/ocaml/RFCs/blob/master/rfcs/modular_io.md"&gt;modular IO RFC&lt;/a&gt; into a concrete PR demonstrates active follow-through from RFC design to compiler implementation.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/RFCs/issues/44" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Primitive aliases RFC&lt;/strong&gt;&lt;/a&gt; &lt;a href="https://github.com/ocaml/RFCs/issues/44"&gt;ocaml/RFCs#44&lt;/a&gt; is narrowing in scope through committee-supported design discussion, moving toward a more tractable implementation target.&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Ephemeron GC fixes, type system regressions, Windows compatibility work, and the primitive aliases RFC advancing in ocaml/RFCs.</summary><published>2026-04-26T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2026/week-16</id><title>Week 16, 2026: Typechecker improvements, stdlib additions (Atomic.update, pp_print_dynarray), runtime fixes, and ephemeron GC refactoring in ocaml/ocaml.</title><updated>2026-04-19T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
@@ -6541,7 +6718,7 @@
 &lt;li&gt;&lt;strong class="achievement"&gt;Cross-platform compatibility&lt;/strong&gt; receiving increased attention with Windows API modernization and Unix platform improvements&lt;/li&gt;
 &lt;li&gt;&lt;strong class="achievement"&gt;Language design refinement&lt;/strong&gt; through community feedback on practical applications of new syntax features like raw identifiers&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Runtime improvements and bytecode optimization merged alongside language syntax discussions for raw identifiers</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2024/week-42</id><title>Week 42, 2024: Five PRs merged in ocaml/ocaml including new Thread.set_current_thread_name API and compiler improvements</title><updated>2026-04-22T16:36:38.431028+00:00</updated><content type="html">
+</content><link href="https://thicket.dev/"/><summary>Runtime improvements and bytecode optimization merged alongside language syntax discussions for raw identifiers</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2024/week-42</id><title>Week 42, 2024: Five PRs merged in ocaml/ocaml including new Thread.set_current_thread_name API and compiler improvements</title><updated>2026-05-06T14:03:37.583351+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

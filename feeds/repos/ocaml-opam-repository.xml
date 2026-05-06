@@ -1,5 +1,145 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam-repository.xml</id><title>ocaml/opam-repository (Weekly)</title><updated>2026-04-19T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam-repository.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam-repository</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2026/week-16</id><title>Week 16, 2026: Active week with opam 2.5.1 landing, broad Windows/MSYS2 improvements, and a variety of new packages and library updates across the ecosystem.</title><updated>2026-04-19T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam-repository.xml</id><title>ocaml/opam-repository (Weekly)</title><updated>2026-05-03T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam-repository.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam-repository</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2026/week-18</id><title>Week 18, 2026: Active week with 23 merges including new packages like lwd 0.5, notty-miou 0.0.1, wol 1.0, and the oxcaml virtual package.</title><updated>2026-05-03T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Diverse set of new packages and maintenance fixes across networking, UI, serialization, and Windows platform support.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29824" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Newly opened PRs awaiting review&lt;/strong&gt;&lt;/a&gt;: dune 3.23.0~alpha2 opened by &lt;a href="https://github.com/shonfeder"&gt;Shon Feder&lt;/a&gt; with extensive fixes and new features like sandboxed rules by default (&lt;a href="https://github.com/ocaml/opam-repository/issues/29824"&gt;#29824&lt;/a&gt;); rocq-stdlib 9.1.0 draft PR moving package from rocq-specific repo back to main opam-repository by &lt;a href="https://github.com/mattam82"&gt;Matthieu Sozeau&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29830"&gt;#29830&lt;/a&gt;); BER MetaOCaml &lt;code&gt;avoid-version&lt;/code&gt; flag draft by &lt;a href="https://github.com/OlivierNicole"&gt;Olivier Nicole&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29815"&gt;#29815&lt;/a&gt;); conf-perl Cygwin/MSYS2 support by &lt;a href="https://github.com/smorimoto"&gt;Sora Morimoto&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29613"&gt;#29613&lt;/a&gt;); bin&lt;em&gt;there 0.2.1a2 and ppx&lt;/em&gt;bin_there 0.2.1a2 by &lt;a href="https://github.com/Yoric"&gt;David Teller&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29807"&gt;#29807&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29826" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Networking stack packages&lt;/strong&gt;&lt;/a&gt; merged: arc 0.0.2 with support for unverified chain signing and ARC-Message-Signature fix by &lt;a href="https://github.com/dinosaure"&gt;Calascibetta Romain&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29826"&gt;#29826&lt;/a&gt;); dmarc 0.0.2 updating &lt;code&gt;public_suffix_list.dat&lt;/code&gt; by &lt;a href="https://github.com/dinosaure"&gt;Calascibetta Romain&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29808"&gt;#29808&lt;/a&gt;); utcp 0.0.3 fixing sequence number arithmetic with unsigned int32 serial number arithmetic (RFC 1982) by &lt;a href="https://github.com/hannesm"&gt;Hannes Mehnert&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29829"&gt;#29829&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29816" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Messaging and async packages&lt;/strong&gt;&lt;/a&gt;: nats-client 0.0.10 with fixed async/sync version dependency alignment by &lt;a href="https://github.com/Hebilicious"&gt;Heb&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29816"&gt;#29816&lt;/a&gt;); valkey 0.3.1 by &lt;a href="https://github.com/avifenesh"&gt;Avi Fenesh&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29837"&gt;#29837&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29814" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Compatibility fixes for newer OCaml versions&lt;/strong&gt;&lt;/a&gt;: caqti-miou 2.3.1 avoids exhaustiveness check failure in OCaml 5.5 beta by &lt;a href="https://github.com/paurkedal"&gt;Petter A. Urkedal&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29814"&gt;#29814&lt;/a&gt;); upper ocaml bound added to core.v0.17.1 for OCaml 5.5 incompatible &lt;code&gt;Gc.stat&lt;/code&gt; changes by &lt;a href="https://github.com/jmid"&gt;Jan Midtgaard&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29820"&gt;#29820&lt;/a&gt;); cohttp-async 6.1.0 and 6.2.1 marked compatible with OCaml &gt;= 5.3 (&lt;a href="https://github.com/ocaml/opam-repository/commit/12290590039fbe727ed215642514db27597f6458"&gt;12290590&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29812" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;SMT and verification tools&lt;/strong&gt;&lt;/a&gt;: smtml 0.26.0 with bitvector optimizations and hashtable refactoring by &lt;a href="https://github.com/filipeom"&gt;filipeom&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29812"&gt;#29812&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29752" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Lwt ecosystem&lt;/strong&gt;&lt;/a&gt;: lwt 6.1.2 packaged by &lt;a href="https://github.com/raphael-proust"&gt;Raphaël Proust&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29752"&gt;#29752&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29821" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Proof assistant tooling&lt;/strong&gt;&lt;/a&gt;: anders 5.0.0 with OCaml 5.0 support and new type theory primitives, followed by anders 5.1.0 by &lt;a href="https://github.com/5HT"&gt;@5HT&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29821"&gt;#29821&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/29835"&gt;#29835&lt;/a&gt;); lem 2026-05-01 release by &lt;a href="https://github.com/bacam"&gt;Brian Campbell&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29836"&gt;#29836&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29818" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;ocaml-dockerfile 8.3.7&lt;/strong&gt;&lt;/a&gt; (3 packages from ocurrent/ocaml-dockerfile) and &lt;strong class="achievement"&gt;ip2proxy 3.2.0&lt;/strong&gt; IP proxy detection module by &lt;a href="https://github.com/Vlam9988"&gt;Virgil&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29818"&gt;#29818&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29795" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Windows platform improvements&lt;/strong&gt;&lt;/a&gt;: conf-mingw-w64-* package cleanup and mechanisation by &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29795"&gt;#29795&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Active week with 23 merges including new packages like lwd 0.5, notty-miou 0.0.1, wol 1.0, and the oxcaml virtual package.</summary><published>2026-05-03T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2026/week-17</id><title>Week 17, 2026: A busy week with 30+ package merges including new AI tooling, email/DNS/MirageOS ecosystem updates, and a large Windows conf-mingw-w64 infrastructure spring-clean.</title><updated>2026-04-26T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Over 30 pull requests were merged spanning new AI SDK tooling, major MirageOS ecosystem updates, ATD data format tooling, and extensive Windows conf-mingw-w64 infrastructure work.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29750" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml 5.5.0 beta1&lt;/strong&gt;&lt;/a&gt; was added to the repository via &lt;a href="https://github.com/ocaml/opam-repository/pull/29750"&gt;#29750&lt;/a&gt;, and &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; submitted a batch of OCaml 5.5 compatibility fixes across packages including &lt;strong class="achievement"&gt;mdx&lt;/strong&gt;, &lt;strong class="achievement"&gt;ppx_import&lt;/strong&gt;, &lt;strong class="achievement"&gt;grenier&lt;/strong&gt;, &lt;strong class="achievement"&gt;earlybird&lt;/strong&gt;, &lt;strong class="achievement"&gt;goblint&lt;/strong&gt;, &lt;strong class="achievement"&gt;charset&lt;/strong&gt;, &lt;strong class="achievement"&gt;camldiets&lt;/strong&gt;, &lt;strong class="achievement"&gt;bitmasks&lt;/strong&gt;, and &lt;strong class="achievement"&gt;abella&lt;/strong&gt; via &lt;a href="https://github.com/ocaml/opam-repository/pull/29757"&gt;#29757&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/pull/29759"&gt;#29759&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/pull/29762"&gt;#29762&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/pull/29771"&gt;#29771&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/pull/29772"&gt;#29772&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/pull/29770"&gt;#29770&lt;/a&gt;, and others.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29802" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;atd.4.2.0&lt;/strong&gt;&lt;/a&gt; (13 packages) — Major release of the ATD data format tooling adding Java list aliases, OCaml YAML output support, and jsonlike serializers, merged via &lt;a href="https://github.com/ocaml/opam-repository/pull/29802"&gt;#29802&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29755" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;opentelemetry.0.91&lt;/strong&gt;&lt;/a&gt; (9 packages) — Updated OpenTelemetry instrumentation suite switching from ocurl to curl dependency, merged via &lt;a href="https://github.com/ocaml/opam-repository/pull/29755"&gt;#29755&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29761" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;ocaml-ai-sdk.0.3&lt;/strong&gt;&lt;/a&gt; (2 packages) — Ahrefs OCaml AI SDK provider abstraction updated with Anthropic native structured outputs, HTTP timeouts, and new Claude model catalog, merged via &lt;a href="https://github.com/ocaml/opam-repository/pull/29761"&gt;#29761&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29766" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;colombe.0.13.0&lt;/strong&gt;&lt;/a&gt; (6 packages) — SMTP protocol suite update adding new &lt;strong class="achievement"&gt;msendmail&lt;/strong&gt; package and STARTTLS improvements, merged via &lt;a href="https://github.com/ocaml/opam-repository/pull/29766"&gt;#29766&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29779" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;dns.10.2.5&lt;/strong&gt;&lt;/a&gt; (13 packages) — DNS library security fix using constant-time comparison for TSIG MAC verification, merged via &lt;a href="https://github.com/ocaml/opam-repository/pull/29779"&gt;#29779&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29791" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;bos.0.3.0&lt;/strong&gt;&lt;/a&gt; — Daniel Bünzli's OS interaction library updated with XDG directory support, realpath, and deadlock fix, with revdep constraints for packages depending on the dropped &lt;code&gt;rresult&lt;/code&gt; dep, merged via &lt;a href="https://github.com/ocaml/opam-repository/pull/29791"&gt;#29791&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29788" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;cmdliner.2.1.1&lt;/strong&gt;&lt;/a&gt; — Bug-fix release with bash-completion improvements and Windows path fixes, merged via &lt;a href="https://github.com/ocaml/opam-repository/pull/29788"&gt;#29788&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29774" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;yamlx.0.2.0&lt;/strong&gt;&lt;/a&gt; and &lt;strong class="achievement"&gt;yamlx.0.3.0&lt;/strong&gt; — Two rapid releases of the pure-OCaml YAML parser with improved comment handling and block scalar output, merged via &lt;a href="https://github.com/ocaml/opam-repository/pull/29774"&gt;#29774&lt;/a&gt; and &lt;a href="https://github.com/ocaml/opam-repository/pull/29794"&gt;#29794&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29795" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;conf-mingw-w64 spring-clean&lt;/strong&gt;&lt;/a&gt; — &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt; mechanised a comprehensive cleanup of ~70 Windows conf-mingw-w64 packages hardening pkgconf calls, adding consistent metadata, and ensuring C compiler dependencies, merged via &lt;a href="https://github.com/ocaml/opam-repository/pull/29795"&gt;#29795&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;dkim.0.11.0&lt;/strong&gt; (4 packages), &lt;strong class="achievement"&gt;uspf.0.2.1&lt;/strong&gt; (3 packages), &lt;strong class="achievement"&gt;mrmime.0.7.2&lt;/strong&gt;, &lt;strong class="achievement"&gt;prettym.0.0.5&lt;/strong&gt;, &lt;strong class="achievement"&gt;mcrunch.0.0.2&lt;/strong&gt;, &lt;strong class="achievement"&gt;flux.0.0.1~beta5&lt;/strong&gt;, and &lt;strong class="achievement"&gt;mirage.4.10.6&lt;/strong&gt; represent continued MirageOS/Robur ecosystem activity merged throughout the week.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29754" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;liquidsoap.2.4.4&lt;/strong&gt;&lt;/a&gt; (4 packages) — Swiss-army knife multimedia streaming suite updated, merged via &lt;a href="https://github.com/ocaml/opam-repository/pull/29754"&gt;#29754&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;elpi.3.7.1&lt;/strong&gt;, &lt;strong class="achievement"&gt;earlybird.1.3.6&lt;/strong&gt;, &lt;strong class="achievement"&gt;tracy-client.0.7.1&lt;/strong&gt;, &lt;strong class="achievement"&gt;menhir-lsp.0.3.2&lt;/strong&gt;, &lt;strong class="achievement"&gt;interval-map.0.2.1&lt;/strong&gt;, &lt;strong class="achievement"&gt;ocaml-version.4.1.0&lt;/strong&gt;, &lt;strong class="achievement"&gt;dockerfile.8.3.6&lt;/strong&gt;, and &lt;strong class="achievement"&gt;base.v0.14.4/v0.15.2/v0.16.5&lt;/strong&gt; were also merged during the week.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29752" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;lwt.6.1.2&lt;/strong&gt;&lt;/a&gt; remains open pending test failures on macOS and FreeBSD, at &lt;a href="https://github.com/ocaml/opam-repository/pull/29752"&gt;#29752&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;bin&lt;em&gt;there.0.2.1a1&lt;/strong&gt; and &lt;strong class="achievement"&gt;ppx&lt;/em&gt;bin_there.0.2.1a1&lt;/strong&gt; for serialization with shared-value support are open awaiting CI fixes, at &lt;a href="https://github.com/ocaml/opam-repository/pull/29796"&gt;#29796&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>A busy week with 30+ package merges including new AI tooling, email/DNS/MirageOS ecosystem updates, and a large Windows conf-mingw-w64 infrastructure spring-clean.</summary><published>2026-04-26T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2026/week-16</id><title>Week 16, 2026: Active week with opam 2.5.1 landing, broad Windows/MSYS2 improvements, and a variety of new packages and library updates across the ecosystem.</title><updated>2026-04-19T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

@@ -1,5 +1,135 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocsigen-js_of_ocaml.xml</id><title>ocsigen/js_of_ocaml (Weekly)</title><updated>2026-04-19T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocsigen-js_of_ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocsigen/js_of_ocaml</subtitle><entry><id>https://thicket.dev/repos/ocsigen-js_of_ocaml/2026/week-16</id><title>Week 16, 2026: OxCaml support merged (140 files, Float32/int8/int16/null types) alongside JSPI documentation clarifications.</title><updated>2026-04-19T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocsigen-js_of_ocaml.xml</id><title>ocsigen/js_of_ocaml (Weekly)</title><updated>2026-05-03T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocsigen-js_of_ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocsigen/js_of_ocaml</subtitle><entry><id>https://thicket.dev/repos/ocsigen-js_of_ocaml/2026/week-18</id><title>Week 18, 2026: OCaml 5.5 Wasm support completed, several compiler and runtime bug fixes merged, QuickJS-NG support proposed.</title><updated>2026-05-03T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+New PRs target QuickJS-NG support, DOM API updates, OCaml 5.6, and older-browser docs; two tracking issues closed.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2229" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;QuickJS-NG support&lt;/strong&gt;&lt;/a&gt; proposed by &lt;a href="https://github.com/hhugo"&gt;@hhugo&lt;/a&gt; in &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2229"&gt;#2229&lt;/a&gt;: adds a &lt;code&gt;quickjs&lt;/code&gt; dune profile with &lt;code&gt;tools/quickjs_wrapper.exe&lt;/code&gt;, a &lt;code&gt;runtime/js/quickjs_shim.js&lt;/code&gt; compatibility shim filling in Node-only globals, fixes to host-portability bugs surfaced by QuickJS, and a &lt;code&gt;make tests-quickjs&lt;/code&gt; CI target; stacked on &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2216"&gt;#2216&lt;/a&gt; and &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2228"&gt;#2228&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2221" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;DOM API type corrections&lt;/strong&gt;&lt;/a&gt; opened by &lt;a href="https://github.com/vouillon"&gt;Jérôme Vouillon&lt;/a&gt; in &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2221"&gt;#2221&lt;/a&gt; (3215 additions, 91 deletions): fixes &lt;code&gt;Dom_html.inputElement.defaultChecked&lt;/code&gt; type from &lt;code&gt;js_string t prop&lt;/code&gt; to &lt;code&gt;bool t prop&lt;/code&gt;, corrects &lt;code&gt;Dom_html.createVideo&lt;/code&gt; return type from &lt;code&gt;audioElement t&lt;/code&gt; to &lt;code&gt;videoElement t&lt;/code&gt;, and fixes &lt;code&gt;Dom_html.selection.collapse&lt;/code&gt; signature to match the actual JS &lt;code&gt;Selection.collapse(node, offset?)&lt;/code&gt; API; addresses &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/679"&gt;#679&lt;/a&gt; and &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/453"&gt;#453&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2227" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Initial OCaml 5.6 support&lt;/strong&gt;&lt;/a&gt; draft opened by &lt;a href="https://github.com/vouillon"&gt;Jérôme Vouillon&lt;/a&gt; in &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2227"&gt;#2227&lt;/a&gt; (286 additions across 17 files)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2225" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Oxcaml 5.2.0minus31 update&lt;/strong&gt;&lt;/a&gt; draft opened by &lt;a href="https://github.com/vouillon"&gt;Jérôme Vouillon&lt;/a&gt; in &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2225"&gt;#2225&lt;/a&gt;, with &lt;a href="https://github.com/hhugo"&gt;@hhugo&lt;/a&gt; raising a question about backward compatibility with the previous OxCaml version&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2216" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Browser compatibility documentation&lt;/strong&gt;&lt;/a&gt; (new &lt;code&gt;manual/browser-compat.wiki&lt;/code&gt; chapter on downleveling with Babel and core-js) remains open in &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2216"&gt;#2216&lt;/a&gt; by &lt;a href="https://github.com/hhugo"&gt;@hhugo&lt;/a&gt;; also fixes &lt;code&gt;ECMASCRIPT.md&lt;/code&gt; (async/await are ES2017, not ES2016) and adds Promise and template literals&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2193" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml 5.5 support tracking issue&lt;/strong&gt;&lt;/a&gt; &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2193"&gt;#2193&lt;/a&gt; closed after &lt;a href="https://github.com/hhugo"&gt;@hhugo&lt;/a&gt; confirmed master supports OCaml 5.5; &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; noted the 5.5 release candidate is expected by mid-May&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2061" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Wasm testing tracking issue&lt;/strong&gt;&lt;/a&gt; &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2061"&gt;#2061&lt;/a&gt; closed after upstream dependencies were resolved&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;dune.inc&lt;/code&gt; cleanup&lt;/strong&gt; merged by &lt;a href="https://github.com/hhugo"&gt;@hhugo&lt;/a&gt; in &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2222"&gt;#2222&lt;/a&gt;, removing 234 lines through rule consolidation&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2219" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OxCaml CI workflow fix&lt;/strong&gt;&lt;/a&gt; merged by &lt;a href="https://github.com/vouillon"&gt;Jérôme Vouillon&lt;/a&gt; in &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2219"&gt;#2219&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Long-running draft PRs remain active: &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/1745" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;physical equality hints&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/1745"&gt;#1745&lt;/a&gt;), &lt;strong class="achievement"&gt;OCaml upstream hints consumption&lt;/strong&gt; (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/1721"&gt;#1721&lt;/a&gt;), &lt;strong class="achievement"&gt;compiler substitution speedup&lt;/strong&gt; (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2185"&gt;#2185&lt;/a&gt;), and &lt;strong class="achievement"&gt;OCaml 5.5 full compiler+runtime support&lt;/strong&gt; (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2195"&gt;#2195&lt;/a&gt;, currently conflicting)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;Intl.RelativeTimeFormat&lt;/code&gt; bindings&lt;/strong&gt; remain open from &lt;a href="https://github.com/toastal"&gt;@toastal&lt;/a&gt; in &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2070"&gt;#2070&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>OCaml 5.5 Wasm support completed, several compiler and runtime bug fixes merged, QuickJS-NG support proposed.</summary><published>2026-05-03T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocsigen-js_of_ocaml/2026/week-17</id><title>Week 17, 2026: Browser compatibility discussion prompted a new Babel documentation PR; CI updated with actions/checkout v6.</title><updated>2026-04-26T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+New documentation PR for Babel-based older browser targeting opened; dependabot bumped CI checkout action.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/hhugo"&gt;@hhugo&lt;/a&gt; opened &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2216"&gt;#2216&lt;/a&gt; — a &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2216" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;new manual chapter&lt;/strong&gt;&lt;/a&gt; documenting how to target older browsers using Babel and core-js to downlevel js&lt;em&gt;of&lt;/em&gt;ocaml's ES2020 output, with an end-to-end cram test (&lt;code&gt;compiler/tests-jsoo/babel-downlevel/&lt;/code&gt;) gated behind a &lt;code&gt;@runtest-babel-downlevel&lt;/code&gt; alias so it stays out of the default &lt;code&gt;@runtest&lt;/code&gt;; the PR also fixes &lt;code&gt;ECMASCRIPT.md&lt;/code&gt; (async/await are ES2017, not ES2016) and adds Promise and template literals (ES2015) to the feature table. This PR is open and awaiting review.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2214" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Dependabot&lt;/strong&gt;&lt;/a&gt; merged &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2214"&gt;#2214&lt;/a&gt;, bumping &lt;code&gt;actions/checkout&lt;/code&gt; from v5 to v6 in the CI workflow.&lt;/li&gt;
+&lt;li&gt;The long-running draft PR &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/833"&gt;#833&lt;/a&gt; — an &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/833" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;alternative interface for jsooTop&lt;/strong&gt;&lt;/a&gt; (&lt;code&gt;JsooTopWrapped&lt;/code&gt;, &lt;code&gt;JsooTopAsynchronous&lt;/code&gt;) originally developed for the OCaml MOOC — received an update to its metadata this week; it remains a WIP draft.&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Browser compatibility discussion prompted a new Babel documentation PR; CI updated with actions/checkout v6.</summary><published>2026-04-26T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocsigen-js_of_ocaml/2026/week-16</id><title>Week 16, 2026: OxCaml support merged (140 files, Float32/int8/int16/null types) alongside JSPI documentation clarifications.</title><updated>2026-04-19T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
