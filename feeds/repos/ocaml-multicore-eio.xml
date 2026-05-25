@@ -1,5 +1,186 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-multicore-eio.xml</id><title>ocaml-multicore/eio (Weekly)</title><updated>2026-05-03T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-multicore-eio.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml-multicore/eio</subtitle><entry><id>https://thicket.dev/repos/ocaml-multicore-eio/2026/week-18</id><title>Week 18, 2026: None</title><updated>2026-05-03T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/eio - Week 18, 2026&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/eio - Week 18, 2026</summary><published>2026-05-03T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-eio/2026/week-17</id><title>Week 17, 2026: None</title><updated>2026-04-26T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/eio - Week 17, 2026&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/eio - Week 17, 2026</summary><published>2026-04-26T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-eio/2026/week-16</id><title>Week 16, 2026: Windows backend CPU bug reported with a root cause identified in poll set management; unlink PR awaits review.</title><updated>2026-04-19T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-multicore-eio.xml</id><title>ocaml-multicore/eio (Weekly)</title><updated>2026-05-24T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-multicore-eio.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml-multicore/eio</subtitle><entry><id>https://thicket.dev/repos/ocaml-multicore-eio/2026/week-21</id><title>Week 21, 2026: Added missing_ok option to Eio.Path.unlink; draft PR opened for io_uring performance flags.</title><updated>2026-05-24T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Draft PR for io_uring performance flags opened; incremental directory reading PR received design feedback.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/eio/issues/840" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;io_uring performance flags&lt;/strong&gt;&lt;/a&gt; draft PR opened by &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/issues/840"&gt;#840&lt;/a&gt;), proposing &lt;code&gt;IORING_SETUP_DEFER_TASKRUN&lt;/code&gt; and &lt;code&gt;IORING_SETUP_SINGLE_ISSUER&lt;/code&gt; flags for &lt;code&gt;eio_linux&lt;/code&gt; which showed a large speed improvement on HTTP benchmarks; currently blocked by the benchmark CI machine running Linux 5.15 which is too old to support these flags.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/eio/issues/821" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Incremental directory reading&lt;/strong&gt;&lt;/a&gt; draft PR (&lt;a href="https://github.com/ocaml-multicore/eio/issues/821"&gt;#821&lt;/a&gt;) by &lt;a href="https://github.com/patricoferris"&gt;Patrick Ferris&lt;/a&gt; received design input from &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt;, with the discussion favouring a non-recursive &lt;code&gt;walk&lt;/code&gt; API that hands off descending logic to the caller, enabling future parallel or sequential traversal primitives to be built on top.&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Added missing_ok option to Eio.Path.unlink; draft PR opened for io_uring performance flags.</summary><published>2026-05-24T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-eio/2026/week-20</id><title>Week 20, 2026: Week 20 saw merges adding environment override support, a Uring.Res API update, and documentation cleanup.</title><updated>2026-05-17T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Three PRs were merged this week covering a new environment override API, a compatibility fix for the Uring library, and a documentation cleanup.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/eio/issues/823"&gt;#823&lt;/a&gt; Merged: &lt;a href="https://github.com/ocaml-multicore/eio/issues/823" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Add Eio_unix.Stdenv.override for updating environments&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/patricoferris"&gt;Patrick Ferris&lt;/a&gt;, reviewed and rebased by &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt;, adding 41 lines across &lt;code&gt;eio_unix.ml&lt;/code&gt; and &lt;code&gt;eio_unix.mli&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/eio/issues/839"&gt;#839&lt;/a&gt; Merged: &lt;a href="https://github.com/ocaml-multicore/eio/issues/839" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Update for new Uring.Res API&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt;: casts &lt;code&gt;Uring.Res.t&lt;/code&gt; return values back to &lt;code&gt;int&lt;/code&gt; to maintain compatibility with both old and new versions of &lt;code&gt;ocaml-uring&lt;/code&gt; (see &lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/131"&gt;ocaml-uring#131&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/eio/issues/832"&gt;#832&lt;/a&gt; Merged: &lt;a href="https://github.com/ocaml-multicore/eio/issues/832" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Simplify custom env type in example&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/vog"&gt;Volker Diels-Grabsch&lt;/a&gt;: minor README cleanup removing the redundant &lt;code&gt;as 'a&lt;/code&gt; from a type constraint.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/eio/issues/836"&gt;#836&lt;/a&gt; Closed (not merged): &lt;a href="https://github.com/ocaml-multicore/eio/issues/836" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Make Linux and Posix eventfd functions configurable&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/patricoferris"&gt;Patrick Ferris&lt;/a&gt;: closed after discussion with &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; who suggested using &lt;code&gt;dup&lt;/code&gt; to reserve FDs before initialising Eio as an alternative approach.&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Week 20 saw merges adding environment override support, a Uring.Res API update, and documentation cleanup.</summary><published>2026-05-17T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-eio/2026/week-19</id><title>Week 19, 2026: Feature request for `Eio.Promise.map` opened, with design discussion on promise/fiber semantics.</title><updated>2026-05-10T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+A feature request for Eio.Promise.map&lt;/code&gt; prompted discussion on promise design trade-offs.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/patricoferris"&gt;Patrick Ferris&lt;/a&gt; opened &lt;a href="https://github.com/ocaml-multicore/eio/issues/838"&gt;#838&lt;/a&gt; proposing an &lt;strong class="achievement"&gt;&lt;code&gt;Eio.Promise.map&lt;/code&gt;&lt;/strong&gt; function to allow mapping promises without requiring an attached switch, noting that the existing workaround using &lt;code&gt;Fiber.fork ~sw&lt;/code&gt; breaks the switchless promise API design.&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Feature request for `Eio.Promise.map` opened, with design discussion on promise/fiber semantics.</summary><published>2026-05-10T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-eio/2026/week-18</id><title>Week 18, 2026: None</title><updated>2026-05-03T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/eio - Week 18, 2026&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/eio - Week 18, 2026</summary><published>2026-05-03T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-eio/2026/week-17</id><title>Week 17, 2026: None</title><updated>2026-04-26T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/eio - Week 17, 2026&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/eio - Week 17, 2026</summary><published>2026-04-26T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-eio/2026/week-16</id><title>Week 16, 2026: Windows backend CPU bug reported with a root cause identified in poll set management; unlink PR awaits review.</title><updated>2026-04-19T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

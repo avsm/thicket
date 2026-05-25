@@ -1,5 +1,251 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/multicore.xml</id><title>Multicore (Weekly)</title><updated>2026-05-03T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/multicore.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Multicore OCaml</subtitle><entry><id>https://thicket.dev/groups/multicore/2026/week-18</id><title>Week 18, 2026: Minimal activity across the multicore group; ocaml-uring closed a stale draft PR addressing Linux 5.x kernel header compatibility.</title><updated>2026-05-03T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/multicore.xml</id><title>Multicore (Weekly)</title><updated>2026-05-24T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/multicore.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Multicore OCaml</subtitle><entry><id>https://thicket.dev/groups/multicore/2026/week-21</id><title>Week 21, 2026: ocaml-uring updated to liburing 2.14 with new zero-copy ops and GC fix; eio and domainslib received robustness improvements.</title><updated>2026-05-24T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;Eio.Path.unlink ~missing_ok&lt;/code&gt;&lt;/strong&gt;: &lt;a href="https://github.com/vog"&gt;Volker Diels-Grabsch&lt;/a&gt; added an optional &lt;code&gt;~missing_ok&lt;/code&gt; parameter that silently ignores missing files instead of raising &lt;code&gt;Fs.Not_found&lt;/code&gt;, mirroring the existing behaviour in &lt;code&gt;rmtree&lt;/code&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/issues/833"&gt;ocaml-multicore/eio#833&lt;/a&gt;, resolves &lt;a href="https://github.com/ocaml-multicore/eio/issues/828"&gt;ocaml-multicore/eio#828&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/139" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Zero-copy send/recv operations&lt;/strong&gt;&lt;/a&gt; added to &lt;code&gt;ocaml-uring&lt;/code&gt;: &lt;code&gt;IORING_OP_SEND_ZC&lt;/code&gt;, &lt;code&gt;IORING_OP_SENDMSG_ZC&lt;/code&gt;, and &lt;code&gt;IORING_OP_RECV_ZC&lt;/code&gt; added to capability discovery by &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; and &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/139"&gt;ocaml-multicore/ocaml-uring#139&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/138"&gt;ocaml-multicore/ocaml-uring#138&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/138" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;New io_uring operations&lt;/strong&gt;&lt;/a&gt; exposed in &lt;code&gt;ocaml-uring&lt;/code&gt;: &lt;code&gt;IORING_OP_EPOLL_WAIT&lt;/code&gt;, &lt;code&gt;IORING_OP_READV_FIXED&lt;/code&gt;, &lt;code&gt;IORING_OP_WRITEV_FIXED&lt;/code&gt;, &lt;code&gt;IORING_OP_PIPE&lt;/code&gt;, &lt;code&gt;IORING_OP_NOP128&lt;/code&gt;, and &lt;code&gt;IORING_OP_URING_CMD128&lt;/code&gt; added as part of the liburing 2.14 update (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/138"&gt;ocaml-multicore/ocaml-uring#138&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;New &lt;code&gt;Setup_flags&lt;/code&gt;&lt;/strong&gt; in &lt;code&gt;ocaml-uring&lt;/code&gt;: &lt;code&gt;hybrid_iopoll&lt;/code&gt; (delayed I/O completion polling), &lt;code&gt;cqe_mixed&lt;/code&gt; (mixed 16/32-bit responses), &lt;code&gt;sqe_mixed&lt;/code&gt; (mixed 64/128-bit requests), and &lt;code&gt;no_sqarray&lt;/code&gt; added to &lt;code&gt;uring.mli&lt;/code&gt; (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/138"&gt;ocaml-multicore/ocaml-uring#138&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/136" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;GC safety fix&lt;/strong&gt;&lt;/a&gt; in &lt;code&gt;ocaml-uring&lt;/code&gt;: the &lt;code&gt;polling_timeout&lt;/code&gt; (&lt;code&gt;int option&lt;/code&gt;) parameter in &lt;code&gt;ocaml_uring_setup&lt;/code&gt; was missing from &lt;code&gt;CAMLparam&lt;/code&gt; registration; fixed by &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; after &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; reported the bug (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/136"&gt;ocaml-multicore/ocaml-uring#136&lt;/a&gt;, closes &lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/135"&gt;ocaml-multicore/ocaml-uring#135&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;Activity this week was concentrated in three repositories: &lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/ocaml-uring"&gt;ocaml-multicore/ocaml-uring&lt;/a&gt;, and &lt;a href="https://github.com/ocaml-multicore/domainslib"&gt;ocaml-multicore/domainslib&lt;/a&gt;; the remaining six repositories had no activity.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/ocaml-uring"&gt;ocaml-multicore/ocaml-uring&lt;/a&gt; saw the highest volume: four PRs opened and merged, including a liburing 2.14 vendor update, a GC safety fix, build documentation improvements, and new zero-copy operation entries.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt; merged one user-facing feature (&lt;a href="https://github.com/ocaml-multicore/eio/issues/833"&gt;ocaml-multicore/eio#833&lt;/a&gt;) and has two draft PRs in progress (&lt;a href="https://github.com/ocaml-multicore/eio/issues/840"&gt;ocaml-multicore/eio#840&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/eio/issues/821"&gt;ocaml-multicore/eio#821&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/domainslib"&gt;ocaml-multicore/domainslib&lt;/a&gt; received a community-contributed fix for &lt;code&gt;Task.setup_pool&lt;/code&gt; error handling (&lt;a href="https://github.com/ocaml-multicore/domainslib/issues/134"&gt;ocaml-multicore/domainslib#134&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Contributors this week: &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt;, &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt;, &lt;a href="https://github.com/vog"&gt;Volker Diels-Grabsch&lt;/a&gt;, &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt;, &lt;a href="https://github.com/patricoferris"&gt;Patrick Ferris&lt;/a&gt;, and &lt;a href="https://github.com/glondu"&gt;Stéphane Glondu&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt;'s draft PR exploring &lt;code&gt;IORING_SETUP_DEFER_TASKRUN&lt;/code&gt; and &lt;code&gt;IORING_SETUP_SINGLE_ISSUER&lt;/code&gt; in &lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/issues/840"&gt;ocaml-multicore/eio#840&lt;/a&gt;) depends directly on the new &lt;code&gt;Setup_flags&lt;/code&gt; added to &lt;a href="https://github.com/ocaml-multicore/ocaml-uring"&gt;ocaml-multicore/ocaml-uring&lt;/a&gt; this week (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/138"&gt;ocaml-multicore/ocaml-uring#138&lt;/a&gt;); the liburing 2.14 update is a prerequisite for the eio performance work.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; contributed to both &lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt; (design feedback on &lt;a href="https://github.com/ocaml-multicore/eio/issues/821"&gt;ocaml-multicore/eio#821&lt;/a&gt;) and &lt;a href="https://github.com/ocaml-multicore/ocaml-uring"&gt;ocaml-multicore/ocaml-uring&lt;/a&gt; (zero-copy op additions in &lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/139"&gt;ocaml-multicore/ocaml-uring#139&lt;/a&gt;) in the same week.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/eio/issues/821" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Walk API design&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/issues/821"&gt;ocaml-multicore/eio#821&lt;/a&gt;): &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; and &lt;a href="https://github.com/patricoferris"&gt;Patrick Ferris&lt;/a&gt; settled on a non-recursive form for &lt;code&gt;Eio.Path.walk&lt;/code&gt; that yields a single directory's entries and leaves recursion to the caller, enabling parallel or sequential traversal primitives to be layered on top without constraining the primitive itself.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/135" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;GC safety in C bindings&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/135"&gt;ocaml-multicore/ocaml-uring#135&lt;/a&gt;): &lt;a href="https://github.com/polytypic"&gt;Vesa Karvonen&lt;/a&gt; identified that &lt;code&gt;ocaml_uring_setup&lt;/code&gt; registered only &lt;code&gt;entries&lt;/code&gt; with &lt;code&gt;CAMLparam1&lt;/code&gt; but omitted &lt;code&gt;polling_timeout&lt;/code&gt; (&lt;code&gt;int option&lt;/code&gt;), leaving it unprotected under GC pressure; &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; issued a fix PR within the hour, closed the same day (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/136"&gt;ocaml-multicore/ocaml-uring#136&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;Task.setup_pool&lt;/code&gt; failure semantics&lt;/strong&gt; in &lt;a href="https://github.com/ocaml-multicore/domainslib"&gt;ocaml-multicore/domainslib&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/domainslib/issues/133"&gt;ocaml-multicore/domainslib#133&lt;/a&gt;): &lt;a href="https://github.com/glondu"&gt;Stéphane Glondu&lt;/a&gt; argued that hard failure on domain allocation is too strict for resource-constrained environments and proposed fallback to a smaller pool as the correct default behaviour.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/138" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Rapid liburing tracking&lt;/strong&gt;&lt;/a&gt;: the pattern of vendoring a new liburing release and immediately updating the OCaml API surface — adding new operation enums, &lt;code&gt;Setup_flags&lt;/code&gt;, and capability discovery entries in the same week — is evident in the coordinated &lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/138"&gt;ocaml-multicore/ocaml-uring#138&lt;/a&gt; and &lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/139"&gt;ocaml-multicore/ocaml-uring#139&lt;/a&gt; PRs.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/138" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Zero-copy networking path&lt;/strong&gt;&lt;/a&gt;: &lt;code&gt;send_zc&lt;/code&gt;, &lt;code&gt;sendmsg_zc&lt;/code&gt;, and &lt;code&gt;recv_zc&lt;/code&gt; operations are now exposed in &lt;a href="https://github.com/ocaml-multicore/ocaml-uring"&gt;ocaml-multicore/ocaml-uring&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/138"&gt;ocaml-multicore/ocaml-uring#138&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/139"&gt;ocaml-multicore/ocaml-uring#139&lt;/a&gt;), and the &lt;code&gt;eio_linux&lt;/code&gt; backend is simultaneously exploring performance flags (&lt;a href="https://github.com/ocaml-multicore/eio/issues/840"&gt;ocaml-multicore/eio#840&lt;/a&gt;) — indicating a coordinated push toward higher-throughput I/O in eio.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/eio/issues/833" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Incremental filesystem API ergonomics&lt;/strong&gt;&lt;/a&gt;: &lt;code&gt;~missing_ok&lt;/code&gt; on &lt;code&gt;Eio.Path.unlink&lt;/code&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/issues/833"&gt;ocaml-multicore/eio#833&lt;/a&gt;) follows the same pattern already established in &lt;code&gt;rmtree&lt;/code&gt;, suggesting a broader effort to apply consistent optional-error semantics across path operations.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/domainslib/issues/134" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Resilience of concurrency primitives&lt;/strong&gt;&lt;/a&gt;: both the &lt;code&gt;Task.setup_pool&lt;/code&gt; fallback proposal (&lt;a href="https://github.com/ocaml-multicore/domainslib/issues/134"&gt;ocaml-multicore/domainslib#134&lt;/a&gt;) and the &lt;code&gt;~missing_ok&lt;/code&gt; addition (&lt;a href="https://github.com/ocaml-multicore/eio/issues/833"&gt;ocaml-multicore/eio#833&lt;/a&gt;) reflect a pattern of hardening library interfaces for real-world deployment environments where resource availability cannot be assumed.&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>ocaml-uring updated to liburing 2.14 with new zero-copy ops and GC fix; eio and domainslib received robustness improvements.</summary><published>2026-05-24T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/multicore/2026/week-20</id><title>Week 20, 2026: Activity concentrated in eio and ocaml-uring: new Uring.Res type-safe API, Stdenv.override, and CLOEXEC bug fix.</title><updated>2026-05-17T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;Uring.Res&lt;/code&gt; module&lt;/strong&gt; added to &lt;a href="https://github.com/ocaml-multicore/ocaml-uring"&gt;ocaml-multicore/ocaml-uring&lt;/a&gt; via &lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/131"&gt;ocaml-multicore/ocaml-uring#131&lt;/a&gt;: provides a &lt;code&gt;private int&lt;/code&gt; type for uring operation results, with &lt;code&gt;int_result&lt;/code&gt;/&lt;code&gt;int_exn&lt;/code&gt; for numeric results, &lt;code&gt;fd_result&lt;/code&gt;/&lt;code&gt;fd_exn&lt;/code&gt; for file descriptor results, and a &lt;code&gt;pp&lt;/code&gt; pretty-printer emitting symbolic error names. Resolves the long-standing &lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/117"&gt;ocaml-multicore/ocaml-uring#117&lt;/a&gt; without requiring &lt;code&gt;Obj.magic&lt;/code&gt; in user code.&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;MSG_CMSG_CLOEXEC&lt;/code&gt;&lt;/strong&gt; flag applied atomically when receiving file descriptors via &lt;code&gt;recvmsg&lt;/code&gt; in &lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/132"&gt;ocaml-multicore/ocaml-uring#132&lt;/a&gt;, preventing FD leakage to child processes in multi-threaded programs.&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;Eio_unix.Stdenv.override&lt;/code&gt;&lt;/strong&gt; added to &lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt; via &lt;a href="https://github.com/ocaml-multicore/eio/issues/823"&gt;ocaml-multicore/eio#823&lt;/a&gt;: allows replacing individual capabilities (stdin, stdout, net, process_mgr, clock, fs, etc.) in an existing environment without reconstructing a full environment object.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;Activity this week was concentrated in &lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt; (3 PRs merged) and &lt;a href="https://github.com/ocaml-multicore/ocaml-uring"&gt;ocaml-multicore/ocaml-uring&lt;/a&gt; (4 PRs merged); the remaining 7 repositories had no recorded activity.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; was the primary contributor, authoring all 4 merged PRs in ocaml-uring and reviewing/rebasing the key eio PR &lt;a href="https://github.com/ocaml-multicore/eio/issues/823"&gt;ocaml-multicore/eio#823&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/patricoferris"&gt;Patrick Ferris&lt;/a&gt; contributed the &lt;code&gt;Stdenv.override&lt;/code&gt; feature &lt;a href="https://github.com/ocaml-multicore/eio/issues/823"&gt;ocaml-multicore/eio#823&lt;/a&gt; and a configurable eventfd proposal &lt;a href="https://github.com/ocaml-multicore/eio/issues/836"&gt;ocaml-multicore/eio#836&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt;'s prototype PRs &lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/129"&gt;ocaml-multicore/ocaml-uring#129&lt;/a&gt; and &lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/130"&gt;ocaml-multicore/ocaml-uring#130&lt;/a&gt; informed the final &lt;code&gt;Uring.Res&lt;/code&gt; design, though both were closed in favour of the lighter-weight approach in &lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/131"&gt;ocaml-multicore/ocaml-uring#131&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Three long-standing ocaml-uring issues were closed: WSL2 &lt;code&gt;sendmsg&lt;/code&gt; failure &lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/55"&gt;ocaml-multicore/ocaml-uring#55&lt;/a&gt;, unusable &lt;code&gt;accept&lt;/code&gt; FD &lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/117"&gt;ocaml-multicore/ocaml-uring#117&lt;/a&gt;, and ZFS &lt;code&gt;write_fixed&lt;/code&gt; hang &lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/113"&gt;ocaml-multicore/ocaml-uring#113&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;Uring.Res&lt;/code&gt; API propagation&lt;/strong&gt;: the new &lt;code&gt;Uring.Res&lt;/code&gt; module introduced in &lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/131"&gt;ocaml-multicore/ocaml-uring#131&lt;/a&gt; required an immediate compatibility update in &lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt; via &lt;a href="https://github.com/ocaml-multicore/eio/issues/839"&gt;ocaml-multicore/eio#839&lt;/a&gt;, demonstrating the direct dependency between the two libraries and the need for coordinated releases.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; served as the integration point between both repositories this week, authoring the ocaml-uring API change and the corresponding eio adaptation in the same week.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/129" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Type-safe uring result API design&lt;/strong&gt;&lt;/a&gt; debated across three PRs in &lt;a href="https://github.com/ocaml-multicore/ocaml-uring"&gt;ocaml-multicore/ocaml-uring&lt;/a&gt;: &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt;'s &lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/129"&gt;ocaml-multicore/ocaml-uring#129&lt;/a&gt; used an extra C call for safe int-to-FD conversion; &lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/130"&gt;ocaml-multicore/ocaml-uring#130&lt;/a&gt; explored encoding return types in 4 bits of the job ID. &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; identified allocation overhead and Eio integration complexity (unknown error codes becoming &lt;code&gt;EUNKNOWNERR&lt;/code&gt;, extra match arms per operation) as drawbacks of the fully-typed approach, favouring the &lt;code&gt;private int&lt;/code&gt; approach in &lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/131"&gt;ocaml-multicore/ocaml-uring#131&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/eio/issues/836" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Configurable eventfd for shell FD management&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/issues/836"&gt;ocaml-multicore/eio#836&lt;/a&gt;): &lt;a href="https://github.com/patricoferris"&gt;Patrick Ferris&lt;/a&gt; proposed making eventfd creation configurable for use in &lt;code&gt;msh&lt;/code&gt; (a POSIX shell built on Eio). &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; suggested that opening &lt;code&gt;/dev/null&lt;/code&gt;, duping it to reserve high FD numbers before Eio initialises, then closing them achieves the same goal without an API change.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/eio/issues/831" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Tempdir utilities and atomic rename&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/issues/831"&gt;ocaml-multicore/eio#831&lt;/a&gt;): &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; noted a key use case for the open proposal by &lt;a href="https://github.com/vog"&gt;Volker Diels-Grabsch&lt;/a&gt; — creating a temp file in the same directory as an existing &lt;code&gt;Eio.Path&lt;/code&gt; to enable atomic cross-directory-safe renames when downloading files.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/131" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;API safety without runtime overhead&lt;/strong&gt;&lt;/a&gt;: the &lt;code&gt;Uring.Res&lt;/code&gt; module (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/131"&gt;ocaml-multicore/ocaml-uring#131&lt;/a&gt;) eliminates &lt;code&gt;Obj.magic&lt;/code&gt; for converting uring result integers to &lt;code&gt;Unix.file_descr&lt;/code&gt; using a &lt;code&gt;private int&lt;/code&gt; type; the &lt;code&gt;Stdenv.override&lt;/code&gt; addition (&lt;a href="https://github.com/ocaml-multicore/eio/issues/823"&gt;ocaml-multicore/eio#823&lt;/a&gt;) extends the capability-passing pattern to support ergonomic composition without full environment reconstruction — both reflect a focus on making the libraries safe by default.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/132" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OS-compatibility hardening&lt;/strong&gt;&lt;/a&gt;: the &lt;code&gt;MSG_CMSG_CLOEXEC&lt;/code&gt; fix (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/132"&gt;ocaml-multicore/ocaml-uring#132&lt;/a&gt;) and the Linux 5.10 test hang fix (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/134"&gt;ocaml-multicore/ocaml-uring#134&lt;/a&gt;) address correctness across kernel versions and environments beyond the primary development platform.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/eio/issues/836" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Shell and systems-programming use cases&lt;/strong&gt;&lt;/a&gt;: interest in using Eio as a foundation for shell-level programs (FD management in &lt;a href="https://github.com/ocaml-multicore/eio/issues/836"&gt;ocaml-multicore/eio#836&lt;/a&gt;, temp file handling in &lt;a href="https://github.com/ocaml-multicore/eio/issues/831"&gt;ocaml-multicore/eio#831&lt;/a&gt;, process spawning) is growing, driven by projects like &lt;code&gt;msh&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Activity concentrated in eio and ocaml-uring: new Uring.Res type-safe API, Stdenv.override, and CLOEXEC bug fix.</summary><published>2026-05-17T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/multicore/2026/week-19</id><title>Week 19, 2026: Quiet week across the multicore group; eio saw a design discussion on adding Eio.Promise.map.</title><updated>2026-05-10T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;Activity this week was limited to &lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt;; all other repositories (domainslib, ocaml-uring, meio, saturn, eio-trace, picos, kcas, ocaml-iomux) had no recorded activity.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/patricoferris"&gt;Patrick Ferris&lt;/a&gt; opened &lt;a href="https://github.com/ocaml-multicore/eio/issues/838"&gt;ocaml-multicore/eio#838&lt;/a&gt; proposing an &lt;code&gt;Eio.Promise.map&lt;/code&gt; function to enable functional-style promise composition without requiring a switch.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; responded with a detailed analysis of the design constraints, explaining why a straightforward implementation is non-trivial given Eio's concurrency safety guarantees.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/eio/issues/838"&gt;ocaml-multicore/eio#838&lt;/a&gt;: &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; explained that &lt;code&gt;Condition.register_immediate&lt;/code&gt; exists for immediate callbacks but is intended for IO library integration rather than general use, clarifying where &lt;code&gt;Eio.Promise.map&lt;/code&gt; would fit in the broader API surface.&lt;/li&gt;
+&lt;li&gt;The exchange in &lt;a href="https://github.com/ocaml-multicore/eio/issues/838"&gt;ocaml-multicore/eio#838&lt;/a&gt; surfaces a recurring tension in Eio's design: ergonomic functional composition (e.g. &lt;code&gt;Promise.map&lt;/code&gt;, &lt;code&gt;Promise.bind&lt;/code&gt;) versus the deliberate constraint that promise resolution must not execute arbitrary user code.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;The proposal in &lt;a href="https://github.com/ocaml-multicore/eio/issues/838"&gt;ocaml-multicore/eio#838&lt;/a&gt; reflects continued interest in making Eio's promise primitives composable in a functional style, similar to patterns common in &lt;code&gt;Lwt&lt;/code&gt; or &lt;code&gt;Async&lt;/code&gt;, while preserving Eio's stronger concurrency-safety guarantees.&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Quiet week across the multicore group; eio saw a design discussion on adding Eio.Promise.map.</summary><published>2026-05-10T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/multicore/2026/week-18</id><title>Week 18, 2026: Minimal activity across the multicore group; ocaml-uring closed a stale draft PR addressing Linux 5.x kernel header compatibility.</title><updated>2026-05-03T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

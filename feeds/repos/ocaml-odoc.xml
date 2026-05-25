@@ -1,5 +1,194 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-odoc.xml</id><title>ocaml/odoc (Weekly)</title><updated>2026-05-03T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-odoc.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/odoc</subtitle><entry><id>https://thicket.dev/repos/ocaml-odoc/2026/week-18</id><title>Week 18, 2026: odoc 3.2.0 released; OxCaml compatibility merged; zero-alloc annotation support in progress.</title><updated>2026-05-03T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-odoc.xml</id><title>ocaml/odoc (Weekly)</title><updated>2026-05-24T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-odoc.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/odoc</subtitle><entry><id>https://thicket.dev/repos/ocaml-odoc/2026/week-21</id><title>Week 21, 2026: OxCaml kind annotations support merged, mdx test infrastructure removed, and OxCaml rendering work continues.</title><updated>2026-05-24T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Three new OxCaml-related PRs remain open while mdx tests were removed and the OxCaml unboxed types issue was closed.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/odoc/issues/1420" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Three open PRs awaiting review&lt;/strong&gt;&lt;/a&gt;: modalities support by &lt;a href="https://github.com/art-w"&gt;@art-w&lt;/a&gt; which builds on the newly merged kind annotations work (&lt;a href="https://github.com/ocaml/odoc/issues/1420"&gt;#1420&lt;/a&gt;), zero alloc annotation support by &lt;a href="https://github.com/Leonidas-from-XIV"&gt;Marek Kubica&lt;/a&gt; with active discussion on component type propagation (&lt;a href="https://github.com/ocaml/odoc/issues/1422"&gt;#1422&lt;/a&gt;), and a fix for multiline links in comments by &lt;a href="https://github.com/Tim-ats-d"&gt;Tim ats&lt;/a&gt; (&lt;a href="https://github.com/ocaml/odoc/issues/1439"&gt;#1439&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/odoc/issues/1437" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;mdx test infrastructure removed&lt;/strong&gt;&lt;/a&gt; — &lt;a href="https://github.com/art-w"&gt;@art-w&lt;/a&gt; deleted ~10,500 lines of mdx tests from &lt;code&gt;src/xref2&lt;/code&gt; (test.md, refs.md, resolve/test.md, subst/test.md, strengthen/test.md, cpath/cpath_test.md) and removed mdx from CI workflows, following agreement from &lt;a href="https://github.com/jonludlam"&gt;Jon Ludlam&lt;/a&gt; and &lt;a href="https://github.com/panglesd"&gt;Paul-Elliot Anglès d'Auriac&lt;/a&gt; that cram tests provide better coverage (&lt;a href="https://github.com/ocaml/odoc/issues/1437"&gt;#1437&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/odoc/issues/1414" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OxCaml unboxed types issue closed&lt;/strong&gt;&lt;/a&gt; — &lt;a href="https://github.com/ocaml/odoc/issues/1414"&gt;#1414&lt;/a&gt; tracking missing &lt;code&gt;#&lt;/code&gt; rendering for unboxed named types was closed, resolved by the earlier PR &lt;a href="https://github.com/ocaml/odoc/issues/1407"&gt;#1407&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/odoc/issues/1438" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;AI-generated empty PR closed&lt;/strong&gt;&lt;/a&gt; — &lt;a href="https://github.com/ocaml/odoc/issues/1438"&gt;#1438&lt;/a&gt; auto-generated by an LLM (LM Studio) to fix &lt;a href="https://github.com/ocaml/odoc/issues/846"&gt;#846&lt;/a&gt; was closed as empty, with &lt;a href="https://github.com/panglesd"&gt;Paul-Elliot Anglès d'Auriac&lt;/a&gt; noting the "LGTM" was sarcasm about the emptiness&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>OxCaml kind annotations support merged, mdx test infrastructure removed, and OxCaml rendering work continues.</summary><published>2026-05-24T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-odoc/2026/week-20</id><title>Week 20, 2026: Release 3.2.1 shipped with bug fixes for xref2 substitution crashes; OxCaml unboxed type support merged.</title><updated>2026-05-17T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Two OxCaml PRs remain open; odoc 3.2.1 released with three crash fixes; opam conflict constraint and bench deps updated.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/odoc/issues/1422" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Open: OxCaml zero alloc annotation&lt;/strong&gt;&lt;/a&gt; PR by &lt;a href="https://github.com/Leonidas-from-XIV"&gt;Marek Kubica&lt;/a&gt; adds support for &lt;code&gt;[@@zero_alloc]&lt;/code&gt; on signatures, reading the annotation from compiler artefacts (&lt;code&gt;val_zero_alloc&lt;/code&gt;) rather than re-parsing attributes, following guidance from &lt;a href="https://github.com/panglesd"&gt;Paul-Elliot Anglès d'Auriac&lt;/a&gt; (&lt;a href="https://github.com/ocaml/odoc/issues/1422"&gt;#1422&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/odoc/issues/1410" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Open: OxCaml modality support&lt;/strong&gt;&lt;/a&gt; PR by &lt;a href="https://github.com/art-w"&gt;@art-w&lt;/a&gt; builds on &lt;a href="https://github.com/ocaml/odoc/issues/1410"&gt;#1410&lt;/a&gt; to render modalities in documentation, addressing issue &lt;a href="https://github.com/ocaml/odoc/issues/1416"&gt;#1416&lt;/a&gt;; review ongoing with &lt;a href="https://github.com/panglesd"&gt;Paul-Elliot Anglès d'Auriac&lt;/a&gt; (&lt;a href="https://github.com/ocaml/odoc/issues/1420"&gt;#1420&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/odoc/issues/1426" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Release 3.2.1&lt;/strong&gt;&lt;/a&gt; published on 2026-05-12 by &lt;a href="https://github.com/jonludlam"&gt;Jon Ludlam&lt;/a&gt;, bundling the fixes for &lt;a href="https://github.com/ocaml/odoc/issues/1426"&gt;#1426&lt;/a&gt; (&lt;code&gt;base&lt;/code&gt; breakage in OCaml 5.5.0), &lt;a href="https://github.com/ocaml/odoc/issues/1429"&gt;#1429&lt;/a&gt; (&lt;code&gt;merlin-lib&lt;/code&gt; assertion failure), and &lt;a href="https://github.com/ocaml/odoc/issues/1431"&gt;#1431&lt;/a&gt; (regression from 3.2.0 in local module substitution)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/odoc/issues/1432" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OxCaml opam conflict constraint&lt;/strong&gt;&lt;/a&gt; added by &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt; to prevent installation with OxCaml versions older than 5.2.0minus31 (&lt;a href="https://github.com/ocaml/odoc/issues/1432"&gt;#1432&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/odoc/issues/1435" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;odoc-bench package versions updated&lt;/strong&gt;&lt;/a&gt; to keep the benchmark suite working with current dependencies (&lt;a href="https://github.com/ocaml/odoc/issues/1435"&gt;#1435&lt;/a&gt;) by &lt;a href="https://github.com/jonludlam"&gt;Jon Ludlam&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/odoc/issues/1436" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;CHANGES.md syntax fix&lt;/strong&gt;&lt;/a&gt; correcting malformed whitespace that broke rendered changelog display, by &lt;a href="https://github.com/Leonidas-from-XIV"&gt;Marek Kubica&lt;/a&gt; (&lt;a href="https://github.com/ocaml/odoc/issues/1436"&gt;#1436&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Release 3.2.1 shipped with bug fixes for xref2 substitution crashes; OxCaml unboxed type support merged.</summary><published>2026-05-17T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-odoc/2026/week-19</id><title>Week 19, 2026: Bug fixes for xref2 substitution failures in merlin-lib and core_unix, roadmap update, and OxCaml zero_alloc annotation PR in review.</title><updated>2026-05-10T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Zeroalloc OxCaml annotation PR is under active review; bug fixes for xref2 substitution failures in merlin-lib and core&lt;/em&gt;unix landed just after the week.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;The &lt;strong class="achievement"&gt;&lt;code&gt;[@@zero_alloc]&lt;/code&gt; annotation for OxCaml&lt;/strong&gt; PR by &lt;a href="https://github.com/Leonidas-from-XIV"&gt;Marek Kubica&lt;/a&gt; (&lt;a href="https://github.com/ocaml/odoc/issues/1422"&gt;#1422&lt;/a&gt;) is open and under active review. The PR parses &lt;code&gt;zero_alloc&lt;/code&gt; attributes on signatures and retains them in the parsed output, supporting &lt;code&gt;opt&lt;/code&gt;, &lt;code&gt;strict&lt;/code&gt;, and &lt;code&gt;arity &lt;n&gt;&lt;/code&gt; payloads. &lt;a href="https://github.com/panglesd"&gt;Paul-Elliot Anglès d'Auriac&lt;/a&gt; provided detailed review feedback on the attribute type representation and payload handling.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/odoc/issues/1429" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Build failures&lt;/strong&gt;&lt;/a&gt; for merlin-lib (&lt;a href="https://github.com/ocaml/odoc/issues/1429"&gt;#1429&lt;/a&gt;) and core_unix (&lt;a href="https://github.com/ocaml/odoc/issues/1431"&gt;#1431&lt;/a&gt;) were reported by &lt;a href="https://github.com/jonludlam"&gt;Jon Ludlam&lt;/a&gt; as regressions in the xref2 substitution path (&lt;code&gt;subst.ml&lt;/code&gt; assertion failure and &lt;code&gt;apply_inner_substs&lt;/code&gt; uncaught exception respectively). The fix PR &lt;a href="https://github.com/ocaml/odoc/issues/1430"&gt;#1430&lt;/a&gt; by &lt;a href="https://github.com/jonludlam"&gt;Jon Ludlam&lt;/a&gt; merged just after the week (May 11).&lt;/li&gt;
+&lt;li&gt;An &lt;a href="https://github.com/ocaml/odoc/issues/1432" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OxCaml opam conflict constraint&lt;/strong&gt;&lt;/a&gt; for versions older than 5.2.0minus31 was added by &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt; (&lt;a href="https://github.com/ocaml/odoc/issues/1432"&gt;#1432&lt;/a&gt;), ensuring compatibility with the OxCaml compiler version requirements; this also merged May 11.&lt;/li&gt;
+&lt;li&gt;The &lt;strong class="achievement"&gt;&lt;code&gt;bisect_ppx&lt;/code&gt; dependency&lt;/strong&gt; was removed from odoc's opam file by &lt;a href="https://github.com/jonludlam"&gt;Jon Ludlam&lt;/a&gt; (&lt;a href="https://github.com/ocaml/odoc/issues/1428"&gt;#1428&lt;/a&gt;), as it is not needed for tests and the coverage GHA workflow installs it separately.&lt;/li&gt;
+&lt;li&gt;The ongoing &lt;a href="https://github.com/ocaml/odoc/issues/1411" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OxCaml support tracking issue&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/odoc/issues/1411"&gt;#1411&lt;/a&gt;) by &lt;a href="https://github.com/shonfeder"&gt;Shon Feder&lt;/a&gt; continues to coordinate work on modes, layouts, and other OxCaml-specific features across multiple sub-PRs.&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Bug fixes for xref2 substitution failures in merlin-lib and core_unix, roadmap update, and OxCaml zero_alloc annotation PR in review.</summary><published>2026-05-10T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-odoc/2026/week-18</id><title>Week 18, 2026: odoc 3.2.0 released; OxCaml compatibility merged; zero-alloc annotation support in progress.</title><updated>2026-05-03T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

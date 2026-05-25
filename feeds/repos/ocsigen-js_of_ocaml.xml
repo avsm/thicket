@@ -1,5 +1,198 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocsigen-js_of_ocaml.xml</id><title>ocsigen/js_of_ocaml (Weekly)</title><updated>2026-05-03T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocsigen-js_of_ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocsigen/js_of_ocaml</subtitle><entry><id>https://thicket.dev/repos/ocsigen-js_of_ocaml/2026/week-18</id><title>Week 18, 2026: OCaml 5.5 Wasm support completed, several compiler and runtime bug fixes merged, QuickJS-NG support proposed.</title><updated>2026-05-03T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocsigen-js_of_ocaml.xml</id><title>ocsigen/js_of_ocaml (Weekly)</title><updated>2026-05-24T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocsigen-js_of_ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocsigen/js_of_ocaml</subtitle><entry><id>https://thicket.dev/repos/ocsigen-js_of_ocaml/2026/week-21</id><title>Week 21, 2026: OxCaml 5.2.0minus31 update merged with precise SIMD semantics; Wasm exception handling fixes; 6.4 release tracking opened.</title><updated>2026-05-24T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+New PRs target loop-extraction performance, --build-config path shortening, and a stack overflow fix; 6.4 release tracking opened.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2245" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Loop extraction from toplevel into helper closures&lt;/strong&gt;&lt;/a&gt; opened by &lt;a href="https://github.com/vouillon"&gt;Jérôme Vouillon&lt;/a&gt; (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2245"&gt;#2245&lt;/a&gt;): moves outermost loops of the entry function into small helper closures so JS/Wasm engines tier-compile only the helpers rather than the large initialization function; supersedes the earlier Wasm-only variant (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2212"&gt;#2212&lt;/a&gt;) which was closed in its favor&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;--build-config&lt;/code&gt; output shortening&lt;/strong&gt; opened by &lt;a href="https://github.com/vouillon"&gt;Jérôme Vouillon&lt;/a&gt; (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2247"&gt;#2247&lt;/a&gt;): compact encoding omits keys at their default values (e.g. &lt;code&gt;effects=jspi&lt;/code&gt; instead of &lt;code&gt;effects=jspi+toplevel=false+use-js-string=true&lt;/code&gt;), keeping dune-derived build-config directory names within Windows &lt;code&gt;MAX_PATH&lt;/code&gt;; discussion ongoing about whether a more cryptic but shorter encoding should be used for all configs&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Stack overflow fix for &lt;code&gt;--effects=double-translation&lt;/code&gt;&lt;/strong&gt; draft PR opened by &lt;a href="https://github.com/hhugo"&gt;@hhugo&lt;/a&gt; (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2243"&gt;#2243&lt;/a&gt;): adds a &lt;code&gt;caml_direct_trampoline&lt;/code&gt; loop for SCC-paired direct-style closures to prevent JS stack exhaustion on deep mutual recursion; includes a regression test at depth 1,000,000&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;js&lt;em&gt;of&lt;/em&gt;ocaml 6.4 release tracking issue&lt;/strong&gt; opened by &lt;a href="https://github.com/hhugo"&gt;@hhugo&lt;/a&gt; (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2241"&gt;#2241&lt;/a&gt;) ahead of OCaml 5.5, listing candidates: Promise/Fetch bindings (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2239"&gt;#2239&lt;/a&gt;), Wasm WASI runtime (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/1831"&gt;#1831&lt;/a&gt;), and small fixes (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2240"&gt;#2240&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2242" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;CI fix for dune 3.23.1&lt;/strong&gt;&lt;/a&gt; merged by &lt;a href="https://github.com/vouillon"&gt;Jérôme Vouillon&lt;/a&gt; (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2242"&gt;#2242&lt;/a&gt;), restoring a broken master build&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/1831" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Ongoing blocked PRs&lt;/strong&gt;&lt;/a&gt;: WASI runtime (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/1831"&gt;#1831&lt;/a&gt;) and Wasm native effects via Stack Switching (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2189"&gt;#2189&lt;/a&gt;) remain blocked on &lt;a href="https://github.com/ocaml/dune/issues/13613"&gt;ocaml/dune#13613&lt;/a&gt; and a new dune release; dune 3.23 migration (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2231"&gt;#2231&lt;/a&gt;) awaits resolution of &lt;a href="https://github.com/ocaml/dune/issues/14441"&gt;ocaml/dune#14441&lt;/a&gt; and &lt;a href="https://github.com/ocaml/dune/issues/14438"&gt;ocaml/dune#14438&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2239" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Promise and Fetch bindings&lt;/strong&gt;&lt;/a&gt; PR (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2239"&gt;#2239&lt;/a&gt;) by &lt;a href="https://github.com/hhugo"&gt;@hhugo&lt;/a&gt; received review comments from &lt;a href="https://github.com/vouillon"&gt;Jérôme Vouillon&lt;/a&gt; on &lt;code&gt;Headers&lt;/code&gt; constructor array format and rejection handling; &lt;code&gt;headers_of_list&lt;/code&gt; added in response&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2195" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml 5.5 test suite update&lt;/strong&gt;&lt;/a&gt; (draft, &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2195"&gt;#2195&lt;/a&gt;) by &lt;a href="https://github.com/hhugo"&gt;@hhugo&lt;/a&gt;) remains open; core 5.5 runtime support already landed on master&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>OxCaml 5.2.0minus31 update merged with precise SIMD semantics; Wasm exception handling fixes; 6.4 release tracking opened.</summary><published>2026-05-24T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocsigen-js_of_ocaml/2026/week-20</id><title>Week 20, 2026: QuickJS-NG runtime support merged, major DOM API expansion, and browser compatibility documentation added.</title><updated>2026-05-17T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Five PRs merged covering QuickJS support, DOM expansion, Wasm optimization, and docs; four PRs remain open including Wasm loop extraction and Promise/Fetch bindings.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2240" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Newly opened this week&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/vouillon"&gt;Jérôme Vouillon&lt;/a&gt; opened the &lt;strong class="achievement"&gt;Wasm runtime small fixes&lt;/strong&gt; PR (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2240"&gt;#2240&lt;/a&gt;) and &lt;a href="https://github.com/hhugo"&gt;@hhugo&lt;/a&gt; opened &lt;strong class="achievement"&gt;Promise + Fetch bindings&lt;/strong&gt; PR (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2239"&gt;#2239&lt;/a&gt;), which closes long-standing requests &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2031"&gt;#2031&lt;/a&gt; and &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/596"&gt;#596&lt;/a&gt; with a full &lt;code&gt;Promise&lt;/code&gt;, &lt;code&gt;Abort&lt;/code&gt;, and &lt;code&gt;Fetch&lt;/code&gt; module suite&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2212" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Ongoing open PRs&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/vouillon"&gt;Jérôme Vouillon&lt;/a&gt;'s &lt;strong class="achievement"&gt;Wasm loop extraction&lt;/strong&gt; draft (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2212"&gt;#2212&lt;/a&gt;) moves loops out of the large toplevel function to improve Wasm engine tier-up efficiency; the &lt;strong class="achievement"&gt;dune 3.23 migration&lt;/strong&gt; draft (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2231"&gt;#2231&lt;/a&gt;) is blocked on upstream dune PRs &lt;a href="https://github.com/ocaml/dune/issues/14441"&gt;ocaml/dune#14441&lt;/a&gt; and &lt;a href="https://github.com/ocaml/dune/issues/14438"&gt;ocaml/dune#14438&lt;/a&gt;; &lt;a href="https://github.com/vouillon"&gt;Jérôme Vouillon&lt;/a&gt;'s &lt;strong class="achievement"&gt;wasm-opt removal&lt;/strong&gt; draft (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2238"&gt;#2238&lt;/a&gt;) replaces &lt;code&gt;--opt 1&lt;/code&gt; with targeted local variable optimizations, cutting wasm compilation time by ~60%; update to &lt;strong class="achievement"&gt;OxCaml 5.2.0minus31&lt;/strong&gt; (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2225"&gt;#2225&lt;/a&gt;) is open&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2229" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Merged this week&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/hhugo"&gt;@hhugo&lt;/a&gt; merged &lt;strong class="achievement"&gt;QuickJS-NG support&lt;/strong&gt; (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2229"&gt;#2229&lt;/a&gt;), &lt;strong class="achievement"&gt;browser-compat documentation&lt;/strong&gt; (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2216"&gt;#2216&lt;/a&gt;), and &lt;strong class="achievement"&gt;ocamlformat bump&lt;/strong&gt; (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2237"&gt;#2237&lt;/a&gt;); &lt;a href="https://github.com/vouillon"&gt;Jérôme Vouillon&lt;/a&gt; merged &lt;strong class="achievement"&gt;DOM updates&lt;/strong&gt; (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2221"&gt;#2221&lt;/a&gt;) and &lt;strong class="achievement"&gt;Wasm global variable placement&lt;/strong&gt; (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2211"&gt;#2211&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/1075" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Issues closed&lt;/strong&gt;&lt;/a&gt;: Five long-standing issues resolved this week — JS-agnostic IR request (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/1075"&gt;#1075&lt;/a&gt;) closed as superseded by the wasm backend and current IR approach; &lt;code&gt;--target-env=neutral&lt;/code&gt; request (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2226"&gt;#2226&lt;/a&gt;) closed as &lt;code&gt;isomorphic&lt;/code&gt; already covers the use case; &lt;code&gt;window.performance.now&lt;/code&gt; binding request (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/679"&gt;#679&lt;/a&gt;) and &lt;code&gt;selection*&lt;/code&gt; on input elements (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/453"&gt;#453&lt;/a&gt;) both closed by &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2221"&gt;#2221&lt;/a&gt;; browser feature-detection request (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2215"&gt;#2215&lt;/a&gt;) closed after &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2216"&gt;#2216&lt;/a&gt; merged&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/1833" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Ongoing open PRs from earlier weeks&lt;/strong&gt;&lt;/a&gt;: CSS Font Loading API wrapper by &lt;a href="https://github.com/mesmerizingwaft"&gt;Mesmera (WAFT)&lt;/a&gt; (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/1833"&gt;#1833&lt;/a&gt;) noted as unblocked by &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2239"&gt;#2239&lt;/a&gt;; &lt;code&gt;Intl.RelativeTimeFormat&lt;/code&gt; bindings by &lt;a href="https://github.com/toastal"&gt;@toastal&lt;/a&gt; (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2070"&gt;#2070&lt;/a&gt;) and &lt;code&gt;onbeforeunload&lt;/code&gt; handler fix by &lt;a href="https://github.com/hhugo"&gt;@hhugo&lt;/a&gt; (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2159"&gt;#2159&lt;/a&gt;) remain open&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>QuickJS-NG runtime support merged, major DOM API expansion, and browser compatibility documentation added.</summary><published>2026-05-17T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocsigen-js_of_ocaml/2026/week-19</id><title>Week 19, 2026: Wasm string conversion fix, variable coalescing correctness improvements, and Node.js 26 compatibility updates merged.</title><updated>2026-05-10T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Two new PRs opened for dune 3.23 support and Wasm lifecycle events; four PRs merged covering Wasm, compiler, and CI fixes.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/issues/14441" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Draft PR opened&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/vouillon"&gt;Jérôme Vouillon&lt;/a&gt; to switch the build system to &lt;strong class="achievement"&gt;dune 3.23&lt;/strong&gt;, which uses &lt;code&gt;js_of_ocaml --build-config&lt;/code&gt; to manage configuration details; currently blocked on upstream dune issues &lt;a href="https://github.com/ocaml/dune/issues/14441"&gt;ocaml/dune#14441&lt;/a&gt; and &lt;a href="https://github.com/ocaml/dune/issues/14438"&gt;ocaml/dune#14438&lt;/a&gt;, and currently in conflict (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2231"&gt;#2231&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-wasm/wasm_of_ocaml/issues/143" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;New PR opened&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/JasonGross"&gt;Jason Gross&lt;/a&gt; proposing that the Wasm launcher &lt;strong class="achievement"&gt;dispatch &lt;code&gt;wasmoocaml:loaded&lt;/code&gt; and &lt;code&gt;wasmoocaml:error&lt;/code&gt; CustomEvents&lt;/strong&gt; on &lt;code&gt;globalThis&lt;/code&gt; when async Wasm instantiation completes or fails, allowing external code to wait for the OCaml runtime to be ready; ported from &lt;a href="https://github.com/ocaml-wasm/wasm_of_ocaml/issues/143"&gt;ocaml-wasm/wasm&lt;em&gt;of&lt;/em&gt;ocaml#143&lt;/a&gt;, currently has merge conflicts (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2232"&gt;#2232&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2236" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;CI fix merged&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/vouillon"&gt;Jérôme Vouillon&lt;/a&gt; addressing a dune 3.23 compatibility issue where a lower bound on the menhir dependency was newly enforced (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2236"&gt;#2236&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/hhugo"&gt;@hhugo&lt;/a&gt; opened &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2235"&gt;#2235&lt;/a&gt; to fix Node.js 26 support by removing the same outdated experimental Wasm flags; this was closed in favour of &lt;a href="https://github.com/vouillon"&gt;Jérôme Vouillon&lt;/a&gt;'s equivalent &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2234"&gt;#2234&lt;/a&gt; which was merged the same day&lt;/li&gt;
+&lt;li&gt;Long-running draft PRs for &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2189" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Wasm native effects&lt;/strong&gt;&lt;/a&gt; (Stack Switching proposal, blocked on dune release) and a full &lt;strong class="achievement"&gt;WASI runtime&lt;/strong&gt; remain open and pending unblocking dependencies (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2189"&gt;#2189&lt;/a&gt;, &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/1831"&gt;#1831&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/vouillon"&gt;Jérôme Vouillon&lt;/a&gt;'s draft PR to &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2212" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;extract loops from the toplevel function&lt;/strong&gt;&lt;/a&gt; into helper functions for Wasm tier-up optimisation remains open (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2212"&gt;#2212&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Wasm string conversion fix, variable coalescing correctness improvements, and Node.js 26 compatibility updates merged.</summary><published>2026-05-10T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocsigen-js_of_ocaml/2026/week-18</id><title>Week 18, 2026: OCaml 5.5 Wasm support completed, several compiler and runtime bug fixes merged, QuickJS-NG support proposed.</title><updated>2026-05-03T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

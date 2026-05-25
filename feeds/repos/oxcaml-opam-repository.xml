@@ -1,5 +1,188 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-opam-repository.xml</id><title>oxcaml/opam-repository (Weekly)</title><updated>2026-05-03T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-opam-repository.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/opam-repository</subtitle><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2026/week-18</id><title>Week 18, 2026: Three new PRs opened for opam-core compatibility and package additions; four older issues closed.</title><updated>2026-05-03T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-opam-repository.xml</id><title>oxcaml/opam-repository (Weekly)</title><updated>2026-05-24T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-opam-repository.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/opam-repository</subtitle><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2026/week-21</id><title>Week 21, 2026: Merged core_extended unboxed dep, pending dune package additions, and a build breakage report with upstream fix identified.</title><updated>2026-05-24T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+One PR adding dune packages remains open; a misdirected PR was closed; one package dep fix was merged.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/jonludlam"&gt;Jon Ludlam&lt;/a&gt; opened &lt;a href="https://github.com/oxcaml/opam-repository/issues/49"&gt;#49&lt;/a&gt; &lt;a href="https://github.com/oxcaml/opam-repository/issues/49" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;"Add the rest of the dune packages"&lt;/strong&gt;&lt;/a&gt;, a substantial PR touching 48 files with 1528 additions to bring the remaining dune-built packages into the OxCaml opam repository — currently open and passing CI aside from one unrelated test failure&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; opened and quickly closed &lt;a href="https://github.com/oxcaml/opam-repository/issues/47"&gt;#47&lt;/a&gt; &lt;a href="https://github.com/oxcaml/opam-repository/issues/47" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;"relax the dependency on ocamlfind.1.9.8+ox"&lt;/strong&gt;&lt;/a&gt; after realising it had been opened against the wrong fork; the change relaxes &lt;code&gt;ocamlfind.1.9.8+ox&lt;/code&gt; to allow variant names such as &lt;code&gt;ocamlfind.1.9.8+ox2&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; opened and merged &lt;a href="https://github.com/oxcaml/opam-repository/issues/50"&gt;#50&lt;/a&gt; &lt;a href="https://github.com/oxcaml/opam-repository/issues/50" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;"core_extended: add unboxed dep"&lt;/strong&gt;&lt;/a&gt; the same day, with a prompt review acknowledgement from &lt;a href="https://github.com/dra27-js"&gt;David Allsopp&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Merged core_extended unboxed dep, pending dune package additions, and a build breakage report with upstream fix identified.</summary><published>2026-05-24T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2026/week-20</id><title>Week 20, 2026: CI odoc pin workaround removed after upstream odoc release; request to bump Jane Street preview packages to v0.18~preview.130.100+614.</title><updated>2026-05-17T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Open issue requests bump to Jane Street v0.18~preview.130.100+614; CI odoc workaround merged and removed.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/artempyanykh"&gt;Artem Pianykh&lt;/a&gt; opened &lt;a href="https://github.com/oxcaml/opam-repository/issues/46"&gt;#46&lt;/a&gt; requesting a &lt;strong class="achievement"&gt;package bump to &lt;code&gt;v0.18~preview.130.100+614&lt;/code&gt;&lt;/strong&gt; for Jane Street packages, noting that ~30 packages (including &lt;code&gt;async_smtp&lt;/code&gt;, &lt;code&gt;bonsai_term&lt;/code&gt;, &lt;code&gt;hardcaml_*&lt;/code&gt;, &lt;code&gt;ocaml_simd&lt;/code&gt;, &lt;code&gt;oxcaml_intrinsics&lt;/code&gt;, &lt;code&gt;torch&lt;/code&gt;, &lt;code&gt;unboxed&lt;/code&gt;, &lt;code&gt;vec&lt;/code&gt;, and others) are missing a release commit for this version; the issue references the upstream fix for &lt;a href="https://github.com/janestreet/ocaml_intrinsics_kernel/issues/5"&gt;janestreet/ocaml&lt;em&gt;intrinsics&lt;/em&gt;kernel#5&lt;/a&gt; and a prior bump at commit &lt;code&gt;7dd5def&lt;/code&gt; to &lt;code&gt;v0.18~preview.130.91+190&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/dra27-js"&gt;David Allsopp&lt;/a&gt; merged &lt;a href="https://github.com/oxcaml/opam-repository/issues/45"&gt;#45&lt;/a&gt; &lt;a href="https://github.com/oxcaml/opam-repository/issues/45" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;"Unleash upstream odoc in CI"&lt;/strong&gt;&lt;/a&gt;, reverting the temporary pin of &lt;code&gt;odoc&lt;/code&gt;/&lt;code&gt;odoc-parser&lt;/code&gt;/&lt;code&gt;sherlodoc&lt;/code&gt; to a pre-release git commit that had been in place while awaiting the upstream odoc 3.2.0 release&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>CI odoc pin workaround removed after upstream odoc release; request to bump Jane Street preview packages to v0.18~preview.130.100+614.</summary><published>2026-05-17T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2026/week-19</id><title>Week 19, 2026: Package additions and cleanup: extlib 1.8.0+ox, dune 3.22.2+ox, odoc 3.2.0+ox added; deprecated odoc 3.1.0+ox patches removed.</title><updated>2026-05-10T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Two PRs remain open: ocamlbuild Dune compatibility patch under review and a bootstrap compiler update flagged as possibly obsolete.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/issues/21" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Open PR awaiting review&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/Sudha247"&gt;Sudha Parimala&lt;/a&gt; opened &lt;a href="https://github.com/oxcaml/opam-repository/issues/21"&gt;#21&lt;/a&gt; adding a Dune package management compatibility patch for &lt;code&gt;ocamlbuild&lt;/code&gt;; &lt;a href="https://github.com/dra27-js"&gt;David Allsopp&lt;/a&gt; has left detailed review comments questioning whether the patch is still needed and suggesting cleaner approaches using &lt;code&gt;extra-source&lt;/code&gt; and opam variable filters&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/issues/36" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Open PR flagged as potentially obsolete&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/udesou"&gt;Eduardo Souza&lt;/a&gt; opened &lt;a href="https://github.com/oxcaml/opam-repository/issues/36"&gt;#36&lt;/a&gt; to add OCaml 5.4.1 as a bootstrap compiler in the variants opam file; &lt;a href="https://github.com/dra27-js"&gt;David Allsopp&lt;/a&gt; noted this may no longer be required following changes allowing multiple compiler versions, and the PR currently has merge conflicts&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/issues/42" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Closed without merging&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/art-w"&gt;@art-w&lt;/a&gt;'s &lt;a href="https://github.com/oxcaml/opam-repository/issues/42"&gt;#42&lt;/a&gt; adding &lt;code&gt;opam-format.2.5.1+ox&lt;/code&gt; was superseded by &lt;a href="https://github.com/oxcaml/opam-repository/issues/44"&gt;#44&lt;/a&gt; which took a broader approach; &lt;a href="https://github.com/Sudha247"&gt;Sudha Parimala&lt;/a&gt;'s &lt;a href="https://github.com/oxcaml/opam-repository/issues/22"&gt;#22&lt;/a&gt; adding a Dune compatibility patch for &lt;code&gt;odoc-parser&lt;/code&gt; was closed as unnecessary since the upstream PR merged and odoc no longer needs OxCaml-specific patches&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/issues/35" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Issue closed&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/oxcaml/opam-repository/issues/35"&gt;#35&lt;/a&gt; from &lt;a href="https://github.com/nirnayroy"&gt;Nirnay Roy&lt;/a&gt; asking how to publish an opam package depending on oxcaml was closed by &lt;a href="https://github.com/dra27-js"&gt;David Allsopp&lt;/a&gt;, who confirmed that the necessary infrastructure is now in place in both this overlay and the upstream opam-repository&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Package additions and cleanup: extlib 1.8.0+ox, dune 3.22.2+ox, odoc 3.2.0+ox added; deprecated odoc 3.1.0+ox patches removed.</summary><published>2026-05-10T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2026/week-18</id><title>Week 18, 2026: Three new PRs opened for opam-core compatibility and package additions; four older issues closed.</title><updated>2026-05-03T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

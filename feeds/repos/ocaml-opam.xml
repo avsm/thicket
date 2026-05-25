@@ -1,5 +1,203 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam.xml</id><title>ocaml/opam (Weekly)</title><updated>2026-05-03T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam/2026/week-18</id><title>Week 18, 2026: New OpamFilename.Unix module for cross-platform path handling merged, with several API and patch system PRs opened.</title><updated>2026-05-03T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam.xml</id><title>ocaml/opam (Weekly)</title><updated>2026-05-24T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam/2026/week-21</id><title>Week 21, 2026: Two API refactoring PRs merged advancing the repository performance overhaul, with several new PRs opened for reftests and new .install file sections.</title><updated>2026-05-24T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Several new PRs opened covering .install file extensions, opam config subst fixes, reftests for repository handling, and tar library integration.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/rjbou"&gt;R. Boujbel&lt;/a&gt; opened three PRs advancing the repository overhaul story (&lt;a href="https://github.com/ocaml/opam/issues/6625"&gt;#6625&lt;/a&gt;): HTTP repository reftests (&lt;a href="https://github.com/ocaml/opam/issues/6939"&gt;#6939&lt;/a&gt;), a comprehensive repository layout reftest that logs load-from-dir vs load-from-diff paths (&lt;a href="https://github.com/ocaml/opam/issues/6941"&gt;#6941&lt;/a&gt;), and a &lt;code&gt;tar&lt;/code&gt; library integration replacing the &lt;code&gt;tar&lt;/code&gt; system tool for archive creation (&lt;a href="https://github.com/ocaml/opam/issues/6945"&gt;#6945&lt;/a&gt;); a draft extraction of &lt;code&gt;OpamAdminRepoUpgrade&lt;/code&gt; changes was also opened (&lt;a href="https://github.com/ocaml/opam/issues/6942"&gt;#6942&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/WardBrian"&gt;Brian Ward&lt;/a&gt; opened a PR adding &lt;strong class="achievement"&gt;&lt;code&gt;prefix&lt;/code&gt; and &lt;code&gt;prefixexec&lt;/code&gt; sections&lt;/strong&gt; to &lt;code&gt;.install&lt;/code&gt; files, which would allow packages to install files relative to a custom prefix (&lt;a href="https://github.com/ocaml/opam/issues/6938"&gt;#6938&lt;/a&gt;), addressing feature request &lt;a href="https://github.com/ocaml/opam/issues/6919"&gt;#6919&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/NathanReb"&gt;Nathan Rebours&lt;/a&gt; opened a fix for &lt;strong class="achievement"&gt;&lt;code&gt;opam config subst&lt;/code&gt; absolute path handling&lt;/strong&gt; (&lt;a href="https://github.com/ocaml/opam/issues/6936"&gt;#6936&lt;/a&gt;) resolving &lt;a href="https://github.com/ocaml/opam/issues/6925"&gt;#6925&lt;/a&gt;, and also has an ongoing PR offering to &lt;a href="https://github.com/ocaml/opam/issues/6936" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;remove auto-pinned packages on install failure&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam/issues/6923"&gt;#6923&lt;/a&gt;) queued on &lt;a href="https://github.com/ocaml/opam/issues/6910"&gt;#6910&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/faccinib"&gt;Guilherme FACCINI BANDEIRA&lt;/a&gt; has an open documentation PR &lt;a href="https://github.com/ocaml/opam/issues/6921" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;homogenising man page highlighting&lt;/strong&gt;&lt;/a&gt; of options, arguments, and environment variables to use bold &lt;code&gt;$(b,...)&lt;/code&gt; consistently (&lt;a href="https://github.com/ocaml/opam/issues/6921"&gt;#6921&lt;/a&gt;), resolving &lt;a href="https://github.com/ocaml/opam/issues/6112"&gt;#6112&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt;'s large WIP &lt;a href="https://github.com/ocaml/opam/issues/6625" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;repository performance overhaul&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam/issues/6625"&gt;#6625&lt;/a&gt;) continues to progress as prerequisite PRs land — the &lt;code&gt;OpamPatch&lt;/code&gt; extraction (&lt;a href="https://github.com/ocaml/opam/issues/6934"&gt;#6934&lt;/a&gt;) and &lt;code&gt;OpamRepositoryRoot&lt;/code&gt; abstraction (&lt;a href="https://github.com/ocaml/opam/issues/6680"&gt;#6680&lt;/a&gt;) both merged this week&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Two API refactoring PRs merged advancing the repository performance overhaul, with several new PRs opened for reftests and new .install file sections.</summary><published>2026-05-24T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-opam/2026/week-20</id><title>Week 20, 2026: API cleanup with chdir removal, new path name modules, and new issues around Windows plugin DLL loading and lock file disjunction.</title><updated>2026-05-17T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Three new PRs opened for Solaris terminal resizing, shell exit code leaks, and patch module export; six PRs merged covering API and CI improvements.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6934" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Newly opened&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/opam/issues/6934"&gt;#6934&lt;/a&gt; to export patch-related functions into a new &lt;code&gt;OpamPatch&lt;/code&gt; module, marked ready to merge and intended to simplify the rebase of the larger &lt;a href="https://github.com/ocaml/opam/issues/6625"&gt;#6625&lt;/a&gt; work&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6933" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Newly opened&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/opam/issues/6933"&gt;#6933&lt;/a&gt; to add &lt;strong class="achievement"&gt;terminal resizing detection on Solaris/Illumos&lt;/strong&gt;, correcting the SIGWINCH signal number (28 on Linux/macOS/BSDs, 20 on Illumos), requires OCaml 5.4 or newer&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6930" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Newly opened&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/ta2005"&gt;Talel Zighni&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/opam/issues/6930"&gt;#6930&lt;/a&gt; to fix the &lt;strong class="achievement"&gt;opam-init shell scripts&lt;/strong&gt; for Zsh and Fish leaking a non-zero exit code when the opam environment is already initialized, affecting users with status-code-displaying prompts&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6923" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Ongoing (draft)&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/NathanReb"&gt;Nathan Rebours&lt;/a&gt; has an open draft &lt;a href="https://github.com/ocaml/opam/issues/6923"&gt;#6923&lt;/a&gt; that adds a &lt;strong class="achievement"&gt;prompt to remove auto-pinned packages&lt;/strong&gt; when &lt;code&gt;opam install&lt;/code&gt; fails or is aborted, queued behind &lt;a href="https://github.com/ocaml/opam/issues/6910"&gt;#6910&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6680" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Ongoing&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; continues work on &lt;a href="https://github.com/ocaml/opam/issues/6680"&gt;#6680&lt;/a&gt; to &lt;strong class="achievement"&gt;abstract over repository roots&lt;/strong&gt;, enabling simpler addition of new repository formats; marked ready to merge but queued on &lt;a href="https://github.com/ocaml/opam/issues/6679"&gt;#6679&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6921" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Ongoing&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/faccinib"&gt;Guilherme FACCINI BANDEIRA&lt;/a&gt; has an open PR &lt;a href="https://github.com/ocaml/opam/issues/6921"&gt;#6921&lt;/a&gt; to &lt;strong class="achievement"&gt;homogenise manpage reference highlighting&lt;/strong&gt;, standardizing command options and environment variables to bold &lt;code&gt;$(b, ...)&lt;/code&gt; formatting&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6927" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Merged&lt;/strong&gt;&lt;/a&gt;: CI workflow updated to trigger on changes in &lt;code&gt;doc/&lt;/code&gt; (&lt;a href="https://github.com/ocaml/opam/issues/6927"&gt;#6927&lt;/a&gt;), and &lt;code&gt;lib-tests&lt;/code&gt; Makefile target added (&lt;a href="https://github.com/ocaml/opam/issues/6928"&gt;#6928&lt;/a&gt;), closing the long-standing issue &lt;a href="https://github.com/ocaml/opam/issues/6810"&gt;#6810&lt;/a&gt; by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6931" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;New issues opened&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; filed two Windows portability issues — &lt;a href="https://github.com/ocaml/opam/issues/6931"&gt;#6931&lt;/a&gt; covering opam plugins that require DLLs (e.g. &lt;code&gt;opam-publish&lt;/code&gt; with libgmp) failing on startup in PowerShell due to DLL path resolution, and &lt;a href="https://github.com/ocaml/opam/issues/6932"&gt;#6932&lt;/a&gt; tracking a broader design question of how to allow dynlinked executables to run in native Windows shells&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6935" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;New issue&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/sim642"&gt;Simmo Saan&lt;/a&gt; filed &lt;a href="https://github.com/ocaml/opam/issues/6935"&gt;#6935&lt;/a&gt; reporting that lock files do not use &lt;strong class="achievement"&gt;disjunction for transitive dependencies&lt;/strong&gt; of &lt;code&gt;with-doc&lt;/code&gt; and &lt;code&gt;with-dev-setup&lt;/code&gt;, where shared transitive deps (e.g. &lt;code&gt;cmdliner&lt;/code&gt;) only get annotated with one flag instead of &lt;code&gt;(with-doc | with-dev-setup)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>API cleanup with chdir removal, new path name modules, and new issues around Windows plugin DLL loading and lock file disjunction.</summary><published>2026-05-17T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-opam/2026/week-19</id><title>Week 19, 2026: opam update gains file-to-directory rename support (closing a 7-year-old bug), with new open PRs on autopin cleanup UX and repository loading consistency.</title><updated>2026-05-10T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+New open PRs target autopin cleanup UX, repository loading consistency, and zsh completion; CI improvements merged for doc-triggered workflows.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6923" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Newly opened draft PR&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/NathanReb"&gt;Nathan Rebours&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam/issues/6923"&gt;#6923&lt;/a&gt;) proposes that when &lt;code&gt;opam install&lt;/code&gt; is aborted before confirming package installation, any automatically pinned packages are silently unpinned, complementing the regression test added in &lt;a href="https://github.com/ocaml/opam/issues/6922"&gt;#6922&lt;/a&gt;. Active review discussion with &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; is shaping the exact scope (abort vs. install failure).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6924" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Draft PR&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam/issues/6924"&gt;#6924&lt;/a&gt;) works to homogenize initial repository loads and subsequent diff-based loads, enforcing that &lt;code&gt;load from diff&lt;/code&gt; only looks under &lt;code&gt;packages/&lt;/code&gt; and properly handles &lt;code&gt;files/&lt;/code&gt; subdirectories. This is an alternative approach to the earlier &lt;a href="https://github.com/ocaml/opam/issues/6871"&gt;#6871&lt;/a&gt; (still open as a draft by &lt;a href="https://github.com/rjbou"&gt;R. Boujbel&lt;/a&gt;) and is part of the larger repository tar.gz archive story (&lt;a href="https://github.com/ocaml/opam/issues/6625"&gt;#6625&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6929" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Draft PR&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam/issues/6929"&gt;#6929&lt;/a&gt;) extracts the patch file rename support from &lt;a href="https://github.com/ocaml/opam/issues/6915"&gt;#6915&lt;/a&gt; for further review and extension.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6930" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Open PR&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/ta2005"&gt;Talel Zighni&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam/issues/6930"&gt;#6930&lt;/a&gt;) adds &lt;code&gt;return 0&lt;/code&gt; to the zsh completion script to prevent opam-related error codes from leaking into the shell prompt.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6921" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Open PR&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/faccinib"&gt;Guilherme FACCINI BANDEIRA&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam/issues/6921"&gt;#6921&lt;/a&gt;) standardizes bold/italic usage for environment variables, options, and placeholder arguments in opam manpages, with ongoing discussion involving &lt;a href="https://github.com/dbuenzli"&gt;Daniel Bünzli&lt;/a&gt; on cmdliner manpage conventions.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6910" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Open PR&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/NathanReb"&gt;Nathan Rebours&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam/issues/6910"&gt;#6910&lt;/a&gt;) removes unnecessary &lt;code&gt;chdir&lt;/code&gt; calls (porting work from &lt;a href="https://github.com/ocaml/opam/issues/5966"&gt;#5966&lt;/a&gt;), which also surfaces the &lt;code&gt;opam pin list&lt;/code&gt; crash seen in the aborted-install test. A newly found bug around &lt;code&gt;of_basename&lt;/code&gt; and absolute paths is noted for follow-up.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6922" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Merged:&lt;/strong&gt;&lt;/a&gt; regression test for aborted local install leaving packages half-pinned by &lt;a href="https://github.com/NathanReb"&gt;Nathan Rebours&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam/issues/6922"&gt;#6922&lt;/a&gt;), documenting the current crash in &lt;code&gt;opam pin list&lt;/code&gt; as a baseline for the forthcoming fix.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6915" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Merged:&lt;/strong&gt;&lt;/a&gt; fix for &lt;code&gt;opam update&lt;/code&gt; on file/directory renames by &lt;a href="https://github.com/rjbou"&gt;R. Boujbel&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam/issues/6915"&gt;#6915&lt;/a&gt;), closing &lt;a href="https://github.com/ocaml/opam/issues/3830"&gt;#3830&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6920" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Merged:&lt;/strong&gt;&lt;/a&gt; documentation improvement for &lt;code&gt;depopts&lt;/code&gt; filter note by &lt;a href="https://github.com/ccoulombel"&gt;Corentin Coulombel&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam/issues/6920"&gt;#6920&lt;/a&gt;), closing &lt;a href="https://github.com/ocaml/opam/issues/5367"&gt;#5367&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6927" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;CI improvement&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam/issues/6927"&gt;#6927&lt;/a&gt;) ensures that changes under &lt;code&gt;doc/&lt;/code&gt; now trigger the documentation build job in GitHub Actions, fixing &lt;a href="https://github.com/ocaml/opam/issues/6810"&gt;#6810&lt;/a&gt;. A follow-up issue (&lt;a href="https://github.com/ocaml/opam/issues/6926"&gt;#6926&lt;/a&gt;) tracks splitting &lt;code&gt;main.yml&lt;/code&gt; into separate workflow files for finer-grained triggering.&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>opam update gains file-to-directory rename support (closing a 7-year-old bug), with new open PRs on autopin cleanup UX and repository loading consistency.</summary><published>2026-05-10T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-opam/2026/week-18</id><title>Week 18, 2026: New OpamFilename.Unix module for cross-platform path handling merged, with several API and patch system PRs opened.</title><updated>2026-05-03T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
