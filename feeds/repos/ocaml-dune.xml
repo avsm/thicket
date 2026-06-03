@@ -1,5 +1,74 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-dune.xml</id><title>ocaml/dune (Weekly)</title><updated>2026-05-24T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-dune.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/dune</subtitle><entry><id>https://thicket.dev/repos/ocaml-dune/2026/week-21</id><title>Week 21, 2026: Active week with scheduler/file-watcher refactoring, Melange single-context work, and the 3.23.1 release landing on main.</title><updated>2026-05-24T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-dune.xml</id><title>ocaml/dune (Weekly)</title><updated>2026-05-31T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-dune.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/dune</subtitle><entry><id>https://thicket.dev/repos/ocaml-dune/2026/week-22</id><title>Week 22, 2026: Active week with DragonFly BSD support, anonymous actions expansion, Melange single-context work, and extensive watch-mode and RPC improvements.</title><updated>2026-05-31T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Ongoing work centred on expanding anonymous actions to eliminate intermediate files, hardening the watch-mode scheduler, and advancing the single-context-universal Melange installation stack.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/anmonteiro"&gt;Antonio Nuno Monteiro&lt;/a&gt; continued the &lt;code&gt;single-context-universal&lt;/code&gt; Melange stack: installation rules (&lt;a href="https://github.com/ocaml/dune/pull/14800"&gt;#14800&lt;/a&gt;), &lt;code&gt;melange.ppx_runtime_libraries&lt;/code&gt; (&lt;a href="https://github.com/ocaml/dune/pull/14796"&gt;#14796&lt;/a&gt;), install-conditional-libraries tests (&lt;a href="https://github.com/ocaml/dune/pull/14812"&gt;#14812&lt;/a&gt;), preprocess-melange-only-modules (&lt;a href="https://github.com/ocaml/dune/pull/14814"&gt;#14814&lt;/a&gt;), and a cross-compilation target-env fix (&lt;a href="https://github.com/ocaml/dune/pull/14817"&gt;#14817&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; expanded anonymous actions to cover pkg-config queries (&lt;a href="https://github.com/ocaml/dune/pull/14782"&gt;#14782&lt;/a&gt;), mdx dependency queries (&lt;a href="https://github.com/ocaml/dune/pull/14787"&gt;#14787&lt;/a&gt;), inline-test partitions (&lt;a href="https://github.com/ocaml/dune/pull/14788"&gt;#14788&lt;/a&gt;), and odoc dependency queries (&lt;a href="https://github.com/ocaml/dune/pull/14786"&gt;#14786&lt;/a&gt;, still open).&lt;/li&gt;
+&lt;li&gt;Scheduler file-watcher plumbing was refactored in &lt;a href="https://github.com/ocaml/dune/pull/14778"&gt;#14778&lt;/a&gt;: watcher events now flow through a thread-safe fiber channel, simplifying the event queue to handle only memo invalidations.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;FSEvents&lt;/code&gt; watcher startup and failure propagation were fixed in &lt;a href="https://github.com/ocaml/dune/pull/14764"&gt;#14764&lt;/a&gt; and root-path handling in the &lt;code&gt;Watch_trie&lt;/code&gt; corrected in &lt;a href="https://github.com/ocaml/dune/pull/14785"&gt;#14785&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Thread pool worker spawning was fixed to create new workers when queued work exceeds idle capacity (&lt;a href="https://github.com/ocaml/dune/pull/14707"&gt;#14707&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;The vendored cmdliner was updated to 2.1.1 (&lt;a href="https://github.com/ocaml/dune/issues/12515"&gt;#14636&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/14636"&gt;#14636 PR&lt;/a&gt;), enabling shell completion and updated API.&lt;/li&gt;
+&lt;li&gt;Cache copy-mode entries now have their ctime refreshed on restore so the trim logic retains recently-used entries (&lt;a href="https://github.com/ocaml/dune/pull/14777"&gt;#14777&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Build path separator inconsistency on Windows fixed: &lt;code&gt;Build.to_string&lt;/code&gt; now uses &lt;code&gt;External.append_local&lt;/code&gt; (&lt;a href="https://github.com/ocaml/dune/pull/14616"&gt;#14616&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/dannywillems"&gt;Danny Willems&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/dune/pull/14798"&gt;#14798&lt;/a&gt; fixing Emacs byte-compile warnings in &lt;code&gt;editor-integration/emacs&lt;/code&gt; and adding an Emacs CI workflow.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/robinbb"&gt;Robin Bate Boerop&lt;/a&gt; opened the per-module narrowing Melange layer &lt;a href="https://github.com/ocaml/dune/pull/14732"&gt;#14732&lt;/a&gt; (draft) as part of the larger &lt;a href="https://github.com/ocaml/dune/issues/14492"&gt;#14492&lt;/a&gt; stack.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/toots"&gt;Romain Beauxis&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/dune/pull/14810"&gt;#14810&lt;/a&gt; proposing a &lt;code&gt;%{git-sha}&lt;/code&gt; rule variable following the discussion in &lt;a href="https://github.com/ocaml/dune/issues/14723"&gt;#14723&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Active week with DragonFly BSD support, anonymous actions expansion, Melange single-context work, and extensive watch-mode and RPC improvements.</summary><published>2026-05-31T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-dune/2026/week-21</id><title>Week 21, 2026: Active week with scheduler/file-watcher refactoring, Melange single-context work, and the 3.23.1 release landing on main.</title><updated>2026-05-24T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

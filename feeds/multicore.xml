@@ -1,5 +1,100 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/multicore.xml</id><title>Multicore (Weekly)</title><updated>2026-05-24T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/multicore.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Multicore OCaml</subtitle><entry><id>https://thicket.dev/groups/multicore/2026/week-21</id><title>Week 21, 2026: ocaml-uring updated to liburing 2.14 with new zero-copy ops and GC fix; eio and domainslib received robustness improvements.</title><updated>2026-05-24T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/multicore.xml</id><title>Multicore (Weekly)</title><updated>2026-05-31T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/multicore.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Multicore OCaml</subtitle><entry><id>https://thicket.dev/groups/multicore/2026/week-22</id><title>Week 22, 2026: eio gains io_uring performance flags and fd security fix; ocaml-uring v2.14.0 released with Obj.magic elimination.</title><updated>2026-05-31T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;&lt;code&gt;eio_linux&lt;/code&gt; now uses &lt;strong class="achievement"&gt;&lt;code&gt;IORING_SETUP_DEFER_TASKRUN&lt;/code&gt;&lt;/strong&gt; and &lt;strong class="achievement"&gt;&lt;code&gt;IORING_SETUP_SINGLE_ISSUER&lt;/code&gt;&lt;/strong&gt; when creating io_uring rings, improving HTTP benchmark throughput by roughly 100k req/s on supported hardware (~350k to ~450k); falls back gracefully on older kernels (pre-Linux 6.1) via &lt;code&gt;EINVAL&lt;/code&gt; catch (&lt;a href="https://github.com/ocaml-multicore/eio/issues/841"&gt;ocaml-multicore/eio#841&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/eio/issues/842"&gt;ocaml-multicore/eio#842&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;eio_posix&lt;/code&gt; now passes &lt;strong class="achievement"&gt;&lt;code&gt;MSG_CMSG_CLOEXEC&lt;/code&gt;&lt;/strong&gt; to &lt;code&gt;recvmsg&lt;/code&gt; when receiving file descriptors, ensuring received fds are close-on-exec atomically; falls back to &lt;code&gt;Unix.set_close_on_exec&lt;/code&gt; on macOS where the flag is absent (&lt;a href="https://github.com/ocaml-multicore/eio/issues/843"&gt;ocaml-multicore/eio#843&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;AT_FDCWD&lt;/code&gt; handling moved to C stubs&lt;/strong&gt; in ocaml-uring, eliminating &lt;code&gt;Obj.magic&lt;/code&gt; in the OCaml layer; &lt;code&gt;openat2&lt;/code&gt;, &lt;code&gt;linkat&lt;/code&gt;, &lt;code&gt;unlink&lt;/code&gt;, &lt;code&gt;mkdirat&lt;/code&gt;, and &lt;code&gt;statx&lt;/code&gt; now accept &lt;code&gt;Unix.file_descr option&lt;/code&gt; where &lt;code&gt;None&lt;/code&gt; maps to &lt;code&gt;AT_FDCWD&lt;/code&gt; natively in C (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/128"&gt;ocaml-multicore/ocaml-uring#128&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Fixed &lt;strong class="achievement"&gt;&lt;code&gt;dio_offset_align&lt;/code&gt; statx getter&lt;/strong&gt; in ocaml-uring that was incorrectly returning &lt;code&gt;stx_dio_mem_align&lt;/code&gt; instead of &lt;code&gt;stx_dio_offset_align&lt;/code&gt; (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/141"&gt;ocaml-multicore/ocaml-uring#141&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/140" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;ocaml-uring v2.14.0&lt;/strong&gt;&lt;/a&gt; released by &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt;, documenting breaking changes (&lt;code&gt;Uring.Res&lt;/code&gt; module), new ops (&lt;code&gt;send_zc&lt;/code&gt;, &lt;code&gt;sendmsg_zc&lt;/code&gt;), and accumulated bug fixes (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/140"&gt;ocaml-multicore/ocaml-uring#140&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;Activity this week was concentrated in &lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt; and &lt;a href="https://github.com/ocaml-multicore/ocaml-uring"&gt;ocaml-multicore/ocaml-uring&lt;/a&gt;, with lighter maintenance work in &lt;a href="https://github.com/ocaml-multicore/meio"&gt;ocaml-multicore/meio&lt;/a&gt;; the remaining six repositories had no recorded activity&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt; merged four PRs: two io_uring performance flag PRs (&lt;a href="https://github.com/ocaml-multicore/eio/issues/841"&gt;ocaml-multicore/eio#841&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/eio/issues/842"&gt;ocaml-multicore/eio#842&lt;/a&gt;), one fd security fix (&lt;a href="https://github.com/ocaml-multicore/eio/issues/843"&gt;ocaml-multicore/eio#843&lt;/a&gt;), and a benchmark Dockerfile update (&lt;a href="https://github.com/ocaml-multicore/eio/issues/844"&gt;ocaml-multicore/eio#844&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/ocaml-uring"&gt;ocaml-multicore/ocaml-uring&lt;/a&gt; shipped the v2.14.0 release (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/140"&gt;ocaml-multicore/ocaml-uring#140&lt;/a&gt;), merged the &lt;code&gt;AT_FDCWD&lt;/code&gt; C-stub migration (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/128"&gt;ocaml-multicore/ocaml-uring#128&lt;/a&gt;) and a &lt;code&gt;statx&lt;/code&gt; getter fix (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/141"&gt;ocaml-multicore/ocaml-uring#141&lt;/a&gt;), and opened several new PRs for additional ops and bug fixes&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/meio"&gt;ocaml-multicore/meio&lt;/a&gt; had one new PR opened for a cmdliner migration (&lt;a href="https://github.com/ocaml-multicore/meio/issues/75"&gt;ocaml-multicore/meio#75&lt;/a&gt;) and three stale PRs closed (&lt;a href="https://github.com/ocaml-multicore/meio/issues/67"&gt;ocaml-multicore/meio#67&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/meio/issues/71"&gt;ocaml-multicore/meio#71&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/meio/issues/74"&gt;ocaml-multicore/meio#74&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Contributors active this week: &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt;, &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt;, &lt;a href="https://github.com/patricoferris"&gt;Patrick Ferris&lt;/a&gt;, and &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;The io_uring performance flags merged in &lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/issues/841"&gt;ocaml-multicore/eio#841&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/eio/issues/842"&gt;ocaml-multicore/eio#842&lt;/a&gt;) depend directly on features available in &lt;a href="https://github.com/ocaml-multicore/ocaml-uring"&gt;ocaml-multicore/ocaml-uring&lt;/a&gt;; the benchmark Dockerfile update (&lt;a href="https://github.com/ocaml-multicore/eio/issues/844"&gt;ocaml-multicore/eio#844&lt;/a&gt;) explicitly pins to a recent ocaml-uring version to enable these flags&lt;/li&gt;
+&lt;li&gt;The ocaml-uring v2.14.0 release (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/140"&gt;ocaml-multicore/ocaml-uring#140&lt;/a&gt;) consolidated &lt;code&gt;send_zc&lt;/code&gt;, &lt;code&gt;sendmsg_zc&lt;/code&gt;, and the &lt;code&gt;Uring.Res&lt;/code&gt; module changes that eio relies on for its zero-copy and result-handling paths&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;IORING_SETUP_SINGLE_ISSUER&lt;/code&gt; merged in &lt;a href="https://github.com/ocaml-multicore/eio/issues/841"&gt;ocaml-multicore/eio#841&lt;/a&gt; has a direct interaction with the fork-safety issue tracked in &lt;a href="https://github.com/ocaml-multicore/eio/issues/801"&gt;ocaml-multicore/eio#801&lt;/a&gt;: &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; noted that child processes attempting to use the parent's ring will now receive &lt;code&gt;EEXIST&lt;/code&gt;, providing a clearer failure mode&lt;/li&gt;
+&lt;li&gt;The OCaml 5.x-only question raised in &lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/144"&gt;ocaml-multicore/ocaml-uring#144&lt;/a&gt; — prompted by &lt;code&gt;caml_unix_error&lt;/code&gt; unavailability on OCaml 4.x — is directly motivated by &lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt; targeting OCaml 5.x exclusively, suggesting a potential future alignment of minimum version requirements between the two libraries&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/meio"&gt;ocaml-multicore/meio&lt;/a&gt;'s closure of the Eio tracing events port PR (&lt;a href="https://github.com/ocaml-multicore/meio/issues/71"&gt;ocaml-multicore/meio#71&lt;/a&gt;) reflects the dependency on eio's evolving tracing API, with the stale port from 2024 no longer applicable to the current eio interface&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;In &lt;a href="https://github.com/ocaml-multicore/eio/issues/843"&gt;ocaml-multicore/eio#843&lt;/a&gt;, &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; and &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; discussed macOS compatibility for &lt;code&gt;MSG_CMSG_CLOEXEC&lt;/code&gt;: &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; initially flagged that the flag would not work on macOS, while &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; clarified it is POSIX-specified but optional for implementations; the solution uses compile-time detection with a &lt;code&gt;set_close_on_exec&lt;/code&gt; fallback on macOS&lt;/li&gt;
+&lt;li&gt;In &lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/142"&gt;ocaml-multicore/ocaml-uring#142&lt;/a&gt;, &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; proposed that the &lt;code&gt;Statx.Attr.check&lt;/code&gt; function should use the abstract &lt;code&gt;t&lt;/code&gt; type rather than raw &lt;code&gt;int64&lt;/code&gt;, aligning it with &lt;code&gt;Attr.mem&lt;/code&gt;; &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; implemented a revised version making the type abstract and adding &lt;code&gt;Flags.(=)&lt;/code&gt; and &lt;code&gt;of/to_int&lt;/code&gt; conversions; &lt;a href="https://github.com/patricoferris"&gt;Patrick Ferris&lt;/a&gt; was consulted on the proposed changes&lt;/li&gt;
+&lt;li&gt;In &lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/144"&gt;ocaml-multicore/ocaml-uring#144&lt;/a&gt;, &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; raised that &lt;code&gt;caml_unix_error&lt;/code&gt; is unavailable on OCaml 4.x and proposed dropping OCaml 4.x support for the library, given that its primary consumer eio targets OCaml 5.x only&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/eio/issues/797"&gt;ocaml-multicore/eio#797&lt;/a&gt; (io_uring security and stability concerns) was closed by &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; after triaging the ZFS fixed-buffer kernel crash into the dedicated tracking issue &lt;a href="https://github.com/ocaml-multicore/eio/issues/845"&gt;ocaml-multicore/eio#845&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/eio/issues/840" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Targeted io_uring flag adoption with benchmarked justification:&lt;/strong&gt;&lt;/a&gt; three consecutive PRs (&lt;a href="https://github.com/ocaml-multicore/eio/issues/840"&gt;ocaml-multicore/eio#840&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/eio/issues/841"&gt;ocaml-multicore/eio#841&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/eio/issues/842"&gt;ocaml-multicore/eio#842&lt;/a&gt;) explored &lt;code&gt;IORING_SETUP_SINGLE_ISSUER&lt;/code&gt;, &lt;code&gt;IORING_SETUP_COOP_TASKRUN&lt;/code&gt;, and &lt;code&gt;IORING_SETUP_DEFER_TASKRUN&lt;/code&gt; with careful benchmarking and graceful fallback paths for older kernels&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/128" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Elimination of unsafe OCaml patterns:&lt;/strong&gt;&lt;/a&gt; the merger of &lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/128"&gt;ocaml-multicore/ocaml-uring#128&lt;/a&gt; removes the last &lt;code&gt;Obj.magic&lt;/code&gt; usage from ocaml-uring by moving &lt;code&gt;AT_FDCWD&lt;/code&gt; handling into C stubs; the ongoing &lt;code&gt;Statx.Attr&lt;/code&gt; abstraction (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/142"&gt;ocaml-multicore/ocaml-uring#142&lt;/a&gt;) continues this push toward type-safe C interop&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/eio/issues/845" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Safer defaults over marginal performance:&lt;/strong&gt;&lt;/a&gt; the new issue &lt;a href="https://github.com/ocaml-multicore/eio/issues/845"&gt;ocaml-multicore/eio#845&lt;/a&gt; signals a shift away from fixed buffers as a default in &lt;code&gt;eio_linux&lt;/code&gt;, preferring stability over the performance benefit after a ZFS kernel crash was reported&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/eio/issues/843" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Cross-platform correctness investment:&lt;/strong&gt;&lt;/a&gt; both the &lt;code&gt;MSG_CMSG_CLOEXEC&lt;/code&gt; fix (&lt;a href="https://github.com/ocaml-multicore/eio/issues/843"&gt;ocaml-multicore/eio#843&lt;/a&gt;) and the ongoing &lt;code&gt;chown&lt;/code&gt; PR (&lt;a href="https://github.com/ocaml-multicore/eio/issues/781"&gt;ocaml-multicore/eio#781&lt;/a&gt;) required platform-specific handling between Linux and macOS, reflecting sustained attention to portability alongside Linux-specific performance work&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/144" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml 5.x-only alignment:&lt;/strong&gt;&lt;/a&gt; the question raised in &lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/144"&gt;ocaml-multicore/ocaml-uring#144&lt;/a&gt; about dropping OCaml 4.x support from ocaml-uring, driven by eio's 5.x requirement, suggests the lower layers of the stack may follow eio's lead in formalising a 5.x minimum&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>eio gains io_uring performance flags and fd security fix; ocaml-uring v2.14.0 released with Obj.magic elimination.</summary><published>2026-05-31T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/multicore/2026/week-21</id><title>Week 21, 2026: ocaml-uring updated to liburing 2.14 with new zero-copy ops and GC fix; eio and domainslib received robustness improvements.</title><updated>2026-05-24T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

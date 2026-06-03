@@ -1,5 +1,77 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.xml</id><title>ocaml/ocaml (Weekly)</title><updated>2026-05-24T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-21</id><title>Week 21, 2026: Major week with the typing recovery mechanism landing, Seq.ints_in_range added to stdlib, and significant runtime and documentation work.</title><updated>2026-05-24T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.xml</id><title>ocaml/ocaml (Weekly)</title><updated>2026-05-31T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-22</id><title>Week 22, 2026: Ephemeron GC fixes landed, compiler profiling overhead eliminated, Windows Unix.select bug fixed, and Antonin Décimo added as maintainer.</title><updated>2026-05-31T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Newly opened PR targets runtime events hang fix; ongoing GC pacing, extensible IO, faster minor GC, and constructor eta-expansion proposals continue.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14834" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Newly opened&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/mbacarella"&gt;Michael Bacarella&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/ocaml/issues/14834"&gt;#14834&lt;/a&gt; to fix a hang in runtime events when an event exceeds the ring buffer size (originally reported in &lt;a href="https://github.com/ocaml/ocaml/issues/13335"&gt;#13335&lt;/a&gt;), proposing to terminate with a fatal error rather than loop indefinitely; the PR is under review with &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; suggesting minor cleanups.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14837" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;New maintainer&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/MisterDA"&gt;Antonin Décimo&lt;/a&gt; was officially added to &lt;code&gt;CONTRIBUTING.md&lt;/code&gt; as a maintainer, following a maintainer meeting decision (&lt;a href="https://github.com/ocaml/ocaml/issues/14837"&gt;#14837&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14821" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;CI improvements&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/OlivierNicole"&gt;Olivier Nicole&lt;/a&gt; merged &lt;a href="https://github.com/ocaml/ocaml/issues/14821"&gt;#14821&lt;/a&gt; to disable "cold" tests in GitHub Actions and AppVeyor CI (as permitted by &lt;a href="https://github.com/ocaml/ocaml/issues/14713"&gt;#14713&lt;/a&gt;); &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt; hardened the C++ test to skip correctly when building for musl libc targets (&lt;a href="https://github.com/ocaml/ocaml/issues/14827"&gt;#14827&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14835" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Cross-compilation build fix&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/shym"&gt;@shym&lt;/a&gt; merged &lt;a href="https://github.com/ocaml/ocaml/issues/14835"&gt;#14835&lt;/a&gt; to fix a broken &lt;code&gt;.depend&lt;/code&gt; file caused by &lt;code&gt;ocamldep&lt;/code&gt; misidentifying &lt;code&gt;Str&lt;/code&gt; as the &lt;code&gt;otherlibs/str&lt;/code&gt; library instead of &lt;code&gt;Ast_helper.Str&lt;/code&gt; in the new &lt;code&gt;Typing_recovery_state&lt;/code&gt; module (introduced in &lt;a href="https://github.com/ocaml/ocaml/issues/14241"&gt;#14241&lt;/a&gt;), which had broken cross-compilation CI since that merge.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14833" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Build cleanup&lt;/strong&gt;&lt;/a&gt;: The fake &lt;code&gt;ocamlyacc.opt&lt;/code&gt; file produced during cross-compilation builds was removed from the build system (&lt;a href="https://github.com/ocaml/ocaml/issues/14833"&gt;#14833&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14525" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Changelog housekeeping&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/OlivierNicole"&gt;Olivier Nicole&lt;/a&gt; added a missing PR number (&lt;a href="https://github.com/ocaml/ocaml/issues/14525"&gt;#14525&lt;/a&gt;) to the &lt;code&gt;Fun.todo&lt;/code&gt; changelog entry (&lt;a href="https://github.com/ocaml/ocaml/issues/14829"&gt;#14829&lt;/a&gt;); &lt;a href="https://github.com/Frenxys"&gt;Enea Zani&lt;/a&gt; fixed minor grammar issues across three documentation files (&lt;a href="https://github.com/ocaml/ocaml/issues/14830"&gt;#14830&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14796" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Ongoing — GC pacing&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/damiendoligez"&gt;Damien Doligez&lt;/a&gt; continues work on &lt;a href="https://github.com/ocaml/ocaml/issues/14796"&gt;#14796&lt;/a&gt; (new GC-pacing logic), with &lt;a href="https://github.com/udesou"&gt;Eduardo Souza&lt;/a&gt; providing comprehensive macro-benchmark results showing wall-time improvements across all tested &lt;code&gt;(s, o)&lt;/code&gt; parameter combinations, though at some RSS cost.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14813" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Ongoing — ephemeron correctness&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; has three further ephemeron PRs awaiting review: ensuring no orphaned ephemerons remain across GC cycles (&lt;a href="https://github.com/ocaml/ocaml/issues/14813"&gt;#14813&lt;/a&gt;), waiting for all domains to finish marking before starting a new ephemeron round (&lt;a href="https://github.com/ocaml/ocaml/issues/14774"&gt;#14774&lt;/a&gt;), and a test suite with repro cases for known ephemeron bugs (&lt;a href="https://github.com/ocaml/ocaml/issues/14745"&gt;#14745&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14571" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Ongoing — faster minor GC&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/NickBarnes"&gt;Nick Barnes&lt;/a&gt; updated &lt;a href="https://github.com/ocaml/ocaml/issues/14571"&gt;#14571&lt;/a&gt; after addressing review comments, offering 2-3% total runtime improvements in promotion-heavy workloads by inlining the hot path in &lt;code&gt;oldify_one&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14803" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Ongoing — language feature proposals&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/alainfrisch"&gt;Alain Frisch&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/ocaml/issues/14803"&gt;#14803&lt;/a&gt; proposing to allow constructors to be used directly as builder functions (auto eta-expansion in function-type contexts, e.g. &lt;code&gt;List.map Some [1;2;3]&lt;/code&gt;); &lt;a href="https://github.com/c-cube"&gt;Simon Cruanes&lt;/a&gt; has a draft &lt;a href="https://github.com/ocaml/ocaml/issues/14775"&gt;#14775&lt;/a&gt; implementing extensible IO channels per the modular IO RFC.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14746" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Ongoing — type system&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/smuenzel"&gt;Stefan Muenzel&lt;/a&gt; continues &lt;a href="https://github.com/ocaml/ocaml/issues/14746"&gt;#14746&lt;/a&gt; to allow alias following when checking signature inclusion, with review from &lt;a href="https://github.com/garrigue"&gt;Jacques Garrigue&lt;/a&gt; identifying remaining issues.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14804" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Ongoing — C API&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt; is working on &lt;a href="https://github.com/ocaml/ocaml/issues/14804"&gt;#14804&lt;/a&gt; to expose &lt;code&gt;caml_ba_compare&lt;/code&gt; and related bigarray functions outside of &lt;code&gt;CAML_INTERNALS&lt;/code&gt;, reducing the need for external libraries to define that macro.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14740" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Ongoing — libunix fixes&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/MisterDA"&gt;Antonin Décimo&lt;/a&gt; has &lt;a href="https://github.com/ocaml/ocaml/issues/14740"&gt;#14740&lt;/a&gt; with several small Unix library correctness fixes including missing blocking sections in &lt;code&gt;realpath&lt;/code&gt; and &lt;code&gt;lockf&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14822" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Ongoing — OCAMLRUNPARAM&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/ocaml/issues/14822"&gt;#14822&lt;/a&gt; adding tests for current OCAMLRUNPARAM parsing behavior (including quirks like &lt;code&gt;b&lt;/code&gt; being equivalent to &lt;code&gt;b=1&lt;/code&gt;), as groundwork for follow-up cleanups.&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Ephemeron GC fixes landed, compiler profiling overhead eliminated, Windows Unix.select bug fixed, and Antonin Décimo added as maintainer.</summary><published>2026-05-31T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-21</id><title>Week 21, 2026: Major week with the typing recovery mechanism landing, Seq.ints_in_range added to stdlib, and significant runtime and documentation work.</title><updated>2026-05-24T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

@@ -1,5 +1,69 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-odoc.xml</id><title>ocaml/odoc (Weekly)</title><updated>2026-05-24T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-odoc.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/odoc</subtitle><entry><id>https://thicket.dev/repos/ocaml-odoc/2026/week-21</id><title>Week 21, 2026: OxCaml kind annotations support merged, mdx test infrastructure removed, and OxCaml rendering work continues.</title><updated>2026-05-24T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-odoc.xml</id><title>ocaml/odoc (Weekly)</title><updated>2026-05-31T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-odoc.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/odoc</subtitle><entry><id>https://thicket.dev/repos/ocaml-odoc/2026/week-22</id><title>Week 22, 2026: OxCaml support PRs under active review; OxCaml layouts issue closed; new sherlodoc serve bug reported.</title><updated>2026-05-31T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+New PRs for raise tag rendering and sherlodoc web UI; ongoing OxCaml modalities and zero-alloc annotation work under review.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/odoc/issues/1440" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Inline raise tag rendering&lt;/strong&gt;&lt;/a&gt; fix opened by &lt;a href="https://github.com/Tim-ats-d"&gt;Tim ats&lt;/a&gt; in &lt;a href="https://github.com/ocaml/odoc/issues/1440"&gt;#1440&lt;/a&gt; to address issues where &lt;code&gt;@raise&lt;/code&gt; tag content renders as block-level instead of inline in HTML output, aiming to fix &lt;a href="https://github.com/ocaml/odoc/issues/1136"&gt;#1136&lt;/a&gt; and &lt;a href="https://github.com/ocaml/odoc/issues/1198"&gt;#1198&lt;/a&gt;; &lt;a href="https://github.com/panglesd"&gt;Paul-Elliot Anglès d'Auriac&lt;/a&gt; noted the fix should be moved upstream into the Document layer to cover all backends&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;sherlodoc serve&lt;/code&gt; web UI&lt;/strong&gt; broken due to missing &lt;code&gt;www&lt;/code&gt; directory reported by &lt;a href="https://github.com/mt-caret"&gt;mt_caret&lt;/a&gt; in &lt;a href="https://github.com/ocaml/odoc/issues/1441"&gt;#1441&lt;/a&gt;; the &lt;code&gt;www/&lt;/code&gt; directory was not migrated when sherlodoc was moved from its original repo, causing the server to always report &lt;code&gt;Webserver unavailable&lt;/code&gt;; a branch with the fix exists and a PR is anticipated&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/odoc/issues/1420" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OxCaml modalities&lt;/strong&gt;&lt;/a&gt; PR &lt;a href="https://github.com/ocaml/odoc/issues/1420"&gt;#1420&lt;/a&gt; by &lt;a href="https://github.com/art-w"&gt;@art-w&lt;/a&gt; remains under review with &lt;a href="https://github.com/panglesd"&gt;Paul-Elliot Anglès d'Auriac&lt;/a&gt; providing detailed feedback on modality loading from &lt;code&gt;.cmt&lt;/code&gt; files, cppo usage patterns, and test coverage; this PR fixes &lt;a href="https://github.com/ocaml/odoc/issues/1416"&gt;#1416&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/odoc/issues/1422" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Zero-alloc annotation for OxCaml&lt;/strong&gt;&lt;/a&gt; PR &lt;a href="https://github.com/ocaml/odoc/issues/1422"&gt;#1422&lt;/a&gt; by &lt;a href="https://github.com/Leonidas-from-XIV"&gt;Marek Kubica&lt;/a&gt; is open, adding support for retaining &lt;code&gt;[@@zero_alloc]&lt;/code&gt; annotations from source through to parsed output&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/odoc/issues/1439" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Multiline link fix&lt;/strong&gt;&lt;/a&gt; PR &lt;a href="https://github.com/ocaml/odoc/issues/1439"&gt;#1439&lt;/a&gt; by &lt;a href="https://github.com/Tim-ats-d"&gt;Tim ats&lt;/a&gt; addresses issue &lt;a href="https://github.com/ocaml/odoc/issues/865"&gt;#865&lt;/a&gt; for multi-line link reformatting; review from &lt;a href="https://github.com/panglesd"&gt;Paul-Elliot Anglès d'Auriac&lt;/a&gt; identified ordering issues with &lt;code&gt;trim&lt;/code&gt; and &lt;code&gt;multilines_link_to_link&lt;/code&gt; calls&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/odoc/issues/1415" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OxCaml layouts&lt;/strong&gt;&lt;/a&gt; tracking issue &lt;a href="https://github.com/ocaml/odoc/issues/1415"&gt;#1415&lt;/a&gt; was closed on 2026-05-27, indicating that layout annotation support was merged via &lt;a href="https://github.com/ocaml/odoc/issues/1410"&gt;#1410&lt;/a&gt;; the broader OxCaml tracking issue &lt;a href="https://github.com/ocaml/odoc/issues/1411"&gt;#1411&lt;/a&gt; was updated to reflect remaining work&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>OxCaml support PRs under active review; OxCaml layouts issue closed; new sherlodoc serve bug reported.</summary><published>2026-05-31T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-odoc/2026/week-21</id><title>Week 21, 2026: OxCaml kind annotations support merged, mdx test infrastructure removed, and OxCaml rendering work continues.</title><updated>2026-05-24T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
