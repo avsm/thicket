@@ -1,5 +1,134 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-multicore-ocaml-uring.xml</id><title>ocaml-multicore/ocaml-uring (Weekly)</title><updated>2026-05-31T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-multicore-ocaml-uring.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml-multicore/ocaml-uring</subtitle><entry><id>https://thicket.dev/repos/ocaml-multicore-ocaml-uring/2026/week-22</id><title>Week 22, 2026: v2.14.0 released; AT_FDCWD handling moved to C eliminating Obj.magic; several bug fixes and new op PRs opened.</title><updated>2026-05-31T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-multicore-ocaml-uring.xml</id><title>ocaml-multicore/ocaml-uring (Weekly)</title><updated>2026-06-14T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-multicore-ocaml-uring.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml-multicore/ocaml-uring</subtitle><entry><id>https://thicket.dev/repos/ocaml-multicore-ocaml-uring/2026/week-24</id><title>Week 24, 2026: Socket creation now defaults to CLOEXEC; new PRs add RWF flags and vectored I/O bindings to ocaml-uring.</title><updated>2026-06-14T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Three new PRs opened for low-level I/O improvements; two older experimental PRs closed; bytes buffer migration ongoing.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong class="achievement"&gt;New PR &lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/155"&gt;#155&lt;/a&gt;&lt;/strong&gt; opened by &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt;: adds correct vectored read/writev bindings for fixed buffers, fixing previously misnamed C stubs that were not performing vectored calls (172 additions, 20 deletions across 5 files).&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;New PR &lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/154"&gt;#154&lt;/a&gt;&lt;/strong&gt; opened by &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt;: exposes &lt;code&gt;preadv2&lt;/code&gt;/&lt;code&gt;pwritev2&lt;/code&gt; RWF flags at the uring layer, enabling callers like &lt;code&gt;eio_linux&lt;/code&gt; to use &lt;code&gt;RWF_DSYNC&lt;/code&gt; and &lt;code&gt;RWF_NOCACHE&lt;/code&gt; to reduce unnecessary kernel operations.&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Draft PR &lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/153"&gt;#153&lt;/a&gt;&lt;/strong&gt; switching the buffer type from &lt;code&gt;bigarray&lt;/code&gt;/&lt;code&gt;cstruct&lt;/code&gt; to &lt;code&gt;bytes&lt;/code&gt; is active with ongoing benchmarking: &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; shared microbenchmark results showing no regression in filesystem I/O throughput, improved large-buffer allocation (avoids bigarray finalizer overhead), but worse small-buffer performance due to a 2KB minimum allocation floor needed to keep bytes immovable.&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;PR &lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/151"&gt;#151&lt;/a&gt;&lt;/strong&gt; merged by &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt;: socket flags support landed with CLOEXEC as the new default, enabling &lt;a href="https://github.com/ocaml-multicore/eio/issues/843"&gt;ocaml-multicore/eio#843&lt;/a&gt; to use uring socket creation directly.&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;PR &lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/152"&gt;#152&lt;/a&gt;&lt;/strong&gt; (Linux errno module) closed without merging: &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; noted the module has limited utility in Eio since &lt;code&gt;Unix_error&lt;/code&gt; is always required, and suggested adding useful errnos upstream to OCaml instead. Discussion referenced &lt;a href="https://github.com/ocaml-multicore/eio/issues/788"&gt;ocaml-multicore/eio#788&lt;/a&gt; and &lt;a href="https://github.com/ocaml-multicore/eio/issues/851"&gt;ocaml-multicore/eio#851&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;PR &lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/101"&gt;#101&lt;/a&gt;&lt;/strong&gt; (Cstruct-to-Bstruct experiment) closed by &lt;a href="https://github.com/patricoferris"&gt;Patrick Ferris&lt;/a&gt; in favour of the more comprehensive bytes migration in &lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/153"&gt;#153&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Socket creation now defaults to CLOEXEC; new PRs add RWF flags and vectored I/O bindings to ocaml-uring.</summary><published>2026-06-14T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-ocaml-uring/2026/week-23</id><title>Week 23, 2026: Busy week adding fallocate, ftruncate, shutdown, socket, renameat, symlinkat bindings and fixing Statx API types.</title><updated>2026-06-07T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Three PRs remain open including an errno module, a bytes-based buffer redesign, and socket-flag support; eight PRs merged.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/152" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Newly opened&lt;/strong&gt;&lt;/a&gt; this week and still open: an &lt;strong class="achievement"&gt;errno module&lt;/strong&gt; adding Linux-specific error codes by &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/152"&gt;#152&lt;/a&gt;); a &lt;strong class="achievement"&gt;draft PR switching the buffer type from bigarray/cstruct to &lt;code&gt;bytes&lt;/code&gt;&lt;/strong&gt; (surprisingly small diff) (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/153"&gt;#153&lt;/a&gt;); and a PR to &lt;strong class="achievement"&gt;allow setting &lt;code&gt;CLOEXEC&lt;/code&gt; on socket creation&lt;/strong&gt;, motivated by &lt;a href="https://github.com/ocaml-multicore/eio/issues/843"&gt;ocaml-multicore/eio#843&lt;/a&gt;, with discussion about whether this should be always-on (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/151"&gt;#151&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/149" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Filesystem operations&lt;/strong&gt;&lt;/a&gt; expanded: &lt;code&gt;fallocate&lt;/code&gt; and &lt;code&gt;ftruncate&lt;/code&gt; bindings added with kernel-version guards in tests for the very new &lt;code&gt;FALLOC_FL_WRITE_ZEROES&lt;/code&gt; flag (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/149"&gt;#149&lt;/a&gt;); &lt;code&gt;renameat&lt;/code&gt; with rename flags hard-coded for older musl compatibility (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/147"&gt;#147&lt;/a&gt;); &lt;code&gt;symlinkat&lt;/code&gt; with corrected symlink-follow test (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/147"&gt;#147&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/147" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Networking operations&lt;/strong&gt;&lt;/a&gt; expanded with &lt;code&gt;shutdown&lt;/code&gt; and async &lt;code&gt;socket&lt;/code&gt; creation bindings, reusing the OCaml runtime's socket table rather than redefining it (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/147"&gt;#147&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/148" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Null CQE safety check&lt;/strong&gt;&lt;/a&gt; added to &lt;code&gt;caml_uring_wait_cqe&lt;/code&gt; as a C &lt;code&gt;assert&lt;/code&gt;, matching the existing check in the timeout variant (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/148"&gt;#148&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/146" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Debug-mode build warnings&lt;/strong&gt;&lt;/a&gt; fixed: corrected &lt;code&gt;%p&lt;/code&gt; format specifiers and errno sign in &lt;code&gt;ocaml_uring_unregister_buffers&lt;/code&gt;, and additional &lt;code&gt;URING_DEBUG&lt;/code&gt; format warnings across &lt;code&gt;uring_stubs.c&lt;/code&gt; (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/146"&gt;#146&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/150" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Minimum OCaml version&lt;/strong&gt;&lt;/a&gt; raised to 5.2, removing a now-unnecessary compiler warning (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/150"&gt;#150&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;lintcstubs-arity&lt;/code&gt; depopt&lt;/strong&gt; added to the test dependency to ensure &lt;code&gt;primitives.h&lt;/code&gt; regeneration is caught in CI (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/143"&gt;#143&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Busy week adding fallocate, ftruncate, shutdown, socket, renameat, symlinkat bindings and fixing Statx API types.</summary><published>2026-06-07T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-ocaml-uring/2026/week-22</id><title>Week 22, 2026: v2.14.0 released; AT_FDCWD handling moved to C eliminating Obj.magic; several bug fixes and new op PRs opened.</title><updated>2026-05-31T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

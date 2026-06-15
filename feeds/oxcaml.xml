@@ -1,5 +1,196 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/oxcaml.xml</id><title>OxCaml (Weekly)</title><updated>2026-05-31T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/oxcaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Oxidised OCaml</subtitle><entry><id>https://thicket.dev/groups/oxcaml/2026/week-22</id><title>Week 22, 2026: oxcaml/oxcaml landed runtime performance improvements, a new C API, type system fixes, and a Merlin sync; opam-repository addressed Dune patch compatibility.</title><updated>2026-05-31T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/oxcaml.xml</id><title>OxCaml (Weekly)</title><updated>2026-06-14T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/oxcaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Oxidised OCaml</subtitle><entry><id>https://thicket.dev/groups/oxcaml/2026/week-24</id><title>Week 24, 2026: OCaml 5.4 upstream merge landed in oxcaml/oxcaml; Dune 3.22.2+ox packages added to oxcaml/opam-repository.</title><updated>2026-06-14T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;The &lt;a href="https://github.com/oxcaml/oxcaml/issues/5325" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml 5.4 upstream merge&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5325"&gt;oxcaml/oxcaml#5325&lt;/a&gt;) landed on June 12, bringing in the full 5.4 branch including stdlib updates, runtime changes, and toolchain improvements, accompanied by a magic number bump.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14856" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Correct handling of concurrent lazy header marking&lt;/strong&gt;&lt;/a&gt; in the major GC, backported from &lt;a href="https://github.com/ocaml/ocaml/issues/14856"&gt;ocaml/ocaml#14856&lt;/a&gt;: fixes potential SEGVs or heap corruption when two domains race on a lazy block (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6228"&gt;oxcaml/oxcaml#6228&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Graceful degradation for &lt;code&gt;OCAMLRUNPARAM=d=&lt;/code&gt; values&lt;/strong&gt; exceeding valid range, avoiding a fatal error in the runtime (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6215"&gt;oxcaml/oxcaml#6215&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/6247" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Post-5.4-merge typing fixes&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/ccasin"&gt;Chris Casinghino&lt;/a&gt;: corrected &lt;code&gt;@untagged&lt;/code&gt; error messages on externals with &lt;code&gt;int8&lt;/code&gt;/&lt;code&gt;int16&lt;/code&gt;, updated format strings in &lt;code&gt;typetexp.ml&lt;/code&gt;, and unified duplicate &lt;code&gt;solve_Pexp_field&lt;/code&gt;/&lt;code&gt;type_label_projection&lt;/code&gt; functions (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6247"&gt;oxcaml/oxcaml#6247&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/6223" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;CFG merge-blocks register equality strengthened&lt;/strong&gt;&lt;/a&gt;: structural equality now used instead of physical equality in the merge-blocks pass (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6223"&gt;oxcaml/oxcaml#6223&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/6211" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Merlin updated to 5.2.0minus-40&lt;/strong&gt;&lt;/a&gt; with a merlin-specific diff added to &lt;code&gt;out_type.ml&lt;/code&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6211"&gt;oxcaml/oxcaml#6211&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6216"&gt;oxcaml/oxcaml#6216&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6225"&gt;oxcaml/oxcaml#6225&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/issues/49" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Dune 3.22.2+ox package family&lt;/strong&gt;&lt;/a&gt; (16 sub-packages including &lt;code&gt;chrome-trace&lt;/code&gt;, &lt;code&gt;dune-build-info&lt;/code&gt;, &lt;code&gt;dune-rpc&lt;/code&gt;, &lt;code&gt;stdune&lt;/code&gt;, &lt;code&gt;xdg&lt;/code&gt;, etc.) added to &lt;a href="https://github.com/oxcaml/opam-repository"&gt;oxcaml/opam-repository&lt;/a&gt; with &lt;code&gt;oxcaml-dune.patch&lt;/code&gt; compatibility (&lt;a href="https://github.com/oxcaml/opam-repository/issues/49"&gt;oxcaml/opam-repository#49&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/issues/52" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Version constraint fixes&lt;/strong&gt;&lt;/a&gt; in &lt;a href="https://github.com/oxcaml/opam-repository"&gt;oxcaml/opam-repository&lt;/a&gt; for &lt;code&gt;stdune&lt;/code&gt;, &lt;code&gt;extlib&lt;/code&gt;, &lt;code&gt;eio_linux&lt;/code&gt;, &lt;code&gt;cmarkit&lt;/code&gt;, &lt;code&gt;omd&lt;/code&gt;, &lt;code&gt;yojson&lt;/code&gt;, and &lt;code&gt;cmdliner&lt;/code&gt; to correctly scope &lt;code&gt;5.2.0minus31&lt;/code&gt; vs &lt;code&gt;5.2.0minus31+&lt;/code&gt; builds (&lt;a href="https://github.com/oxcaml/opam-repository/issues/52"&gt;oxcaml/opam-repository#52&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/oxcaml/oxcaml"&gt;oxcaml/oxcaml&lt;/a&gt;&lt;/strong&gt; had the highest activity: the OCaml 5.4 upstream merge (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5325"&gt;oxcaml/oxcaml#5325&lt;/a&gt;) completed on June 12 after months of work, triggering 40+ new PRs for post-merge cleanup, unboxed types, mode error improvements, runtime API, and name mangling test infrastructure.&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/oxcaml/opam-repository"&gt;oxcaml/opam-repository&lt;/a&gt;&lt;/strong&gt; completed the Dune 3.22.2+ox package additions (&lt;a href="https://github.com/oxcaml/opam-repository/issues/49"&gt;oxcaml/opam-repository#49&lt;/a&gt;) and merged accumulated constraint fixes (&lt;a href="https://github.com/oxcaml/opam-repository/issues/52"&gt;oxcaml/opam-repository#52&lt;/a&gt;), while &lt;a href="https://github.com/oxcaml/opam-repository/issues/51"&gt;oxcaml/opam-repository#51&lt;/a&gt; remains open pending an upstream Dune fix.&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/oxcaml/merlin"&gt;oxcaml/merlin&lt;/a&gt;&lt;/strong&gt; saw a large draft PR (&lt;a href="https://github.com/oxcaml/merlin/issues/239"&gt;oxcaml/merlin#239&lt;/a&gt;) for merging minus-37 into the 5.4 branch closed without merging due to conflicts across 896 files.&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/oxcaml/js_of_ocaml"&gt;oxcaml/js&lt;em&gt;of&lt;/em&gt;ocaml&lt;/a&gt;&lt;/strong&gt; and &lt;strong class="achievement"&gt;&lt;a href="https://github.com/janestreet/opam-repository"&gt;janestreet/opam-repository&lt;/a&gt;&lt;/strong&gt; had no recorded activity this week.&lt;/li&gt;
+&lt;li&gt;17+ contributors were active across the group, concentrated in &lt;a href="https://github.com/oxcaml/oxcaml"&gt;oxcaml/oxcaml&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong class="achievement"&gt;Merlin synchronisation across &lt;a href="https://github.com/oxcaml/oxcaml"&gt;oxcaml/oxcaml&lt;/a&gt; and &lt;a href="https://github.com/oxcaml/merlin"&gt;oxcaml/merlin&lt;/a&gt;&lt;/strong&gt;: &lt;a href="https://github.com/liam923"&gt;Liam Stevenson&lt;/a&gt; opened a CI enforcement script (&lt;code&gt;assert-in-sync.sh&lt;/code&gt;) in &lt;a href="https://github.com/oxcaml/oxcaml"&gt;oxcaml/oxcaml&lt;/a&gt; to keep Merlin in sync with frontend changes (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6245"&gt;oxcaml/oxcaml#6245&lt;/a&gt;), while &lt;a href="https://github.com/dkalinichenko-js"&gt;@dkalinichenko-js&lt;/a&gt; separately closed a large draft merge PR in &lt;a href="https://github.com/oxcaml/merlin"&gt;oxcaml/merlin&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/merlin/issues/239"&gt;oxcaml/merlin#239&lt;/a&gt;) that was too conflicted to land; the 5.4 Merlin upgrade PR (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6250"&gt;oxcaml/oxcaml#6250&lt;/a&gt;) in &lt;a href="https://github.com/oxcaml/oxcaml"&gt;oxcaml/oxcaml&lt;/a&gt; coordinates this effort.&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Dune compatibility chain from &lt;a href="https://github.com/ocaml/dune"&gt;ocaml/dune&lt;/a&gt; to &lt;a href="https://github.com/oxcaml/opam-repository"&gt;oxcaml/opam-repository&lt;/a&gt;&lt;/strong&gt;: Dune's shift to a pure OCaml patch implementation (&lt;a href="https://github.com/ocaml/dune/issues/14177"&gt;ocaml/dune#14177&lt;/a&gt;) broke OxCaml patch files; &lt;a href="https://github.com/oxcaml/opam-repository/issues/51"&gt;oxcaml/opam-repository#51&lt;/a&gt; awaits upstream resolution via &lt;a href="https://github.com/ocaml/dune/issues/15146"&gt;ocaml/dune#15146&lt;/a&gt;, with &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; bridging both discussions.&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/dra27-js"&gt;David Allsopp&lt;/a&gt; active across two repositories&lt;/strong&gt;: drives constraint and layout fixes in &lt;a href="https://github.com/oxcaml/opam-repository"&gt;oxcaml/opam-repository&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/opam-repository/issues/52"&gt;oxcaml/opam-repository#52&lt;/a&gt;) while also working on the OCaml 5.4 Compression module in &lt;a href="https://github.com/oxcaml/oxcaml"&gt;oxcaml/oxcaml&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5533"&gt;oxcaml/oxcaml#5533&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;OCaml 5.4 upstream merge in &lt;a href="https://github.com/oxcaml/oxcaml"&gt;oxcaml/oxcaml&lt;/a&gt; drives opam packaging work&lt;/strong&gt;: the landed 5.4 merge (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5325"&gt;oxcaml/oxcaml#5325&lt;/a&gt;) and associated Merlin upgrade will likely require further &lt;a href="https://github.com/oxcaml/opam-repository"&gt;oxcaml/opam-repository&lt;/a&gt; package additions for the new &lt;code&gt;5.4.0+ox1&lt;/code&gt; compiler variant referenced in &lt;a href="https://github.com/oxcaml/oxcaml/issues/6250"&gt;oxcaml/oxcaml#6250&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/Zaneham"&gt;Zane Hambly&lt;/a&gt; opened a detailed proposal for &lt;a href="https://github.com/oxcaml/oxcaml/issues/6257" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;AVX-512 support&lt;/strong&gt;&lt;/a&gt; in the amd64 SIMD backend (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6257"&gt;oxcaml/oxcaml#6257&lt;/a&gt;), covering EVEX encoding, ZMM register classes, opmask (k0–k7) additions, and a phased landing plan, explicitly requesting design coordination before implementation.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/TyOverby"&gt;Ty Overby&lt;/a&gt; reported that &lt;a href="https://github.com/oxcaml/oxcaml/issues/6255" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;resizing a domain while an unboxed float is in a register clobbers the value&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6255"&gt;oxcaml/oxcaml#6255&lt;/a&gt;), with a minimal reproducer using the &lt;code&gt;parallel&lt;/code&gt; library.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/jvanburen"&gt;Jacob Van Buren&lt;/a&gt; raised whether &lt;a href="https://github.com/oxcaml/oxcaml/issues/6217" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;K&amp;R-style parameter lists&lt;/strong&gt;&lt;/a&gt; in the OCaml runtime can be removed (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6217"&gt;oxcaml/oxcaml#6217&lt;/a&gt;); &lt;a href="https://github.com/NickBarnes"&gt;Nick Barnes&lt;/a&gt; and &lt;a href="https://github.com/MisterDA"&gt;Antonin Décimo&lt;/a&gt; confirmed intent to eliminate them, with most already addressed in a prior GCC 15 / Autoconf 2.7x migration.&lt;/li&gt;
+&lt;li&gt;The &lt;strong class="achievement"&gt;&lt;code&gt;ocamlfilt&lt;/code&gt; demangler&lt;/strong&gt; PR (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5100"&gt;oxcaml/oxcaml#5100&lt;/a&gt;) saw detailed discussion on handling redundant location chains in nested anonymous functions, missing functor application site information, and whether trailing &lt;code&gt;_code&lt;/code&gt; suffixes and second stamps should be dropped.&lt;/li&gt;
+&lt;li&gt;In &lt;a href="https://github.com/oxcaml/opam-repository/issues/51"&gt;oxcaml/opam-repository#51&lt;/a&gt;, &lt;a href="https://github.com/dra27-js"&gt;David Allsopp&lt;/a&gt; and &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; debated &lt;a href="https://github.com/oxcaml/opam-repository/issues/51" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;tactical patching vs. upstream fix&lt;/strong&gt;&lt;/a&gt; for &lt;code&gt;ignore-opam.patch&lt;/code&gt; line drift, with &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; providing a &lt;code&gt;dune-project&lt;/code&gt; workaround for the &lt;code&gt;oxcaml-dune&lt;/code&gt;/&lt;code&gt;dune&lt;/code&gt; solver conflict.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5325" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Post-5.4 merge consolidation&lt;/strong&gt;&lt;/a&gt;: the completion of &lt;a href="https://github.com/oxcaml/oxcaml/issues/5325"&gt;oxcaml/oxcaml#5325&lt;/a&gt; marks a shift from merge logistics to post-merge cleanup, test promotion, and leveraging 5.4 features such as the Compression module (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5533"&gt;oxcaml/oxcaml#5533&lt;/a&gt;) and updated runtime header hygiene (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6138"&gt;oxcaml/oxcaml#6138&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/6256" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Unboxed types moving toward stricter enforcement&lt;/strong&gt;&lt;/a&gt;: the pattern of requiring &lt;code&gt;[@all_void_constructor]&lt;/code&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6256"&gt;oxcaml/oxcaml#6256&lt;/a&gt;) and restricting polymorphism over &lt;code&gt;any&lt;/code&gt;-kinded constructors (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6238"&gt;oxcaml/oxcaml#6238&lt;/a&gt;) indicates preparatory work for changing the runtime representation of void-containing constructors.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/6249" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Mode error messages gaining detailed source attribution&lt;/strong&gt;&lt;/a&gt;: multiple open PRs from &lt;a href="https://github.com/ainageorges"&gt;@ainageorges&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6249"&gt;oxcaml/oxcaml#6249&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6205"&gt;oxcaml/oxcaml#6205&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6244"&gt;oxcaml/oxcaml#6244&lt;/a&gt;) and &lt;a href="https://github.com/julesjacobs"&gt;@julesjacobs&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6074"&gt;oxcaml/oxcaml#6074&lt;/a&gt;) show a concerted effort to improve mode/modality type error diagnostics.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5552" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Name mangling test infrastructure consolidation&lt;/strong&gt;&lt;/a&gt;: the large &lt;a href="https://github.com/oxcaml/oxcaml/issues/5552"&gt;oxcaml/oxcaml#5552&lt;/a&gt; was split into four smaller PRs (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6234"&gt;oxcaml/oxcaml#6234&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6235"&gt;oxcaml/oxcaml#6235&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6236"&gt;oxcaml/oxcaml#6236&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6237"&gt;oxcaml/oxcaml#6237&lt;/a&gt;) to enable incremental merging.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/6248" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Runtime API expanding for external memory integration&lt;/strong&gt;&lt;/a&gt;: the draft &lt;code&gt;caml_add_extent&lt;/code&gt; API (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6248"&gt;oxcaml/oxcaml#6248&lt;/a&gt;) and the &lt;code&gt;-alias&lt;/code&gt;/&lt;code&gt;-nondep&lt;/code&gt; compiler flags (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6182"&gt;oxcaml/oxcaml#6182&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6229"&gt;oxcaml/oxcaml#6229&lt;/a&gt;) indicate increasing investment in OxCaml/external memory interoperability.&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Dune 3.22.x package family expansion in &lt;a href="https://github.com/oxcaml/opam-repository"&gt;oxcaml/opam-repository&lt;/a&gt;&lt;/strong&gt;: the completion of the 16-package Dune 3.22.2+ox family (&lt;a href="https://github.com/oxcaml/opam-repository/issues/49"&gt;oxcaml/opam-repository#49&lt;/a&gt;) and ongoing constraint precision fixes (&lt;a href="https://github.com/oxcaml/opam-repository/issues/52"&gt;oxcaml/opam-repository#52&lt;/a&gt;) reflect a maturing package ecosystem for OxCaml.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/6245" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Merlin synchronisation becoming a formal CI requirement&lt;/strong&gt;&lt;/a&gt;: the &lt;code&gt;assert-in-sync.sh&lt;/code&gt; script (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6245"&gt;oxcaml/oxcaml#6245&lt;/a&gt;) signals a move from ad-hoc to automated enforcement of frontend/Merlin consistency, motivated by the complexity of the 5.4 merge.&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>OCaml 5.4 upstream merge landed in oxcaml/oxcaml; Dune 3.22.2+ox packages added to oxcaml/opam-repository.</summary><published>2026-06-14T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/oxcaml/2026/week-23</id><title>Week 23, 2026: oxcaml/oxcaml saw dense typing and flambda2 fixes plus a 5.4 upstream merge push; oxcaml/merlin advanced its minus-37 branch merge.</title><updated>2026-06-07T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;The &lt;a href="https://github.com/oxcaml/oxcaml/issues/4374" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;match-in-match heuristic&lt;/strong&gt;&lt;/a&gt; landed in flambda2 via &lt;a href="https://github.com/oxcaml/oxcaml/issues/4374"&gt;oxcaml/oxcaml#4374&lt;/a&gt; by &lt;a href="https://github.com/bclement-ocp"&gt;Basile Clément&lt;/a&gt;, enabling continuation specialisation across nested match expressions and exposed via a new &lt;code&gt;-flambda2-match-in-match&lt;/code&gt; flag with a &lt;code&gt;cont_spec_threshold&lt;/code&gt; parameter.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5453" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Normal-form mode morphisms&lt;/strong&gt;&lt;/a&gt; merged in &lt;a href="https://github.com/oxcaml/oxcaml/issues/5453"&gt;oxcaml/oxcaml#5453&lt;/a&gt;, refactoring the mode solver's internal representation to enable more precise mode error hints via concrete modality propagation.&lt;/li&gt;
+&lt;li&gt;Frametables are now placed in the &lt;strong class="achievement"&gt;&lt;code&gt;.rodata&lt;/code&gt; section&lt;/strong&gt; by default via &lt;a href="https://github.com/oxcaml/oxcaml/issues/6094"&gt;oxcaml/oxcaml#6094&lt;/a&gt; by &lt;a href="https://github.com/Svetlitski"&gt;Kevin Svetlitski&lt;/a&gt;, separating instruction and data pages to improve iTLB efficiency.&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;%%expect_fexpr&lt;/code&gt;&lt;/strong&gt; annotations can now appear in toplevel expect tests via &lt;a href="https://github.com/oxcaml/oxcaml/issues/5837"&gt;oxcaml/oxcaml#5837&lt;/a&gt; by &lt;a href="https://github.com/Keryan-dev"&gt;Keryan Didier&lt;/a&gt;, allowing raw, simplified, and reaper-stage flambda2 IR to be snapshot-tested inline.&lt;/li&gt;
+&lt;li&gt;A new &lt;strong class="achievement"&gt;&lt;code&gt;OXCAML_RUNTIME&lt;/code&gt;&lt;/strong&gt; C preprocessor symbol was added in &lt;a href="https://github.com/oxcaml/oxcaml/issues/6203"&gt;oxcaml/oxcaml#6203&lt;/a&gt; by &lt;a href="https://github.com/NickBarnes"&gt;Nick Barnes&lt;/a&gt;, giving external stubs a single canonical way to detect an OxCaml runtime.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;Activity this week was concentrated in &lt;a href="https://github.com/oxcaml/oxcaml"&gt;oxcaml/oxcaml&lt;/a&gt; and &lt;a href="https://github.com/oxcaml/merlin"&gt;oxcaml/merlin&lt;/a&gt;; &lt;a href="https://github.com/oxcaml/opam-repository"&gt;oxcaml/opam-repository&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/js_of_ocaml"&gt;oxcaml/js&lt;em&gt;of&lt;/em&gt;ocaml&lt;/a&gt;, and &lt;a href="https://github.com/janestreet/opam-repository"&gt;janestreet/opam-repository&lt;/a&gt; had no recorded activity.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml"&gt;oxcaml/oxcaml&lt;/a&gt; shipped five notable features including the match-in-match heuristic (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4374"&gt;oxcaml/oxcaml#4374&lt;/a&gt;) and frametable relocation (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6094"&gt;oxcaml/oxcaml#6094&lt;/a&gt;), alongside a wave of &lt;code&gt;any&lt;/code&gt;-kind typing correctness fixes and the 5.2.0minus-40 magic number bump (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6204"&gt;oxcaml/oxcaml#6204&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/merlin"&gt;oxcaml/merlin&lt;/a&gt; has a large draft PR (&lt;a href="https://github.com/oxcaml/merlin/issues/239"&gt;oxcaml/merlin#239&lt;/a&gt;) merging minus-37 changes into the 5.4 branch (896 files changed), currently blocked on conflict resolution but receiving positive review feedback.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;Merlin integration is active across both repos: &lt;a href="https://github.com/oxcaml/oxcaml/issues/6211"&gt;oxcaml/oxcaml#6211&lt;/a&gt; by &lt;a href="https://github.com/liam923"&gt;Liam Stevenson&lt;/a&gt; merges 5.2.0minus-40 compiler changes into the Merlin subtree, while &lt;a href="https://github.com/oxcaml/merlin/issues/239"&gt;oxcaml/merlin#239&lt;/a&gt; merges minus-37 changes into the standalone Merlin 5.4 branch.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Skepfyr"&gt;Jack Rickard&lt;/a&gt; opened &lt;a href="https://github.com/oxcaml/oxcaml/issues/6207"&gt;oxcaml/oxcaml#6207&lt;/a&gt; to install &lt;code&gt;eval.mli&lt;/code&gt; into the compiler install directory, directly unblocking Merlin's jump-to-definition support for that library.&lt;/li&gt;
+&lt;li&gt;The 5.4 upstream merge PRs in &lt;a href="https://github.com/oxcaml/oxcaml"&gt;oxcaml/oxcaml&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6179"&gt;oxcaml/oxcaml#6179&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6196"&gt;oxcaml/oxcaml#6196&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6198"&gt;oxcaml/oxcaml#6198&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6208"&gt;oxcaml/oxcaml#6208&lt;/a&gt;) form a coordinated sequence, with each building on upstream OCaml changes that also flow into the Merlin merge in &lt;a href="https://github.com/oxcaml/merlin/issues/239"&gt;oxcaml/merlin#239&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/bclement-ocp"&gt;Basile Clément&lt;/a&gt; opened &lt;a href="https://github.com/oxcaml/oxcaml/issues/6180"&gt;oxcaml/oxcaml#6180&lt;/a&gt; noting that flambda2 eagerly unboxes variant fields even when no local allocation is present; the proposed fix is to only unbox fields that already have at least one use with the field available.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/6146"&gt;oxcaml/oxcaml#6146&lt;/a&gt; (closed) discussed the recommended idiom for pairing &lt;code&gt;@ unique&lt;/code&gt; destroy with interleaved read operations on C handles; the thread concluded that with-resource combinators or consume-and-return threading are current options and borrowing is not yet available.&lt;/li&gt;
+&lt;li&gt;The &lt;a href="https://github.com/oxcaml/oxcaml/issues/5342" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;box types&lt;/strong&gt;&lt;/a&gt; PR &lt;a href="https://github.com/oxcaml/oxcaml/issues/5342"&gt;oxcaml/oxcaml#5342&lt;/a&gt; by &lt;a href="https://github.com/rtjoa"&gt;Ryan Tjoa&lt;/a&gt; saw continued review with &lt;a href="https://github.com/jbachurski"&gt;Jakub Bachurski&lt;/a&gt; near-approving, with open questions around GADT exhaustiveness and &lt;code&gt;mcomp&lt;/code&gt; aliasability for &lt;code&gt;_ box&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/mshinwell"&gt;Mark Shinwell&lt;/a&gt; raised a concern in &lt;a href="https://github.com/oxcaml/oxcaml/issues/6177"&gt;oxcaml/oxcaml#6177&lt;/a&gt; about topological ordering as a long-term solution to recursive jkind computation; &lt;a href="https://github.com/rtjoa"&gt;Ryan Tjoa&lt;/a&gt; outlined a future unification-based approach using layout variables.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ccasin"&gt;Chris Casinghino&lt;/a&gt; reviewed the key files in &lt;a href="https://github.com/oxcaml/merlin/issues/239"&gt;oxcaml/merlin#239&lt;/a&gt; and found the minus-37 merge changes reasonable, providing a positive signal for the large-scale integration.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;Multiple successive PRs from &lt;a href="https://github.com/rtjoa"&gt;Ryan Tjoa&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6145"&gt;oxcaml/oxcaml#6145&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6156"&gt;oxcaml/oxcaml#6156&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6143"&gt;oxcaml/oxcaml#6143&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6173"&gt;oxcaml/oxcaml#6173&lt;/a&gt;) are tightening the &lt;code&gt;any&lt;/code&gt;-kind story for records and variants, progressively moving variable-representation types behind the &lt;code&gt;-extension layouts_beta&lt;/code&gt; gate.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/julesjacobs"&gt;@julesjacobs&lt;/a&gt; submitted a cluster of ikinds correctness PRs (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6199"&gt;oxcaml/oxcaml#6199&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6201"&gt;oxcaml/oxcaml#6201&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6202"&gt;oxcaml/oxcaml#6202&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6197"&gt;oxcaml/oxcaml#6197&lt;/a&gt;) fixing GADT projection, recursive payload bounds, and error message quality.&lt;/li&gt;
+&lt;li&gt;The OCaml 5.4 upstream merge is making concrete progress with multiple PRs landing in sequence (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6179"&gt;oxcaml/oxcaml#6179&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6196"&gt;oxcaml/oxcaml#6196&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6198"&gt;oxcaml/oxcaml#6198&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6208"&gt;oxcaml/oxcaml#6208&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Runtime 4 removal (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6172"&gt;oxcaml/oxcaml#6172&lt;/a&gt;) and a unified &lt;code&gt;OXCAML_RUNTIME&lt;/code&gt; CPP symbol (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6203"&gt;oxcaml/oxcaml#6203&lt;/a&gt;) signal a push to clean up the runtime layer ahead of a cleaner release.&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>oxcaml/oxcaml saw dense typing and flambda2 fixes plus a 5.4 upstream merge push; oxcaml/merlin advanced its minus-37 branch merge.</summary><published>2026-06-07T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/oxcaml/2026/week-22</id><title>Week 22, 2026: oxcaml/oxcaml landed runtime performance improvements, a new C API, type system fixes, and a Merlin sync; opam-repository addressed Dune patch compatibility.</title><updated>2026-05-31T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
@@ -5629,7 +5820,7 @@
 &lt;li&gt;&lt;strong class="achievement"&gt;Performance optimization&lt;/strong&gt; focus on instruction selection, register allocation, and runtime efficiency improvements across multiple commits&lt;/li&gt;
 &lt;li&gt;&lt;strong class="achievement"&gt;Code organization&lt;/strong&gt; improvements with better separation of target-specific and generic compiler components for maintainability&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Major compiler backend refactoring in oxcaml/oxcaml with new instruction selection code and type system advances</summary><published>2025-04-06T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/oxcaml/2025/week-13</id><title>Week 13, 2025: Major development focus on oxcaml compiler with 35 commits introducing portable continuations and ARM64 enhancements, plus Merlin OCaml integration update</title><updated>2026-06-03T06:44:12.562840+00:00</updated><content type="html">
+</content><link href="https://thicket.dev/"/><summary>Major compiler backend refactoring in oxcaml/oxcaml with new instruction selection code and type system advances</summary><published>2025-04-06T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/oxcaml/2025/week-13</id><title>Week 13, 2025: Major development focus on oxcaml compiler with 35 commits introducing portable continuations and ARM64 enhancements, plus Merlin OCaml integration update</title><updated>2026-06-15T09:44:59.134587+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

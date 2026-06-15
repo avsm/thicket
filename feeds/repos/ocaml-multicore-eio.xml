@@ -1,5 +1,135 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-multicore-eio.xml</id><title>ocaml-multicore/eio (Weekly)</title><updated>2026-05-31T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-multicore-eio.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml-multicore/eio</subtitle><entry><id>https://thicket.dev/repos/ocaml-multicore-eio/2026/week-22</id><title>Week 22, 2026: Performance improvements to eio_linux via io_uring flags and a file descriptor security fix for eio_posix.</title><updated>2026-05-31T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-multicore-eio.xml</id><title>ocaml-multicore/eio (Weekly)</title><updated>2026-06-14T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-multicore-eio.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml-multicore/eio</subtitle><entry><id>https://thicket.dev/repos/ocaml-multicore-eio/2026/week-24</id><title>Week 24, 2026: New incremental directory reading API and Path.open_subtree rename landed, with eio_linux scheduler simplification and ENOMEM resilience.</title><updated>2026-06-14T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Three open PRs pending review cover ftruncate/fdatasync/uring networking ops, socket options, and chmod support.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;add ftruncate/fdatasync and use uring for fsync/shutdown/socket&lt;/code&gt;&lt;/strong&gt; opened by &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; and awaiting review — adds &lt;code&gt;ftruncate&lt;/code&gt;/&lt;code&gt;fdatasync&lt;/code&gt; to the Linux backend and wires up newer io_uring operations for &lt;code&gt;fsync&lt;/code&gt;, &lt;code&gt;shutdown&lt;/code&gt;, and socket calls (&lt;a href="https://github.com/ocaml-multicore/eio/issues/850"&gt;#850&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;Eio_unix.Sockopt&lt;/code&gt; module&lt;/strong&gt; for getting and setting socket options, originally opened by &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; in 2023 and rebased this week — the PR adds a GADT-based interface to socket options and is seeking design feedback on the &lt;code&gt;SOCKET&lt;/code&gt; module type integration (&lt;a href="https://github.com/ocaml-multicore/eio/issues/575"&gt;#575&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;chmod&lt;/code&gt; support in &lt;code&gt;Eio_linux&lt;/code&gt; and &lt;code&gt;Eio_posix&lt;/code&gt;&lt;/strong&gt; from &lt;a href="https://github.com/patricoferris"&gt;Patrick Ferris&lt;/a&gt;, rebased by &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; this week with uring &lt;code&gt;nofollow&lt;/code&gt; flag usage and &lt;code&gt;File.Unix_perm.t&lt;/code&gt; type alignment — still open awaiting final review (&lt;a href="https://github.com/ocaml-multicore/eio/issues/785"&gt;#785&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;eio_linux&lt;/code&gt; scheduler simplification&lt;/strong&gt; via moving read/write retries out of the scheduler into the calling fiber, removing the &lt;code&gt;Read&lt;/code&gt;/&lt;code&gt;Write&lt;/code&gt; job types, &lt;code&gt;file_offset&lt;/code&gt; type, and &lt;code&gt;amount&lt;/code&gt; type — merged by &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/issues/849"&gt;#849&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/eio/issues/851" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Removal of unused retry logic&lt;/strong&gt;&lt;/a&gt; in &lt;code&gt;eio_linux&lt;/code&gt; fixed-buffer operations (EAGAIN/EINTR retries that can no longer trigger since switching to &lt;code&gt;DEFER_TASKRUN&lt;/code&gt;) — merged by &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/issues/851"&gt;#851&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Long-standing issue &lt;a href="https://github.com/ocaml-multicore/eio/issues/700" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;"Occasional deadlocks with systhreads"&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/issues/700"&gt;#700&lt;/a&gt;) was closed this week&lt;/li&gt;
+&lt;li&gt;Discussion on &lt;a href="https://github.com/ocaml-multicore/eio/issues/845" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;issue #845&lt;/strong&gt;&lt;/a&gt; about disabling fixed buffers by default touched on a broader proposal to restrict the &lt;code&gt;eio_linux&lt;/code&gt; uring backend to kernel 6.17+/7.x+, which would eliminate many op-probe checks for newer uring features (&lt;a href="https://github.com/ocaml-multicore/eio/issues/845"&gt;#845&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>New incremental directory reading API and Path.open_subtree rename landed, with eio_linux scheduler simplification and ENOMEM resilience.</summary><published>2026-06-14T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-eio/2026/week-23</id><title>Week 23, 2026: New Eio_linux.Low_level.Fixed module replaces Uring.Region API for fixed-buffer allocation; scheduler simplification and new fsync/truncate ops in progress.</title><updated>2026-06-07T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Two PRs opened targeting scheduler simplification and new file ops; three PRs merged covering fixed-buffer API, test formatting, and CI linting.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/eio/issues/849" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Scheduler simplification&lt;/strong&gt;&lt;/a&gt; work opened by &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; in &lt;a href="https://github.com/ocaml-multicore/eio/issues/849"&gt;#849&lt;/a&gt;, moving read/write retry logic out of the scheduler and into fiber-level code — removing the special-cased &lt;code&gt;Read&lt;/code&gt;/&lt;code&gt;Write&lt;/code&gt; job types and the &lt;code&gt;file_offset&lt;/code&gt; type, resulting in a cleaner scheduler with fewer fixed-buffer-specific concerns.&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;ftruncate&lt;/code&gt;/&lt;code&gt;fdatasync&lt;/code&gt;/&lt;code&gt;fsync&lt;/code&gt;&lt;/strong&gt; additions pending merge from &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/issues/850"&gt;#850&lt;/a&gt;), which also requires a trunk version of the uring library.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/eio/issues/848" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Fixed-buffer API migration&lt;/strong&gt;&lt;/a&gt; to &lt;code&gt;Eio_linux.Low_level.Fixed&lt;/code&gt; merged by &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/issues/848"&gt;#848&lt;/a&gt;), updating internal usages in &lt;code&gt;flow.ml&lt;/code&gt; and refactoring the free-pool and waiter queue logic to live inside Eio rather than the uring library.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/eio/issues/847" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Test IP address formatting&lt;/strong&gt;&lt;/a&gt; improved by &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/issues/847"&gt;#847&lt;/a&gt;) to avoid encoding issues and switch to &lt;code&gt;ocaml.org&lt;/code&gt; as the example domain for shorter test output, following up on a prior encoding bug (&lt;a href="https://github.com/ocaml-multicore/eio/issues/575"&gt;#575&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;lintcstubs-arity&lt;/code&gt;&lt;/strong&gt; added as a test dependency by &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/issues/846"&gt;#846&lt;/a&gt;) to catch missing C prototype arities in CI, mirroring the same change made in &lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/143"&gt;ocaml-multicore/ocaml-uring#143&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Long-standing &lt;strong class="achievement"&gt;&lt;code&gt;chown&lt;/code&gt; support&lt;/strong&gt; PR by &lt;a href="https://github.com/patricoferris"&gt;Patrick Ferris&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/issues/781"&gt;#781&lt;/a&gt;) adding &lt;code&gt;fchownat&lt;/code&gt;-based ownership changes to both &lt;code&gt;eio_posix&lt;/code&gt; and &lt;code&gt;eio_linux&lt;/code&gt; remains open with active review discussion.&lt;/li&gt;
+&lt;li&gt;Issue &lt;a href="https://github.com/ocaml-multicore/eio/issues/788"&gt;#788&lt;/a&gt; ("Interrupted system call" on parallel stdout writes) closed as resolved by &lt;a href="https://github.com/ocaml-multicore/eio/issues/842"&gt;#842&lt;/a&gt; via the adoption of &lt;code&gt;DEFER_TASKRUN&lt;/code&gt; in the Linux backend.&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>New Eio_linux.Low_level.Fixed module replaces Uring.Region API for fixed-buffer allocation; scheduler simplification and new fsync/truncate ops in progress.</summary><published>2026-06-07T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-eio/2026/week-22</id><title>Week 22, 2026: Performance improvements to eio_linux via io_uring flags and a file descriptor security fix for eio_posix.</title><updated>2026-05-31T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

@@ -1,5 +1,224 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/ecosystem.xml</id><title>OCaml Ecosystem (Weekly)</title><updated>2026-05-31T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/ecosystem.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Package repositories and community infrastructure</subtitle><entry><id>https://thicket.dev/groups/ecosystem/2026/week-22</id><title>Week 22, 2026: opam-repository merged 26 PRs with new packages and a security fix; ocaml.org published changelogs for nine platform tools.</title><updated>2026-05-31T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/ecosystem.xml</id><title>OCaml Ecosystem (Weekly)</title><updated>2026-06-14T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/ecosystem.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Package repositories and community infrastructure</subtitle><entry><id>https://thicket.dev/groups/ecosystem/2026/week-24</id><title>Week 24, 2026: OCaml 5.5.0~rc1 landed in opam-repository with 25+ new packages; ocaml.org added AI dev docs and a wasm_of_ocaml WASI backstage post.</title><updated>2026-06-14T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+ocaml/opam-repository&lt;/strong&gt;&lt;/br&gt;
+- OCaml 5.5.0~rc1&lt;/a&gt; packaged ocaml-compiler&lt;/code&gt;, ocaml-base-compiler&lt;/code&gt;, and ocaml-variants...+options&lt;/code&gt; with runtime fixes and a Windows filename quoting security fix (ocaml/opam-repository#30023&lt;/a&gt;)&lt;/br&gt;
+- awskit&lt;/strong&gt; (10 packages, 0.1.0) — AWS infrastructure library with signing, credentials, S3 client, and Eio/Lwt adapters (ocaml/opam-repository#29980&lt;/a&gt;)&lt;/br&gt;
+- migra&lt;/strong&gt; (1.0.0, 1.0.1, 2.0.0) — database migration tool for PostgreSQL, MariaDB/MySQL, and SQLite with checksum validation (ocaml/opam-repository#30002&lt;/a&gt;, #30012&lt;/a&gt;, #30033&lt;/a&gt;)&lt;/br&gt;
+- mnet&lt;/strong&gt; (0.0.3, 6 packages) — TCP implementation for Miou and Solo5 unikernels, now including mnet-ssh&lt;/code&gt; for SSH in unikernels (ocaml/opam-repository#30011&lt;/a&gt;)&lt;/br&gt;
+- cabal&lt;/strong&gt; (0.1.0) — backend-agnostic agent execution primitives for OCaml applications driving agentic CLI backends (ocaml/opam-repository#30008&lt;/a&gt;)&lt;/br&gt;
+- ocaml-ai-sdk&lt;/strong&gt; (0.4, 2 packages) — provider abstraction for AI models with Anthropic and OpenRouter prompt caching support (ocaml/opam-repository#30005&lt;/a&gt;)&lt;/br&gt;
+- transom&lt;/strong&gt; (0.2.0) — OCaml backend for desktop WebView apps with typed IPC and generated glue code (ocaml/opam-repository#30037&lt;/a&gt;)&lt;/br&gt;
+- contract&lt;/strong&gt; (0.2.0) — typed HTTP API contract library with OpenAPI 3.0.3 output (ocaml/opam-repository#30014&lt;/a&gt;)&lt;/br&gt;
+- doctor&lt;/strong&gt; (0.4.0) — diagnostic CLI checking opam, dune, LSP, and editor integration for OCaml development environments (ocaml/opam-repository#30015&lt;/a&gt;)&lt;/br&gt;
+- liquid-ml&lt;/strong&gt; (0.1.4, 5 packages) — Shopify Liquid templating language implementation in OCaml (ocaml/opam-repository#30004&lt;/a&gt;)&lt;/br&gt;
+- melange-edn&lt;/strong&gt; (0.1.0 and 0.3.0) — EDN reader and writer for Melange targeting JavaScript (ocaml/opam-repository#29999&lt;/a&gt;, #30028&lt;/a&gt;)&lt;/br&gt;
+- kind2&lt;/strong&gt; (3.0.0) — SMT-based automatic model checker for Lustre programs (ocaml/opam-repository#30019&lt;/a&gt;)&lt;/br&gt;
+- notty-miou&lt;/strong&gt; (0.0.2, 4 packages) — terminal library using Miou with new mkernel/mnet support (ocaml/opam-repository#30027&lt;/a&gt;)&lt;/br&gt;
+- miou&lt;/strong&gt; (0.7.0) — composable concurrency primitives adding Miou.get&lt;/code&gt; and Miou.Promise.state&lt;/code&gt; (ocaml/opam-repository#30009&lt;/a&gt;)&lt;/br&gt;
+- caqti&lt;/strong&gt; and caqti-lwt&lt;/strong&gt; (2.3.2) — database access library fixing timed cleanup of idle connection pool entries (ocaml/opam-repository#30026&lt;/a&gt;)&lt;/br&gt;
+- Frama-C&lt;/strong&gt; (32.1-Germanium) — static analysis platform for C (ocaml/opam-repository#30016&lt;/a&gt;)&lt;/br&gt;
+- goblint-cil&lt;/strong&gt; (2.1.0) — C frontend for program analysis with cast kinds, _Static_assert&lt;/code&gt; checking, and attribute handling improvements (ocaml/opam-repository#30022&lt;/a&gt;)&lt;/br&gt;
+- hxd&lt;/strong&gt; (0.5.0) — hexdump library with new introspection API for cfg&lt;/code&gt; values (ocaml/opam-repository#30010&lt;/a&gt;)&lt;/br&gt;
+- ca-certs-nss&lt;/strong&gt; (3.125) — X.509 trust anchors updated to NSS 3.125 (2026-06-11) (ocaml/opam-repository#30038&lt;/a&gt;)&lt;/br&gt;
+- checkedoint&lt;/strong&gt; (2.0.1) — library for checked integer arithmetic (ocaml/opam-repository#30031&lt;/a&gt;)&lt;/br&gt;
+- timedesc&lt;/strong&gt; and related (3.1.2, 6 packages) — OCaml datetime handling library suite (ocaml/opam-repository#29995&lt;/a&gt;)&lt;/br&gt;
+- mcrunch&lt;/strong&gt; (0.0.3) — file crunching tool now handling empty files (ocaml/opam-repository#30025&lt;/a&gt;)&lt;/br&gt;
+- dockerfile&lt;/strong&gt; (8.4.1, 3 packages) — Dockerfile eDSL with a libzstd packaging fix (ocaml/opam-repository#30018&lt;/a&gt;)&lt;/br&gt;
+- mingw-w64-shims&lt;/strong&gt; (1.0.1) — Windows shims package with clarified conf-&lt;/code&gt; usage (ocaml/opam-repository#30040&lt;/a&gt;)&lt;/br&gt;
+- embedded&lt;/em&gt;ocaml_templates&lt;/strong&gt; (0.8.1) — template library making ppx_inline_test&lt;/code&gt; a test-only dependency (ocaml/opam-repository#29929&lt;/a&gt;)&lt;/p&gt;
+
+ocaml/ocaml.org&lt;/strong&gt;&lt;/br&gt;
+- Fixed contrast on OCaml Workshop 2026 date pills&lt;/strong&gt; — switched from text-title&lt;/code&gt; to text-white&lt;/code&gt; on orange background badges across both /ocaml-workshop-2026&lt;/code&gt; and /ocaml-workshop-2026/cfp&lt;/code&gt; pages (ocaml/ocaml.org#3673&lt;/a&gt;)&lt;/br&gt;
+- Added CLAUDE.md&lt;/code&gt; developer guide&lt;/strong&gt; with AI-assisted development context covering build commands, architecture, EML templating, data flow, dependency pinning, and CI/deployment (ocaml/ocaml.org#3585&lt;/a&gt;)&lt;/br&gt;
+- Expanded HACKING.md&lt;/code&gt;&lt;/strong&gt; with a "Before Submitting a PR" section, updated tool/&lt;/code&gt; directory tree, and corrected dependency pinning file list (ocaml/ocaml.org#3585&lt;/a&gt;)&lt;/br&gt;
+- Published Backstage article on wasm_of_ocaml&lt;/code&gt; WASI prototype&lt;/strong&gt; covering WASI preview1 backend, CPS effects compilation, and a call for production users or sponsors (ocaml/ocaml.org#3667&lt;/a&gt;)&lt;/br&gt;
+- Added seven new OCaml Planet blog posts&lt;/strong&gt; via automated scraping across three merged PRs (ocaml/ocaml.org#3674&lt;/a&gt;, #3676&lt;/a&gt;, #3678&lt;/a&gt;)&lt;/p&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository"&gt;ocaml/opam-repository&lt;/a&gt; had its highest-volume week in months: OCaml 5.5.0~rc1 landed via &lt;a href="https://github.com/ocaml/opam-repository/pull/30023"&gt;ocaml/opam-repository#30023&lt;/a&gt;, accompanied by 25+ new or updated packages spanning AWS SDKs, database tooling, unikernel networking, AI/agent libraries, static analysis, and developer tooling&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org"&gt;ocaml/ocaml.org&lt;/a&gt; saw lighter activity focused on content and developer documentation: UI contrast fixes, a new &lt;code&gt;CLAUDE.md&lt;/code&gt; guide, a backstage post on &lt;code&gt;wasm_of_ocaml&lt;/code&gt; WASI, and seven new Planet blog posts&lt;/li&gt;
+&lt;li&gt;Infrastructure work in opam-repository hardened Windows CI (&lt;a href="https://github.com/ocaml/opam-repository/pull/29998"&gt;ocaml/opam-repository#29998&lt;/a&gt;), updated &lt;code&gt;conf-*&lt;/code&gt; packages for 0install solver compatibility on Windows (&lt;a href="https://github.com/ocaml/opam-repository/pull/30029"&gt;ocaml/opam-repository#30029&lt;/a&gt;), and addressed dune 3.24 install layout changes affecting multiple packages&lt;/li&gt;
+&lt;li&gt;The &lt;a href="https://github.com/mirage"&gt;MirageOS&lt;/a&gt; unikernel ecosystem had a coordinated release week: &lt;code&gt;miou&lt;/code&gt;, &lt;code&gt;mnet&lt;/code&gt;, &lt;code&gt;mcrunch&lt;/code&gt;, and &lt;code&gt;notty-miou&lt;/code&gt; all landed together&lt;/li&gt;
+&lt;li&gt;Four ocaml.org PRs remain open pending review: platform newsletter, &lt;code&gt;llms.txt&lt;/code&gt; endpoint, GC tutorial clarification, and AWS industrial users addition&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/30005" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;AI and agent tooling across both repos&lt;/strong&gt;&lt;/a&gt;: opam-repository added &lt;code&gt;ocaml-ai-sdk.0.4&lt;/code&gt; (&lt;a href="https://github.com/ocaml/opam-repository/pull/30005"&gt;ocaml/opam-repository#30005&lt;/a&gt;) and &lt;code&gt;cabal.0.1.0&lt;/code&gt; (&lt;a href="https://github.com/ocaml/opam-repository/pull/30008"&gt;ocaml/opam-repository#30008&lt;/a&gt;) targeting AI/LLM use cases, while ocaml.org added a &lt;code&gt;CLAUDE.md&lt;/code&gt; guide (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3585"&gt;ocaml/ocaml.org#3585&lt;/a&gt;) formalising AI-assisted development; several commits in both repos are co-authored with Claude models&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3667" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;WebAssembly ecosystem coverage&lt;/strong&gt;&lt;/a&gt;: the ocaml.org backstage post on &lt;code&gt;wasm_of_ocaml&lt;/code&gt; WASI (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3667"&gt;ocaml/ocaml.org#3667&lt;/a&gt;) coincides with continued MirageOS/unikernel package activity in opam-repository (&lt;code&gt;mnet&lt;/code&gt; &lt;a href="https://github.com/ocaml/opam-repository/pull/30011"&gt;ocaml/opam-repository#30011&lt;/a&gt;, &lt;code&gt;miou&lt;/code&gt; &lt;a href="https://github.com/ocaml/opam-repository/pull/30009"&gt;ocaml/opam-repository#30009&lt;/a&gt;), reflecting parallel progress on OCaml's systems/embedded stack&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/30035" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;dune 3.24 install layout changes&lt;/strong&gt;&lt;/a&gt; surfaced in opam-repository this week (&lt;a href="https://github.com/ocaml/opam-repository/pull/30035"&gt;ocaml/opam-repository#30035&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/pull/30032"&gt;#30032&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/pull/30044"&gt;#30044&lt;/a&gt;) and will likely require follow-up documentation or guidance on ocaml.org as more packages are affected&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/30007"&gt;ocaml/opam-repository#30007&lt;/a&gt; (&lt;code&gt;ocaml-r.0.7.0&lt;/code&gt;): &lt;a href="https://github.com/mseri"&gt;Marcello Seri&lt;/a&gt; flagged macOS and older-distribution failures due to &lt;code&gt;conf-r-mathlib&lt;/code&gt; being too old, suggesting merging anyway and updating the conf package separately&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/30013"&gt;ocaml/opam-repository#30013&lt;/a&gt; (&lt;code&gt;diffast.0.4&lt;/code&gt;): &lt;a href="https://github.com/mseri"&gt;Marcello Seri&lt;/a&gt; and the author discussed Cygwin linking errors and a RISC-V-specific segfault with OCaml 4.14; recommendation is to add an &lt;code&gt;available&lt;/code&gt; constraint requiring OCaml 5+ on RISC-V&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/30041"&gt;ocaml/opam-repository#30041&lt;/a&gt;: &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt; opened a PR to prevent OxCaml switches from selecting &lt;code&gt;async_websocket.v0.13.0&lt;/code&gt;, noting it might also be reasonable to mark it &lt;code&gt;available: false&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29998"&gt;ocaml/opam-repository#29998&lt;/a&gt;: &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt; noted that Claude helped write the PowerShell CI scripts, with a wry observation about the experience&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3683"&gt;ocaml/ocaml.org#3683&lt;/a&gt;: &lt;a href="https://github.com/yutatokoi"&gt;Yuta Tokoi&lt;/a&gt; opened an issue reporting an apparent syntax error in "A Tour of OCaml" (a &lt;code&gt;#&lt;/code&gt; accidentally prepended to an example) and resolved it the same day upon realising the error was in their own input&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/30009" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Miou/robur-coop unikernel ecosystem&lt;/strong&gt;&lt;/a&gt; had a coordinated release week: &lt;code&gt;miou.0.7.0&lt;/code&gt; &lt;a href="https://github.com/ocaml/opam-repository/pull/30009"&gt;ocaml/opam-repository#30009&lt;/a&gt;, &lt;code&gt;mnet.0.0.3&lt;/code&gt; &lt;a href="https://github.com/ocaml/opam-repository/pull/30011"&gt;ocaml/opam-repository#30011&lt;/a&gt;, &lt;code&gt;mcrunch.0.0.3&lt;/code&gt; &lt;a href="https://github.com/ocaml/opam-repository/pull/30025"&gt;ocaml/opam-repository#30025&lt;/a&gt;, and &lt;code&gt;notty-miou.0.0.2&lt;/code&gt; &lt;a href="https://github.com/ocaml/opam-repository/pull/30027"&gt;ocaml/opam-repository#30027&lt;/a&gt; all landed together, reflecting active development of OCaml unikernel networking infrastructure&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/30005" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;AI/agent tooling&lt;/strong&gt;&lt;/a&gt; growing across the ecosystem: &lt;code&gt;ocaml-ai-sdk.0.4&lt;/code&gt; &lt;a href="https://github.com/ocaml/opam-repository/pull/30005"&gt;ocaml/opam-repository#30005&lt;/a&gt;, &lt;code&gt;cabal.0.1.0&lt;/code&gt; &lt;a href="https://github.com/ocaml/opam-repository/pull/30008"&gt;ocaml/opam-repository#30008&lt;/a&gt;, and &lt;code&gt;transom.0.2.0&lt;/code&gt; &lt;a href="https://github.com/ocaml/opam-repository/pull/30037"&gt;ocaml/opam-repository#30037&lt;/a&gt; all target AI-adjacent or agentic use cases; &lt;code&gt;CLAUDE.md&lt;/code&gt; on ocaml.org (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3585"&gt;ocaml/ocaml.org#3585&lt;/a&gt;) reflects AI-assisted development becoming a first-class workflow&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/30035" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;dune 3.24 install layout changes&lt;/strong&gt;&lt;/a&gt; are creating recurring compatibility work: &lt;code&gt;crunch&lt;/code&gt; &lt;a href="https://github.com/ocaml/opam-repository/pull/30035"&gt;ocaml/opam-repository#30035&lt;/a&gt;, &lt;code&gt;lintcstubs&lt;/code&gt; &lt;a href="https://github.com/ocaml/opam-repository/pull/30032"&gt;ocaml/opam-repository#30032&lt;/a&gt;, and &lt;code&gt;merlin&lt;/code&gt; &lt;a href="https://github.com/ocaml/opam-repository/pull/30044"&gt;ocaml/opam-repository#30044&lt;/a&gt; all required conditional test gating this week&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/30041" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OxCaml compatibility&lt;/strong&gt;&lt;/a&gt; is becoming a recurring concern: packages are being patched with &lt;code&gt;available&lt;/code&gt; constraints to prevent selection in OxCaml switches, as seen in &lt;a href="https://github.com/ocaml/opam-repository/pull/30041"&gt;ocaml/opam-repository#30041&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3667" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;WebAssembly coverage&lt;/strong&gt;&lt;/a&gt; on ocaml.org is expanding: the backstage post on &lt;code&gt;wasm_of_ocaml&lt;/code&gt; WASI prototype (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3667"&gt;ocaml/ocaml.org#3667&lt;/a&gt;) follows earlier wasm&lt;em&gt;of&lt;/em&gt;ocaml coverage and tracks the maturing Wasm 3.0 standardisation (GC, tail calls, exception handling)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>OCaml 5.5.0~rc1 landed in opam-repository with 25+ new packages; ocaml.org added AI dev docs and a wasm_of_ocaml WASI backstage post.</summary><published>2026-06-14T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/ecosystem/2026/week-23</id><title>Week 23, 2026: opam-repository merged 10+ package releases and hardened Windows CI; ocaml.org launched the OCaml Workshop 2026 mini-site.</title><updated>2026-06-07T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29978" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;raylib 2.0.0&lt;/strong&gt;&lt;/a&gt; — &lt;code&gt;raylib.2.0.0&lt;/code&gt;, &lt;code&gt;raygui.2.0.0&lt;/code&gt;, and &lt;code&gt;raylib-callbacks.2.0.0&lt;/code&gt; published by &lt;a href="https://github.com/tjammer"&gt;Tobias Mock&lt;/a&gt;, providing OCaml bindings for the Raylib game framework; includes &lt;code&gt;qcaml&lt;/code&gt; compatibility fixes for API changes (&lt;a href="https://github.com/ocaml/opam-repository/issues/29978"&gt;ocaml/opam-repository#29978&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29983" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;catala 1.2.0&lt;/strong&gt;&lt;/a&gt; — &lt;code&gt;catala.1.2.0&lt;/code&gt;, &lt;code&gt;catala-format.1.2.0&lt;/code&gt;, and &lt;code&gt;catala-lsp.1.2.0&lt;/code&gt; published by &lt;a href="https://github.com/vincent-botbol"&gt;vbot&lt;/a&gt;, updating the law-as-code language and its LSP server (&lt;a href="https://github.com/ocaml/opam-repository/issues/29983"&gt;ocaml/opam-repository#29983&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29967" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;awso 0.9.1&lt;/strong&gt;&lt;/a&gt; — seven-package AWS OCaml SDK (&lt;code&gt;awso&lt;/code&gt;, &lt;code&gt;awso-async&lt;/code&gt;, &lt;code&gt;awso-cli&lt;/code&gt;, &lt;code&gt;awso-common&lt;/code&gt;, &lt;code&gt;awso-eio&lt;/code&gt;, &lt;code&gt;awso-lwt&lt;/code&gt;, &lt;code&gt;awso-sync&lt;/code&gt;) by &lt;a href="https://github.com/mbacarella"&gt;Michael Bacarella&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29967"&gt;ocaml/opam-repository#29967&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29984" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;lun 0.0.3&lt;/strong&gt;&lt;/a&gt; and &lt;strong class="achievement"&gt;ppx_lun 0.0.3&lt;/strong&gt; — new versions with documentation and website links fixed for prior versions, by &lt;a href="https://github.com/dinosaure"&gt;Calascibetta Romain&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29984"&gt;ocaml/opam-repository#29984&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/30001" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;awa 0.6.1&lt;/strong&gt;&lt;/a&gt; — &lt;code&gt;awa.0.6.1&lt;/code&gt; and &lt;code&gt;awa-mirage.0.6.1&lt;/code&gt; fixing parsing of &lt;code&gt;MSG_KEX_n&lt;/code&gt; and &lt;code&gt;MSG_USERAUTH_n&lt;/code&gt; SSH messages, by &lt;a href="https://github.com/hannesm"&gt;Hannes Mehnert&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/30001"&gt;ocaml/opam-repository#30001&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29973" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;object 0.1&lt;/strong&gt;&lt;/a&gt; — new OCaml library package by &lt;a href="https://github.com/tmcgilchrist"&gt;Tim McGilchrist&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29973"&gt;ocaml/opam-repository#29973&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29982" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;patricia-tree 0.14.0&lt;/strong&gt;&lt;/a&gt; — new release by &lt;a href="https://github.com/dlesbre"&gt;Dorian Lesbre&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29982"&gt;ocaml/opam-repository#29982&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;ppx&lt;em&gt;inline&lt;/em&gt;test_nobase v0.17.0.3&lt;/strong&gt; — released by &lt;a href="https://github.com/Kakadu"&gt;Dmitrii Kosarev&lt;/a&gt; with a &lt;code&gt;ppx_expect_nobase&lt;/code&gt; constraint (&lt;a href="https://github.com/ocaml/opam-repository/issues/29979"&gt;ocaml/opam-repository#29979&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29981" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;ease-caml 0.1.5&lt;/strong&gt;&lt;/a&gt; — new version by &lt;a href="https://github.com/thyrgle"&gt;Christopher Sumnicht&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29981"&gt;ocaml/opam-repository#29981&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29992" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;vsrocq-language-server 2.4.3+1&lt;/strong&gt;&lt;/a&gt; — patch fixing an incorrect &lt;code&gt;extra-source&lt;/code&gt; path, merged by &lt;a href="https://github.com/gares"&gt;Enrico Tassi&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29992"&gt;ocaml/opam-repository#29992&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29977" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;bigstringaf 0.10.0&lt;/strong&gt;&lt;/a&gt; — SHA-256 and SHA-512 hash corrections by &lt;a href="https://github.com/robinanterior"&gt;Robin&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29977"&gt;ocaml/opam-repository#29977&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29937" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;caqti-lwt&lt;/strong&gt;&lt;/a&gt; — Lwt upper bound relaxed by &lt;a href="https://github.com/funwithcthulhu"&gt;@funwithcthulhu&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29937"&gt;ocaml/opam-repository#29937&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3670" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml Workshop 2026 mini-site&lt;/strong&gt;&lt;/a&gt; — three new routes (&lt;code&gt;/ocaml-workshop-2026&lt;/code&gt;, &lt;code&gt;/ocaml-workshop-2026/cfp&lt;/code&gt;, &lt;code&gt;/ocaml-workshop-2026/committee&lt;/code&gt;) with a bespoke layout featuring tab navigation and a "Submit a Talk" CTA, authored by &lt;a href="https://github.com/cuihtlauac"&gt;Cuihtlauac Alvarado&lt;/a&gt; and reviewed by &lt;a href="https://github.com/Sudha247"&gt;Sudha Parimala&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3670"&gt;ocaml/ocaml.org#3670&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;code&gt;show_header&lt;/code&gt; opt-out on &lt;code&gt;Layout.base&lt;/code&gt;&lt;/strong&gt; — new parameter in &lt;code&gt;src/ocamlorg_frontend/layouts/layout.eml&lt;/code&gt; allowing workshop pages to suppress the standard header while leaving other pages unaffected (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3670"&gt;ocaml/ocaml.org#3670&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3671" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Dune 3.24.0 alpha1 and alpha2&lt;/strong&gt;&lt;/a&gt; release notes indexed on &lt;a href="https://github.com/ocaml/ocaml.org"&gt;ocaml/ocaml.org&lt;/a&gt; via the automated platform-releases scraper (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3671"&gt;ocaml/ocaml.org#3671&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository"&gt;ocaml/opam-repository&lt;/a&gt; merged 10+ package releases including &lt;a href="https://github.com/ocaml/opam-repository/issues/29978"&gt;ocaml/opam-repository#29978&lt;/a&gt; (raylib 2.0.0), &lt;a href="https://github.com/ocaml/opam-repository/issues/29983"&gt;ocaml/opam-repository#29983&lt;/a&gt; (catala 1.2.0), &lt;a href="https://github.com/ocaml/opam-repository/issues/29967"&gt;ocaml/opam-repository#29967&lt;/a&gt; (awso 0.9.1), and &lt;a href="https://github.com/ocaml/opam-repository/issues/30001"&gt;ocaml/opam-repository#30001&lt;/a&gt; (awa 0.6.1)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org"&gt;ocaml/ocaml.org&lt;/a&gt; launched the OCaml Workshop 2026 pre-event mini-site (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3670"&gt;ocaml/ocaml.org#3670&lt;/a&gt;) and indexed dune 3.24.0 alpha release notes (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3671"&gt;ocaml/ocaml.org#3671&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Windows CI infrastructure in opam-repository is being hardened with upgrade-path testing for edited packages and PATH pruning for cleaner depext testing (&lt;a href="https://github.com/ocaml/opam-repository/issues/29998"&gt;ocaml/opam-repository#29998&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;dune 3.24 compatibility work forced &lt;code&gt;dune &lt; 3.24&lt;/code&gt; upper bounds across coq, rocq, and mdx packages (&lt;a href="https://github.com/ocaml/opam-repository/issues/29988"&gt;ocaml/opam-repository#29988&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/29989"&gt;ocaml/opam-repository#29989&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/29993"&gt;ocaml/opam-repository#29993&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;A conf-pkgconf simplification (&lt;a href="https://github.com/ocaml/opam-repository/issues/29976"&gt;ocaml/opam-repository#29976&lt;/a&gt;) was reverted (&lt;a href="https://github.com/ocaml/opam-repository/issues/29987"&gt;ocaml/opam-repository#29987&lt;/a&gt;) after breaking downstream lockfiles, prompting policy discussion on in-place conf-package mutations (&lt;a href="https://github.com/ocaml/opam-repository/issues/29985"&gt;ocaml/opam-repository#29985&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29996" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;dune 3.24.0 alpha releases tracked across both repositories&lt;/strong&gt;&lt;/a&gt; — &lt;a href="https://github.com/shonfeder"&gt;Shon Feder&lt;/a&gt; submitted dune 3.24.0~alpha2 to &lt;a href="https://github.com/ocaml/opam-repository"&gt;ocaml/opam-repository&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29996"&gt;ocaml/opam-repository#29996&lt;/a&gt;) while alpha1 and alpha2 release notes were simultaneously indexed on &lt;a href="https://github.com/ocaml/ocaml.org"&gt;ocaml/ocaml.org&lt;/a&gt; via the automated platform-releases scraper (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3671"&gt;ocaml/ocaml.org#3671&lt;/a&gt;), reflecting coordinated tracking of the dune release cycle across ecosystem infrastructure&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong class="achievement"&gt;Lockfile invalidation from &lt;code&gt;conf-*&lt;/code&gt; mutations&lt;/strong&gt; — &lt;a href="https://github.com/yosefAlsuhaibani"&gt;Yosef&lt;/a&gt; reported in &lt;a href="https://github.com/ocaml/opam-repository/issues/29985"&gt;ocaml/opam-repository#29985&lt;/a&gt; that in-place changes to &lt;code&gt;conf-*&lt;/code&gt; dependency requirements broke existing &lt;code&gt;opam lock&lt;/code&gt; lockfiles and CI/Windows builds; &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt; reverted the change (&lt;a href="https://github.com/ocaml/opam-repository/issues/29987"&gt;ocaml/opam-repository#29987&lt;/a&gt;) and noted that locking virtual/conf packages is not fully supported by opam's design&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Proposal for &lt;code&gt;opam-packages-option-static-linking&lt;/code&gt;&lt;/strong&gt; — &lt;a href="https://github.com/raphael-proust"&gt;Raphaël Proust&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/opam-repository/issues/29975"&gt;ocaml/opam-repository#29975&lt;/a&gt; proposing convention packages analogous to &lt;code&gt;ocaml-options&lt;/code&gt; to signal static linking preference ecosystem-wide; &lt;a href="https://github.com/mseri"&gt;Marcello Seri&lt;/a&gt;, &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt;, and &lt;a href="https://github.com/dinosaure"&gt;Calascibetta Romain&lt;/a&gt; commented, with &lt;a href="https://github.com/dinosaure"&gt;Calascibetta Romain&lt;/a&gt; drawing on MirageOS unikernel toolchain experience; Raphaël published a proof-of-concept branch and a dune-configurator patch as a demo&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3667" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml WASI article technical corrections&lt;/strong&gt;&lt;/a&gt; — &lt;a href="https://github.com/vouillon"&gt;Jérôme Vouillon&lt;/a&gt; provided detailed corrections on &lt;a href="https://github.com/ocaml/ocaml.org/issues/3667"&gt;ocaml/ocaml.org#3667&lt;/a&gt; covering Wasm 3.0 standardisation status, &lt;code&gt;--effects=cps&lt;/code&gt; availability, &lt;code&gt;exnref&lt;/code&gt;-based exception handling now the default for WASI binaries (removing the need for &lt;code&gt;--enable exnref&lt;/code&gt;), and updated implementation metrics (5200 lines / 90 files)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29988" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;dune 3.24 compatibility cascade&lt;/strong&gt;&lt;/a&gt; — removal of the &lt;code&gt;lang coq&lt;/code&gt; stanza and changes to &lt;code&gt;mdx&lt;/code&gt; test targets in dune 3.24 is requiring upper bounds across coq, rocq-runtime, and mdx packages (&lt;a href="https://github.com/ocaml/opam-repository/issues/29988"&gt;ocaml/opam-repository#29988&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/29989"&gt;ocaml/opam-repository#29989&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/29993"&gt;ocaml/opam-repository#29993&lt;/a&gt;), with dune 3.24.0~alpha2 already submitted to opam-repository (&lt;a href="https://github.com/ocaml/opam-repository/issues/29996"&gt;ocaml/opam-repository#29996&lt;/a&gt;) and indexed on ocaml.org (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3671"&gt;ocaml/ocaml.org#3671&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29998" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Windows CI testing infrastructure&lt;/strong&gt;&lt;/a&gt; — &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt; is systematically improving Windows CI reliability with upgrade-path testing and PATH pruning to catch real-world depext regressions (&lt;a href="https://github.com/ocaml/opam-repository/issues/29998"&gt;ocaml/opam-repository#29998&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29987" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Lockfile semantics and in-place conf-package mutations&lt;/strong&gt;&lt;/a&gt; — the conf-pkgconf revert (&lt;a href="https://github.com/ocaml/opam-repository/issues/29987"&gt;ocaml/opam-repository#29987&lt;/a&gt;) and issue discussion (&lt;a href="https://github.com/ocaml/opam-repository/issues/29985"&gt;ocaml/opam-repository#29985&lt;/a&gt;) highlight ongoing tension between updating package metadata in-place versus publishing new versions for virtual/conf packages that users lock&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3670" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Event mini-sites on ocaml.org&lt;/strong&gt;&lt;/a&gt; — the OCaml Workshop 2026 pre-site (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3670"&gt;ocaml/ocaml.org#3670&lt;/a&gt;) establishes a pattern for hosting bespoke event pages directly on ocaml.org when conf.researchr.org is unavailable, using a staged rollout approach (URL-accessible but not yet linked from main navigation)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>opam-repository merged 10+ package releases and hardened Windows CI; ocaml.org launched the OCaml Workshop 2026 mini-site.</summary><published>2026-06-07T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/ecosystem/2026/week-22</id><title>Week 22, 2026: opam-repository merged 26 PRs with new packages and a security fix; ocaml.org published changelogs for nine platform tools.</title><updated>2026-05-31T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

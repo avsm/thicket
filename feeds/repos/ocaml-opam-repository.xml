@@ -1,5 +1,140 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam-repository.xml</id><title>ocaml/opam-repository (Weekly)</title><updated>2026-05-31T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam-repository.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam-repository</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2026/week-22</id><title>Week 22, 2026: Active week with 26 merges including new packages, a security fix in albatross, and CI improvements for opam syntax validation.</title><updated>2026-05-31T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam-repository.xml</id><title>ocaml/opam-repository (Weekly)</title><updated>2026-06-14T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam-repository.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam-repository</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2026/week-24</id><title>Week 24, 2026: OCaml 5.5.0~rc1 landed alongside a wave of new packages spanning AWS SDKs, database tooling, and networking libraries.</title><updated>2026-06-14T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+The week saw extensive package additions alongside infrastructure improvements for Windows CI and dune 3.24 compatibility fixes.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/30041" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Newly opened, not yet merged&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/ocaml/opam-repository/pull/30041"&gt;#30041&lt;/a&gt; adds missing constraints to &lt;code&gt;async_websocket.v0.13.0&lt;/code&gt; to prevent OxCaml switches from selecting the package; &lt;a href="https://github.com/ocaml/opam-repository/pull/30042"&gt;#30042&lt;/a&gt; drops a duplicate dune version constraint in &lt;code&gt;ez_file&lt;/code&gt;; &lt;a href="https://github.com/ocaml/opam-repository/pull/30043"&gt;#30043&lt;/a&gt; submits &lt;code&gt;syguslib-utils.0.3.0&lt;/code&gt; (SyGuS Language parser); &lt;a href="https://github.com/ocaml/opam-repository/pull/30024"&gt;#30024&lt;/a&gt; releases &lt;code&gt;store.0.2&lt;/code&gt;, &lt;code&gt;store-dict.0.1&lt;/code&gt;, &lt;code&gt;store-pushqueue.0.1&lt;/code&gt; supporting user-defined storable types; &lt;a href="https://github.com/ocaml/opam-repository/pull/30013"&gt;#30013&lt;/a&gt; submits &lt;code&gt;diffast.0.4&lt;/code&gt; (AST differencing), stalled on Cygwin linker errors and a RISC-V segfault; &lt;a href="https://github.com/ocaml/opam-repository/pull/30007"&gt;#30007&lt;/a&gt; releases &lt;code&gt;ocaml-r.0.7.0&lt;/code&gt; (OCaml bindings for the R interpreter), pending discussion on macOS failures; &lt;a href="https://github.com/ocaml/opam-repository/pull/29883"&gt;#29883&lt;/a&gt; submits &lt;code&gt;lstar-rocq.1.0&lt;/code&gt; (formally-verified L* in Rocq).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29998" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Windows CI hardened&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/ocaml/opam-repository/pull/29998"&gt;#29998&lt;/a&gt; updated Windows CI to install edited packages by upgrading from the master version first, catching state regressions and lockfile issues.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/30029" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;conf- packages updated&lt;/strong&gt;&lt;/a&gt; for 0install solver compatibility on Windows via &lt;a href="https://github.com/ocaml/opam-repository/pull/30029"&gt;#30029&lt;/a&gt;, tweaking many &lt;code&gt;conf-*&lt;/code&gt; packages and adding &lt;code&gt;conf-pkg-config.5&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/30035" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;dune 3.24 compatibility&lt;/strong&gt;&lt;/a&gt;: Tests for &lt;code&gt;crunch.4.0.0&lt;/code&gt; &lt;a href="https://github.com/ocaml/opam-repository/pull/30035"&gt;#30035&lt;/a&gt;, &lt;code&gt;lintcstubs.0.4.7&lt;/code&gt; &lt;a href="https://github.com/ocaml/opam-repository/pull/30032"&gt;#30032&lt;/a&gt;, and &lt;code&gt;merlin&lt;/code&gt; &lt;a href="https://github.com/ocaml/opam-repository/pull/30044"&gt;#30044&lt;/a&gt; were conditionally gated on &lt;code&gt;dune &lt; 3.24&lt;/code&gt; due to install layout changes.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/30034" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Dependency fix&lt;/strong&gt;&lt;/a&gt;: &lt;code&gt;mazeppa.0.7.2&lt;/code&gt;'s &lt;code&gt;checked_oint&lt;/code&gt; dependency corrected via &lt;a href="https://github.com/ocaml/opam-repository/pull/30034"&gt;#30034&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/30039" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;diffast-core&lt;/strong&gt;&lt;/a&gt; 0.2 incompatibility with 0.4 noted and patched via &lt;a href="https://github.com/ocaml/opam-repository/pull/30039"&gt;#30039&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/pull/29998" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;CI&lt;/strong&gt;&lt;/a&gt;: A lint error 46 suppression added in &lt;a href="https://github.com/ocaml/opam-repository/pull/29998"&gt;#29998&lt;/a&gt; to avoid blocking CI when &lt;code&gt;conf&lt;/code&gt;-flagged packages have install sections.&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>OCaml 5.5.0~rc1 landed alongside a wave of new packages spanning AWS SDKs, database tooling, and networking libraries.</summary><published>2026-06-14T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2026/week-23</id><title>Week 23, 2026: Releases include raylib 2.0.0, catala 1.2.0, awso 0.9.1, and awa 0.6.1; Windows CI testing of edited packages being hardened.</title><updated>2026-06-07T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+New PRs include liquid-ml 0.1.4, migra 1.0.0, dune 3.24 alpha2, and awskit 0.1.0; Windows CI and dune 3.24 compatibility work is ongoing.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/30004" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;liquid-ml 0.1.4&lt;/strong&gt;&lt;/a&gt; (5 packages: &lt;code&gt;liquid_interpreter&lt;/code&gt;, &lt;code&gt;liquid_ml&lt;/code&gt;, &lt;code&gt;liquid_parser&lt;/code&gt;, &lt;code&gt;liquid_std&lt;/code&gt;, &lt;code&gt;liquid_syntax&lt;/code&gt;) — Shopify Liquid template engine in OCaml with whitespace-control support and improved time handling, opened by &lt;a href="https://github.com/benfaerber"&gt;Ben Faerber&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/30004"&gt;#30004&lt;/a&gt;); the 0.1.3 submission was closed in favour of this updated release (&lt;a href="https://github.com/ocaml/opam-repository/issues/30003"&gt;#30003&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/30002" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;migra 1.0.0&lt;/strong&gt;&lt;/a&gt; — first stable release of a database migration tool for OCaml supporting PostgreSQL, MariaDB, and SQLite, with checksum validation, out-of-order detection, &lt;code&gt;--dry-run&lt;/code&gt; flag, and a library facade, opened by &lt;a href="https://github.com/dsincl12"&gt;David Sinclair&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/30002"&gt;#30002&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29996" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;dune 3.24.0~alpha2&lt;/strong&gt;&lt;/a&gt; (18 packages) — alpha pre-release of the dune build system submitted by &lt;a href="https://github.com/shonfeder"&gt;Shon Feder&lt;/a&gt;, superseding the alpha0 submission which was closed (&lt;a href="https://github.com/ocaml/opam-repository/issues/29996"&gt;#29996&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/29969"&gt;#29969&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29980" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;awskit 0.1.0&lt;/strong&gt;&lt;/a&gt; (10 packages) — new AWS infrastructure library with Eio and Lwt adapters by &lt;a href="https://github.com/abdufelsayed"&gt;Abdullah Elsayed&lt;/a&gt;, covering signing, credentials, endpoints, and core types (&lt;a href="https://github.com/ocaml/opam-repository/issues/29980"&gt;#29980&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29999" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;melange-edn 0.1.0&lt;/strong&gt;&lt;/a&gt; — EDN reader and writer for Melange, converting between EDN values and JavaScript JSON values, opened by &lt;a href="https://github.com/RCmerci"&gt;rcmerci&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29999"&gt;#29999&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29995" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Timedesc 3.1.2&lt;/strong&gt;&lt;/a&gt; (6 packages) — new release of the OCaml date-time handling library by &lt;a href="https://github.com/darrenldl"&gt;Darren Li&lt;/a&gt;; a 3.1.1 submission was closed and superseded by this version (&lt;a href="https://github.com/ocaml/opam-repository/issues/29995"&gt;#29995&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/29994"&gt;#29994&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29997" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;duras 2.0.0&lt;/strong&gt;&lt;/a&gt; — release opened by &lt;a href="https://github.com/sduras"&gt;Sergiy Duras&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29997"&gt;#29997&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29998" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Windows CI hardening&lt;/strong&gt;&lt;/a&gt; — &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt; opened a PR to test edited packages differently from newly added ones: existing package versions are installed first, the switch locked, then upgraded to the PR version, catching regressions and lockfile breakage; includes pruning of extraneous software from GitHub Actions PATH for cleaner depext testing (&lt;a href="https://github.com/ocaml/opam-repository/issues/29998"&gt;#29998&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29976" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;conf-pkgconf revert&lt;/strong&gt;&lt;/a&gt; — a Windows conf-package simplification (&lt;a href="https://github.com/ocaml/opam-repository/issues/29976"&gt;#29976&lt;/a&gt;) was merged then immediately reverted (&lt;a href="https://github.com/ocaml/opam-repository/issues/29987"&gt;#29987&lt;/a&gt;) after it was found to break lockfiles; &lt;a href="https://github.com/raphael-proust"&gt;Raphaël Proust&lt;/a&gt; separately opened and then closed a more conservative fix attempt (&lt;a href="https://github.com/ocaml/opam-repository/issues/29986"&gt;#29986&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29988" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;dune 3.24 compatibility&lt;/strong&gt;&lt;/a&gt; — &lt;a href="https://github.com/shonfeder"&gt;Shon Feder&lt;/a&gt; merged multiple fixes: adding &lt;code&gt;dune &lt; 3.24&lt;/code&gt; upper bounds to all &lt;code&gt;coq&lt;/code&gt; and &lt;code&gt;rocq&lt;/code&gt; packages using deprecated &lt;code&gt;lang coq&lt;/code&gt; or &lt;code&gt;using coq&lt;/code&gt; stanzas (&lt;a href="https://github.com/ocaml/opam-repository/issues/29988"&gt;#29988&lt;/a&gt;), disabling mdx test-running for currently published versions (&lt;a href="https://github.com/ocaml/opam-repository/issues/29989"&gt;#29989&lt;/a&gt;), and then re-enabling tests conditionally for dune versions below 3.24 (&lt;a href="https://github.com/ocaml/opam-repository/issues/29993"&gt;#29993&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29991" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Rocq 9.2 Makefile fix&lt;/strong&gt;&lt;/a&gt; — &lt;a href="https://github.com/gares"&gt;Enrico Tassi&lt;/a&gt; fixed the Makefile target needed to build with Rocq 9.2 (&lt;a href="https://github.com/ocaml/opam-repository/issues/29991"&gt;#29991&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/29631" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Ongoing PRs from prior weeks&lt;/strong&gt;&lt;/a&gt; still awaiting merge include &lt;code&gt;server-reason-react.0.5.0&lt;/code&gt; by &lt;a href="https://github.com/davesnx"&gt;David Sancho&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29631"&gt;#29631&lt;/a&gt;), &lt;code&gt;bin_there.0.2.1a2&lt;/code&gt; and &lt;code&gt;ppx_bin_there.0.2.1a2&lt;/code&gt; by &lt;a href="https://github.com/Yoric"&gt;David Teller&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29807"&gt;#29807&lt;/a&gt;), &lt;code&gt;lstar-rocq&lt;/code&gt; by &lt;a href="https://github.com/CharlesAverill"&gt;Charles Averill&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29883"&gt;#29883&lt;/a&gt;), and LLVM 20/21 releases by &lt;a href="https://github.com/alan-j-hu"&gt;Alan&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29110"&gt;#29110&lt;/a&gt;) and &lt;code&gt;ocaml-option-llvm&lt;/code&gt; by &lt;a href="https://github.com/smorimoto"&gt;Sora Morimoto&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29582"&gt;#29582&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Releases include raylib 2.0.0, catala 1.2.0, awso 0.9.1, and awa 0.6.1; Windows CI testing of edited packages being hardened.</summary><published>2026-06-07T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2026/week-22</id><title>Week 22, 2026: Active week with 26 merges including new packages, a security fix in albatross, and CI improvements for opam syntax validation.</title><updated>2026-05-31T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

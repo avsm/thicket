@@ -1,5 +1,139 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.xml</id><title>ocaml/ocaml (Weekly)</title><updated>2026-05-31T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-22</id><title>Week 22, 2026: Ephemeron GC fixes landed, compiler profiling overhead eliminated, Windows Unix.select bug fixed, and Antonin Décimo added as maintainer.</title><updated>2026-05-31T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.xml</id><title>ocaml/ocaml (Weekly)</title><updated>2026-06-14T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-24</id><title>Week 24, 2026: Security fixes for CVE-2026-41083 (Filename.quote_command) and CVE-2026-28364 (intern.c) landed, with a GC mark_header regression fix.</title><updated>2026-06-14T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Two new Windows-related PRs opened alongside ongoing stdlib extension proposals for Weak, Dynarray, and extensible IO channels.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/MisterDA"&gt;Antonin Décimo&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/ocaml/issues/14850" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;more cross-compilation fixes for Windows&lt;/strong&gt;&lt;/a&gt; addressing dummy file extensions in &lt;code&gt;installcross&lt;/code&gt;, CC variable quoting for Flexlink when flags contain spaces, and preventing clang-cl from synthesizing &lt;code&gt;wcslen&lt;/code&gt; calls in &lt;code&gt;header.obj&lt;/code&gt; by passing &lt;code&gt;-fno-builtin-wcslen&lt;/code&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14850"&gt;#14850&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Jeannalyse"&gt;@Jeannalyse&lt;/a&gt; opened a PR implementing &lt;a href="https://github.com/ocaml/ocaml/issues/14860" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;configurable domain stack size&lt;/strong&gt;&lt;/a&gt; via a new &lt;code&gt;S=&lt;/code&gt; parameter in &lt;code&gt;OCAMLRUNPARAM&lt;/code&gt;, addressing the long-standing feature request to allow spawning domains with larger stacks for C FFI-heavy workloads (&lt;a href="https://github.com/ocaml/ocaml/issues/14860"&gt;#14860&lt;/a&gt;, related to &lt;a href="https://github.com/ocaml/ocaml/issues/14195"&gt;#14195&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/OlivierNicole"&gt;Olivier Nicole&lt;/a&gt; opened a PR adding &lt;a href="https://github.com/ocaml/ocaml/issues/10995" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;missing memory model documentation comments&lt;/strong&gt;&lt;/a&gt; in &lt;code&gt;memory.c&lt;/code&gt; explaining why atomic write functions end with a release fence and documenting "publication safety" for initialising writes into newly allocated values, drawing on discussions from &lt;a href="https://github.com/ocaml/ocaml/issues/10995"&gt;#10995&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14857"&gt;#14857&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Zaneham"&gt;Zane Hambly&lt;/a&gt; continues work on &lt;strong class="achievement"&gt;native &lt;code&gt;Iatomic_fetch_add&lt;/code&gt; across all architectures&lt;/strong&gt; (amd64, arm64, RISC-V, POWER), with review from &lt;a href="https://github.com/OlivierNicole"&gt;Olivier Nicole&lt;/a&gt; focused on ensuring correct release fences required by the OCaml memory model beyond what C11 atomics guarantee (&lt;a href="https://github.com/ocaml/ocaml/issues/14575"&gt;#14575&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Jeannalyse"&gt;@Jeannalyse&lt;/a&gt; also has an open PR implementing &lt;strong class="achievement"&gt;&lt;code&gt;Dynarray.sort&lt;/code&gt;, &lt;code&gt;Dynarray.stable_sort&lt;/code&gt;, and &lt;code&gt;Dynarray.stable_sort_sub&lt;/code&gt;&lt;/strong&gt; by delegating to &lt;code&gt;Array.stable_sort_sub&lt;/code&gt; on the backing array, with benchmarks showing the approach is faster than alternatives using &lt;code&gt;Dynarray.get&lt;/code&gt;/&lt;code&gt;set&lt;/code&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14848"&gt;#14848&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/toots"&gt;Romain Beauxis&lt;/a&gt; continues seeking feedback on &lt;strong class="achievement"&gt;&lt;code&gt;Weak.{iter, iteri, foldi_left}&lt;/code&gt;&lt;/strong&gt; additions to the standard library, with &lt;code&gt;foldi_left&lt;/code&gt; implemented as a C primitive to avoid per-element &lt;code&gt;option&lt;/code&gt; wrapping allocations (&lt;a href="https://github.com/ocaml/ocaml/issues/14792"&gt;#14792&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/c-cube"&gt;Simon Cruanes&lt;/a&gt; maintains an open draft PR for &lt;a href="https://github.com/ocaml/ocaml/issues/14775" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;extensible IO channels&lt;/strong&gt;&lt;/a&gt; implementing the &lt;a href="https://github.com/ocaml/RFCs/blob/master/rfcs/modular_io.md"&gt;modular IO RFC&lt;/a&gt;, currently under broader stdlib team discussion (&lt;a href="https://github.com/ocaml/ocaml/issues/14775"&gt;#14775&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/smuenzel"&gt;Stefan Muenzel&lt;/a&gt; has two open PRs: &lt;strong class="achievement"&gt;&lt;code&gt;-rectypes&lt;/code&gt; testing in expect tests&lt;/strong&gt; to exercise more typing behaviors in CI (&lt;a href="https://github.com/ocaml/ocaml/issues/14643"&gt;#14643&lt;/a&gt;) and &lt;a href="https://github.com/ocaml/ocaml/issues/14643" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;allowing aliases in signature inclusion checks&lt;/strong&gt;&lt;/a&gt; to permit type aliases to be followed when verifying module type inclusion (&lt;a href="https://github.com/ocaml/ocaml/issues/14746"&gt;#14746&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; has an open PR adding &lt;a href="https://github.com/ocaml/ocaml/issues/14349" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;weak pointer and ephemeron repro test cases&lt;/strong&gt;&lt;/a&gt; for the multicoretests failures from &lt;a href="https://github.com/ocaml/ocaml/issues/14349"&gt;#14349&lt;/a&gt;, noting that tests now pass on trunk (&lt;a href="https://github.com/ocaml/ocaml/issues/14745"&gt;#14745&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/MisterDA"&gt;Antonin Décimo&lt;/a&gt; also merged a fix for the &lt;a href="https://github.com/ocaml/ocaml/issues/14852" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;GHA cygwin-packages download directory&lt;/strong&gt;&lt;/a&gt; that was causing cache misses in CI (saving ~20 seconds per run) by correcting the path from &lt;code&gt;C:\cygwin-packages&lt;/code&gt; to the actual default &lt;code&gt;D:&lt;/code&gt; volume used by the action (&lt;a href="https://github.com/ocaml/ocaml/issues/14852"&gt;#14852&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Long-standing &lt;a href="https://github.com/ocaml/ocaml/issues/10840" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;soundness bug with polymorphism and row types&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/10840"&gt;#10840&lt;/a&gt;, originally from 2021) was closed by &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt;, noting that the reported crash examples are now rejected by the typechecker and all modular explicit examples are accepted&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Security fixes for CVE-2026-41083 (Filename.quote_command) and CVE-2026-28364 (intern.c) landed, with a GC mark_header regression fix.</summary><published>2026-06-14T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-23</id><title>Week 23, 2026: Bug fixes for runtime events, flambda, type checker, and configure; DragonFly BSD support added; AR/ARFLAGS build system standardization.</title><updated>2026-06-07T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Two new stdlib and type-checker PRs opened; active reviews on flambda, ephemeron GC, extensible IO, and C API proposals.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14848" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Newly opened&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/Jeannalyse"&gt;Jeannalyse&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/ocaml/issues/14848"&gt;#14848&lt;/a&gt; proposing &lt;code&gt;Dynarray.stable_sort_sub&lt;/code&gt;, &lt;code&gt;Dynarray.stable_sort&lt;/code&gt;, and &lt;code&gt;Dynarray.sort&lt;/code&gt; stdlib additions, benchmarked with three implementation variants; &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/ocaml/issues/14845"&gt;#14845&lt;/a&gt; to fix the typechecker crash (&lt;code&gt;Fatal error: exception Ctype.Unify(_)&lt;/code&gt;) reported in &lt;a href="https://github.com/ocaml/ocaml/issues/14842"&gt;#14842&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14834" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Runtime system&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/mbacarella"&gt;Michael Bacarella&lt;/a&gt; merged the runtime_events hang fix (&lt;a href="https://github.com/ocaml/ocaml/issues/14834"&gt;#14834&lt;/a&gt;); &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; has an open PR improving multi-domain ephemeron marking to avoid redundant rounds (&lt;a href="https://github.com/ocaml/ocaml/issues/14774"&gt;#14774&lt;/a&gt;), with benchmarks showing ~14% speedup at 12 domains&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14824" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Type system&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt; merged the type recovery path-copying fix (&lt;a href="https://github.com/ocaml/ocaml/issues/14824"&gt;#14824&lt;/a&gt;) and backported a related fix to the 5.5 branch (&lt;a href="https://github.com/ocaml/ocaml/issues/14841"&gt;#14841&lt;/a&gt;); active investigation of the &lt;code&gt;Ctype.Unify(_)&lt;/code&gt; typechecker regression (&lt;a href="https://github.com/ocaml/ocaml/issues/14842"&gt;#14842&lt;/a&gt;) with contributions from &lt;a href="https://github.com/garrigue"&gt;Jacques Garrigue&lt;/a&gt; and &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14763" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Compiler optimizations&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt; has an open PR (&lt;a href="https://github.com/ocaml/ocaml/issues/14763"&gt;#14763&lt;/a&gt;) to merge nested labelled applications in Lambda, eliminating spurious intermediate closures; &lt;a href="https://github.com/Zaneham"&gt;Zane Hambly&lt;/a&gt; continues review on the multi-architecture &lt;code&gt;Iatomic_fetch_add&lt;/code&gt; native codegen PR (&lt;a href="https://github.com/ocaml/ocaml/issues/14575"&gt;#14575&lt;/a&gt;) with &lt;a href="https://github.com/OlivierNicole"&gt;Olivier Nicole&lt;/a&gt; reviewing amd64, arm64, riscv, and power backends&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14814" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;C API&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; has an open proposal (&lt;a href="https://github.com/ocaml/ocaml/issues/14814"&gt;#14814&lt;/a&gt;) adding &lt;code&gt;caml_result_find_exception&lt;/code&gt; to &lt;code&gt;mlvalues.h&lt;/code&gt;, providing a safer way to inspect &lt;code&gt;caml_result&lt;/code&gt; values for exceptions from C code&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14840" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Platform and build&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/mneumann"&gt;Michael Neumann&lt;/a&gt; merged DragonFly BSD frame pointer support (&lt;a href="https://github.com/ocaml/ocaml/issues/14840"&gt;#14840&lt;/a&gt;); &lt;a href="https://github.com/MisterDA"&gt;Antonin Décimo&lt;/a&gt; merged the long-running &lt;code&gt;AR&lt;/code&gt;/&lt;code&gt;ARFLAGS&lt;/code&gt;/&lt;code&gt;LN_S&lt;/code&gt; build standardization (&lt;a href="https://github.com/ocaml/ocaml/issues/14552"&gt;#14552&lt;/a&gt;); &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt; fixed the configure.ac regression (&lt;a href="https://github.com/ocaml/ocaml/issues/14846"&gt;#14846&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14847" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Closed without merging&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/ngorogiannis"&gt;Nikos Gorogiannis&lt;/a&gt; submitted &lt;a href="https://github.com/ocaml/ocaml/issues/14847"&gt;#14847&lt;/a&gt; by mistake (GC counter flush code belonging to a different project) and it was promptly closed&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Bug fixes for runtime events, flambda, type checker, and configure; DragonFly BSD support added; AR/ARFLAGS build system standardization.</summary><published>2026-06-07T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-22</id><title>Week 22, 2026: Ephemeron GC fixes landed, compiler profiling overhead eliminated, Windows Unix.select bug fixed, and Antonin Décimo added as maintainer.</title><updated>2026-05-31T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

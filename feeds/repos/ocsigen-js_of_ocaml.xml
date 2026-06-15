@@ -1,5 +1,132 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocsigen-js_of_ocaml.xml</id><title>ocsigen/js_of_ocaml (Weekly)</title><updated>2026-05-31T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocsigen-js_of_ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocsigen/js_of_ocaml</subtitle><entry><id>https://thicket.dev/repos/ocsigen-js_of_ocaml/2026/week-22</id><title>Week 22, 2026: A highly active week delivering new Promise, Fetch, and Abort API bindings, major Dom breaking changes, compiler dispatch-loop fixes, and Popover API support.</title><updated>2026-05-31T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocsigen-js_of_ocaml.xml</id><title>ocsigen/js_of_ocaml (Weekly)</title><updated>2026-06-14T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocsigen-js_of_ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocsigen/js_of_ocaml</subtitle><entry><id>https://thicket.dev/repos/ocsigen-js_of_ocaml/2026/week-24</id><title>Week 24, 2026: WASI 0.1 runtime landed, docs migrated to odoc/wodoc, and a systematic JS runtime review produced 13 merged bug fixes.</title><updated>2026-06-14T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+A wave of 23+ newly opened runtime correctness PRs from a systematic review complements 13 merges this week.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2270" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Newly opened runtime fix PRs&lt;/strong&gt;&lt;/a&gt; from &lt;a href="https://github.com/hhugo"&gt;@hhugo&lt;/a&gt;'s systematic JS runtime review (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2270"&gt;#2270&lt;/a&gt;) include: &lt;strong class="achievement"&gt;exact float formatting, hex float parsing, and ldexp single-rounding&lt;/strong&gt; (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2280"&gt;#2280&lt;/a&gt;); &lt;strong class="achievement"&gt;float array hashing and abstract block skipping&lt;/strong&gt; (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2283"&gt;#2283&lt;/a&gt;); &lt;strong class="achievement"&gt;filesystem fixes&lt;/strong&gt; across fake device, node, QuickJS, and fs.js (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2286"&gt;#2286&lt;/a&gt;, draft); &lt;strong class="achievement"&gt;Unix fixes&lt;/strong&gt; for error&lt;em&gt;message, localtime, chmod, close, and readdir (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2287"&gt;#2287&lt;/a&gt;, draft); &lt;strong class="achievement"&gt;fresh channel per open&lt;/em&gt;descriptor&lt;/strong&gt; call to fix shared channel state (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2288"&gt;#2288&lt;/a&gt;); &lt;strong class="achievement"&gt;Sys.command exit code, Sys.getenv, Sys.isatty&lt;/strong&gt; (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2289"&gt;#2289&lt;/a&gt;); &lt;strong class="achievement"&gt;compare ordering of immediate vs custom block&lt;/strong&gt; (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2290"&gt;#2290&lt;/a&gt;); &lt;strong class="achievement"&gt;Domain.spawn exception handling&lt;/strong&gt; for JS and Wasm (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2291"&gt;#2291&lt;/a&gt;); &lt;strong class="achievement"&gt;float array marshalling&lt;/strong&gt; as CODE&lt;em&gt;DOUBLE&lt;/em&gt;ARRAY (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2292"&gt;#2292&lt;/a&gt;); &lt;strong class="achievement"&gt;floatarray op result tags and Array.make error message&lt;/strong&gt; (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2293"&gt;#2293&lt;/a&gt;); &lt;strong class="achievement"&gt;Graphics plot/arc/draw&lt;em&gt;image&lt;/strong&gt; origin and angle fixes (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2296"&gt;#2296&lt;/a&gt;); &lt;strong class="achievement"&gt;QuickJS fd read/write error handling&lt;/strong&gt; (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2297"&gt;#2297&lt;/a&gt;); &lt;strong class="achievement"&gt;bigarray hash tail zero-extension&lt;/strong&gt; for JS and Wasm (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2271"&gt;#2271&lt;/a&gt;); and &lt;strong class="achievement"&gt;Weak.get&lt;/em&gt;copy / Ephemeron.get&lt;em&gt;data&lt;/em&gt;copy&lt;/strong&gt; byte and float array copying (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2281"&gt;#2281&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2262" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Wasm runtime cleanup&lt;/strong&gt;&lt;/a&gt; PR (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2262"&gt;#2262&lt;/a&gt;) opened by &lt;a href="https://github.com/vouillon"&gt;Jérôme Vouillon&lt;/a&gt; (draft), using &lt;code&gt;$wasi&lt;/code&gt; preprocessor variables, removing Binaryen tuples and pop instructions, fixing types, and adding missing function names so that the &lt;code&gt;wax&lt;/code&gt; tool can parse all runtime files.&lt;/li&gt;
+&lt;li&gt;The long-running &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/1831" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;WASI runtime PR&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/1831"&gt;#1831&lt;/a&gt;) by &lt;a href="https://github.com/vouillon"&gt;Jérôme Vouillon&lt;/a&gt; merged after an extensive review covering the WASI preview1 implementation, test coverage with OCaml test suite, Wizard/wasmtime engine support, and separate compilation.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2261" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Documentation migration&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2261"&gt;#2261&lt;/a&gt;) merged by &lt;a href="https://github.com/balat"&gt;Vincent Balat&lt;/a&gt;, replacing the wiki pipeline with odoc/wodoc and retiring the Python script, highlight.js, and template HTML. &lt;a href="https://github.com/hhugo"&gt;@hhugo&lt;/a&gt; reviewed and identified several &lt;code&gt;wodoc convert&lt;/code&gt; artifacts including bare URL mangling, nested list flattening, inline code brace issues, and dead cross-package &lt;code&gt;{!…}&lt;/code&gt; links.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2241" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Release tracking&lt;/strong&gt;&lt;/a&gt; for js&lt;em&gt;of&lt;/em&gt;ocaml 6.4 continues in &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2241"&gt;#2241&lt;/a&gt;, with OCaml 5.5.0 release expected imminently.&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>WASI 0.1 runtime landed, docs migrated to odoc/wodoc, and a systematic JS runtime review produced 13 merged bug fixes.</summary><published>2026-06-14T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocsigen-js_of_ocaml/2026/week-23</id><title>Week 23, 2026: Merged `Intl.RelativeTimeFormat` bindings (#2070); documentation migration to odoc/wodoc opened as draft PR (#2261).</title><updated>2026-06-07T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Documentation infrastructure overhaul opened as draft; wasm/compiler optimisation PRs remain under active review.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2261" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Newly opened (draft)&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/balat"&gt;Vincent Balat&lt;/a&gt; opened &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2261"&gt;#2261&lt;/a&gt; to migrate the js&lt;em&gt;of&lt;/em&gt;ocaml documentation pipeline from the wiki format to &lt;code&gt;odoc&lt;/code&gt; + &lt;code&gt;wodoc&lt;/code&gt;, replacing &lt;code&gt;manual/*.wiki&lt;/code&gt; files with &lt;code&gt;.mld&lt;/code&gt; sources, removing the hand-written build scripts and Python tools, and publishing via a single &lt;code&gt;dune build @doc&lt;/code&gt; step themed with the Ocsigen site chrome. The PR also updates the GitHub Actions &lt;code&gt;doc.yml&lt;/code&gt; workflow and repurposes &lt;code&gt;tools/check_manual_links.sh&lt;/code&gt; to check only external links (internal references now validated by odoc at build time).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2255" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;CSS Font Loading API&lt;/strong&gt;&lt;/a&gt; binding awaits review as &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2255"&gt;#2255&lt;/a&gt; by &lt;a href="https://github.com/hhugo"&gt;@hhugo&lt;/a&gt;, adding &lt;code&gt;Css_font_loading.fontFace&lt;/code&gt; / &lt;code&gt;fontFaceSet&lt;/code&gt; class types and a &lt;code&gt;fonts&lt;/code&gt; property on &lt;code&gt;Dom_html.document&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Runtime &lt;code&gt;uncaughtException&lt;/code&gt; handler scoping&lt;/strong&gt; fix open as &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2258"&gt;#2258&lt;/a&gt; by &lt;a href="https://github.com/hhugo"&gt;@hhugo&lt;/a&gt;, limiting the Node.js handler to standalone programs only (resolves &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/1277"&gt;#1277&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2257" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Compiler JS minification&lt;/strong&gt;&lt;/a&gt; enhancements in &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2257"&gt;#2257&lt;/a&gt; by &lt;a href="https://github.com/hhugo"&gt;@hhugo&lt;/a&gt;: esbuild-style cosmetic transforms in compact mode — &lt;code&gt;!0&lt;/code&gt;/&lt;code&gt;!1&lt;/code&gt; for booleans, stripped leading zeros for decimal fractions, normalised exponents, and backtick-quoted strings where they reduce escape count.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2238" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Wasm optimisation&lt;/strong&gt;&lt;/a&gt; work ongoing: &lt;a href="https://github.com/vouillon"&gt;Jérôme Vouillon&lt;/a&gt; has several draft PRs under development — skipping &lt;code&gt;wasm-opt --opt 1&lt;/code&gt; in favour of targeted local-variable optimisations (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2238"&gt;#2238&lt;/a&gt;), exception handling optimisations (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2098"&gt;#2098&lt;/a&gt;), WASI runtime support (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/1831"&gt;#1831&lt;/a&gt;), static evaluation experiments (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2153"&gt;#2153&lt;/a&gt;), and a GC-after-parsing memory reduction (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2259"&gt;#2259&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/1759" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Closed without merge&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/1759"&gt;#1759&lt;/a&gt; (experiment with new Wasm exception handling instructions) closed by &lt;a href="https://github.com/vouillon"&gt;Jérôme Vouillon&lt;/a&gt; as the instructions are still behind a flag in Chrome and Node.js.&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Merged `Intl.RelativeTimeFormat` bindings (#2070); documentation migration to odoc/wodoc opened as draft PR (#2261).</summary><published>2026-06-07T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocsigen-js_of_ocaml/2026/week-22</id><title>Week 22, 2026: A highly active week delivering new Promise, Fetch, and Abort API bindings, major Dom breaking changes, compiler dispatch-loop fixes, and Popover API support.</title><updated>2026-05-31T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

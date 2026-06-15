@@ -1,5 +1,126 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-merlin.xml</id><title>ocaml/merlin (Weekly)</title><updated>2026-05-31T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-merlin.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/merlin</subtitle><entry><id>https://thicket.dev/repos/ocaml-merlin/2026/week-22</id><title>Week 22, 2026: Signature-help type alias fix merged, old issues closed with tests, and Emacs 31 compatibility update opened.</title><updated>2026-05-31T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-merlin.xml</id><title>ocaml/merlin (Weekly)</title><updated>2026-06-14T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-merlin.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/merlin</subtitle><entry><id>https://thicket.dev/repos/ocaml-merlin/2026/week-24</id><title>Week 24, 2026: Fixed let-punning locate navigation, closed 4 stale issues, and opened a draft OCaml 5.5 upgrade PR.</title><updated>2026-06-14T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Draft OCaml 5.5 upgrade PR opened; test suite decoupled from dune internal paths ahead of dune 3.24 changes.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt; opened a &lt;a href="https://github.com/ocaml/merlin/issues/2077" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;draft OCaml 5.5 upgrade&lt;/strong&gt;&lt;/a&gt; PR (&lt;a href="https://github.com/ocaml/merlin/issues/2077"&gt;#2077&lt;/a&gt;) touching 462 files, representing the bulk of the work to keep Merlin in sync with the upstream compiler&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/shonfeder"&gt;Shon Feder&lt;/a&gt; decoupled the &lt;a href="https://github.com/ocaml/dune/issues/14432" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;no-dune test from dune internal install paths&lt;/strong&gt;&lt;/a&gt; by switching to &lt;code&gt;which ocamlmerlin&lt;/code&gt; instead of hardcoded &lt;code&gt;install/default/bin/&lt;/code&gt; paths, preventing breakage from the upcoming &lt;a href="https://github.com/ocaml/dune/issues/14432"&gt;ocaml/dune#14432&lt;/a&gt; layout changes in dune 3.24; identified via reverse-dependency tests in &lt;a href="https://github.com/ocaml/opam-repository/issues/29996"&gt;ocaml/opam-repository#29996&lt;/a&gt; (&lt;a href="https://github.com/ocaml/merlin/issues/2078"&gt;#2078&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;CI updated with &lt;a href="https://github.com/ocaml/merlin/issues/2049" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Emacs lint workflow&lt;/strong&gt;&lt;/a&gt; bumped to &lt;code&gt;purcell/setup-emacs@v8.0&lt;/code&gt;, picking up Nix script updates and security fixes (&lt;a href="https://github.com/ocaml/merlin/issues/2049"&gt;#2049&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt; administratively &lt;a href="https://github.com/ocaml/merlin/issues/1927" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;closed four stale issues&lt;/strong&gt;&lt;/a&gt;: &lt;a href="https://github.com/ocaml/merlin/issues/1927"&gt;#1927&lt;/a&gt; (signature help with type aliases), &lt;a href="https://github.com/ocaml/merlin/issues/1533"&gt;#1533&lt;/a&gt; (MenhirLib unbinding, closed as not planned), and triaged &lt;a href="https://github.com/ocaml/merlin/issues/1610"&gt;#1610&lt;/a&gt; and &lt;a href="https://github.com/ocaml/merlin/issues/1748"&gt;#1748&lt;/a&gt; with updated status notes&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Fixed let-punning locate navigation, closed 4 stale issues, and opened a draft OCaml 5.5 upgrade PR.</summary><published>2026-06-14T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-merlin/2026/week-23</id><title>Week 23, 2026: Emacs integration fix: replaced obsolete `when-let` with `let`+`when` to silence Emacs 31 byte-compiler warnings.</title><updated>2026-06-07T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Merged a fix for the Emacs package to replace the deprecated when-let&lt;/code&gt; macro, keeping compatibility with Emacs 25.1+.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/dannywillems"&gt;Danny Willems&lt;/a&gt; rewrote the single &lt;code&gt;when-let&lt;/code&gt; call site in &lt;code&gt;merlin--construct-point&lt;/code&gt; using &lt;code&gt;let&lt;/code&gt; + &lt;code&gt;when&lt;/code&gt;, which silences the &lt;a href="https://github.com/ocaml/merlin/issues/2076" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Emacs 31 byte-compiler obsoletion warning&lt;/strong&gt;&lt;/a&gt; without raising the package's minimum Emacs requirement (still 25.1) (&lt;a href="https://github.com/ocaml/merlin/issues/2076"&gt;#2076&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Emacs integration fix: replaced obsolete `when-let` with `let`+`when` to silence Emacs 31 byte-compiler warnings.</summary><published>2026-06-07T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-merlin/2026/week-22</id><title>Week 22, 2026: Signature-help type alias fix merged, old issues closed with tests, and Emacs 31 compatibility update opened.</title><updated>2026-05-31T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
