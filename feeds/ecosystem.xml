@@ -1,5 +1,100 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/ecosystem.xml</id><title>OCaml Ecosystem (Weekly)</title><updated>2026-06-14T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/ecosystem.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Package repositories and community infrastructure</subtitle><entry><id>https://thicket.dev/groups/ecosystem/2026/week-24</id><title>Week 24, 2026: OCaml 5.5.0~rc1 landed in opam-repository with 25+ new packages; ocaml.org added AI dev docs and a wasm_of_ocaml WASI backstage post.</title><updated>2026-06-14T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/ecosystem.xml</id><title>OCaml Ecosystem (Weekly)</title><updated>2026-07-05T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/ecosystem.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Package repositories and community infrastructure</subtitle><entry><id>https://thicket.dev/groups/ecosystem/2026/week-27</id><title>Week 27, 2026: Dune 3.24.0 shipped in opam-repository and was announced on ocaml.org, alongside coordinated MirageOS releases and new packages.</title><updated>2026-07-05T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/30092" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Dune 3.24.0&lt;/strong&gt;&lt;/a&gt; released (18 packages) by &lt;a href="https://github.com/shonfeder"&gt;Shon Feder&lt;/a&gt; in opam-repository (&lt;a href="https://github.com/ocaml/opam-repository/issues/30092"&gt;ocaml/opam-repository#30092&lt;/a&gt;), with a companion announcement PR opened on ocaml.org (&lt;a href="https://github.com/ocaml/ocaml.org/pull/3704"&gt;ocaml/ocaml.org#3704&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Coordinated &lt;a href="https://github.com/ocaml/opam-repository/issues/30154" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;MirageOS ecosystem&lt;/strong&gt;&lt;/a&gt; releases by &lt;a href="https://github.com/hannesm"&gt;Hannes Mehnert&lt;/a&gt; covering x509 1.1.1, tls 2.1.1, charrua 3.1.2/3.2.0, mirage 4.11.1, and kdf 1.1.0 (&lt;a href="https://github.com/ocaml/opam-repository/issues/30154"&gt;ocaml/opam-repository#30154&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/30155"&gt;ocaml/opam-repository#30155&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/30156"&gt;ocaml/opam-repository#30156&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;New &lt;a href="https://github.com/ocaml/opam-repository/issues/30185" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;hegel&lt;/strong&gt;&lt;/a&gt; property-based testing library with Antithesis support, plus PPX helpers, submitted by &lt;a href="https://github.com/echoumcp1"&gt;Ethan Chou&lt;/a&gt; after several iterations (&lt;a href="https://github.com/ocaml/opam-repository/issues/30185"&gt;ocaml/opam-repository#30185&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;New &lt;a href="https://github.com/ocaml/opam-repository/issues/30134" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;ocgtk&lt;/strong&gt;&lt;/a&gt; GTK4 bindings and &lt;strong class="achievement"&gt;conf-gtk4&lt;/strong&gt; dependency by &lt;a href="https://github.com/chris-armstrong"&gt;Chris Armstrong&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/30134"&gt;ocaml/opam-repository#30134&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;js&lt;em&gt;of&lt;/em&gt;ocaml&lt;/strong&gt;/&lt;strong class="achievement"&gt;wasm&lt;em&gt;of&lt;/em&gt;ocaml&lt;/strong&gt; 6.4.1 release (8 packages) by &lt;a href="https://github.com/hhugo"&gt;@hhugo&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/30173"&gt;ocaml/opam-repository#30173&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Around a dozen further new packages submitted, including chatoyant, soteria, playwright, menhirformat, keyseq, melange-edn, starpath, and opam-minver (&lt;a href="https://github.com/ocaml/opam-repository/issues/30190"&gt;ocaml/opam-repository#30190&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/30150"&gt;ocaml/opam-repository#30150&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/30146"&gt;ocaml/opam-repository#30146&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Fixed the &lt;a href="https://github.com/ocaml/ocaml.org/pull/3707" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml Workshop 2026 "Important Dates" panel&lt;/strong&gt;&lt;/a&gt; on ocaml.org, correcting the submission deadline to 12 Jul and the notification date to 3 Aug by &lt;a href="https://github.com/Sudha247"&gt;Sudha Parimala&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml.org/pull/3707"&gt;ocaml/ocaml.org#3707&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/pull/3708"&gt;ocaml/ocaml.org#3708&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam-repository/issues/30092" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;ocaml/opam-repository&lt;/strong&gt;&lt;/a&gt;: dune 3.24.0 (18 packages) and a coordinated MirageOS release round (x509, tls, charrua, mirage, kdf) shipped alongside roughly 15 new package submissions (&lt;a href="https://github.com/ocaml/opam-repository/issues/30092"&gt;ocaml/opam-repository#30092&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/30154"&gt;ocaml/opam-repository#30154&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/pull/3707" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;ocaml/ocaml.org&lt;/strong&gt;&lt;/a&gt;: corrected OCaml Workshop 2026 deadline dates, continued automated Planet-blog and platform-release ingestion, and had a broken cookbook link reported (&lt;a href="https://github.com/ocaml/ocaml.org/pull/3707"&gt;ocaml/ocaml.org#3707&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/issues/3703"&gt;ocaml/ocaml.org#3703&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Dune's 3.24.0 release (&lt;a href="https://github.com/ocaml/opam-repository/issues/30092"&gt;ocaml/opam-repository#30092&lt;/a&gt;) was the week's shared thread, prompting both downstream package fixes in opam-repository and a pending announcement post on ocaml.org (&lt;a href="https://github.com/ocaml/ocaml.org/pull/3704"&gt;ocaml/ocaml.org#3704&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;Dune 3.24.0 shipped in opam-repository (&lt;a href="https://github.com/ocaml/opam-repository/issues/30092"&gt;ocaml/opam-repository#30092&lt;/a&gt;) by &lt;a href="https://github.com/shonfeder"&gt;Shon Feder&lt;/a&gt;, who also opened the corresponding release-announcement PR on ocaml.org (&lt;a href="https://github.com/ocaml/ocaml.org/pull/3704"&gt;ocaml/ocaml.org#3704&lt;/a&gt;), still awaiting review from &lt;a href="https://github.com/sabine"&gt;sabine&lt;/a&gt; at week's end&lt;/li&gt;
+&lt;li&gt;The dune 3.24.0 release's downstream compatibility fallout (bounding versions, disabling brittle tests) was handled entirely within opam-repository (&lt;a href="https://github.com/ocaml/opam-repository/issues/30157"&gt;ocaml/opam-repository#30157&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/30162"&gt;ocaml/opam-repository#30162&lt;/a&gt;), while ocaml.org's coverage stayed at the announcement stage, pending merge&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; was active across the group this week, releasing uring 2.15.0 in opam-repository (&lt;a href="https://github.com/ocaml/opam-repository/issues/30196"&gt;ocaml/opam-repository#30196&lt;/a&gt;) while a personal blog post was separately ingested into ocaml.org's Planet feed via automated scraping (&lt;a href="https://github.com/ocaml/ocaml.org/pull/3702"&gt;ocaml/ocaml.org#3702&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;Contributors debated ownership of revdep breakage following the dune 3.24.0 release, with &lt;a href="https://github.com/hannesm"&gt;Hannes Mehnert&lt;/a&gt; asking whether fixing packages broken by a dune release falls to opam-repository maintainers, dune maintainers, or the affected package's own maintainer (&lt;a href="https://github.com/ocaml/opam-repository/issues/30157"&gt;ocaml/opam-repository#30157&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/craff"&gt;Christophe Raffalli&lt;/a&gt; and &lt;a href="https://github.com/mseri"&gt;Marcello Seri&lt;/a&gt; agreed to mark the old &lt;a href="https://github.com/ocaml/opam-repository/issues/30123" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;simple_httpd&lt;/strong&gt;&lt;/a&gt; 1.0 as unavailable rather than resolve a disputed checksum (&lt;a href="https://github.com/ocaml/opam-repository/issues/30123"&gt;ocaml/opam-repository#30123&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt; tracked OCaml 5.5.0 release readiness (&lt;a href="https://github.com/ocaml/opam-repository/issues/29463"&gt;ocaml/opam-repository#29463&lt;/a&gt;), while a related macOS second-switch build failure for 5.5.0~alpha was reported by &lt;a href="https://github.com/jrfondren"&gt;@jrfondren&lt;/a&gt; and traced to an upstream fix by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/29496"&gt;ocaml/opam-repository#29496&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/toots"&gt;Romain Beauxis&lt;/a&gt; asked the community to stop running &lt;code&gt;dune runtest&lt;/code&gt; unconditionally in CI, with &lt;a href="https://github.com/Kakadu"&gt;Dmitrii Kosarev&lt;/a&gt; and &lt;a href="https://github.com/shonfeder"&gt;Shon Feder&lt;/a&gt; discussing existing mechanisms for running a subset of tests (&lt;a href="https://github.com/ocaml/opam-repository/issues/29166"&gt;ocaml/opam-repository#29166&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Geerayef"&gt;Tibor&lt;/a&gt; reported the broken Dream cookbook link and attempted a fix, but hit a &lt;code&gt;make switch&lt;/code&gt; build failure where &lt;code&gt;topkg&lt;/code&gt; referenced an unrelated local opam switch instead of the default one (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3703"&gt;ocaml/ocaml.org#3703&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;Coordinated multi-package release rounds continued, exemplified by &lt;a href="https://github.com/hannesm"&gt;Hannes Mehnert&lt;/a&gt;'s MirageOS-ecosystem releases spanning x509, tls, charrua, mirage, and kdf within the same week (&lt;a href="https://github.com/ocaml/opam-repository/issues/30154"&gt;ocaml/opam-repository#30154&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/30184"&gt;ocaml/opam-repository#30184&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;The dune 3.24.0 release (&lt;a href="https://github.com/ocaml/opam-repository/issues/30092"&gt;ocaml/opam-repository#30092&lt;/a&gt;) triggered downstream compatibility fixes in opam-repository and surfaced an open question about who owns fixing revdep breakage (&lt;a href="https://github.com/ocaml/opam-repository/issues/30157"&gt;ocaml/opam-repository#30157&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Preparation for the OCaml 5.5.0 release continued in opam-repository, including a release-readiness tracking issue and a camlp5 fix for a test broken by 5.5.0 (&lt;a href="https://github.com/ocaml/opam-repository/issues/29463"&gt;ocaml/opam-repository#29463&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/30163"&gt;ocaml/opam-repository#30163&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;ocaml.org content this week was driven mainly by recurring automated ingestion (Planet blog scraping, platform release tracking) rather than new manual authoring (&lt;a href="https://github.com/ocaml/ocaml.org/pull/3702"&gt;ocaml/ocaml.org#3702&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/pull/3693"&gt;ocaml/ocaml.org#3693&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Event-logistics upkeep for the OCaml Workshop 2026 page required a second date correction shortly after the first, suggesting details were still being finalised with organisers (&lt;a href="https://github.com/ocaml/ocaml.org/pull/3707"&gt;ocaml/ocaml.org#3707&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/pull/3708"&gt;ocaml/ocaml.org#3708&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Local dev-environment setup (&lt;code&gt;make switch&lt;/code&gt;/opam) surfaced as an onboarding barrier for a prospective ocaml.org contributor attempting a small documentation fix (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3703"&gt;ocaml/ocaml.org#3703&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Dune 3.24.0 shipped in opam-repository and was announced on ocaml.org, alongside coordinated MirageOS releases and new packages.</summary><published>2026-07-05T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/ecosystem/2026/week-24</id><title>Week 24, 2026: OCaml 5.5.0~rc1 landed in opam-repository with 25+ new packages; ocaml.org added AI dev docs and a wasm_of_ocaml WASI backstage post.</title><updated>2026-06-14T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

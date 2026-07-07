@@ -1,5 +1,95 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/core.xml</id><title>OCaml Core (Weekly)</title><updated>2026-06-21T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/core.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Core OCaml language, compiler, and essential tooling</subtitle><entry><id>https://thicket.dev/groups/core/2026/week-25</id><title>Week 25, 2026: None</title><updated>2026-06-21T00:00:00+00:00</updated><content type="html"/><link href="https://thicket.dev/"/><summary>Activity report for core - Week 25, 2026</summary><published>2026-06-21T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2026/week-24</id><title>Week 24, 2026: Two CVE security fixes landed in ocaml/ocaml alongside a GC mark_header regression fix and Flambda miscompilation correction.</title><updated>2026-06-14T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/core.xml</id><title>OCaml Core (Weekly)</title><updated>2026-07-05T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/core.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Core OCaml language, compiler, and essential tooling</subtitle><entry><id>https://thicket.dev/groups/core/2026/week-27</id><title>Week 27, 2026: A typechecking speedup and an ephemeron GC fix merged in ocaml/ocaml, while ocaml/RFCs received a new proposal for a destinations API.</title><updated>2026-07-05T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/14900" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Typechecking performance&lt;/strong&gt;&lt;/a&gt; improved by removing closure allocations from &lt;code&gt;deep_occur_rec&lt;/code&gt;, which traverses type expressions during unification; benchmarks on a large &lt;code&gt;js_of_ocaml&lt;/code&gt; file show up to a 45% wall-clock speedup with flambda and 20% without, by &lt;a href="https://github.com/smuenzel"&gt;Stefan Muenzel&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/pull/14900"&gt;ocaml/ocaml#14900&lt;/a&gt;), motivated by the regression reported in &lt;a href="https://github.com/ocaml/ocaml/issues/14897"&gt;ocaml/ocaml#14897&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/14688" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Major GC ephemeron marking&lt;/strong&gt;&lt;/a&gt; reworked so &lt;code&gt;ephe_mark()&lt;/code&gt; calls &lt;code&gt;mark()&lt;/code&gt; directly on markable data instead of only scheduling it, avoiding quadratic-looking marking behaviour for long ephemeron dependency chains, by &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/pull/14688"&gt;ocaml/ocaml#14688&lt;/a&gt;), a safer follow-up to the previously reverted &lt;a href="https://github.com/ocaml/ocaml/pull/14657"&gt;ocaml/ocaml#14657&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Fixed a &lt;strong class="achievement"&gt;scope error in &lt;code&gt;ctype&lt;/code&gt;&lt;/strong&gt; where non-dependent module-type application could erase the whole result type after the first package type was encountered, causing incorrect types to be accepted for anonymous module type structs, by &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/pull/14892"&gt;ocaml/ocaml#14892&lt;/a&gt;, fixing &lt;a href="https://github.com/ocaml/ocaml/issues/14891"&gt;ocaml/ocaml#14891&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Removed a useless &lt;code&gt;Option.map&lt;/code&gt; call in &lt;code&gt;Btype.fold_row&lt;/code&gt;, a small internal cleanup noticed while working on the typechecking performance PR, by &lt;a href="https://github.com/lthls"&gt;Vincent Laviron&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/pull/14904"&gt;ocaml/ocaml#14904&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt; merged a typechecking performance fix (&lt;a href="https://github.com/ocaml/ocaml/pull/14900"&gt;ocaml/ocaml#14900&lt;/a&gt;, up to 45% wall-clock speedup on large types) and an ephemeron GC marking fix (&lt;a href="https://github.com/ocaml/ocaml/pull/14688"&gt;ocaml/ocaml#14688&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;A &lt;code&gt;ctype&lt;/code&gt; scope-error fix (&lt;a href="https://github.com/ocaml/ocaml/pull/14892"&gt;ocaml/ocaml#14892&lt;/a&gt;) and a small internal cleanup (&lt;a href="https://github.com/ocaml/ocaml/pull/14904"&gt;ocaml/ocaml#14904&lt;/a&gt;) also landed in ocaml/ocaml&lt;/li&gt;
+&lt;li&gt;New PRs were opened in ocaml/ocaml for stdlib additions (&lt;a href="https://github.com/ocaml/ocaml/pull/14909"&gt;ocaml/ocaml#14909&lt;/a&gt;), a &lt;code&gt;caml_shutdown&lt;/code&gt;/ephemeron termination bug (&lt;a href="https://github.com/ocaml/ocaml/pull/14906"&gt;ocaml/ocaml#14906&lt;/a&gt;), large-interval pattern matching (&lt;a href="https://github.com/ocaml/ocaml/pull/14907"&gt;ocaml/ocaml#14907&lt;/a&gt;), and an &lt;code&gt;opam clone&lt;/code&gt; macOS fix targeted for 5.5.1 (&lt;a href="https://github.com/ocaml/ocaml/pull/14901"&gt;ocaml/ocaml#14901&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Design discussion continued on a static-linking / link-time parameter resolution proposal in ocaml/ocaml (&lt;a href="https://github.com/ocaml/ocaml/pull/14895"&gt;ocaml/ocaml#14895&lt;/a&gt;), with reviewers requesting a formal design document&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/RFCs"&gt;ocaml/RFCs&lt;/a&gt; received one new proposal, &lt;a href="https://github.com/ocaml/RFCs/issues/62"&gt;ocaml/RFCs#62&lt;/a&gt;, for a compiler-assisted API exposing destinations (write-once pointers) to PPXs, opened by &lt;a href="https://github.com/Drup"&gt;Gabriel Radanne&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/RFCs/issues/62"&gt;ocaml/RFCs#62&lt;/a&gt; proposes exposing destinations (write-once pointers) via a compiler-assisted API; if accepted, this would require corresponding implementation work in ocaml/ocaml's Lambda IR and typedtree, alongside the destination-passing-style transformations (such as tail-modulo-cons) already implemented internally in the ocaml/ocaml compiler&lt;/li&gt;
+&lt;li&gt;The request for a formal design document on the static-linking proposal in &lt;a href="https://github.com/ocaml/ocaml/pull/14895"&gt;ocaml/ocaml#14895&lt;/a&gt; mirrors the design-review process that the ocaml/RFCs repository formalizes, though the specific linking RFC referenced by &lt;a href="https://github.com/dbuenzli"&gt;Daniel Bünzli&lt;/a&gt; is hosted outside ocaml/RFCs itself&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;Extensive back-and-forth on rewording the &lt;a href="https://github.com/ocaml/ocaml/pull/14896" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;"Signature mismatch" compiler error message&lt;/strong&gt;&lt;/a&gt;, weighing "subtype"/"supertype" terminology against readability and consistency with existing messages about &lt;code&gt;include&lt;/code&gt;, involving &lt;a href="https://github.com/Jeannalyse"&gt;Jeannalyse&lt;/a&gt;, &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt;, and &lt;a href="https://github.com/brandonzstride"&gt;Brandon Stride&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/pull/14896"&gt;ocaml/ocaml#14896&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/dbuenzli"&gt;Daniel Bünzli&lt;/a&gt; pushed back on the &lt;a href="https://github.com/ocaml/ocaml/pull/14895" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;static/link-time linking proposal&lt;/strong&gt;&lt;/a&gt;, arguing that adding new &lt;code&gt;.cma&lt;/code&gt; metadata fields and a shell-command-based &lt;code&gt;pkg-config&lt;/code&gt; resolution mechanism needs a design document before merging, citing past problems with ad-hoc &lt;code&gt;META&lt;/code&gt; file metadata and raising a security concern about archives embedding shell commands run at link time; &lt;a href="https://github.com/dinosaure"&gt;Calascibetta Romain&lt;/a&gt; offered a MirageOS/Solo5 use case as a concrete test (&lt;a href="https://github.com/ocaml/ocaml/pull/14895"&gt;ocaml/ocaml#14895&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Deep investigation into the &lt;a href="https://github.com/ocaml/ocaml/issues/14897" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;typing performance regression&lt;/strong&gt;&lt;/a&gt; in &lt;code&gt;js_of_ocaml&lt;/code&gt;'s &lt;code&gt;lwt_xmlHttpRequest.ml&lt;/code&gt;, with &lt;a href="https://github.com/smuenzel"&gt;Stefan Muenzel&lt;/a&gt;, &lt;a href="https://github.com/garrigue"&gt;Jacques Garrigue&lt;/a&gt;, and &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; diagnosing that unification of deeply nested object types causes repeated, non-shared expansion of type abbreviations (&lt;a href="https://github.com/ocaml/ocaml/issues/14897"&gt;ocaml/ocaml#14897&lt;/a&gt;, related to &lt;a href="https://github.com/ocaml/ocaml/issues/11648"&gt;ocaml/ocaml#11648&lt;/a&gt; and &lt;a href="https://github.com/ocaml/ocaml/issues/14801"&gt;ocaml/ocaml#14801&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/sim642"&gt;Simmo Saan&lt;/a&gt; shared updated &lt;a href="https://github.com/ocaml/ocaml/pull/14885" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Goblint benchmark results&lt;/strong&gt;&lt;/a&gt; comparing OCaml 4.14 against 5.6.0+trunk (including &lt;a href="https://github.com/ocaml/ocaml/pull/14885"&gt;ocaml/ocaml#14885&lt;/a&gt; and &lt;a href="https://github.com/ocaml/ocaml/pull/14894"&gt;ocaml/ocaml#14894&lt;/a&gt;), showing average CPU time regression down to +4% from earlier measurements, prompting &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; to ask about remaining outlier tests (&lt;a href="https://github.com/ocaml/ocaml/issues/13733"&gt;ocaml/ocaml#13733&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;A cluster of &lt;a href="https://github.com/ocaml/ocaml/pull/14900" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;typechecking and GC performance&lt;/strong&gt;&lt;/a&gt; work landed or progressed in ocaml/ocaml this week, including &lt;code&gt;deep_occur_rec&lt;/code&gt; allocation removal (&lt;a href="https://github.com/ocaml/ocaml/pull/14900"&gt;ocaml/ocaml#14900&lt;/a&gt;), ephemeron marking (&lt;a href="https://github.com/ocaml/ocaml/pull/14688"&gt;ocaml/ocaml#14688&lt;/a&gt;), and ongoing Goblint/Frama-C regression tracking (&lt;a href="https://github.com/ocaml/ocaml/issues/13733"&gt;ocaml/ocaml#13733&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/11733"&gt;ocaml/ocaml#11733&lt;/a&gt;), with &lt;a href="https://github.com/lthls"&gt;Vincent Laviron&lt;/a&gt; also reporting &lt;code&gt;-O3&lt;/code&gt; and inlining-attribute experiments that cut &lt;code&gt;deep_occur_rec&lt;/code&gt; time further&lt;/li&gt;
+&lt;li&gt;Maintainers are formalizing &lt;a href="https://github.com/ocaml/ocaml/pull/14899" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;process around AI-assisted contributions&lt;/strong&gt;&lt;/a&gt; to ocaml/ocaml, with &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt;'s bug-report guideline proposal (&lt;a href="https://github.com/ocaml/ocaml/pull/14899"&gt;ocaml/ocaml#14899&lt;/a&gt;) following earlier discussion in &lt;a href="https://github.com/ocaml/ocaml/issues/14842"&gt;ocaml/ocaml#14842&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Recurring pattern of &lt;a href="https://github.com/ocaml/ocaml/pull/14885" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;closure-allocation elimination in the typechecker&lt;/strong&gt;&lt;/a&gt; (renamings in recursive definitions from &lt;a href="https://github.com/ocaml/ocaml/pull/14885"&gt;ocaml/ocaml#14885&lt;/a&gt;/&lt;a href="https://github.com/ocaml/ocaml/pull/14894"&gt;ocaml/ocaml#14894&lt;/a&gt;, and &lt;code&gt;deep_occur_rec&lt;/code&gt; from &lt;a href="https://github.com/ocaml/ocaml/pull/14900"&gt;ocaml/ocaml#14900&lt;/a&gt;) as a recurring technique for compile-time speedups, motivated by real-world regressions reported by users of &lt;code&gt;js_of_ocaml&lt;/code&gt; and Goblint&lt;/li&gt;
+&lt;li&gt;The single ocaml/RFCs proposal this week (&lt;a href="https://github.com/ocaml/RFCs/issues/62"&gt;ocaml/RFCs#62&lt;/a&gt;) continues a pattern of exposing compiler-internal mechanisms (here, destinations) to library and PPX authors rather than keeping them restricted to the compiler's internal IR&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>A typechecking speedup and an ephemeron GC fix merged in ocaml/ocaml, while ocaml/RFCs received a new proposal for a destinations API.</summary><published>2026-07-05T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2026/week-25</id><title>Week 25, 2026: None</title><updated>2026-06-21T00:00:00+00:00</updated><content type="html"/><link href="https://thicket.dev/"/><summary>Activity report for core - Week 25, 2026</summary><published>2026-06-21T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2026/week-24</id><title>Week 24, 2026: Two CVE security fixes landed in ocaml/ocaml alongside a GC mark_header regression fix and Flambda miscompilation correction.</title><updated>2026-06-14T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
@@ -7251,7 +7341,7 @@
 &lt;li&gt;&lt;strong class="achievement"&gt;Cross-platform compatibility&lt;/strong&gt; receiving increased attention with Windows API modernization and Unix platform improvements&lt;/li&gt;
 &lt;li&gt;&lt;strong class="achievement"&gt;Language design refinement&lt;/strong&gt; through community feedback on practical applications of new syntax features like raw identifiers&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Runtime improvements and bytecode optimization merged alongside language syntax discussions for raw identifiers</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2024/week-42</id><title>Week 42, 2024: Five PRs merged in ocaml/ocaml including new Thread.set_current_thread_name API and compiler improvements</title><updated>2026-06-26T14:21:52.176482+00:00</updated><content type="html">
+</content><link href="https://thicket.dev/"/><summary>Runtime improvements and bytecode optimization merged alongside language syntax discussions for raw identifiers</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2024/week-42</id><title>Week 42, 2024: Five PRs merged in ocaml/ocaml including new Thread.set_current_thread_name API and compiler improvements</title><updated>2026-07-07T15:56:34.699177+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

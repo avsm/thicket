@@ -1,5 +1,73 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml</id><title>oxcaml/oxcaml (Weekly)</title><updated>2026-06-14T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/oxcaml</subtitle><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2026/week-24</id><title>Week 24, 2026: OCaml 5.4 upstream merged to main, accompanied by post-merge fixes, Merlin sync work, and a wave of new PRs across types, runtime, and backend.</title><updated>2026-06-14T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml</id><title>oxcaml/oxcaml (Weekly)</title><updated>2026-07-05T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/oxcaml</subtitle><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2026/week-27</id><title>Week 27, 2026: Added `array#`/`iarray#` unboxed types and external pointer primitives, fixed a memory corruption bug in ephemerons, and bumped the base to OCaml 5.4</title><updated>2026-07-05T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+27 PRs opened this week remain under review, including a Merlin type-recovery integration and AVX512 intrinsics, alongside ongoing SSA-backend and fiber-dynamics work&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;27 &lt;a href="https://github.com/oxcaml/oxcaml/issues/6368" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;PRs opened&lt;/strong&gt;&lt;/a&gt; this week are still under review, spanning a vectorizer bug reproduction and CFG-invariant strengthening by &lt;a href="https://github.com/xclerc"&gt;Xavier Clerc&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6368"&gt;#6368&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6369"&gt;#6369&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6370"&gt;#6370&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6371"&gt;#6371&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6372"&gt;#6372&lt;/a&gt;), AVX512 intrinsics and dynamic-binding work from &lt;a href="https://github.com/TheNumbat"&gt;Max Slater&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6378"&gt;#6378&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6380"&gt;#6380&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6381"&gt;#6381&lt;/a&gt;), and several jkind/typing fixes from &lt;a href="https://github.com/rtjoa"&gt;Ryan Tjoa&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6395"&gt;#6395&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6406"&gt;#6406&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;A &lt;code&gt;datalog&lt;/code&gt; allocation-avoidance change for the reaper's rule evaluation was opened by &lt;a href="https://github.com/bclement-ocp"&gt;Basile Clément&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6377"&gt;#6377&lt;/a&gt;), alongside his merged fixes for flambda2 join environments and switch-argument equations (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6348"&gt;#6348&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6349"&gt;#6349&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6373"&gt;#6373&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/4394"&gt;#4394&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/xvw"&gt;Xavier Van de Woestyne&lt;/a&gt; opened work to add a &lt;a href="https://github.com/oxcaml/oxcaml/issues/6366" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Merlin typing-recovery mechanism&lt;/strong&gt;&lt;/a&gt; directly into the type checker (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6366"&gt;#6366&lt;/a&gt;), and &lt;a href="https://github.com/jbachurski"&gt;Jakub Bachurski&lt;/a&gt; opened &lt;strong class="achievement"&gt;quoted areality&lt;/strong&gt; and &lt;strong class="achievement"&gt;heap-to-stack pointer invalidation&lt;/strong&gt; work for flambda2, reviewed by &lt;a href="https://github.com/bclement-ocp"&gt;Basile Clément&lt;/a&gt; and &lt;a href="https://github.com/Ekdohibs"&gt;Nathanaëlle Courant&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6404"&gt;#6404&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6400"&gt;#6400&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;The in-progress &lt;a href="https://github.com/oxcaml/oxcaml/issues/5810" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;SSA intermediate representation between Cmm and CFG&lt;/strong&gt;&lt;/a&gt; from &lt;a href="https://github.com/ttebbi-janestreet"&gt;@ttebbi-janestreet&lt;/a&gt; continues under review from &lt;a href="https://github.com/xclerc"&gt;Xavier Clerc&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5810"&gt;#5810&lt;/a&gt;), with a related merged fix aligning minor CFG behavior with SSA (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6397"&gt;#6397&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/TheNumbat"&gt;Max Slater&lt;/a&gt;'s &lt;a href="https://github.com/oxcaml/oxcaml/issues/6359" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;fiber dynamic-binding table&lt;/strong&gt;&lt;/a&gt; redesign remains under detailed review from &lt;a href="https://github.com/glittershark"&gt;Aspen Smith&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6359"&gt;#6359&lt;/a&gt;), alongside his merged simplification removing the dynamic root value (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6357"&gt;#6357&lt;/a&gt;) and debug-mode-only stack-mapping naming (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6280"&gt;#6280&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/riaqn"&gt;Zesen Qian&lt;/a&gt;'s &lt;a href="https://github.com/oxcaml/oxcaml/issues/6226" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;dynamic staticity for modules without a guaranteed cmx&lt;/strong&gt;&lt;/a&gt; continues under review from &lt;a href="https://github.com/jbachurski"&gt;Jakub Bachurski&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6226"&gt;#6226&lt;/a&gt;), while a related functorization PR handling circular aliases was opened and closed the same week (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6385"&gt;#6385&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Ekdohibs"&gt;Nathanaëlle Courant&lt;/a&gt; merged two reaper/flambda2 fixes for duplicated lifted constants during continuation specialization and a fatal error during unboxing (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6398"&gt;#6398&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6308"&gt;#6308&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/NickBarnes"&gt;Nick Barnes&lt;/a&gt; merged eight runtime fixes covering thread-tick division guards, zombie-thread ring handling, preemption continuations, and dynamic-binding cache flushing across fibers (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6329"&gt;#6329&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6345"&gt;#6345&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6333"&gt;#6333&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6341"&gt;#6341&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6331"&gt;#6331&lt;/a&gt;), and opened a frametable-size reduction PR (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6399"&gt;#6399&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/dkalinichenko-js"&gt;@dkalinichenko-js&lt;/a&gt; merged a mode-crossing fix for &lt;code&gt;any&lt;/code&gt; fields in principal toplevel (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6386"&gt;#6386&lt;/a&gt;) and has several typing/warning PRs open, including a redundant-modifier warning under review from &lt;a href="https://github.com/liam923"&gt;Liam Stevenson&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5436"&gt;#5436&lt;/a&gt;) and functor modality interactions (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5371"&gt;#5371&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/jra4"&gt;James Rayman&lt;/a&gt; merged codegen-test infrastructure cleanup (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6375"&gt;#6375&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6232"&gt;#6232&lt;/a&gt;) and opened automated &lt;code&gt;expect_asm&lt;/code&gt; test generation for scalar primitives (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6390"&gt;#6390&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Added `array#`/`iarray#` unboxed types and external pointer primitives, fixed a memory corruption bug in ephemerons, and bumped the base to OCaml 5.4</summary><published>2026-07-05T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2026/week-24</id><title>Week 24, 2026: OCaml 5.4 upstream merged to main, accompanied by post-merge fixes, Merlin sync work, and a wave of new PRs across types, runtime, and backend.</title><updated>2026-06-14T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

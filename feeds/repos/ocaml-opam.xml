@@ -1,5 +1,74 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam.xml</id><title>ocaml/opam (Weekly)</title><updated>2026-06-14T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam/2026/week-24</id><title>Week 24, 2026: A CI test fix landed while several impactful PRs progressed: .install file extensions, API cleanup, and an opam init --bare bug fix.</title><updated>2026-06-14T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam.xml</id><title>ocaml/opam (Weekly)</title><updated>2026-07-05T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam/2026/week-27</id><title>Week 27, 2026: Portability and lock-file bug fixes merged while the tar-based repository performance rewrite (#6625) continued shedding queued sub-PRs.</title><updated>2026-07-05T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Five new PRs opened remain in review; the repository-tarring rewrite (#6625) kept merging queued sub-PRs and dev-meeting triage cleared several long-standing issues.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;Five PRs opened this week remain under review: silencing warnings raised by the upcoming OCaml 5.6 by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam/issues/6987"&gt;#6987&lt;/a&gt;), a fix for &lt;code&gt;opam lock&lt;/code&gt;'s handling of dependency-formula disjunctions by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam/issues/6990"&gt;#6990&lt;/a&gt;, fixes &lt;a href="https://github.com/ocaml/opam/issues/6944"&gt;#6944&lt;/a&gt;), an effort to make opam's git invocations deterministic regardless of the user's global/system git config by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam/issues/6992"&gt;#6992&lt;/a&gt;, fixes &lt;a href="https://github.com/ocaml/opam/issues/6937"&gt;#6937&lt;/a&gt;), a draft so &lt;code&gt;OpamFilename.open_in&lt;/code&gt; no longer opens directories on Unix by &lt;a href="https://github.com/rjbou"&gt;R. Boujbel&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam/issues/6996"&gt;#6996&lt;/a&gt;, fixes &lt;a href="https://github.com/ocaml/opam/issues/6997"&gt;#6997&lt;/a&gt;), and a draft memoisation change to &lt;code&gt;OpamRepositoryRoot&lt;/code&gt; tgz folding extracted from the larger repository rewrite by &lt;a href="https://github.com/rjbou"&gt;R. Boujbel&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam/issues/7001"&gt;#7001&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;The long-running &lt;a href="https://github.com/ocaml/opam/issues/6625" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;repository-as-archive&lt;/strong&gt;&lt;/a&gt; rewrite of &lt;code&gt;opam update&lt;/code&gt;/&lt;code&gt;opam init&lt;/code&gt; (&lt;a href="https://github.com/ocaml/opam/issues/6625"&gt;#6625&lt;/a&gt;) by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt;, aiming to replace repeated untar/rescan cycles with reading the &lt;code&gt;tar.gz&lt;/code&gt; directly via &lt;code&gt;ocaml-tar&lt;/code&gt;, kept shedding queued sub-PRs this week: &lt;a href="https://github.com/ocaml/opam/issues/6941"&gt;#6941&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam/issues/6995"&gt;#6995&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam/issues/6998"&gt;#6998&lt;/a&gt;, and &lt;a href="https://github.com/ocaml/opam/issues/7002"&gt;#7002&lt;/a&gt; merged, while &lt;a href="https://github.com/rjbou"&gt;R. Boujbel&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/opam/issues/6994"&gt;#6994&lt;/a&gt; to abstract &lt;code&gt;OpamAdminRepoUpgrade.do_upgrade&lt;/code&gt; for layouts other than a plain directory&lt;/li&gt;
+&lt;li&gt;CI stabilization saw several merges: &lt;code&gt;actions/cache&lt;/code&gt; bumped from 5 to 6 by &lt;a href="https://github.com/dependabot"&gt;Dependabot&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam/issues/6983"&gt;#6983&lt;/a&gt;), the depexts workflow fixed by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam/issues/6972"&gt;#6972&lt;/a&gt;), and the doc/depends jobs updated to handle an opam-root format upgrade by &lt;a href="https://github.com/rjbou"&gt;R. Boujbel&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam/issues/6998"&gt;#6998&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam/issues/7002"&gt;#7002&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Continued discussion on &lt;a href="https://github.com/sporkl"&gt;Dmitri Volkov&lt;/a&gt;'s &lt;code&gt;opam source --dev&lt;/code&gt; git-config PR (&lt;a href="https://github.com/ocaml/opam/issues/6955"&gt;#6955&lt;/a&gt;, fixes &lt;a href="https://github.com/ocaml/opam/issues/6451"&gt;#6451&lt;/a&gt;) explored renaming the new argument from &lt;code&gt;for_source&lt;/code&gt; to &lt;code&gt;no_config&lt;/code&gt; and back, and whether &lt;code&gt;opam source&lt;/code&gt; should switch to &lt;code&gt;git clone&lt;/code&gt; outright to also fix branch-fetching problems surfaced by &lt;a href="https://github.com/ocaml/opam/issues/6992"&gt;#6992&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/NathanReb"&gt;Nathan Rebours&lt;/a&gt;'s fix for &lt;code&gt;OpamFilename.starts_with&lt;/code&gt;/&lt;code&gt;dir_starts_with&lt;/code&gt; incorrectly treating &lt;code&gt;foo/bar&lt;/code&gt; as a prefix of &lt;code&gt;foo/bar-baz&lt;/code&gt; (&lt;a href="https://github.com/ocaml/opam/issues/6953"&gt;#6953&lt;/a&gt;, fixes &lt;a href="https://github.com/ocaml/opam/issues/6948"&gt;#6948&lt;/a&gt;) went through review of &lt;code&gt;OpamFilename.t&lt;/code&gt;'s implicit invariants, prompting &lt;a href="https://github.com/rjbou"&gt;R. Boujbel&lt;/a&gt; to open &lt;a href="https://github.com/ocaml/opam/issues/6986"&gt;#6986&lt;/a&gt; proposing a full rewrite of &lt;code&gt;OpamFilename&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/dra27-js"&gt;David Allsopp&lt;/a&gt; proposed workarounds for &lt;code&gt;rsync&lt;/code&gt; mishandling symlinks in local opam repositories, surfaced by caching an &lt;code&gt;_opam&lt;/code&gt; switch directory between CI runs (&lt;a href="https://github.com/ocaml/opam/issues/6977"&gt;#6977&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/tuesdayjz"&gt;Kayo Tei&lt;/a&gt;'s PR to skip default-compiler selection during &lt;code&gt;opam init --bare&lt;/code&gt;, saving several seconds of startup time, remains open (&lt;a href="https://github.com/ocaml/opam/issues/6957"&gt;#6957&lt;/a&gt;, fixes &lt;a href="https://github.com/ocaml/opam/issues/5815"&gt;#5815&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/NathanReb"&gt;Nathan Rebours&lt;/a&gt;'s PR to prompt users to remove auto-pinned packages after a failed &lt;code&gt;opam install&lt;/code&gt; remains open, queued on &lt;a href="https://github.com/ocaml/opam/issues/6910"&gt;#6910&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam/issues/6923"&gt;#6923&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; opened a draft fixing filename-argument parsing so &lt;code&gt;/&lt;/code&gt; is recognised as a directory separator on Windows (&lt;a href="https://github.com/ocaml/opam/issues/6981"&gt;#6981&lt;/a&gt;, fixes &lt;a href="https://github.com/ocaml/opam/issues/6940"&gt;#6940&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;A GHA upgrade to build against OCaml 5.5 and 4.14.4 was opened, blocked on an upstream issue in ocsigen/lwt before it could merge (&lt;a href="https://github.com/ocaml/opam/issues/6988"&gt;#6988&lt;/a&gt;, blocked by &lt;a href="https://github.com/ocsigen/lwt/issues/1081"&gt;ocsigen/lwt#1081&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/faccinib"&gt;Guilherme FACCINI BANDEIRA&lt;/a&gt;'s manpage-highlighting homogenisation PR remains under review (&lt;a href="https://github.com/ocaml/opam/issues/6921"&gt;#6921&lt;/a&gt;, fixes &lt;a href="https://github.com/ocaml/opam/issues/6112"&gt;#6112&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Portability and lock-file bug fixes merged while the tar-based repository performance rewrite (#6625) continued shedding queued sub-PRs.</summary><published>2026-07-05T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-opam/2026/week-24</id><title>Week 24, 2026: A CI test fix landed while several impactful PRs progressed: .install file extensions, API cleanup, and an opam init --bare bug fix.</title><updated>2026-06-14T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

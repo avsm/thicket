@@ -1,5 +1,66 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-multicore-ocaml-uring.xml</id><title>ocaml-multicore/ocaml-uring (Weekly)</title><updated>2026-06-14T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-multicore-ocaml-uring.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml-multicore/ocaml-uring</subtitle><entry><id>https://thicket.dev/repos/ocaml-multicore-ocaml-uring/2026/week-24</id><title>Week 24, 2026: Socket creation now defaults to CLOEXEC; new PRs add RWF flags and vectored I/O bindings to ocaml-uring.</title><updated>2026-06-14T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-multicore-ocaml-uring.xml</id><title>ocaml-multicore/ocaml-uring (Weekly)</title><updated>2026-07-05T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-multicore-ocaml-uring.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml-multicore/ocaml-uring</subtitle><entry><id>https://thicket.dev/repos/ocaml-multicore-ocaml-uring/2026/week-27</id><title>Week 27, 2026: Release v2.15.0 shipped with per-operation RWF flags and a liburing 2.15 update, plus fixes for opam sandbox builds and Eio compatibility.</title><updated>2026-07-05T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Three PRs opened and merged within the week for build sandboxing and FLAGS.t compatibility, alongside the RWF flags work and the v2.15.0 release.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;All three PRs opened this week were merged the same week: the liburing 2.15 update by &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/157"&gt;#157&lt;/a&gt;), followed in quick succession by &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt;'s opam-sandbox build fix (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/158"&gt;#158&lt;/a&gt;) and &lt;code&gt;FLAGS.t&lt;/code&gt; compatibility revert (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/159"&gt;#159&lt;/a&gt;), both merged within a day of opening.&lt;/li&gt;
+&lt;li&gt;The per-operation &lt;code&gt;RWF&lt;/code&gt; flags PR opened in the prior week by &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; was merged this week (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/154"&gt;#154&lt;/a&gt;), rounding out the API work that fed into the &lt;a href="https://github.com/ocaml-multicore/ocaml-uring/releases/tag/v2.15.0"&gt;v2.15.0&lt;/a&gt; release published by &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Discussion continued on the open issue about building without vendored &lt;code&gt;liburing&lt;/code&gt;, with &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; explaining the opam-distribution rationale and exploring an optional environment-variable toggle for a future version (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/156"&gt;#156&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Release v2.15.0 shipped with per-operation RWF flags and a liburing 2.15 update, plus fixes for opam sandbox builds and Eio compatibility.</summary><published>2026-07-05T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-ocaml-uring/2026/week-24</id><title>Week 24, 2026: Socket creation now defaults to CLOEXEC; new PRs add RWF flags and vectored I/O bindings to ocaml-uring.</title><updated>2026-06-14T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
