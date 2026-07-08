@@ -60,7 +60,135 @@ Dependabot opened a GitHub Actions cache bump while Ulysse's LRU cache indexing 
 &lt;li&gt;The &lt;a href="https://github.com/ocaml/merlin/issues/2079" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;LRU cache for indexing memory usage&lt;/strong&gt;&lt;/a&gt; PR by &lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt; continued under review, with benchmark results showing index aggregation running roughly twice as fast as before the underlying pointing-indexes work, alongside a modest increase in on-disk index size (&lt;a href="https://github.com/ocaml/merlin/issues/2079"&gt;#2079&lt;/a&gt;, building on prior work in &lt;a href="https://github.com/ocaml/merlin/issues/2050"&gt;#2050&lt;/a&gt;).&lt;/li&gt;
 &lt;li&gt;Iterative fixes were pushed to the &lt;a href="https://github.com/ocaml/merlin/issues/2079" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;union-find and caching logic&lt;/strong&gt;&lt;/a&gt; underlying the indexing PR in response to review, including switching the cache-size flag's unit to kilobytes with a 1GB default and factoring out duplicate cache-lookup logic (&lt;a href="https://github.com/ocaml/merlin/issues/2079"&gt;#2079&lt;/a&gt;).&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Kate closed two tracking issues on OCaml 5.5 support and branch staleness while Ulysse's LRU indexing cache PR saw active review.</summary><published>2026-07-05T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-merlin/2026/week-24</id><title>Week 24, 2026: Fixed let-punning locate navigation, closed 4 stale issues, and opened a draft OCaml 5.5 upgrade PR.</title><updated>2026-06-14T00:00:00+00:00</updated><content type="html">
+</content><link href="https://thicket.dev/"/><summary>Kate closed two tracking issues on OCaml 5.5 support and branch staleness while Ulysse's LRU indexing cache PR saw active review.</summary><published>2026-07-05T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-merlin/2026/week-26</id><title>Week 26, 2026: Merlin shipped release v5.8-505 with OCaml 5.5 support, alongside continued review of an indexing memory-usage PR and several LSP/dune discrepancy discussions.</title><updated>2026-06-28T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Dependabot opened a checkout-action bump while review continued on an indexing memory-usage PR and an ocamlgrep integration attempt was closed.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/merlin/issues/2081" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Dependency maintenance PR&lt;/strong&gt;&lt;/a&gt; opened by &lt;a href="https://github.com/dependabot"&gt;Dependabot&lt;/a&gt; to bump &lt;code&gt;actions/checkout&lt;/code&gt; from 6 to 7, still awaiting merge at week's end (&lt;a href="https://github.com/ocaml/merlin/issues/2081"&gt;#2081&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Release engineering work by &lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt; landed the &lt;a href="https://github.com/ocaml/merlin/issues/2083" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;v5.8-505 release&lt;/strong&gt;&lt;/a&gt;, updating &lt;code&gt;CHANGES.md&lt;/code&gt; and merging the OCaml 5.5 upgrade branch into main (&lt;a href="https://github.com/ocaml/merlin/issues/2083"&gt;#2083&lt;/a&gt;, &lt;a href="https://github.com/ocaml/merlin/issues/2077"&gt;#2077&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Ongoing review of an &lt;a href="https://github.com/ocaml/merlin/issues/2050" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;LRU cache for indexing memory usage&lt;/strong&gt;&lt;/a&gt; continued, with &lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt; addressing feedback from &lt;a href="https://github.com/art-w"&gt;@art-w&lt;/a&gt; on storing small values alongside their parent, making filenames relative to the indexer's working directory, and disabling related-uids compression; the PR builds on earlier work in &lt;a href="https://github.com/ocaml/merlin/issues/2050"&gt;#2050&lt;/a&gt; (&lt;a href="https://github.com/ocaml/merlin/issues/2079"&gt;#2079&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;The &lt;a href="https://github.com/ocaml/merlin/issues/2064" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;ocamlgrep structural-search integration&lt;/strong&gt;&lt;/a&gt; proposed by &lt;a href="https://github.com/mjambon"&gt;Martin Jambon&lt;/a&gt; was closed without merging after discussion with &lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt; about whether the cmt-scanning approach belonged in the merlin repository (&lt;a href="https://github.com/ocaml/merlin/issues/2064"&gt;#2064&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;A long-standing &lt;a href="https://github.com/ocaml/merlin/issues/2065" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;dependency bump&lt;/strong&gt;&lt;/a&gt; for &lt;code&gt;cachix/install-nix-action&lt;/code&gt; remains open, tracking upstream releases up to 31.10.6 (&lt;a href="https://github.com/ocaml/merlin/issues/2065"&gt;#2065&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Issue triage by &lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt; closed a duplicate report of an &lt;a href="https://github.com/ocaml/merlin/issues/1965" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;error discrepancy between dune build and ocaml-lsp&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/merlin/issues/1965"&gt;#1965&lt;/a&gt;) while moving the underlying ppx-path-resolution issue to merlin for further investigation (&lt;a href="https://github.com/ocaml/merlin/issues/2082"&gt;#2082&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/let-def"&gt;Frédéric Bour&lt;/a&gt;'s long-open request for &lt;a href="https://github.com/ocaml/merlin/issues/611" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;path remapping for Docker &amp; Tramp&lt;/strong&gt;&lt;/a&gt; was revisited, with &lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt; asking whether it is still needed now that the LSP protocol has matured (&lt;a href="https://github.com/ocaml/merlin/issues/611"&gt;#611&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;A new bug was reported by &lt;a href="https://github.com/edwintorok"&gt;Török Edwin&lt;/a&gt; describing that &lt;a href="https://github.com/ocaml/merlin/issues/2084" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;renaming a type in a signature does not propagate to the implementation&lt;/strong&gt;&lt;/a&gt; when using the occurrences-based rename command (&lt;a href="https://github.com/ocaml/merlin/issues/2084"&gt;#2084&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/UnixJunkie"&gt;François Bérenger&lt;/a&gt;'s older request for &lt;code&gt;merlin-occurrences-expr&lt;/code&gt; remains open, with &lt;a href="https://github.com/xvw"&gt;Xavier Van de Woestyne&lt;/a&gt; confirming it is still reproducible and planning to investigate (&lt;a href="https://github.com/ocaml/merlin/issues/372"&gt;#372&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Merlin shipped release v5.8-505 with OCaml 5.5 support, alongside continued review of an indexing memory-usage PR and several LSP/dune discrepancy discussions.</summary><published>2026-06-28T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-merlin/2026/week-25</id><title>Week 25, 2026: Indexer memory-usage work continued with a new LRU-cache PR from [Ulysse](https://github.com/voodoos), alongside a truncated-error-message report from [Gabriel Scherer](https://github.com/gasche).</title><updated>2026-06-21T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+New LRU-cache indexing PR opened by Ulysse&lt;/a&gt; supersedes Charlène_Gros&lt;/a&gt;'s earlier attempt, under active review from @art-w&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/merlin/pull/2079"&gt;#2079&lt;/a&gt;, adding an &lt;a href="https://github.com/ocaml/merlin/pull/2079" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;LRU cache&lt;/strong&gt;&lt;/a&gt; to bound indexing memory usage by storing small values alongside their parent, making indexer filenames relative to the working directory, and disabling related-uids compression; the PR builds on the earlier &lt;a href="https://github.com/ocaml/merlin/pull/2050"&gt;#2050&lt;/a&gt; and is under active review from &lt;a href="https://github.com/art-w"&gt;@art-w&lt;/a&gt;, who raised points on &lt;code&gt;On_disk&lt;/code&gt; schema handling, LRU promotion of parents, &lt;code&gt;relativize&lt;/code&gt; path handling, and de-duplicating &lt;code&gt;merge + union&lt;/code&gt; logic into &lt;code&gt;Union_find&lt;/code&gt; (&lt;a href="https://github.com/ocaml/merlin/pull/2079"&gt;#2079&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Lucccyo"&gt;Charlène_Gros&lt;/a&gt;'s original &lt;a href="https://github.com/ocaml/merlin/pull/2050" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;indexer LRU cache&lt;/strong&gt;&lt;/a&gt; proposal (&lt;a href="https://github.com/ocaml/merlin/pull/2050"&gt;#2050&lt;/a&gt;), which replaced the unbounded index-links &lt;code&gt;Hashtable&lt;/code&gt; with a bounded LRU, was noted by &lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt; as superseded by the newer &lt;a href="https://github.com/ocaml/merlin/pull/2079"&gt;#2079&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/raphael-proust"&gt;Raphaël Proust&lt;/a&gt; commented on the long-standing &lt;a href="https://github.com/ocaml/merlin/issues/1755" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;stack overflow on hover&lt;/strong&gt;&lt;/a&gt; report for mutually recursive types (&lt;a href="https://github.com/ocaml/merlin/issues/1755"&gt;#1755&lt;/a&gt;), linking it to a possibly related earlier bug (&lt;a href="https://github.com/ocaml/merlin/issues/822"&gt;#822&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Indexer memory-usage work continued with a new LRU-cache PR from [Ulysse](https://github.com/voodoos), alongside a truncated-error-message report from [Gabriel Scherer](https://github.com/gasche).</summary><published>2026-06-21T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-merlin/2026/week-24</id><title>Week 24, 2026: Fixed let-punning locate navigation, closed 4 stale issues, and opened a draft OCaml 5.5 upgrade PR.</title><updated>2026-06-14T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

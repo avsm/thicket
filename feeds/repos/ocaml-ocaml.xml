@@ -67,7 +67,141 @@ New PRs for stdlib additions, large-interval pattern matching, opam macOS suppor
 &lt;li&gt;&lt;a href="https://github.com/tmcgilchrist"&gt;Tim McGilchrist&lt;/a&gt;'s PR on &lt;a href="https://github.com/ocaml/ocaml/pull/14522" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;missing minor-heap allocation statistics for the main domain at exit&lt;/strong&gt;&lt;/a&gt; remains under review, with &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; proposing alternatives to the extra minor-GC-at-exit approach (&lt;a href="https://github.com/ocaml/ocaml/pull/14522"&gt;#14522&lt;/a&gt;)&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/tmcgilchrist"&gt;Tim McGilchrist&lt;/a&gt;'s &lt;a href="https://github.com/ocaml/ocaml/pull/14500" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;s390x CFI/backtrace fix&lt;/strong&gt;&lt;/a&gt;, merged earlier this year, was confirmed and its tracking issue closed this week (&lt;a href="https://github.com/ocaml/ocaml/pull/14500"&gt;#14500&lt;/a&gt;, closing &lt;a href="https://github.com/ocaml/ocaml/issues/13509"&gt;#13509&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Typechecking speedup for large types and an ephemeron GC fix merged, alongside a ctype scope-error fix and ongoing static-linking discussions.</summary><published>2026-07-05T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-24</id><title>Week 24, 2026: Security fixes for CVE-2026-41083 (Filename.quote_command) and CVE-2026-28364 (intern.c) landed, with a GC mark_header regression fix.</title><updated>2026-06-14T00:00:00+00:00</updated><content type="html">
+</content><link href="https://thicket.dev/"/><summary>Typechecking speedup for large types and an ephemeron GC fix merged, alongside a ctype scope-error fix and ongoing static-linking discussions.</summary><published>2026-07-05T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-26</id><title>Week 26, 2026: Recursive-function codegen optimizations and RISC-V compressed instructions landed, alongside ongoing ephemeron GC and cross-compilation work.</title><updated>2026-06-28T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Static linking proposed; recursive-function, Windows cross-compilation, and ephemeron GC work merged, with several typing regressions triaged.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;Newly opened work includes &lt;a href="https://github.com/ocaml/ocaml/issues/14895" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;static and link-time linking&lt;/strong&gt;&lt;/a&gt; support for the compiler by &lt;a href="https://github.com/raphael-proust"&gt;Raphaël Proust&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14895"&gt;#14895&lt;/a&gt;), a fix for &lt;strong class="achievement"&gt;pattern-matching switch overflow&lt;/strong&gt; on &lt;code&gt;abs min_int&lt;/code&gt; by &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14890"&gt;#14890&lt;/a&gt;), rejection of a silently-dropped extension on module-dependent functor type domains by &lt;a href="https://github.com/hhugo"&gt;@hhugo&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14886"&gt;#14886&lt;/a&gt;), an overflow guard for &lt;code&gt;caml_read_section_descriptors&lt;/code&gt; during &lt;strong class="achievement"&gt;bytecode loading&lt;/strong&gt; by &lt;a href="https://github.com/xavierleroy"&gt;Xavier Leroy&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14872"&gt;#14872&lt;/a&gt;), further &lt;strong class="achievement"&gt;ephemeron orphaning simplification&lt;/strong&gt; by &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14879"&gt;#14879&lt;/a&gt;), and an update to the opam instructions in &lt;code&gt;HACKING.adoc&lt;/code&gt; by &lt;a href="https://github.com/OlivierNicole"&gt;Olivier Nicole&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14878"&gt;#14878&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt; opened a fix for a &lt;strong class="achievement"&gt;scoping error in &lt;code&gt;ctype&lt;/code&gt;&lt;/strong&gt; that erased result types when removing module dependencies from package types, closing &lt;a href="https://github.com/ocaml/ocaml/issues/14891"&gt;#14891&lt;/a&gt; reported by &lt;a href="https://github.com/hyphenrf"&gt;Haz&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14892"&gt;#14892&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Merged work this week includes the &lt;a href="https://github.com/ocaml/ocaml/issues/14884" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;cross-compilation Windows fixes&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14884"&gt;#14884&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14850"&gt;#14850&lt;/a&gt; by &lt;a href="https://github.com/MisterDA"&gt;Antonin Décimo&lt;/a&gt;), the &lt;code&gt;out_type&lt;/code&gt;/external-types assertion fix (&lt;a href="https://github.com/ocaml/ocaml/issues/14882"&gt;#14882&lt;/a&gt;), the &lt;code&gt;Pmty_extension&lt;/code&gt; printast fix (&lt;a href="https://github.com/ocaml/ocaml/issues/14880"&gt;#14880&lt;/a&gt;), the concise exhaustiveness-warning printing (&lt;a href="https://github.com/ocaml/ocaml/issues/14887"&gt;#14887&lt;/a&gt;), the recursive-function renaming optimizations (&lt;a href="https://github.com/ocaml/ocaml/issues/14885"&gt;#14885&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14894"&gt;#14894&lt;/a&gt;), RISC-V compressed instructions (&lt;a href="https://github.com/ocaml/ocaml/issues/14873"&gt;#14873&lt;/a&gt;), native &lt;code&gt;Iatomic_fetch_add&lt;/code&gt; codegen (&lt;a href="https://github.com/ocaml/ocaml/issues/14575"&gt;#14575&lt;/a&gt;), the pthread attribute destruction fix (&lt;a href="https://github.com/ocaml/ocaml/issues/14875"&gt;#14875&lt;/a&gt;), the &lt;code&gt;-rectypes&lt;/code&gt; expect-test coverage (&lt;a href="https://github.com/ocaml/ocaml/issues/14643"&gt;#14643&lt;/a&gt;), and two ephemeron/GC PRs from &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt;'s ongoing master plan (&lt;a href="https://github.com/ocaml/ocaml/issues/14745"&gt;#14745&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14813"&gt;#14813&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14877"&gt;#14877&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Ongoing, previously-opened work still under review includes &lt;a href="https://github.com/damiendoligez"&gt;Damien Doligez&lt;/a&gt;'s &lt;a href="https://github.com/ocaml/ocaml/issues/14796" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;new GC-pacing logic&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14796"&gt;#14796&lt;/a&gt;), &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt;'s &lt;code&gt;Atomic.fold_update&lt;/code&gt; proposal (&lt;a href="https://github.com/ocaml/ocaml/issues/14725"&gt;#14725&lt;/a&gt;) and &lt;code&gt;Dynarray.unsafe_{get,set}&lt;/code&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14864"&gt;#14864&lt;/a&gt;), &lt;a href="https://github.com/smuenzel"&gt;Stefan Muenzel&lt;/a&gt;'s signature-inclusion alias handling (&lt;a href="https://github.com/ocaml/ocaml/issues/14746"&gt;#14746&lt;/a&gt;), &lt;a href="https://github.com/Jeannalyse"&gt;@Jeannalyse&lt;/a&gt;'s configurable domain stack size (&lt;a href="https://github.com/ocaml/ocaml/issues/14860"&gt;#14860&lt;/a&gt;) and &lt;code&gt;Dynarray.sort&lt;/code&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14848"&gt;#14848&lt;/a&gt;), &lt;a href="https://github.com/lthls"&gt;Vincent Laviron&lt;/a&gt;'s instance-variable-lifting fix for &lt;a href="https://github.com/ocaml/ocaml/issues/14861"&gt;#14861&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14868"&gt;#14868&lt;/a&gt;), &lt;a href="https://github.com/OlivierNicole"&gt;Olivier Nicole&lt;/a&gt;'s memory-model documentation for &lt;code&gt;memory.c&lt;/code&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14857"&gt;#14857&lt;/a&gt;), &lt;a href="https://github.com/Mbodin"&gt;Martin Constantino–Bodin&lt;/a&gt;'s &lt;code&gt;Sys.mkdir&lt;/code&gt; permissions documentation (&lt;a href="https://github.com/ocaml/ocaml/issues/14863"&gt;#14863&lt;/a&gt;), and &lt;a href="https://github.com/MisterDA"&gt;Antonin Décimo&lt;/a&gt;'s small libunix fixes (&lt;a href="https://github.com/ocaml/ocaml/issues/14740"&gt;#14740&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Two long-dormant PRs from 2021 by &lt;a href="https://github.com/nchataing"&gt;Nicolas Chataing&lt;/a&gt; were closed without merging: adding &lt;code&gt;floatarray&lt;/code&gt; manipulation functions (&lt;a href="https://github.com/ocaml/ocaml/issues/10246"&gt;#10246&lt;/a&gt;) and rewriting &lt;code&gt;get_unboxed_type_representation&lt;/code&gt; with a terminating algorithm (&lt;a href="https://github.com/ocaml/ocaml/issues/10479"&gt;#10479&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Typing regressions were reported and quickly triaged: &lt;a href="https://github.com/yannl35133"&gt;@yannl35133&lt;/a&gt;'s report of a recursive first-class-module typing regression in 5.5 (&lt;a href="https://github.com/ocaml/ocaml/issues/14888"&gt;#14888&lt;/a&gt;) was closed as a duplicate/tracked issue, and &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt;'s related report (&lt;a href="https://github.com/ocaml/ocaml/issues/14630"&gt;#14630&lt;/a&gt;) is being tracked by &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt; for a fix before the 5.6.0 release&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Recursive-function codegen optimizations and RISC-V compressed instructions landed, alongside ongoing ephemeron GC and cross-compilation work.</summary><published>2026-06-28T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-25</id><title>Week 25, 2026: Ephemeron GC-cycle orphaning fix and a cross-compilation `BINDIR` fix landed, while new PRs proposed instance-variable lifting and `Dynarray` unsafe accessors.</title><updated>2026-06-21T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Instance-variable lifting, Dynarray.unsafe_get&lt;/code&gt;/unsafe_set&lt;/code&gt;, and Sys.mkdir&lt;/code&gt; permission docs were opened, while domain-stack-size, Haiku, and memory-model-doc PRs continued review.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/lthls"&gt;Vincent Laviron&lt;/a&gt; opened a PR &lt;a href="https://github.com/ocaml/ocaml/issues/14861" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;lifting instance-variable loads&lt;/strong&gt;&lt;/a&gt; to the start of the enclosing method when the variable is immutable, fixing the case reported in &lt;a href="https://github.com/ocaml/ocaml/issues/14861"&gt;#14861&lt;/a&gt; where a &lt;code&gt;Gc.finalise_last&lt;/code&gt; callback registered in a class &lt;code&gt;initializer&lt;/code&gt; implicitly captures &lt;code&gt;self&lt;/code&gt; and prevents collection (&lt;a href="https://github.com/ocaml/ocaml/issues/14868"&gt;#14868&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; opened &lt;strong class="achievement"&gt;&lt;code&gt;Dynarray.unsafe_get&lt;/code&gt;/&lt;code&gt;unsafe_set&lt;/code&gt;&lt;/strong&gt;, benchmarks showing &lt;code&gt;unsafe_get&lt;/code&gt; about 2.5x faster and &lt;code&gt;unsafe_set&lt;/code&gt; about 1.4x faster than the safe versions, followed by an extended documentation discussion with &lt;a href="https://github.com/bclement-ocp"&gt;Basile Clément&lt;/a&gt; and &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt; on how to word the safety caveats around concurrent access and module boundaries (&lt;a href="https://github.com/ocaml/ocaml/issues/14864"&gt;#14864&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Mbodin"&gt;Martin Constantino–Bodin&lt;/a&gt; opened a &lt;strong class="achievement"&gt;documentation fix for &lt;code&gt;Sys.mkdir&lt;/code&gt; permissions&lt;/strong&gt;, clarifying that the mode argument is interpreted bit-by-bit rather than digit-by-digit as with shell &lt;code&gt;chmod&lt;/code&gt;, refined after feedback from &lt;a href="https://github.com/MisterDA"&gt;Antonin Décimo&lt;/a&gt; and &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; to reuse the &lt;code&gt;Unix.file_perm&lt;/code&gt; doc-comment style (&lt;a href="https://github.com/ocaml/ocaml/issues/14863"&gt;#14863&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/shym"&gt;@shym&lt;/a&gt; opened and merged the &lt;code&gt;Makefile.cross&lt;/code&gt; &lt;strong class="achievement"&gt;&lt;code&gt;BINDIR&lt;/code&gt;&lt;/strong&gt; fix, cherry-picked into the 5.5.0 release on &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt;'s recommendation given it only touches cross-compilation and had been approved by &lt;a href="https://github.com/shindere"&gt;Sébastien Hinderer&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14869"&gt;#14869&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; opened and merged the &lt;strong class="achievement"&gt;&lt;code&gt;promote-menhir&lt;/code&gt;&lt;/strong&gt; target fix, with naming and changelog suggestions from &lt;a href="https://github.com/shindere"&gt;Sébastien Hinderer&lt;/a&gt; and confirmation from &lt;a href="https://github.com/fpottier"&gt;François Pottier&lt;/a&gt; on the upstream Menhir change that motivated it (&lt;a href="https://github.com/ocaml/ocaml/issues/14862"&gt;#14862&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Jeannalyse"&gt;@Jeannalyse&lt;/a&gt; continued iterating on the &lt;a href="https://github.com/ocaml/ocaml/issues/14860" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;configurable domain stack size&lt;/strong&gt;&lt;/a&gt; PR (&lt;code&gt;OCAMLRUNPARAM=S=&lt;/code&gt;), moving the platform-specific code into &lt;code&gt;caml_plat_thread_create&lt;/code&gt; in &lt;code&gt;runtime/caml/platform.h&lt;/code&gt; and adding Windows thread-attribute destruction after review from &lt;a href="https://github.com/MisterDA"&gt;Antonin Décimo&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14860"&gt;#14860&lt;/a&gt;, related to &lt;a href="https://github.com/ocaml/ocaml/issues/14195"&gt;#14195&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;The &lt;a href="https://github.com/ocaml/ocaml/issues/14813" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;ephemeron GC-cycle fix&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14813"&gt;#14813&lt;/a&gt;) and the associated &lt;strong class="achievement"&gt;weak-pointer/ephemeron testsuite repro cases&lt;/strong&gt; for &lt;a href="https://github.com/ocaml/ocaml/issues/14349"&gt;#14349&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14745"&gt;#14745&lt;/a&gt;) by &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; both merged, closing out a multi-week investigation into randomized-testing failures found by &lt;a href="https://github.com/jmid"&gt;Jan Midtgaard&lt;/a&gt;'s multicoretests harness&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/OlivierNicole"&gt;Olivier Nicole&lt;/a&gt; kept refining the &lt;a href="https://github.com/ocaml/ocaml/issues/14857" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;memory-model documentation&lt;/strong&gt;&lt;/a&gt; PR for &lt;code&gt;memory.c&lt;/code&gt;, clarifying that fences described are emitted by the OCaml compiler (not the C compiler) and tightening the new &lt;code&gt;[MMPS]&lt;/code&gt; "publication safety" note based on &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt;'s comprehension questions (&lt;a href="https://github.com/ocaml/ocaml/issues/14857"&gt;#14857&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/smuenzel"&gt;Stefan Muenzel&lt;/a&gt; continued the &lt;strong class="achievement"&gt;&lt;code&gt;-rectypes&lt;/code&gt; expect-test&lt;/strong&gt; PR; &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt; benchmarked the change over 500 runs and found the testsuite runtime impact negligible (112.06s vs 111.97s average) (&lt;a href="https://github.com/ocaml/ocaml/issues/14643"&gt;#14643&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Sylvain78"&gt;Anarchos&lt;/a&gt; continued the &lt;a href="https://github.com/ocaml/ocaml/issues/14773" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Haiku port&lt;/strong&gt;&lt;/a&gt; PR covering Unix-socket test adjustments, single-threaded &lt;code&gt;setlocale&lt;/code&gt;, and missing &lt;code&gt;SIGIO&lt;/code&gt; support, with &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt; flagging that matching on invalid-argument error text is too brittle and suggesting the test instead detect and skip unsupported signals (&lt;a href="https://github.com/ocaml/ocaml/issues/14773"&gt;#14773&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/damiendoligez"&gt;Damien Doligez&lt;/a&gt;'s draft &lt;a href="https://github.com/ocaml/ocaml/issues/14796" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;new GC-pacing logic&lt;/strong&gt;&lt;/a&gt; PR had a reported test failure traced to a rounding problem that forced the GC into many very small slices, now fixed (&lt;a href="https://github.com/ocaml/ocaml/issues/14796"&gt;#14796&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/xavierleroy"&gt;Xavier Leroy&lt;/a&gt; opened PRs adding &lt;a href="https://github.com/ocaml/ocaml/issues/14873" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;RISC-V compressed-instruction support&lt;/strong&gt;&lt;/a&gt; (an 8.7-11% code-size reduction on &lt;code&gt;ocamlopt.opt&lt;/code&gt; by enabling the ISA's "C" extension and re-tuning &lt;code&gt;Lswitch&lt;/code&gt; codegen and register allocation) and a &lt;strong class="achievement"&gt;bounds check in &lt;code&gt;caml_read_section_descriptors&lt;/code&gt;&lt;/strong&gt; to guard against overflow when loading bytecode with an unreasonable number of section descriptors (&lt;a href="https://github.com/ocaml/ocaml/issues/14873"&gt;#14873&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14872"&gt;#14872&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Ephemeron GC-cycle orphaning fix and a cross-compilation `BINDIR` fix landed, while new PRs proposed instance-variable lifting and `Dynarray` unsafe accessors.</summary><published>2026-06-21T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-24</id><title>Week 24, 2026: Security fixes for CVE-2026-41083 (Filename.quote_command) and CVE-2026-28364 (intern.c) landed, with a GC mark_header regression fix.</title><updated>2026-06-14T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

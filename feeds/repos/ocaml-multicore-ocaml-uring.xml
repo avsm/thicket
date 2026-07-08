@@ -60,7 +60,128 @@ Three PRs opened and merged within the week for build sandboxing and FLAGS.t com
 &lt;li&gt;The per-operation &lt;code&gt;RWF&lt;/code&gt; flags PR opened in the prior week by &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; was merged this week (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/154"&gt;#154&lt;/a&gt;), rounding out the API work that fed into the &lt;a href="https://github.com/ocaml-multicore/ocaml-uring/releases/tag/v2.15.0"&gt;v2.15.0&lt;/a&gt; release published by &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;Discussion continued on the open issue about building without vendored &lt;code&gt;liburing&lt;/code&gt;, with &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; explaining the opam-distribution rationale and exploring an optional environment-variable toggle for a future version (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/156"&gt;#156&lt;/a&gt;).&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Release v2.15.0 shipped with per-operation RWF flags and a liburing 2.15 update, plus fixes for opam sandbox builds and Eio compatibility.</summary><published>2026-07-05T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-ocaml-uring/2026/week-24</id><title>Week 24, 2026: Socket creation now defaults to CLOEXEC; new PRs add RWF flags and vectored I/O bindings to ocaml-uring.</title><updated>2026-06-14T00:00:00+00:00</updated><content type="html">
+</content><link href="https://thicket.dev/"/><summary>Release v2.15.0 shipped with per-operation RWF flags and a liburing 2.15 update, plus fixes for opam sandbox builds and Eio compatibility.</summary><published>2026-07-05T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-ocaml-uring/2026/week-26</id><title>Week 26, 2026: Vectored fixed-buffer read/write bindings merged; RWF flags PR and vendored-liburing discussion remain open.</title><updated>2026-06-28T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+PR #155 merged for vectored fixed-buffer bindings; RWF flags PR #154 and vendored-liburing issue #156 remain active.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;The &lt;a href="https://github.com/ocaml-multicore/ocaml-uring/pull/155" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;vectored fixed-buffer bindings&lt;/strong&gt;&lt;/a&gt; work was completed and merged by &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt;, correcting the misnamed stubs along the way, with review approval from &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/pull/155"&gt;#155&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;The &lt;a href="https://github.com/ocaml-multicore/ocaml-uring/pull/154" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;per-operation RWF flags&lt;/strong&gt;&lt;/a&gt; PR by &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt;, which exposes &lt;code&gt;preadv2&lt;/code&gt;/&lt;code&gt;pwritev2&lt;/code&gt;-style flags such as &lt;code&gt;dsync&lt;/code&gt; and &lt;code&gt;nocache&lt;/code&gt; at the uring layer for later use in Eio_linux, remains open; &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; asked for a rebase now that the fixed-buffer bindings landed, and &lt;a href="https://github.com/patricoferris"&gt;Patrick Ferris&lt;/a&gt; reviewed the changes favorably (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/pull/154"&gt;#154&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Discussion continues on whether the package should support building against &lt;strong class="achievement"&gt;system &lt;code&gt;liburing&lt;/code&gt;&lt;/strong&gt; instead of only the vendored copy, following a build failure on Debian caused by a missing &lt;code&gt;io_uring_prep_readv_fixed&lt;/code&gt; declaration (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/156"&gt;#156&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Vectored fixed-buffer read/write bindings merged; RWF flags PR and vendored-liburing discussion remain open.</summary><published>2026-06-28T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-ocaml-uring/2026/week-25</id><title>Week 25, 2026: Discussion continued on a draft PR converting buffers to bytes, and a new issue requested system liburing support.</title><updated>2026-06-21T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+PR #153's buffer redesign drew review feedback while issue #156 raised building without vendored liburing.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;Draft PR converting the &lt;a href="https://github.com/ocaml-multicore/ocaml-uring/pull/153" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;buffer representation from bigarray/cstruct to bytes&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; continued to receive review feedback this week, with discussion of buffer-size validation and safety trade-offs for reused buffers (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/pull/153"&gt;#153&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;New issue opened by &lt;a href="https://github.com/glondu"&gt;Stéphane Glondu&lt;/a&gt; asking for a way to build against a &lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/156" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;system liburing&lt;/strong&gt;&lt;/a&gt; instead of the vendored copy, prompting a response from &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; on why the vendored version is pinned to a specific kernel ABI (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/156"&gt;#156&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Discussion continued on a draft PR converting buffers to bytes, and a new issue requested system liburing support.</summary><published>2026-06-21T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-ocaml-uring/2026/week-24</id><title>Week 24, 2026: Socket creation now defaults to CLOEXEC; new PRs add RWF flags and vectored I/O bindings to ocaml-uring.</title><updated>2026-06-14T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

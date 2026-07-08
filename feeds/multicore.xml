@@ -1,5 +1,95 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/multicore.xml</id><title>Multicore (Weekly)</title><updated>2026-07-05T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/multicore.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Multicore OCaml</subtitle><entry><id>https://thicket.dev/groups/multicore/2026/week-27</id><title>Week 27, 2026: None</title><updated>2026-07-05T00:00:00+00:00</updated><content type="html"/><link href="https://thicket.dev/"/><summary>Activity report for multicore - Week 27, 2026</summary><published>2026-07-05T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/multicore/2026/week-25</id><title>Week 25, 2026: None</title><updated>2026-06-21T00:00:00+00:00</updated><content type="html"/><link href="https://thicket.dev/"/><summary>Activity report for multicore - Week 25, 2026</summary><published>2026-06-21T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/multicore/2026/week-24</id><title>Week 24, 2026: eio gains incremental directory reading and subtree rename; ocaml-uring adds socket CLOEXEC default and new I/O bindings.</title><updated>2026-06-14T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/multicore.xml</id><title>Multicore (Weekly)</title><updated>2026-07-05T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/multicore.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Multicore OCaml</subtitle><entry><id>https://thicket.dev/groups/multicore/2026/week-27</id><title>Week 27, 2026: None</title><updated>2026-07-05T00:00:00+00:00</updated><content type="html"/><link href="https://thicket.dev/"/><summary>Activity report for multicore - Week 27, 2026</summary><published>2026-07-05T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/multicore/2026/week-26</id><title>Week 26, 2026: Eio gained a portable Sockopt API for socket options while ocaml-uring merged vectored fixed-buffer read/write bindings.</title><updated>2026-06-28T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;Added an extensible &lt;code&gt;Eio.Net.Sockopt&lt;/code&gt; type with &lt;code&gt;Eio.Net.setsockopt&lt;/code&gt;/&lt;code&gt;getsockopt&lt;/code&gt;, a &lt;code&gt;register_printer&lt;/code&gt; mechanism, and an &lt;code&gt;Invalid_option&lt;/code&gt; error case, laying groundwork for typed socket options across all Eio backends, by &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; based on &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt;'s original design (&lt;a href="https://github.com/ocaml-multicore/eio/pull/858"&gt;ocaml-multicore/eio#858&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/eio/pull/575"&gt;ocaml-multicore/eio#575&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Added portable socket-option constructors (&lt;code&gt;SO_REUSEADDR&lt;/code&gt;, &lt;code&gt;SO_KEEPALIVE&lt;/code&gt;, &lt;code&gt;TCP_NODELAY&lt;/code&gt;, &lt;code&gt;SO_LINGER&lt;/code&gt;, &lt;code&gt;SO_RCVTIMEO&lt;/code&gt;, and others) usable even outside Unix processes, by &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt;, closing &lt;a href="https://github.com/ocaml-multicore/eio/issues/322"&gt;ocaml-multicore/eio#322&lt;/a&gt; and &lt;a href="https://github.com/ocaml-multicore/eio/issues/376"&gt;ocaml-multicore/eio#376&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/pull/859"&gt;ocaml-multicore/eio#859&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Added Linux-specific &lt;code&gt;TCP_*&lt;/code&gt;/&lt;code&gt;IP_*&lt;/code&gt; socket options (&lt;code&gt;TCP_CORK&lt;/code&gt;, &lt;code&gt;TCP_KEEPIDLE&lt;/code&gt;, &lt;code&gt;TCP_FASTOPEN&lt;/code&gt;, &lt;code&gt;IP_FREEBIND&lt;/code&gt;, &lt;code&gt;IP_MTU&lt;/code&gt;, and others) implemented via &lt;code&gt;getsockopt&lt;/code&gt;/&lt;code&gt;setsockopt&lt;/code&gt; C stubs in &lt;code&gt;lib_eio_linux&lt;/code&gt;, by &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/pull/575"&gt;ocaml-multicore/eio#575&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Relaxed the return type of &lt;code&gt;Eio.Process.pipe&lt;/code&gt; from a fixed closable-source/sink pair to a polymorphic-variant subtype, allowing use with libraries such as &lt;code&gt;Cohttp_eio.Body.t&lt;/code&gt;, by &lt;a href="https://github.com/Arogbonlo"&gt;Isaac Arogbonlo&lt;/a&gt; with casts by &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt;, closing &lt;a href="https://github.com/ocaml-multicore/eio/issues/750"&gt;ocaml-multicore/eio#750&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/pull/775"&gt;ocaml-multicore/eio#775&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;readv_fixed&lt;/code&gt; and &lt;code&gt;writev_fixed&lt;/code&gt; to the &lt;code&gt;Uring&lt;/code&gt; API for multi-buffer reads/writes against a ring's registered fixed buffer, with &lt;code&gt;Invalid_argument&lt;/code&gt; validation against buffers not belonging to the ring, by &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/pull/155"&gt;ocaml-multicore/ocaml-uring#155&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Fixed misnamed C stubs (&lt;code&gt;submit_readv_fixed&lt;/code&gt;/&lt;code&gt;submit_writev_fixed&lt;/code&gt;, which never performed vectored I/O, renamed to &lt;code&gt;submit_read_fixed&lt;/code&gt;/&lt;code&gt;submit_write_fixed&lt;/code&gt;), freeing the vectored names for the new operations (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/commit/56699618217cb588a1045ac43d1727e312544998"&gt;ocaml-multicore/ocaml-uring@5669961&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;Of the nine repositories in the multicore group, only &lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt; and &lt;a href="https://github.com/ocaml-multicore/ocaml-uring"&gt;ocaml-multicore/ocaml-uring&lt;/a&gt; had recorded activity during 2026-06-22 to 2026-06-28&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/domainslib"&gt;ocaml-multicore/domainslib&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/meio"&gt;ocaml-multicore/meio&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/saturn"&gt;ocaml-multicore/saturn&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/eio-trace"&gt;ocaml-multicore/eio-trace&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/picos"&gt;ocaml-multicore/picos&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/kcas"&gt;ocaml-multicore/kcas&lt;/a&gt;, and &lt;a href="https://github.com/ocaml-multicore/ocaml-iomux"&gt;ocaml-multicore/ocaml-iomux&lt;/a&gt; had no tracked commits, PRs, or issues this week&lt;/li&gt;
+&lt;li&gt;Eio's work centered on a new portable/Linux socket-options API (&lt;a href="https://github.com/ocaml-multicore/eio/pull/858"&gt;ocaml-multicore/eio#858&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/eio/pull/859"&gt;ocaml-multicore/eio#859&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/eio/pull/575"&gt;ocaml-multicore/eio#575&lt;/a&gt;) and relaxed typing for &lt;code&gt;Eio.Process.pipe&lt;/code&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/pull/775"&gt;ocaml-multicore/eio#775&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;ocaml-uring merged vectored fixed-buffer read/write bindings (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/pull/155"&gt;ocaml-multicore/ocaml-uring#155&lt;/a&gt;), while a related per-operation RWF-flags PR (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/pull/154"&gt;ocaml-multicore/ocaml-uring#154&lt;/a&gt;) and a liburing-vendoring issue (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/156"&gt;ocaml-multicore/ocaml-uring#156&lt;/a&gt;) remain open&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;The open per-operation RWF-flags PR in ocaml-uring (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/pull/154"&gt;ocaml-multicore/ocaml-uring#154&lt;/a&gt;) exposes &lt;code&gt;preadv2&lt;/code&gt;/&lt;code&gt;pwritev2&lt;/code&gt;-style flags explicitly intended for later use in Eio_linux, directly linking the two repositories' roadmaps&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; and &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; were both active as authors and reviewers across &lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt; and &lt;a href="https://github.com/ocaml-multicore/ocaml-uring"&gt;ocaml-multicore/ocaml-uring&lt;/a&gt; this week, reflecting the shared low-level I/O stack between Eio's Linux backend and the uring bindings it depends on&lt;/li&gt;
+&lt;li&gt;Eio's new Linux-specific socket options (&lt;a href="https://github.com/ocaml-multicore/eio/pull/575"&gt;ocaml-multicore/eio#575&lt;/a&gt;) and ocaml-uring's fixed-buffer vectored I/O (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/pull/155"&gt;ocaml-multicore/ocaml-uring#155&lt;/a&gt;) both extend typed OCaml coverage of the same underlying Linux kernel interfaces that &lt;code&gt;lib_eio_linux&lt;/code&gt; consumes&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/glondu"&gt;Stéphane Glondu&lt;/a&gt; and &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; discussed whether ocaml-uring should support building against system &lt;code&gt;liburing&lt;/code&gt; rather than only a vendored copy, after Debian's patched build failed with an implicit-declaration error for &lt;code&gt;io_uring_prep_readv_fixed&lt;/code&gt;; opam-installed &lt;code&gt;uring&lt;/code&gt; often needs a newer &lt;code&gt;liburing&lt;/code&gt; than stable distributions ship (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/156"&gt;ocaml-multicore/ocaml-uring#156&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; and &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; debated whether Eio's portable &lt;code&gt;Sockopt&lt;/code&gt; API should expose &lt;code&gt;SO_TYPE&lt;/code&gt; as a raw integer, agreeing to omit it until it can be mapped to a proper variant type rather than an unhelpful platform-dependent integer (&lt;a href="https://github.com/ocaml-multicore/eio/pull/859"&gt;ocaml-multicore/eio#859&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;Both &lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt; and &lt;a href="https://github.com/ocaml-multicore/ocaml-uring"&gt;ocaml-multicore/ocaml-uring&lt;/a&gt; continued building typed, portable OCaml wrappers around raw Unix/kernel interfaces — Eio's socket-options and pty/&lt;code&gt;login_tty&lt;/code&gt; work (&lt;a href="https://github.com/ocaml-multicore/eio/pull/858"&gt;ocaml-multicore/eio#858&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/eio/pull/859"&gt;ocaml-multicore/eio#859&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/eio/pull/531"&gt;ocaml-multicore/eio#531&lt;/a&gt;) and ocaml-uring's fixed-buffer vectored I/O (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/pull/155"&gt;ocaml-multicore/ocaml-uring#155&lt;/a&gt;) — rather than requiring users to drop to raw syscalls&lt;/li&gt;
+&lt;li&gt;Large single-author PRs are being split during review to ease landing, as when &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; divided &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt;'s &lt;code&gt;Sockopt&lt;/code&gt; PR (&lt;a href="https://github.com/ocaml-multicore/eio/pull/575"&gt;ocaml-multicore/eio#575&lt;/a&gt;) into a base API PR (&lt;a href="https://github.com/ocaml-multicore/eio/pull/858"&gt;ocaml-multicore/eio#858&lt;/a&gt;) and a portable-options PR (&lt;a href="https://github.com/ocaml-multicore/eio/pull/859"&gt;ocaml-multicore/eio#859&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Packaging/distribution tension around vendored vs. system dependencies surfaced in ocaml-uring's liburing-vendoring discussion (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/156"&gt;ocaml-multicore/ocaml-uring#156&lt;/a&gt;), as newer kernel-feature bindings require &lt;code&gt;liburing&lt;/code&gt; versions ahead of what stable distributions package&lt;/li&gt;
+&lt;li&gt;Seven of the nine group repositories (&lt;a href="https://github.com/ocaml-multicore/domainslib"&gt;ocaml-multicore/domainslib&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/meio"&gt;ocaml-multicore/meio&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/saturn"&gt;ocaml-multicore/saturn&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/eio-trace"&gt;ocaml-multicore/eio-trace&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/picos"&gt;ocaml-multicore/picos&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/kcas"&gt;ocaml-multicore/kcas&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/ocaml-iomux"&gt;ocaml-multicore/ocaml-iomux&lt;/a&gt;) had no recorded activity this week, concentrating all visible work in eio and ocaml-uring&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Eio gained a portable Sockopt API for socket options while ocaml-uring merged vectored fixed-buffer read/write bindings.</summary><published>2026-06-28T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/multicore/2026/week-25</id><title>Week 25, 2026: None</title><updated>2026-06-21T00:00:00+00:00</updated><content type="html"/><link href="https://thicket.dev/"/><summary>Activity report for multicore - Week 25, 2026</summary><published>2026-06-21T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/multicore/2026/week-24</id><title>Week 24, 2026: eio gains incremental directory reading and subtree rename; ocaml-uring adds socket CLOEXEC default and new I/O bindings.</title><updated>2026-06-14T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

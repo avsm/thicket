@@ -62,7 +62,128 @@ Two draft PRs opened and closed after review feedback on diagnostic message form
 &lt;li&gt;The automated &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1437" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;flake.lock update&lt;/strong&gt;&lt;/a&gt; PR from the &lt;code&gt;github-actions&lt;/code&gt; bot remains open, tracking bumps to the &lt;code&gt;merlin5_3&lt;/code&gt; and &lt;code&gt;nixpkgs&lt;/code&gt; flake inputs (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1437"&gt;#1437&lt;/a&gt;)&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt; updated e2e &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1579" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;hover test expectations&lt;/strong&gt;&lt;/a&gt; on &lt;code&gt;master&lt;/code&gt; to reflect the type-alias resolution behavior merged the previous week in &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1579"&gt;#1579&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml-lsp/commit/329c4d684a4358398795a6e317052605c88c3e80"&gt;329c4d6&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Documentation fix for the typeSearch JSON schema and removal of temporary Merlin version pins; two draft PRs closed after review feedback.</summary><published>2026-07-05T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml-lsp/2026/week-24</id><title>Week 24, 2026: Discussions on hover-on-warnings PR and an ocamlgrep integration proposal drove activity this week.</title><updated>2026-06-14T00:00:00+00:00</updated><content type="html">
+</content><link href="https://thicket.dev/"/><summary>Documentation fix for the typeSearch JSON schema and removal of temporary Merlin version pins; two draft PRs closed after review feedback.</summary><published>2026-07-05T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml-lsp/2026/week-26</id><title>Week 26, 2026: Release 1.27.0 shipped with an OCaml 5.5 upgrade and a fix for a long-standing `-short-paths` merlin configuration issue.</title><updated>2026-06-28T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Release 1.27.0 was published, bundling the OCaml 5.5 upgrade, and the 550-preview PR was folded into that release work.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt; merged the &lt;a href="https://github.com/ocaml/ocaml-lsp/pull/1609" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml 5.5 upgrade&lt;/strong&gt;&lt;/a&gt; and used it to prepare and publish the &lt;strong class="achievement"&gt;1.27.0 release&lt;/strong&gt;, which also bundles the &lt;code&gt;-short-paths&lt;/code&gt; fix and the earlier &lt;code&gt;Stdune.Pid&lt;/code&gt; compatibility fix (&lt;a href="https://github.com/ocaml/ocaml-lsp/pull/1609"&gt;#1609&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;The &lt;a href="https://github.com/ocaml/ocaml-lsp/pull/1597" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;"550 preview"&lt;/strong&gt;&lt;/a&gt; branch opened by &lt;a href="https://github.com/xvw"&gt;Xavier Van de Woestyne&lt;/a&gt; was closed without merging after its changes were folded into the OCaml 5.5 upgrade PR (&lt;a href="https://github.com/ocaml/ocaml-lsp/pull/1597"&gt;#1597&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/pull/1609"&gt;#1609&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;The &lt;a href="https://github.com/ocaml/ocaml-lsp/pull/1579" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;merlin configuration&lt;/strong&gt;&lt;/a&gt; fix for &lt;code&gt;-short-paths&lt;/code&gt; was merged, closing an issue open since November 2024 about type-alias display in error messages (&lt;a href="https://github.com/ocaml/ocaml-lsp/pull/1579"&gt;#1579&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1395"&gt;#1395&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Release 1.27.0 shipped with an OCaml 5.5 upgrade and a fix for a long-standing `-short-paths` merlin configuration issue.</summary><published>2026-06-28T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml-lsp/2026/week-25</id><title>Week 25, 2026: Merged compatibility fix removing the Stdune.Pid dependency to track an upcoming Dune API change ([#1608](https://github.com/ocaml/ocaml-lsp/pull/1608)).</title><updated>2026-06-21T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+The week's only human PR was the merged Stdune.Pid removal (#1608&lt;/a&gt;), alongside the routine automated flake.lock update PR.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/anmonteiro"&gt;Antonio Nuno Monteiro&lt;/a&gt; opened and merged &lt;a href="https://github.com/ocaml/ocaml-lsp/pull/1608" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Avoid Stdune.Pid for process ids&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml-lsp/pull/1608"&gt;#1608&lt;/a&gt;), touching 9 files to keep ocaml-lsp compatible with an upstream signature change in &lt;a href="https://github.com/ocaml/dune"&gt;ocaml/dune&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;The automated &lt;a href="https://github.com/ocaml/ocaml-lsp/pull/1437" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;flake.lock: Update&lt;/strong&gt;&lt;/a&gt; PR (&lt;a href="https://github.com/ocaml/ocaml-lsp/pull/1437"&gt;#1437&lt;/a&gt;) remained open, picking up newer &lt;code&gt;merlin5_3&lt;/code&gt; and &lt;code&gt;nixpkgs&lt;/code&gt; inputs via the update-flake-lock GitHub Action; it still requires a maintainer to re-trigger CI since Actions do not run automatically on bot-opened PRs.&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Merged compatibility fix removing the Stdune.Pid dependency to track an upcoming Dune API change ([#1608](https://github.com/ocaml/ocaml-lsp/pull/1608)).</summary><published>2026-06-21T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml-lsp/2026/week-24</id><title>Week 24, 2026: Discussions on hover-on-warnings PR and an ocamlgrep integration proposal drove activity this week.</title><updated>2026-06-14T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

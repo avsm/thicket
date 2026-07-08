@@ -1,5 +1,69 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-multicore-meio.xml</id><title>ocaml-multicore/meio (Weekly)</title><updated>2026-07-05T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-multicore-meio.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml-multicore/meio</subtitle><entry><id>https://thicket.dev/repos/ocaml-multicore-meio/2026/week-27</id><title>Week 27, 2026: None</title><updated>2026-07-05T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/meio - Week 27, 2026&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/meio - Week 27, 2026</summary><published>2026-07-05T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-meio/2026/week-24</id><title>Week 24, 2026: None</title><updated>2026-06-14T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/meio - Week 24, 2026&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/meio - Week 24, 2026</summary><published>2026-06-14T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-meio/2026/week-23</id><title>Week 23, 2026: meio CLI migrated to cmdliner with proper argument parsing, help text, man pages, and -- flag disambiguation.</title><updated>2026-06-07T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-multicore-meio.xml</id><title>ocaml-multicore/meio (Weekly)</title><updated>2026-07-05T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-multicore-meio.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml-multicore/meio</subtitle><entry><id>https://thicket.dev/repos/ocaml-multicore-meio/2026/week-27</id><title>Week 27, 2026: None</title><updated>2026-07-05T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/meio - Week 27, 2026&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/meio - Week 27, 2026</summary><published>2026-07-05T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-meio/2026/week-26</id><title>Week 26, 2026: None</title><updated>2026-06-28T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/meio - Week 26, 2026&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/meio - Week 26, 2026</summary><published>2026-06-28T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-meio/2026/week-25</id><title>Week 25, 2026: Patrick Ferris opened a PR reworking meio's logging, CLI stdout capture, and task-tree rendering ([#76](https://github.com/ocaml-multicore/meio/pull/76)).</title><updated>2026-06-21T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+PR #76 bundles a logging rewrite, a new --stdout CLI flag, and console rendering fixes, still awaiting merge.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/patricoferris"&gt;Patrick Ferris&lt;/a&gt; opened &lt;a href="https://github.com/ocaml-multicore/meio/pull/76" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;PR #76&lt;/strong&gt;&lt;/a&gt; ("Fixes"), a bundle of changes to the &lt;code&gt;meio&lt;/code&gt; CLI, logging internals, and console rendering that has not yet merged (&lt;a href="https://github.com/ocaml-multicore/meio/pull/76"&gt;#76&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;meio&lt;/code&gt; binary gains a new &lt;code&gt;--stdout&lt;/code&gt; option to redirect a monitored program's stdout to a file, and the &lt;code&gt;run&lt;/code&gt; command now accepts an existing PID in addition to spawning a fresh executable and argument list (&lt;a href="https://github.com/ocaml-multicore/meio/pull/76"&gt;#76&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Logging&lt;/code&gt; is reworked with a &lt;code&gt;'a log&lt;/code&gt; type and &lt;code&gt;info&lt;/code&gt;, &lt;code&gt;warn&lt;/code&gt;, and &lt;code&gt;debug&lt;/code&gt; helpers that attach a monotonic timestamp tag to each message, and the reporter now also echoes formatted, timestamped log lines to stderr alongside the existing UI queue (&lt;a href="https://github.com/ocaml-multicore/meio/pull/76"&gt;#76&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Meio.ui&lt;/code&gt; now exposes the &lt;code&gt;Logging&lt;/code&gt; module and takes a &lt;code&gt;start&lt;/code&gt; timestamp argument, and &lt;code&gt;Task.t.logs&lt;/code&gt; changes from a plain string list to a &lt;code&gt;(bool * string) list&lt;/code&gt; so the console can distinguish user-emitted logs from internal ones (&lt;a href="https://github.com/ocaml-multicore/meio/pull/76"&gt;#76&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Console rendering fixes include truncating long task names to 32 characters (falling back to &lt;code&gt;&lt;task&gt;&lt;/code&gt; when a name is missing), resizing the &lt;code&gt;INFO&lt;/code&gt; column, and fixing a bug where task-tree column widths were computed from the wrong tuple element (&lt;a href="https://github.com/ocaml-multicore/meio/pull/76"&gt;#76&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;meio.opam&lt;/code&gt; file now pins a minimum OCaml version of 5.4.0, and the bundled examples (&lt;code&gt;burn.ml&lt;/code&gt;, &lt;code&gt;burn_domains.ml&lt;/code&gt;, &lt;code&gt;deadlock.ml&lt;/code&gt;) were updated to match the CLI changes (&lt;a href="https://github.com/ocaml-multicore/meio/pull/76"&gt;#76&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Patrick Ferris opened a PR reworking meio's logging, CLI stdout capture, and task-tree rendering ([#76](https://github.com/ocaml-multicore/meio/pull/76)).</summary><published>2026-06-21T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-meio/2026/week-24</id><title>Week 24, 2026: None</title><updated>2026-06-14T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/meio - Week 24, 2026&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/meio - Week 24, 2026</summary><published>2026-06-14T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-meio/2026/week-23</id><title>Week 23, 2026: meio CLI migrated to cmdliner with proper argument parsing, help text, man pages, and -- flag disambiguation.</title><updated>2026-06-07T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

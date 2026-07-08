@@ -62,7 +62,131 @@ A dune 3.24 release announcement PR remains open pending merge, alongside a stil
 &lt;li&gt;Routine &lt;a href="https://github.com/ocaml/ocaml.org/pull/3702" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;automated content ingestion&lt;/strong&gt;&lt;/a&gt; continued via three merged Planet scrape PRs bringing in new blog posts and OCaml Weekly News editions (&lt;a href="https://github.com/ocaml/ocaml.org/pull/3702"&gt;#3702&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/pull/3705"&gt;#3705&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/pull/3706"&gt;#3706&lt;/a&gt;)&lt;/li&gt;
 &lt;li&gt;A &lt;a href="https://github.com/ocaml/ocaml.org/issues/3703" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;broken link in the Dream web-server cookbook&lt;/strong&gt;&lt;/a&gt; was reported, pointing to a stale &lt;code&gt;aantron.github.io/dream&lt;/code&gt; URL that should redirect to the project's new &lt;code&gt;camlworks.github.io/dream&lt;/code&gt; home (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3703"&gt;#3703&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>OCaml Workshop 2026 deadline dates corrected on the site, a broken cookbook link reported, and a dune 3.24 announcement PR opened.</summary><published>2026-07-05T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml.org/2026/week-24</id><title>Week 24, 2026: Workshop 2026 UI contrast fix, new CLAUDE.md developer guide, wasm_of_ocaml WASI backstage post, and several pending content PRs.</title><updated>2026-06-14T00:00:00+00:00</updated><content type="html">
+</content><link href="https://thicket.dev/"/><summary>OCaml Workshop 2026 deadline dates corrected on the site, a broken cookbook link reported, and a dune 3.24 announcement PR opened.</summary><published>2026-07-05T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml.org/2026/week-26</id><title>Week 26, 2026: Watch.ocaml.org scraper made resilient to failures; PRs advanced for AWS industrial users, GC tutorial fix, and sqlite3 FTS5 example.</title><updated>2026-06-28T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Open PRs cover an AWS industrial-users entry, a sqlite3 FTS5 cookbook example, and a GC tutorial Core-dependency clarification, alongside a scraper resilience follow-up issue.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;Several PRs remain &lt;a href="https://github.com/ocaml/ocaml.org/pull/3693" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;open awaiting merge&lt;/strong&gt;&lt;/a&gt;: an automated platform-releases update (&lt;a href="https://github.com/ocaml/ocaml.org/pull/3693"&gt;#3693&lt;/a&gt;), a new automated OCaml Planet scrape with fresh blog posts from anil and tunbury (&lt;a href="https://github.com/ocaml/ocaml.org/pull/3702"&gt;#3702&lt;/a&gt;), a &lt;strong class="achievement"&gt;sqlite3 FTS5 search cookbook example&lt;/strong&gt; using the thin &lt;code&gt;sqlite3-ocaml&lt;/code&gt; binding and an external-content virtual table with sync triggers by &lt;a href="https://github.com/jonesmelton"&gt;Jones Melton&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml.org/pull/3698"&gt;#3698&lt;/a&gt;), a &lt;strong class="achievement"&gt;GC tutorial clarification&lt;/strong&gt; about &lt;code&gt;Gc.tune&lt;/code&gt; depending on Jane Street's Core library by &lt;a href="https://github.com/adithn875"&gt;adith nk&lt;/a&gt; with discussion on preserving the original text via a preamble note and appendix (&lt;a href="https://github.com/ocaml/ocaml.org/pull/3682"&gt;#3682&lt;/a&gt;), and an &lt;strong class="achievement"&gt;AWS industrial-users addition&lt;/strong&gt; covering the s2n-bignum/HOL Light verified-cryptography use case by &lt;a href="https://github.com/adithn875"&gt;adith nk&lt;/a&gt;, approved by &lt;a href="https://github.com/aqjune"&gt;Juneyoung Lee&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml.org/pull/3681"&gt;#3681&lt;/a&gt;, fixing &lt;a href="https://github.com/ocaml/ocaml.org/issues/3652"&gt;#3652&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/cuihtlauac"&gt;Cuihtlauac Alvarado&lt;/a&gt; merged the &lt;a href="https://github.com/ocaml/ocaml.org/pull/3695" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;watch.ocaml.org scraper resilience fix&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml.org/pull/3695"&gt;#3695&lt;/a&gt;), closing the incident report (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3694"&gt;#3694&lt;/a&gt;), and opened a follow-up issue tracking remaining hardening: decoupling the &lt;code&gt;planet&lt;/code&gt;/&lt;code&gt;video&lt;/code&gt; make steps and isolating non-network scraper failures such as config-decode and YAML-serialization errors (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3696"&gt;#3696&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Routine merges included the &lt;a href="https://github.com/ocaml/ocaml.org/pull/3701" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;LexiFi job listing refresh&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/nojb"&gt;Nicolás Ojeda Bär&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml.org/pull/3701"&gt;#3701&lt;/a&gt;), the &lt;strong class="achievement"&gt;platform newsletter data addition&lt;/strong&gt; by &lt;a href="https://github.com/sabine"&gt;sabine&lt;/a&gt; with review feedback on date formatting (&lt;a href="https://github.com/ocaml/ocaml.org/pull/3680"&gt;#3680&lt;/a&gt;), the &lt;strong class="achievement"&gt;actions/checkout v7 bump&lt;/strong&gt; via dependabot (&lt;a href="https://github.com/ocaml/ocaml.org/pull/3691"&gt;#3691&lt;/a&gt;), and automated &lt;strong class="achievement"&gt;Planet/platform-release scrapes&lt;/strong&gt; (&lt;a href="https://github.com/ocaml/ocaml.org/pull/3677"&gt;#3677&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/pull/3692"&gt;#3692&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/pull/3697"&gt;#3697&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Lemonsity"&gt;Lemonsity&lt;/a&gt; reported that the Emacs tooling setup guide binds &lt;code&gt;eglot-ensure&lt;/code&gt; to the now-obsolete &lt;code&gt;ocaml-eglot-hook&lt;/code&gt; instead of &lt;code&gt;ocaml-eglot-mode-hook&lt;/code&gt;, triggering an aliasing warning in Emacs 30.2 (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3700"&gt;#3700&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Watch.ocaml.org scraper made resilient to failures; PRs advanced for AWS industrial users, GC tutorial fix, and sqlite3 FTS5 example.</summary><published>2026-06-28T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml.org/2026/week-25</id><title>Week 25, 2026: ocaml.org published release pages for OCaml 4.14.4 and 5.5.0 alongside routine automated Planet blog updates.</title><updated>2026-06-21T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Review and merge of the 4.14.4 and 5.5.0 release pages dominated the week alongside routine Planet scraping and a documentation-gap report.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;The &lt;a href="https://github.com/ocaml/ocaml.org/pull/3688" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml 5.5.0 release page&lt;/strong&gt;&lt;/a&gt; merge involved extensive review, with &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; suggesting numerous manual wording and code-example corrections and &lt;a href="https://github.com/cuihtlauac"&gt;Cuihtlauac Alvarado&lt;/a&gt; merging once commit f06d84d7c addressed the requested changes (&lt;a href="https://github.com/ocaml/ocaml.org/pull/3688"&gt;#3688&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;The &lt;a href="https://github.com/ocaml/ocaml.org/pull/3684" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml 4.14.4 release page&lt;/strong&gt;&lt;/a&gt;, covering safe bug fixes cherry-picked from the 5.x branch, was reviewed by &lt;a href="https://github.com/sabine"&gt;sabine&lt;/a&gt; before merging (&lt;a href="https://github.com/ocaml/ocaml.org/pull/3684"&gt;#3684&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Routine &lt;a href="https://github.com/ocaml/ocaml.org/pull/3686" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Planet feed scraping&lt;/strong&gt;&lt;/a&gt; continued to surface new community blog posts while repeatedly flagging the same unreachable or misconfigured feeds for the mirage, ocaml-book, dinosaure, emilpriver and patricoferris blogs (&lt;a href="https://github.com/ocaml/ocaml.org/pull/3686"&gt;#3686&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/pull/3687"&gt;#3687&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/pull/3689"&gt;#3689&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/pull/3690"&gt;#3690&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/dlesbre"&gt;Dorian Lesbre&lt;/a&gt; opened an issue noting the two most recent &lt;code&gt;patricia-tree&lt;/code&gt; opam package releases (0.14.0 and 0.13.0) have no documentation on ocaml.org, possibly related to earlier documentation-generation issues (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3437"&gt;#3437&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/issues/3451"&gt;#3451&lt;/a&gt;) (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3685"&gt;#3685&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>ocaml.org published release pages for OCaml 4.14.4 and 5.5.0 alongside routine automated Planet blog updates.</summary><published>2026-06-21T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml.org/2026/week-24</id><title>Week 24, 2026: Workshop 2026 UI contrast fix, new CLAUDE.md developer guide, wasm_of_ocaml WASI backstage post, and several pending content PRs.</title><updated>2026-06-14T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

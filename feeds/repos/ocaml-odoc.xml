@@ -63,7 +63,128 @@ OxCaml compatibility work continued with two large open PRs adding include funct
 &lt;li&gt;&lt;a href="https://github.com/balat"&gt;Vincent Balat&lt;/a&gt; continued discussion on &lt;a href="https://github.com/ocaml/odoc/issues/1450"&gt;#1450&lt;/a&gt; about &lt;code&gt;odoc_driver&lt;/code&gt; resolving same-named modules from sibling libraries (Eliom's &lt;code&gt;eliom.client&lt;/code&gt; and &lt;code&gt;eliom.server&lt;/code&gt;) to the wrong library; investigation points to &lt;code&gt;base_args&lt;/code&gt; in &lt;code&gt;src/driver/odoc_units_of.ml&lt;/code&gt; adding every package library to each unit's &lt;code&gt;-L&lt;/code&gt; search path, with a narrower link-path patch referenced at &lt;a href="https://github.com/ocaml/odoc/pull/1449"&gt;#1449&lt;/a&gt; discussed as not suitable as a global default&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/shonfeder"&gt;Shon Feder&lt;/a&gt; followed up on the long-standing &lt;a href="https://github.com/ocaml/odoc/issues/1419"&gt;#1419&lt;/a&gt; request to document &lt;code&gt;include functor module type of ...&lt;/code&gt; inclusions, pointing to the proposed fix in &lt;a href="https://github.com/ocaml/odoc/pull/1452"&gt;#1452&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>OxCaml support for `include functor` and modes advanced in review while a portable `grep` fix for BSD test compatibility merged.</summary><published>2026-07-05T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-odoc/2026/week-24</id><title>Week 24, 2026: OxCaml modalities rendering landed, zero_alloc arity display improved, and ppx_expect dependency removed from tests.</title><updated>2026-06-14T00:00:00+00:00</updated><content type="html">
+</content><link href="https://thicket.dev/"/><summary>OxCaml support for `include functor` and modes advanced in review while a portable `grep` fix for BSD test compatibility merged.</summary><published>2026-07-05T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-odoc/2026/week-26</id><title>Week 26, 2026: Discussion opened on odoc_driver resolving sibling-library module names incorrectly for Eliom's client/server split; CI dependency bump merged.</title><updated>2026-06-28T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Dependabot merged a CI actions/checkout update while maintainers began investigating a module-resolution report for Eliom.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;Routine dependency maintenance merged: &lt;a href="https://github.com/dependabot"&gt;Dependabot&lt;/a&gt; updated &lt;a href="https://github.com/ocaml/odoc/issues/1451" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;actions/checkout&lt;/strong&gt;&lt;/a&gt; from v6 to v7 in the CI workflow configuration, a two-file change limited to &lt;code&gt;.github/workflows/build.yml&lt;/code&gt; and &lt;code&gt;.github/workflows/oxcaml.yml&lt;/code&gt; (&lt;a href="https://github.com/ocaml/odoc/issues/1451"&gt;#1451&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Investigation opened into &lt;strong class="achievement"&gt;odoc&lt;em&gt;driver's module resolution&lt;/strong&gt; for packages with sibling libraries that intentionally share module names, specifically Eliom's &lt;code&gt;eliom.client&lt;/code&gt; and &lt;code&gt;eliom.server&lt;/code&gt; (used for the Ocsigen framework's client/server symmetry), with &lt;a href="https://github.com/jonludlam"&gt;Jon Ludlam&lt;/a&gt; proposing the &lt;code&gt;{!/eliom.client/Module}&lt;/code&gt; reference syntax as a partial workaround for hand-written doc comments and planning to reproduce the problem by building docs for eliom with odoc&lt;/em&gt;driver (&lt;a href="https://github.com/ocaml/odoc/issues/1450"&gt;#1450&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Discussion opened on odoc_driver resolving sibling-library module names incorrectly for Eliom's client/server split; CI dependency bump merged.</summary><published>2026-06-28T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-odoc/2026/week-25</id><title>Week 25, 2026: [Vincent Balat](https://github.com/balat) opened a draft fix for the driver's link-path handling, closed the same day without merging ([#1449](https://github.com/ocaml/odoc/issues/1449)).</title><updated>2026-06-21T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+A draft PR addressing incorrect link paths in the odoc driver was opened and closed without merging (#1449&lt;/a&gt;).&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/balat"&gt;Vincent Balat&lt;/a&gt; opened a draft PR to fix the odoc &lt;a href="https://github.com/ocaml/odoc/issues/1449" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;driver&lt;/strong&gt;&lt;/a&gt;'s handling of link paths (&lt;a href="https://github.com/ocaml/odoc/issues/1449"&gt;#1449&lt;/a&gt;), noting that the driver added every library of a package to each compilation unit's &lt;code&gt;-L&lt;/code&gt; link path instead of only the unit's own declared dependencies; for packages with sibling libraries that share module names but do not depend on each other (the example given is &lt;code&gt;eliom.server&lt;/code&gt; and &lt;code&gt;eliom.client&lt;/code&gt;), a module defined in both — a functor result like &lt;code&gt;Content.Html&lt;/code&gt; — could resolve to the wrong sibling, so the client API documentation ended up showing the server's &lt;code&gt;Content.Html&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;The proposed fix in &lt;a href="https://github.com/ocaml/odoc/issues/1449"&gt;#1449&lt;/a&gt; builds the link path from &lt;code&gt;lib_deps&lt;/code&gt; (the unit's own library plus its declared dependencies), mirroring how the existing &lt;code&gt;-I&lt;/code&gt; include paths are already constructed, and was verified by hand against the Eliom packages where client and server libraries share module names&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/odoc/issues/1449"&gt;#1449&lt;/a&gt; was marked as a draft and closed the same day it was opened without merging, with GitHub reporting the branch as conflicting with the base, leaving the underlying link-path issue unresolved&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>[Vincent Balat](https://github.com/balat) opened a draft fix for the driver's link-path handling, closed the same day without merging ([#1449](https://github.com/ocaml/odoc/issues/1449)).</summary><published>2026-06-21T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-odoc/2026/week-24</id><title>Week 24, 2026: OxCaml modalities rendering landed, zero_alloc arity display improved, and ppx_expect dependency removed from tests.</title><updated>2026-06-14T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

@@ -89,7 +89,95 @@
 &lt;li&gt;Recurring pattern of &lt;a href="https://github.com/ocaml/ocaml/pull/14885" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;closure-allocation elimination in the typechecker&lt;/strong&gt;&lt;/a&gt; (renamings in recursive definitions from &lt;a href="https://github.com/ocaml/ocaml/pull/14885"&gt;ocaml/ocaml#14885&lt;/a&gt;/&lt;a href="https://github.com/ocaml/ocaml/pull/14894"&gt;ocaml/ocaml#14894&lt;/a&gt;, and &lt;code&gt;deep_occur_rec&lt;/code&gt; from &lt;a href="https://github.com/ocaml/ocaml/pull/14900"&gt;ocaml/ocaml#14900&lt;/a&gt;) as a recurring technique for compile-time speedups, motivated by real-world regressions reported by users of &lt;code&gt;js_of_ocaml&lt;/code&gt; and Goblint&lt;/li&gt;
 &lt;li&gt;The single ocaml/RFCs proposal this week (&lt;a href="https://github.com/ocaml/RFCs/issues/62"&gt;ocaml/RFCs#62&lt;/a&gt;) continues a pattern of exposing compiler-internal mechanisms (here, destinations) to library and PPX authors rather than keeping them restricted to the compiler's internal IR&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>A typechecking speedup and an ephemeron GC fix merged in ocaml/ocaml, while ocaml/RFCs received a new proposal for a destinations API.</summary><published>2026-07-05T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2026/week-25</id><title>Week 25, 2026: None</title><updated>2026-06-21T00:00:00+00:00</updated><content type="html"/><link href="https://thicket.dev/"/><summary>Activity report for core - Week 25, 2026</summary><published>2026-06-21T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2026/week-24</id><title>Week 24, 2026: Two CVE security fixes landed in ocaml/ocaml alongside a GC mark_header regression fix and Flambda miscompilation correction.</title><updated>2026-06-14T00:00:00+00:00</updated><content type="html">
+</content><link href="https://thicket.dev/"/><summary>A typechecking speedup and an ephemeron GC fix merged in ocaml/ocaml, while ocaml/RFCs received a new proposal for a destinations API.</summary><published>2026-07-05T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2026/week-26</id><title>Week 26, 2026: Twelve PRs merged in ocaml/ocaml covering codegen, GC, and cross-compilation fixes; ocaml/RFCs had no recorded activity this week.</title><updated>2026-06-28T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;Better compilation of &lt;a href="https://github.com/ocaml/ocaml/issues/14876" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;recursive function definitions&lt;/strong&gt;&lt;/a&gt; that avoids allocating pseudo-closure blocks for local aliases introduced before the function, addressing a code-generation regression reported in &lt;a href="https://github.com/ocaml/ocaml/issues/14876"&gt;ocaml/ocaml#14876&lt;/a&gt;; implemented by &lt;a href="https://github.com/lthls"&gt;Vincent Laviron&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14885"&gt;ocaml/ocaml#14885&lt;/a&gt;) and extended by &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; to cover redefinitions of identifiers from other modules (&lt;a href="https://github.com/ocaml/ocaml/issues/14894"&gt;ocaml/ocaml#14894&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/14873" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;RISC-V&lt;/strong&gt;&lt;/a&gt; code generation now takes advantage of compressed instructions (the "C" ISA extension) when supported by the host processor, by &lt;a href="https://github.com/xavierleroy"&gt;Xavier Leroy&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14873"&gt;ocaml/ocaml#14873&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14799"&gt;ocaml/ocaml#14799&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Native code generation for &lt;code&gt;Atomic.fetch_and_add&lt;/code&gt; (&lt;code&gt;Iatomic_fetch_add&lt;/code&gt;) now emits direct assembly instead of going through a C call, extended to all remaining backends (amd64, arm64, riscv, power) by &lt;a href="https://github.com/Zaneham"&gt;Zane Hambly&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14575"&gt;ocaml/ocaml#14575&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Fixed an &lt;a href="https://github.com/ocaml/ocaml/issues/14882" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;assertion failure&lt;/strong&gt;&lt;/a&gt; in &lt;code&gt;out_type&lt;/code&gt; when external types carry a manifest subject to module constraints, by &lt;a href="https://github.com/smuenzel"&gt;Stefan Muenzel&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14882"&gt;ocaml/ocaml#14882&lt;/a&gt;, closes &lt;a href="https://github.com/ocaml/ocaml/issues/14881"&gt;ocaml/ocaml#14881&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Fixed &lt;strong class="achievement"&gt;mislabeled &lt;code&gt;Pmty_extension&lt;/code&gt;&lt;/strong&gt; in the &lt;code&gt;-dparsetree&lt;/code&gt; dump, which had incorrectly printed module type extensions with the &lt;code&gt;Pmod_extension&lt;/code&gt; label, by &lt;a href="https://github.com/hhugo"&gt;@hhugo&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14880"&gt;ocaml/ocaml#14880&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Fixed a &lt;a href="https://github.com/ocaml/ocaml/issues/14875" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;runtime memory leak&lt;/strong&gt;&lt;/a&gt;: pthread attribute objects are now correctly destroyed after use, by &lt;a href="https://github.com/Jeannalyse"&gt;@Jeannalyse&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14875"&gt;ocaml/ocaml#14875&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Major GC now &lt;a href="https://github.com/ocaml/ocaml/issues/14877" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;adopts orphaned ephemerons early and often&lt;/strong&gt;&lt;/a&gt; (except when terminating), part of an ongoing ephemeron-simplification effort by &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14877"&gt;ocaml/ocaml#14877&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14813"&gt;ocaml/ocaml#14813&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Fixed a &lt;a href="https://github.com/ocaml/ocaml/issues/14884" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;cross-compilation build failure&lt;/strong&gt;&lt;/a&gt; on older &lt;code&gt;mingw32-gcc&lt;/code&gt; toolchains caused by a missing &lt;code&gt;errno.h&lt;/code&gt; include, by &lt;a href="https://github.com/WardBrian"&gt;Brian Ward&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14884"&gt;ocaml/ocaml#14884&lt;/a&gt;, closes &lt;a href="https://github.com/ocaml/ocaml/issues/14883"&gt;ocaml/ocaml#14883&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;More &lt;a href="https://github.com/ocaml/ocaml/issues/14887" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;concise printing of non-exhaustiveness warning counter-examples&lt;/strong&gt;&lt;/a&gt;, e.g. &lt;code&gt;A (_,_)&lt;/code&gt; now prints as &lt;code&gt;A _&lt;/code&gt;, by &lt;a href="https://github.com/maranget"&gt;Luc Maranget&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14887"&gt;ocaml/ocaml#14887&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Expect tests now also run with &lt;code&gt;-rectypes&lt;/code&gt; in addition to &lt;code&gt;-principal&lt;/code&gt;, exercising recursive types in more of the test suite, by &lt;a href="https://github.com/smuenzel"&gt;Stefan Muenzel&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14643"&gt;ocaml/ocaml#14643&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong class="achievement"&gt;ocaml/ocaml&lt;/strong&gt; was the only active repository in the group this week; 12 pull requests merged spanning code generation, garbage collection, and cross-compilation, alongside several typing bug reports and fixes&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;ocaml/RFCs&lt;/strong&gt; had no recorded activity during 2026-06-22 to 2026-06-28&lt;/li&gt;
+&lt;li&gt;The week's work centered on performance: recursive-function code-generation optimizations addressing an inlining regression (&lt;a href="https://github.com/ocaml/ocaml/issues/14876"&gt;ocaml/ocaml#14876&lt;/a&gt;), RISC-V compressed-instruction support (&lt;a href="https://github.com/ocaml/ocaml/issues/14873"&gt;ocaml/ocaml#14873&lt;/a&gt;), and continued ephemeron GC simplification (&lt;a href="https://github.com/ocaml/ocaml/issues/14877"&gt;ocaml/ocaml#14877&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14813"&gt;ocaml/ocaml#14813&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Several cross-compilation and Windows build-robustness fixes also merged (&lt;a href="https://github.com/ocaml/ocaml/issues/14884"&gt;ocaml/ocaml#14884&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14850"&gt;ocaml/ocaml#14850&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/giltho"&gt;Sacha Ayoun&lt;/a&gt;'s report of a &lt;a href="https://github.com/ocaml/ocaml/issues/14876" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;code-generation regression&lt;/strong&gt;&lt;/a&gt; in inlining of local closure variables since OCaml 5.2 (&lt;a href="https://github.com/ocaml/ocaml/issues/14876"&gt;ocaml/ocaml#14876&lt;/a&gt;) prompted an extensive benchmarking discussion with &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt;, &lt;a href="https://github.com/lthls"&gt;Vincent Laviron&lt;/a&gt;, and &lt;a href="https://github.com/sim642"&gt;Simmo Saan&lt;/a&gt; (who linked the related performance-regression thread &lt;a href="https://github.com/ocaml/ocaml/issues/13733"&gt;ocaml/ocaml#13733&lt;/a&gt;); benchmarks with and without flambda were compared before landing the fixes in &lt;a href="https://github.com/ocaml/ocaml/issues/14885"&gt;ocaml/ocaml#14885&lt;/a&gt; and &lt;a href="https://github.com/ocaml/ocaml/issues/14894"&gt;ocaml/ocaml#14894&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/314eter"&gt;@314eter&lt;/a&gt;'s question about &lt;a href="https://github.com/ocaml/ocaml/issues/14874" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;operator precedence&lt;/strong&gt;&lt;/a&gt; in &lt;code&gt;with module type&lt;/code&gt; constraints (&lt;a href="https://github.com/ocaml/ocaml/issues/14874"&gt;ocaml/ocaml#14874&lt;/a&gt;) led &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; and &lt;a href="https://github.com/samsa1"&gt;Samuel Vivien&lt;/a&gt; to discuss whether a breaking change is acceptable, converging on consistency with existing &lt;code&gt;with type&lt;/code&gt; precedence; &lt;a href="https://github.com/314eter"&gt;@314eter&lt;/a&gt; has a branch ready pending consensus&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/mneumann"&gt;Michael Neumann&lt;/a&gt;'s proposal to add point-free &lt;code&gt;Option&lt;/code&gt;/&lt;code&gt;Result&lt;/code&gt; combinators &lt;code&gt;andthen&lt;/code&gt;/&lt;code&gt;orelse&lt;/code&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14893"&gt;ocaml/ocaml#14893&lt;/a&gt;) was clarified by &lt;a href="https://github.com/dbuenzli"&gt;Daniel Bünzli&lt;/a&gt; to be distinct from the previously-discussed and closed &lt;a href="https://github.com/ocaml/ocaml/issues/13937"&gt;ocaml/ocaml#13937&lt;/a&gt; proposal for &lt;code&gt;value_or&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; continues a systematic, multi-PR &lt;a href="https://github.com/ocaml/ocaml/issues/14720" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;ephemeron orphaning/adoption simplification&lt;/strong&gt;&lt;/a&gt; effort tracked against a master plan in &lt;a href="https://github.com/ocaml/ocaml/issues/14720"&gt;ocaml/ocaml#14720&lt;/a&gt;, landing &lt;a href="https://github.com/ocaml/ocaml/issues/14813"&gt;ocaml/ocaml#14813&lt;/a&gt; and &lt;a href="https://github.com/ocaml/ocaml/issues/14877"&gt;ocaml/ocaml#14877&lt;/a&gt; this week and opening &lt;a href="https://github.com/ocaml/ocaml/issues/14879"&gt;ocaml/ocaml#14879&lt;/a&gt; for further simplification&lt;/li&gt;
+&lt;li&gt;Recursive-function and closure &lt;a href="https://github.com/ocaml/ocaml/issues/14876" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;code-generation optimization&lt;/strong&gt;&lt;/a&gt; work, triggered by the regression report in &lt;a href="https://github.com/ocaml/ocaml/issues/14876"&gt;ocaml/ocaml#14876&lt;/a&gt;, is proceeding incrementally with &lt;a href="https://github.com/lthls"&gt;Vincent Laviron&lt;/a&gt; and &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; each contributing targeted renaming optimizations (&lt;a href="https://github.com/ocaml/ocaml/issues/14885"&gt;ocaml/ocaml#14885&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14894"&gt;ocaml/ocaml#14894&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Continued investment in &lt;a href="https://github.com/ocaml/ocaml/issues/14850" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;cross-compilation and Windows build robustness&lt;/strong&gt;&lt;/a&gt;, spanning Windows toolchain fixes (&lt;a href="https://github.com/ocaml/ocaml/issues/14850"&gt;ocaml/ocaml#14850&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14884"&gt;ocaml/ocaml#14884&lt;/a&gt;), &lt;code&gt;BINDIR&lt;/code&gt; overrides (&lt;a href="https://github.com/ocaml/ocaml/issues/14869"&gt;ocaml/ocaml#14869&lt;/a&gt;), and small libunix fixes (&lt;a href="https://github.com/ocaml/ocaml/issues/14740"&gt;ocaml/ocaml#14740&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Multi-architecture &lt;a href="https://github.com/ocaml/ocaml/issues/14575" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;native code generation parity&lt;/strong&gt;&lt;/a&gt; work, extending atomic primitives and instruction selection across amd64, arm64, RISC-V, power, and s390x (&lt;a href="https://github.com/ocaml/ocaml/issues/14575"&gt;ocaml/ocaml#14575&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14873"&gt;ocaml/ocaml#14873&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Twelve PRs merged in ocaml/ocaml covering codegen, GC, and cross-compilation fixes; ocaml/RFCs had no recorded activity this week.</summary><published>2026-06-28T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2026/week-25</id><title>Week 25, 2026: None</title><updated>2026-06-21T00:00:00+00:00</updated><content type="html"/><link href="https://thicket.dev/"/><summary>Activity report for core - Week 25, 2026</summary><published>2026-06-21T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2026/week-24</id><title>Week 24, 2026: Two CVE security fixes landed in ocaml/ocaml alongside a GC mark_header regression fix and Flambda miscompilation correction.</title><updated>2026-06-14T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
@@ -7341,7 +7429,7 @@
 &lt;li&gt;&lt;strong class="achievement"&gt;Cross-platform compatibility&lt;/strong&gt; receiving increased attention with Windows API modernization and Unix platform improvements&lt;/li&gt;
 &lt;li&gt;&lt;strong class="achievement"&gt;Language design refinement&lt;/strong&gt; through community feedback on practical applications of new syntax features like raw identifiers&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Runtime improvements and bytecode optimization merged alongside language syntax discussions for raw identifiers</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2024/week-42</id><title>Week 42, 2024: Five PRs merged in ocaml/ocaml including new Thread.set_current_thread_name API and compiler improvements</title><updated>2026-07-07T15:56:34.699177+00:00</updated><content type="html">
+</content><link href="https://thicket.dev/"/><summary>Runtime improvements and bytecode optimization merged alongside language syntax discussions for raw identifiers</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2024/week-42</id><title>Week 42, 2024: Five PRs merged in ocaml/ocaml including new Thread.set_current_thread_name API and compiler improvements</title><updated>2026-07-08T17:37:30.674212+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
