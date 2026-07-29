@@ -1,5 +1,187 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-opam-repository.xml</id><title>oxcaml/opam-repository (Weekly)</title><updated>2026-07-05T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-opam-repository.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/opam-repository</subtitle><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2026/week-27</id><title>Week 27, 2026: A macOS build failure in `posixat` was reported as an issue against the OxCaml opam switch.</title><updated>2026-07-05T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 27, 2026&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>A macOS build failure in `posixat` was reported as an issue against the OxCaml opam switch.</summary><published>2026-07-05T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2026/week-26</id><title>Week 26, 2026: None</title><updated>2026-06-28T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 26, 2026&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 26, 2026</summary><published>2026-06-28T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2026/week-25</id><title>Week 25, 2026: None</title><updated>2026-06-21T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 25, 2026&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 25, 2026</summary><published>2026-06-21T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2026/week-24</id><title>Week 24, 2026: Dune 3.22.2+ox packages added to repository with constraint fixes for eio_linux, stdune, extlib, and patch compatibility.</title><updated>2026-06-14T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-opam-repository.xml</id><title>oxcaml/opam-repository (Weekly)</title><updated>2026-07-26T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-opam-repository.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/opam-repository</subtitle><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2026/week-30</id><title>Week 30, 2026: David Allsopp opened a PR making mdx.2.6.0 OxCaml-compatible, with Anil Madhavapeddy flagging a dune version dependency.</title><updated>2026-07-26T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+A single PR was opened to mark mdx.2.6.0 as OxCaml-compatible, pending a dune version fix.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/dra27-js"&gt;David Allsopp&lt;/a&gt; opened a PR adding &lt;a href="https://github.com/oxcaml/opam-repository/pull/55" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OxCaml compatibility&lt;/strong&gt;&lt;/a&gt; for &lt;code&gt;mdx.2.6.0&lt;/code&gt; (&lt;a href="https://github.com/oxcaml/opam-repository/pull/55"&gt;#55&lt;/a&gt;), a small four-line change across four files mirroring &lt;a href="https://github.com/ocaml/opam-repository/issues/30305"&gt;ocaml/opam-repository#30305&lt;/a&gt;, noting its second commit will be superseded once that upstream PR merges; the PR remains open and unmerged pending a dune-side fix.&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>David Allsopp opened a PR making mdx.2.6.0 OxCaml-compatible, with Anil Madhavapeddy flagging a dune version dependency.</summary><published>2026-07-26T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2026/week-29</id><title>Week 29, 2026: Five new oxcaml-compiler releases landed via #54, followed by overlay and conflict-bound fixes to keep packages installable across them.</title><updated>2026-07-19T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+PR #54 merged the same day it was opened, and issue #46 requesting the compiler bump was closed in response.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/pull/54"&gt;#54&lt;/a&gt; by &lt;a href="https://github.com/dra27-js"&gt;David Allsopp&lt;/a&gt; was opened and merged the same day, adding the five new &lt;a href="https://github.com/oxcaml/opam-repository/pull/54" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;oxcaml-compiler&lt;/strong&gt;&lt;/a&gt; releases across 1197 changed files; follow-up commits during the week refined overlay compatibility and conflict bounds for the new releases.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/opam-repository/issues/46"&gt;#46&lt;/a&gt;, the request from &lt;a href="https://github.com/artempyanykh"&gt;Artem Pianykh&lt;/a&gt; to bump the opam-repository to Jane Street 130.100+614, was closed by &lt;a href="https://github.com/dra27-js"&gt;David Allsopp&lt;/a&gt; confirming both 130.100+614 and 130.106+341 are now available from the main branch.&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Five new oxcaml-compiler releases landed via #54, followed by overlay and conflict-bound fixes to keep packages installable across them.</summary><published>2026-07-19T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2026/week-28</id><title>Week 28, 2026: Direct-to-main commits added an oxcaml-compiler 5.4.0-ox2 variant, a bulk Jane Street v0.18~preview.130.106+341 package snapshot, and refreshed dev-tool overlays.</title><updated>2026-07-12T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+CI/testing infrastructure was reworked to exercise the new minus-39 and 5.4.0 packages, including Arch-specific workarounds and a broken-packages allowlist update.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;Extended the test workflow to also run on the &lt;code&gt;5.2.0minus39&lt;/code&gt; branch and to test &lt;code&gt;wasm_of_ocaml-compiler&lt;/code&gt; and previously-broken &lt;code&gt;odoc&lt;/code&gt;/&lt;code&gt;sherlodoc&lt;/code&gt;/&lt;code&gt;utop&lt;/code&gt; packages now that fixes have landed, by &lt;a href="https://github.com/dra27-js"&gt;David Allsopp&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/opam-repository/commit/354043e12817cfd6f009bf74860ca761bc30894e"&gt;354043e&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/opam-repository/commit/85ba1965155d1dcf61fd02ac08a0f942bde99b30"&gt;85ba196&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Disabled &lt;code&gt;wasm_of_ocaml-compiler&lt;/code&gt; on the Arch Linux CI runner to work around an unreleased GCC 16 upstream fix, and excluded already-installed packages from the non-JS package install step to avoid conflicts, by David Allsopp (&lt;a href="https://github.com/oxcaml/opam-repository/commit/e04414eac6e8c57946ef4950aeee9580500cd978"&gt;e04414e&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/opam-repository/commit/c7720bc03503e68c6b86dba61168b65dd52917ee"&gt;c7720bc&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/opam-repository/commit/3100fbf3f42484be4796dc0989d4f6fd3e778819"&gt;3100fbf&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;ocamlformat&lt;/code&gt;/&lt;code&gt;ocamlformat-lib&lt;/code&gt; to the CI &lt;code&gt;broken-packages.txt&lt;/code&gt; allowlist since they fail to build under &lt;code&gt;5.2.0minus39&lt;/code&gt;, and routed the new &lt;code&gt;angstrom&lt;/code&gt;/&lt;code&gt;faraday&lt;/code&gt; overlays through &lt;code&gt;layout.sh&lt;/code&gt; since their patches are not yet compatible with &lt;code&gt;5.2.0minus39&lt;/code&gt;, by David Allsopp (&lt;a href="https://github.com/oxcaml/opam-repository/commit/527cf133b5ae42471fbadf66af86aace260089c1"&gt;527cf13&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/opam-repository/commit/c7591ecd2c8f5a4f40964efd2d8d59834c2d4153"&gt;c7591ec&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;oxcaml:release&lt;/code&gt; and &lt;code&gt;oxcaml:commit&lt;/code&gt; package flags across the existing &lt;code&gt;oxcaml-compiler&lt;/code&gt; variants (5.2.0minus25/31/38/39), by David Allsopp (&lt;a href="https://github.com/oxcaml/opam-repository/commit/07e24293adbfd46114efe1a7d78f1089d6ebc469"&gt;07e2429&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Added a placeholder entry for a future &lt;code&gt;zarith.1.14+ox2&lt;/code&gt; overlay targeting &lt;code&gt;5.2.0minus-39+&lt;/code&gt;, by David Allsopp (&lt;a href="https://github.com/oxcaml/opam-repository/commit/d06646db2ed61cbd9f36df311cd5cb6d0c644a75"&gt;d06646d&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Direct-to-main commits added an oxcaml-compiler 5.4.0-ox2 variant, a bulk Jane Street v0.18~preview.130.106+341 package snapshot, and refreshed dev-tool overlays.</summary><published>2026-07-12T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2026/week-27</id><title>Week 27, 2026: A macOS build failure in `posixat` was reported as an issue against the OxCaml opam switch.</title><updated>2026-07-05T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 27, 2026&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>A macOS build failure in `posixat` was reported as an issue against the OxCaml opam switch.</summary><published>2026-07-05T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2026/week-26</id><title>Week 26, 2026: None</title><updated>2026-06-28T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 26, 2026&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 26, 2026</summary><published>2026-06-28T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2026/week-25</id><title>Week 25, 2026: None</title><updated>2026-06-21T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for oxcaml/opam-repository - Week 25, 2026&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for oxcaml/opam-repository - Week 25, 2026</summary><published>2026-06-21T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-opam-repository/2026/week-24</id><title>Week 24, 2026: Dune 3.22.2+ox packages added to repository with constraint fixes for eio_linux, stdune, extlib, and patch compatibility.</title><updated>2026-06-14T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

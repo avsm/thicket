@@ -1,5 +1,190 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocamlfind.xml</id><title>ocaml/ocamlfind (Weekly)</title><updated>2026-07-05T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocamlfind.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocamlfind</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2026/week-27</id><title>Week 27, 2026: New issue filed about ocamlfind failing to detect libraries installed via a system package manager on Fedora (#118).</title><updated>2026-07-05T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 27, 2026&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>New issue filed about ocamlfind failing to detect libraries installed via a system package manager on Fedora (#118).</summary><published>2026-07-05T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2026/week-26</id><title>Week 26, 2026: Discussion continued on the `ld.conf` stublibs warning issue with a proposed patch to normalize paths via `Fl_split.norm_dir` (#115).</title><updated>2026-06-28T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 26, 2026&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Discussion continued on the `ld.conf` stublibs warning issue with a proposed patch to normalize paths via `Fl_split.norm_dir` (#115).</summary><published>2026-06-28T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2026/week-25</id><title>Week 25, 2026: None</title><updated>2026-06-21T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 25, 2026&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 25, 2026</summary><published>2026-06-21T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2026/week-24</id><title>Week 24, 2026: None</title><updated>2026-06-14T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 24, 2026&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 24, 2026</summary><published>2026-06-14T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2026/week-23</id><title>Week 23, 2026: None</title><updated>2026-06-07T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 23, 2026&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 23, 2026</summary><published>2026-06-07T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2026/week-22</id><title>Week 22, 2026: None</title><updated>2026-05-31T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 22, 2026&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 22, 2026</summary><published>2026-05-31T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2026/week-21</id><title>Week 21, 2026: Issue opened requesting .cmx file installation to resolve OCaml warning 58 about missing cmx files in Findlib.</title><updated>2026-05-24T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocamlfind.xml</id><title>ocaml/ocamlfind (Weekly)</title><updated>2026-07-26T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocamlfind.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocamlfind</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2026/week-30</id><title>Week 30, 2026: Detailed commit-by-commit review continued on David Allsopp's open relocatable-ocamlfind PR, with no merges or new commits this week.</title><updated>2026-07-26T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Review of the open relocatable ocamlfind PR continued with detailed feedback from @shym, though nothing merged or was newly opened this week.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocamlfind/issues/122"&gt;#122&lt;/a&gt; ("Relocatable ocamlfind with sprinkles") by &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt;, which adapts &lt;a href="https://github.com/ocaml/ocamlfind/issues/122" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;ocamlfind for OCaml 5.5&lt;/strong&gt;&lt;/a&gt; and adds support for &lt;strong class="achievement"&gt;relocatable installations&lt;/strong&gt; so the same compiler configuration can be installed byte-for-byte identically to different prefixes, received an extensive commit-by-commit review from &lt;a href="https://github.com/shym"&gt;@shym&lt;/a&gt; covering &lt;code&gt;configure&lt;/code&gt; shell-script path handling, the &lt;code&gt;findlib_config_%.mlp&lt;/code&gt; build rules, and the CI jobs added to verify identical installs on Windows, macOS and Linux (&lt;a href="https://github.com/ocaml/ocamlfind/issues/122"&gt;#122&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;The PR remains open and unmerged; it builds on the &lt;code&gt;topfind&lt;/code&gt;-generation split from (&lt;a href="https://github.com/ocaml/ocamlfind/issues/72"&gt;#72&lt;/a&gt;), fixes relative-path handling for &lt;code&gt;ld.conf&lt;/code&gt; needed by OCaml 5.5+ (&lt;a href="https://github.com/ocaml/ocamlfind/issues/115"&gt;#115&lt;/a&gt;), and addresses non-normalised path comparisons raised in (&lt;a href="https://github.com/ocaml/ocamlfind/issues/119"&gt;#119&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Detailed commit-by-commit review continued on David Allsopp's open relocatable-ocamlfind PR, with no merges or new commits this week.</summary><published>2026-07-26T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2026/week-29</id><title>Week 29, 2026: Merged install of `.cmx` files to fix warning 58 in client code, while relocatable-install and Windows build work continued on open PRs.</title><updated>2026-07-19T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Three PRs remain open covering relocatable installs, Windows build fixes, and removal of -with-relative-paths-at&lt;/code&gt;, all stacked around OCaml 5.5 support.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/ocamlfind/issues/122" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;"Relocatable ocamlfind with sprinkles"&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocamlfind/issues/122"&gt;#122&lt;/a&gt;), adapting ocamlfind for OCaml 5.5 and extending &lt;code&gt;findlib.conf&lt;/code&gt; semantics to interpret relative paths so that installations to different prefixes for the same compiler configuration can be byte-for-byte identical, per the relocatability definition in &lt;a href="https://github.com/ocaml/RFCs/issues/53"&gt;ocaml/RFCs#53&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;The same author reopened &lt;a href="https://github.com/ocaml/ocamlfind/issues/121" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Windows build fixes for MSYS2/Cygwin&lt;/strong&gt;&lt;/a&gt; directly as &lt;a href="https://github.com/ocaml/ocamlfind/issues/121"&gt;#121&lt;/a&gt; (superseding the earlier &lt;a href="https://github.com/ocaml/ocamlfind/issues/112"&gt;#112&lt;/a&gt;, which was closed in favor of it), addressing a Cygwin build failure from mishandled &lt;code&gt;;&lt;/code&gt; path separators, silent misgeneration of &lt;code&gt;findlib.conf&lt;/code&gt; under MSYS2, and an incorrect &lt;code&gt;META.pkg&lt;/code&gt; check during &lt;code&gt;ocamlfind install&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt; also opened a draft PR to &lt;strong class="achievement"&gt;remove &lt;code&gt;-with-relative-paths-at&lt;/code&gt; support&lt;/strong&gt; (&lt;a href="https://github.com/ocaml/ocamlfind/issues/123"&gt;#123&lt;/a&gt;), simplifying the codebase now that the relative-path handling is being reworked in &lt;a href="https://github.com/ocaml/ocamlfind/issues/122"&gt;#122&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rlepigre-skylabs-ai"&gt;Rodolphe Lepigre&lt;/a&gt;'s &lt;a href="https://github.com/ocaml/ocamlfind/issues/119" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;"Make paths from ld.conf absolute"&lt;/strong&gt;&lt;/a&gt; PR (&lt;a href="https://github.com/ocaml/ocamlfind/issues/119"&gt;#119&lt;/a&gt;), which fixed relative-path handling needed for the &lt;code&gt;ld.conf&lt;/code&gt; shipped by OCaml 5.5.0, was closed in favor of the more complete normalization implemented in &lt;a href="https://github.com/ocaml/ocamlfind/issues/122"&gt;#122&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;The merge of &lt;a href="https://github.com/ocaml/ocamlfind/issues/120" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;"Install cmx files to avoid warning 58"&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocamlfind/issues/120"&gt;#120&lt;/a&gt;) also closed the underlying issue report (&lt;a href="https://github.com/ocaml/ocamlfind/issues/117"&gt;#117&lt;/a&gt;) from &lt;a href="https://github.com/rlepigre-skylabs-ai"&gt;Rodolphe Lepigre&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Merged install of `.cmx` files to fix warning 58 in client code, while relocatable-install and Windows build work continued on open PRs.</summary><published>2026-07-19T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2026/week-28</id><title>Week 28, 2026: cmx-file installation landed, an ld.conf path fix was proposed, and nine long-standing issues were closed</title><updated>2026-07-12T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+New PR proposes making ld.conf paths absolute for OCaml 5.5.0 support; maintainer closed nine long-standing issues&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/rlepigre-skylabs-ai"&gt;Rodolphe Lepigre&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/ocamlfind/pull/119"&gt;#119&lt;/a&gt;, proposing to make relative paths read from &lt;strong class="achievement"&gt;&lt;code&gt;ld.conf&lt;/code&gt;&lt;/strong&gt; absolute so that the &lt;code&gt;stublibs&lt;/code&gt; entries shipped in OCaml 5.5.0's &lt;code&gt;ld.conf&lt;/code&gt; resolve correctly; the author notes the resulting paths aren't normalized and flags open questions about the install/uninstall codepath.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt; closed nine long-standing &lt;a href="https://github.com/ocaml/ocamlfind/issues/84" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;issue-triage&lt;/strong&gt;&lt;/a&gt; items spanning packaging and installation problems, including a Cygwin/opam build failure (&lt;a href="https://github.com/ocaml/ocamlfind/issues/84"&gt;#84&lt;/a&gt;), a Gentoo linker error (&lt;a href="https://github.com/ocaml/ocamlfind/issues/24"&gt;#24&lt;/a&gt;), a Coq Platform patch-file error (&lt;a href="https://github.com/ocaml/ocamlfind/issues/96"&gt;#96&lt;/a&gt;), an unreachable &lt;code&gt;camlcity.org&lt;/code&gt; source tarball (&lt;a href="https://github.com/ocaml/ocamlfind/issues/108"&gt;#108&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocamlfind/issues/98"&gt;#98&lt;/a&gt;), an &lt;code&gt;ocaml 4.00.1&lt;/code&gt; build failure (&lt;a href="https://github.com/ocaml/ocamlfind/issues/58"&gt;#58&lt;/a&gt;), a Windows carriage-return output problem (&lt;a href="https://github.com/ocaml/ocamlfind/issues/70"&gt;#70&lt;/a&gt;), and older requests around &lt;code&gt;num&lt;/code&gt; handling and CMI exports (&lt;a href="https://github.com/ocaml/ocamlfind/issues/1"&gt;#1&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocamlfind/issues/7"&gt;#7&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Merged fixes landed for the &lt;strong class="achievement"&gt;&lt;code&gt;threads&lt;/code&gt; package detection&lt;/strong&gt; regression (&lt;a href="https://github.com/ocaml/ocamlfind/pull/99"&gt;#99&lt;/a&gt;) and &lt;a href="https://github.com/ocaml/ocamlfind/pull/99" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;cmx-file installation&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocamlfind/pull/120"&gt;#120&lt;/a&gt;), alongside the CI overhaul (&lt;a href="https://github.com/ocaml/ocamlfind/pull/116"&gt;#116&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/kabirbg"&gt;Kabir G&lt;/a&gt; reported difficulty getting &lt;code&gt;ocamlfind&lt;/code&gt; (installed via Fedora's &lt;code&gt;dnf&lt;/code&gt;) to see a &lt;code&gt;camlidl&lt;/code&gt; package installed to &lt;code&gt;/usr/lib64/ocaml&lt;/code&gt; (&lt;a href="https://github.com/ocaml/ocamlfind/issues/118"&gt;#118&lt;/a&gt;); the issue remains &lt;a href="https://github.com/ocaml/ocamlfind/issues/118" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;open&lt;/strong&gt;&lt;/a&gt; pending investigation of the Fedora package's missing &lt;code&gt;META&lt;/code&gt; file.&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>cmx-file installation landed, an ld.conf path fix was proposed, and nine long-standing issues were closed</summary><published>2026-07-12T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2026/week-27</id><title>Week 27, 2026: New issue filed about ocamlfind failing to detect libraries installed via a system package manager on Fedora (#118).</title><updated>2026-07-05T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 27, 2026&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>New issue filed about ocamlfind failing to detect libraries installed via a system package manager on Fedora (#118).</summary><published>2026-07-05T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2026/week-26</id><title>Week 26, 2026: Discussion continued on the `ld.conf` stublibs warning issue with a proposed patch to normalize paths via `Fl_split.norm_dir` (#115).</title><updated>2026-06-28T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 26, 2026&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Discussion continued on the `ld.conf` stublibs warning issue with a proposed patch to normalize paths via `Fl_split.norm_dir` (#115).</summary><published>2026-06-28T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2026/week-25</id><title>Week 25, 2026: None</title><updated>2026-06-21T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 25, 2026&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 25, 2026</summary><published>2026-06-21T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2026/week-24</id><title>Week 24, 2026: None</title><updated>2026-06-14T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 24, 2026&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 24, 2026</summary><published>2026-06-14T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2026/week-23</id><title>Week 23, 2026: None</title><updated>2026-06-07T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 23, 2026&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 23, 2026</summary><published>2026-06-07T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2026/week-22</id><title>Week 22, 2026: None</title><updated>2026-05-31T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/ocamlfind - Week 22, 2026&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/ocamlfind - Week 22, 2026</summary><published>2026-05-31T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocamlfind/2026/week-21</id><title>Week 21, 2026: Issue opened requesting .cmx file installation to resolve OCaml warning 58 about missing cmx files in Findlib.</title><updated>2026-05-24T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

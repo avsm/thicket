@@ -1,5 +1,195 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.org.xml</id><title>ocaml/ocaml.org (Weekly)</title><updated>2026-07-05T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.org.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml.org</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml.org/2026/week-27</id><title>Week 27, 2026: OCaml Workshop 2026 deadline dates corrected on the site, a broken cookbook link reported, and a dune 3.24 announcement PR opened.</title><updated>2026-07-05T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.org.xml</id><title>ocaml/ocaml.org (Weekly)</title><updated>2026-07-26T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.org.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml.org</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml.org/2026/week-30</id><title>Week 30, 2026: Dune 3.24 release was announced, the opam package version page was reworked for clarity, and the Planet aggregator gained a new blog feed.</title><updated>2026-07-26T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+New PRs opened for library governance, Dune 3.24.1, and wasm-gc docs, while the opam version page rework advanced and Dune 3.24 merged.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;New &lt;a href="https://github.com/ocaml/ocaml.org/issues/3725" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;library team governance&lt;/strong&gt;&lt;/a&gt; update opened by &lt;a href="https://github.com/nojb"&gt;Nicolás Ojeda Bär&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3725"&gt;#3725&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3723" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Dune 3.24.1&lt;/strong&gt;&lt;/a&gt; platform release announcement opened by &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt;, adding the changelog page for the point release (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3723"&gt;#3723&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Documentation fix opened by &lt;a href="https://github.com/smasher164"&gt;Akhil Indurti&lt;/a&gt; clarifying that &lt;code&gt;ocamlc&lt;/code&gt; targets the wasm-gc extension in the WebAssembly tutorial page (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3719"&gt;#3719&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Automated &lt;a href="https://github.com/ocaml/ocaml.org/issues/3693" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;platform releases scrape&lt;/strong&gt;&lt;/a&gt; PR remains open, tracking newly detected releases pending review (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3693"&gt;#3693&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3713" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Opam package version display&lt;/strong&gt;&lt;/a&gt; rework by &lt;a href="https://github.com/smorimoto"&gt;Sora Morimoto&lt;/a&gt; continued under review, regrouping the &lt;code&gt;/p/&lt;pkg&gt;/latest/versions&lt;/code&gt; page into Latest, Previous, and Not-normally-selected sections with clearer labels and accessible table markup, addressing a forum report that the prior "Recommended" heading was misleading; still awaiting review from &lt;a href="https://github.com/jonludlam"&gt;Jon Ludlam&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3713"&gt;#3713&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml.org/issues/3704" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Dune 3.24&lt;/strong&gt;&lt;/a&gt; release announcement merged by &lt;a href="https://github.com/shonfeder"&gt;Shon Feder&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3704"&gt;#3704&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/vouillon"&gt;Jérôme Vouillon&lt;/a&gt; added his blog to the Planet feed list (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3722"&gt;#3722&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Automated &lt;a href="https://github.com/ocaml/ocaml.org/issues/3720" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml Planet scraping&lt;/strong&gt;&lt;/a&gt; merged new blog post and video updates across three separate runs during the week (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3720"&gt;#3720&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/issues/3721"&gt;#3721&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/issues/3724"&gt;#3724&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Dune 3.24 release was announced, the opam package version page was reworked for clarity, and the Planet aggregator gained a new blog feed.</summary><published>2026-07-26T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml.org/2026/week-29</id><title>Week 29, 2026: Discussion-heavy rework of the opam package version pages (#3713) and a proposal to switch documentation links to a new docs server (#3716).</title><updated>2026-07-19T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+New PRs opened to overhaul opam package version pages and point documentation links at a new docs server, alongside ongoing dune release and platform-release automation.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/smorimoto"&gt;Sora Morimoto&lt;/a&gt; opened a rework of the &lt;a href="https://github.com/ocaml/ocaml.org/pull/3713" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;opam package version status page&lt;/strong&gt;&lt;/a&gt;, replacing the "Recommended opam package versions" heading with a neutral one, grouping versions into Latest/Previous/Not normally selected, adding accessible &lt;code&gt;Latest&lt;/code&gt;, &lt;code&gt;Avoided by opam&lt;/code&gt; and &lt;code&gt;Deprecated by opam&lt;/code&gt; labels, exposing ISO datetimes, and adding package-layer tests, in response to a forum report that release dates could be read as recommendations (&lt;a href="https://github.com/ocaml/ocaml.org/pull/3713"&gt;#3713&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/jonludlam"&gt;Jon Ludlam&lt;/a&gt; opened a switch of &lt;a href="https://github.com/ocaml/ocaml.org/pull/3716" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;documentation links&lt;/strong&gt;&lt;/a&gt; to a new docs server (&lt;code&gt;dill.caelum.ci.dev&lt;/code&gt;), which surfaces per-package build statuses and distinguishes doc-build failures from dependency "cascade" failures, replacing the old server's reporting links while keeping the previous server live as a fallback (&lt;a href="https://github.com/ocaml/ocaml.org/pull/3716"&gt;#3716&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/shonfeder"&gt;Shon Feder&lt;/a&gt; continued work on a PR announcing the &lt;a href="https://github.com/ocaml/ocaml.org/pull/3704" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;dune 3.24 release&lt;/strong&gt;&lt;/a&gt;, seeking review from Tarides colleagues (&lt;a href="https://github.com/ocaml/ocaml.org/pull/3704"&gt;#3704&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;The automated &lt;a href="https://github.com/ocaml/ocaml.org/pull/3693" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;platform releases scraper&lt;/strong&gt;&lt;/a&gt; PR remained open awaiting merge, tracking new OCaml Platform tool releases (&lt;a href="https://github.com/ocaml/ocaml.org/pull/3693"&gt;#3693&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Automated &lt;a href="https://github.com/ocaml/ocaml.org/pull/3711" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Planet blog scraping&lt;/strong&gt;&lt;/a&gt; merged twice this week, pulling in new posts and one YouTube video while logging recurring feed-fetch failures for several blogs (&lt;code&gt;hannes&lt;/code&gt;, &lt;code&gt;mirage&lt;/code&gt;, &lt;code&gt;ocaml-book&lt;/code&gt;, &lt;code&gt;dinosaure&lt;/code&gt;, &lt;code&gt;emilpriver&lt;/code&gt;, &lt;code&gt;patricoferris&lt;/code&gt;); a third scrape run produced no changes and was closed unmerged (&lt;a href="https://github.com/ocaml/ocaml.org/pull/3711"&gt;#3711&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/pull/3715"&gt;#3715&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml.org/pull/3717"&gt;#3717&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Discussion-heavy rework of the opam package version pages (#3713) and a proposal to switch documentation links to a new docs server (#3716).</summary><published>2026-07-19T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml.org/2026/week-28</id><title>Week 28, 2026: Automated Planet content sync and a CI markdown-lint bump merged, while opam 2.5.2 and AWS industrial-user page PRs remain open for review.</title><updated>2026-07-12T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Two PRs opened this week (opam 2.5.2 announcement, Planet batch) remain unmerged, and the pending AWS industrial-users addition saw a follow-up comment.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;Two &lt;a href="https://github.com/ocaml/ocaml.org/issues/3712" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;new PRs opened&lt;/strong&gt;&lt;/a&gt; this week are still unmerged: &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; added the announcement text for the &lt;strong class="achievement"&gt;opam 2.5.2&lt;/strong&gt; release (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3712"&gt;#3712&lt;/a&gt;), and the automated Planet scraper opened a batch of new blog posts and videos, including "OCaml Weekly News, 07 Jul 2026" and further notes from Mark Elvers, though several source feeds returned timeouts or unsupported-format errors during scraping (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3711"&gt;#3711&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;The &lt;a href="https://github.com/ocaml/ocaml.org/issues/3681" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;industrial users page&lt;/strong&gt;&lt;/a&gt; addition proposing AWS as an OCaml adopter, citing AWS's use of HOL Light for formal verification in the s2n-bignum project, remains open from a prior week under &lt;a href="https://github.com/adithn875"&gt;adith nk&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3681"&gt;#3681&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Routine &lt;a href="https://github.com/ocaml/ocaml.org/issues/3709" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;maintenance merged&lt;/strong&gt;&lt;/a&gt; this week, including the markdown-lint action version bump (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3709"&gt;#3709&lt;/a&gt;) and the Planet aggregator content sync (&lt;a href="https://github.com/ocaml/ocaml.org/issues/3710"&gt;#3710&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Automated Planet content sync and a CI markdown-lint bump merged, while opam 2.5.2 and AWS industrial-user page PRs remain open for review.</summary><published>2026-07-12T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml.org/2026/week-27</id><title>Week 27, 2026: OCaml Workshop 2026 deadline dates corrected on the site, a broken cookbook link reported, and a dune 3.24 announcement PR opened.</title><updated>2026-07-05T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

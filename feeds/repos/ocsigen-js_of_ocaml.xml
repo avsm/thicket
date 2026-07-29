@@ -1,5 +1,193 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocsigen-js_of_ocaml.xml</id><title>ocsigen/js_of_ocaml (Weekly)</title><updated>2026-07-05T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocsigen-js_of_ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocsigen/js_of_ocaml</subtitle><entry><id>https://thicket.dev/repos/ocsigen-js_of_ocaml/2026/week-27</id><title>Week 27, 2026: New CSS Font Loading, Service Worker/MessageChannel/Cache, and Web Worker toplevel bindings landed alongside a 6.4.1 dune-3.24 compatibility release.</title><updated>2026-07-05T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocsigen-js_of_ocaml.xml</id><title>ocsigen/js_of_ocaml (Weekly)</title><updated>2026-07-26T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocsigen-js_of_ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocsigen/js_of_ocaml</subtitle><entry><id>https://thicket.dev/repos/ocsigen-js_of_ocaml/2026/week-30</id><title>Week 30, 2026: Dependabot opened CI dependency bumps while Jérôme Vouillon's Wasm asset-resolution fix remained open for review.</title><updated>2026-07-26T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+CI workflow dependency bumps opened by Dependabot, plus continued review of a Wasm runtime asset-resolution fix.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;Two &lt;a href="https://github.com/ocsigen/js_of_ocaml/pull/2407" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;CI dependency bumps&lt;/strong&gt;&lt;/a&gt; were opened by &lt;a href="https://github.com/dependabot"&gt;Dependabot&lt;/a&gt;: &lt;code&gt;actions/setup-node&lt;/code&gt; from 6 to 7 (&lt;a href="https://github.com/ocsigen/js_of_ocaml/pull/2407"&gt;#2407&lt;/a&gt;), which remained open through the end of the week, and &lt;code&gt;tarides/changelog-check-action&lt;/code&gt; from 3 to 4 (&lt;a href="https://github.com/ocsigen/js_of_ocaml/pull/2408"&gt;#2408&lt;/a&gt;), which merged the same day, updating the &lt;code&gt;.github/workflows/changelog.yml&lt;/code&gt; workflow.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/vouillon"&gt;Jérôme Vouillon&lt;/a&gt;'s &lt;a href="https://github.com/ocsigen/js_of_ocaml/pull/2389" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Wasm runtime asset-resolution fix&lt;/strong&gt;&lt;/a&gt; remained open under review, addressing a bug where the Node runtime located separately-compiled &lt;code&gt;.wasm&lt;/code&gt; assets via &lt;code&gt;path.dirname(require.main.filename)&lt;/code&gt; — the process entry point — causing lookups to fail when the program was loaded through &lt;code&gt;require&lt;/code&gt; behind a CLI wrapper or a symlink, and to crash outright when &lt;code&gt;require.main&lt;/code&gt; is undefined, such as in worker threads or &lt;code&gt;node -e&lt;/code&gt;; the fix resolves assets relative to &lt;code&gt;module.filename&lt;/code&gt; instead, matching the browser runtime's existing self-location via &lt;code&gt;document.currentScript.src&lt;/code&gt;, with the same change applied to the WASI runtime (&lt;a href="https://github.com/ocsigen/js_of_ocaml/pull/2389"&gt;#2389&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Dependabot opened CI dependency bumps while Jérôme Vouillon's Wasm asset-resolution fix remained open for review.</summary><published>2026-07-26T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocsigen-js_of_ocaml/2026/week-29</id><title>Week 29, 2026: Pointer Capture and Lwt_js_events API completions merged; wasm linear-memory consolidation, Web Audio bindings, and an ESM RFC advance in review.</title><updated>2026-07-19T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+New PR consolidates wasm linear memory for Safari (#2405); Web Audio, ESM RFC, and wasm lifecycle work continue in review (#2401, #2402, #2232).&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;A newly opened PR from &lt;a href="https://github.com/vouillon"&gt;Jérôme Vouillon&lt;/a&gt; consolidates the wasm runtime's four separate &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2405" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;linear memories&lt;/strong&gt;&lt;/a&gt; — the &lt;code&gt;jsstring.wat&lt;/code&gt; scratch buffer, the separately-linked zstd and blake2 implementations, and the wasi libc memory — into a single shared memory, needed because Safari does not support wasm modules with multiple memories (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2405"&gt;#2405&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;The Pointer Capture/&lt;code&gt;pointerEvent&lt;/code&gt; bindings (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2403"&gt;#2403&lt;/a&gt;) and &lt;code&gt;Lwt_js_events&lt;/code&gt; element-type widening (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2404"&gt;#2404&lt;/a&gt;) opened by &lt;a href="https://github.com/balat"&gt;Vincent Balat&lt;/a&gt; both merged this week&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/hhugo"&gt;Hugo Heuzard&lt;/a&gt; continues work on &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2401" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Web Audio and Media Capture API bindings&lt;/strong&gt;&lt;/a&gt; — &lt;code&gt;AudioContext&lt;/code&gt;/&lt;code&gt;OfflineAudioContext&lt;/code&gt;, the full audio node graph (sources, filters, panners, analyser), &lt;code&gt;MediaStream&lt;/code&gt;/&lt;code&gt;MediaStreamTrack&lt;/code&gt;, &lt;code&gt;navigator.mediaDevices&lt;/code&gt;, and completion of &lt;code&gt;Dom_html.mediaElement&lt;/code&gt; (text tracks, &lt;code&gt;srcObject&lt;/code&gt;, playback-quality) — still open for review (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2401"&gt;#2401&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/hhugo"&gt;Hugo Heuzard&lt;/a&gt; also keeps iterating on the draft &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/1161" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;experimental ES module output&lt;/strong&gt;&lt;/a&gt; RFC, adding an &lt;code&gt;--esm&lt;/code&gt; mode to &lt;code&gt;compile&lt;/code&gt;/&lt;code&gt;build-runtime&lt;/code&gt;/&lt;code&gt;link&lt;/code&gt; and comparing bundled vs. unbundled linking size and speed tradeoffs to inform the ESM design discussions in &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/1161"&gt;#1161&lt;/a&gt; and &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/551"&gt;#551&lt;/a&gt; (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2402"&gt;#2402&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/JasonGross"&gt;Jason Gross&lt;/a&gt;'s PR to dispatch &lt;code&gt;wasmoocaml:loaded&lt;/code&gt;/&lt;code&gt;wasmoocaml:error&lt;/code&gt; &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2232" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;lifecycle events&lt;/strong&gt;&lt;/a&gt; when asynchronous Wasm instantiation completes remains open, with discussion this week narrowing a CI failure down to an unrelated opam package download flake rather than the change itself (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2232"&gt;#2232&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Pointer Capture and Lwt_js_events API completions merged; wasm linear-memory consolidation, Web Audio bindings, and an ESM RFC advance in review.</summary><published>2026-07-19T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocsigen-js_of_ocaml/2026/week-28</id><title>Week 28, 2026: WebGL2 bindings and a messageEvent type consolidation merged, plus a cluster of compiler correctness fixes and CI restructuring.</title><updated>2026-07-12T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Three unmerged PRs opened for ESM output, Web Audio/Media Capture and BroadcastChannel/SharedWorker bindings, alongside a CI restructuring cluster.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;Three &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2402" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;new PRs opened&lt;/strong&gt;&lt;/a&gt; this week remain under review: an experimental ES module output mode (&lt;code&gt;--esm&lt;/code&gt;) framed as an RFC to inform the ESM design discussion (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2402"&gt;#2402&lt;/a&gt;), bindings for the &lt;strong class="achievement"&gt;Web Audio and Media Capture APIs&lt;/strong&gt; completing the &lt;code&gt;Dom_html.mediaElement&lt;/code&gt; binding (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2401"&gt;#2401&lt;/a&gt;), and bindings for &lt;strong class="achievement"&gt;BroadcastChannel and SharedWorker&lt;/strong&gt; filling the remaining Tier 2 communication gaps (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2400"&gt;#2400&lt;/a&gt;), all opened by &lt;a href="https://github.com/hhugo"&gt;@hhugo&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;CI infrastructure saw a cluster of merged cleanups by &lt;a href="https://github.com/hhugo"&gt;@hhugo&lt;/a&gt;: deduping the Jane Street test suite into a dedicated workflow (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2394"&gt;#2394&lt;/a&gt;), moving build-only compiler coverage out of the main test matrix (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2396"&gt;#2396&lt;/a&gt;), aligning tool workflows on OCaml 5.5 and folding the Wax check into lint (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2395"&gt;#2395&lt;/a&gt;), and sharing the &lt;code&gt;ci_setup&lt;/code&gt; script between the mainstream and OxCaml variants via &lt;code&gt;Re&lt;/code&gt; (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2398"&gt;#2398&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;The &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2163" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;experimental ESM tooling&lt;/strong&gt;&lt;/a&gt; branch (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2163"&gt;#2163&lt;/a&gt;) gained four bug fixes this week — correcting module evaluation order, external-import resolution, and tree-shaking of entry-point side effects and namespace imports — found while building the &lt;code&gt;--esm&lt;/code&gt; RFC on top of it (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2402"&gt;#2402&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/vouillon"&gt;Jérôme Vouillon&lt;/a&gt; continued work on draft optimization and portability PRs: converting runtime files to use Wax (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2373"&gt;#2373&lt;/a&gt;), resolving wasm assets relative to the runtime file instead of &lt;code&gt;require.main&lt;/code&gt; (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2389"&gt;#2389&lt;/a&gt;), and extracting toplevel loops into helper closures to help engines tier up initialization code (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2245"&gt;#2245&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/OlivierNicole"&gt;Olivier Nicole&lt;/a&gt;'s lambda-lifting performance work remains in draft, including more aggressive lifting measured at a 1.45x speedup on a Bonsai benchmark (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/1886"&gt;#1886&lt;/a&gt;) and only lifting functions with free variables (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/1885"&gt;#1885&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/hhugo"&gt;@hhugo&lt;/a&gt; closed two experimental compiler PRs without merging — preserving block sharing (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2184"&gt;#2184&lt;/a&gt;) and speeding up substitution (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2185"&gt;#2185&lt;/a&gt;) — alongside ongoing drafts for inlining runtime-defined primitives into generated code (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/1928"&gt;#1928&lt;/a&gt;) and physical-equality hints (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/1745"&gt;#1745&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/JasonGross"&gt;Jason Gross&lt;/a&gt; continued a community-contributed PR dispatching lifecycle events (&lt;code&gt;wasmoocaml:loaded&lt;/code&gt;/&lt;code&gt;wasmoocaml:error&lt;/code&gt;) when async Wasm instantiation completes, ported from the former &lt;code&gt;ocaml-wasm/wasm_of_ocaml&lt;/code&gt; repository (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2232"&gt;#2232&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>WebGL2 bindings and a messageEvent type consolidation merged, plus a cluster of compiler correctness fixes and CI restructuring.</summary><published>2026-07-12T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocsigen-js_of_ocaml/2026/week-27</id><title>Week 27, 2026: New CSS Font Loading, Service Worker/MessageChannel/Cache, and Web Worker toplevel bindings landed alongside a 6.4.1 dune-3.24 compatibility release.</title><updated>2026-07-05T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

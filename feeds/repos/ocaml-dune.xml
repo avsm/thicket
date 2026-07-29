@@ -1,5 +1,208 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-dune.xml</id><title>ocaml/dune (Weekly)</title><updated>2026-07-05T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-dune.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/dune</subtitle><entry><id>https://thicket.dev/repos/ocaml-dune/2026/week-27</id><title>Week 27, 2026: Dune 3.24.0 shipped this week, quickly followed by fixes for melange sandboxing, formatter env vars, and root_module regressions.</title><updated>2026-07-05T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-dune.xml</id><title>ocaml/dune (Weekly)</title><updated>2026-07-26T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-dune.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/dune</subtitle><entry><id>https://thicket.dev/repos/ocaml-dune/2026/week-30</id><title>Week 30, 2026: Dune 3.24.1 shipped with a documented opam-CI triage, alongside fish-shell completion, promote-file completion, and an artifact-substitution I/O offload.</title><updated>2026-07-26T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+New PRs target anonymous-action aliasing, dune describe&lt;/code&gt; output, and a dune shell&lt;/code&gt; debugger, while a dune exec&lt;/code&gt; hang was reported and fixed same-day.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;Several &lt;a href="https://github.com/ocaml/dune/issues/15581" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;PRs opened this week remain unmerged&lt;/strong&gt;&lt;/a&gt;: reworking anonymous-action registration so a single action can be attached to multiple aliases without surprising inter-alias dependencies, by &lt;a href="https://github.com/NatKarmios"&gt;Nat Karmios&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/15581"&gt;#15581&lt;/a&gt;, fixes &lt;a href="https://github.com/ocaml/dune/issues/15576"&gt;#15576&lt;/a&gt;); an &lt;code&gt;--include-empty&lt;/code&gt; flag for &lt;code&gt;dune describe external-lib-deps&lt;/code&gt; so libraries with no dependencies are no longer filtered out, by &lt;a href="https://github.com/NatKarmios"&gt;Nat Karmios&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/15585"&gt;#15585&lt;/a&gt;, fixes &lt;a href="https://github.com/ocaml/dune/issues/15566"&gt;#15566&lt;/a&gt;); inclusion of anonymous actions in &lt;code&gt;dune rules&lt;/code&gt; output, following on from &lt;a href="https://github.com/ocaml/dune/issues/15581"&gt;#15581&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/15586"&gt;#15586&lt;/a&gt;); consistent public/private name handling (with a new &lt;code&gt;--split-public-names&lt;/code&gt; flag) for &lt;code&gt;dune describe workspace&lt;/code&gt; and &lt;code&gt;external-lib-deps&lt;/code&gt;, by &lt;a href="https://github.com/NatKarmios"&gt;Nat Karmios&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/15582"&gt;#15582&lt;/a&gt;); a &lt;code&gt;dune shell&lt;/code&gt; prototype for interactively replaying and editing a rule's action for debugging, by &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/15597"&gt;#15597&lt;/a&gt;); and RPC-backed querying of &lt;code&gt;dune pkg enabled&lt;/code&gt; status so it observes transient server-side settings without acquiring the build lock, by &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt;, addressing a request from &lt;a href="https://github.com/Tim-ats-d"&gt;Tim ats&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/15589"&gt;#15589&lt;/a&gt;, fixes &lt;a href="https://github.com/ocaml/dune/issues/15587"&gt;#15587&lt;/a&gt;, with supporting test coverage already merged in &lt;a href="https://github.com/ocaml/dune/issues/15588"&gt;#15588&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/kdvolder"&gt;Kris De Volder&lt;/a&gt; reported that &lt;code&gt;dune exec ./foo.ml&lt;/code&gt; hangs silently with no output or exit code when the built binary fails to &lt;code&gt;execve&lt;/code&gt; (e.g. permission denied) (&lt;a href="https://github.com/ocaml/dune/issues/15602"&gt;#15602&lt;/a&gt;); &lt;a href="https://github.com/anmonteiro"&gt;Antonio Nuno Monteiro&lt;/a&gt; added regression test coverage the same day and de-flaked it (&lt;a href="https://github.com/ocaml/dune/issues/15603"&gt;#15603&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/15605"&gt;#15605&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/sim642"&gt;Simmo Saan&lt;/a&gt; reported that combining &lt;code&gt;(include_subdirs qualified)&lt;/code&gt; with &lt;code&gt;(preprocess (per_module ...))&lt;/code&gt; misbehaves (&lt;a href="https://github.com/ocaml/dune/issues/15578"&gt;#15578&lt;/a&gt;); &lt;a href="https://github.com/anmonteiro"&gt;Antonio Nuno Monteiro&lt;/a&gt; added a reproduction test the same week (&lt;a href="https://github.com/ocaml/dune/issues/15601"&gt;#15601&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/anmonteiro"&gt;Antonio Nuno Monteiro&lt;/a&gt; added a failing regression test reproducing a &lt;a href="https://github.com/ocaml/dune/issues/15600" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;concurrent package-installation&lt;/strong&gt;&lt;/a&gt; race (&lt;a href="https://github.com/ocaml/dune/issues/15600"&gt;#15600&lt;/a&gt;) and de-flaked it (&lt;a href="https://github.com/ocaml/dune/issues/15604"&gt;#15604&lt;/a&gt;), laying groundwork for the still-open concurrent install-entries feature (&lt;a href="https://github.com/ocaml/dune/issues/13054"&gt;#13054&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; opened the &lt;a href="https://github.com/ocaml/dune/issues/15593" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;3.25.0 release tracker&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/15593"&gt;#15593&lt;/a&gt;) and a follow-up issue to upstream fish completion into &lt;code&gt;cmdliner&lt;/code&gt; itself rather than maintaining it in Dune (&lt;a href="https://github.com/ocaml/dune/issues/15583"&gt;#15583&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; closed out the &lt;a href="https://github.com/ocaml/dune/issues/15539" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;3.24.1 patch release&lt;/strong&gt;&lt;/a&gt;, merging the remaining backports and changelog fixes (&lt;a href="https://github.com/ocaml/dune/issues/15539"&gt;#15539&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/15579"&gt;#15579&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/15580"&gt;#15580&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/15565"&gt;#15565&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/15567"&gt;#15567&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/15569"&gt;#15569&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/15570"&gt;#15570&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/15571"&gt;#15571&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/15573"&gt;#15573&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/15575"&gt;#15575&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/15577"&gt;#15577&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/15568"&gt;#15568&lt;/a&gt;) and unrelated CI/build maintenance (revdeps package updates &lt;a href="https://github.com/ocaml/dune/issues/15574"&gt;#15574&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/15572"&gt;#15572&lt;/a&gt;, Nix x86_64-darwin binary restore &lt;a href="https://github.com/ocaml/dune/issues/15584"&gt;#15584&lt;/a&gt;, OxCaml runtime5 CI &lt;a href="https://github.com/ocaml/dune/issues/15595"&gt;#15595&lt;/a&gt;, shell-completion backend tests &lt;a href="https://github.com/ocaml/dune/issues/15596"&gt;#15596&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/anmonteiro"&gt;Antonio Nuno Monteiro&lt;/a&gt; simplified &lt;code&gt;Compilation_mode.default_sandbox&lt;/code&gt; (&lt;a href="https://github.com/ocaml/dune/issues/15594"&gt;#15594&lt;/a&gt;) and continued CI/build maintenance, including a job to build Dune against OCaml trunk via Nix (&lt;a href="https://github.com/ocaml/dune/issues/15606"&gt;#15606&lt;/a&gt;) and Nix flake updates (&lt;a href="https://github.com/ocaml/dune/issues/15599"&gt;#15599&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/punchagan"&gt;Puneeth Chaganti&lt;/a&gt; extended bin-narrowing test coverage (&lt;a href="https://github.com/ocaml/dune/issues/15513"&gt;#15513&lt;/a&gt;), supporting the still-open &lt;code&gt;which&lt;/code&gt;-narrowing work in package context (&lt;a href="https://github.com/ocaml/dune/issues/15381"&gt;#15381&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; added the &lt;code&gt;unix&lt;/code&gt; dependency required by mdx ≥2.6 (&lt;a href="https://github.com/ocaml/dune/issues/15592"&gt;#15592&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;The Windows &lt;code&gt;.exe&lt;/code&gt;-extension bin-layout issue reported by &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; was closed this week once &lt;a href="https://github.com/ocaml/dune/issues/15518"&gt;#15518&lt;/a&gt; merged, with confirmation from &lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/15512"&gt;#15512&lt;/a&gt;); &lt;a href="https://github.com/raphael-proust"&gt;Raphaël Proust&lt;/a&gt;'s report of compilation failing when &lt;code&gt;~/.config/dune&lt;/code&gt; is a regular file was also closed, confirmed already fixed by an earlier &lt;code&gt;ENOTDIR&lt;/code&gt; handling patch (&lt;a href="https://github.com/ocaml/dune/issues/15406"&gt;#15406&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Dune 3.24.1 shipped with a documented opam-CI triage, alongside fish-shell completion, promote-file completion, and an artifact-substitution I/O offload.</summary><published>2026-07-26T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-dune/2026/week-29</id><title>Week 29, 2026: Melange 0.1 was removed for Dune 3.25, macOS gained a `sandbox-exec` backend, and process-spawning was hardened across macOS/Windows.</title><updated>2026-07-19T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+New PRs opened for a Landlock sandbox backend, merlin multi-mode configs, and fish completion, alongside a large spawn/process hardening push.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;Several &lt;a href="https://github.com/ocaml/dune/issues/15231" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;new PRs were opened&lt;/strong&gt;&lt;/a&gt; and remain unmerged, including a selectable &lt;code&gt;--sandbox-actions-backend&lt;/code&gt; with &lt;code&gt;auto&lt;/code&gt;/&lt;code&gt;bwrap&lt;/code&gt;/&lt;code&gt;landlock&lt;/code&gt; options and a Landlock wrapper that keeps the shared cache read-only, by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/15231"&gt;#15231&lt;/a&gt;); a new &lt;code&gt;origin&lt;/code&gt; field on &lt;code&gt;dune describe workspace&lt;/code&gt; modules indicating whether a source was hand-written, rule-generated, or produced by &lt;code&gt;ocamllex&lt;/code&gt;/&lt;code&gt;ocamlyacc&lt;/code&gt;/&lt;code&gt;menhir&lt;/code&gt;, by &lt;a href="https://github.com/NatKarmios"&gt;Nat Karmios&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/15478"&gt;#15478&lt;/a&gt;); build duration and average parallelism shown in the batch-mode status line, by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/15564"&gt;#15564&lt;/a&gt;); a fish-shell completion module, contributed by &lt;a href="https://github.com/chizy7"&gt;Chizy&lt;/a&gt; following up on an issue by &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/15515"&gt;#15515&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/15334"&gt;#15334&lt;/a&gt;); and generation of opam's new &lt;code&gt;root&lt;/code&gt;/&lt;code&gt;rootexec&lt;/code&gt; &lt;code&gt;.install&lt;/code&gt; sections for cross-compilation, pending an opam release, by &lt;a href="https://github.com/WardBrian"&gt;Brian Ward&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/14600"&gt;#14600&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/anmonteiro"&gt;Antonio Nuno Monteiro&lt;/a&gt; opened work letting a single library carry &lt;a href="https://github.com/ocaml/dune/issues/15493" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;multiple Merlin configurations per file&lt;/strong&gt;&lt;/a&gt; for mixed OCaml/Melange contexts (&lt;a href="https://github.com/ocaml/dune/issues/15493"&gt;#15493&lt;/a&gt;), mode-aware Merlin config generation that prefers exact file matches (&lt;a href="https://github.com/ocaml/dune/issues/15557"&gt;#15557&lt;/a&gt;), concurrent install-entry processing (&lt;a href="https://github.com/ocaml/dune/issues/13054"&gt;#13054&lt;/a&gt;), and moving artifact-substitution I/O onto the worker pool (&lt;a href="https://github.com/ocaml/dune/issues/15559"&gt;#15559&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; opened support for lock-dir packages to depend on workspace packages in both directions, the first step toward the broader "in-and-out" dependency model (&lt;a href="https://github.com/ocaml/dune/issues/14822"&gt;#14822&lt;/a&gt;, tracking &lt;a href="https://github.com/ocaml/dune/issues/8652"&gt;#8652&lt;/a&gt;), and a fix so Windows bin-layout entries use the installed filenames rather than source names (&lt;a href="https://github.com/ocaml/dune/issues/15518"&gt;#15518&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/punchagan"&gt;Puneeth Chaganti&lt;/a&gt; opened work narrowing &lt;code&gt;which&lt;/code&gt; resolution in package context (&lt;a href="https://github.com/ocaml/dune/issues/15381"&gt;#15381&lt;/a&gt;) with additional bin-narrowing test coverage (&lt;a href="https://github.com/ocaml/dune/issues/15513"&gt;#15513&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Sudha247"&gt;Sudha Parimala&lt;/a&gt; opened a GitHub Actions workflow that checks for missing changelog entries on PRs (&lt;a href="https://github.com/ocaml/dune/issues/15505"&gt;#15505&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/shonfeder"&gt;Shon Feder&lt;/a&gt; opened a draft script for cutting releases (&lt;a href="https://github.com/ocaml/dune/issues/15558"&gt;#15558&lt;/a&gt;), updated release-process documentation (&lt;a href="https://github.com/ocaml/dune/issues/13953"&gt;#13953&lt;/a&gt;), and posted draft specifications for the dune tools requirements and implementation (&lt;a href="https://github.com/ocaml/dune/issues/15543"&gt;#15543&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13457"&gt;#13457&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;The &lt;a href="https://github.com/ocaml/dune/issues/15561" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;3.24.1 patch release&lt;/strong&gt;&lt;/a&gt; progressed with backport PRs merged into the &lt;code&gt;3.24.1-rc&lt;/code&gt; branch by &lt;a href="https://github.com/anmonteiro"&gt;Antonio Nuno Monteiro&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/15561"&gt;#15561&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/15560"&gt;#15560&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/15506"&gt;#15506&lt;/a&gt;) tracked against &lt;a href="https://github.com/ocaml/dune/issues/15439"&gt;#15439&lt;/a&gt;, plus a version-sorting fix in &lt;code&gt;release-init.sh&lt;/code&gt; by &lt;a href="https://github.com/shonfeder"&gt;Shon Feder&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/15450"&gt;#15450&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; landed a broad &lt;a href="https://github.com/ocaml/dune/issues/15530" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;process-spawning hardening&lt;/strong&gt;&lt;/a&gt; pass: workers now connect to the action-runner over an inherited socketpair instead of dialing back to the RPC server (&lt;a href="https://github.com/ocaml/dune/issues/15530"&gt;#15530&lt;/a&gt;, noted as temporarily breaking Windows action runners), plus fixes for macOS &lt;code&gt;chdir&lt;/code&gt; error reporting (&lt;a href="https://github.com/ocaml/dune/issues/15526"&gt;#15526&lt;/a&gt;), macOS fd-count errors in tracing (&lt;a href="https://github.com/ocaml/dune/issues/15529"&gt;#15529&lt;/a&gt;), RPC process cwd inheritance on macOS (&lt;a href="https://github.com/ocaml/dune/issues/15552"&gt;#15552&lt;/a&gt;), premature-EOF handling in &lt;code&gt;sendfile&lt;/code&gt; (&lt;a href="https://github.com/ocaml/dune/issues/15554"&gt;#15554&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/15553"&gt;#15553&lt;/a&gt;), oversized &lt;code&gt;copyfile&lt;/code&gt; path rejection (&lt;a href="https://github.com/ocaml/dune/issues/15527"&gt;#15527&lt;/a&gt;), &lt;code&gt;ENOTDIR&lt;/code&gt; treated as a missing path (&lt;a href="https://github.com/ocaml/dune/issues/15475"&gt;#15475&lt;/a&gt;), uninitialized &lt;code&gt;wait4&lt;/code&gt;/&lt;code&gt;fsevents&lt;/code&gt; allocations (&lt;a href="https://github.com/ocaml/dune/issues/15524"&gt;#15524&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/15525"&gt;#15525&lt;/a&gt;), removal of &lt;code&gt;lsof&lt;/code&gt;-based fd counting (&lt;a href="https://github.com/ocaml/dune/issues/15477"&gt;#15477&lt;/a&gt;), and preference for &lt;code&gt;Spawn&lt;/code&gt;/&lt;code&gt;Proc.wait&lt;/code&gt; over raw &lt;code&gt;Unix&lt;/code&gt; calls (&lt;a href="https://github.com/ocaml/dune/issues/15538"&gt;#15538&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/15535"&gt;#15535&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; also continued a &lt;a href="https://github.com/ocaml/dune/issues/15541" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;package-management refactor&lt;/strong&gt;&lt;/a&gt; centralizing solver-environment composition (&lt;a href="https://github.com/ocaml/dune/issues/15541"&gt;#15541&lt;/a&gt;), project-pin collection (&lt;a href="https://github.com/ocaml/dune/issues/15540"&gt;#15540&lt;/a&gt;), workspace/project-pin merging (&lt;a href="https://github.com/ocaml/dune/issues/15555"&gt;#15555&lt;/a&gt;), the command-line dependency parser (&lt;a href="https://github.com/ocaml/dune/issues/15542"&gt;#15542&lt;/a&gt;), opam build-command generation (&lt;a href="https://github.com/ocaml/dune/issues/15550"&gt;#15550&lt;/a&gt;), Dune-language URL conversion (&lt;a href="https://github.com/ocaml/dune/issues/15521"&gt;#15521&lt;/a&gt;), &lt;code&gt;ocaml-config&lt;/code&gt; field definitions (&lt;a href="https://github.com/ocaml/dune/issues/15522"&gt;#15522&lt;/a&gt;), non-library &lt;code&gt;obj-dir&lt;/code&gt; setup (&lt;a href="https://github.com/ocaml/dune/issues/15520"&gt;#15520&lt;/a&gt;), and the LMDB object-key codec in &lt;code&gt;rev-store&lt;/code&gt; (&lt;a href="https://github.com/ocaml/dune/issues/15519"&gt;#15519&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/anmonteiro"&gt;Antonio Nuno Monteiro&lt;/a&gt; fixed Melange/Merlin preprocessing configuration (&lt;a href="https://github.com/ocaml/dune/issues/15491"&gt;#15491&lt;/a&gt;, reproduced in &lt;a href="https://github.com/ocaml/dune/issues/15489"&gt;#15489&lt;/a&gt;), staged wrapped root deps for JS emission in the sandbox (&lt;a href="https://github.com/ocaml/dune/issues/15376"&gt;#15376&lt;/a&gt;), fixed a Melange promote-test regression (&lt;a href="https://github.com/ocaml/dune/issues/15492"&gt;#15492&lt;/a&gt;), and exposed &lt;code&gt;repr&lt;/code&gt; on &lt;code&gt;compilation_mode&lt;/code&gt; (&lt;a href="https://github.com/ocaml/dune/issues/15487"&gt;#15487&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Windows-specific fixes and coverage continued: &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; merged a regression test for bin-layout artifact names (&lt;a href="https://github.com/ocaml/dune/issues/15517"&gt;#15517&lt;/a&gt;), while &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; opened &lt;code&gt;Proc.wait&lt;/code&gt; support for Windows PIDs (&lt;a href="https://github.com/ocaml/dune/issues/15536"&gt;#15536&lt;/a&gt;) and preservation of Windows flock handles/errors, reviewed by &lt;a href="https://github.com/nojb"&gt;Nicolás Ojeda Bär&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/15528"&gt;#15528&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Melange 0.1 was removed for Dune 3.25, macOS gained a `sandbox-exec` backend, and process-spawning was hardened across macOS/Windows.</summary><published>2026-07-19T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-dune/2026/week-28</id><title>Week 28, 2026: Dune fixed OCaml 5.5 compatibility regressions, hardened install/process-spawn handling, and began the 3.24.1 patch release.</title><updated>2026-07-12T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+The 3.24.1 patch release moved forward with backports, alongside an internal refactor of stdune's process-spawning code and new describe&lt;/code&gt; work.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/hhugo"&gt;Hugo Heuzard&lt;/a&gt; opened a fix so that &lt;code&gt;js_of_ocaml&lt;/code&gt;'s &lt;code&gt;build_runtime_flags&lt;/code&gt; are honored again when an executable shares the workspace's standalone runtime, which had been silently dropping flags like &lt;code&gt;--file&lt;/code&gt; since the shared-runtime feature landed in 3.23 (&lt;a href="https://github.com/ocaml/dune/issues/15455"&gt;#15455&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/NatKarmios"&gt;Nat Karmios&lt;/a&gt; opened two improvements to &lt;code&gt;dune describe&lt;/code&gt;: including &lt;a href="https://github.com/ocaml/dune/issues/15478" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;module origin&lt;/strong&gt;&lt;/a&gt; in &lt;code&gt;describe workspace&lt;/code&gt; output (&lt;a href="https://github.com/ocaml/dune/issues/15478"&gt;#15478&lt;/a&gt;) and using &lt;strong class="achievement"&gt;public names&lt;/strong&gt; for executables where available (&lt;a href="https://github.com/ocaml/dune/issues/15481"&gt;#15481&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; opened a PR to &lt;a href="https://github.com/ocaml/dune/issues/15452" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;protect the shared cache using landlock&lt;/strong&gt;&lt;/a&gt; sandboxing (&lt;a href="https://github.com/ocaml/dune/issues/15452"&gt;#15452&lt;/a&gt;), a fix so &lt;code&gt;dune promote&lt;/code&gt; exits &lt;code&gt;0&lt;/code&gt; for auto-promote-only failures (&lt;a href="https://github.com/ocaml/dune/issues/15448"&gt;#15448&lt;/a&gt;), and a CI update to OCaml 5.5 (&lt;a href="https://github.com/ocaml/dune/issues/15446"&gt;#15446&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/tjammer"&gt;Tobias Mock&lt;/a&gt; opened a reproduction PR for a &lt;code&gt;data_only_dirs&lt;/code&gt; patching issue that he also filed as &lt;a href="https://github.com/ocaml/dune/issues/15485"&gt;#15485&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/15484"&gt;#15484&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; opened a PR to run the new &lt;code&gt;stdune&lt;/code&gt; spawn test suite on Windows (&lt;a href="https://github.com/ocaml/dune/issues/15482"&gt;#15482&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;The &lt;a href="https://github.com/ocaml/dune/issues/15439" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;3.24.1 patch release&lt;/strong&gt;&lt;/a&gt; progressed under tracker &lt;a href="https://github.com/ocaml/dune/issues/15439"&gt;#15439&lt;/a&gt;: &lt;a href="https://github.com/shonfeder"&gt;Shon Feder&lt;/a&gt; initiated the release (&lt;a href="https://github.com/ocaml/dune/issues/15440"&gt;#15440&lt;/a&gt;) and merged the backport of the &lt;code&gt;js_of_ocaml&lt;/code&gt;/&lt;code&gt;enabled_if&lt;/code&gt; fix (&lt;a href="https://github.com/ocaml/dune/issues/15451"&gt;#15451&lt;/a&gt;) with its changelog entry (&lt;a href="https://github.com/ocaml/dune/issues/15441"&gt;#15441&lt;/a&gt;), then opened further backport PRs for &lt;a href="https://github.com/ocaml/dune/issues/15456"&gt;#15456&lt;/a&gt; and &lt;a href="https://github.com/ocaml/dune/issues/15457"&gt;#15457&lt;/a&gt;; a backport of the &lt;code&gt;@doc-new&lt;/code&gt;/odoc build-dir path fix also merged (&lt;a href="https://github.com/ocaml/dune/issues/15293"&gt;#15293&lt;/a&gt;, original fix &lt;a href="https://github.com/ocaml/dune/issues/15290"&gt;#15290&lt;/a&gt;) closing &lt;a href="https://github.com/ocaml/dune/issues/15290"&gt;#15290&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; carried out an &lt;a href="https://github.com/ocaml/dune/issues/15470" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;internal refactor of stdune's process-spawning code&lt;/strong&gt;&lt;/a&gt;, unvendoring the &lt;code&gt;spawn&lt;/code&gt; library (&lt;a href="https://github.com/ocaml/dune/issues/15470"&gt;#15470&lt;/a&gt;), changing &lt;code&gt;spawn&lt;/code&gt; to return &lt;code&gt;Pid.t&lt;/code&gt; and using it in &lt;code&gt;Pgid.t&lt;/code&gt; (&lt;a href="https://github.com/ocaml/dune/issues/15473"&gt;#15473&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/15474"&gt;#15474&lt;/a&gt;), prefixing spawn stubs with &lt;code&gt;dune_&lt;/code&gt; (&lt;a href="https://github.com/ocaml/dune/issues/15486"&gt;#15486&lt;/a&gt;), distinguishing failed process signaling (&lt;a href="https://github.com/ocaml/dune/issues/15453"&gt;#15453&lt;/a&gt;), and adding a spawn test suite (&lt;a href="https://github.com/ocaml/dune/issues/15476"&gt;#15476&lt;/a&gt;); related cleanup moved &lt;code&gt;Dune_engine.Display&lt;/code&gt; into &lt;code&gt;Stdune&lt;/code&gt; (&lt;a href="https://github.com/ocaml/dune/issues/15467"&gt;#15467&lt;/a&gt;), broke a dependency chain between &lt;code&gt;dune_config_file&lt;/code&gt; and &lt;code&gt;dune_engine&lt;/code&gt; (&lt;a href="https://github.com/ocaml/dune/issues/15469"&gt;#15469&lt;/a&gt;), removed &lt;code&gt;dune_graph&lt;/code&gt; (&lt;a href="https://github.com/ocaml/dune/issues/15464"&gt;#15464&lt;/a&gt;), and simplified tracing/display code (&lt;a href="https://github.com/ocaml/dune/issues/15461"&gt;#15461&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/15462"&gt;#15462&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/15463"&gt;#15463&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/15465"&gt;#15465&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/15466"&gt;#15466&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Leonidas-from-XIV"&gt;Marek Kubica&lt;/a&gt; disabled &lt;code&gt;flambda&lt;/code&gt; in the Nix build (&lt;a href="https://github.com/ocaml/dune/issues/15454"&gt;#15454&lt;/a&gt;), part of ongoing Nix packaging work that also cross-compiles dune to Windows for &lt;a href="https://github.com/ocaml-dune/binary-distribution"&gt;ocaml-dune/binary-distribution&lt;/a&gt; (commit &lt;a href="https://github.com/ocaml/dune/commit/518ee051fc99e29413cac205d22eddf0cfddf596"&gt;518ee05&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Dune fixed OCaml 5.5 compatibility regressions, hardened install/process-spawn handling, and began the 3.24.1 patch release.</summary><published>2026-07-12T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-dune/2026/week-27</id><title>Week 27, 2026: Dune 3.24.0 shipped this week, quickly followed by fixes for melange sandboxing, formatter env vars, and root_module regressions.</title><updated>2026-07-05T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

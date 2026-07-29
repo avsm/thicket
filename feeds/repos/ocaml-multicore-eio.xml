@@ -1,5 +1,199 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-multicore-eio.xml</id><title>ocaml-multicore/eio (Weekly)</title><updated>2026-07-05T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-multicore-eio.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml-multicore/eio</subtitle><entry><id>https://thicket.dev/repos/ocaml-multicore-eio/2026/week-27</id><title>Week 27, 2026: Eio gained file-ownership (`chown`) and pseudoterminal (`Pty`) support, plus a Windows fd-tracking fix and a `Pool.use` signature change.</title><updated>2026-07-05T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-multicore-eio.xml</id><title>ocaml-multicore/eio (Weekly)</title><updated>2026-07-26T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-multicore-eio.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml-multicore/eio</subtitle><entry><id>https://thicket.dev/repos/ocaml-multicore-eio/2026/week-30</id><title>Week 30, 2026: Eio published the v1.4 release, adding `Flow.null` and a macOS select() fallback while improving error messages and pty handling.</title><updated>2026-07-26T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+A pty EIO-to-EOF PR was opened while v1.4 shipped with error-message and platform fixes merged throughout the week.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;A PR converting tty &lt;code&gt;EIO&lt;/code&gt; errors into &lt;code&gt;End_of_file&lt;/code&gt; on Linux (and other platforms) for &lt;code&gt;Eio_unix.Pty&lt;/code&gt; was opened by &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt;, addressing reads from a closed pty raising an unhandled I/O error (&lt;a href="https://github.com/ocaml-multicore/eio/issues/905"&gt;#905&lt;/a&gt;, fixes &lt;a href="https://github.com/ocaml-multicore/eio/issues/902"&gt;#902&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;The &lt;a href="https://github.com/ocaml-multicore/eio/issues/904" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;v1.4 release&lt;/strong&gt;&lt;/a&gt; was published by &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt;, bundling the &lt;code&gt;Flow.null&lt;/code&gt; addition, macOS &lt;code&gt;select()&lt;/code&gt; fallback, error-message improvements, and other fixes merged this week (&lt;a href="https://github.com/ocaml-multicore/eio/issues/904"&gt;#904&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Error reporting was tightened across the networking and filesystem stacks: &lt;code&gt;Net.getaddrinfo&lt;/code&gt; failures now carry the queried hostname (&lt;a href="https://github.com/ocaml-multicore/eio/issues/900"&gt;#900&lt;/a&gt;), and &lt;code&gt;chmod&lt;/code&gt; failures on symlinks report the real underlying error rather than a masked one (&lt;a href="https://github.com/ocaml-multicore/eio/issues/901"&gt;#901&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/eio/issues/903"&gt;#903&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;macOS-specific reliability work landed a custom &lt;code&gt;select()&lt;/code&gt; stub used as a fallback when &lt;code&gt;poll()&lt;/code&gt; returns &lt;code&gt;POLLNVAL&lt;/code&gt; for device file descriptors such as &lt;code&gt;/dev/tty&lt;/code&gt; or &lt;code&gt;/dev/null&lt;/code&gt;, closing a longstanding crash reported by &lt;a href="https://github.com/aaronjeline"&gt;Aaron Eline&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/issues/893"&gt;#893&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/eio/issues/757"&gt;#757&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;eio_linux&lt;/code&gt; directory-entry reading and &lt;code&gt;fork_action&lt;/code&gt; id handling were hardened by &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/issues/897"&gt;#897&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/eio/issues/895"&gt;#895&lt;/a&gt;), alongside &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt;'s cleanup making &lt;code&gt;eio_unix_fork_error&lt;/code&gt; call &lt;code&gt;_exit&lt;/code&gt; automatically, closing a follow-up issue from &lt;a href="https://github.com/patricoferris"&gt;Patrick Ferris&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/issues/896"&gt;#896&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/eio/issues/818"&gt;#818&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;A &lt;code&gt;Flow.null&lt;/code&gt; sink/source was added, motivated by a real-world use case from &lt;a href="https://github.com/jonsterling"&gt;Jon Sterling&lt;/a&gt;'s Forester project, and evolved from an initial write-only sink to a combined source/sink during review by &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; and &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/issues/894"&gt;#894&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Compatibility eta-expansion for &lt;a href="https://github.com/ocaml-multicore/eio/issues/898" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OxCaml&lt;/strong&gt;&lt;/a&gt; was merged by &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/issues/898"&gt;#898&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Two issues were reported by &lt;a href="https://github.com/samoht"&gt;Thomas Gazagnaire&lt;/a&gt;: a relative-path bug in &lt;code&gt;Eio.Path.mkdirs&lt;/code&gt;, which was closed after investigation (&lt;a href="https://github.com/ocaml-multicore/eio/issues/906"&gt;#906&lt;/a&gt;), and a request to add a &lt;code&gt;~follow&lt;/code&gt; argument to &lt;code&gt;open_in&lt;/code&gt;/&lt;code&gt;open_out&lt;/code&gt; for consistency with other path functions, which remains open (&lt;a href="https://github.com/ocaml-multicore/eio/issues/899"&gt;#899&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Eio published the v1.4 release, adding `Flow.null` and a macOS select() fallback while improving error messages and pty handling.</summary><published>2026-07-26T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-eio/2026/week-29</id><title>Week 29, 2026: Eio advanced v1.4 socket-option and io_uring work, reorganized eio_linux internals, and updated the changelog for release.</title><updated>2026-07-19T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+A select()-fallback PR and pre-connect socket-option work remain open, while the sockopt refactor and eio_linux reorg merged.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;A new PR from &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; proposes falling back to &lt;code&gt;select()&lt;/code&gt; for file descriptors where macOS's &lt;code&gt;poll()&lt;/code&gt; incorrectly returns &lt;code&gt;POLLNVAL&lt;/code&gt; (e.g. &lt;code&gt;/dev/tty&lt;/code&gt;, &lt;code&gt;/dev/null&lt;/code&gt;), fixing an assertion failure in &lt;code&gt;sched.ml&lt;/code&gt; and following on from the discussion in &lt;a href="https://github.com/ocaml-multicore/eio/issues/757"&gt;#757&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/pull/893"&gt;#893&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; continues iterating on a &lt;a href="https://github.com/ocaml-multicore/eio/pull/875" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;pre-connect socket options&lt;/strong&gt;&lt;/a&gt; design exposing a GADT-based options list for &lt;code&gt;bind_to&lt;/code&gt; and socket setup, building on &lt;a href="https://github.com/art-w"&gt;@art-w&lt;/a&gt;'s earlier work and simplified after discussion with &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/pull/875"&gt;#875&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/eio/pull/713"&gt;#713&lt;/a&gt;), plus an open proposal to add an &lt;code&gt;SO_TYPE&lt;/code&gt; query to the portable socket interface (&lt;a href="https://github.com/ocaml-multicore/eio/pull/860"&gt;#860&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;The &lt;a href="https://github.com/ocaml-multicore/eio/pull/889" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;socket-option&lt;/strong&gt;&lt;/a&gt; refactor landed in stages: moving stubs into &lt;code&gt;eio.unix&lt;/code&gt; for cross-backend sharing (&lt;a href="https://github.com/ocaml-multicore/eio/pull/889"&gt;#889&lt;/a&gt;), fixing a regression so sockopt functions always raise &lt;code&gt;Eio&lt;/code&gt; exceptions (&lt;a href="https://github.com/ocaml-multicore/eio/pull/891"&gt;#891&lt;/a&gt;), and adding macOS &lt;code&gt;TCP_KEEPIDLE&lt;/code&gt; support alongside cross-platform option testing on macOS, Windows, FreeBSD, and OpenBSD (&lt;a href="https://github.com/ocaml-multicore/eio/pull/890"&gt;#890&lt;/a&gt;), all by &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/eio/pull/886" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;eio_linux&lt;/strong&gt;&lt;/a&gt; internals were reorganized to mirror the &lt;code&gt;eio_posix&lt;/code&gt; layout, splitting &lt;code&gt;net.ml&lt;/code&gt;, &lt;code&gt;process.ml&lt;/code&gt;, &lt;code&gt;fs.ml&lt;/code&gt;, and &lt;code&gt;time.ml&lt;/code&gt; out of the monolithic backend module by &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/pull/886"&gt;#886&lt;/a&gt;), building on the addition of uring-backed &lt;code&gt;Low_level.{socket,bind,listen}&lt;/code&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/pull/884"&gt;#884&lt;/a&gt;) and &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt;'s &lt;code&gt;ftruncate&lt;/code&gt;/&lt;code&gt;fdatasync&lt;/code&gt;/uring &lt;code&gt;fsync&lt;/code&gt;/&lt;code&gt;shutdown&lt;/code&gt; work (&lt;a href="https://github.com/ocaml-multicore/eio/pull/850"&gt;#850&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Cleanup work removed all remaining uses of &lt;code&gt;[@@@alert "-unstable"]&lt;/code&gt;, a workaround for an old Merlin bug no longer needed (&lt;a href="https://github.com/ocaml-multicore/eio/pull/885"&gt;#885&lt;/a&gt;), deleted leftover test files after test runs (&lt;a href="https://github.com/ocaml-multicore/eio/pull/883"&gt;#883&lt;/a&gt;), and added braces around a switch case to silence a compiler warning, contributed by &lt;a href="https://github.com/olafhering"&gt;Olaf Hering&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/pull/882"&gt;#882&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Release preparation continued with the &lt;a href="https://github.com/ocaml-multicore/eio/pull/892" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;v1.4&lt;/strong&gt;&lt;/a&gt; changelog and documentation update summarizing breaking changes (&lt;code&gt;Net.getaddrinfo&lt;/code&gt; now raises on error rather than returning &lt;code&gt;[]&lt;/code&gt;) and the full set of new features merged over recent weeks, by &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/pull/892"&gt;#892&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Eio advanced v1.4 socket-option and io_uring work, reorganized eio_linux internals, and updated the changelog for release.</summary><published>2026-07-19T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-eio/2026/week-28</id><title>Week 28, 2026: Eio.Net.getaddrinfo now raises detailed errors instead of returning empty lists, and Eio.Path.load was fixed for zero-size /proc files.</title><updated>2026-07-12T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+An open PR proposes a pre-connect socket-options DSL, while sandbox and getaddrinfo fixes closed several long-standing issues.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;A &lt;a href="https://github.com/ocaml-multicore/eio/issues/875" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;pre-connect socket options&lt;/strong&gt;&lt;/a&gt; PR remains open, exposing a GADT-based DSL for specifying bind/setsockopt behaviour before connecting, opened by &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; building on earlier work by &lt;a href="https://github.com/art-w"&gt;@art-w&lt;/a&gt;, with &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; raising concerns that the DSL is turning into a "little language" and suggesting a lower-level BSD-sockets-style API alongside it (&lt;a href="https://github.com/ocaml-multicore/eio/issues/875"&gt;#875&lt;/a&gt;, follow-up to &lt;a href="https://github.com/ocaml-multicore/eio/issues/713"&gt;#713&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;A &lt;a href="https://github.com/ocaml-multicore/eio/issues/873" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;getsockopt_string truncation-check&lt;/strong&gt;&lt;/a&gt; PR was closed without merging after &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; and &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; concluded through discussion that the original bounds check was already correct (&lt;a href="https://github.com/ocaml-multicore/eio/issues/873"&gt;#873&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/haesbaert"&gt;Christiano Haesbaert&lt;/a&gt;'s older PR proposing to return an empty list on &lt;code&gt;EAI_*&lt;/code&gt; errors from &lt;code&gt;getaddrinfo&lt;/code&gt; was closed as superseded, since &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; reimplemented the fix with fresh C stubs in &lt;a href="https://github.com/ocaml-multicore/eio/issues/866"&gt;#866&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/issues/352"&gt;#352&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Several long-standing issues were closed this week as a result of the &lt;code&gt;getaddrinfo&lt;/code&gt; error-reporting work and the eio&lt;em&gt;posix backend clean-up, including the original &lt;a href="https://github.com/ocaml-multicore/eio/issues/351" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;getaddrinfo error propagation&lt;/strong&gt;&lt;/a&gt; report from &lt;a href="https://github.com/patricoferris"&gt;Patrick Ferris&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/issues/351"&gt;#351&lt;/a&gt;), the &lt;strong class="achievement"&gt;1019-connection resolution failure&lt;/strong&gt; reported by &lt;a href="https://github.com/serpent7776"&gt;Krzysztof Leśniak&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/issues/776"&gt;#776&lt;/a&gt;), and the umbrella &lt;strong class="achievement"&gt;"Finish eio&lt;/em&gt;posix backend"&lt;/strong&gt; tracking issue from &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/issues/456"&gt;#456&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;Eio.Path.load&lt;/code&gt; race-condition reports from &lt;a href="https://github.com/vog"&gt;Volker Diels-Grabsch&lt;/a&gt; and &lt;a href="https://github.com/copy"&gt;@copy&lt;/a&gt; describing failures reading &lt;code&gt;/proc&lt;/code&gt; files were both closed once the buffered-reader fix landed (&lt;a href="https://github.com/ocaml-multicore/eio/issues/835"&gt;#835&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/eio/issues/798"&gt;#798&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/marijanp"&gt;Marijan Petričević&lt;/a&gt; reported high iowait/IO-pressure readings for an idle io&lt;em&gt;uring-backed service, and after debugging with a bpftrace script &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; determined this reflects io&lt;/em&gt;uring's own iowait accounting for reads from stdin rather than an Eio bug (&lt;a href="https://github.com/ocaml-multicore/eio/issues/862"&gt;#862&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Eio.Net.getaddrinfo now raises detailed errors instead of returning empty lists, and Eio.Path.load was fixed for zero-size /proc files.</summary><published>2026-07-12T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-eio/2026/week-27</id><title>Week 27, 2026: Eio gained file-ownership (`chown`) and pseudoterminal (`Pty`) support, plus a Windows fd-tracking fix and a `Pool.use` signature change.</title><updated>2026-07-05T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
