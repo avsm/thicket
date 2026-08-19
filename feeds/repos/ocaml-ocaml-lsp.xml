@@ -1,5 +1,195 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml-lsp.xml</id><title>ocaml/ocaml-lsp (Weekly)</title><updated>2026-07-26T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml-lsp.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml-lsp</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml-lsp/2026/week-30</id><title>Week 30, 2026: Rudi Grinberg landed LSP trace notifications, a Dune-file code action, and dozens of protocol fixes alongside a large OCaml test-suite rewrite.</title><updated>2026-07-26T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml-lsp.xml</id><title>ocaml/ocaml-lsp (Weekly)</title><updated>2026-08-16T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml-lsp.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml-lsp</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml-lsp/2026/week-33</id><title>Week 33, 2026: Two client-facing code-action bugs were fixed (create-counterpart capability checks, unused-code quick fixes) while an odoc navigable-references PR was opened.</title><updated>2026-08-16T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+N1ark opened an odoc documentLink implementation while rgrinberg landed a fake Dune RPC test server backing several new e2e coverage PRs.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/N1ark"&gt;opale&lt;/a&gt; opened a PR implementing &lt;code&gt;textDocument/documentLink&lt;/code&gt; and &lt;code&gt;documentLink/resolve&lt;/code&gt; so odoc cross-references inside documentation comments (&lt;code&gt;{!t}&lt;/code&gt;, &lt;code&gt;{{:url} text}&lt;/code&gt;, &lt;code&gt;@see&lt;/code&gt;) become clickable and resolve lazily through &lt;code&gt;Merlin_analysis.Locate&lt;/code&gt;, also correcting &lt;code&gt;Uri.to_string&lt;/code&gt; percent-encoding of query/fragment sub-delimiters along the way (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2139"&gt;#2139&lt;/a&gt;, fixes &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/436"&gt;#436&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; added a fake Dune RPC server for black-box e2e tests that speaks the initialize/version-negotiation/diagnostic/progress protocol without a real &lt;code&gt;dune build -w&lt;/code&gt; process (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2123"&gt;#2123&lt;/a&gt;), then used it to add coverage for Dune/Merlin diagnostic merging and removal (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2134"&gt;#2134&lt;/a&gt;), location-free diagnostics and unknown-promotion removal (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2135"&gt;#2135&lt;/a&gt;), the &lt;code&gt;ocamllsp/show-merlin-config&lt;/code&gt; command (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2127"&gt;#2127&lt;/a&gt;), and the definition request on non-Merlin documents (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2124"&gt;#2124&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2140"&gt;#2140&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; also merged a regression test that rejects unused-code quick fixes triggered by user-controlled alert payloads (e.g. a deprecated module whose message contains the substring &lt;code&gt;do not use: unused open&lt;/code&gt;), landed ahead of the matcher fix in &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2117"&gt;#2117&lt;/a&gt; to preserve the distinction between warning descriptions and arbitrary diagnostic text (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2141"&gt;#2141&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/dayangac"&gt;emre&lt;/a&gt; added tests covering the create-counterpart client capabilities (a client advertising the create resource operation, and one advertising neither) ahead of the capability-gating fix (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2119"&gt;#2119&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Automated &lt;code&gt;flake.lock&lt;/code&gt; update merged via the &lt;code&gt;update-flake-lock&lt;/code&gt; GitHub Action, bumping the pinned &lt;code&gt;nixpkgs&lt;/code&gt; input (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2137"&gt;#2137&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Two client-facing code-action bugs were fixed (create-counterpart capability checks, unused-code quick fixes) while an odoc navigable-references PR was opened.</summary><published>2026-08-16T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml-lsp/2026/week-32</id><title>Week 32, 2026: emre closed several long-standing client-capability issues while rgrinberg extracted shared Lsp library helpers and expanded e2e test coverage.</title><updated>2026-08-09T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Extraction of shared Lsp protocol-helper modules and an expanded e2e test suite dominated merged work, alongside several open PRs awaiting review.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;Newly opened PRs awaiting review include an &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2133" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;ocamlformat-rpc crash fix&lt;/strong&gt;&lt;/a&gt; that degrades gracefully instead of failing hover requests, by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; with its reproduction test (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2133"&gt;#2133&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2132"&gt;#2132&lt;/a&gt;), a &lt;strong class="achievement"&gt;fake Dune RPC test server&lt;/strong&gt; for black-box e2e tests and its follow-on diagnostic-reconciliation coverage (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2123"&gt;#2123&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2134"&gt;#2134&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2135"&gt;#2135&lt;/a&gt;), and further e2e coverage for the merlin-config command, non-Merlin definition requests, and preprocessor fixtures (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2127"&gt;#2127&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2124"&gt;#2124&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2131"&gt;#2131&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/dayangac"&gt;emre&lt;/a&gt; has two capability-negotiation fixes open for review: only offering the "create counterpart" code action when the client can apply a &lt;code&gt;CreateFile&lt;/code&gt; resource operation (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2115"&gt;#2115&lt;/a&gt;, fixes &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2114"&gt;#2114&lt;/a&gt;, with test coverage added separately in &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2119"&gt;#2119&lt;/a&gt;), and matching the unused-code quick-fix regular expressions against the diagnostic text merlin actually emits rather than the fatal-warning form the tests assumed (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2117"&gt;#2117&lt;/a&gt;, fixes &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2116"&gt;#2116&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; also has a &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2089" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Dune diagnostic-promotion reconciliation&lt;/strong&gt;&lt;/a&gt; fix open, tracking promotions by diagnostic identity instead of by source path to avoid an assertion failure when two rules promote the same source (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2089"&gt;#2089&lt;/a&gt;), and a &lt;strong class="achievement"&gt;semantic-token helper library&lt;/strong&gt; extraction still under review (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1929"&gt;#1929&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; merged a series of &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2103" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;shared Lsp library extractions&lt;/strong&gt;&lt;/a&gt;, moving client-capability accessors, deprecation-tag compatibility helpers, workspace-folder state, code-action kind filtering, &lt;code&gt;Server.not_supported&lt;/code&gt;, document-symbol protocol helpers, &lt;code&gt;Position&lt;/code&gt; logical conversions, &lt;code&gt;Range.resize_for_edit&lt;/code&gt;, and an &lt;code&gt;Experimental&lt;/code&gt;-field helper out of the server and into the reusable &lt;code&gt;Lsp&lt;/code&gt; library (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2103"&gt;#2103&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2118"&gt;#2118&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2120"&gt;#2120&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2111"&gt;#2111&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2108"&gt;#2108&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2106"&gt;#2106&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2105"&gt;#2105&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2104"&gt;#2104&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2101"&gt;#2101&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; expanded &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2125" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;e2e test coverage&lt;/strong&gt;&lt;/a&gt; across completion, hover, diagnostics related-information, semantic tokens, completion-resolve markdown formatting, and workspace-symbol deprecation reproduction, along with platform-independent workspace snapshots (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2125"&gt;#2125&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2126"&gt;#2126&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2128"&gt;#2128&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2130"&gt;#2130&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2129"&gt;#2129&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2112"&gt;#2112&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2136"&gt;#2136&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;An automated &lt;code&gt;flake.lock&lt;/code&gt; update PR was opened by the update-flake-lock GitHub Action, bumping the nixpkgs input (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2137"&gt;#2137&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>emre closed several long-standing client-capability issues while rgrinberg extracted shared Lsp library helpers and expanded e2e test coverage.</summary><published>2026-08-09T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml-lsp/2026/week-31</id><title>Week 31, 2026: Rudi Grinberg drove a fix- and test-heavy week (jsonrpc-fiber, semantic tokens, completion, rename) plus a new 1.28.0 preview release.</title><updated>2026-08-02T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+18 PRs opened awaiting review, a 1.28.0-506~preview release, and a large characterization-testing and JSON-RPC hardening push.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;18 PRs opened this week remain under review, nearly all by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt;: semantic-token encoding extraction (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1929"&gt;#1929&lt;/a&gt;), completion request-snapshot and position-encoding fixes (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1974"&gt;#1974&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2011"&gt;#2011&lt;/a&gt;), regenerated LSP filter/notebook contracts (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2012"&gt;#2012&lt;/a&gt;), document URI wire-identity preservation (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2023"&gt;#2023&lt;/a&gt;), code-action recovery hardening for destruct and selection-range (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2041"&gt;#2041&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2043"&gt;#2043&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2061"&gt;#2061&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2063"&gt;#2063&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2072"&gt;#2072&lt;/a&gt;), rename improvements for record puns and snapshot handling (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2062"&gt;#2062&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2065"&gt;#2065&lt;/a&gt;), &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1929" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;go-to-implementation support for interface types&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2074"&gt;#2074&lt;/a&gt;), Merlin diagnostic-computation extraction (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2081"&gt;#2081&lt;/a&gt;), and Dune promotion reconciliation by diagnostic (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2089"&gt;#2089&lt;/a&gt;); &lt;a href="https://github.com/dayangac"&gt;emre&lt;/a&gt; opened a semantic-highlighting fix for names inside &lt;code&gt;with&lt;/code&gt;-constraints (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2098"&gt;#2098&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt; published the &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1899" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;1.28.0-506~preview&lt;/strong&gt;&lt;/a&gt; release (&lt;a href="https://github.com/ocaml/ocaml-lsp/releases/tag/1.28.0-506_preview"&gt;release notes&lt;/a&gt;), bundling recent Features (trace notifications for Dune RPC/build progress &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1899"&gt;#1899&lt;/a&gt;, an open-nearest-dune-file code action &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1817"&gt;#1817&lt;/a&gt;, operator/function distinction in semantic highlighting &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1831"&gt;#1831&lt;/a&gt;) together with the accumulated fix log.&lt;/li&gt;
+&lt;li&gt;A large &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1920" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;characterization-testing&lt;/strong&gt;&lt;/a&gt; effort landed dozens of &lt;code&gt;test(...)&lt;/code&gt; PRs that reproduce or expose a bug before a companion fix follows, spanning jsonrpc-fiber, semantic-tokens, rename, code actions, Dune, and completion (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1920"&gt;#1920&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1921"&gt;#1921&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1922"&gt;#1922&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1923"&gt;#1923&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1924"&gt;#1924&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1925"&gt;#1925&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1952"&gt;#1952&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1953"&gt;#1953&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1955"&gt;#1955&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1956"&gt;#1956&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1957"&gt;#1957&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1968"&gt;#1968&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1970"&gt;#1970&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1971"&gt;#1971&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1972"&gt;#1972&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1973"&gt;#1973&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1977"&gt;#1977&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1981"&gt;#1981&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1984"&gt;#1984&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1985"&gt;#1985&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1988"&gt;#1988&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1989"&gt;#1989&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1990"&gt;#1990&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1991"&gt;#1991&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1993"&gt;#1993&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1995"&gt;#1995&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1996"&gt;#1996&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1997"&gt;#1997&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1998"&gt;#1998&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1999"&gt;#1999&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2001"&gt;#2001&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2002"&gt;#2002&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2003"&gt;#2003&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2004"&gt;#2004&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2005"&gt;#2005&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2006"&gt;#2006&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2010"&gt;#2010&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2014"&gt;#2014&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2015"&gt;#2015&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2016"&gt;#2016&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2017"&gt;#2017&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2018"&gt;#2018&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2019"&gt;#2019&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2020"&gt;#2020&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2021"&gt;#2021&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2026"&gt;#2026&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2035"&gt;#2035&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2037"&gt;#2037&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2042"&gt;#2042&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2045"&gt;#2045&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2046"&gt;#2046&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2052"&gt;#2052&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2056"&gt;#2056&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2057"&gt;#2057&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2058"&gt;#2058&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2059"&gt;#2059&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2060"&gt;#2060&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2071"&gt;#2071&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2077"&gt;#2077&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2083"&gt;#2083&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2086"&gt;#2086&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2087"&gt;#2087&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2091"&gt;#2091&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2094"&gt;#2094&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2095"&gt;#2095&lt;/a&gt;), all authored by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1935" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;JSON-RPC message-lifecycle hardening&lt;/strong&gt;&lt;/a&gt; rejected messages/requests after close or stop, reserved cancelled request IDs, made batch registration transactional, and memoized concurrent lazy-fiber forces (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1935"&gt;#1935&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1936"&gt;#1936&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1938"&gt;#1938&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1939"&gt;#1939&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1940"&gt;#1940&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1941"&gt;#1941&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1954"&gt;#1954&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1967"&gt;#1967&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1875"&gt;#1875&lt;/a&gt;), with an earlier permissive approach fully reverted (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1949"&gt;#1949&lt;/a&gt;) after reconsidering stopped-session output semantics raised in review on &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1948"&gt;#1948&lt;/a&gt; — all &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Codebase consolidation continued, removing Base/stdlib aliasing and leftover Stdune helpers (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1927"&gt;#1927&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1930"&gt;#1930&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1934"&gt;#1934&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1950"&gt;#1950&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2068"&gt;#2068&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2085"&gt;#2085&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2090"&gt;#2090&lt;/a&gt;) and clearing out leftover bisect coverage instrumentation (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1917"&gt;#1917&lt;/a&gt;) — &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Rudi Grinberg drove a fix- and test-heavy week (jsonrpc-fiber, semantic tokens, completion, rename) plus a new 1.28.0 preview release.</summary><published>2026-08-02T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml-lsp/2026/week-30</id><title>Week 30, 2026: Rudi Grinberg landed LSP trace notifications, a Dune-file code action, and dozens of protocol fixes alongside a large OCaml test-suite rewrite.</title><updated>2026-07-26T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

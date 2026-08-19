@@ -1,5 +1,197 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam.xml</id><title>ocaml/opam (Weekly)</title><updated>2026-07-26T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam/2026/week-30</id><title>Week 30, 2026: opam 2.6.0-alpha1 was released and published, followed by quick triage of a release-signature mixup and a git fsmonitor bug.</title><updated>2026-07-26T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam.xml</id><title>ocaml/opam (Weekly)</title><updated>2026-08-16T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam/2026/week-33</id><title>Week 33, 2026: opam init --reinit's 2.1-upgrade retry loop was fixed and reftest flakiness addressed, while review of #7068 surfaced new switch-state edge cases.</title><updated>2026-08-16T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Four PRs merged fixing init and test flakiness, while newly opened PRs target docs, git-gc handling, and the PowerShell init script.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;Newly opened work includes a documentation fix for &lt;a href="https://github.com/ocaml/opam/pull/7082" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;conjunctions in conflict version formulas&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/RyanGibb"&gt;Ryan Gibb&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam/pull/7082"&gt;#7082&lt;/a&gt;), a draft always printing &lt;strong class="achievement"&gt;empty lists&lt;/strong&gt; when printing bindings by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; that depends on ocaml/opam-file-format#66 (&lt;a href="https://github.com/ocaml/opam/pull/7080"&gt;#7080&lt;/a&gt;), a draft to disable &lt;strong class="achievement"&gt;git gc/maintenance&lt;/strong&gt; on repositories opam manages (&lt;a href="https://github.com/ocaml/opam/pull/7073"&gt;#7073&lt;/a&gt;), and a fix for the generated &lt;strong class="achievement"&gt;PowerShell init script&lt;/strong&gt; missing required parentheses around its &lt;code&gt;if&lt;/code&gt; condition by &lt;a href="https://github.com/flandia"&gt;Flandia&lt;/a&gt;, now covered by a Windows reftest (&lt;a href="https://github.com/ocaml/opam/pull/7070"&gt;#7070&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; merged four PRs this week: the &lt;code&gt;opam init --reinit&lt;/code&gt; retry-loop fix (&lt;a href="https://github.com/ocaml/opam/pull/7058"&gt;#7058&lt;/a&gt;), the debug-logging addition (&lt;a href="https://github.com/ocaml/opam/pull/7072"&gt;#7072&lt;/a&gt;), the &lt;code&gt;patchDiff&lt;/code&gt; git-maintenance fix (&lt;a href="https://github.com/ocaml/opam/pull/7069"&gt;#7069&lt;/a&gt;), and the CRLF testsuite fix (&lt;a href="https://github.com/ocaml/opam/pull/7071"&gt;#7071&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt;'s PR reworking &lt;code&gt;opam init --reinit&lt;/code&gt; to &lt;a href="https://github.com/ocaml/opam/issues/7078" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;regenerate the list of valid switches&lt;/strong&gt;&lt;/a&gt; and their cache remains under review by &lt;a href="https://github.com/rjbou"&gt;R. Boujbel&lt;/a&gt;, who requested more targeted tests and flagged that the change should also cover the &lt;code&gt;switch-config&lt;/code&gt; file; the review surfaced two follow-up bugs — an inconsistent cache when an installed package definition is missing (&lt;a href="https://github.com/ocaml/opam/issues/7078"&gt;#7078&lt;/a&gt;) and untested global-switch fixups (&lt;a href="https://github.com/ocaml/opam/issues/7077"&gt;#7077&lt;/a&gt;) — tracked against the main PR (&lt;a href="https://github.com/ocaml/opam/pull/7068"&gt;#7068&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt;'s draft &lt;a href="https://github.com/ocaml/opam/issues/6872" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;homogenizing repository loads&lt;/strong&gt;&lt;/a&gt; between a full directory scan and an incremental diff, fixing &lt;a href="https://github.com/ocaml/opam/issues/6872"&gt;#6872&lt;/a&gt;, remains open with a &lt;code&gt;CONFLICTING&lt;/code&gt; merge status (&lt;a href="https://github.com/ocaml/opam/pull/6924"&gt;#6924&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt;'s PR to respect &lt;code&gt;safe_mode&lt;/code&gt; when an on-disk cache is outdated, which also fixed &lt;code&gt;opam list --debug --safe&lt;/code&gt; silently dropping debug logs (&lt;a href="https://github.com/ocaml/opam/issues/7000"&gt;#7000&lt;/a&gt;), is open awaiting review (&lt;a href="https://github.com/ocaml/opam/pull/7067"&gt;#7067&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/MavenRain"&gt;Onyeka Obi&lt;/a&gt;'s PR correcting &lt;a href="https://github.com/ocaml/opam/pull/7063" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;package-name inference&lt;/strong&gt;&lt;/a&gt; for dotted/hidden project directories was closed without merging despite fixing the reported bug (&lt;a href="https://github.com/ocaml/opam/pull/7063"&gt;#7063&lt;/a&gt;, targets &lt;a href="https://github.com/ocaml/opam/issues/7043"&gt;#7043&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>opam init --reinit's 2.1-upgrade retry loop was fixed and reftest flakiness addressed, while review of #7068 surfaced new switch-state edge cases.</summary><published>2026-08-16T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-opam/2026/week-32</id><title>Week 32, 2026: Kate opened two fixes for safe_mode cache handling in sandboxed environments after a bug report from dinosaure.</title><updated>2026-08-09T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Two new PRs address sandboxed safe_mode cache handling, tracked against a switch-invariant fix and a git-maintenance race report.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;Two PRs were opened by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; directly in response to a sandboxing bug report: one makes &lt;code&gt;OpamCached&lt;/code&gt; &lt;strong class="achievement"&gt;respect &lt;code&gt;safe_mode&lt;/code&gt;&lt;/strong&gt; instead of unconditionally removing an outdated cache file (&lt;a href="https://github.com/ocaml/opam/pull/7067"&gt;#7067&lt;/a&gt;), and the other makes &lt;code&gt;opam init --reinit&lt;/code&gt; &lt;a href="https://github.com/ocaml/opam/pull/7067" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;regenerate the list of valid switches and their cache&lt;/strong&gt;&lt;/a&gt; rather than leaving stale entries, also adding &lt;code&gt;$PWD&lt;/code&gt; to the switch list when it is a valid switch and pruning invalid ones (&lt;a href="https://github.com/ocaml/opam/pull/7068"&gt;#7068&lt;/a&gt;); both track the underlying report at &lt;a href="https://github.com/ocaml/opam/issues/7066"&gt;#7066&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rjbou"&gt;R. Boujbel&lt;/a&gt; reviewed &lt;a href="https://github.com/ocaml/opam/pull/7067"&gt;#7067&lt;/a&gt;, asking for a &lt;a href="https://github.com/ocaml/opam/pull/7067" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;dedicated safe_mode test&lt;/strong&gt;&lt;/a&gt; since there is currently no full safe-mode test coverage, and reviewed the unrelated in-flight &lt;code&gt;opam init --reinit&lt;/code&gt; retry-prompt fix (&lt;a href="https://github.com/ocaml/opam/pull/7058"&gt;#7058&lt;/a&gt;), flagging a missing changelog entry.&lt;/li&gt;
+&lt;li&gt;Issue &lt;a href="https://github.com/ocaml/opam/issues/6982"&gt;#6982&lt;/a&gt; (&lt;code&gt;opam switch import&lt;/code&gt; not exporting the switch &lt;a href="https://github.com/ocaml/opam/issues/6982" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;invariant&lt;/strong&gt;&lt;/a&gt;) was closed this week.&lt;/li&gt;
+&lt;li&gt;Discussion continued on the &lt;code&gt;opam repo add&lt;/code&gt; &lt;a href="https://github.com/ocaml/opam/issues/7031" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;git-maintenance race condition&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam/issues/7031"&gt;#7031&lt;/a&gt;), with &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; distinguishing a TOC/TOU issue in &lt;code&gt;OpamSystem&lt;/code&gt; that would need a mutex around &lt;code&gt;.git/objects/maintenance.lock&lt;/code&gt; from a separate git bug already fixed upstream in git 2.55.&lt;/li&gt;
+&lt;li&gt;The &lt;a href="https://github.com/ocaml/opam/issues/5932" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;checksum-for-opam-file&lt;/strong&gt;&lt;/a&gt; feature wish (&lt;a href="https://github.com/ocaml/opam/issues/5932"&gt;#5932&lt;/a&gt;) picked up a comment from &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; pointing to an existing &lt;code&gt;opam-ed&lt;/code&gt;-based workaround in &lt;a href="https://github.com/kit-ty-kate/opam-alpha-repository"&gt;kit-ty-kate/opam-alpha-repository&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Kate opened two fixes for safe_mode cache handling in sandboxed environments after a bug report from dinosaure.</summary><published>2026-08-09T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-opam/2026/week-31</id><title>Week 31, 2026: New PRs targeted switch descriptions, init-upgrade UX, and package-name inference, while triage continued on Windows and depexts issues.</title><updated>2026-08-02T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Five PRs opened covering switch descriptions, init retry behavior, and version bumps, alongside ongoing discussion on completion env vars and depexts.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; opened a PR to keep the switch &lt;a href="https://github.com/ocaml/opam/pull/7062" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;description&lt;/strong&gt;&lt;/a&gt; blank by default instead of auto-guessing one, addressing incorrect &lt;code&gt;opam switch&lt;/code&gt; output shown after a compiler upgrade (&lt;a href="https://github.com/ocaml/opam/pull/7062"&gt;#7062&lt;/a&gt;, fixing &lt;a href="https://github.com/ocaml/opam/issues/7061"&gt;#7061&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/MavenRain"&gt;Onyeka Obi&lt;/a&gt; opened a PR fixing &lt;a href="https://github.com/ocaml/opam/pull/7063" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;package-name inference&lt;/strong&gt;&lt;/a&gt; from project directory names so hidden directories such as &lt;code&gt;.foo&lt;/code&gt; no longer get mangled into &lt;code&gt;oo&lt;/code&gt; (&lt;a href="https://github.com/ocaml/opam/pull/7063"&gt;#7063&lt;/a&gt;, fixing &lt;a href="https://github.com/ocaml/opam/issues/7043"&gt;#7043&lt;/a&gt;); the PR was closed without merging&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; opened a PR so that &lt;code&gt;opam init --reinit&lt;/code&gt; no longer exits with code 10 and asks the user to redo the command after upgrading from a 2.1 root (&lt;a href="https://github.com/ocaml/opam/pull/7058"&gt;#7058&lt;/a&gt;, fixing &lt;a href="https://github.com/ocaml/opam/issues/7057"&gt;#7057&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; opened a draft &lt;a href="https://github.com/ocaml/ocaml/issues/6728" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;backtrace cleanup&lt;/strong&gt;&lt;/a&gt; PR, switching control-flow-only exceptions to &lt;code&gt;Stdlib.raise_notrace&lt;/code&gt; and using &lt;code&gt;OpamStd.Exn.finalise&lt;/code&gt;/&lt;code&gt;Printexc.raise_with_backtrace&lt;/code&gt; for re-raises, inspired by upstream work in &lt;a href="https://github.com/ocaml/ocaml/issues/6728"&gt;ocaml/ocaml#6728&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam/pull/7056"&gt;#7056&lt;/a&gt;); reviewed positively by &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; opened a version-bump PR to &lt;code&gt;2.7.0~alpha1~dev&lt;/code&gt; (&lt;a href="https://github.com/ocaml/opam/pull/7064"&gt;#7064&lt;/a&gt;), while an earlier bump to &lt;code&gt;2.6.0~alpha2~dev&lt;/code&gt; was closed without merging (&lt;a href="https://github.com/ocaml/opam/pull/7048"&gt;#7048&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Discussion continued on adding &lt;code&gt;XDG_DATA_DIRS&lt;/code&gt; and &lt;code&gt;FPATH&lt;/code&gt; support to &lt;code&gt;opam env&lt;/code&gt; for bash/zsh &lt;a href="https://github.com/ocaml/opam/pull/6812" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;completion&lt;/strong&gt;&lt;/a&gt;, with &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; flagging Windows reftest failures (&lt;a href="https://github.com/ocaml/opam/pull/6812"&gt;#6812&lt;/a&gt;) that &lt;a href="https://github.com/WardBrian"&gt;Brian Ward&lt;/a&gt; is still working through&lt;/li&gt;
+&lt;li&gt;Earlier &lt;a href="https://github.com/ocaml/opam/pull/6934" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;API-refactoring&lt;/strong&gt;&lt;/a&gt; PRs tied to the repository-format rework (patch-function extraction, repository-root abstraction, path-element modules, the &lt;code&gt;Filename.Unix&lt;/code&gt; module, and file/directory diff support) saw renewed attention this week even though they had already merged (&lt;a href="https://github.com/ocaml/opam/pull/6934"&gt;#6934&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam/pull/6680"&gt;#6680&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam/pull/6917"&gt;#6917&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam/pull/6914"&gt;#6914&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam/pull/6915"&gt;#6915&lt;/a&gt;), alongside &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt;'s OCaml 5.6 warning-silencing PR (&lt;a href="https://github.com/ocaml/opam/pull/6987"&gt;#6987&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>New PRs targeted switch descriptions, init-upgrade UX, and package-name inference, while triage continued on Windows and depexts issues.</summary><published>2026-08-02T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-opam/2026/week-30</id><title>Week 30, 2026: opam 2.6.0-alpha1 was released and published, followed by quick triage of a release-signature mixup and a git fsmonitor bug.</title><updated>2026-07-26T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
@@ -5376,7 +5568,7 @@ Release of opam 2.3.0 with bug fixes for Windows installations and git-lfs pinni
 &lt;h2&gt;Activity&lt;/h2&gt;
 
 &lt;li&gt;&lt;strong class="achievement"&gt;Major release&lt;/strong&gt; of opam 2.3.0 published by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; with comprehensive platform binaries and signed artifacts for production use&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6299" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Windows compatibility improvements&lt;/strong&gt;&lt;/a&gt; merged including zsh config detection fix by &lt;a href="https://github.com/acasta-yhliu"&gt;@acasta-yhliu&lt;/a&gt; and linked switch removal enhancement by &lt;a href="https://github.com/btjorge"&gt;@btjorge&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam/issues/6299"&gt;#6299&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam/issues/6276"&gt;#6276&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6299" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Windows compatibility improvements&lt;/strong&gt;&lt;/a&gt; merged including zsh config detection fix by &lt;a href="https://github.com/acasta-yhliu"&gt;Yuhao Liu&lt;/a&gt; and linked switch removal enhancement by &lt;a href="https://github.com/btjorge"&gt;@btjorge&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam/issues/6299"&gt;#6299&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam/issues/6276"&gt;#6276&lt;/a&gt;)&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6302" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Infrastructure updates&lt;/strong&gt;&lt;/a&gt; completed by &lt;a href="https://github.com/rjbou"&gt;R. Boujbel&lt;/a&gt; and &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; addressing homebrew patch binary changes and curl configuration handling (&lt;a href="https://github.com/ocaml/opam/issues/6302"&gt;#6302&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam/issues/6296"&gt;#6296&lt;/a&gt;)&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/ocaml/opam/issues/6289" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Console interface refinement&lt;/strong&gt;&lt;/a&gt; by &lt;a href="https://github.com/hannesm"&gt;Hannes Mehnert&lt;/a&gt; restoring uppercase default options in interactive prompts for improved user experience (&lt;a href="https://github.com/ocaml/opam/issues/6289"&gt;#6289&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;

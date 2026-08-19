@@ -1,5 +1,212 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.xml</id><title>ocaml/ocaml (Weekly)</title><updated>2026-07-26T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-30</id><title>Week 30, 2026: Stdlib gained `Option.try_value`/`Result.try_value` and `Obj.hash_variant`, while a new Hashtbl redesign proposal sparked debate.</title><updated>2026-07-26T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.xml</id><title>ocaml/ocaml (Weekly)</title><updated>2026-08-16T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-33</id><title>Week 33, 2026: POWER gained frame pointer support and new Uchar/runtime helpers landed, alongside backend codegen work for sqrt/atomics on power, riscv and s390x.</title><updated>2026-08-16T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Six new PRs were opened for backend codegen and runtime-events work, while several long-open PRs were declined by the stdlib team.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/tmcgilchrist"&gt;Tim McGilchrist&lt;/a&gt; opened a fix making the runtime-events ring buffer's total size a &lt;code&gt;size_t&lt;/code&gt; to avoid a 32-bit integer overflow that corrupts the ring past 2 GiB (&lt;a href="https://github.com/ocaml/ocaml/issues/15000"&gt;#15000&lt;/a&gt;), addressing the issue he reported the same day (&lt;a href="https://github.com/ocaml/ocaml/issues/14999"&gt;#14999&lt;/a&gt;); he also opened a PR adding an &lt;code&gt;EV_C_MAJOR_DIRECT_ALLOCATED_WORDS&lt;/code&gt; runtime-events counter to distinguish direct major-heap allocations from promotions (&lt;a href="https://github.com/ocaml/ocaml/issues/15001"&gt;#15001&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Zaneham"&gt;Zane Hambly&lt;/a&gt; opened a series of per-architecture native-codegen PRs emitting &lt;code&gt;fsqrt&lt;/code&gt;/&lt;code&gt;fsqrt.d&lt;/code&gt; instead of C calls for square root on s390x, riscv and power, plus byte-swap intrinsics on s390x (&lt;a href="https://github.com/ocaml/ocaml/issues/15002"&gt;#15002&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/15005"&gt;#15005&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/15006"&gt;#15006&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/MisterDA"&gt;Antonin Décimo&lt;/a&gt; opened a CI change enabling KVM hardware acceleration for Android emulator jobs, saving roughly 40s per CI run (&lt;a href="https://github.com/ocaml/ocaml/issues/15003"&gt;#15003&lt;/a&gt;), and continues to push the 32-bit Y2K38/large-file-support PR (&lt;a href="https://github.com/ocaml/ocaml/issues/14997"&gt;#14997&lt;/a&gt;) and the Autoconf-based C++ compiler detection fix (&lt;a href="https://github.com/ocaml/ocaml/issues/14996"&gt;#14996&lt;/a&gt;) toward merge.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/toots"&gt;Romain Beauxis&lt;/a&gt; opened and then closed &lt;code&gt;caml_result_format_exception&lt;/code&gt; after being pointed to the equivalent, already-in-review &lt;code&gt;caml_result_find_exception&lt;/code&gt; by &lt;a href="https://github.com/nojb"&gt;Nicolás Ojeda Bär&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14998"&gt;#14998&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/issues/14814"&gt;#14814&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/smuenzel"&gt;Stefan Muenzel&lt;/a&gt; continues iterating on a draft PR shrinking AMD64 stack-reallocation code by avoiding stack-passed parameters, working through register-safety objections from &lt;a href="https://github.com/xavierleroy"&gt;Xavier Leroy&lt;/a&gt; about PLT-stub clobbering of r10/r11 (&lt;a href="https://github.com/ocaml/ocaml/issues/14954"&gt;#14954&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Zaneham"&gt;Zane Hambly&lt;/a&gt; also has an open PR generating native atomic exchange and compare-and-set across amd64, arm64, riscv, power and s390x by gating on immediate types (&lt;a href="https://github.com/ocaml/ocaml/issues/14980"&gt;#14980&lt;/a&gt;); &lt;a href="https://github.com/Sylvain78"&gt;Anarchos&lt;/a&gt; continues Haiku platform fixes for Unix socket tests, &lt;code&gt;setlocale&lt;/code&gt; thread-safety and signal handling (&lt;a href="https://github.com/ocaml/ocaml/issues/14773"&gt;#14773&lt;/a&gt;); &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; is iterating on a &lt;code&gt;Weak.Make&lt;/code&gt; reimplementation using open-addressing with linear probing that shows up to 2.8x speedups in hash-consing benchmarks (&lt;a href="https://github.com/ocaml/ocaml/issues/14979"&gt;#14979&lt;/a&gt;); &lt;a href="https://github.com/yallop"&gt;Jeremy Yallop&lt;/a&gt; opened a fix so &lt;code&gt;Weak.get_copy&lt;/code&gt; no longer unsafely shallow-copies continuations, which could segfault (&lt;a href="https://github.com/ocaml/ocaml/issues/14988"&gt;#14988&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/edwintorok"&gt;Török Edwin&lt;/a&gt; merged a testsuite addition that fragments GC sizeclass pools to guard against a regression previously fixed by GC work-accounting changes (&lt;a href="https://github.com/ocaml/ocaml/issues/14818"&gt;#14818&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;The standard library team, represented by &lt;a href="https://github.com/dbuenzli"&gt;Daniel Bünzli&lt;/a&gt;, closed &lt;a href="https://github.com/benjub"&gt;Benoit&lt;/a&gt;'s &lt;code&gt;Stdlib.Char.Ascii.is_punct&lt;/code&gt; addition as out of scope (&lt;a href="https://github.com/ocaml/ocaml/issues/14957"&gt;#14957&lt;/a&gt;) and closed &lt;a href="https://github.com/craff"&gt;Christophe Raffalli&lt;/a&gt;'s &lt;code&gt;Unix.nonblock_single_write&lt;/code&gt;/&lt;code&gt;Unix.nonblock_read&lt;/code&gt; PR pending a broader review of C bindings, while proposing a &lt;code&gt;domain_blocking&lt;/code&gt;/&lt;code&gt;domain_non_blocking&lt;/code&gt; naming convention for future non-blocking I/O primitives (&lt;a href="https://github.com/ocaml/ocaml/issues/13024"&gt;#13024&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Zaneham"&gt;Zane Hambly&lt;/a&gt; closed his own &lt;code&gt;endbr64&lt;/code&gt;-landing-pad PR for amd64 CET support, citing unresolved MSVC failures (&lt;a href="https://github.com/ocaml/ocaml/issues/14515"&gt;#14515&lt;/a&gt;), which superseded &lt;a href="https://github.com/voutilad"&gt;Dave Voutila&lt;/a&gt;'s earlier OpenBSD &lt;code&gt;endbr64&lt;/code&gt; PR (&lt;a href="https://github.com/ocaml/ocaml/issues/13023"&gt;#13023&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>POWER gained frame pointer support and new Uchar/runtime helpers landed, alongside backend codegen work for sqrt/atomics on power, riscv and s390x.</summary><published>2026-08-16T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-32</id><title>Week 32, 2026: Uchar gained ASCII/Latin-1 helper functions, a Weak.get_copy continuation-safety fix landed, and several typing soundness bugs were fixed on trunk.</title><updated>2026-08-09T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Sixteen PRs opened this week span atomic-operation codegen, a Weak.Make rewrite, Hashtbl reimplementation, and typing-internals refactoring.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/MisterDA"&gt;Antonin Décimo&lt;/a&gt; opened two configure-related PRs following up on the Autoconf 2.72 switch: defaulting to large-file and year-2038 support on 32-bit systems (&lt;a href="https://github.com/ocaml/ocaml/pull/14997"&gt;#14997&lt;/a&gt;) and switching C++ compiler detection to Autoconf's own machinery to fix a &lt;code&gt;-std=gnu23&lt;/code&gt; flag conflict (&lt;a href="https://github.com/ocaml/ocaml/pull/14996"&gt;#14996&lt;/a&gt;), plus a set of small Cygwin build fixes (&lt;a href="https://github.com/ocaml/ocaml/pull/14921"&gt;#14921&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/garrigue"&gt;Jacques Garrigue&lt;/a&gt; opened a draft simplifying &lt;code&gt;enforce_current_level&lt;/code&gt; to avoid a spurious &lt;code&gt;unify_var&lt;/code&gt; call (&lt;a href="https://github.com/ocaml/ocaml/pull/14995"&gt;#14995&lt;/a&gt;), and follow-ups to the injectivity fix: removing the now-redundant &lt;code&gt;in_current_module&lt;/code&gt;/&lt;code&gt;in_pervasives&lt;/code&gt; helpers (&lt;a href="https://github.com/ocaml/ocaml/pull/14990"&gt;#14990&lt;/a&gt;, folded into &lt;a href="https://github.com/ocaml/ocaml/pull/14982"&gt;#14982&lt;/a&gt;) and a draft making abstract types defined directly in structures injective (&lt;a href="https://github.com/ocaml/ocaml/pull/14991"&gt;#14991&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Zaneham"&gt;Zane Hambly&lt;/a&gt; opened a PR generating native atomic exchange/compare-and-set instructions across amd64, arm64, riscv, POWER, and s390x for immediate-typed atomics, avoiding the C call and its write barrier when the payload is known non-pointer, with per-architecture hardware benchmarking (&lt;a href="https://github.com/ocaml/ocaml/pull/14980"&gt;#14980&lt;/a&gt;, follow-up to &lt;a href="https://github.com/ocaml/ocaml/pull/14575"&gt;#14575&lt;/a&gt;); they also reviewed &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt;'s stack-reallocation size PR (&lt;a href="https://github.com/ocaml/ocaml/pull/14812"&gt;#14812&lt;/a&gt;) with detailed notes on RISC-V displacement limits.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; opened a rewrite of &lt;code&gt;Weak.Make&lt;/code&gt; ("weak hashsets") using open-addressing with linear probing instead of bucket arrays, reporting a 30% speedup on an alt-ergo benchmark and up to 2.8x on some ocaml-hashcons workloads (&lt;a href="https://github.com/ocaml/ocaml/pull/14979"&gt;#14979&lt;/a&gt;), and continued discussion on enabling &lt;code&gt;-g&lt;/code&gt; by default in the bytecode compiler (&lt;a href="https://github.com/ocaml/ocaml/pull/14971"&gt;#14971&lt;/a&gt;) and disabling a benchmark mistakenly run as a test (&lt;a href="https://github.com/ocaml/ocaml/pull/14960"&gt;#14960&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; opened a change making &lt;code&gt;Runtime_events.User.write&lt;/code&gt; non-allocating by replacing a per-domain closure-based write-buffer cache with a single atomic bytes slot in DLS, removing roughly 23 words of allocation per event (&lt;a href="https://github.com/ocaml/ocaml/pull/14984"&gt;#14984&lt;/a&gt;), discussed with &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/yallop"&gt;Jeremy Yallop&lt;/a&gt; also opened a fix so the expansiveness check considers effect-handler cases, fixing a segfault from an unhandled expansive allocation inside an &lt;code&gt;effect&lt;/code&gt; match case (&lt;a href="https://github.com/ocaml/ocaml/pull/14986"&gt;#14986&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/johnyob"&gt;Alistair&lt;/a&gt; opened a PR adding typing support for optional polymorphic parameters, encoding them as &lt;code&gt;Tpoly&lt;/code&gt; under an option type (&lt;a href="https://github.com/ocaml/ocaml/pull/14985"&gt;#14985&lt;/a&gt;), discussed with &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt; and &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Ongoing typing-internals refactoring continued with &lt;a href="https://github.com/samsa1"&gt;Samuel Vivien&lt;/a&gt;'s merge of &lt;code&gt;eqtype&lt;/code&gt; with &lt;code&gt;moregen&lt;/code&gt; (&lt;a href="https://github.com/ocaml/ocaml/pull/14739"&gt;#14739&lt;/a&gt;) and the change to make &lt;code&gt;unify&lt;/code&gt; return a &lt;code&gt;result&lt;/code&gt; rather than raise (&lt;a href="https://github.com/ocaml/ocaml/pull/14425"&gt;#14425&lt;/a&gt;), alongside &lt;a href="https://github.com/garrigue"&gt;Jacques Garrigue&lt;/a&gt;'s fix for the &lt;code&gt;type_newtype&lt;/code&gt; regression reported in &lt;a href="https://github.com/ocaml/ocaml/issues/14842"&gt;#14842&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/pull/14983"&gt;#14983&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Other open work under review this week includes &lt;a href="https://github.com/tmcgilchrist"&gt;Tim McGilchrist&lt;/a&gt;'s POWER frame-pointer support (&lt;a href="https://github.com/ocaml/ocaml/pull/14505"&gt;#14505&lt;/a&gt;), &lt;a href="https://github.com/agrn"&gt;agrn&lt;/a&gt;'s comballoc peephole optimisation merging pointer-bump instructions (&lt;a href="https://github.com/ocaml/ocaml/pull/14812"&gt;#14812&lt;/a&gt;), &lt;a href="https://github.com/shym"&gt;shym&lt;/a&gt;'s relocatable cross-compiler support (&lt;a href="https://github.com/ocaml/ocaml/pull/14929"&gt;#14929&lt;/a&gt;), &lt;a href="https://github.com/Jeannalyse"&gt;Jeannalyse&lt;/a&gt;'s draft reimplementation of &lt;code&gt;Hashtbl&lt;/code&gt; with deterministic iteration order via dynamic arrays (&lt;a href="https://github.com/ocaml/ocaml/pull/14956"&gt;#14956&lt;/a&gt;), and &lt;a href="https://github.com/NickBarnes"&gt;Nick Barnes&lt;/a&gt;'s proof-of-concept moving systhreads into the runtime (&lt;a href="https://github.com/ocaml/ocaml/pull/14965"&gt;#14965&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Stdlib feature-wish PRs continued to accumulate review, including &lt;a href="https://github.com/khalidbelk"&gt;Khalid&lt;/a&gt;'s &lt;code&gt;Sys.filepath_exists&lt;/code&gt; (&lt;a href="https://github.com/ocaml/ocaml/pull/14974"&gt;#14974&lt;/a&gt;), &lt;a href="https://github.com/WardBrian"&gt;Brian Ward&lt;/a&gt;'s &lt;code&gt;Result.all&lt;/code&gt;/&lt;code&gt;Option.all&lt;/code&gt; (&lt;a href="https://github.com/ocaml/ocaml/pull/14964"&gt;#14964&lt;/a&gt;), &lt;a href="https://github.com/benjub"&gt;Benoit&lt;/a&gt;'s &lt;code&gt;Char.Ascii.is_punct&lt;/code&gt; (&lt;a href="https://github.com/ocaml/ocaml/pull/14957"&gt;#14957&lt;/a&gt;), and &lt;a href="https://github.com/Jeannalyse"&gt;Jeannalyse&lt;/a&gt;'s &lt;code&gt;Atomic.compare_and_exchange&lt;/code&gt; (&lt;a href="https://github.com/ocaml/ocaml/pull/14912"&gt;#14912&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Uchar gained ASCII/Latin-1 helper functions, a Weak.get_copy continuation-safety fix landed, and several typing soundness bugs were fixed on trunk.</summary><published>2026-08-09T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-31</id><title>Week 31, 2026: Typechecker performance fixes for the js_of_ocaml compile-time blowup landed alongside new native-atomics work and a Hashtbl determinism RFC.</title><updated>2026-08-02T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Nine PRs opened covering native atomics, Hashtbl design, and win32/Sys fixes, while typechecker-performance, POWER, and build-system work continued.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;Nine PRs opened this week span runtime, typing, and stdlib work: &lt;a href="https://github.com/Zaneham"&gt;Zane Hambly&lt;/a&gt; proposed generating native atomic &lt;code&gt;exchange&lt;/code&gt;/&lt;code&gt;compare_and_set&lt;/code&gt; instructions across all five backends, replacing C calls with inline assembly on amd64/arm64/riscv/power/s390x (&lt;a href="https://github.com/ocaml/ocaml/pull/14980"&gt;#14980&lt;/a&gt;); &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; opened a re-implementation of &lt;code&gt;Weak.Make&lt;/code&gt; hashsets using open-addressing with linear probing, reporting a 30% speedup on alt-ergo-free (&lt;a href="https://github.com/ocaml/ocaml/pull/14979"&gt;#14979&lt;/a&gt;); &lt;a href="https://github.com/314eter"&gt;314eter&lt;/a&gt; proposed fixing &lt;code&gt;with module type&lt;/code&gt; precedence so &lt;code&gt;=&lt;/code&gt; and &lt;code&gt;:=&lt;/code&gt; behave consistently, a breaking change for existing uses of the old precedence (&lt;a href="https://github.com/ocaml/ocaml/pull/14978"&gt;#14978&lt;/a&gt;); &lt;a href="https://github.com/toots"&gt;Romain Beauxis&lt;/a&gt; fixed a win32 select handle leak reported by liquidsoap users (&lt;a href="https://github.com/ocaml/ocaml/pull/14975"&gt;#14975&lt;/a&gt;); &lt;a href="https://github.com/khalidbelk"&gt;Khalid&lt;/a&gt; proposed &lt;code&gt;Sys.filepath_exists&lt;/code&gt; as a safer alternative to &lt;code&gt;Sys.file_exists&lt;/code&gt; (&lt;a href="https://github.com/ocaml/ocaml/pull/14974"&gt;#14974&lt;/a&gt;); &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; proposed enabling &lt;code&gt;-g&lt;/code&gt; by default in the bytecode compiler to close the debugging gap with &lt;code&gt;ocamlopt&lt;/code&gt; (&lt;a href="https://github.com/ocaml/ocaml/pull/14971"&gt;#14971&lt;/a&gt;); &lt;a href="https://github.com/tmcgilchrist"&gt;Tim McGilchrist&lt;/a&gt; opened two runtime-events fixes, correcting a &lt;code&gt;minor_allocated_bytes&lt;/code&gt; unit-conversion bug (&lt;a href="https://github.com/ocaml/ocaml/pull/14969"&gt;#14969&lt;/a&gt;) and adding a missing &lt;code&gt;EV_MINOR_EPHE_CLEAN&lt;/code&gt; constructor that crashed consumers on out-of-range values (&lt;a href="https://github.com/ocaml/ocaml/pull/14966"&gt;#14966&lt;/a&gt;); &lt;a href="https://github.com/xvw"&gt;Xavier Van de Woestyne&lt;/a&gt; continued the typing-recovery work needed for Merlin (&lt;a href="https://github.com/ocaml/ocaml/pull/14963"&gt;#14963&lt;/a&gt;); and &lt;a href="https://github.com/edwintorok"&gt;Török Edwin&lt;/a&gt; opened a draft exposing that &lt;code&gt;Atomic.t&lt;/code&gt; is not a float in the interface to improve code generation (&lt;a href="https://github.com/ocaml/ocaml/pull/14977"&gt;#14977&lt;/a&gt;, following &lt;a href="https://github.com/ocaml/ocaml/issues/14976"&gt;#14976&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;The &lt;a href="https://github.com/ocaml/ocaml/issues/14897" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;typechecker path-equivalence and occurs-check performance work&lt;/strong&gt;&lt;/a&gt; triggered by &lt;a href="https://github.com/ocaml/ocaml/issues/14897"&gt;#14897&lt;/a&gt; (js&lt;em&gt;of&lt;/em&gt;ocaml compile-time blowup) was resolved this week through coordinated contributions from &lt;a href="https://github.com/smuenzel"&gt;Stefan Muenzel&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/14900"&gt;#14900&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/pull/14913"&gt;#14913&lt;/a&gt;) and &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt;/&lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/pull/14927"&gt;#14927&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/pull/14947"&gt;#14947&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/pull/14950"&gt;#14950&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/pull/14952"&gt;#14952&lt;/a&gt;), taking typechecking time on the offending file from 10 minutes to 170ms.&lt;/li&gt;
+&lt;li&gt;Ongoing &lt;a href="https://github.com/ocaml/ocaml/pull/14575" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;native atomics&lt;/strong&gt;&lt;/a&gt; work builds on the earlier fetch-and-add landing (&lt;a href="https://github.com/ocaml/ocaml/pull/14575"&gt;#14575&lt;/a&gt;), with &lt;a href="https://github.com/Zaneham"&gt;Zane Hambly&lt;/a&gt;'s new &lt;code&gt;exchange&lt;/code&gt;/&lt;code&gt;compare_and_set&lt;/code&gt; PR (&lt;a href="https://github.com/ocaml/ocaml/pull/14980"&gt;#14980&lt;/a&gt;) discussing a follow-up to unify with &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt;'s proposed &lt;code&gt;compare_and_exchange&lt;/code&gt; (&lt;a href="https://github.com/ocaml/ocaml/pull/14912"&gt;#14912&lt;/a&gt;), while &lt;a href="https://github.com/edwintorok"&gt;Török Edwin&lt;/a&gt; separately proposes exposing that &lt;code&gt;Atomic.t&lt;/code&gt; excludes floats for better inlining (&lt;a href="https://github.com/ocaml/ocaml/pull/14977"&gt;#14977&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Extensive design discussion continued on a &lt;strong class="achievement"&gt;new &lt;code&gt;Hashtbl&lt;/code&gt; implementation&lt;/strong&gt; guaranteeing deterministic iteration order by &lt;a href="https://github.com/Jeannalyse"&gt;Jeannalyse&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/pull/14956"&gt;#14956&lt;/a&gt;), with detailed benchmarking trade-offs explored by &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; and &lt;a href="https://github.com/smuenzel"&gt;Stefan Muenzel&lt;/a&gt;, feeding into the broader RFC (&lt;a href="https://github.com/ocaml/ocaml/discussions/14967"&gt;#14967&lt;/a&gt;) and the older randomized-seeding proposal by &lt;a href="https://github.com/hannesm"&gt;Hannes Mehnert&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/pull/14291"&gt;#14291&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;POWER-architecture support continued with &lt;a href="https://github.com/tmcgilchrist"&gt;Tim McGilchrist&lt;/a&gt;'s frame-pointer PR nearing review completion after feedback from &lt;a href="https://github.com/OlivierNicole"&gt;Olivier Nicole&lt;/a&gt; and &lt;a href="https://github.com/Zaneham"&gt;Zane Hambly&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/pull/14505"&gt;#14505&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Build/CI maintenance merged this week: reverting a temporary MSVC warning suppression now that the upstream issue is fixed, by &lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/pull/14103"&gt;#14103&lt;/a&gt;); disabling the parsetree-compatibility bot on forks (&lt;a href="https://github.com/ocaml/ocaml/pull/14972"&gt;#14972&lt;/a&gt;); and a tooling fix for missing trailing output in expect tests, by &lt;a href="https://github.com/smuenzel"&gt;Stefan Muenzel&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/pull/14959"&gt;#14959&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt; continued build-system work in progress, including sanitizing environment variables from the build (&lt;a href="https://github.com/ocaml/ocaml/pull/14915"&gt;#14915&lt;/a&gt;), switching the required autoconf version to 2.72 (&lt;a href="https://github.com/ocaml/ocaml/pull/14953"&gt;#14953&lt;/a&gt;), merging &lt;code&gt;Dynlink&lt;/code&gt; into a single module ahead of a later refactor (&lt;a href="https://github.com/ocaml/ocaml/pull/14970"&gt;#14970&lt;/a&gt;), and trunk-compiler support for &lt;code&gt;ocaml-system&lt;/code&gt; in opam (&lt;a href="https://github.com/ocaml/ocaml/pull/14354"&gt;#14354&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt;'s long-running &lt;a href="https://github.com/ocaml/ocaml/pull/13766" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;structured compiler diagnostics&lt;/strong&gt;&lt;/a&gt; proposal remained under active review (&lt;a href="https://github.com/ocaml/ocaml/pull/13766"&gt;#13766&lt;/a&gt;), alongside &lt;a href="https://github.com/johnyob"&gt;Alistair&lt;/a&gt;'s &lt;code&gt;type_approx&lt;/code&gt; refactor series (&lt;a href="https://github.com/ocaml/ocaml/pull/14538"&gt;#14538&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/pull/14517"&gt;#14517&lt;/a&gt;) and labeled-tuple-projection proposal (&lt;a href="https://github.com/ocaml/ocaml/pull/14257"&gt;#14257&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/shym"&gt;shym&lt;/a&gt; continued work supporting relocatable cross compilers (&lt;a href="https://github.com/ocaml/ocaml/pull/14929"&gt;#14929&lt;/a&gt;), and nmote validated a fix for &lt;code&gt;sigaltstack&lt;/code&gt; failures with musl on certain Intel CPUs, confirmed on hardware and reported upstream to musl maintainers (&lt;a href="https://github.com/ocaml/ocaml/pull/14933"&gt;#14933&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/samsa1"&gt;Samuel Vivien&lt;/a&gt;'s proposal to make &lt;code&gt;unify&lt;/code&gt; return a &lt;code&gt;result&lt;/code&gt; instead of raising was confirmed ready to merge pending a rebase (&lt;a href="https://github.com/ocaml/ocaml/pull/14425"&gt;#14425&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/smuenzel"&gt;Stefan Muenzel&lt;/a&gt; shared coq-bench numbers showing a &lt;code&gt;caml_apply&lt;/code&gt; inlining change reducing runtime by up to 25% on function-call-heavy workloads (&lt;a href="https://github.com/ocaml/ocaml/pull/14925"&gt;#14925&lt;/a&gt;), and &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; proposed a refactor to consolidate repeated path-compression logic (&lt;a href="https://github.com/ocaml/ocaml/pull/14910"&gt;#14910&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/NickBarnes"&gt;Nick Barnes&lt;/a&gt; posted a proof-of-concept moving systhreads into the runtime, eliminating the largely-fictional separation between the two (&lt;a href="https://github.com/ocaml/ocaml/pull/14965"&gt;#14965&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Pending stdlib proposals under discussion include &lt;a href="https://github.com/WardBrian"&gt;Brian Ward&lt;/a&gt;'s &lt;code&gt;Result.all&lt;/code&gt;/&lt;code&gt;Option.all&lt;/code&gt; for collapsing lists of optional/result values (&lt;a href="https://github.com/ocaml/ocaml/pull/14964"&gt;#14964&lt;/a&gt;), &lt;a href="https://github.com/benjub"&gt;Benoit&lt;/a&gt;'s &lt;code&gt;Char.Ascii.is_punct&lt;/code&gt; (&lt;a href="https://github.com/ocaml/ocaml/pull/14957"&gt;#14957&lt;/a&gt;, ultimately recommended for closure by &lt;a href="https://github.com/dbuenzli"&gt;Daniel Bünzli&lt;/a&gt;), and &lt;a href="https://github.com/Jeannalyse"&gt;Jeannalyse&lt;/a&gt;'s &lt;code&gt;Dynarray.sort&lt;/code&gt;/&lt;code&gt;stable_sort&lt;/code&gt; (&lt;a href="https://github.com/ocaml/ocaml/pull/14848"&gt;#14848&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/khalidbelk"&gt;Khalid&lt;/a&gt;'s earlier &lt;code&gt;Sys.file_exists'&lt;/code&gt; proposal was closed in favor of the stdlib team's &lt;code&gt;filepath_exists&lt;/code&gt; design, now implemented in &lt;a href="https://github.com/ocaml/ocaml/pull/14974"&gt;#14974&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/pull/14951"&gt;#14951&lt;/a&gt;), and &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt;'s &lt;code&gt;Reoptimize ocamlc -g&lt;/code&gt; PR was closed after &lt;a href="https://github.com/lthls"&gt;Vincent Laviron&lt;/a&gt; warned it could degrade the bytecode-debugger experience, redirected into &lt;a href="https://github.com/ocaml/ocaml/pull/14971"&gt;#14971&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Typechecker performance fixes for the js_of_ocaml compile-time blowup landed alongside new native-atomics work and a Hashtbl determinism RFC.</summary><published>2026-08-02T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-30</id><title>Week 30, 2026: Stdlib gained `Option.try_value`/`Result.try_value` and `Obj.hash_variant`, while a new Hashtbl redesign proposal sparked debate.</title><updated>2026-07-26T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

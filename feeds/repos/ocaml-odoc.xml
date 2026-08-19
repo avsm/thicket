@@ -1,5 +1,193 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-odoc.xml</id><title>ocaml/odoc (Weekly)</title><updated>2026-07-26T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-odoc.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/odoc</subtitle><entry><id>https://thicket.dev/repos/ocaml-odoc/2026/week-30</id><title>Week 30, 2026: OxCaml integration advanced with three PRs from art-w, alongside source-link and multi-line link-parsing fixes from newer contributors.</title><updated>2026-07-26T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-odoc.xml</id><title>ocaml/odoc (Weekly)</title><updated>2026-08-16T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-odoc.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/odoc</subtitle><entry><id>https://thicket.dev/repos/ocaml-odoc/2026/week-33</id><title>Week 33, 2026: No commits landed on master this week; activity centered on open-PR discussion for OxCaml include-functor support and odoc_driver stdlib-detection fixes.</title><updated>2026-08-16T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Two PRs opened (Stdlib polyfill pattern, `Forward removal) while ongoing PRs advanced on include functor support and driver stdlib detection.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/Leonidas-from-XIV"&gt;Marek Kubica&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/odoc/pull/1476"&gt;#1476&lt;/a&gt; proposing a &lt;a href="https://github.com/ocaml/odoc/pull/1476" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Stdlib polyfill pattern&lt;/strong&gt;&lt;/a&gt; so odoc can fall back to its own extensions only when the compiler's Stdlib lacks a function, prompted by a &lt;code&gt;List.partition_map&lt;/code&gt; build failure on OCaml 4.11.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Leonidas-from-XIV"&gt;Marek Kubica&lt;/a&gt; also opened &lt;a href="https://github.com/ocaml/odoc/pull/1478"&gt;#1478&lt;/a&gt;, a draft PR investigating removal of the apparently unused &lt;code&gt;`Forward&lt;/code&gt; constructor after confirming it compiles and passes tests without it.&lt;/li&gt;
+&lt;li&gt;The &lt;a href="https://github.com/ocaml/odoc/pull/1452" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;include functor support for OxCaml&lt;/strong&gt;&lt;/a&gt; PR (&lt;a href="https://github.com/ocaml/odoc/pull/1452"&gt;#1452&lt;/a&gt;) by &lt;a href="https://github.com/Leonidas-from-XIV"&gt;Marek Kubica&lt;/a&gt; progressed substantially, implementing &lt;a href="https://github.com/jonludlam"&gt;Jon Ludlam&lt;/a&gt;'s proposal to compile &lt;code&gt;include functor&lt;/code&gt; down to a generated module plus functor application, resolving earlier cross-referencing concerns and removing the interim &lt;code&gt;allow_functor&lt;/code&gt; machinery.&lt;/li&gt;
+&lt;li&gt;The &lt;a href="https://github.com/ocaml/odoc/pull/1474" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;odoc_driver stdlib-detection fix&lt;/strong&gt;&lt;/a&gt; for &lt;code&gt;$prefix/lib64&lt;/code&gt; layouts (&lt;a href="https://github.com/ocaml/odoc/pull/1474"&gt;#1474&lt;/a&gt;) by &lt;a href="https://github.com/katrinafyi"&gt;@katrinafyi&lt;/a&gt; continued with a changelog update and a lower-bound bump on &lt;code&gt;ocamlfind&lt;/code&gt; (&gt;= 1.9.8) flagged by &lt;a href="https://github.com/Leonidas-from-XIV"&gt;Marek Kubica&lt;/a&gt;, and is tied to the newly filed &lt;a href="https://github.com/ocaml/odoc/issues/1477"&gt;#1477&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;The &lt;a href="https://github.com/ocaml/odoc/issues/865" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;multi-line link fix&lt;/strong&gt;&lt;/a&gt; for &lt;a href="https://github.com/ocaml/odoc/issues/865"&gt;#865&lt;/a&gt; (&lt;a href="https://github.com/ocaml/odoc/pull/1439"&gt;#1439&lt;/a&gt;) by &lt;a href="https://github.com/Tim-ats-d"&gt;Tim ats&lt;/a&gt; remains open pending a polyfill for &lt;code&gt;String.fold_left&lt;/code&gt;, missing before OCaml 4.13.&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>No commits landed on master this week; activity centered on open-PR discussion for OxCaml include-functor support and odoc_driver stdlib-detection fixes.</summary><published>2026-08-16T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-odoc/2026/week-32</id><title>Week 32, 2026: Functor lookup through `module type of` fixed in the cross-referencer, alongside driver work on Findlib path inference and OCaml 5.6 support.</title><updated>2026-08-09T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+OCaml 5.6 support and Findlib-based directory inference opened for review while the functor xref fix and CI matrix update merged.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/odoc/pull/1472" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml 5.6 support&lt;/strong&gt;&lt;/a&gt; opened by &lt;a href="https://github.com/jonludlam"&gt;Jon Ludlam&lt;/a&gt;, a 451-line change across 21 files preparing odoc for the upcoming compiler release (&lt;a href="https://github.com/ocaml/odoc/pull/1472"&gt;#1472&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/katrinafyi"&gt;@katrinafyi&lt;/a&gt; opened a driver change to use &lt;a href="https://github.com/ocaml/odoc/pull/1474" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Findlib's own directory-inference logic&lt;/strong&gt;&lt;/a&gt; instead of hardcoded opam-prefix paths, removing explicit arguments in favour of ocamlfind's built-in environment-variable handling (&lt;a href="https://github.com/ocaml/odoc/pull/1474"&gt;#1474&lt;/a&gt;); &lt;a href="https://github.com/jonludlam"&gt;Jon Ludlam&lt;/a&gt; asked for an issue and changelog entry to accompany the fix since it addresses a real portability bug&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;Functor lookup through &lt;code&gt;module type of&lt;/code&gt;&lt;/strong&gt; merged after review discussion between &lt;a href="https://github.com/Leonidas-from-XIV"&gt;Marek Kubica&lt;/a&gt; and &lt;a href="https://github.com/jonludlam"&gt;Jon Ludlam&lt;/a&gt;, converging on reusing &lt;code&gt;expansion_of_module&lt;/code&gt; rather than a bespoke &lt;code&gt;find_functor&lt;/code&gt; walk, and adding a cram-test regression case (&lt;a href="https://github.com/ocaml/odoc/pull/1471"&gt;#1471&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;CI &lt;a href="https://github.com/ocaml/odoc/pull/1473" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;test matrix for GHA&lt;/strong&gt;&lt;/a&gt; updated and merged by &lt;a href="https://github.com/jonludlam"&gt;Jon Ludlam&lt;/a&gt; (&lt;a href="https://github.com/ocaml/odoc/pull/1473"&gt;#1473&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/katrinafyi"&gt;@katrinafyi&lt;/a&gt; opened an issue describing how odoc driver fails to locate source files for Dune &lt;code&gt;(include_subdirs qualified)&lt;/code&gt; wrapper modules, since the &lt;code&gt;.cmt&lt;/code&gt;-to-installed-&lt;code&gt;.ml&lt;/code&gt; correlation logic only handles top-level wrapping and not the &lt;code&gt;__&lt;/code&gt;-separated intermediate-directory naming Dune generates in that mode (&lt;a href="https://github.com/ocaml/odoc/issues/1475"&gt;#1475&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Functor lookup through `module type of` fixed in the cross-referencer, alongside driver work on Findlib path inference and OCaml 5.6 support.</summary><published>2026-08-09T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-odoc/2026/week-31</id><title>Week 31, 2026: Work continued on reference rendering, `[@merlin.hide]` source occurrences, and OxCaml compatibility, all via open, unmerged PRs.</title><updated>2026-08-02T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Three PRs remained open covering reference rendering, source occurrence filtering, and OxCaml fixes, alongside a new OCaml 5.6 support issue.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/MavenRain"&gt;Onyeka Obi&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/odoc/pull/1468"&gt;#1468&lt;/a&gt;, a fix so that references to constructors and record fields (e.g. &lt;code&gt;{!Bla.Alpha}&lt;/code&gt;) no longer splice the enclosing &lt;a href="https://github.com/ocaml/odoc/pull/1468" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;type name&lt;/strong&gt;&lt;/a&gt; into the rendered text, addressing &lt;a href="https://github.com/ocaml/odoc/issues/372"&gt;#372&lt;/a&gt;; the PR remains open pending a possible follow-up on polymorphic variant tag rendering.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/jonludlam"&gt;Jon Ludlam&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/odoc/pull/1469"&gt;#1469&lt;/a&gt;, a set of mostly mechanical &lt;a href="https://github.com/ocaml/odoc/pull/1469" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OxCaml minus39&lt;/strong&gt;&lt;/a&gt; compatibility fixes, including switching a function to return an option and use &lt;code&gt;filter_map&lt;/code&gt; to prepare for handling module types with &lt;code&gt;with&lt;/code&gt; kind expressions.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/klakplok"&gt;Benjamin Canou&lt;/a&gt; continued work on &lt;a href="https://github.com/ocaml/odoc/pull/1465"&gt;#1465&lt;/a&gt; (opened the prior week, discussed further this week), which honours the &lt;code&gt;[@merlin.hide]&lt;/code&gt; attribute to prevent &lt;a href="https://github.com/ocaml/odoc/pull/1465" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;spurious source-code links&lt;/strong&gt;&lt;/a&gt; generated by ppx derivers such as &lt;code&gt;ppx_deriving&lt;/code&gt;, fixing &lt;a href="https://github.com/ocaml/odoc/issues/1456"&gt;#1456&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/odoc/issues/1470"&gt;#1470&lt;/a&gt; flagging that odoc is not yet compatible with the upcoming &lt;a href="https://github.com/ocaml/odoc/issues/1470" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml 5.6&lt;/strong&gt;&lt;/a&gt; release, noting that odoc's dependencies are already available via the opam-alpha-repository for anyone wanting to attempt the port.&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Work continued on reference rendering, `[@merlin.hide]` source occurrences, and OxCaml compatibility, all via open, unmerged PRs.</summary><published>2026-08-02T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-odoc/2026/week-30</id><title>Week 30, 2026: OxCaml integration advanced with three PRs from art-w, alongside source-link and multi-line link-parsing fixes from newer contributors.</title><updated>2026-07-26T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

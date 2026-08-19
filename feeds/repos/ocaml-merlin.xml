@@ -1,5 +1,190 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-merlin.xml</id><title>ocaml/merlin (Weekly)</title><updated>2026-07-26T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-merlin.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/merlin</subtitle><entry><id>https://thicket.dev/repos/ocaml-merlin/2026/week-30</id><title>Week 30, 2026: Merlin fixed two occurrences-staleness bugs and a `.mli` open-path locate bug, and merged destructuring of open record patterns.</title><updated>2026-07-26T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-merlin.xml</id><title>ocaml/merlin (Weekly)</title><updated>2026-08-16T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-merlin.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/merlin</subtitle><entry><id>https://thicket.dev/repos/ocaml-merlin/2026/week-33</id><title>Week 33, 2026: Discussion continued on [#2072](https://github.com/ocaml/merlin/issues/2072), the LRgrep syntax-error-message integration, including whether it belongs upstream in the OCaml compiler.</title><updated>2026-08-16T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+The LRgrep-based syntax error message integration PR remained open, with discussion on its scope and eventual upstreaming.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;The &lt;a href="https://github.com/ocaml/merlin/issues/2072" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;LRgrep integration&lt;/strong&gt;&lt;/a&gt; PR by &lt;a href="https://github.com/let-def"&gt;Frédéric Bour&lt;/a&gt; remains open and under discussion (&lt;a href="https://github.com/ocaml/merlin/issues/2072"&gt;#2072&lt;/a&gt;); it adds a declarative error-message specification (&lt;code&gt;src/ocaml/preprocess/parse_errors.lrgrep&lt;/code&gt;), a &lt;code&gt;make lrgrep-coverage&lt;/code&gt; target that produces a &lt;code&gt;coverage.md&lt;/code&gt; report of grammar constructs still lacking error messages, and a vendored LRgrep runtime following the existing MenhirLib vendoring pattern, all as an additive change that does not alter existing parser behavior.&lt;/li&gt;
+&lt;li&gt;The PR currently shows a &lt;a href="https://github.com/ocaml/merlin/issues/2072" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;conflicting merge status&lt;/strong&gt;&lt;/a&gt;, indicating it needs a rebase before it can move forward (&lt;a href="https://github.com/ocaml/merlin/issues/2072"&gt;#2072&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Discussion continued on [#2072](https://github.com/ocaml/merlin/issues/2072), the LRgrep syntax-error-message integration, including whether it belongs upstream in the OCaml compiler.</summary><published>2026-08-16T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-merlin/2026/week-32</id><title>Week 32, 2026: Work began on fixing occurrences-related bugs, with two PRs opened addressing stale/out-of-sync file detection and a duplicate-result issue.</title><updated>2026-08-09T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Two PRs opened this week target bugs in the occurrences feature, both still unmerged by week's end.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ikostia"&gt;Kostia Balytskyi&lt;/a&gt; opened a fix for &lt;a href="https://github.com/ocaml/merlin/pull/2115" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;out-of-sync file detection&lt;/strong&gt;&lt;/a&gt; in occurrences, exposing name-clash information from &lt;code&gt;find_linked_uids&lt;/code&gt; so that &lt;code&gt;locs_of&lt;/code&gt; can correctly report files that haven't been rebuilt after a rename (&lt;a href="https://github.com/ocaml/merlin/pull/2115"&gt;#2115&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/PizieDust"&gt;PixieDust&lt;/a&gt; opened a PR adding a &lt;a href="https://github.com/ocaml/merlin/issues/2113" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;reproduction test case&lt;/strong&gt;&lt;/a&gt; for the duplicate-occurrence bug reported in &lt;a href="https://github.com/ocaml/merlin/issues/2113"&gt;#2113&lt;/a&gt; (&lt;a href="https://github.com/ocaml/merlin/pull/2114"&gt;#2114&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt; reported a bug where &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2046" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;occurrences&lt;/strong&gt;&lt;/a&gt; returns a duplicate result for a recovered &lt;code&gt;let&lt;/code&gt; binding (e.g. &lt;code&gt;let rec ma&lt;/code&gt;), cross-referencing related investigation in &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2046"&gt;ocaml/ocaml-lsp#2046&lt;/a&gt; (&lt;a href="https://github.com/ocaml/merlin/issues/2113"&gt;#2113&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Work began on fixing occurrences-related bugs, with two PRs opened addressing stale/out-of-sync file detection and a duplicate-result issue.</summary><published>2026-08-09T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-merlin/2026/week-31</id><title>Week 31, 2026: Merlin 5.8.1 released with fixes for load_path invalidation races, ppx index staleness, and stale `document` lookups, plus an OCaml 5.6 preview.</title><updated>2026-08-02T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+A new PR proposes containing outline selection ranges; the OCaml 5.6 upgrade and cross-repo bug triage with ocaml-lsp continue.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/merlin/issues/2111"&gt;#2111&lt;/a&gt;, opened by &lt;a href="https://github.com/MavenRain"&gt;Onyeka Obi&lt;/a&gt;, makes &lt;code&gt;Outline.mk&lt;/code&gt; fall back to the item's own location whenever a symbol's name location isn't contained within it, fixing the out-of-range &lt;strong class="achievement"&gt;&lt;code&gt;selection&lt;/code&gt;&lt;/strong&gt; field reported in &lt;a href="https://github.com/ocaml/merlin/issues/2106"&gt;#2106&lt;/a&gt;; the PR remains open pending discussion of whether the fix belongs in &lt;code&gt;outline.ml&lt;/code&gt; or further up in &lt;code&gt;browse_raw&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;The &lt;a href="https://github.com/ocaml/merlin/issues/2087" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml 5.6+trunk upgrade&lt;/strong&gt;&lt;/a&gt; effort (&lt;a href="https://github.com/ocaml/merlin/issues/2087"&gt;#2087&lt;/a&gt;) by &lt;a href="https://github.com/xvw"&gt;Xavier Van de Woestyne&lt;/a&gt; was merged into a new dedicated &lt;code&gt;506&lt;/code&gt; branch rather than &lt;code&gt;main&lt;/code&gt;, giving a version of merlin compatible with OCaml trunk; &lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt; cut a &lt;code&gt;506~preview&lt;/code&gt; release from it and plans a matching &lt;code&gt;ocaml-lsp-server&lt;/code&gt; branch, with &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; confirming it already works against the latest trunk&lt;/li&gt;
+&lt;li&gt;Ongoing &lt;a href="https://github.com/ocaml/merlin/issues/2091" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;compiler-upstreaming tracking&lt;/strong&gt;&lt;/a&gt; continues in &lt;a href="https://github.com/ocaml/merlin/issues/2091"&gt;#2091&lt;/a&gt;, which catalogs merlin's compiler-frontend patches that could be pushed upstream to ease future OCaml version bumps&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; added a &lt;a href="https://github.com/ocaml/merlin/issues/2109" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;regression test&lt;/strong&gt;&lt;/a&gt; reproducing a stale &lt;code&gt;load_path&lt;/code&gt; bug across two concurrent typer states sharing a build directory (&lt;a href="https://github.com/ocaml/merlin/issues/2109"&gt;#2109&lt;/a&gt;), which &lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt; then fixed in the same PR&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/liam923"&gt;Liam Stevenson&lt;/a&gt; landed two fixes this week: the ocaml-index &lt;a href="https://github.com/ocaml/merlin/issues/2110" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;ppx staleness&lt;/strong&gt;&lt;/a&gt; fix (&lt;a href="https://github.com/ocaml/merlin/issues/2110"&gt;#2110&lt;/a&gt;) and the &lt;strong class="achievement"&gt;&lt;code&gt;document&lt;/code&gt;&lt;/strong&gt; doc-comment fix with an accompanying refactor of &lt;code&gt;associate_comment&lt;/code&gt; (&lt;a href="https://github.com/ocaml/merlin/issues/2092"&gt;#2092&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/panglesd"&gt;Paul-Elliot Anglès d'Auriac&lt;/a&gt; merged &lt;a href="https://github.com/ocaml/merlin/issues/2107" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;selection-range test tooling&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml/merlin/issues/2107"&gt;#2107&lt;/a&gt;) after discussing formatting of the range markers with &lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Merlin 5.8.1 released with fixes for load_path invalidation races, ppx index staleness, and stale `document` lookups, plus an OCaml 5.6 preview.</summary><published>2026-08-02T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-merlin/2026/week-30</id><title>Week 30, 2026: Merlin fixed two occurrences-staleness bugs and a `.mli` open-path locate bug, and merged destructuring of open record patterns.</title><updated>2026-07-26T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

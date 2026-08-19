@@ -1,5 +1,131 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-multicore-eio.xml</id><title>ocaml-multicore/eio (Weekly)</title><updated>2026-07-26T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-multicore-eio.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml-multicore/eio</subtitle><entry><id>https://thicket.dev/repos/ocaml-multicore-eio/2026/week-30</id><title>Week 30, 2026: Eio published the v1.4 release, adding `Flow.null` and a macOS select() fallback while improving error messages and pty handling.</title><updated>2026-07-26T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-multicore-eio.xml</id><title>ocaml-multicore/eio (Weekly)</title><updated>2026-08-16T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-multicore-eio.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml-multicore/eio</subtitle><entry><id>https://thicket.dev/repos/ocaml-multicore-eio/2026/week-33</id><title>Week 33, 2026: None</title><updated>2026-08-16T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/eio - Week 33, 2026&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/eio - Week 33, 2026</summary><published>2026-08-16T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-eio/2026/week-32</id><title>Week 32, 2026: Windows path support merged via `Eio.Path.native`, plus a new `of_dir` helper and unified `dir_path` handling across backends.</title><updated>2026-08-09T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Draft device-node and mock-directory PRs from prior weeks stayed open while the Windows path-handling series merged.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;Draft PR &lt;strong class="achievement"&gt;&lt;code&gt;posix: add device mknod support&lt;/code&gt;&lt;/strong&gt; by &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; remains open, extending device creation beyond FIFOs to a wider range of device types, with this week's update rebasing it and switching &lt;code&gt;eio_posix&lt;/code&gt; tests to alcotest; still pending BSD CI runs (&lt;a href="https://github.com/ocaml-multicore/eio/issues/911"&gt;#911&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Draft PR &lt;strong class="achievement"&gt;&lt;code&gt;mock: add Eio_mock.Dir with POSIX and Windows path syntax&lt;/code&gt;&lt;/strong&gt; by &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; remains open; most of its original content has already landed via other merged PRs, leaving just the mock implementation to finish (&lt;a href="https://github.com/ocaml-multicore/eio/issues/908"&gt;#908&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/eio/issues/916" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Windows path-handling series&lt;/strong&gt;&lt;/a&gt; completed this week: &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; merged the &lt;code&gt;Eio.Path.native&lt;/code&gt; Pi backend and &lt;code&gt;Nt_path&lt;/code&gt; module (&lt;a href="https://github.com/ocaml-multicore/eio/issues/916"&gt;#916&lt;/a&gt;), the &lt;code&gt;Eio.Path.of_dir&lt;/code&gt; helper (&lt;a href="https://github.com/ocaml-multicore/eio/issues/919"&gt;#919&lt;/a&gt;), and the &lt;code&gt;dir_path&lt;/code&gt; cleanup that followed from review of &lt;a href="https://github.com/ocaml-multicore/eio/issues/919"&gt;#919&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/issues/920"&gt;#920&lt;/a&gt;), closing the tracking issue for Windows path handling (&lt;a href="https://github.com/ocaml-multicore/eio/issues/762"&gt;#762&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/kentookura"&gt;Kento Okura&lt;/a&gt;'s earlier draft PR implementing native Windows paths was closed as its approach was incorporated into &lt;a href="https://github.com/ocaml-multicore/eio/issues/916"&gt;#916&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/issues/738"&gt;#738&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/eio/issues/917" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;32-bit build support&lt;/strong&gt;&lt;/a&gt; restored with &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt;'s fix for the &lt;code&gt;MSG_CMSG_CLOEXEC&lt;/code&gt; constant reported by &lt;a href="https://github.com/glondu"&gt;Stéphane Glondu&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/issues/917"&gt;#917&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/eio/issues/909"&gt;#909&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;POSIX path test consolidation merged, reducing duplication between existing and newly added test cases (&lt;a href="https://github.com/ocaml-multicore/eio/issues/918"&gt;#918&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Windows path support merged via `Eio.Path.native`, plus a new `of_dir` helper and unified `dir_path` handling across backends.</summary><published>2026-08-09T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-eio/2026/week-31</id><title>Week 31, 2026: Path handling moved to per-backend implementations, directory traversal sped up, and an empty-path fs bug fixed.</title><updated>2026-08-02T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+New drafts target 32-bit build fixes, Windows path support, and device mknod, while path-backend and empty-path fixes merged.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;Newly opened PRs awaiting review include a fix for the &lt;a href="https://github.com/ocaml-multicore/eio/pull/917" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;32-bit build&lt;/strong&gt;&lt;/a&gt;, where &lt;code&gt;MSG_CMSG_CLOEXEC&lt;/code&gt; overflowed OCaml's native int on 32-bit platforms, by &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/pull/917"&gt;#917&lt;/a&gt;, addressing &lt;a href="https://github.com/ocaml-multicore/eio/issues/909"&gt;#909&lt;/a&gt;); a draft implementing &lt;code&gt;Eio.Path.native&lt;/code&gt; as a &lt;strong class="achievement"&gt;backend interface with Windows support&lt;/strong&gt;, split off from a larger patch, by &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/pull/916"&gt;#916&lt;/a&gt;); a draft adding &lt;strong class="achievement"&gt;device &lt;code&gt;mknod&lt;/code&gt; support&lt;/strong&gt; for creating device files beyond FIFOs by &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/pull/911"&gt;#911&lt;/a&gt;); and the original &lt;strong class="achievement"&gt;Windows path-handling&lt;/strong&gt; draft it was split from, currently marked as conflicting, also by &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/pull/908"&gt;#908&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;The &lt;a href="https://github.com/ocaml-multicore/eio/pull/908" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Windows path support&lt;/strong&gt;&lt;/a&gt; effort saw back-and-forth between &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; and &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; over path normalisation, the meaning of &lt;code&gt;of_native&lt;/code&gt;, and per-drive versus per-process working directories, converging on treating paths lexically and possibly rejecting drive-relative paths like &lt;code&gt;C:foo&lt;/code&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/pull/908"&gt;#908&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/eio/pull/916"&gt;#916&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;The &lt;strong class="achievement"&gt;device &lt;code&gt;mknod&lt;/code&gt;&lt;/strong&gt; draft prompted discussion on sharing the feature with &lt;code&gt;eio_linux&lt;/code&gt;, introducing a portable &lt;code&gt;Eio.File.Dev.t&lt;/code&gt; type, and handling device numbers on platforms like Wayland where they don't fit a fixed-width field, between &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; and &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/pull/911"&gt;#911&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Merged this week: the &lt;a href="https://github.com/ocaml-multicore/eio/pull/913" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;path-backend refactor&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/pull/913"&gt;#913&lt;/a&gt;), the &lt;strong class="achievement"&gt;posix split allocation optimisation&lt;/strong&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/pull/915"&gt;#915&lt;/a&gt;), the &lt;strong class="achievement"&gt;getdents buffer&lt;/strong&gt; speedup (&lt;a href="https://github.com/ocaml-multicore/eio/pull/910"&gt;#910&lt;/a&gt;), and the &lt;strong class="achievement"&gt;empty-path fix&lt;/strong&gt; for unconfined fs operations (&lt;a href="https://github.com/ocaml-multicore/eio/pull/907"&gt;#907&lt;/a&gt;), which resolved &lt;a href="https://github.com/ocaml-multicore/eio/issues/906"&gt;#906&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Path handling moved to per-backend implementations, directory traversal sped up, and an empty-path fs bug fixed.</summary><published>2026-08-02T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-eio/2026/week-30</id><title>Week 30, 2026: Eio published the v1.4 release, adding `Flow.null` and a macOS select() fallback while improving error messages and pty handling.</title><updated>2026-07-26T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
