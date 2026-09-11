@@ -1,5 +1,211 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam-repository.xml</id><title>ocaml/opam-repository (Weekly)</title><updated>2026-08-16T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam-repository.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam-repository</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2026/week-33</id><title>Week 33, 2026: Ecosystem week dominated by MirageOS/Solo5 releases, a prometheus core/Lwt split, new packages, and a wave of Kakadu's OCaml-5-upper-bound maintenance PRs.</title><updated>2026-08-16T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam-repository.xml</id><title>ocaml/opam-repository (Weekly)</title><updated>2026-09-06T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam-repository.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam-repository</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2026/week-36</id><title>Week 36, 2026: OCaml 5.5.1 and opam 2.6.0~beta2 landed alongside a breaking tyxml 5.0.0 release and a wave of new package submissions.</title><updated>2026-09-06T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+One PR opened this week is unmerged; the rest saw rapid package releases and several superseded/withdrawn submissions.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/Kakadu"&gt;Dmitrii Kosarev&lt;/a&gt; opened &lt;strong class="achievement"&gt;&lt;code&gt;Sundialsml: more x-ci-accept-failures&lt;/code&gt;&lt;/strong&gt;, still awaiting merge, to work around a &lt;code&gt;sundials&lt;/code&gt; C-linking failure on Ubuntu 25.10 and Debian 13 (&lt;a href="https://github.com/ocaml/opam-repository/pull/30608"&gt;#30608&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/dinosaure"&gt;Calascibetta Romain&lt;/a&gt; pushed through a broad ecosystem update across their own projects, merging &lt;strong class="achievement"&gt;&lt;code&gt;h1&lt;/code&gt;&lt;/strong&gt; (&lt;a href="https://github.com/ocaml/opam-repository/pull/30612"&gt;#30612&lt;/a&gt;), &lt;strong class="achievement"&gt;&lt;code&gt;miou&lt;/code&gt;&lt;/strong&gt; (&lt;a href="https://github.com/ocaml/opam-repository/pull/30613"&gt;#30613&lt;/a&gt;), &lt;strong class="achievement"&gt;&lt;code&gt;hurl&lt;/code&gt;&lt;/strong&gt; (&lt;a href="https://github.com/ocaml/opam-repository/pull/30619"&gt;#30619&lt;/a&gt;), &lt;strong class="achievement"&gt;&lt;code&gt;httpcats&lt;/code&gt;&lt;/strong&gt; (&lt;a href="https://github.com/ocaml/opam-repository/pull/30620"&gt;#30620&lt;/a&gt;), the 7-package &lt;strong class="achievement"&gt;&lt;code&gt;mnet&lt;/code&gt;&lt;/strong&gt; networking stack plus a follow-up bound fix (&lt;a href="https://github.com/ocaml/opam-repository/pull/30629"&gt;#30629&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/pull/30640"&gt;#30640&lt;/a&gt;), &lt;strong class="achievement"&gt;&lt;code&gt;mhttp&lt;/code&gt;&lt;/strong&gt; (&lt;a href="https://github.com/ocaml/opam-repository/pull/30633"&gt;#30633&lt;/a&gt;), &lt;strong class="achievement"&gt;&lt;code&gt;vif&lt;/code&gt;&lt;/strong&gt; (&lt;a href="https://github.com/ocaml/opam-repository/pull/30636"&gt;#30636&lt;/a&gt;) and &lt;strong class="achievement"&gt;&lt;code&gt;bstr&lt;/code&gt;&lt;/strong&gt; (&lt;a href="https://github.com/ocaml/opam-repository/pull/30642"&gt;#30642&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ospencer"&gt;Oscar Spencer&lt;/a&gt; released a rapid sequence of &lt;strong class="achievement"&gt;&lt;code&gt;binaryen&lt;/code&gt;&lt;/strong&gt;/&lt;strong class="achievement"&gt;&lt;code&gt;libbinaryen&lt;/code&gt;&lt;/strong&gt; version bumps (&lt;code&gt;binaryen&lt;/code&gt; 0.36.0-0.38.0 and &lt;code&gt;libbinaryen&lt;/code&gt; 128.0.0-132.0.0), which &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; flagged as an unusually high release cadence (&lt;a href="https://github.com/ocaml/opam-repository/pull/30650"&gt;#30650&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/pull/30615"&gt;#30615&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/pull/30618"&gt;#30618&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/pull/30621"&gt;#30621&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/pull/30628"&gt;#30628&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/pull/30647"&gt;#30647&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/pull/30654"&gt;#30654&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/pull/30658"&gt;#30658&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/eldh"&gt;Andreas Eldh&lt;/a&gt;'s &lt;strong class="achievement"&gt;&lt;code&gt;matcha&lt;/code&gt;&lt;/strong&gt; release went through three iterations (0.2.0, 0.3.0, 0.3.1) opened and closed in quick succession to dodge riscv64/macOS CI failures, drawing scrutiny from &lt;a href="https://github.com/dinosaure"&gt;Calascibetta Romain&lt;/a&gt;, &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; and &lt;a href="https://github.com/raphael-proust"&gt;Raphaël Proust&lt;/a&gt; over whether the process was human-supervised, before 0.3.1 was itself closed as a policy violation (&lt;a href="https://github.com/ocaml/opam-repository/pull/30607"&gt;#30607&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/pull/30617"&gt;#30617&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/pull/30623"&gt;#30623&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/cuihtlauac"&gt;Cuihtlauac Alvarado&lt;/a&gt;'s &lt;strong class="achievement"&gt;&lt;code&gt;topup&lt;/code&gt;&lt;/strong&gt; package went through three revisions (0.1.1, 0.1.2, 0.1.3) before 0.1.3 merged, with &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; confirming an unrelated CI failure could be ignored (&lt;a href="https://github.com/ocaml/opam-repository/pull/30562"&gt;#30562&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/pull/30600"&gt;#30600&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/pull/30602"&gt;#30602&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/clyde-asara"&gt;Clyde&lt;/a&gt; closed an initial &lt;strong class="achievement"&gt;&lt;code&gt;modelkit&lt;/code&gt;&lt;/strong&gt; 0.4.0 release after an optional Windows-incompatible dependency was pulled in unexpectedly, then merged 0.4.1 with an explicit skip (&lt;a href="https://github.com/ocaml/opam-repository/pull/30648"&gt;#30648&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/pull/30649"&gt;#30649&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/thevilledev"&gt;Ville Vesilehto&lt;/a&gt; closed an initial &lt;strong class="achievement"&gt;&lt;code&gt;kube&lt;/code&gt;&lt;/strong&gt; 0.1.0 submission in favour of 0.1.3, which merged (&lt;a href="https://github.com/ocaml/opam-repository/pull/30660"&gt;#30660&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/pull/30662"&gt;#30662&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;The automated &lt;code&gt;vscoqbot&lt;/code&gt; PR for &lt;a href="https://github.com/ocaml/opam-repository/pull/30643" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;VSRocq&lt;/strong&gt;&lt;/a&gt; 2.5.0 was closed after &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; questioned whether a human was behind it; &lt;a href="https://github.com/gares"&gt;Enrico Tassi&lt;/a&gt; then opened and merged a corrected version with proper &lt;code&gt;sel&lt;/code&gt; lower bounds (&lt;a href="https://github.com/ocaml/opam-repository/pull/30643"&gt;#30643&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/pull/30653"&gt;#30653&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/echoumcp1"&gt;Ethan Chou&lt;/a&gt;'s &lt;strong class="achievement"&gt;&lt;code&gt;hegel&lt;/code&gt;&lt;/strong&gt; package went through 0.17.0 and 0.17.1 (both closed) before 0.17.2 merged (&lt;a href="https://github.com/ocaml/opam-repository/pull/30644"&gt;#30644&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/pull/30645"&gt;#30645&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/pull/30646"&gt;#30646&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/mtelvers"&gt;Mark Elvers&lt;/a&gt; merged a 3-package &lt;strong class="achievement"&gt;&lt;code&gt;ocaml-dockerfile&lt;/code&gt;&lt;/strong&gt; 8.4.3 release (&lt;a href="https://github.com/ocaml/opam-repository/pull/30635"&gt;#30635&lt;/a&gt;), and &lt;a href="https://github.com/NathanReb"&gt;Nathan Rebours&lt;/a&gt; merged &lt;strong class="achievement"&gt;&lt;code&gt;ocp-indent&lt;/code&gt;&lt;/strong&gt; 1.10.0 after disabling flaky FreeBSD/macOS tests flagged by &lt;a href="https://github.com/jmid"&gt;Jan Midtgaard&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/pull/30631"&gt;#30631&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/shoopeur-eng"&gt;shoopeur-eng&lt;/a&gt;'s &lt;strong class="achievement"&gt;&lt;code&gt;realdentalcosts&lt;/code&gt;&lt;/strong&gt; submission was closed after &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; noted the submitting organisation was created on 29 August 2026 and was spraying packages across multiple names, linking corroborating evidence; the submitter acknowledged the package had little OCaml-specific value (&lt;a href="https://github.com/ocaml/opam-repository/pull/30634"&gt;#30634&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/craigsmitham"&gt;Craig Smitham&lt;/a&gt;'s &lt;code&gt;agentxm-example-tinyflags&lt;/code&gt; submission was closed by &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; after no response (&lt;a href="https://github.com/ocaml/opam-repository/pull/29905"&gt;#29905&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/loganbnielsen"&gt;Logan B. Nielsen&lt;/a&gt; closed &lt;strong class="achievement"&gt;&lt;code&gt;obs-eio&lt;/code&gt;&lt;/strong&gt; 0.1.1 after &lt;a href="https://github.com/dinosaure"&gt;Calascibetta Romain&lt;/a&gt; asked them not to post LLM-generated follow-up commits given shared CI resources, and &lt;a href="https://github.com/mtelvers"&gt;Mark Elvers&lt;/a&gt; pointed them to the standalone &lt;code&gt;opam-ci-check&lt;/code&gt; CLI for local testing (&lt;a href="https://github.com/ocaml/opam-repository/pull/30630"&gt;#30630&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Long-idle PRs saw renewed attention: &lt;a href="https://github.com/sim642"&gt;Simmo Saan&lt;/a&gt;'s &lt;code&gt;conf-gcc-multilib&lt;/code&gt; (opened November 2024) got a RISC-V availability suggestion from &lt;a href="https://github.com/mtelvers"&gt;Mark Elvers&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/pull/26991"&gt;#26991&lt;/a&gt;), and &lt;a href="https://github.com/jmid"&gt;Jan Midtgaard&lt;/a&gt; pinged &lt;a href="https://github.com/phstrauss"&gt;Philippe Strauss&lt;/a&gt; for status on three stalled packages (&lt;a href="https://github.com/ocaml/opam-repository/pull/30295"&gt;#30295&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/pull/30296"&gt;#30296&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/pull/30297"&gt;#30297&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/madroach"&gt;madroach&lt;/a&gt;'s &lt;code&gt;libcurl&lt;/code&gt; depext flexibility proposal for Debian/Ubuntu remains open, discussing sandboxed network failures caused by opam switching between the openssl and gnutls variants (&lt;a href="https://github.com/ocaml/opam-repository/pull/30360"&gt;#30360&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/dinosaure"&gt;Calascibetta Romain&lt;/a&gt; merged the second &lt;code&gt;fsevents&lt;/code&gt;-adjacent release &lt;strong class="achievement"&gt;&lt;code&gt;vif&lt;/code&gt;&lt;/strong&gt; and 3-package &lt;strong class="achievement"&gt;&lt;code&gt;mhttp&lt;/code&gt;&lt;/strong&gt; while noting a pending &lt;code&gt;fsevents&lt;/code&gt; release (&lt;a href="https://github.com/ocaml/opam-repository/pull/30479"&gt;#30479&lt;/a&gt;) is blocked on macOS compilation issues they can't test without hardware&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>OCaml 5.5.1 and opam 2.6.0~beta2 landed alongside a breaking tyxml 5.0.0 release and a wave of new package submissions.</summary><published>2026-09-06T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2026/week-35</id><title>Week 35, 2026: Opam 2.6.0~beta1 packages landed alongside mirage-crypto 2.4.1, miou 0.9.0 and Solo5 0.13.0 releases plus a wave of new package submissions.</title><updated>2026-08-30T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Windows CI x-ci-accept-failures support and several eio observability packages remain open, alongside constraint fixes and a package-discoverability tagging pass.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/shym"&gt;Samuel Hym&lt;/a&gt; has an open PR teaching &lt;code&gt;x-ci-accept-failures&lt;/code&gt; to Windows CI tests, aligning the environment variable naming with &lt;code&gt;setup-ocaml&lt;/code&gt;'s &lt;code&gt;windows-environment&lt;/code&gt;/&lt;code&gt;windows-compiler&lt;/code&gt; scheme after feedback from &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; and &lt;a href="https://github.com/jmid"&gt;Jan Midtgaard&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/28856"&gt;#28856&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/loganbnielsen"&gt;Logan B. Nielsen&lt;/a&gt; opened two more obs-eio ecosystem packages, &lt;code&gt;obs-prometheus-eio&lt;/code&gt; (Prometheus text-exposition backend) and &lt;code&gt;obs-loki-eio&lt;/code&gt; (Loki push backend), extending the &lt;code&gt;Obs_eio.backend&lt;/code&gt; observability interface introduced earlier in the week (&lt;a href="https://github.com/ocaml/opam-repository/issues/30596"&gt;#30596&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/30597"&gt;#30597&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/davesnx"&gt;David Sancho&lt;/a&gt; opened server-reason-react 0.5.0 with a clearer runtime error for misuse of &lt;code&gt;React.cloneElement&lt;/code&gt; and support for &lt;code&gt;[@platform js]&lt;/code&gt;/&lt;code&gt;[@browser_only]&lt;/code&gt; on externals (&lt;a href="https://github.com/ocaml/opam-repository/issues/29631"&gt;#29631&lt;/a&gt;); &lt;a href="https://github.com/victornicolet"&gt;Victor Nicolet&lt;/a&gt; opened syguslib-utils 0.3.0, a SyGuS Language Standard v2.1 parser (&lt;a href="https://github.com/ocaml/opam-repository/issues/30043"&gt;#30043&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Kakadu"&gt;Dmitrii Kosarev&lt;/a&gt; opened a cluster of CI-driven constraint fixes surfaced by check.ci.ocaml.org, covering yojson-bench's OCaml 4.14 requirement, guile's incompatibility with GCC 14, an OCaml &lt; 5 constraint for tplib 1.3, and constraints on two &lt;code&gt;-secondary&lt;/code&gt; packages with unclear purpose (&lt;a href="https://github.com/ocaml/opam-repository/issues/30587"&gt;#30587&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/30588"&gt;#30588&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/30484"&gt;#30484&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/30551"&gt;#30551&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/30591"&gt;#30591&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Kakadu"&gt;Dmitrii Kosarev&lt;/a&gt; also merged several dependency-constraint fixes this week: &lt;code&gt;lambda-runtime&lt;/code&gt; constrained against &lt;code&gt;logs&lt;/code&gt;, &lt;code&gt;inquire&lt;/code&gt; requiring OCaml &lt; 5.2, &lt;code&gt;taglib&lt;/code&gt; given &lt;code&gt;x-ci-accept-failures&lt;/code&gt;, and &lt;code&gt;qrencode&lt;/code&gt; 0.2 constrained to OCaml &lt; 5.2 (&lt;a href="https://github.com/ocaml/opam-repository/issues/30585"&gt;#30585&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/30592"&gt;#30592&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/30540"&gt;#30540&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/30488"&gt;#30488&lt;/a&gt;), while &lt;a href="https://github.com/mseri"&gt;Marcello Seri&lt;/a&gt; had &lt;code&gt;conf-autoconf&lt;/code&gt; install automake on macOS (&lt;a href="https://github.com/ocaml/opam-repository/issues/30586"&gt;#30586&lt;/a&gt;) and &lt;a href="https://github.com/mtelvers"&gt;Mark Elvers&lt;/a&gt; added an upper bound on efl.1.24.0 (&lt;a href="https://github.com/ocaml/opam-repository/issues/28495"&gt;#28495&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ferminr"&gt;Fermin Reig&lt;/a&gt; normalized the &lt;code&gt;data-structures&lt;/code&gt; tag variants across packages and added missing discoverability tags for the opam web UI, with follow-up PRs planned upstream (&lt;a href="https://github.com/ocaml/opam-repository/issues/30561"&gt;#30561&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/dinosaure"&gt;Calascibetta Romain&lt;/a&gt; added an upper bound on &lt;code&gt;mhttp&lt;/code&gt; to prepare the next &lt;code&gt;mnet&lt;/code&gt; release (&lt;a href="https://github.com/ocaml/opam-repository/issues/30583"&gt;#30583&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Package submissions closed without merging this week: &lt;a href="https://github.com/korkorran"&gt;Korkorran&lt;/a&gt;'s duplicate &lt;code&gt;opam-publish/owebview.0.1.0&lt;/code&gt; in favor of the direct submission that merged (&lt;a href="https://github.com/ocaml/opam-repository/issues/30593"&gt;#30593&lt;/a&gt;, merged variant &lt;a href="https://github.com/ocaml/opam-repository/issues/30577"&gt;#30577&lt;/a&gt;), &lt;a href="https://github.com/cuihtlauac"&gt;Cuihtlauac Alvarado&lt;/a&gt;'s superseded &lt;code&gt;topup&lt;/code&gt; 0.1.0 and 0.1.1 submissions (&lt;a href="https://github.com/ocaml/opam-repository/issues/30556"&gt;#30556&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/30562"&gt;#30562&lt;/a&gt;), an earlier &lt;code&gt;vinary-tree-interop&lt;/code&gt; 4.0.0~rc4 superseded by rc5 (&lt;a href="https://github.com/ocaml/opam-repository/issues/30559"&gt;#30559&lt;/a&gt;), and &lt;a href="https://github.com/at649"&gt;at649&lt;/a&gt;'s &lt;code&gt;lintml&lt;/code&gt; 0.1.5 submission (&lt;a href="https://github.com/ocaml/opam-repository/issues/30598"&gt;#30598&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/cedricbonhomme"&gt;Cédric Bonhomme&lt;/a&gt; released ifs-fractals 1.2.0 (&lt;a href="https://github.com/ocaml/opam-repository/issues/30548"&gt;#30548&lt;/a&gt;) and &lt;a href="https://github.com/madroach"&gt;Marion Roach/madroach&lt;/a&gt; released lmdb 1.1.2 (&lt;a href="https://github.com/ocaml/opam-repository/issues/30198"&gt;#30198&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Opam 2.6.0~beta1 packages landed alongside mirage-crypto 2.4.1, miou 0.9.0 and Solo5 0.13.0 releases plus a wave of new package submissions.</summary><published>2026-08-30T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2026/week-34</id><title>Week 34, 2026: Package archival triage, OCaml 5.5 compatibility bounds, and security-driven releases of cohttp, eio and mirage-crypto.</title><updated>2026-08-23T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Seven PRs remained open pending CI or dependency fixes, while dozens of OCaml 5.5 compatibility bounds and archival markings merged.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;Seven PRs opened this week are still awaiting merge: &lt;code&gt;sosie&lt;/code&gt; 0.1.2 by &lt;a href="https://github.com/cuihtlauac"&gt;Cuihtlauac Alvarado&lt;/a&gt;, lowering its OCaml floor from &gt;=5.4 to &gt;=4.14 to fix distribution-matrix availability but still failing lower-bound checks for &lt;code&gt;digestif&lt;/code&gt; and &lt;code&gt;yojson&lt;/code&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/30536"&gt;#30536&lt;/a&gt;); &lt;code&gt;lmdb&lt;/code&gt; 1.1.2 by &lt;a href="https://github.com/madroach"&gt;@madroach&lt;/a&gt;, which switches the build to ocamlbuild and is under review for potential unsafe GC-root handling in its C stubs (&lt;a href="https://github.com/ocaml/opam-repository/issues/30198"&gt;#30198&lt;/a&gt;); &lt;code&gt;server-reason-react&lt;/code&gt; 0.5.0 by &lt;a href="https://github.com/davesnx"&gt;David Sancho&lt;/a&gt;, blocked on a missing &lt;code&gt;node&lt;/code&gt; test dependency (&lt;a href="https://github.com/ocaml/opam-repository/issues/29631"&gt;#29631&lt;/a&gt;); a batch of 8 &lt;code&gt;opam&lt;/code&gt; 2.6.0~beta1 packages by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/30542"&gt;#30542&lt;/a&gt;); &lt;code&gt;x-ci-accept-failures&lt;/code&gt; for the archived &lt;code&gt;taglib&lt;/code&gt; package by &lt;a href="https://github.com/Kakadu"&gt;Dmitrii Kosarev&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/30540"&gt;#30540&lt;/a&gt;); an OCaml &lt;5.2 constraint for &lt;code&gt;qrencode&lt;/code&gt; 0.2, awaiting patch relocation to opam-source-archives (&lt;a href="https://github.com/ocaml/opam-repository/issues/30488"&gt;#30488&lt;/a&gt;); and 3 &lt;code&gt;mehari&lt;/code&gt; packages by &lt;a href="https://github.com/Tim-ats-d"&gt;Tim ats&lt;/a&gt;, still failing on a missing &lt;code&gt;tls-mirage&lt;/code&gt; dependency (&lt;a href="https://github.com/ocaml/opam-repository/issues/30388"&gt;#30388&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Kakadu"&gt;Dmitrii Kosarev&lt;/a&gt; drove a wide-ranging &lt;a href="https://github.com/ocaml/opam-repository/issues/30489" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml 5.5 compatibility sweep&lt;/strong&gt;&lt;/a&gt; across older packages discovered via check.ci.ocaml.org, adding upper or lower bounds to &lt;code&gt;oclock&lt;/code&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/30489"&gt;#30489&lt;/a&gt;), &lt;code&gt;qrencode&lt;/code&gt;, &lt;code&gt;accessor_core&lt;/code&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/30494"&gt;#30494&lt;/a&gt;), &lt;code&gt;errpy&lt;/code&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/30500"&gt;#30500&lt;/a&gt;), &lt;code&gt;speed&lt;/code&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/30526"&gt;#30526&lt;/a&gt;), &lt;code&gt;ostap&lt;/code&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/30442"&gt;#30442&lt;/a&gt;), and &lt;code&gt;cb-check&lt;/code&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/30525"&gt;#30525&lt;/a&gt;), plus depext and build fixes for &lt;code&gt;functory&lt;/code&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/30539"&gt;#30539&lt;/a&gt;), &lt;code&gt;cgi&lt;/code&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/30513"&gt;#30513&lt;/a&gt;), &lt;code&gt;conf-lua&lt;/code&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/30498"&gt;#30498&lt;/a&gt;), &lt;code&gt;conf-libusb&lt;/code&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/30504"&gt;#30504&lt;/a&gt;), &lt;code&gt;libblake3&lt;/code&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/30502"&gt;#30502&lt;/a&gt;) and &lt;code&gt;accplus&lt;/code&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/30501"&gt;#30501&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Continuing the same theme, &lt;a href="https://github.com/jmid"&gt;Jan Midtgaard&lt;/a&gt; added an OCaml &lt;5.4 bound on &lt;code&gt;gettext&lt;/code&gt; after a &lt;code&gt;Longident.t&lt;/code&gt; AST change broke it (&lt;a href="https://github.com/ocaml/opam-repository/issues/30516"&gt;#30516&lt;/a&gt;) and two &lt;code&gt;with-test&lt;/code&gt; bounds for &lt;code&gt;camlp5&lt;/code&gt;/&lt;code&gt;pa_ppx&lt;/code&gt; on 5.5 following discussion with &lt;a href="https://github.com/chetmurthy"&gt;@chetmurthy&lt;/a&gt; about the &lt;code&gt;not-ocamlfind&lt;/code&gt; 0.15 release (&lt;a href="https://github.com/ocaml/opam-repository/issues/30517"&gt;#30517&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/30472"&gt;#30472&lt;/a&gt;), while &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; fixed &lt;code&gt;ocluster&lt;/code&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/30538"&gt;#30538&lt;/a&gt;) and constrained &lt;code&gt;core_unix&lt;/code&gt; 0.17.1 off riscv (&lt;a href="https://github.com/ocaml/opam-repository/issues/30523"&gt;#30523&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Package &lt;a href="https://github.com/ocaml/opam-repository/issues/30546" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;maintenance status&lt;/strong&gt;&lt;/a&gt; was formalised for several archived-upstream projects: &lt;code&gt;afl&lt;/code&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/30546"&gt;#30546&lt;/a&gt;), &lt;code&gt;gluon&lt;/code&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/30545"&gt;#30545&lt;/a&gt;) and &lt;code&gt;cca&lt;/code&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/30503"&gt;#30503&lt;/a&gt;) were marked non-maintained by &lt;a href="https://github.com/Kakadu"&gt;Dmitrii Kosarev&lt;/a&gt;, following the archival-policy triage he opened in &lt;a href="https://github.com/ocaml/opam-repository/issues/30550"&gt;#30550&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Library releases merged this week included &lt;code&gt;alcobar&lt;/code&gt; 0.3.2 with a fuzzer-discovered property-test fix by &lt;a href="https://github.com/samoht"&gt;Thomas Gazagnaire&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/30378"&gt;#30378&lt;/a&gt;), &lt;code&gt;yocaml&lt;/code&gt; 3.0.1 across 14 packages by &lt;a href="https://github.com/xvw"&gt;Xavier Van de Woestyne&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/30537"&gt;#30537&lt;/a&gt;), &lt;code&gt;mariadb&lt;/code&gt; 2.0.0 with 64-bit integer and JSON type support by &lt;a href="https://github.com/paurkedal"&gt;Petter A. Urkedal&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/30343"&gt;#30343&lt;/a&gt;), &lt;code&gt;coccinelle&lt;/code&gt; 1.3.2 by &lt;a href="https://github.com/evdenis"&gt;Denis Efremov&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/30521"&gt;#30521&lt;/a&gt;), and &lt;code&gt;mirage-net-xen&lt;/code&gt; 2.1.8, merging its backend and frontend and adding Generic Segmentation Offload, by &lt;a href="https://github.com/palainp"&gt;Pierre Alain&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/30511"&gt;#30511&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Several submissions needed &lt;a href="https://github.com/ocaml/opam-repository/issues/30530" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;rapid iteration&lt;/strong&gt;&lt;/a&gt; after opam-repo-ci caught missing dependencies or bad bounds: &lt;code&gt;sosie&lt;/code&gt; went through three releases in one day (0.1.0 → 0.1.2) by &lt;a href="https://github.com/cuihtlauac"&gt;Cuihtlauac Alvarado&lt;/a&gt; as each fixed a missing &lt;code&gt;re&lt;/code&gt; dependency then an overly-high OCaml floor (&lt;a href="https://github.com/ocaml/opam-repository/issues/30530"&gt;#30530&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/30531"&gt;#30531&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/30536"&gt;#30536&lt;/a&gt;); &lt;code&gt;modelkit&lt;/code&gt; was resubmitted twice in two days by &lt;a href="https://github.com/clyde-asara"&gt;Clyde&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/30506"&gt;#30506&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/30514"&gt;#30514&lt;/a&gt;, merged as &lt;a href="https://github.com/ocaml/opam-repository/issues/30515"&gt;#30515&lt;/a&gt;); and &lt;code&gt;ocaml-ai-sdk&lt;/code&gt; moved through three releases (0.6 → 0.6.2) by &lt;a href="https://github.com/thatportugueseguy"&gt;José Nogueira&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/30473"&gt;#30473&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/30480"&gt;#30480&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/30519"&gt;#30519&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;GitHub connectivity issues repeatedly disrupted CI this week, causing spurious &lt;code&gt;curl&lt;/code&gt;/&lt;code&gt;git clone&lt;/code&gt; timeouts on otherwise-passing PRs such as &lt;code&gt;bytesrw&lt;/code&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/30543"&gt;#30543&lt;/a&gt;), &lt;code&gt;vif&lt;/code&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/30544"&gt;#30544&lt;/a&gt;) and &lt;code&gt;ascon&lt;/code&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/30549"&gt;#30549&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Package archival triage, OCaml 5.5 compatibility bounds, and security-driven releases of cohttp, eio and mirage-crypto.</summary><published>2026-08-23T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2026/week-33</id><title>Week 33, 2026: Ecosystem week dominated by MirageOS/Solo5 releases, a prometheus core/Lwt split, new packages, and a wave of Kakadu's OCaml-5-upper-bound maintenance PRs.</title><updated>2026-08-16T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

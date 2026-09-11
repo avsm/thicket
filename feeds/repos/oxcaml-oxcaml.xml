@@ -1,5 +1,213 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml</id><title>oxcaml/oxcaml (Weekly)</title><updated>2026-08-16T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/oxcaml</subtitle><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2026/week-33</id><title>Week 33, 2026: Atomic block-index primitives landed, flambda2 int-id/rec-info internals were reworked, and Merlin was resynced with the frontend.</title><updated>2026-08-16T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml</id><title>oxcaml/oxcaml (Weekly)</title><updated>2026-09-06T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/oxcaml-oxcaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for oxcaml/oxcaml</subtitle><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2026/week-36</id><title>Week 36, 2026: Atomic pointer primitives, DWARF-5 debug info, and expanded mode-polymorphism typing landed alongside continued LTO/reaper and vendoring work.</title><updated>2026-09-06T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+New PRs opened on LTO, metaprogramming unloading, and mode polymorphism, alongside merged work on typing internals and DWARF.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;A large batch of &lt;a href="https://github.com/oxcaml/oxcaml/issues/7156" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;new PRs opened&lt;/strong&gt;&lt;/a&gt; this week feeds ongoing threads: an LTO prototype by &lt;a href="https://github.com/spiessimon"&gt;Simon Spies&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/7156"&gt;#7156&lt;/a&gt;), calling-convention and slot-offset work for link-time optimization by &lt;a href="https://github.com/mirivella"&gt;Miriam Vellacott&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/7030"&gt;#7030&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6992"&gt;#6992&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/7068"&gt;#7068&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/7082"&gt;#7082&lt;/a&gt;), and a series of metaprogramming/unloadable-compilation-unit PRs by &lt;a href="https://github.com/mshinwell"&gt;Mark Shinwell&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/7032"&gt;#7032&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/7033"&gt;#7033&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/7034"&gt;#7034&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/7035"&gt;#7035&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/7036"&gt;#7036&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/7037"&gt;#7037&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/7038"&gt;#7038&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/7050"&gt;#7050&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/7025" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Mode polymorphism and modality&lt;/strong&gt;&lt;/a&gt; typing infrastructure continued to expand with new PRs from &lt;a href="https://github.com/ainageorges"&gt;@ainageorges&lt;/a&gt; on mixed linking (&lt;a href="https://github.com/oxcaml/oxcaml/issues/7025"&gt;#7025&lt;/a&gt;), curry-mode modality application (&lt;a href="https://github.com/oxcaml/oxcaml/issues/7056"&gt;#7056&lt;/a&gt;) and printing/hiding mode-polymorphic curry modes (&lt;a href="https://github.com/oxcaml/oxcaml/issues/7098"&gt;#7098&lt;/a&gt;), alongside &lt;a href="https://github.com/dkalinichenko-js"&gt;@dkalinichenko-js&lt;/a&gt; opening instance type constructor argument typing (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6352"&gt;#6352&lt;/a&gt;), bidirectional type checking for applications (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6762"&gt;#6762&lt;/a&gt;) and making externality a "secret" mode axis (&lt;a href="https://github.com/oxcaml/oxcaml/issues/7095"&gt;#7095&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Atomics work broadened further with &lt;a href="https://github.com/joe-kerrigan"&gt;Joe Kerrigan&lt;/a&gt; adding atomic &lt;code&gt;ext_ptr&lt;/code&gt; support (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6937"&gt;#6937&lt;/a&gt;) and refactoring index-like atomic primitive lowering (&lt;a href="https://github.com/oxcaml/oxcaml/issues/7047"&gt;#7047&lt;/a&gt;), plus &lt;a href="https://github.com/glittershark"&gt;Aspen Smith&lt;/a&gt; opening acquire/release atomic load and store primitives (&lt;a href="https://github.com/oxcaml/oxcaml/issues/7048"&gt;#7048&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/gavinleroy"&gt;Gavin Gray&lt;/a&gt; opened a series on Merlin/compiler-artifact integration, adding module-type information to &lt;code&gt;.cms&lt;/code&gt;/merlin-index artifacts (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6801"&gt;#6801&lt;/a&gt;), a &lt;code&gt;module-type-impls&lt;/code&gt; query (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6811"&gt;#6811&lt;/a&gt;), synchronized Merlin import for module-type implementations (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6872"&gt;#6872&lt;/a&gt;) and annotation provenance import (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6891"&gt;#6891&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;A &lt;a href="https://github.com/oxcaml/oxcaml/issues/6933" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;fuzzer MVP&lt;/strong&gt;&lt;/a&gt; generating random programs over a subset of OxCaml was opened by &lt;a href="https://github.com/hwasilewskijs"&gt;@hwasilewskijs&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6933"&gt;#6933&lt;/a&gt;), alongside Datalog-based validators for CFG passes from the same author (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6564"&gt;#6564&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6673"&gt;#6673&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/7076"&gt;#7076&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/5371" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Merged work on typing internals&lt;/strong&gt;&lt;/a&gt; included functors affected by modalities (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5371"&gt;#5371&lt;/a&gt;) and functional mode polymorphism (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5483"&gt;#5483&lt;/a&gt;) by &lt;a href="https://github.com/ainageorges"&gt;@ainageorges&lt;/a&gt;, middle modality mode crossing (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6272"&gt;#6272&lt;/a&gt;) and jkind normalization refactoring (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6393"&gt;#6393&lt;/a&gt;) by &lt;a href="https://github.com/julesjacobs"&gt;Jules Jacobs&lt;/a&gt;, and type-directed disambiguation of &lt;code&gt;unit&lt;/code&gt;/&lt;code&gt;unit#&lt;/code&gt; in statements by &lt;a href="https://github.com/jra4"&gt;James Rayman&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6876"&gt;#6876&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/6922" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;DWARF/debugging&lt;/strong&gt;&lt;/a&gt; work merged compact forms for small constants and high PC offsets, base-address/offset-pair location lists, and DWARF-5 line-table source-file registration on macOS, all by &lt;a href="https://github.com/mshinwell"&gt;Mark Shinwell&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6922"&gt;#6922&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6926"&gt;#6926&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6934"&gt;#6934&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/7021"&gt;#7021&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/oxcaml/oxcaml/issues/6663" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Removal and reversion churn&lt;/strong&gt;&lt;/a&gt; around unboxed numeric types: &lt;code&gt;int64#&lt;/code&gt;, &lt;code&gt;int32#&lt;/code&gt;, &lt;code&gt;nativeint#&lt;/code&gt; and &lt;code&gt;float32#&lt;/code&gt; were removed by &lt;a href="https://github.com/rtjoa"&gt;Ryan Tjoa&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6663"&gt;#6663&lt;/a&gt;) and then reverted the same week (&lt;a href="https://github.com/oxcaml/oxcaml/issues/7058"&gt;#7058&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Link-time optimization progressed with a &lt;code&gt;.ltosol&lt;/code&gt; solution-file cache for the Reaper (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6964"&gt;#6964&lt;/a&gt;) and merging the pre-calling-convention-change &lt;code&gt;main&lt;/code&gt; into the LTO branch (&lt;a href="https://github.com/oxcaml/oxcaml/issues/7118"&gt;#7118&lt;/a&gt;), both by &lt;a href="https://github.com/mirivella"&gt;Miriam Vellacott&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Atomic pointer primitives, DWARF-5 debug info, and expanded mode-polymorphism typing landed alongside continued LTO/reaper and vendoring work.</summary><published>2026-09-06T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2026/week-35</id><title>Week 35, 2026: New atomic idx_atomic operations and a CFG block-layout pass landed alongside continued mode-system and DWARF-debug-info work.</title><updated>2026-08-30T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Many open PRs advanced Merlin-diagnostics import, DWARF-5 support, link-time optimization, and the parameterized-libraries (functorize) effort.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/gavinleroy"&gt;Gavin Gray&lt;/a&gt; opened a series of PRs importing structured-diagnostics and provenance information from Merlin into the compiler frontend, covering uniqueness errors, modality implications, and function-argument provenance (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6891"&gt;#6891&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6892"&gt;#6892&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6893"&gt;#6893&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6896"&gt;#6896&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6897"&gt;#6897&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6900"&gt;#6900&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6901"&gt;#6901&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6941"&gt;#6941&lt;/a&gt;), also opening tooling PRs to expose module-type information and a &lt;code&gt;module-type-impls&lt;/code&gt; query for compiler artifacts (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6801"&gt;#6801&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6811"&gt;#6811&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/mshinwell"&gt;Mark Shinwell&lt;/a&gt; opened a run of &lt;a href="https://github.com/oxcaml/oxcaml/issues/6926" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;DWARF-5&lt;/strong&gt;&lt;/a&gt; PRs including base-address/offset-pair location and range lists (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6926"&gt;#6926&lt;/a&gt;), LLDB DWARF-5 test variants (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6957"&gt;#6957&lt;/a&gt;), a selectable &lt;code&gt;-gdwarf-version&lt;/code&gt; flag (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6923"&gt;#6923&lt;/a&gt;), optional DWARF-4 type units in &lt;code&gt;.debug_types&lt;/code&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6920"&gt;#6920&lt;/a&gt;), and enabling &lt;code&gt;--enable-oxcaml-dwarf-on-compiler&lt;/code&gt; by default (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6911"&gt;#6911&lt;/a&gt;), plus a fix for &lt;code&gt;unit#&lt;/code&gt; and unboxed-type DWARF shapes (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6969"&gt;#6969&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/mirivella"&gt;Miriam Vellacott&lt;/a&gt; opened further &lt;a href="https://github.com/oxcaml/oxcaml/issues/6895" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;link-time optimization&lt;/strong&gt;&lt;/a&gt; PRs to store Reaper solutions in &lt;code&gt;.ltosol&lt;/code&gt; files and rebuild from them (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6895"&gt;#6895&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6964"&gt;#6964&lt;/a&gt;) and to load &lt;code&gt;.reaped.cmx&lt;/code&gt; files during &lt;code&gt;-reaper-rebuild&lt;/code&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6965"&gt;#6965&lt;/a&gt;), following merged work on &lt;code&gt;.ltosol&lt;/code&gt; file writing (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6752"&gt;#6752&lt;/a&gt;) and naive dependency-graph merging (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6731"&gt;#6731&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/riaqn"&gt;Zesen Qian&lt;/a&gt; opened several &lt;a href="https://github.com/oxcaml/oxcaml/issues/6917" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;functorize&lt;/strong&gt;&lt;/a&gt;/parameterized-libraries PRs deriving block formats from &lt;code&gt;.cmi&lt;/code&gt; coercions, fixing argument-block projection on mixed module blocks, and checking &lt;code&gt;arg_param&lt;/code&gt; during projection (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6917"&gt;#6917&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6912"&gt;#6912&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6925"&gt;#6925&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6924"&gt;#6924&lt;/a&gt;), plus lazy loading of hidden manifests in the load path (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6951"&gt;#6951&lt;/a&gt;) and a magic-number bump for ox6 that merged this week (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6906"&gt;#6906&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/liam923"&gt;Liam Stevenson&lt;/a&gt; opened PRs vendoring &lt;code&gt;csexp&lt;/code&gt; and &lt;code&gt;yojson&lt;/code&gt; and including the Merlin libraries in the install, continuing the in-tree Merlin effort (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6938"&gt;#6938&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6939"&gt;#6939&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6954"&gt;#6954&lt;/a&gt;), and merged a fix for Merlin jump-to-definition in the compiler frontend (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6932"&gt;#6932&lt;/a&gt;) and a CI check for committed ignored files (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6546"&gt;#6546&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/xclerc"&gt;Xavier Clerc&lt;/a&gt; opened jump-table support for unboxed values in pattern matching, an AFL-based fuzzer for CFG dominators, and a &lt;code&gt;[@table]&lt;/code&gt; attribute forcing jump-table dispatch (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6963"&gt;#6963&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6930"&gt;#6930&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6887"&gt;#6887&lt;/a&gt;), while merging CFG configuration-compatibility checks and frame/prologue-decision storage (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6907"&gt;#6907&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6324"&gt;#6324&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rtjoa"&gt;Ryan Tjoa&lt;/a&gt; opened &lt;a href="https://github.com/oxcaml/oxcaml/issues/6956" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Box kinds&lt;/strong&gt;&lt;/a&gt;, a new kind constructor for the boxed version of a kind (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6956"&gt;#6956&lt;/a&gt;), plus PRs making non-scanned layouts cross externality inherently rather than syntactically and moving &lt;code&gt;any&lt;/code&gt;-fields to stable (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6973"&gt;#6973&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6970"&gt;#6970&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rricard"&gt;Robin Ricard&lt;/a&gt; opened a PR importing the full upstream &lt;code&gt;js_of_ocaml&lt;/code&gt; history into &lt;code&gt;external/js_of_ocaml&lt;/code&gt; as a subtree merge, in preparation for integrating OxCaml patches on top of it (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6968"&gt;#6968&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/hwasilewskijs"&gt;@hwasilewskijs&lt;/a&gt; opened a fuzzer MVP containing a random program generator for a small subset of OxCaml (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6933"&gt;#6933&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/joe-kerrigan"&gt;Joe Kerrigan&lt;/a&gt; opened a PR adding atomic &lt;code&gt;ext_ptr&lt;/code&gt; support and removing a &lt;code&gt;caml_domain_alone&lt;/code&gt; optimization from user atomics (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6937"&gt;#6937&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Additional merged infrastructure work included the Claude Code CI integration and PR-secrets deployment environments by &lt;a href="https://github.com/jvanburen"&gt;Jacob Van Buren&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6415"&gt;#6415&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6441"&gt;#6441&lt;/a&gt;) and a broadened tool allowlist (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6958"&gt;#6958&lt;/a&gt;), a dependency bump for GitHub Actions (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6819"&gt;#6819&lt;/a&gt;), and build cleanups such as untangling the &lt;code&gt;CamlinternalQuote&lt;/code&gt; build and avoiding building &lt;code&gt;ocamlj&lt;/code&gt; during boot-compiler by &lt;a href="https://github.com/stedolan"&gt;Stephen Dolan&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6928"&gt;#6928&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6929"&gt;#6929&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Several draft or exploratory PRs were closed without merging as the underlying work was superseded, including early structured-diagnostics drafts by &lt;a href="https://github.com/gavinleroy"&gt;Gavin Gray&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6818"&gt;#6818&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6890"&gt;#6890&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6898"&gt;#6898&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6899"&gt;#6899&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6878"&gt;#6878&lt;/a&gt;), dynamic-binding prototypes by &lt;a href="https://github.com/TheNumbat"&gt;Max Slater&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6709"&gt;#6709&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6710"&gt;#6710&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6711"&gt;#6711&lt;/a&gt;), and a draft mode-error-hints PR and &lt;code&gt;-nondep&lt;/code&gt; flag exploration by &lt;a href="https://github.com/riaqn"&gt;Zesen Qian&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/4686"&gt;#4686&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6229"&gt;#6229&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>New atomic idx_atomic operations and a CFG block-layout pass landed alongside continued mode-system and DWARF-debug-info work.</summary><published>2026-08-30T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2026/week-34</id><title>Week 34, 2026: Debug-info/DWARF fidelity, runtime heap extensions, and frametable-size work merged alongside a broad wave of newly opened backend and typing PRs.</title><updated>2026-08-23T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+52 PRs opened including Merlin-sync, atomic-primitive, and Simplify_terminator series, alongside merged CI, tooling, and provenance-diagnostics work.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;52 PRs were newly opened this week without merging yet; notable ones include &lt;a href="https://github.com/mshinwell"&gt;Mark Shinwell&lt;/a&gt;'s continuing DWARF/phantom-let series (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6858"&gt;#6858&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6862"&gt;#6862&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6861"&gt;#6861&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6823"&gt;#6823&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6822"&gt;#6822&lt;/a&gt;), &lt;a href="https://github.com/gavinleroy"&gt;Gavin Gray&lt;/a&gt;'s cluster of Merlin-import and structured mode-diagnostics work (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6874"&gt;#6874&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6873"&gt;#6873&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6872"&gt;#6872&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6871"&gt;#6871&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6867"&gt;#6867&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6866"&gt;#6866&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6865"&gt;#6865&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6850"&gt;#6850&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6816"&gt;#6816&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6808"&gt;#6808&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6807"&gt;#6807&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6818"&gt;#6818&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6817"&gt;#6817&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6813"&gt;#6813&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6812"&gt;#6812&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6811"&gt;#6811&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6801"&gt;#6801&lt;/a&gt;), and &lt;a href="https://github.com/xclerc"&gt;Xavier Clerc&lt;/a&gt;'s multi-part rewrite of &lt;code&gt;Simplify_terminator&lt;/code&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6856"&gt;#6856&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6855"&gt;#6855&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6835"&gt;#6835&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6834"&gt;#6834&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6857"&gt;#6857&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6837"&gt;#6837&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6836"&gt;#6836&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6833"&gt;#6833&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6832"&gt;#6832&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/joe-kerrigan"&gt;Joe Kerrigan&lt;/a&gt; opened a series implementing &lt;a href="https://github.com/oxcaml/oxcaml/issues/6743" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;atomic pointer/index primitives&lt;/strong&gt;&lt;/a&gt; including &lt;code&gt;idx_atomic&lt;/code&gt; operations and shift/tag lowering optimizations (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6743"&gt;#6743&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6831"&gt;#6831&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6747"&gt;#6747&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6802"&gt;#6802&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6746"&gt;#6746&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rtjoa"&gt;Ryan Tjoa&lt;/a&gt; opened work on &lt;a href="https://github.com/oxcaml/oxcaml/issues/6712" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;addressable kinds&lt;/strong&gt;&lt;/a&gt;, all-void constructors represented as blocks, and recursive uses within non-value fields of mixed blocks (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6712"&gt;#6712&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6880"&gt;#6880&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6847"&gt;#6847&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/NickBarnes"&gt;Nick Barnes&lt;/a&gt; opened PRs following up on the frametable and heap-extension work, covering guard pages for active stacks, minor-GC table sizing, stack checks for very large frames, and distinct frametable debuginfo records (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6864"&gt;#6864&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6840"&gt;#6840&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6860"&gt;#6860&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6824"&gt;#6824&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/NicolasT"&gt;Nicolas Trangez&lt;/a&gt; opened a PR adding an &lt;code&gt;initial-exec&lt;/code&gt; &lt;a href="https://github.com/oxcaml/oxcaml/issues/6828" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;TLS model configuration option&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6828"&gt;#6828&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rricard"&gt;Robin Ricard&lt;/a&gt; opened a draft integrating OxCaml patches on top of upstream js&lt;em&gt;of&lt;/em&gt;ocaml (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6881"&gt;#6881&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/stedolan"&gt;Stephen Dolan&lt;/a&gt; opened a PR allowing Parsetree compiler hooks to edit the AST, and previously added the &lt;code&gt;-thin-library&lt;/code&gt; option (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6826"&gt;#6826&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6637"&gt;#6637&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/jra4"&gt;James Rayman&lt;/a&gt; opened PRs removing redundant shifts before and-ing with a small constant and adding type-directed disambiguation of &lt;code&gt;unit&lt;/code&gt;/&lt;code&gt;unit#&lt;/code&gt; in statements (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6879"&gt;#6879&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6876"&gt;#6876&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/dkalinichenko-js"&gt;@dkalinichenko-js&lt;/a&gt; continued type-system work spanning principal checking in ocamltest, with-bound type variable constraints, bidirectional type checking for applications, and functor modality effects (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6806"&gt;#6806&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6870"&gt;#6870&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6762"&gt;#6762&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/5371"&gt;#5371&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Svetlitski"&gt;Kevin Svetlitski&lt;/a&gt; opened a follow-up fixing incorrect DWARF filepaths after the call-site attribution fix merged (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6882"&gt;#6882&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Ongoing large in-flight PRs continued to accumulate review discussion, including &lt;a href="https://github.com/ttebbi-janestreet"&gt;@ttebbi-janestreet&lt;/a&gt;'s SSA intermediate representation between Cmm and CFG (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5810"&gt;#5810&lt;/a&gt;), &lt;a href="https://github.com/julesjacobs"&gt;@julesjacobs&lt;/a&gt;'s middle-mode-crossing and local-abstract-kind work (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6393"&gt;#6393&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6272"&gt;#6272&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/5665"&gt;#5665&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/5828"&gt;#5828&lt;/a&gt;), and &lt;a href="https://github.com/mshinwell"&gt;Mark Shinwell&lt;/a&gt;'s phantom-let preservation through instruction selection, CFG and Linear (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6517"&gt;#6517&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6520"&gt;#6520&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6521"&gt;#6521&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6522"&gt;#6522&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6523"&gt;#6523&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/dependabot"&gt;Dependabot&lt;/a&gt; opened a routine actions-group dependency bump (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6819"&gt;#6819&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Merged work beyond new features included &lt;a href="https://github.com/julesjacobs"&gt;@julesjacobs&lt;/a&gt;'s Ldd rigid-variable-id fix for word-size independence (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6804"&gt;#6804&lt;/a&gt;), &lt;a href="https://github.com/stedolan"&gt;Stephen Dolan&lt;/a&gt;'s &lt;code&gt;ocamloptcomp&lt;/code&gt; compile-flags fix (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6800"&gt;#6800&lt;/a&gt;), &lt;a href="https://github.com/jvanburen"&gt;Jacob Van Buren&lt;/a&gt;'s CI change to dump kernel diagnostics on Linux job failures (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6842"&gt;#6842&lt;/a&gt;), and &lt;a href="https://github.com/liam923"&gt;Liam Stevenson&lt;/a&gt;'s flag-parsing check and merge-conflict-example cleanup for the Merlin-import tooling (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6781"&gt;#6781&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6810"&gt;#6810&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6815"&gt;#6815&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Debug-info/DWARF fidelity, runtime heap extensions, and frametable-size work merged alongside a broad wave of newly opened backend and typing PRs.</summary><published>2026-08-23T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/oxcaml-oxcaml/2026/week-33</id><title>Week 33, 2026: Atomic block-index primitives landed, flambda2 int-id/rec-info internals were reworked, and Merlin was resynced with the frontend.</title><updated>2026-08-16T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

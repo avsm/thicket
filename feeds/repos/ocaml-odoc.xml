@@ -1,5 +1,133 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-odoc.xml</id><title>ocaml/odoc (Weekly)</title><updated>2026-08-16T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-odoc.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/odoc</subtitle><entry><id>https://thicket.dev/repos/ocaml-odoc/2026/week-33</id><title>Week 33, 2026: No commits landed on master this week; activity centered on open-PR discussion for OxCaml include-functor support and odoc_driver stdlib-detection fixes.</title><updated>2026-08-16T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-odoc.xml</id><title>ocaml/odoc (Weekly)</title><updated>2026-09-06T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-odoc.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/odoc</subtitle><entry><id>https://thicket.dev/repos/ocaml-odoc/2026/week-36</id><title>Week 36, 2026: Ten PRs opened tackling correctness fixes, memory/performance work, and OxCaml compatibility, with no merges landing on master during the week itself.</title><updated>2026-09-06T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Ten new PRs opened covering resolution fixes and performance work, alongside continued long-running OxCaml feature branches.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;Ten &lt;a href="https://github.com/ocaml/odoc/issues/1483" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;new PRs opened&lt;/strong&gt;&lt;/a&gt; this week by &lt;a href="https://github.com/jonludlam"&gt;Jon Ludlam&lt;/a&gt;, covering correctness fixes to path and signature resolution: canonical chain search (&lt;a href="https://github.com/ocaml/odoc/issues/1483"&gt;#1483&lt;/a&gt;), a broken hidden-paths test (&lt;a href="https://github.com/ocaml/odoc/issues/1484"&gt;#1484&lt;/a&gt;), extended &lt;code&gt;open&lt;/code&gt; support (&lt;a href="https://github.com/ocaml/odoc/issues/1482"&gt;#1482&lt;/a&gt;), module type strengthening for aliases (&lt;a href="https://github.com/ocaml/odoc/issues/1485"&gt;#1485&lt;/a&gt;), and more careful handling of strengthened signatures from includes (&lt;a href="https://github.com/ocaml/odoc/issues/1481"&gt;#1481&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;The same author opened a set of &lt;a href="https://github.com/ocaml/odoc/issues/1480" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;memory and disk usage improvements&lt;/strong&gt;&lt;/a&gt; motivated by OxCaml's &lt;code&gt;ppx_template&lt;/code&gt;-heavy codebases: memoizing docstring parsing to exploit duplicate doc-comments (&lt;a href="https://github.com/ocaml/odoc/issues/1480"&gt;#1480&lt;/a&gt;), merging adjacent word tokens in parsed comments (&lt;a href="https://github.com/ocaml/odoc/issues/1488"&gt;#1488&lt;/a&gt;), and enabling &lt;strong class="achievement"&gt;payload compression&lt;/strong&gt; on &lt;code&gt;.odoc&lt;/code&gt;/&lt;code&gt;.odocl&lt;/code&gt; files for a reported 4-5x size reduction (&lt;a href="https://github.com/ocaml/odoc/issues/1486"&gt;#1486&lt;/a&gt;); building the shape reducer once instead of repeatedly, reducing allocation, was opened and merged within the week (&lt;a href="https://github.com/ocaml/odoc/issues/1487"&gt;#1487&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;A fix for &lt;a href="https://github.com/ocaml/odoc/issues/1489" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OCaml 5.5 compatibility&lt;/strong&gt;&lt;/a&gt; addressing incorrect rendering of optional arguments wrapped in a &lt;code&gt;TPoly&lt;/code&gt; constructor was opened and merged (&lt;a href="https://github.com/ocaml/odoc/issues/1489"&gt;#1489&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Long-running &lt;a href="https://github.com/ocaml/odoc/issues/1452" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OxCaml feature branches&lt;/strong&gt;&lt;/a&gt; continued to receive updates: &lt;code&gt;include functor&lt;/code&gt; support by &lt;a href="https://github.com/Leonidas-from-XIV"&gt;Marek Kubica&lt;/a&gt;, who incorporated an alternative desugaring from &lt;a href="https://github.com/jonludlam"&gt;Jon Ludlam&lt;/a&gt;'s branch and added tests for classes, class types, and aliases (&lt;a href="https://github.com/ocaml/odoc/issues/1452"&gt;#1452&lt;/a&gt;); support for parameterized libraries by &lt;a href="https://github.com/art-w"&gt;art-w&lt;/a&gt;, rebased for a newer OxCaml snapshot (&lt;a href="https://github.com/ocaml/odoc/issues/1464"&gt;#1464&lt;/a&gt;); and support for kind abbreviations, also by &lt;a href="https://github.com/art-w"&gt;art-w&lt;/a&gt; (&lt;a href="https://github.com/ocaml/odoc/issues/1467"&gt;#1467&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;The &lt;a href="https://github.com/ocaml/odoc/issues/1479" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;id wrapper removal&lt;/strong&gt;&lt;/a&gt; simplification, cutting disk usage by around 30% with a smaller memory reduction, was opened before the week and merged shortly after (&lt;a href="https://github.com/ocaml/odoc/issues/1479"&gt;#1479&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Issue &lt;a href="https://github.com/ocaml/odoc/issues/1477"&gt;#1477&lt;/a&gt;, reporting that &lt;code&gt;odoc_driver&lt;/code&gt; cannot find the stdlib when opam installs it under &lt;code&gt;$prefix/lib64&lt;/code&gt;, was closed by &lt;a href="https://github.com/katrinafyi"&gt;katrinafyi&lt;/a&gt; after confirming it was resolved by &lt;a href="https://github.com/ocaml/odoc/issues/1474"&gt;#1474&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Ten PRs opened tackling correctness fixes, memory/performance work, and OxCaml compatibility, with no merges landing on master during the week itself.</summary><published>2026-09-06T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-odoc/2026/week-35</id><title>Week 35, 2026: OxCaml mode-annotation rendering merged and a with-bounds crash fixed, continuing the broader effort to support OxCaml in odoc.</title><updated>2026-08-30T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Ongoing OxCaml support work continued with open PRs for kind abbreviations and include-functor rendering, plus dead-code cleanup.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;code&gt;include functor&lt;/code&gt; support for OxCaml remains open with an active review discussion around desugaring the generated aliases, by &lt;a href="https://github.com/Leonidas-from-XIV"&gt;Marek Kubica&lt;/a&gt; with review input from &lt;a href="https://github.com/panglesd"&gt;Paul-Elliot Anglès d'Auriac&lt;/a&gt; and &lt;a href="https://github.com/jonludlam"&gt;Jon Ludlam&lt;/a&gt; (&lt;a href="https://github.com/ocaml/odoc/issues/1452"&gt;#1452&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Support for rendering and linking &lt;a href="https://github.com/ocaml/odoc/issues/1467" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OxCaml kind abbreviations&lt;/strong&gt;&lt;/a&gt; is still under review, introducing a new namespace alongside types, with &lt;a href="https://github.com/panglesd"&gt;Paul-Elliot Anglès d'Auriac&lt;/a&gt; flagging an issue with forward-reference resolution picking the wrong shadowed abbreviation, by &lt;a href="https://github.com/art-w"&gt;@art-w&lt;/a&gt; (&lt;a href="https://github.com/ocaml/odoc/issues/1467"&gt;#1467&lt;/a&gt;, tracks &lt;a href="https://github.com/ocaml/odoc/issues/1443"&gt;#1443&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Removal of the unused &lt;code&gt;`Forward&lt;/code&gt; constructor and related dead code in &lt;code&gt;xref2&lt;/code&gt; remains an open draft, with &lt;a href="https://github.com/art-w"&gt;@art-w&lt;/a&gt; confirming several related code paths (&lt;code&gt;is_module_forward&lt;/code&gt;, &lt;code&gt;UnresolvedForwardPath&lt;/code&gt; guards) also look removable, by &lt;a href="https://github.com/Leonidas-from-XIV"&gt;Marek Kubica&lt;/a&gt; (&lt;a href="https://github.com/ocaml/odoc/issues/1478"&gt;#1478&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;A simplification removing an unnecessary &lt;code&gt;id&lt;/code&gt; wrapper optimisation was opened, reducing on-disk output size by around 30% and memory usage by around 5% with no measurable speed regression, by &lt;a href="https://github.com/jonludlam"&gt;Jon Ludlam&lt;/a&gt; (&lt;a href="https://github.com/ocaml/odoc/issues/1479"&gt;#1479&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;A proposal to prefer &lt;code&gt;Stdlib&lt;/code&gt; implementations over Odoc's own polyfills (following CI failures with &lt;code&gt;List.partition_map&lt;/code&gt; on OCaml 4.11) was closed after &lt;a href="https://github.com/dbuenzli"&gt;Daniel Bünzli&lt;/a&gt; and &lt;a href="https://github.com/art-w"&gt;@art-w&lt;/a&gt; noted the risk of subtle semantic differences between custom and stdlib implementations, by &lt;a href="https://github.com/Leonidas-from-XIV"&gt;Marek Kubica&lt;/a&gt; (&lt;a href="https://github.com/ocaml/odoc/issues/1476"&gt;#1476&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;The broader tracking issue for &lt;a href="https://github.com/ocaml/odoc/issues/1417" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OxCaml support&lt;/strong&gt;&lt;/a&gt; was updated as sub-issues for modes (&lt;a href="https://github.com/ocaml/odoc/issues/1417"&gt;#1417&lt;/a&gt;) and the with-bounds crash (&lt;a href="https://github.com/ocaml/odoc/issues/1455"&gt;#1455&lt;/a&gt;) were closed this week, by &lt;a href="https://github.com/shonfeder"&gt;Shon Feder&lt;/a&gt; (&lt;a href="https://github.com/ocaml/odoc/issues/1411"&gt;#1411&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>OxCaml mode-annotation rendering merged and a with-bounds crash fixed, continuing the broader effort to support OxCaml in odoc.</summary><published>2026-08-30T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-odoc/2026/week-34</id><title>Week 34, 2026: None</title><updated>2026-08-23T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml/odoc - Week 34, 2026&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml/odoc - Week 34, 2026</summary><published>2026-08-23T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-odoc/2026/week-33</id><title>Week 33, 2026: No commits landed on master this week; activity centered on open-PR discussion for OxCaml include-functor support and odoc_driver stdlib-detection fixes.</title><updated>2026-08-16T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

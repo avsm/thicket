@@ -1,5 +1,197 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml-lsp.xml</id><title>ocaml/ocaml-lsp (Weekly)</title><updated>2026-08-16T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml-lsp.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml-lsp</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml-lsp/2026/week-33</id><title>Week 33, 2026: Two client-facing code-action bugs were fixed (create-counterpart capability checks, unused-code quick fixes) while an odoc navigable-references PR was opened.</title><updated>2026-08-16T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml-lsp.xml</id><title>ocaml/ocaml-lsp (Weekly)</title><updated>2026-09-06T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml-lsp.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml-lsp</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml-lsp/2026/week-36</id><title>Week 36, 2026: 48 PRs merged, mostly by Rudi Grinberg, fixing rename/destruct/selection-range bugs and adding interactive construct completions.</title><updated>2026-09-06T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Two PRs remain open — whole-call completions and record-pun renaming — alongside a large test-suite migration to marked-source rendering.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml-lsp/pull/2199" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Whole-call completions&lt;/strong&gt;&lt;/a&gt; for OCaml functions with two or more labelled/optional arguments opened by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt;, inserting snippet placeholders for each argument in declaration order and listing them after ordinary completions (&lt;a href="https://github.com/ocaml/ocaml-lsp/pull/2199"&gt;#2199&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml-lsp/pull/2065" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Record-pun expansion during rename&lt;/strong&gt;&lt;/a&gt; opened by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt;, covering expressions, patterns, qualified puns, type constraints, coercions, and cross-file occurrences while preserving comments and formatting (&lt;a href="https://github.com/ocaml/ocaml-lsp/pull/2065"&gt;#2065&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;An automated &lt;code&gt;flake.lock&lt;/code&gt; update bumping the &lt;code&gt;merlin&lt;/code&gt; and &lt;code&gt;nixpkgs&lt;/code&gt; inputs was opened by the &lt;code&gt;github-actions&lt;/code&gt; bot and remains unmerged (&lt;a href="https://github.com/ocaml/ocaml-lsp/pull/2144"&gt;#2144&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; drove an extensive &lt;a href="https://github.com/ocaml/ocaml-lsp/pull/2172" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;e2e test-suite migration&lt;/strong&gt;&lt;/a&gt;, converting rename, destruct, formatting, code-action, and completion tests to render marked source and formatted edits inline rather than asserting on raw positions, including shared cursor-marker parsing and interface test setup helpers (&lt;a href="https://github.com/ocaml/ocaml-lsp/pull/2172"&gt;#2172&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/pull/2173"&gt;#2173&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/pull/2174"&gt;#2174&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/pull/2175"&gt;#2175&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/pull/2177"&gt;#2177&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/pull/2178"&gt;#2178&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/pull/2179"&gt;#2179&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/pull/2180"&gt;#2180&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/pull/2181"&gt;#2181&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/pull/2182"&gt;#2182&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/pull/2183"&gt;#2183&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/pull/2184"&gt;#2184&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/pull/2185"&gt;#2185&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/pull/2186"&gt;#2186&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/pull/2187"&gt;#2187&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/pull/2188"&gt;#2188&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Regression tests exposing bugs ahead of their fixes were added for &lt;code&gt;Not_found&lt;/code&gt; on nullary exceptions and incomplete local modules, &lt;code&gt;includeDeclaration&lt;/code&gt; handling, destruct-line malformed replies, nested or-patterns, and RPC cleanup timing, several of which landed the same day as their corresponding fix (&lt;a href="https://github.com/ocaml/ocaml-lsp/pull/2032"&gt;#2032&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/pull/2033"&gt;#2033&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/pull/2161"&gt;#2161&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/pull/2162"&gt;#2162&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/pull/2165"&gt;#2165&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/pull/2167"&gt;#2167&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/pull/2168"&gt;#2168&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/pull/2190"&gt;#2190&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/pull/2191"&gt;#2191&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/pull/2192"&gt;#2192&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/pull/2193"&gt;#2193&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/pull/2195"&gt;#2195&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/pull/2196"&gt;#2196&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/pull/2197"&gt;#2197&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/pull/2200"&gt;#2200&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Internal refactoring extracted a dedicated &lt;a href="https://github.com/ocaml/ocaml-lsp/pull/2171" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;config data interface&lt;/strong&gt;&lt;/a&gt; on the server and separated &lt;strong class="achievement"&gt;workspace edit construction&lt;/strong&gt; out of the rename module by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml-lsp/pull/2171"&gt;#2171&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/pull/2176"&gt;#2176&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; reported the one-based/zero-based line number mismatch in Merlin-derived diagnostic &lt;code&gt;relatedInformation&lt;/code&gt;, which was fixed and closed the same week (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2145"&gt;#2145&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>48 PRs merged, mostly by Rudi Grinberg, fixing rename/destruct/selection-range bugs and adding interactive construct completions.</summary><published>2026-09-06T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml-lsp/2026/week-35</id><title>Week 35, 2026: ocp-indent formatting support and on-type indentation landed alongside a run of LSP result-contract nullability fixes by Rudi Grinberg.</title><updated>2026-08-30T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+A flake.lock dependency-bump PR remains open while a test-then-fix pattern drove a run of LSP protocol-conformance merges.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;The only PR still open at week's end is the automated &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2144" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;flake.lock update&lt;/strong&gt;&lt;/a&gt; bumping the &lt;code&gt;merlin&lt;/code&gt;, &lt;code&gt;nixpkgs&lt;/code&gt;, and &lt;code&gt;ocaml-overlays&lt;/code&gt; inputs, opened by the github-actions bot (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2144"&gt;#2144&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;A &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2158" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;test-then-fix pattern&lt;/strong&gt;&lt;/a&gt; dominated the week: regression tests that expose a bug were merged first, immediately followed by the corresponding fix, covering trailing-newline edit ranges (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2158"&gt;#2158&lt;/a&gt; → &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2159"&gt;#2159&lt;/a&gt;), inlay hints outside the request range (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2039"&gt;#2039&lt;/a&gt; → &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2155"&gt;#2155&lt;/a&gt;), nullable codeLens/workspaceFolders results (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2150"&gt;#2150&lt;/a&gt; → &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2151"&gt;#2151&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2152"&gt;#2152&lt;/a&gt;), and workspace-symbol list discrimination (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2149"&gt;#2149&lt;/a&gt; → &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2154"&gt;#2154&lt;/a&gt;), all by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;A record-pun &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2040" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;rename corruption&lt;/strong&gt;&lt;/a&gt; was exposed by an end-to-end regression test showing &lt;code&gt;let f x = { x }&lt;/code&gt; renamed to &lt;code&gt;y&lt;/code&gt; incorrectly renames the punned record field along with the variable; the test is merged and intentionally left without a fix yet, by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2040"&gt;#2040&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Dune RPC end-to-end test reliability was improved by ignoring SIGPIPE in a fake RPC server child process to avoid intermittent teardown failures (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2160"&gt;#2160&lt;/a&gt;), and by moving preprocessor fixture builds outside the checkout root since Dune refuses to treat a hidden directory as a project root (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2131"&gt;#2131&lt;/a&gt;), both by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Dune promotion registration lifecycle test coverage was extended to the reconnect path, verifying that restarting Dune or re-adding a workspace republishes diagnostics and restores dynamic code-action registration, alongside a documentation clarification of the lifecycle and removal of a stale cleanup TODO, by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2157"&gt;#2157&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2156"&gt;#2156&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;A reference-request test was extended to prime Merlin's project-occurrence lookup so both measured requests observe synchronized state, confirming that &lt;code&gt;includeDeclaration = false&lt;/code&gt; still returns the declaration alongside its usages, by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2161"&gt;#2161&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Development tooling was simplified by switching the Nix flake to the &lt;code&gt;ocaml-index&lt;/code&gt; package supplied by the nix-ocaml overlay instead of building it from Merlin's source tree, by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2147"&gt;#2147&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>ocp-indent formatting support and on-type indentation landed alongside a run of LSP result-contract nullability fixes by Rudi Grinberg.</summary><published>2026-08-30T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml-lsp/2026/week-34</id><title>Week 34, 2026: Development centered on the in-progress on-type indentation PR, plus issue reports on diagnostic ordering and a dune Stdune API break.</title><updated>2026-08-23T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Ongoing work on a persistent on-type indentation feature and an automated dependency update, alongside issue reports on diagnostics and dune compatibility.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;Persistent on-type indentation feature remains open, implementing &lt;a href="https://github.com/ocaml/ocaml-lsp/pull/1986" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;textDocument/onTypeFormatting&lt;/strong&gt;&lt;/a&gt; for OCaml and ocamllex files via an optional &lt;code&gt;ocp-indent-rpc&lt;/code&gt; helper process negotiated over a canonical S-expression protocol, with added &lt;strong class="achievement"&gt;Nix packaging&lt;/strong&gt; and end-to-end coverage for lazy startup and process reuse, by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml-lsp/pull/1986"&gt;#1986&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Automated &lt;a href="https://github.com/ocaml/ocaml-lsp/pull/2144" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;flake.lock update&lt;/strong&gt;&lt;/a&gt; PR opened by the &lt;a href="https://github.com/github-actions"&gt;@github-actions&lt;/a&gt; bot bumping the &lt;code&gt;merlin&lt;/code&gt; and &lt;code&gt;nixpkgs&lt;/code&gt; flake inputs (&lt;a href="https://github.com/ocaml/ocaml-lsp/pull/2144"&gt;#2144&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/shonfeder"&gt;Shon Feder&lt;/a&gt; reported and then closed an issue on &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2142" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Stdune breaking changes&lt;/strong&gt;&lt;/a&gt; surfacing from dune's trunk (ocaml/dune#15880), tracing a follow-on type error in &lt;code&gt;ocaml-lsp-server/src/bin.ml&lt;/code&gt; and noting the fix should ideally be &lt;strong class="achievement"&gt;coordinated with dune's next release&lt;/strong&gt; (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2142"&gt;#2142&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/edwintorok"&gt;Török Edwin&lt;/a&gt; opened an issue describing how the LSP surfaces only the first of two &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2143" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;stacked compiler errors&lt;/strong&gt;&lt;/a&gt; on OCaml 4.14, obscuring the underlying type error behind a warning-as-error (&lt;a href="https://github.com/ocaml/ocaml-lsp/issues/2143"&gt;#2143&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Development centered on the in-progress on-type indentation PR, plus issue reports on diagnostic ordering and a dune Stdune API break.</summary><published>2026-08-23T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml-lsp/2026/week-33</id><title>Week 33, 2026: Two client-facing code-action bugs were fixed (create-counterpart capability checks, unused-code quick fixes) while an odoc navigable-references PR was opened.</title><updated>2026-08-16T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

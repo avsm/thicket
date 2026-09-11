@@ -1,5 +1,191 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-multicore-eio.xml</id><title>ocaml-multicore/eio (Weekly)</title><updated>2026-08-16T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-multicore-eio.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml-multicore/eio</subtitle><entry><id>https://thicket.dev/repos/ocaml-multicore-eio/2026/week-33</id><title>Week 33, 2026: None</title><updated>2026-08-16T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/eio - Week 33, 2026&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/eio - Week 33, 2026</summary><published>2026-08-16T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-eio/2026/week-32</id><title>Week 32, 2026: Windows path support merged via `Eio.Path.native`, plus a new `of_dir` helper and unified `dir_path` handling across backends.</title><updated>2026-08-09T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-multicore-eio.xml</id><title>ocaml-multicore/eio (Weekly)</title><updated>2026-09-06T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-multicore-eio.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml-multicore/eio</subtitle><entry><id>https://thicket.dev/repos/ocaml-multicore-eio/2026/week-36</id><title>Week 36, 2026: New `Process.Env` API merged for typed environment-variable handling; Windows anonymous-pipe fix and NtCreateFile path bug opened.</title><updated>2026-09-06T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Draft fix for Windows anonymous pipes opened by avsm; ongoing design discussion on Eio.Vars.t&lt;/code&gt; for reading environment variables without Eio_unix&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; opened a draft PR fixing anonymous pipes on Windows after a &lt;code&gt;transfer&lt;/code&gt; test case started failing with an &lt;code&gt;Eio.Io&lt;/code&gt; exception in the pipe read path, and confirmed the failure reproduces in CI as well as locally (&lt;a href="https://github.com/ocaml-multicore/eio/pull/929"&gt;#929&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/kentookura"&gt;Kento Okura&lt;/a&gt;'s earlier PR adding &lt;code&gt;Eio.Fiber.List.partition_map&lt;/code&gt; remains open, with &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; suggesting the helper could instead live in the submitter's own code since &lt;code&gt;Limiter&lt;/code&gt; isn't exposed in the public interface (&lt;a href="https://github.com/ocaml-multicore/eio/pull/927"&gt;#927&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/patricoferris"&gt;Patrick Ferris&lt;/a&gt;'s PR adding &lt;code&gt;Eio.Vars.t&lt;/code&gt; to &lt;code&gt;Stdenv&lt;/code&gt; for reading environment variables without depending on &lt;code&gt;Eio_unix&lt;/code&gt; continued extensive design discussion this week, covering read-only vs. mutable environments, lazy evaluation given large environments (e.g. under Nix), naming (&lt;code&gt;get&lt;/code&gt;/&lt;code&gt;get_opt&lt;/code&gt;/&lt;code&gt;get_paths&lt;/code&gt;), and how the module should build on the newly merged &lt;code&gt;Process.Env&lt;/code&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/pull/923"&gt;#923&lt;/a&gt;, building on &lt;a href="https://github.com/ocaml-multicore/eio/pull/930"&gt;#930&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt;'s &lt;code&gt;Process.Env&lt;/code&gt; PR merged after review addressing duplicate-binding semantics, name validation, and Windows case sensitivity (&lt;a href="https://github.com/ocaml-multicore/eio/pull/930"&gt;#930&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>New `Process.Env` API merged for typed environment-variable handling; Windows anonymous-pipe fix and NtCreateFile path bug opened.</summary><published>2026-09-06T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-eio/2026/week-35</id><title>Week 35, 2026: Eio landed a new documentation index page and reviewed proposals for chown id validation and a concurrent partition_map helper.</title><updated>2026-08-30T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Two PRs remained open under review: an out-of-range chown id check and a fiber-based partition_map&lt;/code&gt; whose concurrency implementation was questioned.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; opened a PR to reject out-of-range &lt;code&gt;chown&lt;/code&gt; uid/gid values in &lt;code&gt;eio_unix&lt;/code&gt; while still allowing &lt;code&gt;-1&lt;/code&gt; to mean "leave unchanged", per POSIX semantics (&lt;a href="https://github.com/ocaml-multicore/eio/issues/928"&gt;#928&lt;/a&gt;); &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; questioned whether the kernel already validates this and pointed out that &lt;code&gt;uid_t&lt;/code&gt; is unsigned on Linux, and &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; argued a portable-layer check is still prudent since the signedness of &lt;code&gt;uid_t&lt;/code&gt;/&lt;code&gt;gid_t&lt;/code&gt; varies across platforms, citing &lt;a href="https://github.com/python/cpython/issues/46289"&gt;python/cpython#46289&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/kentookura"&gt;Kento Okura&lt;/a&gt;'s proposal to add &lt;code&gt;Eio.Fiber.List.partition_map&lt;/code&gt; remained open for review (&lt;a href="https://github.com/ocaml-multicore/eio/issues/927"&gt;#927&lt;/a&gt;); both &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; and &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; noted the fork-then-immediately-wait pattern in the initial implementation was not actually running concurrently, and suggested starting instead with a simpler one-liner built on the existing &lt;code&gt;map&lt;/code&gt; function, optimizing later only if fiber-creation overhead proves to be a bottleneck&lt;/li&gt;
+&lt;li&gt;The new &lt;code&gt;index.mld&lt;/code&gt; landing page for the API reference was merged this week after review, replacing the default generated index with a curated, purpose-grouped layout (&lt;a href="https://github.com/ocaml-multicore/eio/issues/926"&gt;#926&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Eio landed a new documentation index page and reviewed proposals for chown id validation and a concurrent partition_map helper.</summary><published>2026-08-30T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-eio/2026/week-34</id><title>Week 34, 2026: Eio 1.5 was released with pre-connect socket options and opam availability fixes, plus a new environment-variables API PR opened.</title><updated>2026-08-23T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+New PRs opened for Fiber.List.partition_map&lt;/code&gt;, an Eio.Vars&lt;/code&gt; environment-variable API, and a documentation index, alongside the 1.5 release.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/kentookura"&gt;Kento Okura&lt;/a&gt; opened a PR adding &lt;code&gt;Eio.Fiber.List.partition_map&lt;/code&gt;, noting they could not implement it standalone since &lt;code&gt;Limiter&lt;/code&gt; is hidden from the interface (&lt;a href="https://github.com/ocaml-multicore/eio/issues/927"&gt;#927&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; opened a PR adding a curated &lt;code&gt;index.mld&lt;/code&gt; to replace the hard-to-navigate auto-generated documentation index, with review from &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; on grouping &lt;code&gt;Eio.Fs&lt;/code&gt; with &lt;code&gt;Path&lt;/code&gt; and clarifying &lt;code&gt;Eio_unix&lt;/code&gt;/&lt;code&gt;Eio_mock&lt;/code&gt; descriptions (&lt;a href="https://github.com/ocaml-multicore/eio/issues/926"&gt;#926&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/patricoferris"&gt;Patrick Ferris&lt;/a&gt; opened &lt;code&gt;Eio.Vars.t&lt;/code&gt; on &lt;code&gt;Stdenv&lt;/code&gt; to expose portable &lt;code&gt;get&lt;/code&gt;/&lt;code&gt;put&lt;/code&gt;/&lt;code&gt;get_all&lt;/code&gt; access to environment variables, following design discussion in &lt;a href="https://github.com/ocaml-multicore/eio/issues/922"&gt;#922&lt;/a&gt;; &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; reviewed extensively, raising thread-safety of &lt;code&gt;putenv&lt;/code&gt; across domains, an off-by-one in the &lt;code&gt;A=b&lt;/code&gt; parsing case, missing test coverage, and a future &lt;code&gt;PATH&lt;/code&gt; parser built on the &lt;code&gt;Nt_path&lt;/code&gt;/&lt;code&gt;Posix_path&lt;/code&gt; modules (&lt;a href="https://github.com/ocaml-multicore/eio/issues/923"&gt;#923&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; merged pre-connect socket options for &lt;code&gt;Eio.Net.connect&lt;/code&gt;, based on and superseding &lt;a href="https://github.com/art-w"&gt;@art-w&lt;/a&gt;'s draft (&lt;a href="https://github.com/ocaml-multicore/eio/issues/713"&gt;#713&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/eio/issues/875"&gt;#875&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; merged the opam &lt;code&gt;available&lt;/code&gt; constraints fix (&lt;a href="https://github.com/ocaml-multicore/eio/issues/921"&gt;#921&lt;/a&gt;) and prepared/merged the 1.5 release (&lt;a href="https://github.com/ocaml-multicore/eio/issues/924"&gt;#924&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Eio 1.5 was released with pre-connect socket options and opam availability fixes, plus a new environment-variables API PR opened.</summary><published>2026-08-23T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-eio/2026/week-33</id><title>Week 33, 2026: None</title><updated>2026-08-16T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocaml-multicore/eio - Week 33, 2026&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocaml-multicore/eio - Week 33, 2026</summary><published>2026-08-16T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-multicore-eio/2026/week-32</id><title>Week 32, 2026: Windows path support merged via `Eio.Path.native`, plus a new `of_dir` helper and unified `dir_path` handling across backends.</title><updated>2026-08-09T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

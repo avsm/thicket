@@ -1,5 +1,188 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-merlin.xml</id><title>ocaml/merlin (Weekly)</title><updated>2026-08-16T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-merlin.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/merlin</subtitle><entry><id>https://thicket.dev/repos/ocaml-merlin/2026/week-33</id><title>Week 33, 2026: Discussion continued on [#2072](https://github.com/ocaml/merlin/issues/2072), the LRgrep syntax-error-message integration, including whether it belongs upstream in the OCaml compiler.</title><updated>2026-08-16T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-merlin.xml</id><title>ocaml/merlin (Weekly)</title><updated>2026-09-06T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-merlin.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/merlin</subtitle><entry><id>https://thicket.dev/repos/ocaml-merlin/2026/week-36</id><title>Week 36, 2026: No commits landed on main this week; activity centered on two open PRs and a sweep closing 12 long-standing Vim/Emacs issues.</title><updated>2026-09-06T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Two long-running PRs (LRgrep error messages, locate fix) stayed active while a dozen stale issues were closed.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/merlin/issues/2072"&gt;#2072&lt;/a&gt;, integrating &lt;a href="https://github.com/ocaml/merlin/issues/2072" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;LRgrep&lt;/strong&gt;&lt;/a&gt; to generate syntax error messages, remains open; &lt;a href="https://github.com/let-def"&gt;Frédéric Bour&lt;/a&gt; posted an update explaining he has fixed bugs (including one reported by &lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt;), improved error messages, lifted LRgrep limitations, and is porting the work to OCaml 5.5.1 before proposing it upstream in the compiler, noting an alpha switch &lt;code&gt;5.4.1+lrgrep&lt;/code&gt; is already usable for testing.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/merlin/issues/2118"&gt;#2118&lt;/a&gt;, fixing &lt;code&gt;locate&lt;/code&gt; when the cursor sits on a different declaration than the one requested, remains under review by &lt;a href="https://github.com/aryemans"&gt;aryemans&lt;/a&gt;; &lt;a href="https://github.com/panglesd"&gt;Paul-Elliot Anglès d'Auriac&lt;/a&gt; and &lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt; both argued the fix belongs in &lt;code&gt;locate.ml&lt;/code&gt; rather than in the more generic &lt;code&gt;inspect_browse_tree&lt;/code&gt; context-detection function.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/panglesd"&gt;Paul-Elliot Anglès d'Auriac&lt;/a&gt; carried out an extensive triage pass, closing twelve long-dormant issues spanning Vim and Emacs tooling, most originally filed between 2014 and 2022: unobtrusive error handling and type-directed search (&lt;a href="https://github.com/ocaml/merlin/issues/459"&gt;#459&lt;/a&gt;, &lt;a href="https://github.com/ocaml/merlin/issues/466"&gt;#466&lt;/a&gt;), label-punning in renaming (&lt;a href="https://github.com/ocaml/merlin/issues/1354"&gt;#1354&lt;/a&gt;), stack overflows on mutually recursive types now fixed via &lt;a href="https://github.com/ocaml/merlin/pull/1805"&gt;#1805&lt;/a&gt; (&lt;a href="https://github.com/ocaml/merlin/issues/822"&gt;#822&lt;/a&gt;, &lt;a href="https://github.com/ocaml/merlin/issues/1755"&gt;#1755&lt;/a&gt;), a PPX rewriter path-with-spaces bug superseded by the move to dune (&lt;a href="https://github.com/ocaml/merlin/issues/801"&gt;#801&lt;/a&gt;), company-mode completion noise after keywords resolved by &lt;a href="https://github.com/ocaml/merlin/pull/1243"&gt;#1243&lt;/a&gt; (&lt;a href="https://github.com/ocaml/merlin/issues/1229"&gt;#1229&lt;/a&gt;), an unreproducible jump-to-definition failure (&lt;a href="https://github.com/ocaml/merlin/issues/1548"&gt;#1548&lt;/a&gt;), a missing Emacs renaming feature now covered by &lt;code&gt;ocaml-eglot-rename&lt;/code&gt; and &lt;code&gt;merlin-iedit-occurrences&lt;/code&gt; (&lt;a href="https://github.com/ocaml/merlin/issues/1738"&gt;#1738&lt;/a&gt;), an occurrences fatal error no longer reproducible (&lt;a href="https://github.com/ocaml/merlin/issues/827"&gt;#827&lt;/a&gt;), an auto-complete regression confirmed resolved by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; (&lt;a href="https://github.com/ocaml/merlin/issues/1320"&gt;#1320&lt;/a&gt;), and a missing-&lt;code&gt;omnifunc&lt;/code&gt; installation issue (&lt;a href="https://github.com/ocaml/merlin/issues/1590"&gt;#1590&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>No commits landed on main this week; activity centered on two open PRs and a sweep closing 12 long-standing Vim/Emacs issues.</summary><published>2026-09-06T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-merlin/2026/week-35</id><title>Week 35, 2026: A single PR was opened to fix `locate` behavior when the cursor sits on an unrelated declaration.</title><updated>2026-08-30T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+@aryemans&lt;/a&gt; opened a fix for locate&lt;/code&gt; returning a false already-at-definition result.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/aryemans"&gt;@aryemans&lt;/a&gt; opened a fix for the &lt;strong class="achievement"&gt;&lt;code&gt;locate&lt;/code&gt; command&lt;/strong&gt; returning "Already at definition point" when invoked with an explicit identifier while the cursor rests on a different declaration (&lt;a href="https://github.com/ocaml/merlin/pull/2118"&gt;#2118&lt;/a&gt;); the change narrows the origin check so it only fires when the declaration under the cursor shares the requested identifier's name, covers both value and type declarations, and adds a regression test for the underlying report (&lt;a href="https://github.com/ocaml/merlin/issues/2033"&gt;#2033&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>A single PR was opened to fix `locate` behavior when the cursor sits on an unrelated declaration.</summary><published>2026-08-30T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-merlin/2026/week-34</id><title>Week 34, 2026: Merlin's destruct command was extended to work on let-binding patterns, with a regression test added for a duplicate-occurrence bug.</title><updated>2026-08-23T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+A dependency-bump PR was opened while destruct's let-binding support and a duplicate-occurrence regression test were merged.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;A &lt;a href="https://github.com/ocaml/merlin/issues/2116" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;dependency update PR&lt;/strong&gt;&lt;/a&gt; bumping &lt;code&gt;cachix/install-nix-action&lt;/code&gt; from 31.11.0 to 31.11.1 was opened by dependabot and remains unmerged, pulling in an upstream fix for a &lt;code&gt;nix&lt;/code&gt; assertion crash during builds (&lt;a href="https://github.com/ocaml/merlin/issues/2116"&gt;#2116&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/panglesd"&gt;Paul-Elliot Anglès d'Auriac&lt;/a&gt;'s &lt;a href="https://github.com/ocaml/merlin/issues/2117" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;destruct-on-let-bindings&lt;/strong&gt;&lt;/a&gt; change was merged after review, described by &lt;a href="https://github.com/voodoos"&gt;Ulysse&lt;/a&gt; as "surprisingly contained" and reasonable, and noted as related to an earlier destruct-limitation issue (&lt;a href="https://github.com/ocaml/merlin/issues/2117"&gt;#2117&lt;/a&gt;, related to &lt;a href="https://github.com/ocaml/merlin/issues/1162"&gt;#1162&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/PizieDust"&gt;PixieDust&lt;/a&gt; merged a &lt;a href="https://github.com/ocaml/merlin/issues/2114" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;regression test&lt;/strong&gt;&lt;/a&gt; covering a duplicate-occurrence bug on a recovered (incomplete) &lt;code&gt;let rec&lt;/code&gt; binding, tracked as issue #2113 (&lt;a href="https://github.com/ocaml/merlin/issues/2114"&gt;#2114&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;A long-standing &lt;a href="https://github.com/ocaml/merlin/issues/1212" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;feature request for typed-hole completion&lt;/strong&gt;&lt;/a&gt; was closed, with &lt;a href="https://github.com/panglesd"&gt;Paul-Elliot Anglès d'Auriac&lt;/a&gt; and &lt;a href="https://github.com/xvw"&gt;Xavier Van de Woestyne&lt;/a&gt; noting the need is now met by the existing &lt;code&gt;construct&lt;/code&gt; command, which is supported in VSCode, Neovim, and Emacs (&lt;a href="https://github.com/ocaml/merlin/issues/1212"&gt;#1212&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;An &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1991" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;open bug report&lt;/strong&gt;&lt;/a&gt; about an unexpected &lt;code&gt;Assert_failure&lt;/code&gt; in &lt;code&gt;destruct&lt;/code&gt; when run on an object method pattern was picked up by &lt;a href="https://github.com/xvw"&gt;Xavier Van de Woestyne&lt;/a&gt; as maintenance work, originally surfaced via a cross-repository reproduction in &lt;a href="https://github.com/ocaml/ocaml-lsp/issues/1991"&gt;ocaml/ocaml-lsp#1991&lt;/a&gt; (&lt;a href="https://github.com/ocaml/merlin/issues/2112"&gt;#2112&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Merlin's destruct command was extended to work on let-binding patterns, with a regression test added for a duplicate-occurrence bug.</summary><published>2026-08-23T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-merlin/2026/week-33</id><title>Week 33, 2026: Discussion continued on [#2072](https://github.com/ocaml/merlin/issues/2072), the LRgrep syntax-error-message integration, including whether it belongs upstream in the OCaml compiler.</title><updated>2026-08-16T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

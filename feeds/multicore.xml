@@ -1,5 +1,252 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/multicore.xml</id><title>Multicore (Weekly)</title><updated>2026-08-16T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/multicore.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Multicore OCaml</subtitle><entry><id>https://thicket.dev/groups/multicore/2026/week-33</id><title>Week 33, 2026: None</title><updated>2026-08-16T00:00:00+00:00</updated><content type="html"/><link href="https://thicket.dev/"/><summary>Activity report for multicore - Week 33, 2026</summary><published>2026-08-16T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/multicore/2026/week-32</id><title>Week 32, 2026: None</title><updated>2026-08-09T00:00:00+00:00</updated><content type="html"/><link href="https://thicket.dev/"/><summary>Activity report for multicore - Week 32, 2026</summary><published>2026-08-09T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/multicore/2026/week-31</id><title>Week 31, 2026: Eio split path handling into per-backend modules and sped up directory traversal; ocaml-uring triaged a Debian flaky-test report.</title><updated>2026-08-02T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/multicore.xml</id><title>Multicore (Weekly)</title><updated>2026-09-06T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/multicore.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Multicore OCaml</subtitle><entry><id>https://thicket.dev/groups/multicore/2026/week-36</id><title>Week 36, 2026: Activity this week was confined to ocaml-multicore/eio: a new Process.Env API merged and Windows-parity fixes were opened.</title><updated>2026-09-06T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt;: Added a new &lt;code&gt;Eio.Process.Env&lt;/code&gt; module providing a typed representation of process environments (&lt;code&gt;empty&lt;/code&gt;, &lt;code&gt;of_bindings&lt;/code&gt;, &lt;code&gt;get_opt&lt;/code&gt;, &lt;code&gt;override&lt;/code&gt;, &lt;code&gt;of_array&lt;/code&gt;, &lt;code&gt;to_array&lt;/code&gt;), replacing the raw &lt;code&gt;string array&lt;/code&gt; previously used by &lt;code&gt;?env&lt;/code&gt; on &lt;code&gt;Process.spawn&lt;/code&gt;, &lt;code&gt;Process.run&lt;/code&gt; and &lt;code&gt;Process.parse_out&lt;/code&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/pull/930"&gt;ocaml-multicore/eio#930&lt;/a&gt;) by &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Process.Env&lt;/code&gt; performs case-insensitive name comparisons on Windows while preserving original case, following discussion between &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; and &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/pull/930"&gt;ocaml-multicore/eio#930&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Expanded process-spawning tests in &lt;code&gt;tests/process.md&lt;/code&gt;, &lt;code&gt;lib_eio_linux/tests/spawn.md&lt;/code&gt; and &lt;code&gt;lib_eio_posix/test/spawn.md&lt;/code&gt; to exercise the new &lt;code&gt;Env&lt;/code&gt; bindings API (&lt;a href="https://github.com/ocaml-multicore/eio/pull/930"&gt;ocaml-multicore/eio#930&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;Of the nine repositories in the multicore group, only &lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt; recorded activity for week 36 (2026-08-31 to 2026-09-06); &lt;a href="https://github.com/ocaml-multicore/domainslib"&gt;ocaml-multicore/domainslib&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/ocaml-uring"&gt;ocaml-multicore/ocaml-uring&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/meio"&gt;ocaml-multicore/meio&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/saturn"&gt;ocaml-multicore/saturn&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/eio-trace"&gt;ocaml-multicore/eio-trace&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/picos"&gt;ocaml-multicore/picos&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/kcas"&gt;ocaml-multicore/kcas&lt;/a&gt; and &lt;a href="https://github.com/ocaml-multicore/ocaml-iomux"&gt;ocaml-multicore/ocaml-iomux&lt;/a&gt; had no recorded changes&lt;/li&gt;
+&lt;li&gt;eio's week centered on merging a typed &lt;code&gt;Eio.Process.Env&lt;/code&gt; API (&lt;a href="https://github.com/ocaml-multicore/eio/pull/930"&gt;ocaml-multicore/eio#930&lt;/a&gt;) and opening two Windows-parity items: an anonymous-pipe fix (&lt;a href="https://github.com/ocaml-multicore/eio/pull/929"&gt;ocaml-multicore/eio#929&lt;/a&gt;) and an &lt;code&gt;NtCreateFile&lt;/code&gt; path-qualification bug report (&lt;a href="https://github.com/ocaml-multicore/eio/issues/931"&gt;ocaml-multicore/eio#931&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Design discussion continued on an &lt;code&gt;Eio.Vars.t&lt;/code&gt; accessor for &lt;code&gt;Stdenv&lt;/code&gt; that builds on the newly merged &lt;code&gt;Process.Env&lt;/code&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/pull/923"&gt;ocaml-multicore/eio#923&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt;, &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; and &lt;a href="https://github.com/patricoferris"&gt;Patrick Ferris&lt;/a&gt; debated whether environment-variable name comparisons should be case-insensitive across all platforms versus only on Windows, settling on Windows-only case-insensitivity plus a convention of upper-case names (&lt;a href="https://github.com/ocaml-multicore/eio/pull/930"&gt;ocaml-multicore/eio#930&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Discussion on &lt;a href="https://github.com/ocaml-multicore/eio/pull/923"&gt;ocaml-multicore/eio#923&lt;/a&gt; weighed use cases for mutating the global environment (subprocess inheritance, passing values within a process, interop with legacy &lt;code&gt;Unix&lt;/code&gt;-based code) and concluded a read-only &lt;code&gt;Stdenv.vars&lt;/code&gt; accessor layered on &lt;code&gt;Process.Env&lt;/code&gt; covers most needs while avoiding &lt;code&gt;Unix.putenv&lt;/code&gt; races&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;Windows compatibility remained the dominant theme in eio this week, spanning a path-qualification bug in &lt;code&gt;NtCreateFile&lt;/code&gt; calls (&lt;a href="https://github.com/ocaml-multicore/eio/issues/931"&gt;ocaml-multicore/eio#931&lt;/a&gt;), an anonymous-pipe transfer failure (&lt;a href="https://github.com/ocaml-multicore/eio/pull/929"&gt;ocaml-multicore/eio#929&lt;/a&gt;), and case-insensitive environment-variable handling in &lt;code&gt;Process.Env&lt;/code&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/pull/930"&gt;ocaml-multicore/eio#930&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Environment-variable handling in eio is being layered incrementally: a low-level &lt;code&gt;Process.Env&lt;/code&gt; type merged first (&lt;a href="https://github.com/ocaml-multicore/eio/pull/930"&gt;ocaml-multicore/eio#930&lt;/a&gt;), with a higher-level &lt;code&gt;Eio.Vars.t&lt;/code&gt; read/write accessor for &lt;code&gt;Stdenv&lt;/code&gt; still under discussion on top of it (&lt;a href="https://github.com/ocaml-multicore/eio/pull/923"&gt;ocaml-multicore/eio#923&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;The other eight repositories in the group (domainslib, ocaml-uring, meio, saturn, eio-trace, picos, kcas, ocaml-iomux) had no recorded activity this week&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Activity this week was confined to ocaml-multicore/eio: a new Process.Env API merged and Windows-parity fixes were opened.</summary><published>2026-09-06T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/multicore/2026/week-35</id><title>Week 35, 2026: Eio merged a curated documentation index and reviewed proposals for chown id validation and a concurrent partition_map helper; the other eight repos were quiet.</title><updated>2026-08-30T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt;&lt;/strong&gt;: added a hand-written documentation index page grouping the API by purpose (fibers/switches/cancellation, host resources, files, networking, time, concurrency primitives, collections, domains, exceptions, and private/backend-only modules), replacing the default auto-generated odoc index, merged by &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/issues/926"&gt;ocaml-multicore/eio#926&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;Only one of the nine group repositories had recorded activity this week — &lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt;; &lt;a href="https://github.com/ocaml-multicore/domainslib"&gt;ocaml-multicore/domainslib&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/ocaml-uring"&gt;ocaml-multicore/ocaml-uring&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/meio"&gt;ocaml-multicore/meio&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/saturn"&gt;ocaml-multicore/saturn&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/eio-trace"&gt;ocaml-multicore/eio-trace&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/picos"&gt;ocaml-multicore/picos&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/kcas"&gt;ocaml-multicore/kcas&lt;/a&gt;, and &lt;a href="https://github.com/ocaml-multicore/ocaml-iomux"&gt;ocaml-multicore/ocaml-iomux&lt;/a&gt; had no recorded activity in this period&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt; merged a curated &lt;code&gt;index.mld&lt;/code&gt; documentation landing page, replacing the auto-generated odoc index (&lt;a href="https://github.com/ocaml-multicore/eio/issues/926"&gt;ocaml-multicore/eio#926&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Two eio PRs remained open under review: a &lt;code&gt;chown&lt;/code&gt; uid/gid range check (&lt;a href="https://github.com/ocaml-multicore/eio/issues/928"&gt;ocaml-multicore/eio#928&lt;/a&gt;) and a &lt;code&gt;Fiber.List.partition_map&lt;/code&gt; proposal whose concurrency implementation was questioned (&lt;a href="https://github.com/ocaml-multicore/eio/issues/927"&gt;ocaml-multicore/eio#927&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;On &lt;a href="https://github.com/ocaml-multicore/eio/issues/927"&gt;ocaml-multicore/eio#927&lt;/a&gt;, &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; and &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; identified that forking a fiber and immediately waiting on it does not provide real concurrency, using the test output as evidence, and recommended a simpler &lt;code&gt;List.partition_map Fun.id (map ?max_fibers fn items)&lt;/code&gt; implementation as a starting point&lt;/li&gt;
+&lt;li&gt;On &lt;a href="https://github.com/ocaml-multicore/eio/issues/928"&gt;ocaml-multicore/eio#928&lt;/a&gt;, &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; raised whether kernel-side checks make an explicit uid/gid range check redundant and noted &lt;code&gt;uid_t&lt;/code&gt;'s unsigned representation on Linux, prompting &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; to explain the cross-platform signedness rationale for validating in the portable layer, drawing a parallel to &lt;a href="https://github.com/python/cpython/issues/46289"&gt;python/cpython#46289&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;Reviewers in &lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt; are pushing back on complexity in new concurrency helpers, preferring simple compositions of existing primitives (e.g. building &lt;code&gt;partition_map&lt;/code&gt; from &lt;code&gt;map&lt;/code&gt;) unless a performance need is demonstrated (&lt;a href="https://github.com/ocaml-multicore/eio/issues/927"&gt;ocaml-multicore/eio#927&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Continued attention to portability edge cases in the &lt;code&gt;eio_unix&lt;/code&gt; POSIX bindings, including signedness differences in system types across platforms (&lt;a href="https://github.com/ocaml-multicore/eio/issues/928"&gt;ocaml-multicore/eio#928&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Investment in documentation discoverability continued in &lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt; with a curated API index replacing auto-generated docs (&lt;a href="https://github.com/ocaml-multicore/eio/issues/926"&gt;ocaml-multicore/eio#926&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Eight of the nine group repositories recorded no activity this week, concentrating all visible work in &lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Eio merged a curated documentation index and reviewed proposals for chown id validation and a concurrent partition_map helper; the other eight repos were quiet.</summary><published>2026-08-30T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/multicore/2026/week-34</id><title>Week 34, 2026: Eio 1.5 was released with pre-connect socket options, while ocaml-uring's bytes-based buffer migration gained a zero-copy bigarray bridge.</title><updated>2026-08-23T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt;&lt;/strong&gt;: &lt;code&gt;Eio.Net.connect&lt;/code&gt; gained optional &lt;code&gt;?bind_to&lt;/code&gt; and &lt;code&gt;?options&lt;/code&gt; arguments so a socket can be bound to a local address and have &lt;code&gt;Sockopt.settings&lt;/code&gt; (e.g. &lt;code&gt;SO_REUSEADDR&lt;/code&gt;, &lt;code&gt;SO_KEEPALIVE&lt;/code&gt;) applied before connecting, letting multi-homed hosts pick the local address for an outbound connection; built on &lt;a href="https://github.com/art-w"&gt;@art-w&lt;/a&gt;'s draft (&lt;a href="https://github.com/ocaml-multicore/eio/issues/713"&gt;ocaml-multicore/eio#713&lt;/a&gt;) and merged by &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/issues/875"&gt;ocaml-multicore/eio#875&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt;&lt;/strong&gt;: &lt;code&gt;eio_posix&lt;/code&gt; and &lt;code&gt;eio_windows&lt;/code&gt; opam files gained &lt;code&gt;available&lt;/code&gt; constraints so &lt;code&gt;eio_posix&lt;/code&gt; no longer attempts to install on Windows and vice versa, now that ocaml-ci has Windows support, by &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/issues/921"&gt;ocaml-multicore/eio#921&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt;&lt;/strong&gt;: &lt;a href="https://github.com/ocaml-multicore/eio/issues/924" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Eio 1.5&lt;/strong&gt;&lt;/a&gt; was released (&lt;a href="https://github.com/ocaml-multicore/eio/issues/924"&gt;ocaml-multicore/eio#924&lt;/a&gt;) by &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt;, bundling the pre-connect socket options, the opam availability fix, and previously-landed Windows path support and &lt;code&gt;Eio.Path.of_dir&lt;/code&gt; — see the &lt;a href="https://github.com/ocaml-multicore/eio/releases/tag/v1.5"&gt;v1.5 release notes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml-multicore/ocaml-uring"&gt;ocaml-multicore/ocaml-uring&lt;/a&gt;&lt;/strong&gt;: added &lt;code&gt;Iovec.to_bigarray&lt;/code&gt;, a zero-copy &lt;code&gt;Bigarray.Array1.t&lt;/code&gt; alias over an &lt;code&gt;Iovec.t&lt;/code&gt;'s underlying &lt;code&gt;bytes&lt;/code&gt;, letting bigarray-based interfaces interoperate with the library's new bytes-backed buffers without copying, part of the ongoing buffer-type migration from bigarray/cstruct to &lt;code&gt;bytes&lt;/code&gt; (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/153"&gt;ocaml-multicore/ocaml-uring#153&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/ocaml-uring/commit/4116ced2ef40a686b0db319595561a3d53ea95ab"&gt;4116ced&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong class="achievement"&gt;&lt;a href="https://github.com/ocaml-multicore/ocaml-uring"&gt;ocaml-multicore/ocaml-uring&lt;/a&gt;&lt;/strong&gt;: implementation adds a hand-built bigarray proxy with a GC finaliser chain on the aliased &lt;code&gt;bytes&lt;/code&gt; buffer, plus a new internal stub &lt;code&gt;ocaml_uring_ba_family_refs&lt;/code&gt; tracking live bigarray references so the buffer is only freed once all derived views are unreachable, with aliasing tests added in &lt;code&gt;tests/buffer_test.ml&lt;/code&gt; (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/153"&gt;ocaml-multicore/ocaml-uring#153&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;Two of the nine group repositories had recorded activity this week — &lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt; and &lt;a href="https://github.com/ocaml-multicore/ocaml-uring"&gt;ocaml-multicore/ocaml-uring&lt;/a&gt;; &lt;a href="https://github.com/ocaml-multicore/domainslib"&gt;ocaml-multicore/domainslib&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/meio"&gt;ocaml-multicore/meio&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/saturn"&gt;ocaml-multicore/saturn&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/eio-trace"&gt;ocaml-multicore/eio-trace&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/picos"&gt;ocaml-multicore/picos&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/kcas"&gt;ocaml-multicore/kcas&lt;/a&gt;, and &lt;a href="https://github.com/ocaml-multicore/ocaml-iomux"&gt;ocaml-multicore/ocaml-iomux&lt;/a&gt; had no recorded activity in this period&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt; shipped the &lt;a href="https://github.com/ocaml-multicore/eio/issues/924" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;1.5 release&lt;/strong&gt;&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/issues/924"&gt;ocaml-multicore/eio#924&lt;/a&gt;), merging pre-connect socket options for &lt;code&gt;Eio.Net.connect&lt;/code&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/issues/875"&gt;ocaml-multicore/eio#875&lt;/a&gt;) and a Windows opam availability fix (&lt;a href="https://github.com/ocaml-multicore/eio/issues/921"&gt;ocaml-multicore/eio#921&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt; also saw three new PRs opened: &lt;code&gt;Fiber.List.partition_map&lt;/code&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/issues/927"&gt;ocaml-multicore/eio#927&lt;/a&gt;), a curated documentation index (&lt;a href="https://github.com/ocaml-multicore/eio/issues/926"&gt;ocaml-multicore/eio#926&lt;/a&gt;), and an &lt;code&gt;Eio.Vars&lt;/code&gt; environment-variables API (&lt;a href="https://github.com/ocaml-multicore/eio/issues/923"&gt;ocaml-multicore/eio#923&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/ocaml-uring"&gt;ocaml-multicore/ocaml-uring&lt;/a&gt;'s draft buffer-type migration PR (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/153"&gt;ocaml-multicore/ocaml-uring#153&lt;/a&gt;) progressed with a zero-copy bigarray-aliasing mechanism, moving the library from bigarray/cstruct toward plain &lt;code&gt;bytes&lt;/code&gt; buffers&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;The same core maintainers were active across both repositories with recorded activity this week: &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; merged the socket-options feature and gave detailed API review in &lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt;, while also driving the buffer-type migration in &lt;a href="https://github.com/ocaml-multicore/ocaml-uring"&gt;ocaml-multicore/ocaml-uring&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/issues/875"&gt;ocaml-multicore/eio#875&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/153"&gt;ocaml-multicore/ocaml-uring#153&lt;/a&gt;); &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; released eio 1.5 (&lt;a href="https://github.com/ocaml-multicore/eio/issues/924"&gt;ocaml-multicore/eio#924&lt;/a&gt;) and contributed the bigarray-aliasing design used in ocaml-uring's buffer rework (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/153"&gt;ocaml-multicore/ocaml-uring#153&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/ocaml-uring"&gt;ocaml-multicore/ocaml-uring&lt;/a&gt; is eio's io_uring backend on Linux, so its buffer-representation rework toward &lt;code&gt;bytes&lt;/code&gt; (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/153"&gt;ocaml-multicore/ocaml-uring#153&lt;/a&gt;) is architecturally related to eio's own I/O buffer handling, though no PR or issue explicitly links the two repositories this week&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/patricoferris"&gt;Patrick Ferris&lt;/a&gt; proposed a portable &lt;code&gt;System&lt;/code&gt;/environment-variable interface for eio, prompting &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; to suggest &lt;code&gt;Vars&lt;/code&gt; over &lt;code&gt;System&lt;/code&gt; to avoid confusion with &lt;code&gt;Stdenv&lt;/code&gt;, adopted in the follow-up PR (&lt;a href="https://github.com/ocaml-multicore/eio/issues/922"&gt;ocaml-multicore/eio#922&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/eio/issues/923"&gt;ocaml-multicore/eio#923&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;On the same PR, &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; raised whether &lt;code&gt;Eio.Vars.put&lt;/code&gt; should be synchronised with a mutex given &lt;code&gt;putenv&lt;/code&gt; is not thread-safe across domains, and &lt;a href="https://github.com/patricoferris"&gt;Patrick Ferris&lt;/a&gt; discussed whether start-of-day usage makes the race window practically significant (&lt;a href="https://github.com/ocaml-multicore/eio/issues/923"&gt;ocaml-multicore/eio#923&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/samoht"&gt;Thomas Gazagnaire&lt;/a&gt; requested a capability-safe hard-link primitive (&lt;code&gt;linkat&lt;/code&gt;-style, taking two dirfds) for use in OCI image extraction, contrasting it with the check-then-use race of flattening paths and calling &lt;code&gt;Unix.link&lt;/code&gt; directly (&lt;a href="https://github.com/ocaml-multicore/eio/issues/925"&gt;ocaml-multicore/eio#925&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/samoht"&gt;Thomas Gazagnaire&lt;/a&gt; reported that &lt;code&gt;Eio.Private.Trace&lt;/code&gt; allocates 23 words per event once the &lt;code&gt;runtime_events&lt;/code&gt; ring is active, affecting allocation-profile readings of fiber-dense programs; &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; noted this will be fixed once OCaml 5.6 ships with &lt;a href="https://github.com/ocaml/ocaml/issues/14984"&gt;ocaml/ocaml#14984&lt;/a&gt; merged upstream (&lt;a href="https://github.com/ocaml-multicore/eio/issues/914"&gt;ocaml-multicore/eio#914&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;In &lt;a href="https://github.com/ocaml-multicore/ocaml-uring"&gt;ocaml-multicore/ocaml-uring&lt;/a&gt;, &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; relayed design feedback from &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; describing a technique that aliases non-moving &lt;code&gt;bytes&lt;/code&gt; as a bigarray via a proxy and finaliser, noting it did not obviously crash under stress testing despite still being evaluated (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/153"&gt;ocaml-multicore/ocaml-uring#153&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;Portability work continues to land in small, targeted increments in &lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt; — opam &lt;code&gt;available&lt;/code&gt; constraints for Windows this week (&lt;a href="https://github.com/ocaml-multicore/eio/issues/921"&gt;ocaml-multicore/eio#921&lt;/a&gt;) following the Windows path support already released in 1.5&lt;/li&gt;
+&lt;li&gt;Requests are trending toward closing capability-safety gaps in eio's filesystem API, exemplified by the hard-link request explicitly modeled on how &lt;code&gt;~follow:false&lt;/code&gt; closed a similar gap for &lt;code&gt;chmod&lt;/code&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/issues/925"&gt;ocaml-multicore/eio#925&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;New API surface in eio (&lt;code&gt;Eio.Vars&lt;/code&gt;, &lt;code&gt;Fiber.List.partition_map&lt;/code&gt;) is being proposed and reviewed with attention to domain-safety and hidden internals like &lt;code&gt;Limiter&lt;/code&gt;, rather than merged quickly (&lt;a href="https://github.com/ocaml-multicore/eio/issues/923"&gt;ocaml-multicore/eio#923&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/eio/issues/927"&gt;ocaml-multicore/eio#927&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Across both active repositories, buffer- and memory-lifetime safety on the OCaml 5 runtime is a shared design concern — eio's per-event trace allocation overhead (&lt;a href="https://github.com/ocaml-multicore/eio/issues/914"&gt;ocaml-multicore/eio#914&lt;/a&gt;) and ocaml-uring's non-moving &lt;code&gt;bytes&lt;/code&gt;/GC-finaliser/bigarray-proxy scheme (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/153"&gt;ocaml-multicore/ocaml-uring#153&lt;/a&gt;) both hinge on precise control of allocation and object lifetime&lt;/li&gt;
+&lt;li&gt;Ongoing shift from &lt;code&gt;bigarray&lt;/code&gt;/&lt;code&gt;cstruct&lt;/code&gt; to plain &lt;code&gt;bytes&lt;/code&gt;-based buffers in ocaml-uring is balancing zero-copy interop against GC lifetime safety rather than dropping bigarray support outright (&lt;a href="https://github.com/ocaml-multicore/ocaml-uring/issues/153"&gt;ocaml-multicore/ocaml-uring#153&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Eio 1.5 was released with pre-connect socket options, while ocaml-uring's bytes-based buffer migration gained a zero-copy bigarray bridge.</summary><published>2026-08-23T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/multicore/2026/week-33</id><title>Week 33, 2026: None</title><updated>2026-08-16T00:00:00+00:00</updated><content type="html"/><link href="https://thicket.dev/"/><summary>Activity report for multicore - Week 33, 2026</summary><published>2026-08-16T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/multicore/2026/week-32</id><title>Week 32, 2026: None</title><updated>2026-08-09T00:00:00+00:00</updated><content type="html"/><link href="https://thicket.dev/"/><summary>Activity report for multicore - Week 32, 2026</summary><published>2026-08-09T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/multicore/2026/week-31</id><title>Week 31, 2026: Eio split path handling into per-backend modules and sped up directory traversal; ocaml-uring triaged a Debian flaky-test report.</title><updated>2026-08-02T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

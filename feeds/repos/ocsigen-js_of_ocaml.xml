@@ -1,5 +1,128 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocsigen-js_of_ocaml.xml</id><title>ocsigen/js_of_ocaml (Weekly)</title><updated>2026-08-16T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocsigen-js_of_ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocsigen/js_of_ocaml</subtitle><entry><id>https://thicket.dev/repos/ocsigen-js_of_ocaml/2026/week-33</id><title>Week 33, 2026: Draft PR adding js_of_ocaml build support for the Introcaml instrumented compiler saw continued technical discussion.</title><updated>2026-08-16T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocsigen-js_of_ocaml.xml</id><title>ocsigen/js_of_ocaml (Weekly)</title><updated>2026-09-06T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocsigen-js_of_ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocsigen/js_of_ocaml</subtitle><entry><id>https://thicket.dev/repos/ocsigen-js_of_ocaml/2026/week-36</id><title>Week 36, 2026: A Safari 17 code-generation bug involving the `static` keyword was reported and fixed in a same-week PR from a first-time contributor.</title><updated>2026-09-06T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+A PR was opened (and later merged) to keep static&lt;/code&gt; on the same line as the class element it modifies, fixing a Safari 17 crash.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/habakan"&gt;habakan&lt;/a&gt; opened &lt;a href="https://github.com/ocsigen/js_of_ocaml/pull/2421"&gt;#2421&lt;/a&gt;, "Keep &lt;code&gt;static&lt;/code&gt; on the same line as the class element it modifies," to fix &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2420"&gt;#2420&lt;/a&gt; — the PR was still open at week's end and merged the following week.&lt;/li&gt;
+&lt;li&gt;The fix targets &lt;code&gt;js_output.ml&lt;/code&gt;, where &lt;code&gt;CEMethod&lt;/code&gt;, &lt;code&gt;CEField&lt;/code&gt;, &lt;code&gt;CEAccessor&lt;/code&gt;, and &lt;code&gt;CEStaticBLock&lt;/code&gt; printed &lt;code&gt;static&lt;/code&gt; followed by &lt;code&gt;PP.space&lt;/code&gt;, which in compact-printing mode always resolves to a newline; switching these to &lt;code&gt;PP.non_breaking_space&lt;/code&gt; (matching the existing treatment of &lt;code&gt;return&lt;/code&gt;, &lt;code&gt;throw&lt;/code&gt;, &lt;code&gt;async&lt;/code&gt;, and &lt;code&gt;using&lt;/code&gt;/&lt;code&gt;await using&lt;/code&gt;) keeps &lt;code&gt;static&lt;/code&gt; glued to the identifier that follows it (&lt;a href="https://github.com/ocsigen/js_of_ocaml/pull/2421"&gt;#2421&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>A Safari 17 code-generation bug involving the `static` keyword was reported and fixed in a same-week PR from a first-time contributor.</summary><published>2026-09-06T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocsigen-js_of_ocaml/2026/week-35</id><title>Week 35, 2026: Wasm asset resolution fix landed while several Wasm sourcemap, typed-array and Web API binding PRs remained open for review.</title><updated>2026-08-30T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Seven new PRs opened around Wasm sourcemaps, typed arrays, BOM handling and CI, while large Web API binding PRs and a single-linear-memory change stayed under review.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;Seven PRs were opened and remain unmerged: &lt;a href="https://github.com/vouillon"&gt;Jérôme Vouillon&lt;/a&gt; fixed sourcemap-support detection on Windows where the Binaryen version probe silently disabled sourcemaps because it redirected stderr to the non-existent &lt;code&gt;/dev/null&lt;/code&gt; (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2418"&gt;#2418&lt;/a&gt;), added a sourcemap mapping at the start of every function (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2417"&gt;#2417&lt;/a&gt;), preserved leading BOMs when converting OCaml strings to JavaScript strings by using &lt;code&gt;ignoreBOM:true&lt;/code&gt; with &lt;code&gt;TextDecoder&lt;/code&gt; (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2414"&gt;#2414&lt;/a&gt;), added a &lt;code&gt;--setenv&lt;/code&gt; flag to &lt;code&gt;wasm_of_ocaml&lt;/code&gt; (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2415"&gt;#2415&lt;/a&gt;), fixed typed array constructors to take a &lt;code&gt;number_t js_array t&lt;/code&gt; rather than a &lt;code&gt;float js_array t&lt;/code&gt; (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2416"&gt;#2416&lt;/a&gt;), and opened draft PRs to run the test suites under bun in CI (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2413"&gt;#2413&lt;/a&gt;) and to benchmark number unboxing and integer optimizations (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2410"&gt;#2410&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/vouillon"&gt;Jérôme Vouillon&lt;/a&gt; continued work on consolidating the Wasm runtime to a &lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2405" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;single linear memory&lt;/strong&gt;&lt;/a&gt;, merging the separate memories used by the &lt;code&gt;caml_buffer&lt;/code&gt; scratch buffer, the zstd and blake2 implementations, and the WASI libc, since Safari does not support modules with multiple memories (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2405"&gt;#2405&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/hhugo"&gt;Hugo Heuzard&lt;/a&gt; has two large Claude-Code-assisted binding PRs pending review: &lt;code&gt;BroadcastChannel&lt;/code&gt; and &lt;code&gt;SharedWorker&lt;/code&gt; bindings filling Tier 2 communication gaps from &lt;code&gt;API-STATUS.md&lt;/code&gt; (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2400"&gt;#2400&lt;/a&gt;), and Web Audio plus Media Capture bindings alongside a completed &lt;code&gt;Dom_html.mediaElement&lt;/code&gt; binding (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2401"&gt;#2401&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Two PRs merged this week: &lt;a href="https://github.com/balat"&gt;Vincent Balat&lt;/a&gt; added the doc-build &lt;code&gt;--strict-refs&lt;/code&gt; check, noting the rebuild currently has zero repairable defects but flagging that the manual has roughly 12,759 references into undocumented dependencies across 487 pages, far more than sibling Ocsigen projects like tyxml or ocsigenserver (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2411"&gt;#2411&lt;/a&gt;); &lt;a href="https://github.com/hhugo"&gt;Hugo Heuzard&lt;/a&gt; refreshed the stdlib 5.6 test snapshot to match OCaml trunk's addition of &lt;code&gt;Obj.hash_variant&lt;/code&gt; and stdlib line-number shifts, fixing the &lt;code&gt;5.6+trunk&lt;/code&gt; / Ubuntu CI job (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/2412"&gt;#2412&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;The long-standing JS output size issue was updated with a comment from &lt;a href="https://github.com/smuenzel"&gt;Stefan Muenzel&lt;/a&gt; asking whether the &lt;code&gt;ppx_module_timer&lt;/code&gt; PPX contributes unnecessary code to bundle size (&lt;a href="https://github.com/ocsigen/js_of_ocaml/issues/812"&gt;#812&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Wasm asset resolution fix landed while several Wasm sourcemap, typed-array and Web API binding PRs remained open for review.</summary><published>2026-08-30T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocsigen-js_of_ocaml/2026/week-34</id><title>Week 34, 2026: None</title><updated>2026-08-23T00:00:00+00:00</updated><content type="html">&lt;p&gt;Activity report for ocsigen/js_of_ocaml - Week 34, 2026&lt;/p&gt;</content><link href="https://thicket.dev/"/><summary>Activity report for ocsigen/js_of_ocaml - Week 34, 2026</summary><published>2026-08-23T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocsigen-js_of_ocaml/2026/week-33</id><title>Week 33, 2026: Draft PR adding js_of_ocaml build support for the Introcaml instrumented compiler saw continued technical discussion.</title><updated>2026-08-16T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

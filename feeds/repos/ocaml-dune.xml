@@ -1,5 +1,207 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-dune.xml</id><title>ocaml/dune (Weekly)</title><updated>2026-08-16T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-dune.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/dune</subtitle><entry><id>https://thicket.dev/repos/ocaml-dune/2026/week-33</id><title>Week 33, 2026: Dune language version bumped to 3.25 with a Melange artifact variable and a large internal engine performance rewrite by rgrinberg.</title><updated>2026-08-16T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-dune.xml</id><title>ocaml/dune (Weekly)</title><updated>2026-09-06T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-dune.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/dune</subtitle><entry><id>https://thicket.dev/repos/ocaml-dune/2026/week-36</id><title>Week 36, 2026: Dune reworked dynamic actions to run over RPC and added qualified module-reference support, alongside a PR backlog cleanup.</title><updated>2026-09-06T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Backend work continued on the opam SAT solver, qualified-module refactors, and RPC path handling, alongside a cleanup of long-stale draft PRs.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;Newly opened work includes narrowing &lt;code&gt;%{bin:...}&lt;/code&gt; binary lookups to a package's declared dependency closure by &lt;a href="https://github.com/punchagan"&gt;Puneeth Chaganti&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/15381"&gt;#15381&lt;/a&gt;), incremental clause addition for the SAT solver to support on-demand opam package loading by &lt;a href="https://github.com/art-w"&gt;art-w&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/16303"&gt;#16303&lt;/a&gt;), further opam-solver refactors splitting &lt;code&gt;build_problem&lt;/code&gt; and dropping priority avoidance for &lt;code&gt;avoid-version&lt;/code&gt; plus a sudoku-solving test for the SAT engine, also by &lt;a href="https://github.com/art-w"&gt;art-w&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/16306"&gt;#16306&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16307"&gt;#16307&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16325"&gt;#16325&lt;/a&gt;), removal of package digests by &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/16292"&gt;#16292&lt;/a&gt;), and &lt;code&gt;describe workspace&lt;/code&gt;/&lt;code&gt;dune rules&lt;/code&gt; extensions to cover Melange targets and anonymous actions by &lt;a href="https://github.com/NatKarmios"&gt;Nat Karmios&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/16300"&gt;#16300&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/15586"&gt;#15586&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;The &lt;a href="https://github.com/ocaml/dune/pull/16294" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;opam SAT solver&lt;/strong&gt;&lt;/a&gt; saw an incremental-solving push, with the solver refactored to expose a step/choose interface and be driven externally (&lt;a href="https://github.com/ocaml/dune/pull/16294"&gt;#16294&lt;/a&gt;), at-most-groups made incremental (&lt;a href="https://github.com/ocaml/dune/pull/16304"&gt;#16304&lt;/a&gt;), stats corrected to count at-most clauses (&lt;a href="https://github.com/ocaml/dune/pull/16293"&gt;#16293&lt;/a&gt;), and a fuzzer added to check incremental solutions against brute force (&lt;a href="https://github.com/ocaml/dune/pull/16298"&gt;#16298&lt;/a&gt;), by &lt;a href="https://github.com/art-w"&gt;art-w&lt;/a&gt;, alongside &lt;code&gt;opam_repo.load_version&lt;/code&gt; exposure for single opam file reads and read-count stats (&lt;a href="https://github.com/ocaml/dune/pull/16297"&gt;#16297&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/16296"&gt;#16296&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;The &lt;a href="https://github.com/ocaml/dune/pull/16336" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;qualified module references&lt;/strong&gt;&lt;/a&gt; initiative from &lt;a href="https://github.com/anmonteiro"&gt;Antonio Nuno Monteiro&lt;/a&gt; continued with encapsulated qualification validation (&lt;a href="https://github.com/ocaml/dune/pull/16336"&gt;#16336&lt;/a&gt;), removal of unused &lt;code&gt;Per_item&lt;/code&gt; from &lt;code&gt;module_name&lt;/code&gt; (&lt;a href="https://github.com/ocaml/dune/pull/16334"&gt;#16334&lt;/a&gt;), inlined common decoders in &lt;code&gt;modules&lt;/code&gt; (&lt;a href="https://github.com/ocaml/dune/pull/16330"&gt;#16330&lt;/a&gt;), and tests covering logical source paths, repeated qualified paths, and artifact reference ambiguity (&lt;a href="https://github.com/ocaml/dune/pull/16333"&gt;#16333&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/16321"&gt;#16321&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/16320"&gt;#16320&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/16323"&gt;#16323&lt;/a&gt;); a companion documentation PR describing dotted module artifact references was opened and later closed without merging (&lt;a href="https://github.com/ocaml/dune/pull/16335"&gt;#16335&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/pull/16316" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Melange&lt;/strong&gt;&lt;/a&gt; support was refactored to derive the emission directory from library contents, reuse library information, and reuse the emission object directory, plus preferring &lt;code&gt;melobjinfo&lt;/code&gt; for imported virtual-library dependencies and isolating installed vlib fallbacks from &lt;code&gt;melobjinfo&lt;/code&gt;, by &lt;a href="https://github.com/anmonteiro"&gt;Antonio Nuno Monteiro&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/pull/16316"&gt;#16316&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/16317"&gt;#16317&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/16318"&gt;#16318&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/16271"&gt;#16271&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/16272"&gt;#16272&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/16276"&gt;#16276&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/16277"&gt;#16277&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;The &lt;a href="https://github.com/ocaml/dune/pull/16329" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;action-plugin/RPC&lt;/strong&gt;&lt;/a&gt; area also saw supporting refactors removing the target-writing API, merging glob handling into the action plugin, and deriving dependency comparison, by &lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/pull/16329"&gt;#16329&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/16328"&gt;#16328&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/16302"&gt;#16302&lt;/a&gt;), plus internal &lt;code&gt;stdune&lt;/code&gt; reorganisation moving &lt;code&gt;Dune_sexp&lt;/code&gt; under &lt;code&gt;Stdune&lt;/code&gt; (&lt;a href="https://github.com/ocaml/dune/pull/16288"&gt;#16288&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/dune/pull/16327" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Rocq (Coq)&lt;/strong&gt;&lt;/a&gt; support gained a test reproducing build failures from broken installed &lt;code&gt;.vo&lt;/code&gt; symlinks, by &lt;a href="https://github.com/Janno"&gt;Jan-Oliver Kaiser&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/pull/16327"&gt;#16327&lt;/a&gt;), tracked against an open issue proposing to ignore such symlinks when traversing installed theories (&lt;a href="https://github.com/ocaml/dune/issues/16326"&gt;#16326&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Platform-stability fixes landed for macOS (Xcode 15 C++-flag compatibility, linking test fixes, process-cleanup test stabilization) by &lt;a href="https://github.com/shonfeder"&gt;Shon Feder&lt;/a&gt; and &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/pull/16275"&gt;#16275&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/16274"&gt;#16274&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/16301"&gt;#16301&lt;/a&gt;), and for opam promotion being restored after generated-file deletion and Merlin preferring exact configuration matches, by &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; and &lt;a href="https://github.com/anmonteiro"&gt;Antonio Nuno Monteiro&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/pull/16234"&gt;#16234&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/16194"&gt;#16194&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; closed a substantial batch of long-dormant draft and proof-of-concept pull requests without merging, including experiments such as a &lt;code&gt;dune shell&lt;/code&gt; debugging command and incremental SAT-decision search, as backlog cleanup (&lt;a href="https://github.com/ocaml/dune/pull/15597"&gt;#15597&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/16217"&gt;#16217&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/16283"&gt;#16283&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/16284"&gt;#16284&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/15615"&gt;#15615&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/15510"&gt;#15510&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/15448"&gt;#15448&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/15438"&gt;#15438&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/15326"&gt;#15326&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/14663"&gt;#14663&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/13992"&gt;#13992&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/13759"&gt;#13759&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/13535"&gt;#13535&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/13524"&gt;#13524&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/13523"&gt;#13523&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/13237"&gt;#13237&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/12754"&gt;#12754&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/12699"&gt;#12699&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/15112"&gt;#15112&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/15113"&gt;#15113&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/15115"&gt;#15115&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/15117"&gt;#15117&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/15118"&gt;#15118&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/15119"&gt;#15119&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/15120"&gt;#15120&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/pull/16280"&gt;#16280&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Dune reworked dynamic actions to run over RPC and added qualified module-reference support, alongside a PR backlog cleanup.</summary><published>2026-09-06T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-dune/2026/week-35</id><title>Week 35, 2026: Sandboxing hardening landed behind Dune language 3.25/MDX 0.6, experimental FDO support was removed, and RPC/engine reliability fixes merged.</title><updated>2026-08-30T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+rgrinberg, Alizter and anmonteiro opened work-in-progress fixes for RPC, ctypes and package locking while stale backlog PRs were pruned.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; opened several in-progress fixes: running &lt;code&gt;dynamic-run&lt;/code&gt; over RPC (&lt;a href="https://github.com/ocaml/dune/issues/16256"&gt;#16256&lt;/a&gt;), formatting generated diff corrections (&lt;a href="https://github.com/ocaml/dune/issues/16209"&gt;#16209&lt;/a&gt;), releasing process resources when spawning fails (&lt;a href="https://github.com/ocaml/dune/issues/16266"&gt;#16266&lt;/a&gt;), sandboxing Ctypes generated link actions (&lt;a href="https://github.com/ocaml/dune/issues/16248"&gt;#16248&lt;/a&gt;), excluding directories from action-plugin glob listings (&lt;a href="https://github.com/ocaml/dune/issues/16262"&gt;#16262&lt;/a&gt;), and honoring &lt;code&gt;--force&lt;/code&gt; for cached cram test output (&lt;a href="https://github.com/ocaml/dune/issues/16237"&gt;#16237&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; opened package-management fixes still under review: distinguishing unmatched findlib tool definitions (&lt;a href="https://github.com/ocaml/dune/issues/16239"&gt;#16239&lt;/a&gt;), decoupling versioned lock directory paths (&lt;a href="https://github.com/ocaml/dune/issues/16218"&gt;#16218&lt;/a&gt;), comparing compiler packages semantically (&lt;a href="https://github.com/ocaml/dune/issues/16173"&gt;#16173&lt;/a&gt;), making lock platform selection unambiguous (&lt;a href="https://github.com/ocaml/dune/issues/16172"&gt;#16172&lt;/a&gt;), rebuilding consumers after private module interface changes (&lt;a href="https://github.com/ocaml/dune/issues/16204"&gt;#16204&lt;/a&gt;), plus tests exposing a revision-store lock inode race (&lt;a href="https://github.com/ocaml/dune/issues/16171"&gt;#16171&lt;/a&gt;) and interrupted lockdir recovery (&lt;a href="https://github.com/ocaml/dune/issues/16170"&gt;#16170&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/anmonteiro"&gt;Antonio Nuno Monteiro&lt;/a&gt; opened fixes for dotted module artifact references and hints under &lt;code&gt;include-qualified&lt;/code&gt; (&lt;a href="https://github.com/ocaml/dune/issues/16214"&gt;#16214&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16152"&gt;#16152&lt;/a&gt;) and a test reproducing a lost SIGINT under SIGCHLD load in the scheduler (&lt;a href="https://github.com/ocaml/dune/issues/16160"&gt;#16160&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; merged a batch of engine/RPC reliability work: canonicalizing action locks during construction (&lt;a href="https://github.com/ocaml/dune/issues/16252"&gt;#16252&lt;/a&gt;), retaining action builder memo names (&lt;a href="https://github.com/ocaml/dune/issues/16246"&gt;#16246&lt;/a&gt;), reporting missing &lt;code&gt;dynamic-run&lt;/code&gt; programs instead of asserting (&lt;a href="https://github.com/ocaml/dune/issues/16251"&gt;#16251&lt;/a&gt;), collecting traces from failed actions (&lt;a href="https://github.com/ocaml/dune/issues/16250"&gt;#16250&lt;/a&gt;), and sharing concurrent action redirections safely (&lt;a href="https://github.com/ocaml/dune/issues/16257"&gt;#16257&lt;/a&gt;), backed by matching regression tests (&lt;a href="https://github.com/ocaml/dune/issues/16244"&gt;#16244&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16247"&gt;#16247&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16249"&gt;#16249&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16254"&gt;#16254&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16259"&gt;#16259&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16260"&gt;#16260&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;RPC forwarded-path handling was reworked and covered with tests for absolute and client-relative paths (&lt;a href="https://github.com/ocaml/dune/issues/16267"&gt;#16267&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16269"&gt;#16269&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16270"&gt;#16270&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16258"&gt;#16258&lt;/a&gt;), continuing the watch-mode RPC work from &lt;a href="https://github.com/ocaml/dune/issues/15191"&gt;#15191&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Ctypes sandboxing was hardened end-to-end: stub generation sandboxing (&lt;a href="https://github.com/ocaml/dune/issues/16223"&gt;#16223&lt;/a&gt;), implicit header dependency tracking (&lt;a href="https://github.com/ocaml/dune/issues/16243"&gt;#16243&lt;/a&gt;), recording link sandbox and header dependencies (&lt;a href="https://github.com/ocaml/dune/issues/16231"&gt;#16231&lt;/a&gt;), and a test against double-linking vendored libraries (&lt;a href="https://github.com/ocaml/dune/issues/16240"&gt;#16240&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/anmonteiro"&gt;Antonio Nuno Monteiro&lt;/a&gt; fixed Melange compilation of installed virtual-library implementations (&lt;a href="https://github.com/ocaml/dune/issues/16211"&gt;#16211&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16212"&gt;#16212&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16213"&gt;#16213&lt;/a&gt;) and merged a series of refactors sharing code across the Melange, &lt;code&gt;js_of_ocaml&lt;/code&gt;, opam, package, and preprocessing backends (&lt;a href="https://github.com/ocaml/dune/issues/16147"&gt;#16147&lt;/a&gt;-&lt;a href="https://github.com/ocaml/dune/issues/16165"&gt;#16165&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16179"&gt;#16179&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16181"&gt;#16181&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16182"&gt;#16182&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16192"&gt;#16192&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; closed a series of long-dormant PRs as backlog cleanup, inviting authors to reopen when work resumes: Odoc v3 rules by &lt;a href="https://github.com/jonludlam"&gt;Jon Ludlam&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/12995"&gt;#12995&lt;/a&gt;), network capability tracking by &lt;a href="https://github.com/gridbugs"&gt;Stephen Sherratt&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/12787"&gt;#12787&lt;/a&gt;), configurable typo detection for package constraints by &lt;a href="https://github.com/kemsguy7"&gt;@kemsguy7&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/11759"&gt;#11759&lt;/a&gt;), Rocq package-metadata installation support by &lt;a href="https://github.com/ejgallego"&gt;Emilio Jesús Gallego Arias&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/11945"&gt;#11945&lt;/a&gt;), an FSEvents coalescing fix and macOS test fixes by &lt;a href="https://github.com/samoht"&gt;Thomas Gazagnaire&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/13381"&gt;#13381&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/13324"&gt;#13324&lt;/a&gt;), and a Copilot-authored &lt;code&gt;--disable-promotion&lt;/code&gt; rejection PR (&lt;a href="https://github.com/ocaml/dune/issues/14379"&gt;#14379&lt;/a&gt;); &lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; also closed a superseded single-platform-solve PR now replaced by &lt;a href="https://github.com/ocaml/dune/issues/15982"&gt;#15982&lt;/a&gt; (&lt;a href="https://github.com/ocaml/dune/issues/14458"&gt;#14458&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/shonfeder"&gt;Shon Feder&lt;/a&gt; merged the planning PR that broke the "discretionary tools" package-management feature into a tracked issue series (&lt;a href="https://github.com/ocaml/dune/issues/16043"&gt;#16043&lt;/a&gt;), and fixed &lt;code&gt;OPAMSWITCH&lt;/code&gt; handling in an opam-var-os test (&lt;a href="https://github.com/ocaml/dune/issues/16238"&gt;#16238&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Sandboxing hardening landed behind Dune language 3.25/MDX 0.6, experimental FDO support was removed, and RPC/engine reliability fixes merged.</summary><published>2026-08-30T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-dune/2026/week-34</id><title>Week 34, 2026: New `dune ocaml inferred-mli` command and Landlock sandboxing landed alongside a breaking context-name restriction.</title><updated>2026-08-23T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Package-manager tests and Melange-backend refactoring by Alizter and Antonio Nuno Monteiro dominated, alongside Rudi Grinberg's performance work.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; has an in-progress series reworking package-dependency resolution with snapshot tests for library closures, META template handling, redirect chains, and PPX/instrumentation metadata, still open as of this week (&lt;a href="https://github.com/ocaml/dune/issues/15994"&gt;#15994&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/15995"&gt;#15995&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/15996"&gt;#15996&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/15997"&gt;#15997&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16018"&gt;#16018&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16019"&gt;#16019&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16020"&gt;#16020&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16021"&gt;#16021&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16023"&gt;#16023&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16024"&gt;#16024&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16025"&gt;#16025&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16026"&gt;#16026&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16027"&gt;#16027&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16029"&gt;#16029&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16108"&gt;#16108&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16123"&gt;#16123&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16124"&gt;#16124&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16125"&gt;#16125&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16126"&gt;#16126&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16127"&gt;#16127&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16128"&gt;#16128&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16129"&gt;#16129&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16130"&gt;#16130&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16131"&gt;#16131&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16106"&gt;#16106&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; opened a cram-test naming fix (&lt;a href="https://github.com/ocaml/dune/issues/16146"&gt;#16146&lt;/a&gt;) that hadn't merged by week's end&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/shunueda"&gt;Shun Ueda&lt;/a&gt; opened a fix so &lt;code&gt;dune pkg lock&lt;/code&gt; respects the &lt;code&gt;lock_dir&lt;/code&gt; stanza, partially cherry-picked from an earlier PR and addressing &lt;a href="https://github.com/ocaml/dune/issues/13841"&gt;#13841&lt;/a&gt;, still under review (&lt;a href="https://github.com/ocaml/dune/issues/16049"&gt;#16049&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Janno"&gt;Jan-Oliver Kaiser&lt;/a&gt; opened an experimental scheduler that reorders waiting jobs by an approximation of their transitive-dependent count, explicitly noting the implementation was written by LLMs under high-level prompting (&lt;a href="https://github.com/ocaml/dune/issues/15991"&gt;#15991&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/shonfeder"&gt;Shon Feder&lt;/a&gt; has draft work planning tool-implementation issue tracking, still open (&lt;a href="https://github.com/ocaml/dune/issues/16043"&gt;#16043&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Alizter"&gt;Ali Caglayan&lt;/a&gt; merged package-lock work making portable lock-dir solving all-or-nothing with accompanying invariant tests (&lt;a href="https://github.com/ocaml/dune/issues/15981"&gt;#15981&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/15962"&gt;#15962&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16003"&gt;#16003&lt;/a&gt;), fixed rejection of malformed META templates (&lt;a href="https://github.com/ocaml/dune/issues/15994"&gt;#15994&lt;/a&gt;), and fixed the missing native-plugin layout for Rocq packages (&lt;a href="https://github.com/ocaml/dune/issues/16054"&gt;#16054&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16051"&gt;#16051&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/anmonteiro"&gt;Antonio Nuno Monteiro&lt;/a&gt; merged an extensive Melange-backend refactor sharing emit-module lookup, runtime dependency evaluation, promotion input, link-closure lookup, compilation-cache policy, and output-path centralization (&lt;a href="https://github.com/ocaml/dune/issues/15968"&gt;#15968&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/15971"&gt;#15971&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/15973"&gt;#15973&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/15974"&gt;#15974&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/15975"&gt;#15975&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/15976"&gt;#15976&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/15978"&gt;#15978&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16013"&gt;#16013&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16014"&gt;#16014&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16030"&gt;#16030&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16031"&gt;#16031&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16044"&gt;#16044&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16046"&gt;#16046&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16061"&gt;#16061&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16062"&gt;#16062&lt;/a&gt;), fixed the installed virtual-library crash (&lt;a href="https://github.com/ocaml/dune/issues/16033"&gt;#16033&lt;/a&gt;), and fixed Merlin lookups for private library modules (&lt;a href="https://github.com/ocaml/dune/issues/15977"&gt;#15977&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; merged a Landlock sandboxing feature (&lt;a href="https://github.com/ocaml/dune/issues/15858"&gt;#15858&lt;/a&gt;), the breaking context-name restriction on colons (&lt;a href="https://github.com/ocaml/dune/issues/16085"&gt;#16085&lt;/a&gt;), the new &lt;code&gt;dune ocaml inferred-mli&lt;/code&gt; command (&lt;a href="https://github.com/ocaml/dune/issues/16111"&gt;#16111&lt;/a&gt;), and a run of absolute-path acceptance fixes across &lt;code&gt;top-module&lt;/code&gt;, &lt;code&gt;top&lt;/code&gt;, promotion, and &lt;code&gt;describe&lt;/code&gt; (&lt;a href="https://github.com/ocaml/dune/issues/16135"&gt;#16135&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16142"&gt;#16142&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16143"&gt;#16143&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16144"&gt;#16144&lt;/a&gt;), alongside a series of &lt;code&gt;stdune&lt;/code&gt;/engine performance passes on path handling, decoders, and rule maps (&lt;a href="https://github.com/ocaml/dune/issues/15915"&gt;#15915&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/15963"&gt;#15963&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16069"&gt;#16069&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16078"&gt;#16078&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16079"&gt;#16079&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16082"&gt;#16082&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16098"&gt;#16098&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16099"&gt;#16099&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16100"&gt;#16100&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16101"&gt;#16101&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16103"&gt;#16103&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16109"&gt;#16109&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16117"&gt;#16117&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16119"&gt;#16119&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16120"&gt;#16120&lt;/a&gt;, &lt;a href="https://github.com/ocaml/dune/issues/16121"&gt;#16121&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/nat-karmios"&gt;Nat Karmios&lt;/a&gt; merged the module-origin reporting feature for &lt;code&gt;dune describe workspace&lt;/code&gt; (&lt;a href="https://github.com/ocaml/dune/issues/15478"&gt;#15478&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/copilot-swe-agent"&gt;@copilot-swe-agent&lt;/a&gt; had its MDX &lt;code&gt;link_flags&lt;/code&gt; inheritance fix merged after review (&lt;a href="https://github.com/ocaml/dune/issues/15614"&gt;#15614&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/punchagan"&gt;Puneeth Chaganti&lt;/a&gt; merged a test covering &lt;code&gt;%bin&lt;/code&gt; expansion in &lt;code&gt;(deps ...)&lt;/code&gt; (&lt;a href="https://github.com/ocaml/dune/issues/16047"&gt;#16047&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>New `dune ocaml inferred-mli` command and Landlock sandboxing landed alongside a breaking context-name restriction.</summary><published>2026-08-23T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-dune/2026/week-33</id><title>Week 33, 2026: Dune language version bumped to 3.25 with a Melange artifact variable and a large internal engine performance rewrite by rgrinberg.</title><updated>2026-08-16T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
