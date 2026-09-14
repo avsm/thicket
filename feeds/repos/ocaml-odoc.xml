@@ -1,5 +1,69 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-odoc.xml</id><title>ocaml/odoc (Weekly)</title><updated>2026-09-06T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-odoc.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/odoc</subtitle><entry><id>https://thicket.dev/repos/ocaml-odoc/2026/week-36</id><title>Week 36, 2026: Ten PRs opened tackling correctness fixes, memory/performance work, and OxCaml compatibility, with no merges landing on master during the week itself.</title><updated>2026-09-06T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-odoc.xml</id><title>ocaml/odoc (Weekly)</title><updated>2026-09-13T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-odoc.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/odoc</subtitle><entry><id>https://thicket.dev/repos/ocaml-odoc/2026/week-37</id><title>Week 37, 2026: odoc merged 13 PRs focused on `.odoc`/`.odocl` size and CPU reduction, `include functor` rendering, and several xref/rendering bug fixes.</title><updated>2026-09-13T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+A new (not-yet-ready) driver-fixes PR was opened, alongside two new issues about odoc_driver's dune-mode and dependency-building behavior.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/jonludlam"&gt;Jon Ludlam&lt;/a&gt; opened &lt;a href="https://github.com/ocaml/odoc/issues/1461" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;"Several driver fixes"&lt;/strong&gt;&lt;/a&gt; bundling a number of independently-reviewable driver fixes plus one odoc fix, explicitly flagged in review as not yet ready for review after discussion at the odoc meeting (&lt;a href="https://github.com/ocaml/odoc/issues/1461"&gt;#1461&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/jonludlam"&gt;Jon Ludlam&lt;/a&gt; opened two issues about &lt;code&gt;odoc_driver&lt;/code&gt; documentation and behavior: documenting the "dune mode" workflow (&lt;code&gt;dune exec -- odoc_driver&lt;/code&gt;) that avoids installing packages first (&lt;a href="https://github.com/ocaml/odoc/issues/1492"&gt;#1492&lt;/a&gt;), and having &lt;code&gt;odoc_driver&lt;/code&gt; automatically build docs for dependencies declared in a package's &lt;code&gt;odoc-config.sexp&lt;/code&gt;, cross-referencing &lt;a href="https://github.com/ocaml/dune/issues/16363"&gt;ocaml/dune#16363&lt;/a&gt; (&lt;a href="https://github.com/ocaml/odoc/issues/1491"&gt;#1491&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;A cluster of &lt;a href="https://github.com/ocaml/odoc/issues/1480" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;performance-focused merges&lt;/strong&gt;&lt;/a&gt; landed this week reducing &lt;code&gt;.odoc&lt;/code&gt;/&lt;code&gt;.odocl&lt;/code&gt; size and odoc_driver CPU/memory usage: doc-comment memoization (&lt;a href="https://github.com/ocaml/odoc/issues/1480"&gt;#1480&lt;/a&gt;), payload compression (&lt;a href="https://github.com/ocaml/odoc/issues/1486"&gt;#1486&lt;/a&gt;), merged word-run comment storage (&lt;a href="https://github.com/ocaml/odoc/issues/1488"&gt;#1488&lt;/a&gt;), id-wrapper removal (&lt;a href="https://github.com/ocaml/odoc/issues/1479"&gt;#1479&lt;/a&gt;), and shared shape-reducer caching (&lt;a href="https://github.com/ocaml/odoc/issues/1487"&gt;#1487&lt;/a&gt;), all by &lt;a href="https://github.com/jonludlam"&gt;Jon Ludlam&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/odoc/issues/1482" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Correctness fixes&lt;/strong&gt;&lt;/a&gt; in cross-referencing and rendering were merged, covering extended opens (&lt;a href="https://github.com/ocaml/odoc/issues/1482"&gt;#1482&lt;/a&gt;), canonical-path search (&lt;a href="https://github.com/ocaml/odoc/issues/1483"&gt;#1483&lt;/a&gt;), hidden type names (&lt;a href="https://github.com/ocaml/odoc/issues/1484"&gt;#1484&lt;/a&gt;), optional-argument rendering on OCaml 5.5 (&lt;a href="https://github.com/ocaml/odoc/issues/1489"&gt;#1489&lt;/a&gt;), and magic-string version handling (&lt;a href="https://github.com/ocaml/odoc/issues/1375"&gt;#1375&lt;/a&gt;), all by &lt;a href="https://github.com/jonludlam"&gt;Jon Ludlam&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;include functor&lt;/code&gt; support for OxCaml was merged after review from &lt;a href="https://github.com/jonludlam"&gt;Jon Ludlam&lt;/a&gt;, following up on earlier work in &lt;a href="https://github.com/ocaml/odoc/issues/1368"&gt;#1368&lt;/a&gt;, by &lt;a href="https://github.com/Leonidas-from-XIV"&gt;Marek Kubica&lt;/a&gt; (&lt;a href="https://github.com/ocaml/odoc/issues/1452"&gt;#1452&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;CI upkeep merged, including Sherlodoc test fixes for tyxml 5.0.0 (&lt;a href="https://github.com/ocaml/odoc/issues/1490"&gt;#1490&lt;/a&gt;) and removal of the dead &lt;code&gt;`Forward&lt;/code&gt; constructor after investigation (&lt;a href="https://github.com/ocaml/odoc/issues/1478"&gt;#1478&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>odoc merged 13 PRs focused on `.odoc`/`.odocl` size and CPU reduction, `include functor` rendering, and several xref/rendering bug fixes.</summary><published>2026-09-13T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-odoc/2026/week-36</id><title>Week 36, 2026: Ten PRs opened tackling correctness fixes, memory/performance work, and OxCaml compatibility, with no merges landing on master during the week itself.</title><updated>2026-09-06T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

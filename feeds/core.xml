@@ -1,5 +1,104 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/core.xml</id><title>OCaml Core (Weekly)</title><updated>2026-09-06T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/core.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Core OCaml language, compiler, and essential tooling</subtitle><entry><id>https://thicket.dev/groups/core/2026/week-36</id><title>Week 36, 2026: ocaml/ocaml shipped OCaml 5.5.1 with a Marshal overflow fix and merged Windows correctness and arm64/power codegen work; ocaml/RFCs had no activity.</title><updated>2026-09-06T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/core.xml</id><title>OCaml Core (Weekly)</title><updated>2026-09-13T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/core.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Core OCaml language, compiler, and essential tooling</subtitle><entry><id>https://thicket.dev/groups/core/2026/week-37</id><title>Week 37, 2026: ocaml/ocaml advanced runtime_events tooling, GADT-soundness and Windows fixes, and governance changes; ocaml/RFCs recorded no activity.</title><updated>2026-09-13T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/14988" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Weak.get_copy&lt;/strong&gt;&lt;/a&gt; no longer copies continuations, since doing so was unsafe (&lt;a href="https://github.com/ocaml/ocaml/pull/14988"&gt;ocaml/ocaml#14988&lt;/a&gt;) by &lt;a href="https://github.com/yallop"&gt;Jeremy Yallop&lt;/a&gt;; &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; followed up with a PR to deprecate &lt;code&gt;Weak.get_copy&lt;/code&gt; outright (&lt;a href="https://github.com/ocaml/ocaml/pull/15064"&gt;ocaml/ocaml#15064&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;The &lt;a href="https://github.com/ocaml/ocaml/pull/14986" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;expansiveness check&lt;/strong&gt;&lt;/a&gt; now accounts for effect cases, closing a soundness gap around &lt;code&gt;match ... with effect ...&lt;/code&gt; (&lt;a href="https://github.com/ocaml/ocaml/pull/14986"&gt;ocaml/ocaml#14986&lt;/a&gt;) by &lt;a href="https://github.com/yallop"&gt;Jeremy Yallop&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/15035" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Lambda IR&lt;/strong&gt;&lt;/a&gt; no longer trusts GADT equations introduced by refutable/partial-match arguments, fixing a native-code segfault (&lt;a href="https://github.com/ocaml/ocaml/pull/15035"&gt;ocaml/ocaml#15035&lt;/a&gt;, closing &lt;a href="https://github.com/ocaml/ocaml/issues/14898"&gt;ocaml/ocaml#14898&lt;/a&gt;) by &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/15001" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Runtime_events&lt;/strong&gt;&lt;/a&gt; gained new counters &lt;code&gt;EV_C_MAJOR_DIRECT_ALLOCATED_WORDS&lt;/code&gt;, &lt;code&gt;EV_C_MAJOR_SUSPENDED_ALLOCATED_WORDS&lt;/code&gt;, &lt;code&gt;EV_C_MAJOR_RESUMED_ALLOCATED_WORDS&lt;/code&gt;, plus an &lt;code&gt;EV_EXPLICIT_GC_RAMP_UP&lt;/code&gt; span for &lt;code&gt;Gc.ramp_up&lt;/code&gt; (&lt;a href="https://github.com/ocaml/ocaml/pull/15001"&gt;ocaml/ocaml#15001&lt;/a&gt;) by &lt;a href="https://github.com/tmcgilchrist"&gt;Tim McGilchrist&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/15016" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Runtime_events&lt;/strong&gt;&lt;/a&gt; consumers that fall behind the producer now see lost-event reporting instead of spurious "corrupt stream" failures (&lt;a href="https://github.com/ocaml/ocaml/pull/15016"&gt;ocaml/ocaml#15016&lt;/a&gt;, closing &lt;a href="https://github.com/ocaml/ocaml/issues/14151"&gt;ocaml/ocaml#14151&lt;/a&gt;) by &lt;a href="https://github.com/tmcgilchrist"&gt;Tim McGilchrist&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/15009" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Set.union&lt;/strong&gt;&lt;/a&gt;, &lt;strong class="achievement"&gt;Set.inter&lt;/strong&gt; and &lt;strong class="achievement"&gt;Set.diff&lt;/strong&gt; gained better complexity on physically-shared sets, avoiding unnecessary traversal/allocation (&lt;a href="https://github.com/ocaml/ocaml/pull/15009"&gt;ocaml/ocaml#15009&lt;/a&gt;) by &lt;a href="https://github.com/nojb"&gt;Nicolás Ojeda Bär&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/15056" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Unix.realpath&lt;/strong&gt;&lt;/a&gt; now normalizes Win32 UNC paths correctly (&lt;a href="https://github.com/ocaml/ocaml/pull/15056"&gt;ocaml/ocaml#15056&lt;/a&gt;, closing &lt;a href="https://github.com/ocaml/ocaml/issues/15044"&gt;ocaml/ocaml#15044&lt;/a&gt;) by &lt;a href="https://github.com/nojb"&gt;Nicolás Ojeda Bär&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Parser precedence for the &lt;strong class="achievement"&gt;&lt;code&gt;with module type&lt;/code&gt;&lt;/strong&gt; constraint was fixed (&lt;a href="https://github.com/ocaml/ocaml/pull/14978"&gt;ocaml/ocaml#14978&lt;/a&gt;) by &lt;a href="https://github.com/314eter"&gt;314eter&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;The &lt;a href="https://github.com/ocaml/ocaml/pull/15006" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;power backend&lt;/strong&gt;&lt;/a&gt; now emits &lt;code&gt;fsqrt&lt;/code&gt; directly instead of calling into C, matching the earlier riscv change (&lt;a href="https://github.com/ocaml/ocaml/pull/15006"&gt;ocaml/ocaml#15006&lt;/a&gt;) by &lt;a href="https://github.com/Zaneham"&gt;Zane Hambly&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/14740" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;libunix&lt;/strong&gt;&lt;/a&gt; build fixes for Cygwin/mingw covering &lt;code&gt;gethostname&lt;/code&gt;/IPv6 guards, blocking-section handling around &lt;code&gt;realpath&lt;/code&gt;/&lt;code&gt;lockf&lt;/code&gt;, and root registration (&lt;a href="https://github.com/ocaml/ocaml/pull/14740"&gt;ocaml/ocaml#14740&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/pull/14921"&gt;ocaml/ocaml#14921&lt;/a&gt;) by &lt;a href="https://github.com/MisterDA"&gt;Antonin Décimo&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;No new features were recorded in &lt;a href="https://github.com/ocaml/RFCs"&gt;ocaml/RFCs&lt;/a&gt; this week.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt; was the only active repository this week, with 11 new PRs opened and several merged across runtime_events, GADT soundness, Windows/Win32 robustness, and non-x86 backend parity.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/RFCs"&gt;ocaml/RFCs&lt;/a&gt; recorded no commits, issues, or PRs in this window.&lt;/li&gt;
+&lt;li&gt;Governance moved forward in ocaml/ocaml: &lt;a href="https://github.com/smuenzel"&gt;Stefan Muenzel&lt;/a&gt; was added as a maintainer (&lt;a href="https://github.com/ocaml/ocaml/pull/15057"&gt;ocaml/ocaml#15057&lt;/a&gt;) and five long-inactive maintainers were proposed for retirement (&lt;a href="https://github.com/ocaml/ocaml/pull/15063"&gt;ocaml/ocaml#15063&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Contributor-facing documentation was tightened, including guidance to consider writing an RFC before large changes (&lt;a href="https://github.com/ocaml/ocaml/pull/15055"&gt;ocaml/ocaml#15055&lt;/a&gt;) and a simplified local-build workflow (&lt;a href="https://github.com/ocaml/ocaml/pull/15041"&gt;ocaml/ocaml#15041&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;No PRs or issues directly linked &lt;a href="https://github.com/ocaml/ocaml"&gt;ocaml/ocaml&lt;/a&gt; and &lt;a href="https://github.com/ocaml/RFCs"&gt;ocaml/RFCs&lt;/a&gt; this week; the RFCs repository recorded no activity in the period.&lt;/li&gt;
+&lt;li&gt;ocaml/ocaml's updated CONTRIBUTING.md explicitly points contributors toward writing an RFC before large changes (&lt;a href="https://github.com/ocaml/ocaml/pull/15055"&gt;ocaml/ocaml#15055&lt;/a&gt;), reinforcing ocaml/RFCs as the intended venue for major design proposals.&lt;/li&gt;
+&lt;li&gt;Several large in-flight design proposals — link-time linking (&lt;a href="https://github.com/ocaml/ocaml/pull/14895"&gt;ocaml/ocaml#14895&lt;/a&gt;), GC pacing (&lt;a href="https://github.com/ocaml/ocaml/pull/14796"&gt;ocaml/ocaml#14796&lt;/a&gt;), and the new &lt;code&gt;Hashtbl&lt;/code&gt; implementation (&lt;a href="https://github.com/ocaml/ocaml/pull/14956"&gt;ocaml/ocaml#14956&lt;/a&gt;) — are being discussed directly as ocaml/ocaml PRs rather than routed through ocaml/RFCs, despite matching the scale of change the CONTRIBUTING.md guidance targets.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt; proposed at the maintainer meeting merging &lt;a href="https://github.com/ocaml/ocaml/issues/15058" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;flexdll&lt;/strong&gt;&lt;/a&gt; into the compiler repository rather than keeping it as a submodule (&lt;a href="https://github.com/ocaml/ocaml/issues/15058"&gt;ocaml/ocaml#15058&lt;/a&gt;); &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; noted the general usability pain of git submodules.&lt;/li&gt;
+&lt;li&gt;Issue &lt;a href="https://github.com/ocaml/ocaml/issues/15043"&gt;ocaml/ocaml#15043&lt;/a&gt; (a &lt;code&gt;runtime_events&lt;/code&gt; ring-buffer hang) prompted a discussion about AI-tool transparency after &lt;a href="https://github.com/sadiqj"&gt;Sadiq Jaffer&lt;/a&gt; explained the report had been filed autonomously by a Claude instance; &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; asked for transparency about tool-produced issue text going forward, and &lt;a href="https://github.com/tmcgilchrist"&gt;Tim McGilchrist&lt;/a&gt; landed the confirmed fix (&lt;a href="https://github.com/ocaml/ocaml/pull/15016"&gt;ocaml/ocaml#15016&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Governance changes were discussed and merged: &lt;a href="https://github.com/smuenzel"&gt;Stefan Muenzel&lt;/a&gt; was added as a maintainer (&lt;a href="https://github.com/ocaml/ocaml/pull/15057"&gt;ocaml/ocaml#15057&lt;/a&gt;), while &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt; opened a companion PR to retire five long-inactive maintainers (&lt;a href="https://github.com/ocaml/ocaml/pull/15063"&gt;ocaml/ocaml#15063&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;The &lt;a href="https://github.com/ocaml/ocaml/issues/15042" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Windows stop-the-world barrier&lt;/strong&gt;&lt;/a&gt; report from &lt;a href="https://github.com/daniel-larraz"&gt;Daniel Larraz&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/issues/15042"&gt;ocaml/ocaml#15042&lt;/a&gt;) drew a root-cause discussion from &lt;a href="https://github.com/MisterDA"&gt;Antonin Décimo&lt;/a&gt;, pointing to &lt;code&gt;Sleep&lt;/code&gt;'s millisecond resolution in &lt;code&gt;caml_plat_spin_back_off&lt;/code&gt; and proposing a high-resolution waitable timer.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/panglesd"&gt;Paul-Elliot Anglès d'Auriac&lt;/a&gt; and &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt; worked through a discrepancy between interface- and implementation-context typing of a functor argument alias (&lt;a href="https://github.com/ocaml/ocaml/issues/15047"&gt;ocaml/ocaml#15047&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/15001" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Runtime_events&lt;/strong&gt;&lt;/a&gt; remains the most active area, with counters, corrupt-stream handling, lifecycle events, and documentation touched by &lt;a href="https://github.com/tmcgilchrist"&gt;Tim McGilchrist&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/pull/15001"&gt;ocaml/ocaml#15001&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/pull/15016"&gt;ocaml/ocaml#15016&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/pull/15039"&gt;ocaml/ocaml#15039&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/pull/15049"&gt;ocaml/ocaml#15049&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/pull/15010"&gt;ocaml/ocaml#15010&lt;/a&gt;) and a ring-buffer hang report (&lt;a href="https://github.com/ocaml/ocaml/issues/15043"&gt;ocaml/ocaml#15043&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/issues/15042" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Windows/Win32 robustness&lt;/strong&gt;&lt;/a&gt; recurs across the stop-the-world barrier latency report (&lt;a href="https://github.com/ocaml/ocaml/issues/15042"&gt;ocaml/ocaml#15042&lt;/a&gt;), the &lt;code&gt;Unix.realpath&lt;/code&gt; UNC-path fix (&lt;a href="https://github.com/ocaml/ocaml/pull/15056"&gt;ocaml/ocaml#15056&lt;/a&gt;), and Cygwin/mingw libunix build fixes (&lt;a href="https://github.com/ocaml/ocaml/pull/14740"&gt;ocaml/ocaml#14740&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/pull/14921"&gt;ocaml/ocaml#14921&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/15035" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;GADT/type-soundness edge cases&lt;/strong&gt;&lt;/a&gt; keep surfacing, from the Lambda-IR value-kind segfault fix (&lt;a href="https://github.com/ocaml/ocaml/pull/15035"&gt;ocaml/ocaml#15035&lt;/a&gt;, closing &lt;a href="https://github.com/ocaml/ocaml/issues/14898"&gt;ocaml/ocaml#14898&lt;/a&gt;) to open reports on module-type subtyping with present/absent aliases (&lt;a href="https://github.com/ocaml/ocaml/issues/13976"&gt;ocaml/ocaml#13976&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/15006" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Non-x86 backend parity&lt;/strong&gt;&lt;/a&gt; continued with power emitting &lt;code&gt;fsqrt&lt;/code&gt; directly (&lt;a href="https://github.com/ocaml/ocaml/pull/15006"&gt;ocaml/ocaml#15006&lt;/a&gt;), AArch64 atomic-fence pruning (&lt;a href="https://github.com/ocaml/ocaml/pull/14936"&gt;ocaml/ocaml#14936&lt;/a&gt;), and a &lt;code&gt;clz&lt;/code&gt;/&lt;code&gt;ctz&lt;/code&gt; primitives proposal (&lt;a href="https://github.com/ocaml/ocaml/pull/15018"&gt;ocaml/ocaml#15018&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/15057" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Project governance&lt;/strong&gt;&lt;/a&gt; saw concrete action, with a new maintainer added and inactive ones proposed for retirement in the same cycle (&lt;a href="https://github.com/ocaml/ocaml/pull/15057"&gt;ocaml/ocaml#15057&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/pull/15063"&gt;ocaml/ocaml#15063&lt;/a&gt;), while ocaml/RFCs itself stayed inactive despite ocaml/ocaml's documentation now pointing larger proposals there (&lt;a href="https://github.com/ocaml/ocaml/pull/15055"&gt;ocaml/ocaml#15055&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>ocaml/ocaml advanced runtime_events tooling, GADT-soundness and Windows fixes, and governance changes; ocaml/RFCs recorded no activity.</summary><published>2026-09-13T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2026/week-36</id><title>Week 36, 2026: ocaml/ocaml shipped OCaml 5.5.1 with a Marshal overflow fix and merged Windows correctness and arm64/power codegen work; ocaml/RFCs had no activity.</title><updated>2026-09-06T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
@@ -8130,7 +8229,7 @@
 &lt;li&gt;&lt;strong class="achievement"&gt;Cross-platform compatibility&lt;/strong&gt; receiving increased attention with Windows API modernization and Unix platform improvements&lt;/li&gt;
 &lt;li&gt;&lt;strong class="achievement"&gt;Language design refinement&lt;/strong&gt; through community feedback on practical applications of new syntax features like raw identifiers&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Runtime improvements and bytecode optimization merged alongside language syntax discussions for raw identifiers</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2024/week-42</id><title>Week 42, 2024: Five PRs merged in ocaml/ocaml including new Thread.set_current_thread_name API and compiler improvements</title><updated>2026-09-11T06:33:20.740252+00:00</updated><content type="html">
+</content><link href="https://thicket.dev/"/><summary>Runtime improvements and bytecode optimization merged alongside language syntax discussions for raw identifiers</summary><published>2024-10-27T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/core/2024/week-42</id><title>Week 42, 2024: Five PRs merged in ocaml/ocaml including new Thread.set_current_thread_name API and compiler improvements</title><updated>2026-09-14T19:36:06.644281+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

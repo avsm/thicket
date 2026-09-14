@@ -1,5 +1,102 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/oxcaml.xml</id><title>OxCaml (Weekly)</title><updated>2026-09-06T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/oxcaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Oxidised OCaml</subtitle><entry><id>https://thicket.dev/groups/oxcaml/2026/week-36</id><title>Week 36, 2026: Atomic pointers, DWARF-5 debug info, and dependency vendoring landed in oxcaml/oxcaml, while opam-repository relaxed dune/eio/mdx guards.</title><updated>2026-09-06T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/oxcaml.xml</id><title>OxCaml (Weekly)</title><updated>2026-09-13T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/oxcaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Oxidised OCaml</subtitle><entry><id>https://thicket.dev/groups/oxcaml/2026/week-37</id><title>Week 37, 2026: oxcaml/oxcaml drove all recorded group activity: DWARF-5 debug support, void-record typing, and heavy LTO/Merlin-diagnostics prototyping.</title><updated>2026-09-13T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;&lt;code&gt;Bigarray&lt;/code&gt; &lt;code&gt;Genarray&lt;/code&gt;/&lt;code&gt;Array0&lt;/code&gt;/&lt;code&gt;Array1&lt;/code&gt;/&lt;code&gt;Array2&lt;/code&gt; &lt;code&gt;get&lt;/code&gt;, &lt;code&gt;unsafe_get&lt;/code&gt;, and &lt;code&gt;blit&lt;/code&gt; now require only &lt;code&gt;@ read&lt;/code&gt; access instead of &lt;code&gt;@ shared&lt;/code&gt;, letting read-only callers avoid a full shared lock (&lt;a href="https://github.com/oxcaml/oxcaml/issues/5768"&gt;oxcaml/oxcaml#5768&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;DWARF-5 debug output is now selectable via a &lt;code&gt;-gdwarf-version&lt;/code&gt; flag, landed by &lt;a href="https://github.com/mshinwell"&gt;Mark Shinwell&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6923"&gt;oxcaml/oxcaml#6923&lt;/a&gt;), with follow-ups registering the source file as DWARF-5 line-table file 0 on macOS (&lt;a href="https://github.com/oxcaml/oxcaml/issues/7021"&gt;oxcaml/oxcaml#7021&lt;/a&gt;) and using base-address/offset pairs in DWARF-5 location and range lists (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6926"&gt;oxcaml/oxcaml#6926&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;All-&lt;code&gt;void&lt;/code&gt; records (fields entirely &lt;code&gt;void&lt;/code&gt;-layout) are now permitted, by &lt;a href="https://github.com/wrsturgeon"&gt;Will Sturgeon&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/7070"&gt;oxcaml/oxcaml#7070&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Non-scanned unboxed layouts (&lt;code&gt;bits8&lt;/code&gt;/&lt;code&gt;16&lt;/code&gt;/&lt;code&gt;32&lt;/code&gt;/&lt;code&gt;64&lt;/code&gt;, &lt;code&gt;float32&lt;/code&gt;, &lt;code&gt;float64&lt;/code&gt;, &lt;code&gt;untagged_immediate&lt;/code&gt;, &lt;code&gt;vec128&lt;/code&gt;/&lt;code&gt;256&lt;/code&gt;/&lt;code&gt;512&lt;/code&gt;, &lt;code&gt;void&lt;/code&gt;, &lt;code&gt;word&lt;/code&gt;) now cross externality inherently rather than requiring a syntactic &lt;code&gt;mod external_&lt;/code&gt; annotation, by &lt;a href="https://github.com/rtjoa"&gt;Ryan Tjoa&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6973"&gt;oxcaml/oxcaml#6973&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Legacy OCaml-runtime-4 support markers were removed by &lt;a href="https://github.com/NickBarnes"&gt;Nick Barnes&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6707"&gt;oxcaml/oxcaml#6707&lt;/a&gt;): &lt;code&gt;Config.runtime5&lt;/code&gt; and the deprecated &lt;code&gt;Gc.eventlog_pause&lt;/code&gt;/&lt;code&gt;Gc.eventlog_resume&lt;/code&gt; are gone, and &lt;code&gt;Unix.file_descr&lt;/code&gt;'s kind annotation was simplified to plain &lt;code&gt;immediate&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Fixed an allocation-pointer bug on stack overflow (&lt;a href="https://github.com/oxcaml/oxcaml/issues/7020"&gt;oxcaml/oxcaml#7020&lt;/a&gt;) and corrected C stack alignment on stack overflow (&lt;a href="https://github.com/oxcaml/oxcaml/issues/7088"&gt;oxcaml/oxcaml#7088&lt;/a&gt;), both by &lt;a href="https://github.com/NickBarnes"&gt;Nick Barnes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Fixed &lt;code&gt;[@unboxable]&lt;/code&gt; crashing on local parameters when the enclosing function is not local-returning, by &lt;a href="https://github.com/Ekdohibs"&gt;Nathanaëlle Courant&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6592"&gt;oxcaml/oxcaml#6592&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;CFG dead-code elimination no longer deletes atomic loads whose result is discarded, preserving side effects, by &lt;a href="https://github.com/xclerc"&gt;Xavier Clerc&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/7101"&gt;oxcaml/oxcaml#7101&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Switches sharing the same destination with many arguments are now merged, reducing generated code size, by &lt;a href="https://github.com/bclement-ocp"&gt;Basile Clément&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6784"&gt;oxcaml/oxcaml#6784&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;No new-feature activity was recorded this week in oxcaml/opam-repository, oxcaml/merlin, oxcaml/js&lt;em&gt;of&lt;/em&gt;ocaml, or janestreet/opam-repository&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;All recorded activity in the group this week came from &lt;a href="https://github.com/oxcaml/oxcaml"&gt;oxcaml/oxcaml&lt;/a&gt;; &lt;a href="https://github.com/oxcaml/opam-repository"&gt;oxcaml/opam-repository&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/merlin"&gt;oxcaml/merlin&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/js_of_ocaml"&gt;oxcaml/js&lt;em&gt;of&lt;/em&gt;ocaml&lt;/a&gt;, and &lt;a href="https://github.com/janestreet/opam-repository"&gt;janestreet/opam-repository&lt;/a&gt; had no summarized activity for week 37&lt;/li&gt;
+&lt;li&gt;oxcaml/oxcaml activity centered on completing the runtime-5-only cleanup (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6707"&gt;oxcaml/oxcaml#6707&lt;/a&gt;), enabling DWARF-5 debug output (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6923"&gt;oxcaml/oxcaml#6923&lt;/a&gt;), and continued link-time-optimization (LTO) and Merlin structured-diagnostics prototyping&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rricard"&gt;Robin Ricard&lt;/a&gt; merged a large series of PRs vendoring external tools (js&lt;em&gt;of&lt;/em&gt;ocaml, sedlex, ppxlib/ppxlib_jane, ocaml-compiler-libs) directly into oxcaml/oxcaml as in-repo subtrees, reducing reliance on separately tracked opam pins&lt;/li&gt;
+&lt;li&gt;Type-system and mode-polymorphism work continued from &lt;a href="https://github.com/gavinleroy"&gt;Gavin Gray&lt;/a&gt;, &lt;a href="https://github.com/jbachurski"&gt;Jakub Bachurski&lt;/a&gt;, and &lt;a href="https://github.com/ainageorges"&gt;@ainageorges&lt;/a&gt;, alongside garbage-collector and runtime internals work from &lt;a href="https://github.com/NickBarnes"&gt;Nick Barnes&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Cross-Repository Work&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/rricard"&gt;Robin Ricard&lt;/a&gt; merged a series of PRs importing js&lt;em&gt;of&lt;/em&gt;ocaml's history and vendoring it directly into oxcaml/oxcaml as an in-repo subtree (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6968"&gt;oxcaml/oxcaml#6968&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/7071"&gt;oxcaml/oxcaml#7071&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/7073"&gt;oxcaml/oxcaml#7073&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/7074"&gt;oxcaml/oxcaml#7074&lt;/a&gt;), consolidating the oxcaml/js&lt;em&gt;of&lt;/em&gt;ocaml fork into the compiler repository rather than tracking it as a separate opam-pinned dependency; no independent activity was recorded in &lt;a href="https://github.com/oxcaml/js_of_ocaml"&gt;oxcaml/js&lt;em&gt;of&lt;/em&gt;ocaml&lt;/a&gt; this week&lt;/li&gt;
+&lt;li&gt;The same subtree-vendoring pattern was applied to sedlex (&lt;a href="https://github.com/oxcaml/oxcaml/issues/7060"&gt;oxcaml/oxcaml#7060&lt;/a&gt;-&lt;a href="https://github.com/oxcaml/oxcaml/issues/7062"&gt;oxcaml/oxcaml#7062&lt;/a&gt;), ppxlib and ppxlib_jane (&lt;a href="https://github.com/oxcaml/oxcaml/issues/7014"&gt;oxcaml/oxcaml#7014&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/7053"&gt;oxcaml/oxcaml#7053&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/7054"&gt;oxcaml/oxcaml#7054&lt;/a&gt;), and ocaml-compiler-libs (&lt;a href="https://github.com/oxcaml/oxcaml/issues/7011"&gt;oxcaml/oxcaml#7011&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/7012"&gt;oxcaml/oxcaml#7012&lt;/a&gt;), each consolidating a previously separate dependency directly into oxcaml/oxcaml&lt;/li&gt;
+&lt;li&gt;Merlin's &lt;code&gt;Pmod_hole&lt;/code&gt; construct was upstreamed into the oxcaml/oxcaml compiler itself by &lt;a href="https://github.com/dra27-js"&gt;David Allsopp&lt;/a&gt; (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6960"&gt;oxcaml/oxcaml#6960&lt;/a&gt;), and Merlin-facing changes (the &lt;code&gt;module-type-impls&lt;/code&gt; query, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6811"&gt;oxcaml/oxcaml#6811&lt;/a&gt;; imports of moregen return-mode changes, &lt;a href="https://github.com/oxcaml/oxcaml/issues/7169"&gt;oxcaml/oxcaml#7169&lt;/a&gt;) were developed in-tree rather than in the standalone &lt;a href="https://github.com/oxcaml/merlin"&gt;oxcaml/merlin&lt;/a&gt; repository, which had no recorded activity this week&lt;/li&gt;
+&lt;li&gt;No opam-repository activity was recorded in either &lt;a href="https://github.com/oxcaml/opam-repository"&gt;oxcaml/opam-repository&lt;/a&gt; or &lt;a href="https://github.com/janestreet/opam-repository"&gt;janestreet/opam-repository&lt;/a&gt;, so no package-release coordination between the compiler and package repositories is visible this week&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;On the Merlin &lt;code&gt;module-type-impls&lt;/code&gt; query (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6811"&gt;oxcaml/oxcaml#6811&lt;/a&gt;), &lt;a href="https://github.com/liam923"&gt;Liam Stevenson&lt;/a&gt; questioned surprising signature-substitution behavior and pushed for a variable-argument loop instead of repeated manual &lt;code&gt;$MERLIN single module-type-impls&lt;/code&gt; invocations in tests, while also flagging what looked like an AI-generated prompt that had leaked into a commit message&lt;/li&gt;
+&lt;li&gt;Reviewers on kind-template module coercions (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6792"&gt;oxcaml/oxcaml#6792&lt;/a&gt;), including &lt;a href="https://github.com/riaqn"&gt;Zesen Qian&lt;/a&gt;, discussed whether unrelated reformatting diffs should be avoided to keep &lt;code&gt;git blame&lt;/code&gt; usable, and whether &lt;code&gt;kindtemplate_coercion&lt;/code&gt;'s invariant that &lt;code&gt;tc_args&lt;/code&gt;/&lt;code&gt;tc_params&lt;/code&gt; are never the identity permutation should be encoded in the type&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rgrinberg"&gt;Rudi Grinberg&lt;/a&gt; reported that &lt;code&gt;Persistent_env&lt;/code&gt; checks an imported interface's CRC vector twice on a checked cold lookup, with a proposed patch caching a per-import "already checked" flag to avoid the redundant traversal (&lt;a href="https://github.com/oxcaml/oxcaml/issues/7114"&gt;oxcaml/oxcaml#7114&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;A clear push toward vendoring external dependencies (js&lt;em&gt;of&lt;/em&gt;ocaml, sedlex, ppxlib, ppxlib_jane, ocaml-compiler-libs) directly into oxcaml/oxcaml as in-repo subtrees rather than relying on opam pins, led by &lt;a href="https://github.com/rricard"&gt;Robin Ricard&lt;/a&gt; across a dozen-plus PRs (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6968"&gt;oxcaml/oxcaml#6968&lt;/a&gt;-&lt;a href="https://github.com/oxcaml/oxcaml/issues/7074"&gt;oxcaml/oxcaml#7074&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Continued iterative churn on the link-time-optimization prototype, with several PRs opened and closed/superseded within the same week (e.g. &lt;a href="https://github.com/oxcaml/oxcaml/issues/7141"&gt;oxcaml/oxcaml#7141&lt;/a&gt; superseded by &lt;a href="https://github.com/oxcaml/oxcaml/issues/7142"&gt;oxcaml/oxcaml#7142&lt;/a&gt;; &lt;a href="https://github.com/oxcaml/oxcaml/issues/7149"&gt;oxcaml/oxcaml#7149&lt;/a&gt; and &lt;a href="https://github.com/oxcaml/oxcaml/issues/7146"&gt;oxcaml/oxcaml#7146&lt;/a&gt; closed) as the design settles&lt;/li&gt;
+&lt;li&gt;The Merlin structured-diagnostics stack from &lt;a href="https://github.com/gavinleroy"&gt;Gavin Gray&lt;/a&gt; is being repeatedly restructured, with earlier PRs closed in favor of reorganized follow-ups (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6808"&gt;oxcaml/oxcaml#6808&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6816"&gt;oxcaml/oxcaml#6816&lt;/a&gt; closed; &lt;a href="https://github.com/oxcaml/oxcaml/issues/6817"&gt;oxcaml/oxcaml#6817&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6896"&gt;oxcaml/oxcaml#6896&lt;/a&gt;, &lt;a href="https://github.com/oxcaml/oxcaml/issues/6900"&gt;oxcaml/oxcaml#6900&lt;/a&gt; open)&lt;/li&gt;
+&lt;li&gt;Ongoing removal of legacy compatibility shims now that the runtime-5-only transition is complete, seen in the removal of &lt;code&gt;Config.runtime5&lt;/code&gt; and deprecated &lt;code&gt;Gc&lt;/code&gt; eventlog functions (&lt;a href="https://github.com/oxcaml/oxcaml/issues/6707"&gt;oxcaml/oxcaml#6707&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Development activity within the group remained concentrated in the single oxcaml/oxcaml repository, with the four other group repositories showing no recorded changes this week&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>oxcaml/oxcaml drove all recorded group activity: DWARF-5 debug support, void-record typing, and heavy LTO/Merlin-diagnostics prototyping.</summary><published>2026-09-13T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/oxcaml/2026/week-36</id><title>Week 36, 2026: Atomic pointers, DWARF-5 debug info, and dependency vendoring landed in oxcaml/oxcaml, while opam-repository relaxed dune/eio/mdx guards.</title><updated>2026-09-06T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
@@ -6596,7 +6693,7 @@
 &lt;li&gt;&lt;strong class="achievement"&gt;Performance optimization&lt;/strong&gt; focus on instruction selection, register allocation, and runtime efficiency improvements across multiple commits&lt;/li&gt;
 &lt;li&gt;&lt;strong class="achievement"&gt;Code organization&lt;/strong&gt; improvements with better separation of target-specific and generic compiler components for maintainability&lt;/li&gt;
 &lt;/ul&gt;
-</content><link href="https://thicket.dev/"/><summary>Major compiler backend refactoring in oxcaml/oxcaml with new instruction selection code and type system advances</summary><published>2025-04-06T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/oxcaml/2025/week-13</id><title>Week 13, 2025: Major development focus on oxcaml compiler with 35 commits introducing portable continuations and ARM64 enhancements, plus Merlin OCaml integration update</title><updated>2026-09-11T06:33:21.832527+00:00</updated><content type="html">
+</content><link href="https://thicket.dev/"/><summary>Major compiler backend refactoring in oxcaml/oxcaml with new instruction selection code and type system advances</summary><published>2025-04-06T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/oxcaml/2025/week-13</id><title>Week 13, 2025: Major development focus on oxcaml compiler with 35 commits introducing portable continuations and ARM64 enhancements, plus Merlin OCaml integration update</title><updated>2026-09-14T19:36:07.771415+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

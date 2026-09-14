@@ -1,5 +1,87 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/multicore.xml</id><title>Multicore (Weekly)</title><updated>2026-09-06T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/multicore.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Multicore OCaml</subtitle><entry><id>https://thicket.dev/groups/multicore/2026/week-36</id><title>Week 36, 2026: Activity this week was confined to ocaml-multicore/eio: a new Process.Env API merged and Windows-parity fixes were opened.</title><updated>2026-09-06T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/multicore.xml</id><title>Multicore (Weekly)</title><updated>2026-09-13T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/multicore.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Multicore OCaml</subtitle><entry><id>https://thicket.dev/groups/multicore/2026/week-37</id><title>Week 37, 2026: Activity this week was confined to ocaml-multicore/eio: Windows rename/NT-path fixes merged and an eio_linux spawn bug was traced to an upstream io_uring kernel issue.</title><updated>2026-09-13T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt;: Added &lt;code&gt;Eio.Process.environment&lt;/code&gt; and &lt;code&gt;Eio.Process.getenv_opt&lt;/code&gt; for reading process environment variables, with &lt;code&gt;Env.get_opt&lt;/code&gt; changed to return &lt;code&gt;None&lt;/code&gt; rather than raising &lt;code&gt;Invalid_argument&lt;/code&gt; for invalid names, by &lt;a href="https://github.com/patricoferris"&gt;Patrick Ferris&lt;/a&gt; with review from &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; and &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/pull/923"&gt;ocaml-multicore/eio#923&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;New &lt;code&gt;Eio_unix.File&lt;/code&gt; module adding &lt;code&gt;import_rw&lt;/code&gt; and &lt;code&gt;import_ro&lt;/code&gt; to wrap arbitrary Unix file descriptors as Eio files, closing a gap where &lt;code&gt;Eio_unix.Net.import_socket_stream&lt;/code&gt; was the only option and didn't support operations like &lt;code&gt;pread&lt;/code&gt;, by &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/pull/937"&gt;ocaml-multicore/eio#937&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Windows backend gained &lt;code&gt;rename&lt;/code&gt; support, handling Win32's differing overwrite semantics for files versus directories (FAT volumes cannot replace a directory), by &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/pull/934"&gt;ocaml-multicore/eio#934&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Windows NT path handling and &lt;code&gt;stat&lt;/code&gt;/symlink fixes: corrected an uninitialized-handle check in the &lt;code&gt;openat&lt;/code&gt;/&lt;code&gt;unlinkat&lt;/code&gt; stubs that misreported failures, fixed &lt;code&gt;nofollow&lt;/code&gt; dropping directory/non-directory constraints so &lt;code&gt;stat&lt;/code&gt; kinds worked again, fixed ELOOP symlink recovery resolving against the process directory instead of the sandbox root, fixed unmapped &lt;code&gt;Unix&lt;/code&gt; errors escaping &lt;code&gt;open_in&lt;/code&gt;, stopped &lt;code&gt;stat&lt;/code&gt; from creating a missing file, and made &lt;code&gt;stat ~follow:false&lt;/code&gt; actually avoid following the link, resolving &lt;a href="https://github.com/ocaml-multicore/eio/issues/931"&gt;ocaml-multicore/eio#931&lt;/a&gt;, by &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/pull/932"&gt;ocaml-multicore/eio#932&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Fixed a gcc &lt;code&gt;calloc-transposed-args&lt;/code&gt; warning in &lt;code&gt;fork_action.c&lt;/code&gt; by &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; (&lt;a href="https://github.com/ocaml-multicore/eio/pull/933"&gt;ocaml-multicore/eio#933&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Group Overview&lt;/h2&gt;
+
+&lt;li&gt;Of the nine repositories in the multicore group, only &lt;a href="https://github.com/ocaml-multicore/eio"&gt;ocaml-multicore/eio&lt;/a&gt; recorded activity for week 37 (2026-09-07 to 2026-09-13); &lt;a href="https://github.com/ocaml-multicore/domainslib"&gt;ocaml-multicore/domainslib&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/ocaml-uring"&gt;ocaml-multicore/ocaml-uring&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/meio"&gt;ocaml-multicore/meio&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/saturn"&gt;ocaml-multicore/saturn&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/eio-trace"&gt;ocaml-multicore/eio-trace&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/picos"&gt;ocaml-multicore/picos&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/kcas"&gt;ocaml-multicore/kcas&lt;/a&gt; and &lt;a href="https://github.com/ocaml-multicore/ocaml-iomux"&gt;ocaml-multicore/ocaml-iomux&lt;/a&gt; had no recorded changes&lt;/li&gt;
+&lt;li&gt;eio's week centered on merging environment-variable access (&lt;a href="https://github.com/ocaml-multicore/eio/pull/923"&gt;ocaml-multicore/eio#923&lt;/a&gt;), a new &lt;code&gt;Eio_unix.File&lt;/code&gt; module (&lt;a href="https://github.com/ocaml-multicore/eio/pull/937"&gt;ocaml-multicore/eio#937&lt;/a&gt;), Windows &lt;code&gt;rename&lt;/code&gt; support (&lt;a href="https://github.com/ocaml-multicore/eio/pull/934"&gt;ocaml-multicore/eio#934&lt;/a&gt;), and Windows NT path/stat fixes (&lt;a href="https://github.com/ocaml-multicore/eio/pull/932"&gt;ocaml-multicore/eio#932&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;A large Windows process-spawning PR opened for review (&lt;a href="https://github.com/ocaml-multicore/eio/pull/936"&gt;ocaml-multicore/eio#936&lt;/a&gt;), while anonymous pipes on Windows remained a draft in progress (&lt;a href="https://github.com/ocaml-multicore/eio/pull/929"&gt;ocaml-multicore/eio#929&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;An intermittent &lt;code&gt;eio_linux&lt;/code&gt; spawn failure (&lt;a href="https://github.com/ocaml-multicore/eio/issues/935"&gt;ocaml-multicore/eio#935&lt;/a&gt;) was diagnosed as an upstream &lt;code&gt;io_uring&lt;/code&gt; kernel bug rather than an eio defect, requiring no code change&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Notable Discussions&lt;/h2&gt;
+
+&lt;li&gt;Investigation into &lt;a href="https://github.com/ocaml-multicore/eio/issues/935"&gt;ocaml-multicore/eio#935&lt;/a&gt; combined &lt;code&gt;bpftrace&lt;/code&gt; kernel tracing and a minimal C reproduction against &lt;code&gt;liburing&lt;/code&gt; to show that a file descriptor closed before &lt;code&gt;execve&lt;/code&gt; was nonetheless still considered open by the kernel on ZFS (but not ext4); &lt;a href="https://x.com/axboe"&gt;Jens Axboe&lt;/a&gt; confirmed it as a known &lt;code&gt;io_uring&lt;/code&gt; kernel bug with a fix planned for 7.4, so no change was needed in eio itself&lt;/li&gt;
+&lt;li&gt;Design discussion on &lt;a href="https://github.com/ocaml-multicore/eio/pull/923"&gt;ocaml-multicore/eio#923&lt;/a&gt; between &lt;a href="https://github.com/patricoferris"&gt;Patrick Ferris&lt;/a&gt; and &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; over whether environment access should live on &lt;code&gt;Eio.Process.mgr&lt;/code&gt; or a separate &lt;code&gt;Vars&lt;/code&gt; capability, settled by benchmarking &lt;code&gt;get_all&lt;/code&gt;/&lt;code&gt;get_opt&lt;/code&gt; versus a direct accessor and by the observation that anyone spawning processes already has environment access&lt;/li&gt;
+&lt;li&gt;Review of &lt;a href="https://github.com/ocaml-multicore/eio/pull/936"&gt;ocaml-multicore/eio#936&lt;/a&gt; surfaced a discussion on correct cancellation semantics for waiting on a Windows child process, with &lt;a href="https://github.com/talex5"&gt;Thomas Leonard&lt;/a&gt; proposing a &lt;code&gt;Fiber.fork_daemon&lt;/code&gt;-based pattern that signals the process on switch cancellation while still awaiting its exit&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Emerging Trends&lt;/h2&gt;
+
+&lt;li&gt;Windows backend completeness remained the dominant focus in eio — process spawning (&lt;a href="https://github.com/ocaml-multicore/eio/pull/936"&gt;ocaml-multicore/eio#936&lt;/a&gt;), anonymous pipes (&lt;a href="https://github.com/ocaml-multicore/eio/pull/929"&gt;ocaml-multicore/eio#929&lt;/a&gt;), rename (&lt;a href="https://github.com/ocaml-multicore/eio/pull/934"&gt;ocaml-multicore/eio#934&lt;/a&gt;), and NT path/stat handling (&lt;a href="https://github.com/ocaml-multicore/eio/pull/932"&gt;ocaml-multicore/eio#932&lt;/a&gt;, &lt;a href="https://github.com/ocaml-multicore/eio/issues/931"&gt;ocaml-multicore/eio#931&lt;/a&gt;) — driven by regression testing against the real-world &lt;code&gt;ocaml-forester&lt;/code&gt; project with &lt;a href="https://github.com/kentookura"&gt;Kento Okura&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Recurring attention to capability-safety in filesystem APIs, seen both in the Windows symlink/stat fixes in &lt;a href="https://github.com/ocaml-multicore/eio/pull/932"&gt;ocaml-multicore/eio#932&lt;/a&gt; and in the hard-link request in &lt;a href="https://github.com/ocaml-multicore/eio/issues/925"&gt;ocaml-multicore/eio#925&lt;/a&gt;, which asks for &lt;code&gt;linkat&lt;/code&gt;-based semantics to avoid TOCTOU races when extracting untrusted archives&lt;/li&gt;
+&lt;li&gt;The other eight repositories in the group (domainslib, ocaml-uring, meio, saturn, eio-trace, picos, kcas, ocaml-iomux) had no recorded activity this week&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Activity this week was confined to ocaml-multicore/eio: Windows rename/NT-path fixes merged and an eio_linux spawn bug was traced to an upstream io_uring kernel issue.</summary><published>2026-09-13T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/groups/multicore/2026/week-36</id><title>Week 36, 2026: Activity this week was confined to ocaml-multicore/eio: a new Process.Env API merged and Windows-parity fixes were opened.</title><updated>2026-09-06T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

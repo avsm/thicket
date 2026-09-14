@@ -1,5 +1,70 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.xml</id><title>ocaml/ocaml (Weekly)</title><updated>2026-09-06T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-36</id><title>Week 36, 2026: OCaml 5.5.1 shipped with Marshal/bytecode overflow fixes, while trunk got Windows Unix.select fixes and native arm64/power rounding instructions.</title><updated>2026-09-06T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-ocaml.xml</id><title>ocaml/ocaml (Weekly)</title><updated>2026-09-13T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-ocaml.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/ocaml</subtitle><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-37</id><title>Week 37, 2026: Runtime_events gained new GC counters and a corrupt-stream fix, alongside a Weak.get_copy safety fix and continued Windows/GADT robustness work.</title><updated>2026-09-13T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Eleven new PRs opened spanning codegen, tooling and governance, alongside ongoing link-time-linking, GC-pacing and Hashtbl redesign proposals.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;Eleven &lt;a href="https://github.com/ocaml/ocaml/pull/15045" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;PRs were opened this week and remain open&lt;/strong&gt;&lt;/a&gt;, covering codegen (dead-code elimination of discarded atomic loads by &lt;a href="https://github.com/xclerc"&gt;Xavier Clerc&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/pull/15045"&gt;#15045&lt;/a&gt;), tooling (&lt;code&gt;ocamllex&lt;/code&gt; cleanup of generated output on a fatal missing-case warning by &lt;a href="https://github.com/cuishuang"&gt;cui fliter&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/pull/15048"&gt;#15048&lt;/a&gt;; a new &lt;code&gt;EV_PROCESS_CREATE&lt;/code&gt; lifecycle event and CI curl-retry/opam-validation hardening by &lt;a href="https://github.com/tmcgilchrist"&gt;Tim McGilchrist&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/pull/15049"&gt;#15049&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/pull/15050"&gt;#15050&lt;/a&gt;), typing (an escaped-&lt;code&gt;Equality_trace&lt;/code&gt; fix by &lt;a href="https://github.com/samsa1"&gt;Samuel Vivien&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/pull/15052"&gt;#15052&lt;/a&gt;; a &lt;code&gt;[@@deprecated_unlabelled]&lt;/code&gt; attribute proposal for gracefully deprecating unlabelled arguments by &lt;a href="https://github.com/nojb"&gt;Nicolás Ojeda Bär&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/pull/15054"&gt;#15054&lt;/a&gt;), scheduling (always advancing the work counter in idle slices by &lt;a href="https://github.com/NickBarnes"&gt;Nick Barnes&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/pull/15062"&gt;#15062&lt;/a&gt;), governance (retiring inactive maintainers by &lt;a href="https://github.com/gasche"&gt;Gabriel Scherer&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/pull/15063"&gt;#15063&lt;/a&gt;; deprecating &lt;code&gt;Weak.get_copy&lt;/code&gt;, &lt;a href="https://github.com/ocaml/ocaml/pull/15064"&gt;#15064&lt;/a&gt;), CI (disabling the beyond-2038 support check on 32-bit CI by &lt;a href="https://github.com/OlivierNicole"&gt;Olivier Nicole&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/pull/15065"&gt;#15065&lt;/a&gt;), and testing (skipping the AFL fuzz test when not built with &lt;code&gt;--with-afl&lt;/code&gt; by &lt;a href="https://github.com/akashchamp"&gt;@akashchamp&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/pull/15066"&gt;#15066&lt;/a&gt;, addressing &lt;a href="https://github.com/ocaml/ocaml/issues/15046"&gt;#15046&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/dra27"&gt;David Allsopp&lt;/a&gt; opened parsetree support for wildcards/holes in simple expressions and module expressions (&lt;a href="https://github.com/ocaml/ocaml/pull/15051"&gt;#15051&lt;/a&gt;), which merged just after this reporting window closed.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/ocaml/pull/15039" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Runtime_events&lt;/strong&gt;&lt;/a&gt; continues to see concentrated work from &lt;a href="https://github.com/tmcgilchrist"&gt;Tim McGilchrist&lt;/a&gt;: beyond the merged allocation counters and corrupt-stream fix above, open work includes documentation improvements (&lt;a href="https://github.com/ocaml/ocaml/pull/15039"&gt;#15039&lt;/a&gt;) and handling of lost-word truncation reporting (&lt;a href="https://github.com/ocaml/ocaml/pull/15010"&gt;#15010&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Three &lt;a href="https://github.com/ocaml/ocaml/pull/15059" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;OSEC security-advisory reference&lt;/strong&gt;&lt;/a&gt; PRs were merged in quick succession by &lt;a href="https://github.com/hannesm"&gt;Hannes Mehnert&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/pull/15059"&gt;#15059&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/pull/15060"&gt;#15060&lt;/a&gt;, &lt;a href="https://github.com/ocaml/ocaml/pull/15061"&gt;#15061&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Backend/codegen work continued with an open PR to drop redundant memory-model fences around atomic RMWs on AArch64 by &lt;a href="https://github.com/sebpop"&gt;Sebastian Pop&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/pull/14936"&gt;#14936&lt;/a&gt;), and a proposal to emit &lt;code&gt;clz&lt;/code&gt;/&lt;code&gt;ctz&lt;/code&gt; bit-counting as C primitives on amd64 and arm64 by &lt;a href="https://github.com/Zaneham"&gt;Zane Hambly&lt;/a&gt; (&lt;a href="https://github.com/ocaml/ocaml/pull/15018"&gt;#15018&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Larger in-flight proposals remain open, including &lt;a href="https://github.com/raphael-proust"&gt;Raphaël Proust&lt;/a&gt;'s link-time linking design that lets users rewrite the linker invocation via &lt;code&gt;-linking-variant&lt;/code&gt; (&lt;a href="https://github.com/ocaml/ocaml/pull/14895"&gt;#14895&lt;/a&gt;), &lt;a href="https://github.com/damiendoligez"&gt;Damien Doligez&lt;/a&gt;'s new GC-pacing logic (&lt;a href="https://github.com/ocaml/ocaml/pull/14796"&gt;#14796&lt;/a&gt;), &lt;a href="https://github.com/lthls"&gt;Vincent Laviron&lt;/a&gt;'s support for an unlimited number of non-constant constructors (&lt;a href="https://github.com/ocaml/ocaml/pull/14507"&gt;#14507&lt;/a&gt;), &lt;a href="https://github.com/Octachron"&gt;Florian Angeletti&lt;/a&gt;'s structured diagnostics for the compiler (&lt;a href="https://github.com/ocaml/ocaml/pull/13766"&gt;#13766&lt;/a&gt;), and &lt;a href="https://github.com/Jeannalyse"&gt;Jeannalyse&lt;/a&gt;'s new &lt;code&gt;Hashtbl&lt;/code&gt; implementation (&lt;a href="https://github.com/ocaml/ocaml/pull/14956"&gt;#14956&lt;/a&gt;) and &lt;code&gt;Atomic.compare_and_exchange&lt;/code&gt; addition (&lt;a href="https://github.com/ocaml/ocaml/pull/14912"&gt;#14912&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Two long-dormant PRs were closed this week: an RFC to add a single file to the load path (&lt;a href="https://github.com/ocaml/ocaml/pull/9056"&gt;#9056&lt;/a&gt;) by &lt;a href="https://github.com/nojb"&gt;Nicolás Ojeda Bär&lt;/a&gt;, and &lt;code&gt;Lambda.shallow_fold_left&lt;/code&gt; (&lt;a href="https://github.com/ocaml/ocaml/pull/8784"&gt;#8784&lt;/a&gt;) by &lt;a href="https://github.com/keleshev"&gt;Vladimir Keleshev&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>Runtime_events gained new GC counters and a corrupt-stream fix, alongside a Weak.get_copy safety fix and continued Windows/GADT robustness work.</summary><published>2026-09-13T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-ocaml/2026/week-36</id><title>Week 36, 2026: OCaml 5.5.1 shipped with Marshal/bytecode overflow fixes, while trunk got Windows Unix.select fixes and native arm64/power rounding instructions.</title><updated>2026-09-06T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

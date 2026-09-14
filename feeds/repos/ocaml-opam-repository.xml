@@ -1,5 +1,72 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam-repository.xml</id><title>ocaml/opam-repository (Weekly)</title><updated>2026-09-06T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam-repository.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam-repository</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2026/week-36</id><title>Week 36, 2026: OCaml 5.5.1 and opam 2.6.0~beta2 landed alongside a breaking tyxml 5.0.0 release and a wave of new package submissions.</title><updated>2026-09-06T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam-repository.xml</id><title>ocaml/opam-repository (Weekly)</title><updated>2026-09-13T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam-repository.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam-repository</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2026/week-37</id><title>Week 37, 2026: x509 1.2.0's breaking release cascades through tls, dns, and letsencrypt; opam 2.6.0~rc1 and tyxml 5.0.0 also land.</title><updated>2026-09-13T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Openings target package archival and platform compat; merged work centers on x509-driven bound fixes and repeated atproto/hegel-ocaml re-submissions.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;Newly opened PRs awaiting merge include scheduling &lt;a href="https://github.com/ocaml/opam-repository/issues/30719" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;openai-gym for archival&lt;/strong&gt;&lt;/a&gt; due to unmaintained upstream and OCaml 4.11 build failures by &lt;a href="https://github.com/Kakadu"&gt;Dmitrii Kosarev&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/30719"&gt;#30719&lt;/a&gt;), archiving the &lt;strong class="achievement"&gt;lwt alpha/beta packages&lt;/strong&gt; pending a companion archive-repo PR by &lt;a href="https://github.com/raphael-proust"&gt;Raphaël Proust&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/30711"&gt;#30711&lt;/a&gt;), a &lt;strong class="achievement"&gt;Frama-C/Frama-Clang 0.0.20&lt;/strong&gt; update targeting Clang 21/22 compatibility that surfaced &lt;code&gt;conf-libclang&lt;/code&gt; gaps across distributions by &lt;a href="https://github.com/AllanBlanchard"&gt;Allan Blanchard&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/30680"&gt;#30680&lt;/a&gt;), and an &lt;strong class="achievement"&gt;fsevents 0.4.0&lt;/strong&gt; macOS binding release still blocked on test failures diagnosed by &lt;a href="https://github.com/mseri"&gt;Marcello Seri&lt;/a&gt; and &lt;a href="https://github.com/panglesd"&gt;Paul-Elliot Anglès d'Auriac&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/30479"&gt;#30479&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;An &lt;a href="https://github.com/ocaml/opam-repository/issues/30597" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;obs-loki-eio 0.1.0&lt;/strong&gt;&lt;/a&gt; submission by &lt;a href="https://github.com/loganbnielsen"&gt;Logan B. Nielsen&lt;/a&gt; remains blocked because its &lt;code&gt;obs-eio 0.1.1&lt;/code&gt; dependency has never been released (&lt;a href="https://github.com/ocaml/opam-repository/issues/30597"&gt;#30597&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;A long-running &lt;a href="https://github.com/ocaml/opam-repository/issues/26991" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;conf-gcc-multilib&lt;/strong&gt;&lt;/a&gt; proposal for 32-bit glibc/gcc support stays open for feedback on distro-specific package names by &lt;a href="https://github.com/sim642"&gt;Simmo Saan&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam-repository/issues/26991"&gt;#26991&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;The &lt;a href="https://github.com/ocaml/opam-repository/issues/30714" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;x509 1.2.0 release cascade&lt;/strong&gt;&lt;/a&gt; dominated merged work, with &lt;a href="https://github.com/hannesm"&gt;Hannes Mehnert&lt;/a&gt; coordinating bound fixes across albatross, capnp-rpc-net, dns-certify, letsencrypt, and tls-miou-unix (&lt;a href="https://github.com/ocaml/opam-repository/issues/30714"&gt;#30714&lt;/a&gt;) ahead of the breaking release itself (&lt;a href="https://github.com/ocaml/opam-repository/issues/30712"&gt;#30712&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Repeated &lt;a href="https://github.com/ocaml/opam-repository/issues/30695" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;atproto&lt;/strong&gt;&lt;/a&gt; re-submissions (0.1.0 through 1.0.2) by &lt;a href="https://github.com/david-engelmann"&gt;David Engelmann&lt;/a&gt; worked through packaging feedback from &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; and &lt;a href="https://github.com/mseri"&gt;Marcello Seri&lt;/a&gt; on offline-safe testing and redundant metadata before merging (&lt;a href="https://github.com/ocaml/opam-repository/issues/30695"&gt;#30695&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/30698"&gt;#30698&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/30703"&gt;#30703&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/30707"&gt;#30707&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;The &lt;a href="https://github.com/ocaml/opam-repository/issues/30673" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;hegel-ocaml&lt;/strong&gt;&lt;/a&gt; property-based testing packages saw four successive re-releases (0.17.3 through 0.18.2) by &lt;a href="https://github.com/echoumcp1"&gt;Ethan Chou&lt;/a&gt;, with &lt;a href="https://github.com/dinosaure"&gt;Calascibetta Romain&lt;/a&gt; flagging the tight release cadence's CI resource cost before the final version merged (&lt;a href="https://github.com/ocaml/opam-repository/issues/30673"&gt;#30673&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/30685"&gt;#30685&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/30696"&gt;#30696&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/30697"&gt;#30697&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;The &lt;a href="https://github.com/ocaml/opam-repository/issues/30650" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;binaryen/libbinaryen&lt;/strong&gt;&lt;/a&gt; bindings saw four releases in the week (binaryen 0.39.0/0.40.0, libbinaryen 131.0.0/132.0.0) by &lt;a href="https://github.com/ospencer"&gt;Oscar Spencer&lt;/a&gt;, prompting &lt;a href="https://github.com/avsm"&gt;Anil Madhavapeddy&lt;/a&gt; to ask about the release rate and &lt;a href="https://github.com/mtelvers"&gt;Mark Elvers&lt;/a&gt; to propose halving build time by linking the shared library from the static archive instead of rebuilding both (&lt;a href="https://github.com/ocaml/opam-repository/issues/30650"&gt;#30650&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/30658"&gt;#30658&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/30664"&gt;#30664&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/30691"&gt;#30691&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;CI-compatibility maintenance continued with &lt;a href="https://github.com/Kakadu"&gt;Dmitrii Kosarev&lt;/a&gt; fixing OCaml 4.11/5.4 bound issues across named-pipe, ppx_interact, mlmpfr, sundialsml, and tplib (&lt;a href="https://github.com/ocaml/opam-repository/issues/30721"&gt;#30721&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/30717"&gt;#30717&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/30718"&gt;#30718&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/30608"&gt;#30608&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/30484"&gt;#30484&lt;/a&gt;), and &lt;a href="https://github.com/jmid"&gt;Jan Midtgaard&lt;/a&gt; correcting &lt;code&gt;v&lt;/code&gt;-prefixed version bound tripwires in ocaml-ai-sdk and oxbow (&lt;a href="https://github.com/ocaml/opam-repository/issues/30687"&gt;#30687&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/30688"&gt;#30688&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/30225"&gt;#30225&lt;/a&gt;) plus OCaml 5 upper bounds for odbc and misuja after their C stubs called unprefixed &lt;code&gt;alloc_custom&lt;/code&gt;/&lt;code&gt;alloc_tuple&lt;/code&gt; runtime functions (&lt;a href="https://github.com/ocaml/opam-repository/issues/30663"&gt;#30663&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/30661"&gt;#30661&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Broken package source URLs for &lt;a href="https://github.com/ocaml/opam-repository/issues/30669" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;metapp&lt;/strong&gt;&lt;/a&gt; were reported and fixed by redirecting to the opam-sources-archive (&lt;a href="https://github.com/ocaml/opam-repository/issues/30669"&gt;#30669&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/30700"&gt;#30700&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam-repository/issues/30704"&gt;#30704&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>x509 1.2.0's breaking release cascades through tls, dns, and letsencrypt; opam 2.6.0~rc1 and tyxml 5.0.0 also land.</summary><published>2026-09-13T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-opam-repository/2026/week-36</id><title>Week 36, 2026: OCaml 5.5.1 and opam 2.6.0~beta2 landed alongside a breaking tyxml 5.0.0 release and a wave of new package submissions.</title><updated>2026-09-06T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }

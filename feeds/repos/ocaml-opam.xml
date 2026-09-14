@@ -1,5 +1,69 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam.xml</id><title>ocaml/opam (Weekly)</title><updated>2026-09-06T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam/2026/week-36</id><title>Week 36, 2026: opam 2.6.0~beta2 released with a pinning performance fix, dependency upgrades, and release-script hardening.</title><updated>2026-09-06T00:00:00+00:00</updated><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><id>https://thicket.dev/feeds/repos/ocaml-opam.xml</id><title>ocaml/opam (Weekly)</title><updated>2026-09-13T00:00:00+00:00</updated><author><name>Anil Madhavapeddy</name><email>anil@recoil.org</email></author><link href="https://thicket.dev/feeds/repos/ocaml-opam.xml" rel="self"/><link href="https://thicket.dev/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="1.0.0">python-feedgen</generator><subtitle>Weekly activity reports for ocaml/opam</subtitle><entry><id>https://thicket.dev/repos/ocaml-opam/2026/week-37</id><title>Week 37, 2026: opam shipped the 2.6.0~rc1 release candidate and opened 2.7.0 development, fixing an install-time performance regression along the way.</title><updated>2026-09-13T00:00:00+00:00</updated><content type="html">
+&lt;style&gt;
+    /* Base styles */
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #1a1a1a; }
+    h1 { font-size: 1.8em; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.3em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; color: #444; }
+    p { margin: 0.8em 0; }
+
+    /* Links */
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code blocks */
+    code { background: #f6f8fa; padding: 2px 6px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.9em; }
+    pre { background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+
+    /* Lists */
+    ul, ol { padding-left: 1.5em; margin: 0.8em 0; }
+    li { margin: 0.3em 0; }
+
+    /* Achievement highlights */
+    .achievement { color: #cc6600; font-weight: 600; }
+
+    /* RUMINANT group links */
+    .ruminant-group-link {
+        color: #6b46c1;
+        font-weight: 500;
+        padding: 2px 6px;
+        background: rgba(107, 70, 193, 0.1);
+        border-radius: 3px;
+        text-decoration: none;
+    }
+    .ruminant-group-link:hover {
+        background: rgba(107, 70, 193, 0.2);
+        text-decoration: none;
+    }
+
+    /* Repository links */
+    .repo-inline { color: #0366d6; font-weight: 500; }
+
+    /* Sections */
+    section { margin: 2em 0; }
+
+    /* Tables */
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(even) { background: #f9f9f9; }
+&lt;/style&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+Nine PRs opened including Haiku portability and switch-show fixes, alongside the 2.6.0~rc1 release cycle and ongoing repository-loading rework.&lt;/p&gt;
+
+&lt;h2&gt;Activity&lt;/h2&gt;
+
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/pull/7138" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Nine new PRs opened&lt;/strong&gt;&lt;/a&gt; this week: explicit Haiku OS support by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam/pull/7138"&gt;#7138&lt;/a&gt;), a fix making &lt;code&gt;opam switch show&lt;/code&gt; fail on a non-installed switch by &lt;a href="https://github.com/Abhayindia"&gt;Abhay Chaudhary&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam/pull/7139"&gt;#7139&lt;/a&gt;, closing &lt;a href="https://github.com/ocaml/opam/issues/7075"&gt;#7075&lt;/a&gt;), and a migration of &lt;code&gt;OpamStd.Map.update&lt;/code&gt; to the stdlib implementation by &lt;a href="https://github.com/NathanReb"&gt;Nathan Rebours&lt;/a&gt; (&lt;a href="https://github.com/ocaml/opam/pull/7130"&gt;#7130&lt;/a&gt;, closing &lt;a href="https://github.com/ocaml/opam/issues/4915"&gt;#4915&lt;/a&gt;) which went through detailed style review from &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; and merged just after the week closed&lt;/li&gt;
+&lt;li&gt;Several &lt;a href="https://github.com/ocaml/opam/pull/7137" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;draft release-engineering PRs&lt;/strong&gt;&lt;/a&gt; opened by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; remain in progress: arm64 binaries for FreeBSD/OpenBSD/NetBSD (&lt;a href="https://github.com/ocaml/opam/pull/7137"&gt;#7137&lt;/a&gt;), upgrading the release lockfile to use OCaml 5 by default on 64-bit platforms (&lt;a href="https://github.com/ocaml/opam/pull/7136"&gt;#7136&lt;/a&gt;), a speed-up of &lt;code&gt;OpamFile.OPAM.*equal&lt;/code&gt; for strictly-equal parameters (&lt;a href="https://github.com/ocaml/opam/pull/7124"&gt;#7124&lt;/a&gt;), and consolidating the release script to reuse &lt;code&gt;make compiler&lt;/code&gt; (&lt;a href="https://github.com/ocaml/opam/pull/7121"&gt;#7121&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;The &lt;a href="https://github.com/ocaml/opam/pull/7131" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;2.6.0~rc1 release cycle&lt;/strong&gt;&lt;/a&gt; completed this week: &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; merged the tar.gz double-read performance fix (&lt;a href="https://github.com/ocaml/opam/pull/7131"&gt;#7131&lt;/a&gt;), the autoconf 2.72 upgrade (&lt;a href="https://github.com/ocaml/opam/pull/7052"&gt;#7052&lt;/a&gt;), the 2.7.0 dev-version bump (&lt;a href="https://github.com/ocaml/opam/pull/7064"&gt;#7064&lt;/a&gt;), and the release itself after re-doing it once an ordering issue was caught (&lt;a href="https://github.com/ocaml/opam/pull/7129"&gt;#7129&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam/pull/7134"&gt;#7134&lt;/a&gt;), with &lt;a href="https://github.com/rjbou"&gt;R. Boujbel&lt;/a&gt; reviewing the conflicts-field reftest (&lt;a href="https://github.com/ocaml/opam/pull/7127"&gt;#7127&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ocaml/opam/pull/6871" style="text-decoration: none;"&gt;&lt;strong class="achievement"&gt;Incremental repository loading&lt;/strong&gt;&lt;/a&gt; continues to be reworked across two alternative long-running draft PRs addressing the same bug where subdirectories outside &lt;code&gt;packages/&lt;/code&gt; get scanned unnecessarily: &lt;a href="https://github.com/rjbou"&gt;R. Boujbel&lt;/a&gt;'s simplification (&lt;a href="https://github.com/ocaml/opam/pull/6871"&gt;#6871&lt;/a&gt;) and &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt;'s homogenization of initial and diff-based loads (&lt;a href="https://github.com/ocaml/opam/pull/6924"&gt;#6924&lt;/a&gt;), both targeting &lt;a href="https://github.com/ocaml/opam/issues/6872"&gt;#6872&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Documentation PRs explaining how opam chooses a default compiler and how to pass configure-time options to &lt;code&gt;opam switch create&lt;/code&gt; remain open pending updates, addressing &lt;a href="https://github.com/ocaml/opam/issues/6407"&gt;#6407&lt;/a&gt; and &lt;a href="https://github.com/ocaml/opam/issues/6645"&gt;#6645&lt;/a&gt; respectively (&lt;a href="https://github.com/ocaml/opam/pull/6778"&gt;#6778&lt;/a&gt;, &lt;a href="https://github.com/ocaml/opam/pull/6777"&gt;#6777&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;New bug reports opened this week: unlisted &lt;code&gt;files/&lt;/code&gt; directory entries not copied to the build directory when installing from a 1.2-format repository, related to the &lt;a href="https://github.com/ocaml/opam/pull/7131"&gt;#7131&lt;/a&gt; fix (&lt;a href="https://github.com/ocaml/opam/issues/7132"&gt;#7132&lt;/a&gt; by &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt;), and a request to add a &lt;code&gt;&lt;pkg:&lt;/code&gt; reftest helper that avoids triggering an unwanted &lt;code&gt;opam update&lt;/code&gt; (&lt;a href="https://github.com/ocaml/opam/issues/7133"&gt;#7133&lt;/a&gt; by &lt;a href="https://github.com/rjbou"&gt;R. Boujbel&lt;/a&gt;, with &lt;a href="https://github.com/kit-ty-kate"&gt;Kate&lt;/a&gt; suggesting removing the &lt;code&gt;&lt;pkg:&lt;/code&gt; syntax entirely instead)&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://thicket.dev/"/><summary>opam shipped the 2.6.0~rc1 release candidate and opened 2.7.0 development, fixing an install-time performance regression along the way.</summary><published>2026-09-13T00:00:00+00:00</published></entry><entry><id>https://thicket.dev/repos/ocaml-opam/2026/week-36</id><title>Week 36, 2026: opam 2.6.0~beta2 released with a pinning performance fix, dependency upgrades, and release-script hardening.</title><updated>2026-09-06T00:00:00+00:00</updated><content type="html">
 &lt;style&gt;
     /* Base styles */
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
